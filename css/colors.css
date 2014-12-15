@@ -1,0 +1,31 @@
+/*********************************************************************
+Color Stylesheet: Provides colors from the University palette as classes
+**********************************************************************/
+
+/* Text colors */
+.white { color: #fff; }
+.red { color: #820000; }
+.black { color: #000; }
+.warmgray { color: #3f3c30; }
+.warmgray90 { color: #565347; }
+.warmgray60 { color: #8a887d; }
+.warmgray10 { color: #eae9e6; }
+.beige { color: #9d9573; }
+.beige60 { color: #c4bfa9; }
+.beige25 { color: #e6e4db; }
+.sandstone { color: #ddcf99; }
+.sandstone25 { color: #f6f3e5; }
+	
+/* Background colors */ 
+.white_bg { background-color: #fff; }
+.red_bg { background-color: #820000; }
+.black_bg { background-color: #000; }
+.warmgray_bg { background-color: #3f3c30; }
+.warmgray90_bg { background-color: #565347; }
+.warmgray60_bg { background-color: #8a887d; }
+.warmgray10_bg { background-color: #eae9e6; }
+.beige_bg { background-color: #9d9573; }
+.beige60_bg { background-color: #c4bfa9; }
+.beige25_bg { background-color: #e6e4db; }
+.sandstone_bg { background-color: #ddcf99; }
+.sandstone25_bg { background-color: #f6f3e5; }

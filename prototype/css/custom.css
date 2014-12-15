@@ -1,0 +1,70 @@
+ /*********************************************************************
+Custom Stylesheet:defines specific styles for alternate templates or pages
+**********************************************************************/
+
+/* A pgragh groups a photograph and paragraph. */
+div.pgraph { float:left; margin-bottom:1em; }
+a.pgraph { float:left; margin-right:1em; }
+a:link.photo { border:none; }
+a:visited.photo { border:none; }
+a:link:hover.photo { border:none; }
+a:visited:hover.photo { border:none; }
+a:link:active.photo { border:none; }
+a:visited:active.photo { border:none; }
+
+#content_main table { width:90%; margin-top:0.5em; margin-left:4em; border-collapse:collapse; padding:0.5em; }
+#content_main th {font-weight:bold; vertical-align:text-top; padding-top: 0.1em; padding-right: 0.5em; padding-bottom: 0.5em; padding-left: 0.1em; border-width:0.05em; border-color:black; border-top-style:solid; border-right-style:none; border-bottom-style:none; border-left-style:none; }
+#content_main td {vertical-align:text-top; padding-top: 0.1em; padding-right: 0.5em; padding-bottom: 0.5em; padding-left: 0.1em; border-width:0.05em; border-color:black; border-top-style:solid; border-right-style:none; border-bottom-style:none; border-left-style:none; }
+.right {text-align:right; padding-right:3em; }
+.emph { font-weight:bold; }
+
+span.citation {display:block; text-align:right; font-size:.8em; color:#666; padding-top:0.5em;
+   padding-bottom:0; margin:0; }
+
+.image_news139x89 { position:relative; left:-5px; top:5px; margin-bottom:10px; padding:10px;
+   background-image:url("../images/content/homepage/news_back.gif"); background-repeat:no-repeat; }
+.image_news139x191 { position:relative; left:-5px; top:5px; margin-bottom:10px; padding:10px;
+   background-image:url("../images/content/homepage/news_back139x191.gif"); background-repeat:no-repeat; }
+.imagewide149x77 { position:relative; left:-5px; top:3px;  margin-bottom:10px; padding:7px;
+   padding-left:8px; padding-bottom:8px;
+   background-image:url("../images/graphic_wide_underlay149x77.jpg"); background-repeat:no-repeat; }
+.imagewide149x99 { position:relative; left:-5px; top:3px; margin-bottom:10px;
+   padding:7px; padding-left:8px; padding-bottom:8px;
+   background-image:url("../images/graphic_wide_underlay149x99.jpg"); background-repeat:no-repeat; }
+.imagewide149x112 { position:relative; left:-5px; top:3px; margin-bottom:10px;
+   padding:7px; padding-left:8px; padding-bottom:8px;
+   background-image:url("../images/graphic_wide_underlay149x112.jpg"); background-repeat:no-repeat; }
+.middleimg109x70 { float:left; position:relative; left:-3px; top:-3px;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:20px;
+   background-image:url("../images/content_image_bg109x70.jpg"); background-repeat:no-repeat; }
+.middleimg109x71 { float:left; position:relative; left:-3px; top:-3px;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:20px;
+   background-image:url("../images/content_image_bg109x71.jpg"); background-repeat:no-repeat; }
+.middleimg109x77 { float:left; position:relative; left:-3px; top:-3px;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:20px;
+   background-image:url("../images/content_image_bg109x77.jpg"); background-repeat:no-repeat; }
+.middleimg109x81 { float:left; position:relative; left:-3px; top:-3px;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:20px;
+   background-image:url("../images/content_image_bg109x81.jpg"); background-repeat:no-repeat; }
+.middleimg109x87 { float:left; position:relative; left:-3px; top:-3px;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:20px;
+   background-image:url("../images/content_image_bg109x87.jpg"); background-repeat:no-repeat; }
+.middleimg109x107 { float:left; position:relative; left:-3px; top:-3px;
+   background-image:url("../images/content_image_bg109x107.jpg"); background-repeat:no-repeat;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:10px; }
+.middleimg109x138 { float:left; position:relative; left:-3px; top:-3px;
+   background-image:url("../images/content_image_bg109x138.jpg"); background-repeat:no-repeat;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:10px; }
+.middleimg109x149 { float:left; position:relative; left:-3px; top:-3px;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:20px;
+   background-image:url("../images/content_image_bg109x149.jpg"); background-repeat:no-repeat; }
+.middleimg109x168 { float:left; position:relative; left:-3px; top:-3px;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:20px;
+   background-image:url("../images/content_image_bg109x168.jpg"); background-repeat:no-repeat; }
+.middleimg109x180 { float:left; position:relative; left:-3px; top:-3px;
+   padding:6px; padding-left:7px; padding-top:7px; padding-bottom:7px; margin-bottom:20px;
+   background-image:url("../images/content_image_bg109x180.jpg"); background-repeat:no-repeat; }
+
+ul.artists { list-style:none; margin-top:0; margin-left:2em; }
+ul.concerts { list-style:disc; margin-top:0; margin-left:2.5em; }
+

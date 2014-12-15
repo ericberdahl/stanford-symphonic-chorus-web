@@ -1,0 +1,15 @@
+           * { margin: 0; padding: 0; }
+			
+			body { background-image: url('../images/demobg.jpg'); }
+            #content { height: 900px;}
+
+			h4 { margin: 15px 0 5px 0; }
+			
+			h4, p { font-size: 1.2em; }
+			
+			ul li { display: inline; }
+			
+			.wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}

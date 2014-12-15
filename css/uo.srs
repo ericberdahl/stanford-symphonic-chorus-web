@@ -1,0 +1,94 @@
+[Script for Search and Replace]
+[Options]
+Search_subdir=1
+Prompt_flag=2
+Max Display Chars=512
+Show Progress Dialog=1
+Count across files=0
+Line Prefix=Line %3ld -
+Binary Prefix=Offset 0x%-6lx -
+Replace Processing=0
+Process Binary Files=0
+Buffer Size=102400
+Num Buffers To Process=0
+Output_File=
+Show_Files=1
+Backup Path=c:\temp\sr
+Before Hit=[
+After Hit=]
+Max Reg Expr=32767
+Write to Backup Dir=0
+Unzip Dir=C:\Temp
+Show Files Without Hits=0
+Display Replace String=1
+Display File Stats=1
+Show File Date and Size=1
+Reverse Filters=0
+Min Size Filter=0
+Max Size Filter=0
+Min Date Filter=
+Max Date Filter=
+Skip Files Mask=0
+Ignore Attributes=55
+Keep file time stamp=0
+One hit=0
+Sort File Names=0
+Sort Ascending=0
+Append to output file=0
+[Search]
+0.0625em/*thomas*/
+[Replace]
+0.0833em/*thomas*/
+[Search]
+0.125em/*thomas*/
+[Replace]
+0.1667em/*thomas*/
+[Search]
+0.5625em/*thomas*/
+[Replace]
+0.7500em/*thomas*/
+[Search]
+0.625em/*thomas*/
+[Replace]
+1.8333em/*thomas*/
+[Search]
+0.6875em/*thomas*/
+[Replace]
+1.9167em/*thomas*/
+[Search]
+0.75em/*thomas*/
+[Replace]
+1.0000em/*thomas*/
+[Search]
+0.875em/*thomas*/
+[Replace]
+1.1667em/*thomas*/
+[Search]
+0.9375em/*thomas*/
+[Replace]
+1.2500em/*thomas*/
+[Search]
+1.0em/*thomas*/
+[Replace]
+1.3333em/*thomas*/
+[Search]
+1.125em/*thomas*/
+[Replace]
+1.5000em/*thomas*/
+[Search]
+1.25em/*thomas*/
+[Replace]
+1.6667em/*thomas*/
+[Search]
+1.3125em/*thomas*/
+[Replace]
+1.7500em/*thomas*/
+[Search]
+1.5em/*thomas*/
+[Replace]
+2.0000em/*thomas*/
+[Search]
+2.1875em/*thomas*/
+[Replace]
+2.9167em/*thomas*/
+[End of Search and Replace Script]

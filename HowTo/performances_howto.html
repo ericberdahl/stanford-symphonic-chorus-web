@@ -1,0 +1,737 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="publication_date" content="2014-08-15" />
+<meta name="DC.date.issued" content="2014-08-15" />
+<title>Updating the SSC Website - Performances</title>
+<!-- Base stylesheet which imports typography, resets, header/footer layout, and other miscellaneous styles -->
+<link rel="stylesheet" type="text/css" href="../css/base.css" />
+<!-- Page specific stylesheet for middle layout section (sidebars and content_main) -->
+<link rel="stylesheet" type="text/css" href="../css/secondary.css" />
+<link rel="stylesheet" type="text/css" href="css/howto.css" />
+<script src="../js/mootools.js" type="text/javascript"></script>
+<script src="../js/mediabox.js" type="text/javascript"></script>
+<script src="../js/functions.js" type="text/javascript"></script>
+<script src="../js/emus.js" type="text/javascript"></script>
+<!--[if IE 6]>
+  <style type="text/css">
+   @import url(../css/ie/ie_global.css);
+    @import url(../css/ie/ie_secondary.css);
+  </style>
+<![endif]-->
+<!--[if IE 7]>
+  <style type="text/css">
+	@import url(css/ie/ie7.css);
+  </style>
+<![endif]-->
+</head>
+<body>
+	<!-- TemplateBeginEditable name="top" -->
+	<!-- TemplateEndEditable -->
+	<div class="skip">
+		<a href="#content_main">Skip to Content</a>
+	</div>
+	<div id="container">
+		<div id="container_header">
+			<div id="header">
+				<div id="logo">
+					<!-- TemplateBeginEditable name="logo" -->
+					<img src="images/banner_performances.gif"
+						alt="Stanford University - Stanford Symphonic Chorus Department of Music"
+						usemap="#Map" />
+					<map name="Map" id="Map">
+						<area shape="rect" coords="0,0,263,60" href="../../.."
+							alt="Stanford University" />
+						<area shape="rect" coords="275,4,700,57" href="index.html"
+							alt="Stanford Symphonic Chorus Department of Music" />
+					</map>
+					<!-- TemplateEndEditable -->
+				</div>
+				<div id="container_search">
+					<div id="search">
+						<form action="../../../hpcgi/page-route.cgi" id="searchformhome"
+							method="post">
+							<div id="search_filters">
+
+								<input name="search_type" id="web" type="radio" value="web"
+									checked="checked" /> <label id="web_label" for="web" style="">Web</label>
+								<input name="search_type" id="people" type="radio"
+									value="people" /> <label id="people_label" for="people"
+									style="">People</label>
+							</div>
+
+							<div class="searchbox">
+								<input onfocus="this.value=''" type="text" value="Search..."
+									name="search_string" id="search_string" alt="Search field" />
+								<button type="submit" value="Submit" class="search_button">Submit</button>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div id="nav_topic">
+			<!-- TemplateBeginEditable name="nav_topic" -->
+
+			<ul>
+				<li><a href="index.html">Overview</a></li>
+				<li><a href="index_howto.html">Home</a></li>
+				<li class="current"><a href="performances_howto.html">Performances</a></li>
+				<li><a href="MemberPage_howto.html">Member Information</a></li>
+				<li><a href="schedule_howto.html">Rehearsal Schedule</a></li>
+
+			</ul>
+
+			<!-- TemplateEndEditable -->
+		</div>
+		<div id="title">
+
+			<h1>
+				<!-- TemplateBeginEditable name="Page Title" -->
+				How to Update the SSC Website - Performances
+				<!-- TemplateEndEditable -->
+			</h1>
+		</div>
+		<div id="sidebar_introduction">
+			<!-- TemplateBeginEditable name="sidebar_introduction" -->
+			<div id="content_introduction">
+
+				<h2>Performances</h2>
+
+				<p class="introduction">The introduction does not need to be
+					updated.</p>
+			</div>
+
+			<h3>Years</h3>
+			<p>
+				<span class="instruction">Each Winter quarter, add the new
+					year at the top of the list below, and for the Spring and Fall
+					quarters, change the href to link to the topmost quarter for the
+					year.</span>
+			</p>
+			<ul>
+			    <li><a href="#qYYYY">YYYY</a></li>
+				<li><a href="#S2014">2014</a></li>
+				<li><a href="#F2013">2013</a></li>
+				<li><a href="#S2012">2012</a></li>
+				<li><span class="instruction">In the actual Performances page,
+				the years go back to 1995. Some members have suggested
+				going through private collections of old posters to reconstruct this record
+				even further back.</span></li>
+			</ul>
+
+			<!-- TemplateEndEditable -->
+		</div>
+		<div id="content_main">
+			<div id="breadcrumb">
+
+				<p>
+					<!-- TemplateBeginEditable name="breadcrumb" -->
+
+					<a href="index.html">Symphonic Chorus Home</a> &raquo; Performances
+					<!-- TemplateEndEditable -->
+				</p>
+
+			</div>
+
+			<!-- TemplateBeginEditable name="content_main" -->
+			
+			<!-- --------------------------------------------------------------------  -->
+			<br class="clear" />
+			<div id="qYYYY" class="middle">
+			
+				<p><span class="instruction">The section for each quarter begins with a break tag, 
+				<font face="monospace">&lt;br class="clear" /></font>,
+				followed by a div, <font face="monospace">&lt;div id="qYYYY" class="middle"></font>,
+				where the id of the div is our code for the quarter and year.
+				This div contains three parts: </span></p> 
+				<ol class="default">
+				<li><span class="instruction">An image that appears on the left</span>.
+				When the poster or other suitable image is available, we code a link to mediabox
+				and frame the thumbnail using a CSS class:
+<pre class="default">
+&lt;a class="photo pgraph" href="performances/S2014/tinternabbey.jpg"
+   rel="mediabox[590 590]"
+   title="The Chancel and Crossing of Tintern Abbey, Looking towards the East Window, 1794 by J.M.W.Turner, pencil and watercolor on paper">
+   &lt;img class="middleimg109x168"
+        src="performances/S2014/tinternabbey.jpg" width="107" height="165"
+        alt="The Chancel and Crossing of Tintern Abbey, Looking towards the East Window,
+             1794 by J.M.W.Turner, pencil and watercolor on paper" />
+&lt;/a>
+</pre>
+				<p>For how to construct the thumbnail image, see <a href="index.html#thumbnails">Expanding
+				    thumbnail images</a>.</p>
+				<p>Otherwise, we use this code to reference the Music at Stanford logo:
+<pre class="default">
+&lt;img src="images/M@S-roundedges.gif" alt="" />
+</pre>
+</p>
+				</li>
+				<li><span class="instruction">A div containing details of the repertoire and performers
+				for the center section:</span>
+<pre class="default">
+&lt;div class="middle_content">
+   &lt;h3>Quarter YYYY&lt;/h3>
+   &lt;p>Stanford Symphonic Chorus and any other group or groups by name:
+      Title of the concert&lt;/p>
+   &lt;ul class="artists">
+       &lt;li>Composer 1, &lt;em>Title of piece 1&lt;/em>&lt;/li>
+       &lt;li>Composer 2, &lt;em>Title of piece 2&lt;/em>&lt;/li>
+   &lt;/ul>
+   &lt;p>Directed by Director and performed in collaboration with
+      the Another Named Group, 
+      with Singer Name 1, baritone, etc.&lt;/p>
+   &lt;h4>Concerts:&lt;/h4>
+   &lt;p>Friday dd Month YYYY, 7:30 p.m., Location&lt;/p>
+&lt;/div>
+</pre>				
+				</li>
+				<li><span class="instruction">A list of links that appears on the right.
+				Not all of these list items need appear. 
+				The ticket office and map links should appear for a performance 
+				only if it has not happened yet:</span>
+<pre class="default">
+&lt;ul class="middle_links">
+    &lt;li>&lt;a href="http://sto.stanfordtickets.org/single/SelectSeating.aspx?p=5690">Tickets
+        for Friday dd Mon 7:30 p.m. at Location of Concert&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="http://campus-map.stanford.edu/?id=&lat=37.4268766914&lng=-122.17046525&zoom=16&srch=Memorial Church"
+        target="Memorial Church">Map to find Memorial Church&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="../performances/W2014/SSO-SSCVerdiPoster.pdf">Poster in PDF&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="../performances/W2014/SSO-SSCVerdiPoster.jpg">Poster in jpeg&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="../performances/W2010/FYLP.html">For Your Listening Pleasure&lt;/a>&lt;/li> 
+&lt;/ul>				
+</pre>
+				</li>
+				</ol>
+				<p><span class="instruction">Three years of performances follow as examples to follow.</span></p>
+			</div>
+
+			<!-- --------------------------------------------------------------------  -->
+			<br class="clear" />
+			<div id="S2014" class="middle">
+
+				<!--img src="images/M@S-roundedges.gif" alt="" / -->
+
+				<a class="photo pgraph" href="../performances/S2014/tinternabbey.jpg"
+					rel="mediabox[590 590]"
+					title="The Chancel and Crossing of Tintern Abbey, Looking towards the East Window, 1794 by J.M.W.Turner, pencil and watercolor on paper">
+					<img class="middleimg109x168"
+					src="../performances/S2014/tinternabbey.jpg" width="107" height="165"
+					alt="The Chancel and Crossing of Tintern Abbey, Looking towards the East Window, 1794 by J.M.W.Turner, pencil and watercolor on paper" />
+				</a>
+
+				<div class="middle_content">
+					<h3>Spring 2014</h3>
+					<p>Stanford Symphonic Chorus and the Stanford Chamber Chorale:
+						The Holy City: A Festival of English Choral Music</p>
+					<ul class="artists">
+						<li>Ralph Vaughan Williams, <em>The Old Hundredth Psalm
+								Tune</em></li>
+						<li>Ralph Vaughan Williams, <em>Sancta Civitas</em></li>
+						<li>Gustav Holst, <em>The Hymn of Jesus</em></li>
+						<li>Gustav Holst, <em>Psalm 148</em></li>
+					</ul>
+					<p>Directed by Craig Jessop and performed in collaboration with
+						the Stanford Chamber Chorale and Ragazzi Boys Chorus, with Kenneth
+						Goodson, baritone.</p>
+
+					<h4>Concerts:</h4>
+					<p>Friday 16 May 2014, 7:30 p.m., Memorial Church</p>
+
+				</div>
+
+				<ul class="middle_links">
+					<!--	<li><a href="../performances/W2014/SSO-SSCVerdiPoster.pdf">Poster
+							in PDF</a></li>
+					<li><a href="../performances/W2010/FYLP.html">For Your
+							Listening Pleasure</a></li> 
+					-->
+					<li><a
+						href="http://sto.stanfordtickets.org/single/SelectSeating.aspx?p=5690">Tickets
+							for Friday 16 May 7:30 p.m. at Memorial Church</a></li>
+				</ul>
+
+			</div>
+
+			<!-- --------------------------------------------------------------------  -->
+			<br class="clear" />
+			<div id="W2014" class="middle">
+
+				<!-- img src="images/M@S-roundedges.gif" alt="" / -->
+
+				<a class="photo pgraph"
+					href="../performances/W2014/SSO-SSCVerdiPoster.pdf"
+					rel="mediabox[590 590]" title="Giuseppe Verdi"> <img
+					class="middleimg109x168"
+					src="../performances/W2014/SSO-SSCVerdiPoster.jpg" width="107"
+					height="165" alt="Giuseppe Verdi" />
+				</a>
+
+				<div class="middle_content">
+					<h3>Winter 2014</h3>
+
+					<p>
+						Giuseppe Verdi, <em>Messa da Requiem</em>
+					</p>
+
+					<ul class="artists">
+						<li>Stanford Symphonic Chorus, Amy Stuart Hunn Director, and
+							<a href="http://www.sso.org/">Stanford Symphony Orchestra</a>,
+							conducted by Jindong Cai
+						</li>
+					</ul>
+					<p>With soloists from the Mongolian National Opera:</p>
+					<ul class="artists">
+						<li>Naranchimeg Shirmen, <em>soprano</em></li>
+						<li>Aryuna Tsedenjapova, <em>mezzo-soprano</em></li>
+						<li>Davaadorj Myagmarsuren, <em>tenor</em></li>
+						<li>Khurelbaatar Oyunchimeg, <em>bass</em></li>
+					</ul>
+
+					<!--	<ul class="artists">
+						<li>Stephen Saxon, <em>cantor</em></li>
+					</ul>      -->
+
+					<h4>Concerts:</h4>
+					<p>Friday 28 February 2014, 7:30 p.m., Bing Concert Hall</p>
+					<p>Sunday 02 March 2014, 1:30 p.m., Memorial Church</p>
+
+				</div>
+
+				<ul class="middle_links">
+					<li><a href="../performances/W2014/SSO-SSCVerdiPoster.pdf">Poster
+							in PDF</a></li>
+					<!--	<li><a href="../performances/W2010/FYLP.html">For Your
+							Listening Pleasure</a></li> 
+                    	
+					<li><a
+						href="http://sto.stanfordtickets.org/single/selectSeating.aspx?p=5548">Tickets
+							for Friday 28 February at Bing Concert Hall</a></li>
+					<li><a
+						href="http://sto.stanfordtickets.org/single/selectSeating.aspx?p=5514">Tickets
+							for Sunday 02 March at Memorial Church</a></li>
+					-->
+				</ul>
+
+			</div>
+
+			<!--  -----------------------------------------------------------------------  -->
+			<br class="clear" />
+			<div id="F2013" class="middle">
+
+				<!-- img src="images/M@S-roundedges.gif" alt="" / -->
+
+				<a class="photo pgraph"
+					href="../performances/F2013/F2013PosterSSC-PSO.jpg"
+					rel="mediabox[590 480]"
+					title="Stanford Symphonic Chorus and Peninsula Symphony Orchestra Fall 2013 Concert Poster">
+					<img class="middleimg109x149"
+					src="../performances/F2013/F2013PosterSSC-PSO.jpg" width="107"
+					height="147"
+					alt="Stanford Symphonic Chorus and Peninsula Symphony Orchestra Fall 2013 Concert Poster" />
+				</a>
+
+				<div class="middle_content">
+
+					<h3>Fall 2013</h3>
+
+					<p>
+						Ernest Bloch, <em>Sacred Service (Avodath Hakodesh)</em>
+					</p>
+
+					<ul class="artists">
+						<li>Stanford Symphonic Chorus, Jameson Marvin Director, and <a
+							href="http://www.peninsulasymphony.org/">Peninsula Symphony
+								Orchestra</a>, <a
+							href="http://www.peninsulasymphony.org/conductors.php">Mitchell
+								Sardou Klein</a> <em>music director</em>
+						</li>
+					</ul>
+
+					<ul class="artists">
+						<li>Stephen Saxon, <em>cantor</em></li>
+					</ul>
+
+					<h4>Concerts:</h4>
+					<p>Friday 22 November 2013, 7:30 p.m., Bing Concert Hall</p>
+					<p>Sunday 24 November 2013, 2:30 p.m., Bing Concert Hall</p>
+
+				</div>
+
+				<ul class="middle_links">
+					<!--	<li><a href="../performances/W2010/FYLP.html">For Your
+							Listening Pleasure</a></li> -->
+					<li><a href="../performances/F2013/F2013PosterSSC-PSO.jpg">Poster
+							in JPG</a></li>
+					<!--<li><a
+						href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4634&z=182&pt=47,2,4,5,12,16">
+							Tickets for Friday 15 March </a></li>
+					<li><a
+						href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4635&z=182&pt=47,2,4,5,12,16">Tickets
+							for Sunday 17 March</a></li> -->
+				</ul>
+
+			</div>
+			<!-- -------------------------------------------------------------------------------------------------------------- -->
+			<br class="clear" />
+			<div id="W2013" class="middle">
+
+				<!-- img src="images/M@S-roundedges.gif" alt="" / -->
+				<a class="photo pgraph" href="../performances/S2013/Beethoven_pd.jpg"
+					rel="mediabox[590 480]" title="Beethoven"> <img
+					class="middleimg109x149" src="../performances/S2013/Beethoven_pd.jpg"
+					width="107" height="147" alt="Beethoven" />
+				</a>
+
+				<div class="middle_content">
+					<h3>Spring 2013</h3>
+
+					<p>
+						Beethoven, <em>Symphony No. 9 in D minor</em>
+					</p>
+					<ul class="artists">
+						<li>Stanford Symphonic Chorus, Stephen M. Sano Director, and
+							<a href="http://sso.stanford.edu">Stanford Symphony Orchestra</a>,
+							conducted by Jindong Cai
+						</li>
+					</ul>
+					<!-- <ul class="artists">
+						<li>Clare Kelm, <em>soprano</em></li>
+						<li>Wendy Hillhouse, <em>mezzo-soprano</em></li>
+						<li>Chester Pidduck, <em>tenor</em></li>
+						<li>Steven Goodman, <em>baritone</em></li>
+						</ul> -->
+					<h4>Concerts:</h4>
+					<p>Friday 31 March 2013, 8:00 p.m., Bing Concert Hall</p>
+					<p>Saturday 1 June 2013, 8:00 p.m., Bing Concert Hall</p>
+					<p>Sunday 2 June 2013, 7:00 p.m., Bing Concert Hall</p>
+				</div>
+
+				<!-- <ul class="middle_links">
+					<li><a href="../performances/W2010/FYLP.html">For Your
+							Listening Pleasure</a></li> -->
+				<!--<li><a
+						href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4634&z=182&pt=47,2,4,5,12,16">
+							Tickets for Friday 15 March </a></li>
+					<li><a
+						href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4635&z=182&pt=47,2,4,5,12,16">Tickets
+							for Sunday 17 March</a></li> 
+				</ul> -->
+			</div>
+			<!-- -------------------------------------------------------------------------------------------------------------- -->
+			<br class="clear" />
+			<div id="W2013" class="middle">
+
+				<a class="photo pgraph" href="../performances/W2013/Beethoven_pd.jpg"
+					rel="mediabox[590 480]" title="Beethoven"> <img
+					class="middleimg109x149" src="../performances/W2013/Beethoven_pd.jpg"
+					width="107" height="147" alt="Beethoven" />
+				</a>
+
+				<div class="middle_content">
+					<h3>Winter 2013</h3>
+
+					<p>
+						Beethoven, <em>Mass in C,</em> Op. 86
+					</p>
+					<ul class="artists">
+						<li>Stanford Symphonic Chorus and <a
+							href="../../group/sso/cgi-bin/wordpress/about/stanford-philharmonia-orchestra/">Philharmonia
+								Orchestra</a>, conducted by Stephen M. Sano
+						</li>
+					</ul>
+					<ul class="artists">
+						<li>Clare Kelm, <em>soprano</em></li>
+						<li>Wendy Hillhouse, <em>mezzo-soprano</em></li>
+						<li>Chester Pidduck, <em>tenor</em></li>
+						<li>Steven Goodman, <em>baritone</em></li>
+					</ul>
+					<p>
+						Beethoven, <em>Symphony No. 6 in F Major "Pastorale,"</em> Op. 68
+					</p>
+					<ul class="artists">
+						<li>Stanford <a
+							href="../../group/sso/cgi-bin/wordpress/about/stanford-philharmonia-orchestra/">Philharmonia
+								Orchestra</a>, conducted by Stephen M. Sano
+						</li>
+					</ul>
+					<h4>Concerts:</h4>
+					<p>Friday 15 March 2013, 8:00 p.m., Bing Concert Hall</p>
+					<p>Sunday 17 March 2013, 2:30 p.m., Bing Concert Hall</p>
+				</div>
+
+				<ul class="middle_links">
+					<li><a href="../performances/W2010/FYLP.html">For Your
+							Listening Pleasure</a></li>
+					<!--<li><a
+						  href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4634&z=182&pt=47,2,4,5,12,16">
+							  Tickets for Friday 15 March </a></li>
+					  <li><a
+						  href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4635&z=182&pt=47,2,4,5,12,16">Tickets
+							  for Sunday 17 March</a></li>  -->
+				</ul>
+			</div>
+			<!-- -------------------------------------------------------------------------------------------------------------- -->
+			<br class="clear" />
+			<div class="middle">
+
+				<a class="photo pgraph" href="../images/binghall_banner.jpg"
+					rel="mediabox[630 380]"
+					title="Rendering of the Bing Concert Hall. &copy; Polshek Partnership Architects">
+					<img class="middleimg109x71" src="../images/binghall_banner.jpg"
+					width="107" height="60"
+					alt="Rendering of the Bing Concert Hall. &copy; Polshek Partnership Architects" />
+				</a>
+
+				<div class="middle_content">
+					<h3>Opening Weekend&mdash;Bing Concert Hall</h3>
+
+					<p>
+						The Stanford Symphonic Chorus, directed by Stephen Sano, performs,
+						for the opening weekend of the Bing Concert Hall, Vaughan
+						Williams&rsquo;s <em>Serenade to Music</em> and Ravel&rsquo;s <em>Daphnis
+							et Chlo&eacute;,</em> Suite No. 2.
+					</p>
+					<h4>Concert:</h4>
+					<p>Sunday 13 January 2013, 7:00 p.m., Bing Concert Hall</p>
+				</div>
+
+				<ul class="middle_links">
+					<li><a href="http://binghall.stanford.edu/">Opening
+							Weekend&mdash;Bing Concert Hall</a></li>
+					<li><a href="http://vimeo.com/56115622">Bing Concert Hall
+							Fly Through</a></li>
+				</ul>
+
+			</div>
+			<!-- -------------------------------------------------------------------------------------------------------------- -->
+			<br class="clear" />
+			<div id="F2012" class="middle">
+
+				<a class="photo" href="../performances/F2012/SSCPosterF2012.jpeg"
+					title="Stanford Symphonic Chorus Fall 2012 Concert Poster"
+					rel="mediabox[371 480]"> <img class="middleimg109x168"
+					src="../performances/F2012/SSCPosterF2012.jpeg" width="107"
+					height="168"
+					alt="Stanford Symphonic Chorus Fall 2012 Concert Poster" />
+				</a>
+
+				<div class="middle_content">
+					<h3 id="f2012">Fall 2012</h3>
+					<p>
+						Gabriel Faur&eacute;, <em>Requiem,</em> Op. 48
+					</p>
+					<p>
+						Wolfgang Mozart&rsquo;s <em>Solemn Vespers,</em> K. 339
+					</p>
+					<ul class="artists">
+						<li>Stanford <a href="http://sso.stanford.edu/">Philharmonia
+								Orchestra</a> and Symphonic Chorus, conducted by Stephen M. Sano
+						</li>
+					</ul>
+
+					<h4>Concerts:</h4>
+					<p>Friday 16 November 2012, 8 p.m., Stanford Memorial Church</p>
+					<p>Sunday 18 November 2012, 1:30 p.m., Stanford Memorial Church</p>
+				</div>
+
+				<ul class="middle_links">
+					<!--
+         <li><a href="../performances/S2012/FYLP.html">For Your Listening Pleasure</a> - <a href="../performances/S2012/FYLP_S2012.pdf">(PDF version)</a></li>
+  <li><a href="../performances/S2012/SSCPosterS2012.pdf">Poster in PDF</a>
+          </li>  -->
+					<li><a href="../performances/F2012/SSCPosterF2012.jpeg">Fall
+							2012 Concert Poster in JPG</a></li>
+					<!--li><a href="http://www.stanfordtickets.org/tickets/calendar/view.aspx?id=4725">
+Buy Tickets for Friday 11/16 through ticket office</a></li>
+        <li><a href="http://www.stanfordtickets.org/tickets/calendar/view.aspx?id=4726">
+Buy Tickets for Sunday 11/18 through ticket office</a></li-->
+					<li><a
+						href="http://campus-map.stanford.edu/?id=&lat=37.4268766914&lng=-122.17046525&zoom=16&srch=Memorial Church"
+						target="Memorial Church"> Map to find Memorial Church</a></li>
+
+				</ul>
+			</div>
+			<!-- -------------------------------------------------------------------------------------------------------------- -->
+			<br class="clear" />
+
+			<div id="S2012" class="middle">
+
+				<a class="photo" href="../performances/S2012/SSCPosterS2012.jpg"
+					title="Stanford Symphonic Chorus Spring 2012 Concert"
+					rel="mediabox[371 480]"> <img class="middleimg109x168"
+					src="../performances/S2012/SSCPosterS2012.jpg" width="107"
+					height="168" alt="Stanford Symphonic Chorus Spring 2012 Concert" />
+				</a>
+				<div class="middle_content">
+					<h3 id="s2012">Spring 2012</h3>
+					<p>
+						Robert Schumann, <em>Mass in C minor, Opus 147</em>
+					</p>
+					<ul class="artists">
+						<li>
+							<ul class="soloists">
+								<li>Lydia Zodda, Soprano</li>
+								<li>Norman De Vol, Tenor</li>
+								<li>Michael Morris, Bass</li>
+							</ul>
+						</li>
+					</ul>
+
+					<p>
+						Mendelssohn <em>Hebrides Overture</em>
+					</p>
+					<p>
+						Haydn, <em>Cello Concerto in D Major, Hob.VIIb/2</em>
+					</p>
+					<!--  <ul class="artists">		
+	 		<li>Stanford <a href="http://sso.stanford.edu/">Symphony Orchestra</a>, <a
+              href="http://sso.stanford.edu/conductors/">Jindong Cai</a> <em>conductor</em></li>  -->
+
+					<ul class="soloists">
+						<li>Jennifer Miyahira Townsend, Cello</li>
+
+					</ul>
+
+					<h4>Concert:</h4>
+					<p>Wednesday 23 May 2012, 8 p.m., Stanford Memorial Church</p>
+					<!--      <p>Saturday 25 February 2012, 8 p.m., Stanford Memorial Church</p> -->
+				</div>
+
+				<ul class="middle_links">
+
+					<li><a href="../performances/S2012/FYLP.html">For Your
+							Listening Pleasure</a> - <a href="../performances/S2012/FYLP_S2012.pdf">(PDF
+							version)</a></li>
+					<li><a href="../performances/S2012/SSCPosterS2012.pdf">Poster
+							in PDF</a></li>
+					<li><a href="../performances/S2012/SSCPosterS2012.jpg">Poster
+							in JPG</a></li>
+					<li><a
+						href="http://www.stanfordtickets.org/tickets/calendar/view.aspx?id=4417">
+							Buy Tickets through ticket office</a></li>
+					<!-- 	<li><a href="http://www.stanfordtickets.org/tickets/calendar/view.aspx?id=4334">
+Buy Tickets for Saturday 25 February</a></li>  -->
+					<li><a
+						href="http://campus-map.stanford.edu/?id=&lat=37.4268766914&lng=-122.17046525&zoom=16&srch=Memorial Church"
+						target="Memorial Church"> Map to find Memorial Church</a></li>
+
+				</ul>
+			</div>
+
+			<!-- -------------------------------------------------------------------------------------------------------------- -->
+			<br class="clear" />
+
+			<div id="W2012" class="middle">
+
+				<a class="photo" href="../performances/W2012/SSCPosterW2012.jpg"
+					title="Stanford Symphonic Chorus and Stanford Symphony Orchestra Winter 2012 Concert"
+					rel="mediabox[371 480]"> <img class="middleimg109x168"
+					src="../performances/W2012/SSCPosterW2012.jpg" width="107"
+					height="168"
+					alt="Stanford Symphonic Chorus and Stanford Symphony Orchestra Winter 2012 Concert" />
+				</a>
+
+				<!-- <img src="images/M@S-roundedges.gif" alt=""/>    -->
+
+				<div class="middle_content">
+					<h3 id="w2012">Winter 2012</h3>
+					<p>
+						Anton Bruckner, <em>Mass No. 3 in F Minor</em>
+					</p>
+					<ul class="artists">
+						<li>Stanford <a href="http://sso.stanford.edu/">Symphony
+								Orchestra</a> and
+							<li>
+								<li>Symphonic Chorus, conducted by <a
+									href="http://sso.stanford.edu/conductors/">Jindong Cai</a></li>
+
+								<ul class="soloists">
+									<li>Christine Abraham, Soprano</li>
+									<li>Malin Fritz, Alto</li>
+									<li>Brian Thorsett, Tenor</li>
+									<li>Paul Murray, Bass</li>
+								</ul>
+						</li>
+						</li>
+					</ul>
+					<p>
+						J.S. Bach, <em>Fantasia & Fugue in C Minor</em> (BWV 537),
+						arranged by Edward Elgar
+					</p>
+					<ul class="artists">
+
+						<li>Stanford <a href="http://sso.stanford.edu/">Symphony
+								Orchestra</a>, <a href="http://sso.stanford.edu/conductors/">Jindong
+								Cai</a> <em>conductor</em></li>
+					</ul>
+
+					<h4>Concerts:</h4>
+					<p>Friday 24 February 2012, 8 p.m., Stanford Memorial Church</p>
+					<p>Saturday 25 February 2012, 8 p.m., Stanford Memorial Church</p>
+				</div>
+
+				<ul class="middle_links">
+
+					<li><a href="../performances/W2012/FYLP.html">For Your
+							Listening Pleasure</a></li>
+					<li><a href="../performances/W2012/SSCPosterW2012.pdf">Poster
+							in PDF</a></li>
+					<li><a href="../performances/W2012/SSCPosterW2012.jpg">Poster
+							in JPG</a></li>
+					<!--     <li><a href="http://www.stanfordtickets.org/tickets/calendar/view.aspx?id=4324">
+Buy Tickets for Friday 24 February</a></li>
+		<li><a href="http://www.stanfordtickets.org/tickets/calendar/view.aspx?id=4334">
+Buy Tickets for Saturday 25 February</a></li>
+          
+		  <li><a href="http://campus-map.stanford.edu/?id=&lat=37.4268766914&lng=-122.17046525&zoom=16&srch=Memorial Church" target="Memorial Church">
+Map to find Memorial Church</a></li>
+     -->
+				</ul>
+			</div>
+
+			<!-- --------------------------------------------------------------------------------------------------------------- ->
+			<!-- TemplateEndEditable -->
+		</div>
+		<div id="footer" class="clear">
+			<hr class="hide" />
+			<!-- TemplateBeginEditable name="footer" -->
+			<ul id="nav_footer">
+				<li><a href="../../" title="Stanford University">Stanford
+						University</a></li>
+				<li><a href="http://music.stanford.edu"
+					title="Stanford Music Department">Stanford Music Department</a></li>
+				<li><a href="http://music.stanford.edu/Ensembles/index.html">Stanford
+						Music Ensembles</a></li>
+				<li class="last"><a href="index.html">Stanford Symphonic
+						Chorus</a></li>
+			</ul>
+			<div id="copyright">
+				<p class="vcard">
+					Website work by
+					<script type="text/javascript">
+						unScramble("lizandtom", "liztomsharp.commuter",
+								"Liz and Tom Sharp", "SSC Website feedback");
+					</script>
+					<noscript>Liz &amp; Tom Sharp:
+						lizandtom/AT/liztomsharp/DOT/-c-o-m-/</noscript>
+					. 
+				</p>
+				<p class="vcard">
+					&copy; <span class="fn org">Stanford University</span>. <span
+						class="adr">450 Serra Mall, <span class="locality">Stanford</span>,
+						<span class="region">California</span> <span class="postal-code">94305</span>.
+						<span class="tel">(650) 723-2300</span>
+					</span>. <a href="../../../site/terms.html">Terms of Use</a> | <a
+						href="../../../site/copyright.html">Copyright Complaints</a>
+				</p>
+			</div>
+			<!-- TemplateEndEditable -->
+		</div>
+	</div>
+	<!-- TemplateBeginEditable name="bottom" -->
+	<!-- TemplateEndEditable -->
+</body>
+</html>

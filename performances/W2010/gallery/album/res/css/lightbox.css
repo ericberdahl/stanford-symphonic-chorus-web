@@ -1,0 +1,132 @@
+ /*IE7*/
+body {
+	text-align:center; /* horizontal centering for IE Win quirks */
+	background-color:$BodyColor;
+	color:${BodyFontColor};
+}
+
+a{
+	color:${LinkColor};
+}
+
+
+
+
+#imageContainer{
+	padding: 8px;
+	}
+	
+	
+#imageContainerFlickr{
+	padding: 8px;
+	width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+	}
+	
+	/*#imageContainerFlickr img{
+	padding: 5px;
+	border: 1px solid ${imgBorderColor; 	margin: 4px;
+};
+	} */
+	
+	#imageContainer img{
+	padding: 5px;
+	border: 1px solid ${imgBorderColor};
+	}
+	a:link {
+	text-decoration: none;
+	color: ${LinkColor};
+	font-size: 12px;
+}
+
+
+.imageContainertable {
+	font-size: 12px;
+	color: ${imageContainertableBodyFontColor};
+	text-align: center;
+	font-style: normal;
+	font-weight: normal;
+	font-family: "Times New Roman", Times, serif;
+}
+
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+	color:  ${LinkHoverColor};
+}
+a:active {
+	text-decoration: none;
+}
+
+h1 {
+	color: color: ${BodyFontColor};;
+	font-size: 20px;
+}
+#footer {
+	font-size: 12px;
+	text-align: center;
+	width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+#header {
+	text-align: center;
+}
+/* BEGIN style8 */
+ #navlist
+{
+	margin: 0;
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 10px;
+	padding-left: 5px;
+}
+
+#navlist ul, #navlist li
+{
+margin: 0;
+padding: 0;
+display: inline;
+list-style-type: none;
+}
+
+#navlist a:link, #navlist a:visited
+{
+	line-height: 12px;
+	font-weight: normal;
+	margin: 0 10px 4px 10px;
+	text-decoration: none;
+	color: ${LinkColor};
+}
+
+#navlist a:link#current, #navlist a:visited#current, #navlist a:hover
+{
+	padding-bottom: 2px;
+	background: transparent;
+	color: ${LinkHoverColor};
+}
+
+#navlist a:hover {
+	color: ${LinkHoverColor};
+}
+
+/* END style8 */
+-->
+
+th,td {
+	margin: 3px;
+	padding: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+/* toggle */
+.hidden { display: none; }
+.show { display: block; }
+.selected { font-weight: bold; }
