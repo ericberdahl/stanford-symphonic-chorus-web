@@ -17,6 +17,10 @@ a:visited:active.photo { border:none; }
 #content_main td {vertical-align:text-top; padding-top: 0.63em; padding-right: 0.5em; padding-bottom: 0.5em; padding-left: 0.63em; border-width:0.05em; border-color:black; border-top-style:solid; border-right-style:none; border-bottom-style:none; border-left-style:none; }
 .right {text-align:right; padding-right:3em; }
 .emph { font-weight:bold; }
+.special_notice {
+	background-color: #f8f3e5;
+	font-weight: bold;
+}
 
 span.citation {display:block; text-align:right; font-size:.8em; color:#666; padding-top:0.5em;
    padding-bottom:0; margin:0; }
@@ -31,6 +35,8 @@ span.citation {display:block; text-align:right; font-size:.8em; color:#666; padd
    background-image:url("../images/content/homepage/news_back139x113.gif"); background-repeat:no-repeat; }
 .image_news139x181 { position:relative; left:-5px; top:5px; margin-bottom:10px; padding:10px;
    background-image:url("../images/content/homepage/news_back139x181.gif"); background-repeat:no-repeat; }
+.image_news139x185 { position:relative; left:-5px; top:5px; margin-bottom:10px; padding:10px;
+   background-image:url("../images/content/homepage/news_back139x185.gif"); background-repeat:no-repeat; }
 .image_news139x191 { position:relative; left:-5px; top:5px; margin-bottom:10px; padding:10px;
    background-image:url("../images/content/homepage/news_back139x191.gif"); background-repeat:no-repeat; }
 .image_news139x196 { position:relative; left:-5px; top:5px; margin-bottom:10px; padding:10px;
