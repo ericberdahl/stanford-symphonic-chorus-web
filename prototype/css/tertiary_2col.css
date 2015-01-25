@@ -1,6 +1,0 @@
-/****************************************************************************************
-Override Stylesheet for Tertiary 2 column layout. Generalized tertiary styles located within tertiary.css
-****************************************************************************************/
-
-#content_main { width: 760px;border-left: none; margin-left: 0; padding-left:1px } 
-.middle { width: 760px; padding-left: 0; margin-left: 0 }
