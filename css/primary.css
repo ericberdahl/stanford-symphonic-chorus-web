@@ -7,9 +7,9 @@ advanced display attributes for the middle section (sidebars and main content)
 General Classes
 **********************************/
 /*Style for spotlight feature image - determines distance between photo and background drop shadow */
-.image_banner { position: relative; left: -5px; top: 5px;  margin-bottom: 10px; padding: 10px; border: none; background-image: url("../images/content/homepage/banner_back.gif"); background-repeat: no-repeat; }
+.image_banner { position: relative; left: -5px; top: 5px;  margin-bottom: 10px; padding: 10px; border: none; background-repeat: no-repeat; }
 /*Style for news images - determines distance between photo and background drop shadow */
-.image_news { position: relative; left: -5px; top: 5px;  margin-bottom: 10px; padding: 10px; background-image: url("../images/content/homepage/news_back.gif"); background-repeat: no-repeat; }
+.image_news { position: relative; left: -5px; top: 5px;  margin-bottom: 10px; padding: 10px; }
 
 /*********************************
 Title
