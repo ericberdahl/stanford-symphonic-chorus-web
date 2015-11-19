@@ -13,20 +13,8 @@ Main Content
 #seal { margin-right: 5px; margin-top: 10px; }
 
 /***********************
-News
-***********************/
-#news_container { margin-top: 3px; margin-bottom: -20px; } 
-#news { width: 375px; margin: 0; margin-top: 10px; }
-
-/***********************
-On The Stanford Web
-***********************/
-#otsw_container { background-color: #f6f3e5; height: 75px; }
-
-/***********************
 Events/Sports
 ***********************/
-#events_sports { margin-right: 10px; }
 #events img { margin-top: -15px; }
 #sports img { margin-top: -15px; }
 

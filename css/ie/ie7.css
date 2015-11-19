@@ -2,29 +2,13 @@
 IE7 Global-level override styles (involving search box, navbar, and expanded drawer)
 ***********************************************************************************/
 
-#nav_expanded { width: 959px; margin: 0; padding: 0; border-right: 1px solid #e6e4db; }
-#expanded_content { margin: 0; padding: 0; }
-#expanded_content img { display: none;}
-#nav_expanded table { width: 957px; margin: 0; padding: 0; margin-left: 0px; margin-top: 8px; }
-#expanded_table_header { visibility: hidden; display: none;}
 .expanded li { padding-bottom: 5px; list-style-image:url("/images/raquo_ie.gif"); list-style-position:inside;}
 .expanded li a { margin-left: 5px;}
 
 #content_center { padding-right: 0; width: 577px; }
 #content_center h2 { width: 577px; }
 
-#news_container { margin-top: 3px; margin-bottom: -20px; } 
-
-#otsw_container { }
 #sidebar { padding-left: 10px; margin-left: 0;}
-#events_sports { margin-right: 10px;}
 #events { }
 #events img { margin-top: -15px; }
-#sports img { margin-top: -15px; }
 
-#otsw_container { background-color: #f6f3e5; height: 190px; }
-
-/*********************************************************************
-On The Stanford Web - this cleans up the list items on the /otsw/ page
-*********************************************************************/
-#otsw_content li.otsw_object { list-style-image: none; list-style-type: none; list-style: none;}

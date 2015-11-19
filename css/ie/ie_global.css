@@ -13,10 +13,5 @@ Nav bar
 /***********************
 Drawer
 ************************/
-#nav_expanded {  width: 958px; margin: 0; padding: 0; }
-#expanded_content { margin: 0; padding: 0; }
-#expanded_content img { display: none;}
-#nav_expanded table { width: 958px; margin: 0; padding: 0; margin-left: 0px; margin-top: 8px; }
-#expanded_table_header { visibility: hidden; display: none;}
 .expanded li { padding-bottom: 5px; list-style-image:url("../images/raquo_ie.gif"); list-style-position:inside;}
 .expanded li a { margin-left: 5px;}

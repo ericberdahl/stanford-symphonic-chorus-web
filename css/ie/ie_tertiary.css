@@ -18,10 +18,3 @@ Main/Middle Content
 ***********************/
 #content_main { margin:0; padding-left: 20px; padding-right: 15px; margin-right: 0px;}
 #breadcrumb { padding-bottom: 2px; }
-
-.content_image_long { background-image: url("/images/content_image_long_bg.jpg"); position: relative; background-repeat: no-repeat; top: -5px; left: -5px; padding:10px; margin-bottom: 15px; margin: 0; }
-
-/*********************************************************************
-On The Stanford Web - this cleans up the list items on the /otsw/ page
-*********************************************************************/
-.otsw_object { list-style-image: none; list-style-type: none; list-style: none;}
