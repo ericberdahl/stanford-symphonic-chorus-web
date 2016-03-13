@@ -1,23 +1,62 @@
 <template id="ssc-footer">
-	<div id="footer" class="clear">
-		<hr class="hide" />
-		<!-- TemplateBeginEditable name="footer" -->
-		<ul id="nav_footer">
+	<style>
+		div.container {
+			border-top: 1px solid #eae9e6;
+			padding-top: 10px;
+		}
+
+		* {
+			text-align: center;
+		}
+		a {
+			text-decoration: none;
+			border-bottom: 1px dotted #81785a;
+			color: #565347;
+		}
+		p {
+			color: #565347;
+			line-height: 1.3333em;
+		}
+		ul {
+			margin: 0px;
+			padding: 0px;
+			list-style: square;
+			display: block;
+		}
+		li {
+			display: inline;
+			padding-left: 15px;
+			padding-right: 15px;
+			border-right: 1px solid #eae9e6;
+			color: #565347;
+			line-height: 1.3333em;
+		}
+		li.last {
+			border: 0px;
+		}
+		li a {
+			font-size: 1.1667em;
+			text-decoration: none;
+			color: #3f3c30;
+			border: none;
+		}
+		li a:hover {
+			color: #820000;
+		}
+	</style>
+	
+	<div class="container">
+		<ul>
 			<li><a href="http://www.stanford.edu" title="Stanford University">Stanford University</a></li>
 			<li><a href="http://music.stanford.edu" title="Stanford Music Department">Stanford Music Department</a></li>
 			<li><a href="http://music.stanford.edu/Ensembles/index.html">Stanford Music Ensembles</a></li>
 			<li class="last"><a href="index.html">Stanford Symphonic Chorus</a></li>
 		</ul>
-		<div id="copyright">
-			<p class="vcard">
-				Website work by
-				<script type="text/javascript">
-					unScramble("berdahl","serendipity.organize","Eric Berdahl","SSC Website feedback");
-				</script>
-				<noscript>Eric Berdahl: berdahl/AT/serendipity/DOT/-o-r-g-/</noscript>
-				.
+		<div>
+			<p>
+				Website work by <ssc-email address="berdahl" domain="serendipity" tld="org" name="Eric Berdahl" subject="SSC Website feedback"></ssc-email>.
 			</p>
-			<p class="vcard">
+			<p>
 				&copy; <span class="fn org">Stanford University</span>.
 				<span class="adr">450 Serra Mall,
 					<span class="locality">Stanford</span>,
@@ -28,19 +67,60 @@
 				<a href="http://www.stanford.edu/site/terms.html">Terms of Use</a> | <a href="http://www.stanford.edu/site/copyright.html">Copyright Complaints</a>
 			</p>
 		</div>
-		<!-- TemplateEndEditable -->
 	</div>
 </template>
 
 <script>
-	(function(currentScript) {
-		var proto = Object.create(HTMLElement.prototype, {
-			createdCallback: function() {
-				var t = currentScript.ownerDocument.querySelector('#ssc-footer');
-				var clone = document.importNode(t.content, true);
-				this.createShadowRoot().appendChild(clone);
-				}
-		});
-		document.registerElement('ssc-footer', {prototype: proto});
-	})(document._currentScript || document.currentScript);
+	(function(window, document, undefined) {
+		var outerDocument = document;
+		var thisDocument = (outerDocument._currentScript || ourterDocument.currentScript).ownerDocument;
+		
+		var template = thisDocument.querySelector('#ssc-footer').content;
+
+		var SSCFooter = Object.create(HTMLElement.prototype);
+		SSCFooter.createdCallback = function() {
+			var shadowRoot = this.createShadowRoot();
+			
+			var clone = document.importNode(template, true);
+			shadowRoot.appendChild(clone);
+		};
+		
+		window.SSCFooter = document.registerElement('ssc-footer', {prototype: SSCFooter});
+	})(window, document);
 </script>
+
+<template id="ssc-email">
+	<style>
+		a {
+			text-decoration: none;
+			border-bottom: 1px dotted #81785a;
+			color: #565347;
+		}
+	</style>
+	
+	<a></a>
+</template>
+
+<script>
+	(function(window, document, undefined) {
+		var outerDocument = document;
+		var thisDocument = (outerDocument._currentScript || ourterDocument.currentScript).ownerDocument;
+		
+		var template = thisDocument.querySelector('#ssc-email').content;
+
+		var SSCEmail = Object.create(HTMLElement.prototype);
+		SSCEmail.createdCallback = function() {
+			var shadowRoot = this.createShadowRoot();
+			
+			var clone = document.importNode(template, true);
+			shadowRoot.appendChild(clone);
+			
+			var anchor = shadowRoot.querySelector('a');
+			anchor.href = 'mailto:' + this.getAttribute('address') + '@' + this.getAttribute('domain') + '.' + this.getAttribute('tld') + '?subject=' + escape(this.getAttribute('subject'));
+			anchor.textContent = this.getAttribute('name');
+		};
+		
+		window.SSCEmail = document.registerElement('ssc-email', {prototype: SSCEmail});
+	})(window, document);
+</script>
+
