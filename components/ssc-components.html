@@ -1,16 +1,115 @@
 <template id="ssc-header">
+	<style>
+		#logo {
+			float: left;
+			margin-top: 15px;
+		}
+
+		#container_header {
+			height: 90px;
+			width: 100%;
+			background-image: url("../../images/red_header_bg.jpg");
+			background-repeat: repeat-x;
+		}
+		
+		#container_search {
+			float: right;
+			margin-right: 2px;
+			margin-top: 4px;
+		}
+		
+		#searchformhome {
+			width: 191px;
+			float: right;
+			margin-right: 2px;
+			margin-top: 2px;
+			color: white;
+		}
+		
+		#search_filters {
+			margin-bottom: 3px;
+			margin-left: 10px;
+		}
+		
+		#web, #people {
+			vertical-align: middle;
+			margin: 0;
+		}
+		
+		#web_label, #people_label {
+			/* font-size: 1em; */
+			vertical-align: middle;
+			margin-right: 9px;
+		}
+		
+		.searchbox {
+			background: url("../../images/search_box_bg.png") no-repeat left top;
+			height: 24px;
+			padding-left: 3px;
+		}
+
+		.search_button {
+			border: 0;
+			background: url("../../images/search_button.gif") no-repeat top left;
+			width: 20px;
+			text-indent: -9999px;
+			margin-top: 1px;
+			float: right;
+			cursor: pointer;
+		}
+		
+		.searchbox input {
+			margin-left: 6px;
+			margin-top: 0;
+			padding-top:0;
+			border:0;
+			height:15px;
+			margin-top: 2px;
+		}
+		
+		#nav_topic ul {
+			margin: 0 auto;
+			border-left: 1px solid #8a887d;
+			height: 24px;
+			padding: 0;
+		}
+		
+		#nav_topic li {
+			float: left;
+			height: 24px;
+			list-style-type: none;
+			border-right: 1px solid #8a887d;
+			padding-left: 0.625em;
+			padding-right: 0.625em;
+			line-height: 1.3333em;
+		}
+		
+		#nav_topic li a {
+			display: block;
+			padding-top: 5px;
+			padding-left: 0.625em;
+			padding-right:0.625em;
+			font-size: 12px;
+			border: none;
+			color:#3f3c30;
+			font-weight: 300;
+			letter-spacing: 1px;
+			text-decoration: none;
+		}
+	</style>
+	
 	<div id="container_header">
 		<div id="header">
 			<div id="logo">
-				<img class="srcadjust" src="../images/graphics/SSCCollage.jpg" alt="Stanford Symphonic Chorus" usemap="#Map">
+				<img class="srcadjust" src="../../images/graphics/SSCCollage.jpg" alt="Stanford Symphonic Chorus" usemap="#Map">
 				<map name="Map" id="Map">
-					<area class="hrefadjust" shape="rect" coords="0,0,107,63" href="../images/graphics/collage/P1060915.jpg" alt="Chorus in rehearsal">
-					<area class="hrefadjust" shape="rect" coords="108,0,190,63" href="../images/graphics/collage/Altos.jpg" alt="Altos in rehearsal">
-					<area class="hrefadjust" shape="rect" coords="191,0,297,63" href="../images/graphics/collage/SoprCenter.jpg" alt="Sopranos in rehearsal">
-					<area class="hrefadjust" shape="rect" coords="298,0,425,63" href="../images/graphics/collage/P1070103.jpg" alt="Rehearsal in MemChu">
-					<area class="hrefadjust" shape="rect" coords="426,0,532,63" href="../images/graphics/collage/SteveSano2002.jpg" alt="Steve in rehearsal">
-					<area class="hrefadjust" shape="rect" coords="533,0,667,63" href="../images/graphics/collage/BeethovenW10.jpg" alt="Performance in MemChu">
-					<area class="hrefadjust" shape="rect" coords="668,0,749,63" href="../images/graphics/collage/Tenors.jpg" alt="Tenors in rehearsal">
+					<area class="hrefadjust" shape="rect" coords="0,0,107,63" href="../../images/graphics/collage/P1060915.jpg" alt="Chorus in rehearsal">
+					<area class="hrefadjust" shape="rect" coords="108,0,190,63" href="../../images/graphics/collage/Altos.jpg" alt="Altos in rehearsal">
+					<area class="hrefadjust" shape="rect" coords="191,0,297,63" href="../../images/graphics/collage/SoprCenter.jpg" alt="Sopranos in rehearsal">
+					<area class="hrefadjust" shape="rect" coords="298,0,425,63" href="../../images/graphics/collage/P1070103.jpg" alt="Rehearsal in MemChu">
+					<area class="hrefadjust" shape="rect" coords="426,0,532,63" href="../../images/graphics/collage/SteveSano2002.jpg" alt="Steve in rehearsal">
+					<area class="hrefadjust" shape="rect" coords="533,0,667,63" href="../../images/graphics/collage/BeethovenW10.jpg" alt="Performance in MemChu">
+					<area class="hrefadjust" shape="rect" coords="668,0,749,63" href="../../images/graphics/collage/Tenors.jpg" alt="Tenors in rehearsal">
 				</map>
 			</div>
 			<div id="container_search">
