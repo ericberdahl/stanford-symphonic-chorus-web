@@ -62,6 +62,6 @@ Sidebar
 #sidebar h3 { color: #820000; font-size: 0.7500em/*thomas*/; letter-spacing: 1px/*thomas*/; text-transform: uppercase; padding: 3px 0 0 0; }
 #sidebar div { margin-bottom: 15px; }
 #sidebar ul { padding-bottom: 5px; }
-#sidebar li { list-style-image: url("../images/raquo.gif"); margin-left: 15px; padding-bottom: 5px; font-size: 1.1667em/*thomas*/; height: 1.1667em/*thomas*/; }
+#sidebar li { list-style-image: url("../images/raquo.gif"); margin-left: 15px; padding-bottom: 5px; font-size: 1.1667em/*thomas*/; /* height: 1.1667em *//*thomas*/; }
 
 
