@@ -1,3 +1,6 @@
 plugins:
  - jekyll-tidy
 
+baseurl: /group/SymCh
+
+url: https://web.stanford.edu
