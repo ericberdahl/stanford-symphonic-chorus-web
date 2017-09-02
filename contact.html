@@ -45,22 +45,7 @@
 				</map>
 				<!-- TemplateEndEditable -->
 			</div>
-			<div id="container_search">
-				<div id="search">
-					<form action="http://www.stanford.edu/hpcgi/page-route.cgi" id="searchformhome" method="post">
-						<div id="search_filters">
-							<input name="search_type" id="web" type="radio" value="web" checked="checked">
-							<label id="web_label" for="web" style="">Web</label>
-							<input name="search_type" id="people" type="radio" value="people">
-							<label id="people_label" for="people" style="">People</label>
-						</div>
-						<div class="searchbox">
-							<input onFocus="this.value=''" type="text" value="Search…" name="search_string" id="search_string">
-							<button type="submit" value="Submit" class="search_button">Submit</button>
-						</div>
-					</form>
-				</div>
-			</div>
+			{% include container_search.html %}
 		</div>
 	</div>
 	<div id="nav_topic">
