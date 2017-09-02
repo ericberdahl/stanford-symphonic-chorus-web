@@ -1,0 +1,28 @@
+{% assign about_class = '' %}
+{% assign contact_class = '' %}
+{% assign index_class = '' %}
+{% assign performances_class = '' %}
+{% assign memberpage_class = '' %}
+{% case page.url %}
+{%    when '/about.html' %}
+{%       assign about_class = ' class="current"' %}
+{%    when '/contact.html' %}
+{%       assign contact_class = ' class="current"' %}
+{%    when '/' %}
+{%       assign index_class = ' class="current"' %}
+{%    when '/performances.html' %}
+{%       assign performances_class = ' class="current"' %}
+{%    when '/MemberPage.html' %}
+{%       assign memberpage_class = ' class="current"' %}
+{% endcase %}
+<div id="nav_topic">
+	<!-- TemplateBeginEditable name="nav_topic" -->
+	<ul>
+		<li{{ index_class }}><a href={{ "/index.html" | relative_url }}>Symphonic Chorus Home</a></li>
+		<li{{ about_class }}><a href={{ "/about.html" | relative_url }}>About the Chorus</a></li>
+		<li{{ performances_class }}><a href={{ "/performances.html" | relative_url }}>Performances</a></li>
+		<li{{ memberpage_class }}><a href={{ "/MemberPage.html" | relative_url }}>Member Information</a></li>
+		<li{{ contact_class }}><a href={{ "/contact.html" | relative_url }}>Contact</a></li>
+	</ul>
+	<!-- TemplateEndEditable -->
+</div>
