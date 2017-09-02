@@ -14,8 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../../../../css/tertiary_nocol.css">
 <link rel="stylesheet" type="text/css" href="../../../../css/custom.css">
 
-<script  src="../../../../js/emus.js" type="text/javascript">
-</script>
+<script src={{ "/js/emus.js" | relative_url }} type="text/javascript"></script>
 <!--[if IE 6]>
   <style type="text/css">
     @import url(css/ie/ie_global.css);
@@ -303,45 +302,12 @@ a img { border: none; }
 <!-- TemplateEndEditable -->
 <div class="skip"><a href="#content_main">Skip to Content</a></div> 
 <div id="container">
-  <div id="container_header">
-    <div id="header">
-       <div id="logo"> 
-<!-- TemplateBeginEditable name="logo" --> 
-<img src="../../../../images/graphics/SSCCollage.jpg"
-   alt="Stanford Symphonic Chorus" usemap="#Map">
-         <map name="Map" id="Map">
-          <area shape="rect" coords="0,0,107,63" href="../../../../images/graphics/collage/P1060915.jpg" alt="Chorus in rehearsal">
-          <area shape="rect" coords="108,0,190,63" href="../../../../images/graphics/collage/Altos.jpg" alt="Altos in rehearsal">
-          <area shape="rect" coords="191,0,297,63" href="../../../../images/graphics/collage/SoprCenter.jpg" alt="Sopranos in rehearsal">
-          <area shape="rect" coords="298,0,425,63" href="../../../../images/graphics/collage/P1070103.jpg" alt="rehearsal in MemChu">
-          <area shape="rect" coords="426,0,532,63" href="../../../../images/graphics/collage/SteveSano2002.jpg" alt="Steve in rehearsal">
-          <area shape="rect" coords="533,0,667,63" href="../../../../images/graphics/collage/BeethovenW10.jpg" alt="Performance in MemChu">
-          <area shape="rect" coords="668,0,749,63" href="../../../../images/graphics/collage/Tenors.jpg" alt="Tenors in rehearsal">
-        </map>
-
-<!-- TemplateEndEditable --> </div>
-      <div id="container_search"> 
-      <div id="search"> 
-      <form action="../../../../../hpcgi/page-route.cgi"  id="searchformhome" method="post"> 
-       <div id="search_filters"> 
-			
-      <input name="search_type" id="web" type="radio" value="web" checked="checked"> 
-			<label id="web_label" for="web" style="">Web</label> 
-              
-			<input name="search_type" id="people" type="radio" value="people"> 
-			<label id="people_label" for="people" style="">People</label> 
-               </div> 
-                
-     	 <div class="searchbox"> 
-            <input onFocus="this.value=''" type="text" value="Search…" name="search_string" id="search_string"> 
-            <button type="submit" value="Submit" class="search_button">Submit</button> 
-          </div> 
-        </form> 
-      </div> 
-       
-    </div> 
-    </div>
-  </div>
+	<div id="container_header">
+    	<div id="header">
+			{% include logo_ssc.html %}
+			{% include container_search.html %}
+		</div>
+	</div>
 	{% include nav_topic.html %}
   <div id="title">
     
@@ -536,32 +502,44 @@ Beethoven <em>Mass in C,</em> Winter 2010, Memorial Church
 				  </script>
 
 <!-- TemplateEndEditable --> </div>
-
-<div id="footer" class="clear">
-<hr class="hide">
-    
-<!-- TemplateBeginEditable name="footer" -->
-    
+	<div id="footer" class="clear">
+		<hr class="hide">
+		<!-- TemplateBeginEditable name="footer" -->
 		<ul id="nav_footer">
 			<li><a href="http://www.stanford.edu" title="Stanford University">Stanford University</a></li>
 			<li><a href="http://music.stanford.edu" title="Stanford Music Department">Stanford Music Department</a></li>
 			<li><a href="http://music.stanford.edu/Ensembles/index.html">Stanford Music Ensembles</a></li>
-			<li class="last"><a href="index.html">Stanford Symphonic Chorus</a></li>
+			<li class="last"><a href={{ "/index.html" | relative_url }}>Stanford Symphonic Chorus</a></li>
 		</ul>
-<div id="copyright">
-<p class="vcard">Website work by 
-<script type="text/javascript">unScramble("SSCWebMaster","liztomsharp.commuter","Liz and Tom Sharp","SSC Website feedback");</script><noscript>Liz &amp; Tom Sharp: WebMaster/AT/liztomsharp/DOT/-c-o-m-/</noscript>. Photos by <script type="text/javascript">unScramble("R.A.Wilson","gmail.commuter","R. A. Wilson","W2010 gallery on the SSC Website");</script><noscript>R. A. Wilson: R.A.Wilson/AT/gmail/DOT/-c-o-m-/</noscript>.</p>       
-<p class="vcard">&copy; <span class="fn org">Stanford 
-University</span>. <span class="adr">450 Serra Mall, <span 
-class="locality">Stanford</span>, <span 
-class="region">California</span> <span 
-class="postal-code">94305</span>. <span class="tel">(650) 
-723-2300</span></span>. 
-<a href="../../../../../../site/terms.html">Terms of Use</a> | 
-<a href="../../../../../../site/copyright.html">Copyright Complaints</a></p>
-    </div>
-    
-<!-- TemplateEndEditable --> </div>
+		<div id="copyright">
+			<p class="vcard">
+				Website work by
+				<script type="text/javascript">
+					unScramble("berdahl","serendipity.organize","Eric Berdahl","SSC Website feedback");
+				</script>
+				<noscript>Eric Berdahl: berdahl/AT/serendipity/DOT/-o-r-g-/</noscript>
+				.
+			</p>
+			<p class="vcard">
+				Photos by <script type="text/javascript">
+						unScramble("R.A.Wilson","gmail.commuter","R. A. Wilson","W2010 gallery on the SSC Website");
+				</script>
+				<noscript>R. A. Wilson: R.A.Wilson/AT/gmail/DOT/-c-o-m-/</noscript>.
+			</p>
+			<p class="vcard">
+				&copy; <span class="fn org">Stanford University</span>.
+				<span class="adr">450 Serra Mall,
+					<span class="locality">Stanford</span>,
+					<span class="region">California</span>
+					<span class="postal-code">94305</span>.
+					<span class="tel">(650) 723-2300</span>
+				</span>.
+				<a href="http://www.stanford.edu/site/terms.html">Terms of Use</a> | <a href="http://www.stanford.edu/site/copyright.html">Copyright Complaints</a>
+			</p>
+		</div>
+		<!-- TemplateEndEditable -->
+	</div>
+</div>
 <!-- TemplateBeginEditable name="bottom" -->
 <!-- TemplateEndEditable -->
 </body>
