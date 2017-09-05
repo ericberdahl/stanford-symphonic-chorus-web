@@ -1,0 +1,126 @@
+repertoire:
+    - title: "The Music Makers"
+      composer: "Elgar"
+
+soloists:
+    - name: "Wendy Hillhouse"
+      part: "mezzo-soprano"
+
+collaborator: "Peninsula Symphony Orchestra"
+
+registration:
+    start: "2017-09-25 18:30 PT"
+    end: "2017-09-25 19:25 PT"
+    location: "Campbell Recital Hall"
+
+schedule:
+    - start: "2017-09-25 19:30 PT"
+      end: "2017-09-25 22:00 PT"
+      location: "Campbell Recital Hall"
+      event: "Tutti rehearsal"
+    - start: "2017-10-02 19:30 PT"
+      end: "2017-10-02 22:00 PT"
+      location: "Campbell Recital Hall"
+      event: "Tutti rehearsal"
+    - start: "2017-10-09 19:30 PT"
+      end: "2017-10-09 22:00 PT"
+      location: "Campbell Recital Hall"
+      event: "Tutti rehearsal"
+    - start: "2017-10-16 19:30 PT"
+      end: "2017-10-16 22:00 PT"
+      location: "Campbell Recital Hall"
+      event: "Tutti rehearsal"
+    - start: "2017-10-23 19:30 PT"
+      end: "2017-10-23 22:00 PT"
+      location: "Campbell Recital Hall"
+      event: "Tutti rehearsal"
+    - start: "2017-10-30 19:30 PT"
+      end: "2017-10-30 22:00 PT"
+      location: "Campbell Recital Hall"
+      event: "Tutti rehearsal"
+    - start: "2017-11-06 19:30 PT"
+      end: "2017-11-06 22:00 PT"
+      location: "Campbell Recital Hall"
+      event: "Tutti rehearsal"
+    - start: "2017-11-13 19:30 PT"
+      end: "2017-11-13 22:00 PT"
+      location: "Campbell Recital Hall"
+      event: "Tutti rehearsal"
+    - start: "2017-10-04 17:30 PT"
+      end: "2017-10-04 18:30 PT"
+      location: "Braun 103"
+      event: "Women&rsquo;s sectional (optional, but warmly encouraged)"
+    - start: "2017-10-18 17:30 PT"
+      end: "2017-10-18 18:30 PT"
+      location: "Braun 103"
+      event: "Women&rsquo;s sectional (optional, but warmly encouraged)"
+    - start: "2017-10-11 17:30 PT"
+      end: "2017-10-11 18:30 PT"
+      location: "Braun 103"
+      event: "Men&rsquo;s sectional (optional, but warmly encouraged)"
+    - start: "2017-10-25 17:30 PT"
+      end: "2017-10-25 18:30 PT"
+      location: "Braun 103"
+      event: "Men&rsquo;s sectional (optional, but warmly encouraged)"
+
+dresses:
+    - start: "2017-11-14 19:00 PT"
+      location: "Bing Concert Hall"
+    - start: "2017-11-16 19:00 PT"
+      location: "Bing Concert Hall"
+    
+concerts:
+    - start: "2017-11-17 19:30 PT"
+      call: "2017-11-17 18:30 PT"
+      location: "Bing Concert Hall"
+    - start: "2017-11-19 14:30 PT"
+      call: "2017-11-17 13:30 PT"
+      location: "Bing Concert Hall"
+
+events:
+    - start: "2017-12-25 19:30 PT"
+      location: "Stanford Memorial Church"
+      title: "Messiah Sing/Play Along"
+
+upcoming:
+    - quarter: "Winter 2018"
+      repertoire:
+          - composer: "Walton"
+            title: "Belshazzar's Feast"
+      collaborator: "Stanford Symphony Orchestra"
+      start:
+          time: "2018-01-08 19:30 PT"
+          location: "Campbell Recital Hall"
+      registration: "2018-01-08 18:30 PT"
+      dresses:
+          - start: "2018-03-05 19:00 PT"
+            location: "Bing Concert Hall"
+          - start: "2018-03-08 19:00 PT"
+            location: "Bing Concert Hall"
+      concerts:
+          - start: "2018-03-10 19:30 PT"
+            location: "Bing Concert Hall"
+            call: "2018-03-10 18:30 PT"
+          - start: "2018-03-11 14:30 PT"
+            location: "Bing Concert Hall"
+            call: "2018-03-11 13:30 PT"
+    - quarter: "Spring 2018"
+      repertoire:
+          - composer: "Haydn"
+            title: "Missa Sancti Bernardi von Offida (Heiligmesse)"
+      start:
+          time: "2018-04-02 19:30 PT"
+          location: "Campbell Recital Hall"
+      registration: "2018-04-02 18:30 PT"
+      dresses:
+          - start: "2018-05-15 19:00 PT"
+            location: "Memorial Church"
+          - start: "2018-05-17 19:00 PT"
+            location: "Memorial Church"
+      concerts:
+          - start: "2018-05-18 20:00 PT"
+            location: "Bing Concert Hall"
+            call: "2018-05-18 19:00 PT"
+          - start: "2018-05-19 20:00 PT"
+            location: "Bing Concert Hall"
+            call: "2018-05-19 19:00 PT"

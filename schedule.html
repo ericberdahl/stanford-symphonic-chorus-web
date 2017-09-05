@@ -1,5 +1,7 @@
 ---
 ---
+{% assign season = site.data.season %}
+{% assign first_rehearsal = season.schedule.first %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -83,30 +85,45 @@
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td>Repertoire:</td>
 
-				<td><ul>
-					<li>Elgar <em>The Music Makers</em></li>
-				</ul></td>
+				<td>
+					<ul>
+						{% for piece in season.repertoire %}
+						<li>{{piece.composer}} <em>{{piece.title}}</em></li>
+						{% endfor %}
+					</ul>
+				</td>
 			</tr>
+			{% for soloist in season.soloists %}
+			{% if forloop.first %}
 			<tr>
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td>With:</td>
-				<td><ul>
-					<li>Wendy Hillhouse, mezzo-soprano</li>
-				</ul></td>
+				<td>
+					<ul>
+			{% endif %}
+						<li>{{soloist.name}}, {{soloist.part}}</li>
+			{% if forloop.last %}
+					</ul>
+				</td>
 			</tr>
+			{% endif %}
+			{% endfor %}
+			{% if season.collaborator %}
 			<tr>
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td>In collaboration with:</td>
 				<td><ul>
-					<li>Peninsula Symphony Orchestra</li>
+					<li>{{season.collaborator}}</li>
 				</ul></td>
 			</tr>
+			{% endif %}
 			<tr>
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td><a href="#rehearsals">First rehearsal</a>:</td>
 				<td><ul>
-					<li>6:30 Registration starts</li>
-					<li>Rehearsal: 7:30-9:45 p.m. Monday 25 September 2017, Campbell Recital Hall.</li>
+					<li>{{first_rehearsal.start | date: "%A %-e %B %Y"}}</li>
+					<li>Registration: {{season.registration.start | date: "%-l:%M%P"}} - {{season.registration.end | date: "%-l:%M%P"}}, {{season.registration.location}}</li>
+					<li>Rehearsal: {{first_rehearsal.start | date: "%-l:%M%P"}} - {{first_rehearsal.end | date: "%-l:%M%P"}}, {{first_rehearsal.location}}</li>
 				</ul>
 				</td>
 			</tr>
@@ -122,16 +139,18 @@
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td><a href="#dress">Dress rehearsals</a>:</td>
 				<td><ul>
-					<li>7:00 p.m. Tuesday 14 November 2017, Bing Concert Hall</li>
-					<li>7:00 p.m. Thursday 16 November 2017, Bing Concert Hall</li>
+					{% for dress in season.dresses %}
+					<li>{{dress.start | date: "%-l:%M%P %A %-e %B %Y"}}, {{dress.location}}</li>
+					{% endfor %}
 				</ul></td>
 			</tr>
 			<tr>
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td><a href="#concerts">Concert calls</a>:</td>
 				<td><ul>
-					<li>6:30 p.m. call for 7:30 p.m. concert, Friday 17 November 2017, Bing Concert Hall</li>
-					<li>1:30 p.m. call for 2:30 p.m. concert, Sunday 19 November 2017, Bing Concert Hall</li>
+					{% for concert in season.concerts %}
+					<li>{{ concert.call | date: "%-l:%M%P" }} call for {{ concert.start | date: "%-l:%M%P" }} concert, {{ concert.start | date: "%A %-e %B %Y" }}, {{ concert.location }}</li>
+					{% endfor %}
 				</ul>
 				</td>
 			</tr>
@@ -147,89 +166,22 @@
 				<th>Description</th>
 			</tr>
 			<tr>
-				<td>Monday</td>
-				<td class="right">25 September 2017</td>
-				<td>Campbell</td>
-				<td>Sign up 6:30-7:25&nbsp;p.m.<br>Rehearse 7:30-10:00&nbsp;p.m.</td>
-				<td>Registration and Chorus Rehearsal</td>
+				<td>{{season.registration.start | date: "%A"}}</td>
+				<td class="right">{{season.registration.start | date: "%-e %B %Y"}}</td>
+				<td>{{season.registration.location}}</td>
+				<td>{{season.registration.start | date: "%-l:%M%P"}} - {{season.registration.end | date: "%-l:%M%P"}}</td>
+				<td>Registration</td>
 			</tr>
+			{% assign display_schedule = season.schedule | sort: 'start' %}
+			{% for rehearsal in display_schedule %}
 			<tr>
-				<td>Monday</td>
-				<td class="right">2 October 2017</td>
-				<td>Campbell</td>
-				<td>7:30-10:00&nbsp;p.m.</td>
-				<td>Tutti Rehearsal</td>
+				<td>{{rehearsal.start | date: "%A"}}</td>
+				<td class="right">{{rehearsal.start | date: "%-e %B %Y"}}</td>
+				<td>{{rehearsal.location}}</td>
+				<td>{{rehearsal.start | date: "%-l:%M%P"}} - {{rehearsal.end | date: "%-l:%M%P"}}</td>
+				<td>{{rehearsal.event}}</td>
 			</tr>
-			<tr>
-				<td>Wednesday</td>
-				<td class="right">4 October 2017</td>
-				<td>Braun 103</td>
-				<td>5:30-6:30&nbsp;p.m.</td>
-				<td>Women&rsquo;s sectional (optional, but warmly encouraged)</td>
-			</tr>
-			<tr>
-				<td>Monday</td>
-				<td class="right">9 October 2017</td>
-				<td>Campbell</td>
-				<td>7:30-10:00&nbsp;p.m.</td>
-				<td>Tutti Rehearsal</td>
-			</tr>
-			<tr>
-				<td>Wednesday</td>
-				<td class="right">11 October 2017</td>
-				<td>Braun 103</td>
-				<td>5:30-6:30&nbsp;p.m.</td>
-				<td>Men&rsquo;s sectional (optional, but warmly encouraged)</td>
-			</tr>
-			<tr>
-				<td>Monday</td>
-				<td class="right">16 October 2017</td>
-				<td>Campbell</td>
-				<td>7:30-10:00&nbsp;p.m.</td>
-				<td>Tutti Rehearsal</td>
-			</tr>
-			<tr>
-				<td>Wednesday</td>
-				<td class="right">18 October 2017</td>
-				<td>Braun 103</td>
-				<td>5:30-6:30&nbsp;p.m.</td>
-				<td>Women&rsquo;s sectional (optional, but warmly encouraged)</td>
-			</tr>
-			<tr>
-				<td>Monday</td>
-				<td class="right">23 October 2017</td>
-				<td>Campbell</td>
-				<td>7:30-10:00&nbsp;p.m.</td>
-				<td>Tutti Rehearsal</td>
-			</tr>
-			<tr>
-				<td>Wednesday</td>
-				<td class="right">25 October 2017</td>
-				<td>Braun 103</td>
-				<td>5:30-6:30&nbsp;p.m.</td>
-				<td>Men&rsquo;s sectional (optional, but warmly encouraged)</td>
-			</tr>
-			<tr>
-				<td>Monday</td>
-				<td class="right">30 October 2017</td>
-				<td>Campbell</td>
-				<td>7:30-10:00&nbsp;p.m.</td>
-				<td>Tutti Rehearsal</td>
-			</tr>
-			<tr>
-				<td>Monday</td>
-				<td class="right">6 November 2017</td>
-				<td>Campbell</td>
-				<td>7:30-10:00&nbsp;p.m.</td>
-				<td>Tutti Rehearsal</td>
-			</tr>
-			<tr>
-				<td>Monday</td>
-				<td class="right">13 November 2017</td>
-				<td>Campbell</td>
-				<td>7:30-10:00&nbsp;p.m.</td>
-				<td>Tutti Rehearsal</td>
-			</tr>
+			{% endfor %}
 		</table>
 
 		<h2 id="dress">Dress Rehearsals</h2>
@@ -241,20 +193,15 @@
 				<th>Time</th>
 				<th>Description</th>
 			</tr>
+			{% for dress in season.dresses %}
 			<tr class="dress">
-				<td>Tuesday</td>
-				<td class="right">14 November 2017</td>
-				<td>Bing Concert Hall</td>
-				<td>7:00&nbsp;p.m.</td>
+				<td>{{dress.start | date: "%A"}}</td>
+				<td class="right">{{dress.start | date: "%-e %B %Y"}}</td>
+				<td>{{dress.location}}</td>
+				<td>{{dress.start | date: "%-l:%M%P"}}</td>
 				<td>Dress rehearsal</td>
 			</tr>
-			<tr class="dress">
-				<td>Thursday</td>
-				<td class="right">16 November 2017</td>
-				<td>Bing Concert Hall</td>
-				<td>7:00&nbsp;p.m.</td>
-				<td>Dress rehearsal</td>
-			</tr>
+			{% endfor %}
 		</table>
 
 		<h2 id="concerts">Concerts</h2>
@@ -266,163 +213,71 @@
 				<th>Time</th>
 				<th>Description</th>
 			</tr>
+			{% for concert in season.concerts %}
 			<tr>
-				<td>Friday</td>
-				<td class="right">17 November 2017</td>
-				<td>Bing Concert Hall</td>
-				<td>6:30&nbsp;p.m.</td>
-				<td>Concert call for 7:30 p.m. concert</td>
+				<td>{{concert.start | date: "%A"}}</td>
+				<td class="right">{{concert.start | date: "%-e %B %Y"}}</td>
+				<td>{{concert.location}}</td>
+				<td>{{concert.call | date: "%-l:%M%P"}}</td>
+				<td>Concert call for {{concert.start | date: "%-l:%M%P"}} concert</td>
 			</tr>
-			<tr>
-				<td>Sunday</td>
-				<td class="right">19 November 2017</td>
-				<td>Bing Concert Hall</td>
-				<td>1:30&nbsp;p.m.</td>
-				<td>Concert call for 2:30 p.m. concert</td>
-			</tr>
+			{% endfor %}
 		</table>
 
 		<div>
 			<h2 id="season">Looking Ahead</h2>
 			<table class="noborder">
-                <tbody>
-                    <tr>
-                        <td class="emph" colspan="3">Winter 2018</td>
+				{% for ahead in season.upcoming %}
+				<tbody>
+					<tr>
+                        <td class="emph" colspan="3">{{ahead.quarter}}</td>
                     </tr>
-                    <tr>
+					<tr>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>Repertoire:</td>
                         <td>
-                            Walton: <em>Belshazzar's Feast</em> with the Stanford Symphony Orchestra.
+							{% for rep in ahead.repertoire %}
+							{% unless forloop.first %},  {% if forloop.last %}and {% endif %}{% endunless %}
+							{{rep.composer}}: <em>{{rep.title}}</em>
+							{% endfor %}
+							{% if ahead.collaborator %}with the {{ahead.collaborator}}{% endif %}
                         </td>
                     </tr>
-                    <tr>
+					<tr>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>First rehearsal:</td>
                         <td>
-                            <p>Monday 8 January 2018 at 7:30pm in Campbell Recital Hall. <em>Registration starts at 6:30pm.</em></p>
+                            {{ahead.start.time | date: "%A %-e %B %Y at %-l:%M%P"}} in {{ahead.start.location}}. <em>Registration starts at {{ahead.registration | date: "%-l:%M%P" }}.</em>
                         </td>
                     </tr>
-                    <tr>
+					<tr>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>Dress rehearsals:</td>
                         <td>
-                            <p>Monday 5 March 2018, 7:00pm in Bing Concert Hall</p>
-                            <p>Thursday 8 March 2018, 7:00pm in Bing Concert Hall</p>
+							<ul>
+								{% for dress in ahead.dresses %}
+								<li>
+									{{dress.start | date: "%A %-e %B %Y, %-l:%M%P"}} in {{dress.location}}
+								</li>
+								{% endfor %}
+							</ul>
                         </td>
                     </tr>
-                    <tr>
+					<tr>
                         <td>&nbsp;&nbsp;&nbsp;</td>
                         <td>Concerts:</td>
                         <td>
-                            <p>Saturday 10 March 2018, 7:30pm in Bing Concert Hall (6:30pm call)</p>
-                            <p>Sunday 11 March 2018, 2:30pm in Bing Concert Hall (1:30pm call)</p>
+							<ul>
+								{% for concert in ahead.concerts %}
+								<li>
+									{{concert.start | date: "%A %-e %B %Y, %-l:%M%P"}} in {{concert.location}} ({{concert.call | date: "%-l:%M%P"}} call)
+								</li>
+								{% endfor %}
+							</ul>
                         </td>
                     </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td class="emph" colspan="3">Spring 2018</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>Repertoire:</td>
-                        <td>
-							Haydn: <em>Missa Sancti Bernardi von Offida (Heiligmesse)</em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>First rehearsal:</td>
-                        <td>
-                            <p>Monday 2 April 2018 at 7:30 p.m. in Campbell Recital Hall. <em>Registration starts at 6:30pm.</em></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>Dress rehearsals:</td>
-                        <td>
-                            <p>Tuesday 15 May 2018, 7:00pm in Memorial Church</p>
-                            <p>Thursday 17 May 2018, 7:00pm in Memorial Church</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>Concerts:</td>
-                        <td>
-                            <p>Friday 18 May 2018, 8:00pm in Memorial Church (7:00pm call)</p>
-                            <p>Saturday 19 May 2018, 8:00pm in Memorial Church (7:00pm call)</p>
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody style="display:none">
-                    <tr>
-                        <td class="emph" colspan="3">Summer 2018</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>Repertoire:</td>
-                        <td>
-                            Puccini's <em>Messa di Gloria</em> and motets by Copland, Brahms, and Whitacre
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>First rehearsal:</td>
-                        <td>
-                            <p>Tuesday 21 June 2016 at 7:30 p.m. in Campbell Recital Hall. <em>Registration starts at 6:30pm.</em></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>Dress rehearsal:</td>
-                        <td>
-                            <p>Thursday 4 August 2016 at 7 - 10 p.m. in Bing Concert Hall</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>Concert:</td>
-                        <td>
-                            <p>Friday 5 August 2016 at 7:30 p.m. (6:30 p.m. call) in Bing Concert Hall</p>
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody style="display:none">
-                    <tr>
-                        <td class="emph" colspan="3">Fall 2018</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>Repertoire:</td>
-                        <td>
-                            Duruflé's <em>Requiem</em> and Fauré's <em>Cantique de Jean Racine</em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>First rehearsal:</td>
-                        <td>
-                            <p>Monday 26 September 2016 at 7:30 p.m. in Campbell Recital Hall. <em>Registration starts at 6:30pm.</em></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>Dress rehearsals:</td>
-                        <td>
-                            <p>Monday 14 November 2016 at 7 - 10 p.m. in Bing Concert Hall</p>
-                            <p>Thursday 17 November 2016 at 7 - 10 p.m. in Bing Concert Hall</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp;&nbsp;&nbsp;</td>
-                        <td>Concerts:</td>
-                        <td>
-                            <p>Friday 18 November 2016 at 7:30 p.m. (6:30 p.m. call) in Bing Concert Hall</p>
-                            <p>Sunday 20 November 2016 at 2:30 p.m. (1:30 p.m. call) in Bing Concert Hall</p>
-                        </td>
-                    </tr>
-                </tbody>
+				</tbody>
+				{% endfor %}
 			</table>
 		</div>
 	</div>
