@@ -1,0 +1,78 @@
+{% assign program = include.program %}
+{% assign first_rehearsal = program.schedule.first %}
+{% assign isPrimary = include.showAuditions | default: false %}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>Repertoire:</td>
+
+    <td>
+        <ul>
+            {% for piece in program.repertoire %}
+            <li>{{piece.composer}} <em>{{piece.title}}</em></li>
+            {% endfor %}
+        </ul>
+    </td>
+</tr>
+{% for soloist in program.soloists %}
+{% if forloop.first %}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>With:</td>
+    <td>
+        <ul>
+{% endif %}
+            <li>{{soloist.name}}, {{soloist.part}}</li>
+{% if forloop.last %}
+        </ul>
+    </td>
+</tr>
+{% endif %}
+{% endfor %}
+{% if program.collaborator %}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>In collaboration with:</td>
+    <td><ul>
+        <li>{{program.collaborator}}</li>
+    </ul></td>
+</tr>
+{% endif %}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>{% if isPrimary %}<a href="#rehearsals">{% endif %}First rehearsal{% if isPrimary %}</a>{% endif %}:</td>
+    <td><ul>
+        <li>{{first_rehearsal.start | date: "%A %-e %B %Y"}}</li>
+        <li>Registration: {{program.registration.start | date: "%-l:%M%P"}} - {{program.registration.end | date: "%-l:%M%P"}}, {{program.registration.location}}</li>
+        <li>Rehearsal: {{first_rehearsal.start | date: "%-l:%M%P"}} - {{first_rehearsal.end | date: "%-l:%M%P"}}, {{first_rehearsal.location}}</li>
+    </ul>
+    </td>
+</tr>
+{% if isPrimary %}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>{% if isPrimary %}<a href="MemberPage.html#auditions">{% endif %}Auditions{% if isPrimary %}</a>{% endif %}:</td>
+    <td><ul>
+        <li>See the <a href="MemberPage.html#auditions">Auditions</a> section of our Member Page for information about how to audition.
+        </li>
+    </ul></td>
+</tr>
+{% endif %}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>{% if isPrimary %}<a href="#dress">{% endif %}Dress rehearsals{% if isPrimary %}</a>{% endif %}:</td>
+    <td><ul>
+        {% for dress in program.dresses %}
+        <li>{{dress.start | date: "%-l:%M%P %A %-e %B %Y"}}, {{dress.location}}</li>
+        {% endfor %}
+    </ul></td>
+</tr>
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>{% if isPrimary %}<a href="#concerts">{% endif %}Concerts{% if isPrimary %}</a>{% endif %}:</td>
+    <td><ul>
+        {% for concert in program.concerts %}
+        <li>{{ concert.start | date: "%-l:%M%P, %A %-e %B %Y" }} in {{ concert.location }} ({{ concert.call | date: "%-l:%M%P" }} call)</li>
+        {% endfor %}
+    </ul>
+    </td>
+</tr>

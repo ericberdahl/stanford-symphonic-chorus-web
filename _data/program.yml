@@ -88,10 +88,15 @@ upcoming:
           - composer: "Walton"
             title: "Belshazzar's Feast"
       collaborator: "Stanford Symphony Orchestra"
-      start:
-          time: "2018-01-08 19:30 PT"
+      registration:
+          start: "2018-01-08 18:30 PT"
+          end: "2018-01-08 19:25 PT"
           location: "Campbell Recital Hall"
-      registration: "2018-01-08 18:30 PT"
+      schedule:
+          - start: "2018-01-08 19:30 PTT"
+            end: "18-01-08 22:00 PT"
+            location: "Campbell Recital Hall"
+            event: "Tutti rehearsal"
       dresses:
           - start: "2018-03-05 19:00 PT"
             location: "Bing Concert Hall"
@@ -108,10 +113,15 @@ upcoming:
       repertoire:
           - composer: "Haydn"
             title: "Missa Sancti Bernardi von Offida (Heiligmesse)"
-      start:
-          time: "2018-04-02 19:30 PT"
+      registration:
+          start: "2018-04-02 18:30 PT"
+          end: "2018-04-02 19:25 PT"
           location: "Campbell Recital Hall"
-      registration: "2018-04-02 18:30 PT"
+      schedule:
+          - start: "2018-04-02 19:30 PT"
+            end: "2018-04-02 22:00 PT"
+            location: "Campbell Recital Hall"
+            event: "Tutti rehearsal"
       dresses:
           - start: "2018-05-15 19:00 PT"
             location: "Memorial Church"
@@ -119,8 +129,8 @@ upcoming:
             location: "Memorial Church"
       concerts:
           - start: "2018-05-18 20:00 PT"
-            location: "Bing Concert Hall"
+            location: "Memorial Church"
             call: "2018-05-18 19:00 PT"
           - start: "2018-05-19 20:00 PT"
-            location: "Bing Concert Hall"
+            location: "Memorial Church"
             call: "2018-05-19 19:00 PT"
