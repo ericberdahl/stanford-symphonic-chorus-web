@@ -1,7 +1,7 @@
 ---
 ---
-{% assign season = site.data.season %}
-{% assign first_rehearsal = season.schedule.first %}
+{% assign program = site.data.program %}
+{% assign first_rehearsal = program.schedule.first %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -87,13 +87,13 @@
 
 				<td>
 					<ul>
-						{% for piece in season.repertoire %}
+						{% for piece in program.repertoire %}
 						<li>{{piece.composer}} <em>{{piece.title}}</em></li>
 						{% endfor %}
 					</ul>
 				</td>
 			</tr>
-			{% for soloist in season.soloists %}
+			{% for soloist in program.soloists %}
 			{% if forloop.first %}
 			<tr>
 				<td>&nbsp;&nbsp;&nbsp;</td>
@@ -108,12 +108,12 @@
 			</tr>
 			{% endif %}
 			{% endfor %}
-			{% if season.collaborator %}
+			{% if program.collaborator %}
 			<tr>
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td>In collaboration with:</td>
 				<td><ul>
-					<li>{{season.collaborator}}</li>
+					<li>{{program.collaborator}}</li>
 				</ul></td>
 			</tr>
 			{% endif %}
@@ -122,7 +122,7 @@
 				<td><a href="#rehearsals">First rehearsal</a>:</td>
 				<td><ul>
 					<li>{{first_rehearsal.start | date: "%A %-e %B %Y"}}</li>
-					<li>Registration: {{season.registration.start | date: "%-l:%M%P"}} - {{season.registration.end | date: "%-l:%M%P"}}, {{season.registration.location}}</li>
+					<li>Registration: {{program.registration.start | date: "%-l:%M%P"}} - {{program.registration.end | date: "%-l:%M%P"}}, {{program.registration.location}}</li>
 					<li>Rehearsal: {{first_rehearsal.start | date: "%-l:%M%P"}} - {{first_rehearsal.end | date: "%-l:%M%P"}}, {{first_rehearsal.location}}</li>
 				</ul>
 				</td>
@@ -139,7 +139,7 @@
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td><a href="#dress">Dress rehearsals</a>:</td>
 				<td><ul>
-					{% for dress in season.dresses %}
+					{% for dress in program.dresses %}
 					<li>{{dress.start | date: "%-l:%M%P %A %-e %B %Y"}}, {{dress.location}}</li>
 					{% endfor %}
 				</ul></td>
@@ -148,7 +148,7 @@
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td><a href="#concerts">Concert calls</a>:</td>
 				<td><ul>
-					{% for concert in season.concerts %}
+					{% for concert in program.concerts %}
 					<li>{{ concert.call | date: "%-l:%M%P" }} call for {{ concert.start | date: "%-l:%M%P" }} concert, {{ concert.start | date: "%A %-e %B %Y" }}, {{ concert.location }}</li>
 					{% endfor %}
 				</ul>
@@ -166,13 +166,13 @@
 				<th>Description</th>
 			</tr>
 			<tr>
-				<td>{{season.registration.start | date: "%A"}}</td>
-				<td class="right">{{season.registration.start | date: "%-e %B %Y"}}</td>
-				<td>{{season.registration.location}}</td>
-				<td>{{season.registration.start | date: "%-l:%M%P"}} - {{season.registration.end | date: "%-l:%M%P"}}</td>
+				<td>{{program.registration.start | date: "%A"}}</td>
+				<td class="right">{{program.registration.start | date: "%-e %B %Y"}}</td>
+				<td>{{program.registration.location}}</td>
+				<td>{{program.registration.start | date: "%-l:%M%P"}} - {{program.registration.end | date: "%-l:%M%P"}}</td>
 				<td>Registration</td>
 			</tr>
-			{% assign display_schedule = season.schedule | sort: 'start' %}
+			{% assign display_schedule = program.schedule | sort: 'start' %}
 			{% for rehearsal in display_schedule %}
 			<tr>
 				<td>{{rehearsal.start | date: "%A"}}</td>
@@ -193,7 +193,7 @@
 				<th>Time</th>
 				<th>Description</th>
 			</tr>
-			{% for dress in season.dresses %}
+			{% for dress in program.dresses %}
 			<tr class="dress">
 				<td>{{dress.start | date: "%A"}}</td>
 				<td class="right">{{dress.start | date: "%-e %B %Y"}}</td>
@@ -213,7 +213,7 @@
 				<th>Time</th>
 				<th>Description</th>
 			</tr>
-			{% for concert in season.concerts %}
+			{% for concert in program.concerts %}
 			<tr>
 				<td>{{concert.start | date: "%A"}}</td>
 				<td class="right">{{concert.start | date: "%-e %B %Y"}}</td>
@@ -227,7 +227,7 @@
 		<div>
 			<h2 id="season">Looking Ahead</h2>
 			<table class="noborder">
-				{% for ahead in season.upcoming %}
+				{% for ahead in program.upcoming %}
 				<tbody>
 					<tr>
                         <td class="emph" colspan="3">{{ahead.quarter}}</td>
