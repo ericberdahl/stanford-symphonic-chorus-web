@@ -1,3 +1,9 @@
+label: "Fall 2017"
+
+syllabus:
+    pdf: "F2017/SSC Syllabus Fall 2017.pdf"
+    docx: "F2017/SSC Syllabus Fall 2017.docx"
+
 repertoire:
     - title: "The Music Makers"
       composer: "Elgar"
@@ -83,7 +89,7 @@ events:
       title: "Messiah Sing/Play Along"
 
 upcoming:
-    - quarter: "Winter 2018"
+    - label: "Winter 2018"
       repertoire:
           - composer: "Walton"
             title: "Belshazzar's Feast"
@@ -109,7 +115,7 @@ upcoming:
           - start: "2018-03-11 14:30 PT"
             location: "Bing Concert Hall"
             call: "2018-03-11 13:30 PT"
-    - quarter: "Spring 2018"
+    - label: "Spring 2018"
       repertoire:
           - composer: "Haydn"
             title: "Missa Sancti Bernardi von Offida (Heiligmesse)"
