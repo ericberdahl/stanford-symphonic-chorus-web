@@ -1,5 +1,6 @@
 ---
 ---
+{% assign program = site.data.program %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -59,27 +60,40 @@
 			<h2>Member Tools</h2>
 			<p></p>
 			<p><a href="schedule.html">Rehearsal Schedule</a></p>
-			<!-- <ul><li><a href="performances/F2010/FYLP.html">For Your Listening Pleasure</a></li> </ul>-->
-			<p> Fall 2017 Syllabus
-				(<a href="performances/F2017/SSC%20Syllabus%20Fall%202017.pdf" title="Syllabus in PDF format">PDF</a> | <a href="performances/F2017/SSC%20Syllabus%20Fall%202017.docx" title="Syllabus in Word format">Word</a>) </p>
+			{% if program.syllabus %}
+			<p>
+				{{program.label}} Syllabus
+				{% include file_links.html versions=program.syllabus label="Syllabus" %}
+			</p>
+			{% endif %}
 			<p><a href="assets/Choral%20Studies%20Liability%20Waiver%20Form.pdf">Choral Studies Liability Waiver</a></p>
-			
-			<!--
-			<p><a href=" ../~csparker/WI14SSC.fb" title="Winter 2014 Registration"><strong>Online Winter 2014 Registration Form</strong></a></p> 
-			-->
 
-			<p> Singers must register online using the webform which will be emailed to last quarter's members on September 1, 2017.</p>
-			<p>After submitting the online form, you will receive an email confirmation. Please be sure to print that email confirmation and bring it with you to your first rehearsal, along with cash or check (made out to Stanford University) for any fees or music. If you do not receive the confirmation right away, check your Junk folder to be sure it didn't get caught as spam.<br></p>
+			<p>
+				Singers must register online using the webform which will be
+				emailed to last quarter's members on {{program.preregister | date: "%B %-e, %Y"}}.
+			</p>
+			<p>
+				After submitting the online form, you will receive an email
+				confirmation. Please be sure to print that email confirmation
+				and bring it with you to your first rehearsal, along with cash
+				or check (made out to Stanford University) for any fees or music.
+				If you do not receive the confirmation right away, check your
+				 Junk folder to be sure it didn't get caught as spam.
+			 </p>
 
-
-			<!-- <p>Scores cost $11 and may be purchased at the first rehearsal.</p> -->
-
-			<p>Registration fee is $60 (waived for students and faculty). The score for this quarter will be sold at the first three rehearsals.</p>
+			<p>
+				Registration fee is {{program.fees.registration}} (waived for
+				students and faculty). The score for this quarter will be sold
+				at the first three rehearsals.
+			</p>
 			
 			<p>
-				By participating in the Stanford Symphonic Chorus, you acknowledge that you have read the Assumption of Risk, Release of Claims,
-				Indemnification and Hold Harmless Agreement (the "<a href="assets/Choral%20Studies%20Liability%20Waiver%20Form.pdf">Choral Studies Liability Waiver</a>"),
-				understand its meaning and effect, and agree to be bound by it. If you would like a hard copy of this agreement, please
+				By participating in the Stanford Symphonic Chorus, you
+				acknowledge that you have read the Assumption of Risk, Release
+				of Claims, Indemnification and Hold Harmless Agreement (the
+				"<a href="assets/Choral%20Studies%20Liability%20Waiver%20Form.pdf">Choral Studies Liability Waiver</a>"),
+				understand its meaning and effect, and agree to be bound by it.
+				If you would like a hard copy of this agreement, please
 				contact the Choral Studies Program Administrator,
 				<script type="text/javascript">
 					unScramble("erictuan", "stanford.educator", "Eric Tuan", "Re Choral Studies Liability Waiver");
@@ -108,12 +122,24 @@
 		-->
 		<!--Optional On this page End-->
 		<h2 id="joining">Joining the Chorus</h2>
-		<p>The Stanford Symphonic Chorus is open to all students, faculty, staff and any other residents of the community interested in singing wonderful music.</p>
-		<p>Members who are not students or faculty pay a modest (currently $60) participation fee. This money helps to offset expenses, the largest of which is hiring orchestras.</p>
+		<p>
+			The Stanford Symphonic Chorus is open to all students, faculty,
+			staff and any other residents of the community interested in singing
+			wonderful music.
+		</p>
+		<p>
+			Members who are not students or faculty pay a modest (currently
+			{{program.fees.registration}}) participation fee. This money helps
+			to offset expenses, the largest of which is hiring orchestras.
+		</p>
 
 		<h3 id="auditions">Auditions</h3>
-		<p> New members are normally accepted by audition at the beginning of each academic quarter.
-			If you are interested in auditioning for the chorus for the fall quarter of 2017, please email <script type="text/javascript">
+		<p>
+			New members are normally accepted by audition at the beginning of
+			each academic quarter.
+			If you are interested in auditioning for the chorus for the
+			{{program.label}} quarter, please email
+			<script type="text/javascript">
 				unScramble("erictuan", "stanford.educator", "Eric Tuan", "Regarding auditions");
 			</script>
 			<noscript>Eric Tuan at: erictuan/AT/stanford/DOT/-e-d-u-/</noscript>.
@@ -121,95 +147,127 @@
 
 		<p>Auditions take about ten minutes, are very "user-friendly," and consist of:</p>
 		<ul>
-			<li>Vocalizing (singing scale passages, or similar) with piano support to determine range.</li>
-			<li>Pitch memory exercises (we'll play three or four notes in sequence on the piano, and you sing them back).</li>
-			<li>Picking pitches out of a chord texture (we play three pitches simultaneously on the piano, and ask you to sing the highest, middle, or lowest pitch).</li>
+			<li>
+				Vocalizing (singing scale passages, or similar) with piano
+				support to determine range.
+			</li>
+			<li>
+				Pitch memory exercises (we'll play three or four notes in
+				sequence on the piano, and you sing them back).
+			</li>
+			<li>
+				Picking pitches out of a chord texture (we play three pitches
+				simultaneously on the piano, and ask you to sing the highest,
+				middle, or lowest pitch).
+			</li>
 			<li>Simple sight singing</li>
-			<li>30 seconds to a minute of a prepared song. This can be anything that you enjoy singing: art song, aria, musical theatre number, jazz tune, hymn tune, children's song, or the ever popular choices of: first verse of <em>My country 'tis of thee</em>, <em>Amazing Grace</em>, <em>Edelweiss</em>, etc.
+			<li>
+				30 seconds to a minute of a prepared song. This can be anything
+				that you enjoy singing: art song, aria, musical theatre number,
+				jazz tune, hymn tune, children's song, or the ever popular
+				choices of: first verse of <em>My country 'tis of thee</em>,
+				<em>Amazing Grace</em>, <em>Edelweiss</em>, etc.
 			</li>
 		</ul>
-		<p>NB: Due to facilities restrictions, the Symphonic Chorus is capped at a <em><strong>maximum of 220 members</strong></em>. For potential new members wishing to join the ensemble, please understand that members who have made the full year-long commitment in previous seasons have first priority. New members will be accepted as space allows, with voice part and section balances taken into account.</p>
+		{% if program.limits.membership %}
+		<p>
+			NB: Due to facilities restrictions, the Symphonic Chorus is capped
+			at a <em><strong>maximum of {{program.limits.membership}} members</strong></em>.
+			For potential new members wishing to join the ensemble, please
+			understand that members who have made the full year-long commitment
+			in previous seasons have first priority. New members will be
+			accepted as space allows, with voice part and section balances taken
+			into account.
+		</p>
+		{% endif %}
 
-			<!-- PUT UP 9/22  TWO OF TWO THIS PAGE
-We'll have sign-up sheets with specific audition times, based on Jim's availability, at the first two rehearsals. Those will probably be scheduled for: after the 9/23 rehearsal; before and after the 9/30 rehearsal; and in the evening on 10/1.
+		<h2 id="c3">Expectations</h2>
 
-END 9/22 TWO OF TWO NOTICES -->
-			<h2 id="c3">Expectations</h2>
+		<h3 id="c4">Learning the Music</h3>
+		<p>Each singer is expected to learn the music assigned for each
+			rehearsal on his or her own. Beyond the first reading of a work,
+			rehearsal time will be devoted to the development of ensemble
+			sound, interpretation, and other musical matters. It is further
+			expected that each singer will make a reasonable effort to develop
+			his or her own vocal skills, and will make every effort to
+			contribute in a positive manner to the work of the group.</p>
+		<h3 id="c5">Concert Dress</h3>
+		<p>
+			Men wear tuxedos or a tuxedo-like suits (i.e., black; not grey,
+			brown or blue), white shirt, black bow tie, black shoes and socks.
+			Women wear all black: long dress, or long black skirt or slacks
+			with long-sleeved (preferably) or short-sleeved black blouse, and
+			black shoes. Please <strong>no sleeveless tops</strong> and <strong>no
+				flashy jewelry.</strong>
+		</p>
+		
+		<h3 id="c6">Covering Your Music</h3>
+		<p>
+			For performances music must be put in a black folder or notebook,
+			or bound with a black cover. Don't wait until the last minute to
+			find a cover which will be practical in performance! (See <a
+				href="#folders">Music Folders</a> on this page for resources.)
+		</p>
 
-			<h3 id="c4">Learning the Music</h3>
-			<p>Each singer is expected to learn the music assigned for each
-				rehearsal on his or her own. Beyond the first reading of a work,
-				rehearsal time will be devoted to the development of ensemble
-				sound, interpretation, and other musical matters. It is further
-				expected that each singer will make a reasonable effort to develop
-				his or her own vocal skills, and will make every effort to
-				contribute in a positive manner to the work of the group.</p>
-			<h3 id="c5">Concert Dress</h3>
-			<p>
-				Men wear tuxedos or a tuxedo-like suits (i.e., black; not grey,
-				brown or blue), white shirt, black bow tie, black shoes and socks.
-				Women wear all black: long dress, or long black skirt or slacks
-				with long-sleeved (preferably) or short-sleeved black blouse, and
-				black shoes. Please <strong>no sleeveless tops</strong> and <strong>no
-					flashy jewelry.</strong>
-			</p>
-			<h3 id="c6">Covering Your Music</h3>
-			<p>
-				For performances music must be put in a black folder or notebook,
-				or bound with a black cover. Don't wait until the last minute to
-				find a cover which will be practical in performance! (See <a
-					href="#folders">Music Folders</a> on this page for resources.)
-			</p>
+		<h3 id="Aroma">
+			<a href="nofragrance.html">Fragrance-Free Policy</a>
+		</h3>
+		<p>
+			Several people in the chorus are particularly sensitive to scented
+			products such as perfume and hair spray; all of us have to sing in
+			close quarters and benefit by having air to breathe which is as
+			pure as possible. On all rehearsal days, and especially on dress
+			rehearsal and performance days, we request you do not use any such
+			products. For further information, including information on
+			obtaining scent-free alternatives, see
+			<a href="nofragrance.html">extensive guidelines.</a>
+		</p>
 
-			<h3 id="Aroma">
-				<a href="nofragrance.html">Fragrance-Free Policy</a>
-			</h3>
-			<p>
-				Several people in the chorus are particularly sensitive to scented
-				products such as perfume and hair spray; all of us have to sing in
-				close quarters and benefit by having air to breathe which is as
-				pure as possible. On all rehearsal days, and especially on dress
-				rehearsal and performance days, we request you do not use any such
-				products. For further information, including information on
-				obtaining scent-free alternatives, see <a href="nofragrance.html">extensive
-					guidelines.</a>
-			</p>
+		<a id="Schedule"></a>
+		<h2 id="c7">Rehearsals</h2>
+		<p>
+			Rehearsals are held Monday evenings from 7:30 to 10:00 in Campbell
+			Recital Hall in the Braun Music Building, but please be <em>early</em>
+			for the first rehearsal, since it will take extra time to get
+			everyone signed up and to distribute the music, which will be
+			available at the rehearsal. Sign ups start at <strong>6:30 p.m.</strong>
+		</p>
 
-			<a id="Schedule"></a>
-			<h2 id="c7">Rehearsals</h2>
-			<p>Rehearsals are held Monday evenings from 7:30 to 10:00 in Campbell Recital Hall in the Braun Music Building, but please be <em>early</em> for the first rehearsal, since it will take extra time to get everyone signed up and to distribute the music, which will be available at the rehearsal. Sign ups start at <strong>6:30 p.m.</strong></p>
+		<p>
+			In addition, there are optional but warmly encouraged
+			sectional rehearsals on selected Wednesday evenings from 5:30 to
+			6:30. Just before the performance we typically have two
+			&ldquo;dress rehearsals,&rdquo; also mandatory, when we rehearse
+			with the orchestra, usually in the hall in which we will be
+			performing. Concert dress is not required or even recommended at
+			these rehearsals. Other rehearsals are typically accompanied by
+			piano only.
+		</p>
 
-			<p>In addition, there are optional but warmly encouraged
-				sectional rehearsals on selected Wednesday evenings from 5:30 to
-				6:30. Just before the performance we typically have two
-				&ldquo;dress rehearsals,&rdquo; also mandatory, when we rehearse
-				with the orchestra, usually in the hall in which we will be
-				performing. Concert dress is not required or even recommended at
-				these rehearsals. Other rehearsals are typically accompanied by
-				piano only.</p>
+		<p>
+			Members may miss up to two required rehearsals during the
+			quarter. Members who miss more than two required rehearsals without
+			prior arrangement with the director will not be allowed to
+			participate in the performance. You must notify the director in
+			advance if for any reason you must miss all or part of a rehearsal.
+			For those participating for graded credit, every two unexcused
+			absences may result in the lowering of the final grade by one
+			letter.
+		</p>
 
-			<p>Members may miss up to two required rehearsals during the
-				quarter. Members who miss more than two required rehearsals without
-				prior arrangement with the director will not be allowed to
-				participate in the performance. You must notify the director in
-				advance if for any reason you must miss all or part of a rehearsal.
-				For those participating for graded credit, every two unexcused
-				absences may result in the lowering of the final grade by one
-				letter.</p>
+		<h3>Music</h3>
+		<p>The music to be performed is always available at the first three rehearsals.</p>
 
-			<h3>Music</h3>
-			<p> The music to be performed is always available at the first three rehearsals.</p>
+		<h3>Parking</h3>
+		<p>
+			Parking for rehearsals can usually be found in the large lot
+			on Mayfield Avenue closest to Braun (and Tresidder Student Union).
+			There is no parking enforcement after 4 p.m. on weekdays. You may
+			park for free in any pay or permit slot (except for disabled slots)
+			for rehearsal.
+		</p>
 
-			<h3>Parking</h3>
-			<p>Parking for rehearsals can usually be found in the large lot
-				on Mayfield Avenue closest to Braun (and Tresidder Student Union).
-				There is no parking enforcement after 4 p.m. on weekdays. You may
-				park for free in any pay or permit slot (except for disabled slots)
-				for rehearsal.</p>
-
-
-
-			<!-- TemplateEndEditable -->
+		<!-- TemplateEndEditable -->
 	</div>
 	<div id="sidebar_supplementary">
 		<!-- TemplateBeginEditable name="sidebar_supplementary" -->

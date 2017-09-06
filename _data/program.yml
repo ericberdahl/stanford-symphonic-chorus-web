@@ -1,8 +1,8 @@
 label: "Fall 2017"
 
 syllabus:
-    pdf: "F2017/SSC Syllabus Fall 2017.pdf"
-    docx: "F2017/SSC Syllabus Fall 2017.docx"
+    pdf: "performances/F2017/SSC Syllabus Fall 2017.pdf"
+    docx: "performances/F2017/SSC Syllabus Fall 2017.docx"
 
 repertoire:
     - title: "The Music Makers"
@@ -14,10 +14,18 @@ soloists:
 
 collaborator: "Peninsula Symphony Orchestra"
 
+fees:
+    registration: "$60"
+    
+limits:
+    membership: 220
+
 registration:
     start: "2017-09-25 18:30 PT"
     end: "2017-09-25 19:25 PT"
     location: "Campbell Recital Hall"
+
+preregister: "2017-09-01"
 
 schedule:
     - start: "2017-09-25 19:30 PT"

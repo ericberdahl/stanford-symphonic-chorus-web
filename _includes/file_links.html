@@ -1,0 +1,9 @@
+{% assign versions = include.versions %}
+{% assign label = include.label %}
+(
+{% for version in versions %}
+{% assign format = version[0] | upcase %}
+{% if format == 'DOCX' %}{% assign format = 'Word' %}{% endif %}
+{% unless forloop.first %} | {% endunless %}<a href="{{version[1] | uri_escape | relative_url}}" title="{{label}} in {{format}} format">{{format}}</a>
+{% endfor %}
+)
