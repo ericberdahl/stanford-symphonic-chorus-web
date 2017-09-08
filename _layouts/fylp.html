@@ -1,4 +1,5 @@
-{% assign albums = site.albums | where_expr: "item","item.composer == {{page.composer}} AND item.title == {{page.title}}" %}
+{% assign albums = site.albums | where_exp: "item", "item.composer == page.composer" %}
+{% assign albums = albums | where_exp: "item", "item.title == page.title" %}
 <!doctype html>
 <html lang="en">
 <head>
