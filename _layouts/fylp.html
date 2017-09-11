@@ -1,5 +1,5 @@
 {% assign albums = site.albums | where_exp: "item", "item.composer == page.composer" %}
-{% assign albums = albums | where_exp: "item", "item.title == page.title" %}
+{% assign albums = albums | where_exp: "item", "item.work == page.title" %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -99,8 +99,8 @@
 		<h3 id="{{a.director | slugify}}">{{a.director}}</h3>
 		<div class="pgraph">
 			{% if a.image %}
-			<a class="photo pgraph" href="{{ a.image.file | prepend: "images/fylp/" | relative_url }}" title="{{a.image.title}}" rel="mediabox[{{a.image.width}} {{a.image.height}}]">
-			  <img src="{{ a.image.file | prepend: "images/fylp/" | relative_url }}" width="109" height="{{a.image.height | times: 109 | divided_by: a.image.width}}" alt="{{a.image.title}}">
+			<a class="photo pgraph" href="{{ a.image.file | prepend: "images/fylp/" | relative_url }}" title="{{a.director}}, {{a.label}}" rel="mediabox[{{a.image.width}} {{a.image.height}}]">
+			  <img src="{{ a.image.file | prepend: "images/fylp/" | relative_url }}" width="109" height="{{a.image.height | times: 109 | divided_by: a.image.width}}" alt="{{a.director}}, {{a.label}}">
 			</a>
 			{% endif %}
 			{{ a.content }}
