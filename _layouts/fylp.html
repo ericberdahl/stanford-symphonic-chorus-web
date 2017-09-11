@@ -1,5 +1,7 @@
-{% assign albums = site.albums | where_exp: "item", "item.composer == page.composer" %}
-{% assign albums = albums | where_exp: "item", "item.work == page.title" %}
+{% assign albums = site.albums | where_exp: 'item', 'item.composer == page.composer'
+							   | where_exp: 'item', 'item.work == page.title'
+							   | sort: 'rating'
+							   | reverse %}
 <!doctype html>
 <html lang="en">
 <head>
