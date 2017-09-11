@@ -16,3 +16,4 @@ defaults:
         type: albums
       values:
         director: Other recordings
+        rating: 0
