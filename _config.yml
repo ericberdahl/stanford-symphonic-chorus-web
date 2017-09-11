@@ -9,3 +9,10 @@ timezone: America/Los_Angeles
 
 collections:
     - albums
+
+defaults:
+    - scope:
+        path: ""
+        type: albums
+      values:
+        director: Other recordings

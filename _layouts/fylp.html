@@ -70,7 +70,7 @@
 			<h2>Contents</h2>
 			<ul>
 				{% for a in albums %}
-				<li><a href="#{{a.director | default: 'Other recordings' | slugify}}">{{a.director | default: 'Other recordings'}}</a></li>
+				<li><a href="#{{a.director | slugify}}">{{a.director}}</a></li>
 				{% endfor %}
 			</ul>
 		</div>
@@ -98,7 +98,7 @@
 		<h2>{{page.composer}} <em>{{page.title}}</em></h2>
 		{{page.content}}
 		{% for a in albums %}
-		<h3 id="{{a.director | default: 'Other recordings' | slugify}}">{{a.director | default: 'Other recordings'}}</h3>
+		<h3 id="{{a.director | slugify}}">{{a.director}}</h3>
 		<div class="pgraph">
 			{% if a.image %}
 			<a class="photo pgraph" href="{{ a.image.file | prepend: "images/fylp/" | relative_url }}" title="{{a.director}}, {{a.label}}" rel="mediabox[{{a.image.width}} {{a.image.height}}]">
