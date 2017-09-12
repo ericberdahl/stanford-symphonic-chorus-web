@@ -8,7 +8,9 @@ url: https://web.stanford.edu
 timezone: America/Los_Angeles
 
 collections:
-    - albums
+    albums:
+    fylp:
+        output: true
 
 defaults:
     - scope:
@@ -17,3 +19,8 @@ defaults:
       values:
         director: Other recordings
         rating: 0
+    - scope:
+        path: ""
+        type: fylp
+      values:
+        layout: fylp
