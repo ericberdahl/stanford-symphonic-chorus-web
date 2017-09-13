@@ -1,6 +1,9 @@
 ---
 ---
-{% assign program = site.data.program %}
+{% assign program = site.programs | where_exp: "item","item.concerts[0].start > site.time"
+                                  | nested_sort: "concerts[0].start"
+								  | reverse
+								  | last %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -62,7 +65,7 @@
 			<p><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></p>
 			{% if program.syllabus %}
 			<p>
-				{{program.label}} Syllabus
+				{{program.quarter}} Syllabus
 				{% include file_links.html versions=program.syllabus label="Syllabus" %}
 			</p>
 			{% endif %}
@@ -138,7 +141,7 @@
 			New members are normally accepted by audition at the beginning of
 			each academic quarter.
 			If you are interested in auditioning for the chorus for the
-			{{program.label}} quarter, please email
+			{{program.quarter}} quarter, please email
 			<script type="text/javascript">
 				unScramble("erictuan", "stanford.educator", "Eric Tuan", "Regarding auditions");
 			</script>

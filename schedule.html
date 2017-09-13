@@ -1,6 +1,12 @@
 ---
 ---
-{% assign program = site.data.program %}
+{% assign program = site.programs | where_exp: "item","item.concerts[0].start > site.time"
+                                  | nested_sort: "concerts[0].start"
+								  | first %}
+{% assign upcoming = site.programs | where_exp: "item","item.concerts[0].start > site.time"
+                                   | nested_sort: "concerts[0].start"
+								   | shift
+								   | reverse %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -154,10 +160,10 @@
 		<div>
 			<h2 id="season">Looking Ahead</h2>
 			<table class="noborder">
-				{% for ahead in program.upcoming %}
+				{% for ahead in upcoming %}
 				<tbody>
 					<tr>
-                        <td class="emph" colspan="3">{{ahead.label}}</td>
+                        <td class="emph" colspan="3">{{ahead.quarter}}</td>
                     </tr>
 					{% include schedule_overview.html program=ahead %}
 				</tbody>
