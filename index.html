@@ -1,5 +1,20 @@
 ---
 ---
+{% assign current_program = site.programs | where_exp: "item","item.concerts[0].start > site.time"
+                                          | nested_sort: "concerts[0].start"
+								          | reverse
+									      | last %}
+{% assign first_rehearsal = current_program.schedule | sort: "start"
+                                                     | reverse
+													 | last %}
+{% assign concerts = current_program.concerts | sort: "start" %}
+{% assign current_events = site.data.program.events %}
+
+{% assign concert_times = concerts | map: "start" %}
+{% assign event_times = current_events | map: "start"
+									   | concat: concert_times
+									   | unshift: first_rehearsal.start
+									   | sort %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -65,38 +80,44 @@
 				<a class="photo" href="{{ site.baseurl }}{% link images/graphics/MemChu.jpg %}" title="Memorial Church, 22 February 2010. Photo by R. A. Wilson." rel="mediabox[1314 852]">
 					<img class="framed" src="{{ site.baseurl }}{% link images/graphics/MemChu.jpg %}" width="149" height="96" alt="Memorial Church evening. Photo by R. A. Wilson.">
 				</a>
-				
-				<div>
-					<h3><span class="event_day">25</span><span class="event_month">Sep<br>2017</span></h3>
-					<div class="event_list">
-						<p>First rehearsal: <span class="event_time">Elgar <em>The Music Makers</em></span></p>
-						<p>7:30 p.m. Campbell Recital Hall; <em>registration starts at 6:30</em></p>
+				{% for et in event_times %}
+					{% assign et_events = current_events | where_exp: "item","item.start == et" %}
+					{% assign et_concerts = concerts | where_exp: "item","item.start == et" %}
+					{% assign collaborator = "" %}
+					{% if current_program.collaborator %}
+					{% assign collaborator = current_program.collaborator | prepend: " with " %}
+					{% endif %}
+					
+					{% if first_rehearsal.start == et %}
+					<div>
+						<h3><span class="event_day">{{et | date: "%-e"}}</span><span class="event_month">{{et | date: "%b"}}<br>{{et | date: "%Y"}}</span></h3>
+						<div class="event_list">
+							<p>First rehearsal: <span class="event_time">{{current_program.main_piece.composer}} <em>{{current_program.main_piece.title}}</em></span></p>
+							<p>{{et | date: "%-l:%M%P"}} {{first_rehearsal.location}}; <em>registration starts at {{first_rehearsal.registration | date: "%-l:%M%P"}}</em></p>
+						</div>
 					</div>
-				</div>
-
-				<div>
-					<h3><span class="event_day">17</span><span class="event_month">Nov<br>2017</span></h3>
-					<div class="event_list">
-						<p>Symphonic Chorus Performance: <span class="event_time">Elgar's <em>The Music Makers</em> with the Peninsula Symphony Orchestra</span></p>
-						<p>7:30pm Bing Concert Hall</p>
+					{% endif %}
+					
+					{% for ev in et_events %}
+					<div>
+						<h3><span class="event_day">{{ev.start | date: "%-e"}}</span><span class="event_month">{{ev.start | date: "%b"}}<br>{{ev.start | date: "%Y"}}</span></h3>
+						<div class="event_list">
+							<p>{{ev.title}}</p>
+							<p>{{ev.start | date: "%-l:%M%P"}} {{ev.location}}</p>
+						</div>
 					</div>
-				</div>
-
-				<div>
-					<h3><span class="event_day">19</span><span class="event_month">Nov<br>2017</span></h3>
-					<div class="event_list">
-						<p>Symphonic Chorus Performance: <span class="event_time">Elgar's <em>The Music Makers</em> with the Peninsula Symphony Orchestra</span></p>
-						<p>2:30pm Bing Concert Hall</p>
+					{% endfor %}
+					
+					{% for c in et_concerts %}
+					<div>
+						<h3><span class="event_day">{{c.start | date: "%-e"}}</span><span class="event_month">{{c.start | date: "%b"}}<br>{{c.start | date: "%Y"}}</span></h3>
+						<div class="event_list">
+							<p>Symphonic Chorus Performance: <span class="event_time">{{current_program.main_piece.composer}} <em>{{current_program.main_piece.title}}</em>{{collaborator}}</span></p>
+							<p>{{c.start | date: "%-l:%M%P"}} {{c.location}}</p>
+						</div>
 					</div>
-				</div>
-
-				<div>
-					<h3><span class="event_day">15</span><span class="event_month">Dec<br>2017</span></h3>
-					<div class="event_list">
-						<p>Messiah Sing/Play Along</p>
-						<p>7:30 p.m. Memorial Church</p>
-					</div>
-				</div>
+					{% endfor %}
+				{% endfor %}
 			</div>
 			<!-- TemplateEndEditable -->
 			<hr class="clearer">
@@ -112,20 +133,51 @@
 							<img class="framed" src="{{ site.baseurl }}{% link images/graphics/SmallW10.jpg %}" width="139" height="89" alt="Performance of Beethoven's Mass in C, 27 February 2010. Photo by R. A. Wilson.">
 						</a>
 
-						<p>The Stanford Symphonic Chorus is a group of approximately 180 students, faculty, staff, and members of the community led by Director of Music and Conductor Stephen Sano. The Chorus generally performs three works a year, one each academic quarter. Each performance typically features a large choral work, and includes other choral or instrumental pieces. See our <a href="{{ site.baseurl }}{% link performances.html %}">Performances</a> page for information about past performances.</p>
+						<p>
+							The Stanford Symphonic Chorus is a group of
+							approximately 180 students, faculty, staff, and
+							members of the community led by Director of Music
+							and Conductor Stephen Sano. The Chorus generally
+							performs three works a year, one each academic
+							quarter. Each performance typically features a large
+							choral work, and includes other choral or
+							instrumental pieces. See our <a href="{{ site.baseurl }}{% link performances.html %}">
+							Performances</a> page for information about past
+							performances.
+						</p>
 					</div>
 
 					<hr class="clearer">
 
 					<h3><a href="{{ site.baseurl }}{% link performances.html %}">Fall 2017 Concert</a></h3>
 					<div>
-						<!--
-						<a class="photo pgraph" href="performances/S2015/JohannesBrahms.jpg" title="Johannes Brahms" rel="mediabox[700 448]">
-							<img class="framed" src="performances/S2015/JohannesBrahms.jpg" width="139" height="185" alt="Johannes Brahms" />
+						{% if current_program.image %}
+						{% assign image = current_program.image %}
+						{% assign image_path = "performances/" | append: current_program.label
+						                                       | append: "/"
+															   | append: image.file
+															   | relative_url %}
+						<a class="photo pgraph" href="{{ image_path }}" rel="mediabox[{{ image.width }} {{ image.height }}]" title="{{ image.citation }}">
+							<img class="framed" src="{{ image_path }}" width="109" height="{{image.height | times: 109 | divided_by: image.width}}" alt="{{ image.citation }}">
 						</a>
-						-->
-						<p>The Stanford Symphonic Chorus presents Edward Elgar's <em>The Music Makers</em> in collaboration with the Peninsula Symphony and mezzo-soprano Wendy Hillhouse. The program also features Ralph Vaughan Williams's beloved <em>Fantasia on a Theme of Thomas Tallis</em> and <em>Norfolk Rhapsody No. 1</em>, alongside the English hymn and folk melodies that inspired both works.</p>
-						<p>Performances at Stanford University's Bing Concert Hall on Friday, 17 November and Sunday, 19 November.</p>
+						{% endif %}
+						{{ current_program.content }}
+						<p>
+							Performances at
+							{% for c in concerts %}
+							{% if forloop.first %}
+							{{ c.location }} on {% comment %}TODO use formal location {% endcomment %}
+							{% else %}
+							{% if forloop.length == 2 %}
+							and
+							{% else %}
+							,
+							{% if forloop.last %} and {% endif %}
+							{% endif %}
+							{% endif %}
+							{{ c.start | date: "%A, %-e %B" }}
+							{% endfor %}
+						</p>
 						<br>
 						<ul class="paragh">
 							<!-- <li><a
