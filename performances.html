@@ -1,5 +1,13 @@
 ---
 ---
+{% assign current_program = site.programs | where_exp: "item","item.concerts[0].start > site.time"
+                                          | nested_sort: "concerts[0].start"
+								          | reverse
+									      | last %}
+{% assign past_programs = site.programs | where_exp: "item","item.concerts[0].start <= site.time"
+                                        | nested_sort: "concerts[0].start"
+								        | reverse %}
+{% assign programs = past_programs | unshift: current_program %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -91,6 +99,54 @@
 		</div>
 		<!-- TemplateBeginEditable name="content_main" -->
 		<!-- ====================================================================== -->
+		{% for p in programs %}
+		<br class="clear">
+		<div id="{{ p.label }}" class="middle">
+			<!-- do the image -->
+			<a class="photo" href="performances/F2017/Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff.jpg" rel="mediabox[790 874]" title="Photo by DAVID ILIFF. License: CC-BY-SA 3.0">
+				<img class="framed" src="performances/F2017/Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff.jpg" width="107" height="118" alt="Photo by DAVID ILIFF. License: CC-BY-SA 3.0">
+			</a>
+			<div class="middle_content">
+				<h3>{{ p.quarter }}</h3>
+				
+				{% for r in p.repertoire %}
+				{% if forloop.first %}
+				<p>Repertoire:</p>
+				<ul class="artists">
+				{% endif %}
+					<li>{{ r.composer }}’s <em>{{ r.title }}</em></li>
+				{% if forloop.last %}
+				</ul>
+				{% endif %}
+				{% endfor %}
+				
+				{% for s in p.soloists %}
+				{% if forloop.first %}
+				<p>With soloists:</p>
+				<ul class="artists">
+				{% endif %}
+					<li>{{ s.name }}, {{ s.part }}</li>
+				{% if forloop.last %}
+				</ul>
+				{% endif %}
+				{% endfor %}
+				
+				{% if p.collaborator %}
+				<p>Performed with the {{ p.collaborator }}.</p>
+				{% endif %}
+				
+				<h4>Concerts:</h4>
+				{% for c in p.concerts %}
+				<p>{{ c.start | date: "%A %-e %B %Y, %-l:%M%P" }}, {{ c.location }}</p>
+				{% endfor %}
+			</div>
+			<ul class="middle_links">
+				<!-- TOOD poster link -->
+				<!-- TOOD FYLP links -->
+				<!-- TOOD misc links -->
+			</ul>
+		</div>
+		{% endfor %}
 		<br class="clear">
 		<div id="f2017" class="middle">
 			<!-- <img src="images/M@S-roundedges.gif" alt=""> -->
