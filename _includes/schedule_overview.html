@@ -8,7 +8,7 @@
     <td>
         <ul>
             {% for piece in program.repertoire %}
-            <li>{{piece.composer}} <em>{{piece.title}}</em></li>
+            <li>{% include piece_citation.html piece=piece %}</li>
             {% endfor %}
         </ul>
     </td>

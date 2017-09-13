@@ -1,0 +1,15 @@
+{%- assign piece = include.piece -%}
+{%- assign inHead = include.inHead | default: false -%}
+{%- assign composer = piece.composer -%}
+{%- if piece.arranger -%}
+    {%- assign composer = composer | append: ", arr. "
+                                  | append: {{piece.arranger}} -%}
+{%- endif -%}
+{%- assign title = piece.title -%}
+{%- unless inHead -%}
+    {%- assign title = title | prepend: "<em>"
+                            | append: "</em>" -%}
+{%- else -%}
+    {%- assign composer = composer | append: ":" -%}
+{%- endunless -%}
+{{composer}} {{title}}

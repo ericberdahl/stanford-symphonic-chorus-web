@@ -114,7 +114,7 @@
 				<p>Repertoire:</p>
 				<ul class="artists">
 				{% endif %}
-					<li>{{ r.composer }}’s <em>{{ r.title }}</em></li>
+					<li>{% include piece_citation.html piece=r %}</em></li>
 				{% if forloop.last %}
 				</ul>
 				{% endif %}
