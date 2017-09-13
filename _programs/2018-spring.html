@@ -7,9 +7,12 @@ label: "S2018"
 #    pdf: "performances/F2017/SSC Syllabus Fall 2017.pdf"
 #    docx: "performances/F2017/SSC Syllabus Fall 2017.docx"
 
-repertoire:
-  - composer: "Haydn"
+main_piece: &main-piece
+    composer: "Haydn"
     title: "Missa Sancti Bernardi von Offida (Heiligmesse)"
+
+repertoire:
+  - *main-piece
 
 #soloists:
 #    - name: "Wendy Hillhouse"
@@ -23,18 +26,17 @@ repertoire:
 #limits:
 #    membership: 220
 
-registration:
-  start: 2018-04-02 18:30:00 -0700
-  end: 2018-04-02 19:25:00 -0700
-  location: "Campbell Recital Hall"
+first_rehearsal: &first-rehearsal
+    start: 2018-04-02 19:30:00 -0700
+    end: 2018-04-02 22:00:00 -0700
+    location: "Campbell Recital Hall"
+    event: "Registration and Tutti rehearsal"
+    registration: 2018-04-02 18:30:00 -0700
 
 #preregister: "2017-09-01"
 
 schedule:
-  - start: 2018-04-02 19:30:00 -0700
-    end: 2018-04-02 22:00:00 -0700
-    location: "Campbell Recital Hall"
-    event: "Tutti rehearsal"
+  - *first-rehearsal
 
 dresses:
 - start: 2018-05-15 19:00:00 -0700

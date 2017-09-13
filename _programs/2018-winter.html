@@ -7,9 +7,12 @@ label: "W2018"
 #    pdf: "performances/F2017/SSC Syllabus Fall 2017.pdf"
 #    docx: "performances/F2017/SSC Syllabus Fall 2017.docx"
 
-repertoire:
-  - composer: "Walton"
+main_piece: &main-piece
+    composer: "Walton"
     title: "Belshazzar's Feast"
+
+repertoire:
+  - *main-piece
 
 #soloists:
 #    - name: "Wendy Hillhouse"
@@ -23,18 +26,17 @@ collaborator: "Stanford Symphony Orchestra"
 #limits:
 #    membership: 220
 
-registration:
-    start: 2018-01-08 18:30:00 -0800
-    end: 2018-01-08 19:25:00 -0800
+first_rehearsal: &first-rehearsal
+    start: 2018-01-08 19:30:00 -0800
+    end: 18-01-08 22:00:00 -0800
     location: "Campbell Recital Hall"
+    event: "Registration and Tutti rehearsal"
+    registration: 2018-01-08 18:30:00 -0800
 
 #preregister: "2017-09-01"
 
 schedule:
-    - start: 2018-01-08 19:30:00 -0800
-      end: 18-01-08 22:00:00 -0800
-      location: "Campbell Recital Hall"
-      event: "Tutti rehearsal"
+    - *first-rehearsal
 
 dresses:
     - start: 2018-03-05 19:00:00 -0800

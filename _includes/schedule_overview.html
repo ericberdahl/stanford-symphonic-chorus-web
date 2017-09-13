@@ -1,5 +1,5 @@
 {% assign program = include.program %}
-{% assign first_rehearsal = program.schedule.first %}
+{% assign first_rehearsal = program.first_rehearsal %}
 {% assign isPrimary = include.showAuditions | default: false %}
 <tr>
     <td>&nbsp;&nbsp;&nbsp;</td>
@@ -41,11 +41,11 @@
     <td>&nbsp;&nbsp;&nbsp;</td>
     <td>{% if isPrimary %}<a href="#rehearsals">{% endif %}First rehearsal{% if isPrimary %}</a>{% endif %}:</td>
     <td><ul>
-        <li>{{first_rehearsal.start | date: "%A %-e %B %Y"}}</li>
-        <li>Registration: {{program.registration.start | date: "%-l:%M%P"}} - {{program.registration.end | date: "%-l:%M%P"}}, {{program.registration.location}}</li>
-        <li>Rehearsal: {{first_rehearsal.start | date: "%-l:%M%P"}} - {{first_rehearsal.end | date: "%-l:%M%P"}}, {{first_rehearsal.location}}</li>
-    </ul>
-    </td>
+        <li>
+            {{first_rehearsal.start | date: "%A %-e %B %Y at %-l:%M%P"}}, {{first_rehearsal.location}}.
+            Registration starts at {{first_rehearsal.registration | date: "%-l:%M%P"}}
+        </li>
+    </ul></td>
 </tr>
 {% if isPrimary %}
 <tr>
