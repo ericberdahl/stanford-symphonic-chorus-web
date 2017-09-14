@@ -1,15 +1,16 @@
 {%- assign piece = include.piece -%}
-{%- assign inHead = include.inHead | default: false -%}
+{%- assign style = include.style | default: "em-tagged" -%}
 {%- assign composer = piece.composer -%}
 {%- if piece.arranger -%}
     {%- assign composer = composer | append: ", arr. "
                                   | append: {{piece.arranger}} -%}
 {%- endif -%}
 {%- assign title = piece.title -%}
-{%- unless inHead -%}
-    {%- assign title = title | prepend: "<em>"
-                            | append: "</em>" -%}
-{%- else -%}
-    {%- assign composer = composer | append: ":" -%}
-{%- endunless -%}
+{%- case style -%}
+    {%- when "plain" -%}
+        {%- assign composer = composer | append: ":" -%}
+    {%- else -%}
+        {%- assign title = title | prepend: "<em>"
+                                 | append: "</em>" -%}
+{%- endcase -%}
 {{composer}} {{title}}
