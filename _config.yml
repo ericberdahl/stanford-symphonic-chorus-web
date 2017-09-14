@@ -9,6 +9,7 @@ timezone: America/Los_Angeles
 
 collections:
     albums:
+    locations:
     programs:
     fylp:
         output: true
