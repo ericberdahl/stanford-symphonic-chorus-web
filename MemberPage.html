@@ -84,11 +84,13 @@
 				 Junk folder to be sure it didn't get caught as spam.
 			 </p>
 
+            {% if program.fees.registration %}
 			<p>
 				Registration fee is {{program.fees.registration}} (waived for
 				students and faculty). The score for this quarter will be sold
 				at the first three rehearsals.
 			</p>
+            {% endif %}
 			
 			<p>
 				By participating in the Stanford Symphonic Chorus, you
@@ -131,8 +133,8 @@
 			wonderful music.
 		</p>
 		<p>
-			Members who are not students or faculty pay a modest (currently
-			{{program.fees.registration}}) participation fee. This money helps
+			Members who are not students or faculty pay a modest {% if program.fees.registration %}(currently
+			{{program.fees.registration}}){% endif %} participation fee. This money helps
 			to offset expenses, the largest of which is hiring orchestras.
 		</p>
 
