@@ -1,10 +1,10 @@
 # TODO: Slim js files of unused functions
+# TODO: Add collection for collaborators
 # TODO: Remove unnecessary js inclusion
 # TODO: add include for MediaBox header
 # TODO: convert all mediabox images to use lightbox include
 # TODO: Update MediaBox to Lightbox (https://github.com/lokesh/lightbox2)
 # TODO: convert performances in performance.html to program collection, one program at a time
-# TODO: change collaborator to collaborators in programs
 plugins:
  - jekyll-tidy
 

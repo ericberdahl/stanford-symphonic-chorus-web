@@ -91,8 +91,9 @@
 					{% assign et_events = current_events | where_exp: "item","item.start == et" %}
 					{% assign et_concerts = concerts | where_exp: "item","item.start == et" %}
 					{% assign collaborator = "" %}
-					{% if current_program.collaborator %}
-					{% assign collaborator = current_program.collaborator | prepend: " with " %}
+					{% if current_program.collaborators %}
+					{% assign collaborator = current_program.collaborators | array_to_sentence_string
+                                                                           | prepend: " with " %}
 					{% endif %}
 					
 					{% if first_rehearsal.start == et %}

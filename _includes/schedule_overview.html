@@ -28,12 +28,14 @@
 </tr>
 {% endif %}
 {% endfor %}
-{% if program.collaborator %}
+{% if program.collaborators.size %}
 <tr>
     <td>&nbsp;&nbsp;&nbsp;</td>
     <td>In collaboration with:</td>
     <td><ul>
-        <li>{{program.collaborator}}</li>
+        {% for pc in program.collaborators %}
+        <li>{{pc}}</li>
+        {% endfor %}
     </ul></td>
 </tr>
 {% endif %}
