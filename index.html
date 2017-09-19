@@ -163,18 +163,13 @@
 						{% endif %}
 						{{ current_program.content }}
 						<p>
-							Performance{% if concerts.size > 1 %}s{% endif %} at {{concerts.first.location}} on {%- comment -%}TODO use formal location {%- endcomment -%}
-							{% for c in concerts %} {%comment%}TODO use array_to_sentence{%endcomment%}
-    							{% if forloop.first %}
-    							{% else %}
-    							    {% if forloop.length == 2 %}
-    							        and
-    							    {% else %}
-    							        , {% if forloop.last %} and {% endif %}
-    							    {% endif %}
-    							{% endif %}
-    							{{ c.start | date: "%A, %-e %B" }}
+                            {% assign concert_dates = "" | split: "," %}
+							{% for c in concerts %}
+                                {% assign c_start = c.start | date: "%A, %-e %B" | split: "%" %}
+                                {% assign concert_dates = concert_dates | concat: c_start %}
 							{% endfor %}
+                            Performance{% if concerts.size > 1 %}s{% endif %} at {{concerts.first.location}} on {{ concert_dates | array_to_sentence_string }}
+                            {%- comment -%}TODO use formal location {%- endcomment -%}
 						</p>
 						<br>
 						<ul class="paragh">
