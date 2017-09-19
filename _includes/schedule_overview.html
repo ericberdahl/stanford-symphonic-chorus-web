@@ -42,7 +42,7 @@
     <td>{% if isPrimary %}<a href="#rehearsals">{% endif %}First rehearsal{% if isPrimary %}</a>{% endif %}:</td>
     <td><ul>
         <li>
-            {{first_rehearsal.start | date: "%A %-e %B %Y at %-l:%M%P"}}, {{first_rehearsal.location}}.
+            {{first_rehearsal.start | date: "%A %-e %B %Y at %-l:%M%P"}}, {% include loc_citation.html loc=first_rehearsal.location %}.
             Registration starts at {{first_rehearsal.registration | date: "%-l:%M%P"}}
         </li>
     </ul></td>
@@ -62,7 +62,7 @@
     <td>{% if isPrimary %}<a href="#dress">{% endif %}Dress rehearsals{% if isPrimary %}</a>{% endif %}:</td>
     <td><ul>
         {% for dress in program.dresses %}
-        <li>{{dress.start | date: "%-l:%M%P %A %-e %B %Y"}}, {{dress.location}}</li>
+        <li>{{dress.start | date: "%-l:%M%P %A %-e %B %Y"}}, {% include loc_citation.html loc=dress.location %}</li>
         {% endfor %}
     </ul></td>
 </tr>
@@ -71,7 +71,7 @@
     <td>{% if isPrimary %}<a href="#concerts">{% endif %}Concerts{% if isPrimary %}</a>{% endif %}:</td>
     <td><ul>
         {% for concert in program.concerts %}
-        <li>{{ concert.start | date: "%-l:%M%P, %A %-e %B %Y" }} in {{ concert.location }} ({{ concert.call | date: "%-l:%M%P" }} call)</li>
+        <li>{{ concert.start | date: "%-l:%M%P, %A %-e %B %Y" }} in {% include loc_citation.html loc=concert.location %} ({{ concert.call | date: "%-l:%M%P" }} call)</li>
         {% endfor %}
     </ul>
     </td>

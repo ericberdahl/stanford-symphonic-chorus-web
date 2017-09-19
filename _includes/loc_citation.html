@@ -1,0 +1,12 @@
+{%- assign loc = include.loc -%}
+{%- assign style = include.style | default: "casual" -%}
+{%- assign location = site.locations | where_exp:"item","item.key == loc" | first -%}
+{%- if location -%}
+    {%- case style -%}
+        {%- when "formal" -%}
+            {%- assign loc = location.formal -%}
+        {%- else -%}
+            {%- assign loc = location.casual -%}
+    {%- endcase -%}
+{%- endif -%}
+{{loc}}

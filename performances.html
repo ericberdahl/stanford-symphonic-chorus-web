@@ -138,7 +138,7 @@
 				
 				<h4>Concerts:</h4>
 				{% for c in p.concerts %}
-				<p>{{ c.start | date: "%A %-e %B %Y, %-l:%M%P" }}, {{ c.location }}</p>
+				<p>{{ c.start | date: "%A %-e %B %Y, %-l:%M%P" }}, {% include loc_citation.html loc=c.location %}</p>
 				{% endfor %}
 			</div>
 			<ul class="middle_links">

@@ -103,7 +103,7 @@
 			<tr>
 				<td>{{rehearsal.start | date: "%A"}}</td>
 				<td class="right">{{rehearsal.start | date: "%-e %B %Y"}}</td>
-				<td>{{rehearsal.location}}</td>
+				<td>{% include loc_citation.html loc=rehearsal.location %}</td>
 				<td>
                     {{rehearsal.start | date: "%-l:%M%P"}} - {{rehearsal.end | date: "%-l:%M%P"}}
                     {% if forloop.first %}
@@ -128,7 +128,7 @@
 			<tr class="dress">
 				<td>{{dress.start | date: "%A"}}</td>
 				<td class="right">{{dress.start | date: "%-e %B %Y"}}</td>
-				<td>{{dress.location}}</td>
+				<td>{% include loc_citation.html loc=dress.location %}</td>
 				<td>{{dress.start | date: "%-l:%M%P"}}</td>
 				<td>Dress rehearsal</td>
 			</tr>
@@ -148,7 +148,7 @@
 			<tr>
 				<td>{{concert.start | date: "%A"}}</td>
 				<td class="right">{{concert.start | date: "%-e %B %Y"}}</td>
-				<td>{{concert.location}}</td>
+				<td>{% include loc_citation.html loc=concert.location %}</td>
 				<td>{{concert.call | date: "%-l:%M%P"}}</td>
 				<td>Concert call for {{concert.start | date: "%-l:%M%P"}} concert</td>
 			</tr>

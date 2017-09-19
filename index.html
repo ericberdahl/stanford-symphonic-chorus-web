@@ -93,7 +93,7 @@
 						<h3><span class="event_day">{{et | date: "%-e"}}</span><span class="event_month">{{et | date: "%b"}}<br>{{et | date: "%Y"}}</span></h3>
 						<div class="event_list">
 							<p>First rehearsal: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece %}</span></p>
-							<p>{{et | date: "%-l:%M%P"}} {{first_rehearsal.location}}; <em>registration starts at {{first_rehearsal.registration | date: "%-l:%M%P"}}</em></p>
+							<p>{{et | date: "%-l:%M%P"}} {% include loc_citation.html loc=first_rehearsal.location %}; <em>registration starts at {{first_rehearsal.registration | date: "%-l:%M%P"}}</em></p>
 						</div>
 					</div>
 					{% endif %}
@@ -103,7 +103,7 @@
 						<h3><span class="event_day">{{ev.start | date: "%-e"}}</span><span class="event_month">{{ev.start | date: "%b"}}<br>{{ev.start | date: "%Y"}}</span></h3>
 						<div class="event_list">
 							<p>{{ev.title}}</p>
-							<p>{{ev.start | date: "%-l:%M%P"}} {{ev.location}}</p>
+							<p>{{ev.start | date: "%-l:%M%P"}} {% include loc_citation.html loc=ev.location %}</p>
 						</div>
 					</div>
 					{% endfor %}
@@ -113,7 +113,7 @@
 						<h3><span class="event_day">{{c.start | date: "%-e"}}</span><span class="event_month">{{c.start | date: "%b"}}<br>{{c.start | date: "%Y"}}</span></h3>
 						<div class="event_list">
 							<p>Symphonic Chorus Performance: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece %}{{collaborator}}</span></p>
-							<p>{{c.start | date: "%-l:%M%P"}} {{c.location}}</p>
+							<p>{{c.start | date: "%-l:%M%P"}} {% include loc_citation.html loc=c.location %}</p>
 						</div>
 					</div>
 					{% endfor %}
@@ -168,8 +168,7 @@
                                 {% assign c_start = c.start | date: "%A, %-e %B" | split: "%" %}
                                 {% assign concert_dates = concert_dates | concat: c_start %}
 							{% endfor %}
-                            Performance{% if concerts.size > 1 %}s{% endif %} at {{concerts.first.location}} on {{ concert_dates | array_to_sentence_string }}
-                            {%- comment -%}TODO use formal location {%- endcomment -%}
+                            Performance{% if concerts.size > 1 %}s{% endif %} at {% include loc_citation.html loc=concerts.first.location style="formal" %} on {{ concert_dates | array_to_sentence_string }}
 						</p>
 						<br>
 						<ul class="paragh">
