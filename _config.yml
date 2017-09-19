@@ -5,6 +5,7 @@
 # TODO: add include for MediaBox images and MediaBox header
 # TODO: fix broken image links in schedule.html
 # TODO: convert performances in performance.html to program collection, one program at a time
+# TODO: change collaborator to collaborators in programs
 plugins:
  - jekyll-tidy
 
