@@ -101,9 +101,15 @@
 		<h3 id="{{a.director | slugify}}">{{a.director}}</h3>
 		<div class="pgraph">
 			{% if a.image %}
-			<a class="photo pgraph" href="{{ a.image.file | prepend: "images/fylp/" | relative_url }}" title="{{a.director}}, {{a.label}}" rel="mediabox[{{a.image.width}} {{a.image.height}}]">
-			  <img src="{{ a.image.file | prepend: "images/fylp/" | relative_url }}" width="109" height="{{a.image.height | times: 109 | divided_by: a.image.width}}" alt="{{a.director}}, {{a.label}}">
-			</a>
+				{% assign image_file=a.image.file | prepend: "images/fylp/" %}
+				{% assign caption=a.director | append: ", "
+				                             | append: a.label %}
+				{% include lightbox.html image=image_file
+										style="leadin"
+										width=a.image.width
+										height=a.image.height
+										caption=caption
+										img_width=109 %}
 			{% endif %}
 			{{ a.content }}
 		</div>
@@ -114,9 +120,11 @@
 		<!-- TemplateBeginEditable name="sidebar_supplementary" -->
 		<!-- TemplateEndEditable -->
 		<div>
-			<a class="photo" href="{{ site.baseurl }}{% link images/graphics/Sano.jpg %}" title="Director of Music and Conductor Stephen Sano" rel="mediabox[220 291]">
-				<img src="{{ site.baseurl }}{% link images/graphics/Sano.jpg %}" alt="Director of Music and Conductor Stephen Sano" class="framed" width="149">
-			</a>
+			{% include lightbox.html image="images/graphics/Sano.jpg"
+									width=220
+									height=291
+									caption="Director of Music and Conductor Stephen Sano"
+									img_width=149 %}
 		</div>
         <div id="performances">
             <h2>Performances</h2>

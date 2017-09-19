@@ -175,9 +175,11 @@
 			<h2>Related Pages</h2>
 			<div>
 				<!-- <span class="citation">Photo by R. A. Wilson</span> -->
-				<a class="photo" href="{{ site.baseurl }}{% link images/graphics/ConductingRehearsalA.jpg %}" title="Steve Sano conducting dress rehearsal in Memorial Church, 25 February 2010. Photo by R. A. Wilson." rel="mediabox[800 533]">
-					<img src="{{ site.baseurl }}{% link images/graphics/ConductingRehearsal149x77.jpg %}" width="149" height="77" class="framed" alt="Steve Sano conducting dress rehearsal in Memorial Church, 25 February 2010. Photo by R. A. Wilson.">
-				</a>
+                {% include lightbox.html image="images/graphics/ConductingRehearsalA.jpg"
+    									width=800
+    									height=533
+    									caption="Steve Sano conducting dress rehearsal in Memorial Church, 25 February 2010. Photo by R. A. Wilson."
+    									img_width=149 %}
 			</div>
 			<h3><a href="{{ site.baseurl }}{% link MemberPage.html %}">Member Information</a></h3>
 			<p>See our member page for information about rehearsals, and information and member resources. </p>

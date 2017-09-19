@@ -89,9 +89,11 @@
 		<!-- TemplateBeginEditable name="sidebar_supplementary" -->
 		<div id="related_pages">
 			<h2>More About Us</h2>
-			<a class="photo" href="{{ site.baseurl }}{% link images/graphics/MemChuReh.jpg %}" title="Rehearsal, Memorial Church, 25 February 2010. Photo by R. A. Wilson" rel="mediabox[800 533]">
-				<img src="{{ site.baseurl }}{% link images/graphics/MemChuReh_small.jpg %}" class="framed" alt="Rehearsal, Memorial Church, 25 February 2010. Photo by R. A. Wilson">
-			</a>
+			{% include lightbox.html image="images/graphics/MemChuReh.jpg"
+									width=800
+									height=533
+									caption="Rehearsal, Memorial Church, 25 February 2010. Photo by R. A. Wilson"
+									img_width=149 %}
 
 			<h3><a href="MemberPage.html#c1">How to Join</a></h3>
 			<p>See <em><a href="MemberPage.html#c1">Joining the Chorus</a></em> for information on auditions and basic member requirements.</p>
@@ -101,9 +103,11 @@
 		</div>
 		<!-- TemplateEndEditable -->
 		<div>
-			<a class="photo" href="{{ site.baseurl }}{% link images/graphics/Sano.jpg %}" title="Director of Music and Conductor Stephen Sano" rel="mediabox[220 291]">
-				<img src="{{ site.baseurl }}{% link images/graphics/Sano.jpg %}" alt="Director of Music and Conductor Stephen Sano" class="framed" width="149">
-			</a>
+			{% include lightbox.html image="images/graphics/Sano.jpg"
+									width=220
+									height=291
+									caption="Director of Music and Conductor Stephen Sano"
+									img_width=149 %}
 		</div>
 		<div id="seal"></div>
 	</div>

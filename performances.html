@@ -1780,9 +1780,11 @@
 		<!-- TemplateBeginEditable name="sidebar_supplementary" -->
 		<div id="see_also">
 			<h2>Coverage of the 2008 China Music Tour</h2>
-			<a class="photo" href="{{ site.baseurl }}{% link images/graphics/SupremeHarmony.jpg %}" title="Corner to the right of the Gate of Supreme Harmony in the Forbidden City." rel="mediabox[600 450]">
-				<img class="framed" src="{{ site.baseurl }}{% link images/graphics/SupremeHarmony.jpg %}" width="149" height="112" alt="Near the Gate of Supreme Harmony at the Forbidden City in Beijing. Photo by Tom Sharp.">
-			</a>
+            {% include lightbox.html image="images/graphics/SupremeHarmony.jpg"
+									width=600
+									height=450
+									caption="Near the Gate of Supreme Harmony at the Forbidden City in Beijing. Photo by Tom Sharp."
+									img_width=149 %}
 
 			<h3><a href="http://www.stanfordalumni.org/news/magazine/2008/sepoct/farm/news/chinatour.html">Stanford Alumni Magazine</a></h3>
 			<p>The Alumni magazine featured a story.</p>
