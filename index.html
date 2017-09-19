@@ -66,9 +66,14 @@
 		<div id="spotlight">
 			<div id="banner">
 				<div>
-					<a class="photo" href="{{ site.baseurl }}{% link performances/W2010/FullChorus27Feb2010.JPG %}" title="Performance of Beethoven Mass in C on 27 February 2010. Photo by R. A. Wilson." rel="mediabox[800 518]">
-						<img src="{{ site.baseurl }}{% link images/graphics/ChorusBanner.jpg %}" width="754" height="160" alt="Performance of Beethoven Mass in C on 27 February 2010. Photo by R. A. Wilson." class="image_banner">
-					</a>
+                    {% include lightbox.html image="performances/W2010/FullChorus27Feb2010.JPG"
+                                            display="images/graphics/ChorusBanner.jpg"
+                                            display_class="image_banner"
+                                            width=800
+                                            height=518
+                                            caption="Performance of Beethoven Mass in C on 27 February 2010. Photo by R. A. Wilson."
+                                            img_width=754
+                                            img_height=160 %}
 				</div>
 			</div>
 		</div>
@@ -77,9 +82,11 @@
 			<!-- TemplateBeginEditable name="content_left" -->
 			<div id="events">
 				<h2>Events</h2>
-				<a class="photo" href="{{ site.baseurl }}{% link images/graphics/MemChu.jpg %}" title="Memorial Church, 22 February 2010. Photo by R. A. Wilson." rel="mediabox[1314 852]">
-					<img class="framed" src="{{ site.baseurl }}{% link images/graphics/MemChu.jpg %}" width="149" height="96" alt="Memorial Church evening. Photo by R. A. Wilson.">
-				</a>
+                {% include lightbox.html image="images/graphics/MemChu.jpg"
+                                        width=1314
+                                        height=852
+                                        caption="Memorial Church, 22 February 2010. Photo by R. A. Wilson."
+                                        img_width=149 %}
 				{% for et in event_times %}
 					{% assign et_events = current_events | where_exp: "item","item.start == et" %}
 					{% assign et_concerts = concerts | where_exp: "item","item.start == et" %}
@@ -129,10 +136,12 @@
 
 					<h3>The Chorus</h3>
 					<div>
-						<a class="photo pgraph" href="{{ site.baseurl }}{% link images/graphics/SmallW10.jpg %}" title="Performance of Beethoven's Mass in C, 27 February 2010. Photo by R. A. Wilson." rel="mediabox[700 448]">
-							<img class="framed" src="{{ site.baseurl }}{% link images/graphics/SmallW10.jpg %}" width="139" height="89" alt="Performance of Beethoven's Mass in C, 27 February 2010. Photo by R. A. Wilson.">
-						</a>
-
+                        {% include lightbox.html image="images/graphics/SmallW10.jpg"
+                                                style="leadin"
+                                                width=700
+                                                height=448
+                                                caption="Performance of Beethoven's Mass in C, 27 February 2010. Photo by R. A. Wilson."
+                                                img_width=139 %}
 						<p>
 							The Stanford Symphonic Chorus is a group of
 							approximately 180 students, faculty, staff, and
@@ -155,11 +164,13 @@
 						{% assign image = current_program.image %}
 						{% assign image_path = "performances/" | append: current_program.label
 						                                       | append: "/"
-															   | append: image.file
-															   | relative_url %}
-						<a class="photo pgraph" href="{{ image_path }}" rel="mediabox[{{ image.width }} {{ image.height }}]" title="{{ image.citation }}">
-							<img class="framed" src="{{ image_path }}" width="109" height="{{image.height | times: 109 | divided_by: image.width}}" alt="{{ image.citation }}">
-						</a>
+															   | append: image.file %}
+                        {% include lightbox.html image=image_path
+                                                style="leadin"
+                                                width=image.width
+                                                height=image.height
+                                                caption=image.citation
+                                                img_width=109 %}
 						{% endif %}
 						{{ current_program.content }}
 						<p>
@@ -198,12 +209,11 @@
 		-->
 		<div id="related_pages">
 			<h2>Helpful links</h2>
-			<a class="photo" href="{{ site.baseurl }}{% link images/graphics/steve_altos.jpg %}"
-				title="Alto section in rehearsal, 25 February 2010. Photo by R. A. Wilson."
-				rel="mediabox[800 533]"> <img class="framed"
-				src="{{ site.baseurl }}{% link images/graphics/steve_altos_sm.jpg %}" width="149" height="99"
-				alt="Alto section in rehearsal, 25 February 2010. Photo by R. A. Wilson.">
-			</a>
+            {% include lightbox.html image="images/graphics/steve_altos.jpg"
+                                    width=800
+                                    height=533
+                                    caption="Alto section in rehearsal, 25 February 2010. Photo by R. A. Wilson."
+                                    img_width=149 %}
 			<h3>Symphonic Chorus</h3>
 			<ul>
 				<li><a href="{{ site.baseurl }}{% link performances.html %}">SSC Performances</a></li>
@@ -211,12 +221,11 @@
 				<li><a href="{{ "MemberPage.html#auditions" | relative_url}}">Joining the Chorus</a></li>
 				<li><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></li>
 			</ul>
-			<a class="photo" href="{{ site.baseurl }}{% link images/graphics/rehearsal_front.jpg %}"
-				title="Rehearsal, 25 February 2010. Photo by R. A. Wilson."
-				rel="mediabox[800 533]"> <img class="framed"
-				src="{{ site.baseurl }}{% link images/graphics/rehearsal_front_sm.jpg %}"
-				alt="Rehearsal in Memorial Church, 25 February 2010. Photo by R. A. Wilson.">
-			</a>
+            {% include lightbox.html image="images/graphics/rehearsal_front.jpg"
+                                    width=800
+                                    height=533
+                                    caption="Rehearsal, 25 February 2010. Photo by R. A. Wilson."
+                                    img_width=149 %}
 			<h3>Stanford Arts</h3>
 			<ul>
 				<li><a href="http://music.stanford.edu/Home/index.html">Music Department</a></li>
