@@ -180,9 +180,9 @@
 						{% endif %}
 						{{ current_program.content }}
 						<p>
-                            {% assign concert_dates = "" | split: "," %}
+                            {% assign concert_dates = site.data.program.empty_array %}
 							{% for c in concerts %}
-                                {% assign c_start = c.start | date: "%A, %-e %B" | split: "%" %}
+                                {% assign c_start = c.start | date: "%A, %-e %B" | split: "\0" %}
                                 {% assign concert_dates = concert_dates | concat: c_start %}
 							{% endfor %}
                             Performance{% if concerts.size > 1 %}s{% endif %} at {% include loc_citation.html loc=concerts.first.location style="formal" %} on {{ concert_dates | array_to_sentence_string }}
