@@ -28,17 +28,19 @@
 </tr>
 {% endif %}
 {% endfor %}
-{% if program.collaborators.size %}
+{% for pc in program.collaborators %}
+{% if forloop.first %}
 <tr>
     <td>&nbsp;&nbsp;&nbsp;</td>
     <td>In collaboration with:</td>
     <td><ul>
-        {% for pc in program.collaborators %}
-        <li>{{pc}}</li>
-        {% endfor %}
+{% endif %}
+        <li>{% include collab_citation.html collab=pc %}</li>
+{% if forloop.last %}
     </ul></td>
 </tr>
 {% endif %}
+{% endfor %}
 <tr>
     <td>&nbsp;&nbsp;&nbsp;</td>
     <td>{% if isPrimary %}<a href="#rehearsals">{% endif %}First rehearsal{% if isPrimary %}</a>{% endif %}:</td>

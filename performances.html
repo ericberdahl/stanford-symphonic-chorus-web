@@ -132,8 +132,8 @@
 				{% endif %}
 				{% endfor %}
 				
-				{% if p.collaborators.size %}
-				<p>Performed with {{ p.collaborators | array_to_sentence_string }}.</p>
+                {% if p.collaborators.size %}
+                    <p>Performed with {% include collab_array_citation.html collaborators=p.collaborators %}.</p>
 				{% endif %}
 				
 				<h4>Concerts:</h4>

@@ -87,14 +87,19 @@
                                         height=852
                                         caption="Memorial Church, 22 February 2010. Photo by R. A. Wilson."
                                         img_width=149 %}
+                                        
+                {% if current_program.collaborators %}
+                    {% capture collaborators %}
+                        {% include collab_array_citation.html collaborators=current_program.collaborators %}
+                    {% endcapture %}
+					{% assign collaborators = collaborators | prepend: " with " %}
+                {% else %}
+                    {% assign collaborators = "" %}
+				{% endif %}
+                
 				{% for et in event_times %}
 					{% assign et_events = current_events | where_exp: "item","item.start == et" %}
 					{% assign et_concerts = concerts | where_exp: "item","item.start == et" %}
-					{% assign collaborator = "" %}
-					{% if current_program.collaborators %}
-					{% assign collaborator = current_program.collaborators | array_to_sentence_string
-                                                                           | prepend: " with " %}
-					{% endif %}
 					
 					{% if first_rehearsal.start == et %}
 					<div>
@@ -120,7 +125,7 @@
 					<div>
 						<h3><span class="event_day">{{c.start | date: "%-e"}}</span><span class="event_month">{{c.start | date: "%b"}}<br>{{c.start | date: "%Y"}}</span></h3>
 						<div class="event_list">
-							<p>Symphonic Chorus Performance: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece %}{{collaborator}}</span></p>
+							<p>Symphonic Chorus Performance: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece %}{{collaborators}}</span></p>
 							<p>{{c.start | date: "%-l:%M%P"}} {% include loc_citation.html loc=c.location %}</p>
 						</div>
 					</div>
