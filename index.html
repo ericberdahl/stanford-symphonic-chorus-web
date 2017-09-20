@@ -166,17 +166,17 @@
 
 					<h3><a href="{{ site.baseurl }}{% link performances.html %}">{{current_program.quarter}} Concert</a></h3>
 					<div>
-						{% if current_program.image %}
-						{% assign image = current_program.image %}
-						{% assign image_path = "performances/" | append: current_program.label
-						                                       | append: "/"
-															   | append: image.file %}
-                        {% include lightbox.html image=image_path
-                                                style="leadin"
-                                                width=image.width
-                                                height=image.height
-                                                caption=image.caption
-                                                img_width=109 %}
+						{% if current_program.images %}
+    						{% assign image = current_program.images[0] %}
+    						{% assign image_path = "performances/" | append: current_program.label
+    						                                       | append: "/"
+    															   | append: image.file %}
+                            {% include lightbox.html image=image_path
+                                                    style="leadin"
+                                                    width=image.width
+                                                    height=image.height
+                                                    caption=image.caption
+                                                    img_width=109 %}
 						{% endif %}
 						{{ current_program.content }}
 						<p>

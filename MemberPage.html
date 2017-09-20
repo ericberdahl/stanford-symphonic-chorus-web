@@ -4,6 +4,8 @@
                                   | nested_sort: "concerts[0].start"
 								  | reverse
 								  | last %}
+{% assign program_path = "performances/" | append: program.label
+                                         | append: "/" %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -66,7 +68,7 @@
 			{% if program.syllabus %}
 			<p>
 				{{program.quarter}} Syllabus
-				{% include file_links.html versions=program.syllabus label="Syllabus" %}
+				{% include file_links.html versions=program.syllabus label="Syllabus" path=program_path %}
 			</p>
 			{% endif %}
 			<p><a href="{{ site.baseurl }}{% link assets/Choral Studies Liability Waiver Form.pdf %}">Choral Studies Liability Waiver</a></p>
