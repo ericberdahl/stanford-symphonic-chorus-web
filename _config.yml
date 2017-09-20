@@ -16,6 +16,7 @@ timezone: America/Los_Angeles
 
 collections:
     albums:
+    collaborators:
     locations:
     programs:
     fylp:

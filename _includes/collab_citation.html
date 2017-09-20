@@ -1,3 +1,14 @@
 {%- assign style = include.style | default: "html" -%}
-{%- assign collab = include.collab -%}
-{{ collab }}
+{%- assign collaborator = site.collaborators | where_exp: "item","item.key == include.collab"
+                                             | first -%}
+{%- if collaborator -%}
+    {%- if collaborator.link -%}
+        <a href="{{ collaborator.link }}">
+    {%- endif -%}
+    {{ collaborator.name }}
+    {%- if collaborator.link -%}
+        </a>
+    {%- endif -%}
+{%- else -%}
+    {{ include.collab }}
+{%- endif -%}

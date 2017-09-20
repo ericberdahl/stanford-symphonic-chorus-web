@@ -62,7 +62,7 @@
 		</div>
 		<h3>Years</h3>
 		<ul>
-			<li><a href="#f2017">2017</a></li>
+			<li><a href="#F2017">2017</a></li>
 			<li><a href="#f2016">2016</a></li>
 			<li><a href="#f2015">2015</a></li>
 			<li><a href="#f2014">2014</a></li>
@@ -98,84 +98,70 @@
 			</p>
 		</div>
 		<!-- TemplateBeginEditable name="content_main" -->
-		<!-- ====================================================================== -->
-        {% comment %} TODO Convert performances historical data to programs collection, one season at a time
 		{% for p in programs %}
-		<br class="clear">
-		<div id="{{ p.label }}" class="middle">
-			<!-- do the image -->
-			<a class="photo" href="performances/F2017/Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff.jpg" rel="mediabox[790 874]" title="Photo by DAVID ILIFF. License: CC-BY-SA 3.0">
-				<img class="framed" src="performances/F2017/Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff.jpg" width="107" height="118" alt="Photo by DAVID ILIFF. License: CC-BY-SA 3.0">
-			</a>
-			<div class="middle_content">
-				<h3>{{ p.quarter }}</h3>
-				
-				{% for r in p.repertoire %}
-				{% if forloop.first %}
-				<p>Repertoire:</p>
-				<ul class="artists">
-				{% endif %}
-					<li>{% include piece_citation.html piece=r %}</em></li>
-				{% if forloop.last %}
-				</ul>
-				{% endif %}
-				{% endfor %}
-				
-				{% for s in p.soloists %}
-				{% if forloop.first %}
-				<p>With soloists:</p>
-				<ul class="artists">
-				{% endif %}
-					<li>{{ s.name }}, {{ s.part }}</li>
-				{% if forloop.last %}
-				</ul>
-				{% endif %}
-				{% endfor %}
-				
-                {% if p.collaborators.size %}
-                    <p>Performed with {% include collab_array_citation.html collaborators=p.collaborators %}.</p>
-				{% endif %}
-				
-				<h4>Concerts:</h4>
-				{% for c in p.concerts %}
-				<p>{{ c.start | date: "%A %-e %B %Y, %-l:%M%P" }}, {% include loc_citation.html loc=c.location %}</p>
-				{% endfor %}
-			</div>
-			<ul class="middle_links">
-				<!-- TOOD poster link -->
-				<!-- TOOD FYLP links -->
-				<!-- TOOD misc links -->
-			</ul>
-		</div>
+    		<br class="clear">
+    		<div id="{{ p.label }}" class="middle">
+                {% if p.poster %}
+                    {% assign image = p.poster.jpg %}
+                {% elsif p.image %}
+                    {% assign image = p.image %}
+                {% else %}
+                    {% assign image = nil %}
+                {% endif %}
+                
+                {% if image %}
+                    {% assign image_file = "performances/" | append: p.label
+                                                           | append: "/"
+                                                           | append: image.file %}
+                    {% include lightbox.html image=image_file
+        									width=image.width
+        									height=image.height
+        									caption=image.caption
+        									img_width=107 %}
+                {% else %}
+                    <img src="images/M@S-roundedges.gif" alt="">
+                {% endif %}
+    			<div class="middle_content">
+    				<h3>{{ p.quarter }}</h3>
+    				
+    				{% for r in p.repertoire %}
+        				{% if forloop.first %}
+            				<p>Repertoire:</p>
+            				<ul class="artists">
+        				{% endif %}
+    					        <li>{% include piece_citation.html piece=r %}</em></li>
+        				{% if forloop.last %}
+        				    </ul>
+        				{% endif %}
+    				{% endfor %}
+    				
+    				{% for s in p.soloists %}
+        				{% if forloop.first %}
+            				<p>With soloists:</p>
+            				<ul class="artists">
+        				{% endif %}
+    					        <li>{{ s.name }}, {{ s.part }}</li>
+        				{% if forloop.last %}
+        				    </ul>
+        				{% endif %}
+    				{% endfor %}
+    				
+                    {% if p.collaborators.size %}
+                        <p>Performed with {% include collab_array_citation.html collaborators=p.collaborators %}.</p>
+    				{% endif %}
+    				
+    				<h4>Concerts:</h4>
+    				{% for c in p.concerts %}
+    				    <p>{{ c.start | date: "%A %-e %B %Y, %-l:%M%P" }}, {% include loc_citation.html loc=c.location %}</p>
+    				{% endfor %}
+    			</div>
+    			<ul class="middle_links">
+    				<!-- TODO poster link -->
+    				<!-- TODO FYLP links -->
+    				<!-- TODO misc links -->
+    			</ul>
+    		</div>
 		{% endfor %}
-        {% endcomment %}
-		<br class="clear">
-		<div id="f2017" class="middle">
-			<!-- <img src="images/M@S-roundedges.gif" alt=""> -->
-			<a class="photo" href="performances/F2017/Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff.jpg" rel="mediabox[790 874]" title="Photo by DAVID ILIFF. License: CC-BY-SA 3.0">
-				<img class="framed" src="performances/F2017/Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff.jpg" width="107" height="118" alt="Photo by DAVID ILIFF. License: CC-BY-SA 3.0">
-			</a>
-			<div class="middle_content">
-				<h3>Fall 2017</h3>
-				<p>Stanford Symphonic Chorus fall concert</p>
-				<ul class="artists">
-					<li>Elgar <em>The Music Makers</em></li>
-					<li><ul class="soloists">
-						<li>Wendy Hillhouse, mezzo-soprano</li>
-					</ul></li>
-					<li>Tallis <em>Why fum'th in fight</em></li>
-					<li>Trad. English, arr. Vaughan Williams <em>Ward the Pirate</em></li>
-				</ul>
-				<p>Performed with the <a href="http://peninsulasymphony.org/">Peninsula Symphony Orchestra</a>.</p>
-				<h4>Concerts:</h4>
-				<p>Friday 19 November 2017, 7:30 p.m., Bing Concert Hall</p>
-				<p>Sunday 21 November 2017, 2:30 p.m., Bing Concert Hall</p>
-			</div>
-			<ul class="middle_links">
-				<li style="display: none">Poster (<a href="performances/S2017/S2017-Poster.pdf">PDF</a>&nbsp;|&nbsp;<a href="performances/S2017/S2017-Poster.jpg">JPG</a>)</li>
-				<li style="display: none"><a href="fylp/john-rutter-magnificat.html">For your listening pleasure: John Rutter's <em>Magnificat</em></a></li>
-			</ul>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="s2017" class="middle">
