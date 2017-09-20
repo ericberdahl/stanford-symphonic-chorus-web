@@ -202,17 +202,6 @@
 	</div>
 	<div id="sidebar">
 		<!-- TemplateBeginEditable name="sidebar" -->
-		<!--
-		<div id="site_navigation">
-			<h2>Site Navigation</h2>
-			<ul>
-				<li class="current"><a href="index.html">Home</a></li>
-				<li><a href="performances.html">Performances</a></li>
-				<li><a href="MemberPage.html">Member Information</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</div>
-		-->
 		<div id="related_pages">
 			<h2>Helpful links</h2>
             {% include lightbox.html image="images/graphics/steve_altos.jpg"
@@ -224,7 +213,7 @@
 			<ul>
 				<li><a href="{{ site.baseurl }}{% link performances.html %}">SSC Performances</a></li>
 				<li><a href="{{ site.baseurl }}{% link fylp.html %}">For your listening pleasure</a></li>
-				<li><a href="{{ "MemberPage.html#auditions" | relative_url}}">Joining the Chorus</a></li>
+				<li><a href="{{ site.baseurl }}{% link MemberPage.html %}#auditions">Joining the Chorus</a></li>
 				<li><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></li>
 			</ul>
             {% include lightbox.html image="images/graphics/rehearsal_front.jpg"

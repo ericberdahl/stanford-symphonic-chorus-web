@@ -129,7 +129,7 @@
         <div id="performances">
             <h2>Performances</h2>
             {% for p in page.performances %}
-            <h3><a href="{{ p.anchor | prepend: "performances.html#" | relative_url }}">{{p.name}}</a></h3>
+            <h3><a href="{{ site.baseurl }}{% link performances.html %}#{{ p.anchor }}">{{p.name}}</a></h3>
             {% endfor %}
         </div>
 	</div>

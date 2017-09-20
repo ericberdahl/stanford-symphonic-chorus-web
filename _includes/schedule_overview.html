@@ -54,10 +54,9 @@
 {% if isPrimary %}
 <tr>
     <td>&nbsp;&nbsp;&nbsp;</td>
-    <td>{% if isPrimary %}<a href="MemberPage.html#auditions">{% endif %}Auditions{% if isPrimary %}</a>{% endif %}:</td>
+    <td>{% if isPrimary %}<a href="{{ site.baseurl }}{% link MemberPage.html %}#auditions">{% endif %}Auditions{% if isPrimary %}</a>{% endif %}:</td>
     <td><ul>
-        <li>See the <a href="MemberPage.html#auditions">Auditions</a> section of our Member Page for information about how to audition.
-        </li>
+        <li>See the <a href="{{ site.baseurl }}{% link MemberPage.html %}#auditions">Auditions</a> section of our Member Page for information about how to audition.</li>
     </ul></td>
 </tr>
 {% endif %}
