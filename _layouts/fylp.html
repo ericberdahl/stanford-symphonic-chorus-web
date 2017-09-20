@@ -128,8 +128,20 @@
 		</div>
         <div id="performances">
             <h2>Performances</h2>
+			{% assign p_list = site.data.program.empty_array %}
+			{% for p in site.programs %}
+				{% assign r = p.repertoire | where: "composer",page.composer
+										   | where: "title",page.title %}
+			    {% if r.size > 0 %}
+					{% assign one_p = site.programs | where:"quarter",p.quarter %}
+					{% assign p_list = p_list | concat: one_p %}
+			    {% endif %}
+			{% endfor %}
+			{% for p in p_list %}
+            	<h3><a href="{{ site.baseurl }}{% link performances.html %}#{{ p.label }}">{{p.quarter}}</a></h3>
+            {% endfor %}
             {% for p in page.performances %}
-            <h3><a href="{{ site.baseurl }}{% link performances.html %}#{{ p.anchor }}">{{p.name}}</a></h3>
+            	<h3><a href="{{ site.baseurl }}{% link performances.html %}#{{ p.anchor }}">{{p.name}}</a></h3>
             {% endfor %}
         </div>
 	</div>
