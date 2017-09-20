@@ -6,16 +6,20 @@
 {%- assign img_width = include.img_width -%}
 {%- assign img_height = include.img_height | default: -1 -%}
 {%- assign style = include.style | default: "plain" -%}
-{%- assign display_class = include.display_class | default: "framed" -%}
 {%- case style -%}
     {%- when "leadin" -%}
-        {%- assign extra_classes = "pgraph" -%}
+        {%- assign anchor_class = "photo pgraph" -%}
+        {%- assign display_class = "" -%}
+    {%- when "banner" -%}
+        {%- assign anchor_class = "photo" -%}
+        {%- assign display_class = "image_banner" -%}
     {%- else -%}
-        {%- assign extra_classes = "" -%}
+        {%- assign anchor_class = "photo" -%}
+        {%- assign display_class = "framed" -%}
 {%- endcase -%}
 {%- if img_height == -1 -%}
     {%- assign img_height = height | times: img_width | divided_by: width -%}
 {%- endif -%}
-<a class="photo {{extra_classes}}" href="{{image | relative_url}}" title="{{caption}}" rel="mediabox[{{width}} {{height}}]">
+<a class="{{anchor_class}}" href="{{image | relative_url}}" title="{{caption}}" rel="mediabox[{{width}} {{height}}]">
     <img class="{{display_class}}" src="{{display | relative_url}}" width="{{img_width}}" height="{{img_height}}" alt="{{caption}}">
 </a>
