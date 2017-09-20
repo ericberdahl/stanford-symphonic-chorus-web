@@ -5,8 +5,7 @@
 								          | reverse
 									      | last %}
 {% assign past_programs = site.programs | where_exp: "item","item.concerts[0].start <= site.time"
-                                        | nested_sort: "concerts[0].start"
-								        | reverse %}
+                                        | nested_sort: "concerts[0].start" %}
 {% assign programs = past_programs | unshift: current_program %}
 <!doctype html>
 <html lang="en">
@@ -177,35 +176,12 @@
                         <li><a href="{{fylp.url | relative_url}}">For your listening pleasure: {% include piece_citation.html piece=r %}</a></li>
                         {% endif %}
                     {% endfor %}
-    				{% comment %} TODO misc links {% endcomment %}
+                    {% for l in p.links %}
+                        <li><a href="{{l.url}}">{{l.text}}</a></li>
+                    {% endfor %}
     			</ul>
     		</div>
 		{% endfor %}
-		<!-- ====================================================================== -->
-		<br class="clear">
-		<div id="w2017" class="middle">
-			<a class="photo" href="performances/W2017/W2017-Poster.jpg" rel="mediabox[493 774]" title="Orff: Carmina Burana">
-				<img class="framed" src="performances/W2017/W2017-Poster.jpg" width="107" height="168" alt="Orff: Carmina Burana">
-			</a>
-			<div class="middle_content">
-				<h3>Winter 2017</h3>
-				<p>Stanford Symphonic Chorus winter concert</p>
-				<ul class="artists">
-					<li>Carl Orff <em>Carmina Burana</em></li>
-					<li>Jennifer Higdon <em>blue cathedral</em></li>
-					<li>Stravinsky <em>Firebird Suite</em> (1919 version)</li>
-				</ul>
-				<p>Performed with the <a href="http://www.sso.org/">Stanford Symphony Orchestra</a>.</p>
-				<h4>Concerts:</h4>
-				<p>Friday 24 February 2017, 7:30 p.m., Bing Concert Hall</p>
-				<p>Saturday 25 February 2017, 7:30 p.m., Bing Concert Hall</p>
-			</div>
-			<ul class="middle_links">
-				<li>Poster (<a href="performances/W2017/W2017-Poster.jpg">JPG</a>)</li>
-				<li><a href="fylp/orff-carmina-burana.html">For your listening pleasure: Orff <em>Carmina Burana</em></a></li>
-                <li><a href="https://youtu.be/lMa5W4_gM9o?t=34m41s">Performance on YouTube</a></li>
-			</ul>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="f2016" class="middle">

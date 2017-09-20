@@ -4,7 +4,6 @@
 # TODO: convert all mediabox images to use lightbox include
 # TODO: Update MediaBox to Lightbox (https://github.com/lokesh/lightbox2)
 # TODO: convert performances in performance.html to program collection, one program at a time
-# TODO: Automatically generate links to performances from each fylp content page
 plugins:
  - jekyll-tidy
 
