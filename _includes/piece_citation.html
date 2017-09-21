@@ -6,16 +6,30 @@
                                   | append: {{piece.arranger}} -%}
 {%- endif -%}
 {%- assign title = piece.title -%}
-{%- assign suffix = piece.suffix -%}
-{%- if suffix -%}
-    {%- assign title = title | append: ", "
-                             | append: suffix -%}
+{%- assign parenthetical = site.data.program.empty_array | unshift: piece.note
+                                                         | unshift: piece.translation
+                                                         | compact
+                                                         | join: ", " -%}
+{%- if parenthetical != "" -%}
+    {%- assign parenthetical = parenthetical | prepend: "("
+                                             | append: ")" -%}
+{%- endif -%}
+{%- assign post_title = site.data.program.empty_array | unshift: piece.suffix
+                                                      | unshift: parenthetical
+                                                      | compact
+                                                      | join: ", " -%}
+{%- if post_title != "" -%}
+  {%- assign post_title = post_title | prepend: " " -%}
 {%- endif -%}
 {%- case style -%}
     {%- when "plain" -%}
         {%- assign composer = composer | append: ":" -%}
+    {%- when "simple" -%}
+        {%- assign title = title | prepend: "<em>"
+                                 | append: "</em>" -%}
+        {%- assign post_title = "" -%}
     {%- else -%}
         {%- assign title = title | prepend: "<em>"
                                  | append: "</em>" -%}
 {%- endcase -%}
-{{composer}} {{title}}
+{{composer}} {{title}}{{post_title}}
