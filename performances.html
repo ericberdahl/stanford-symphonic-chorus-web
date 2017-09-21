@@ -116,19 +116,26 @@
     		<br class="clear">
     		<div id="{{ p.label }}" class="middle">
                 {% if p.poster %}
-                    {% assign image = p.poster.jpg %}
+                    {% assign lightbox_image = p.poster.pdf | default: p.poster.jpg.file %}
+                    {% assign lightbox_display = p.poster.jpg %}
                 {% elsif p.images %}
-                    {% assign image = p.images[0] %}
+                    {% assign lightbox_image = p.images[0].file %}
+                    {% assign lightbox_display = p.images[0] %}
                 {% else %}
-                    {% assign image = nil %}
+                    {% assign lightbox_image = nil %}
+                    {% assign lightbox_display = nil %}
                 {% endif %}
                 
-                {% if image %}
-                    {% assign image_file = p_path | append: image.file %}
+                {% if lightbox_image %}
+                    {% assign image_file = lightbox_image | prepend: p_path
+                                                          | uri_escape %}
+                    {% assign display_file = lightbox_display.file | prepend: p_path
+                                                                   | uri_escape %}
                     {% include lightbox.html image=image_file
-        									width=image.width
-        									height=image.height
-        									caption=image.caption
+                                            display=display_file
+        									width=lightbox_display.width
+        									height=lightbox_display.height
+        									caption=lightbox_display.caption
         									img_width=107 %}
                 {% else %}
                     <img src="images/M@S-roundedges.gif" alt="">
@@ -188,43 +195,18 @@
                         {% endif %}
                     {% endfor %}
                     {% for l in p.links %}
-                        <li><a href="{{l.url}}">{{l.text}}</a></li>
+                        {% if l.file %}
+                            {% assign link_url = l.file | prepend: p_path
+                                                        | uri_escape
+                                                        | relative_url %}
+                        {% else %}
+                            {% assign link_url = l.url %}
+                        {% endif %}
+                        <li><a href="{{link_url}}">{{l.text}}</a></li>
                     {% endfor %}
     			</ul>
     		</div>
 		{% endfor %}
-		<!-- ====================================================================== -->
-		<br class="clear">
-		<div id="w2016" class="middle">
-			<a class="photo" href="performances/W2016/W2016%20Poster.pdf" rel="mediabox[458 720]" title="Poulenc: Gloria">
-				<img class="framed" src="performances/W2016/W2016%20Poster.jpg" width="107" height="168" alt="Poulenc: Gloria">
-			</a>
-			<div class="middle_content">
-				<h3>Winter 2016</h3>
-				<p>Stanford Symphonic Chorus winter concert</p>
-				<ul class="artists">
-					<li>Francis Poulenc <em>Gloria</em></li>
-					<li><ul class="soloists">
-						<li>YoonGeong Lee, soprano</li>
-					</ul></li>
-					<li>John Adams <em>The Chairman Dances</em></li>
-					<li>Samuel Barber <em>Violin Concerto</em></li>
-					<li><ul class="soloists">
-						<li>Livia Sohn</li>
-					</ul></li>
-				</ul>
-				<p>Performed with the <a href="http://www.sso.org/">Stanford Symphony Orchestra</a>.</p>
-				<p>Directed by Anna Wittstruck</p>
-				<h4>Concerts:</h4>
-				<p>Friday 26 February 2016, 7:30 p.m., Bing Concert Hall</p>
-				<p>Sunday 28 February 2016, 2:30 p.m., Bing Concert Hall</p>
-			</div>
-			<ul class="middle_links">
-				<li>Poster (<a href="performances/W2016/W2016%20Poster.pdf">PDF</a>&nbsp;|&nbsp;<a href="performances/W2016/W2016%20Poster.jpg">JPG</a>)</li>
-				<li><a href="performances/W2016/W2016%20Concert%20Photo.jpg">Concert Photo</a></li>
-				<li><a href="https://youtu.be/9A1yGkgmviE">Performance on YouTube</a></li>
-			</ul>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="f2015" class="middle">
