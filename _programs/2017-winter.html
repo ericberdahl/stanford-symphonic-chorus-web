@@ -7,16 +7,16 @@ syllabus:
 -   "SSC Syllabus Winter 2017.pdf"
 -   "SSC Syllabus Winter 2017.docx"
 
-main_piece: &main-piece
+repertoire:
+-   &main-piece
     title: "Carmina Burana"
     composer: "Carl Orff"
-
-repertoire:
--   *main-piece
 -   title: "blue cathedral"
     composer: "Jennifer Higdon"
 -   title: "Firebird Suite (1919 version)"
     composer: "Stravinsky"
+
+main_piece: *main-piece
 
 soloists:
 
@@ -44,17 +44,15 @@ limits:
 
 #preregister: 
 
-first_rehearsal: &first-rehearsal
+images:
+
+schedule:
+-   &first-rehearsal
     start: 2017-01-09 19:30:00 -0800
     end: 2017-01-09 22:00:00 -0800
     location: "Campbell Recital Hall"
     event: "Registration and Tutti rehearsal"
     registration: 2017-01-09 18:30 -0800
-
-images:
-
-schedule:
--   *first-rehearsal
 -   start: 2017-01-16 19:30:00 -0800
     end: 2017-01-16 22:00:00 -0800
     location: "Campbell Recital Hall"
@@ -100,17 +98,22 @@ schedule:
     location: "Campbell Recital Hall"
     event: "Music & Nationalism Discussion (optional, but warmly encouraged)"
 
+first_rehearsal: *first-rehearsal
+
 dresses:
 -   start: 2017-02-21 19:00:00 -0800
     location: "Bing"
 -   start: 2017-02-23 19:00:00 -0800
     location: "Bing"
-    
+
 concerts:
--   start: 2017-02-24 19:30:00 -0800
+-   &first-concert
+    start: 2017-02-24 19:30:00 -0800
     call: 2017-02-24 19:30:00 -0800
     location: "Bing"
 -   start: 2017-02-25 19:30:00 -0800
     call: 2017-02-25 19:30:00 -0800
     location: "Bing"
+
+first_concert: *first-concert
 ---

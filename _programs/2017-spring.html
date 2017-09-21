@@ -7,16 +7,16 @@ syllabus:
 -   "SSC Syllabus Spring 2017.pdf"
 -   "SSC Syllabus Spring 2017.docx"
 
-main_piece: &main-piece
+repertoire:
+-   &main-piece
     title: "Magnificat"
     composer: "Gerald Finzi"
-
-repertoire:
--   *main-piece
 -   title: "God is Gone Up"
     composer: "Gerald Finzi"
 -   title: "Magnificat"
     composer: "John Rutter"
+
+main_piece: *main-piece
 
 soloists:
 
@@ -42,17 +42,15 @@ limits:
 
 #preregister: 
 
-first_rehearsal: &first-rehearsal
+images:
+
+schedule:
+-   &first-rehearsal
     start: 2017-03-27 19:30:00 -0700
     end: 2017-03-27 22:00:00 -0700
     location: "Campbell Recital Hall"
     event: "Registration and Tutti rehearsal"
     registration: 2017-03-27 18:30 -0700
-
-images:
-
-schedule:
--   *first-rehearsal
 -   start: 2017-04-10 19:30:00 -0700
     end: 2017-04-10 22:00:00 -0700
     location: "Campbell Recital Hall"
@@ -94,17 +92,22 @@ schedule:
     location: "Braun 103"
     event: "Men&rsquo;s sectional (optional, but warmly encouraged)"
 
+first_rehearsal: *first-rehearsal
+
 dresses:
 -   start: 2017-05-09 19:00:00 -0700
     location: "MemChu"
 -   start: 2017-05-11 19:00:00 -0700
     location: "MemChu"
-    
+
 concerts:
--   start: 2017-05-12 20:00:00 -0700
+-   &first-concert
+    start: 2017-05-12 20:00:00 -0700
     call: 2017-05-12 19:00:00 -0700
     location: "MemChu"
 -   start: 2017-05-13 20:00:00 -0700
     call: 2017-05-13 19:00:00 -0700
     location: "MemChu"
+
+first_concert: *first-concert
 ---

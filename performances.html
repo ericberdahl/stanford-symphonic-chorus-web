@@ -1,11 +1,10 @@
 ---
 ---
-{% assign current_program = site.programs | where_exp: "item","item.concerts[0].start > site.time"
-                                          | nested_sort: "concerts[0].start"
-								          | reverse
-									      | last %}
-{% assign past_programs = site.programs | where_exp: "item","item.concerts[0].start <= site.time"
-                                        | nested_sort: "concerts[0].start" %}
+{% assign current_program = site.programs | where_exp: "item","item.first_concert.start > site.time"
+                                          | sort: "first_concert.start"
+									      | first %}
+{% assign past_programs = site.programs | where_exp: "item","item.first_concert.start <= site.time"
+                                        | sort: "first_concert.start" | reverse %}
 {% assign programs = past_programs | unshift: current_program %}
 <!doctype html>
 <html lang="en">
@@ -62,7 +61,7 @@
 		<h3>Years</h3>
 		<ul>
 			<li><a href="#F2017">2017</a></li>
-			<li><a href="#f2016">2016</a></li>
+			<li><a href="#F2016">2016</a></li>
 			<li><a href="#f2015">2015</a></li>
 			<li><a href="#f2014">2014</a></li>
 			<li><a href="#f2013">2013</a></li>
@@ -148,7 +147,11 @@
                     {% if p.collaborators.size %}
                         <p>Performed with {% include collab_array_citation.html collaborators=p.collaborators %}.</p>
     				{% endif %}
-    				
+
+    				{% if p.directors.size > 0 %}
+                        <p>Directed by {{ p.directors | array_to_sentence_string }}.</p>
+                    {% endif %}
+                    
     				<h4>Concerts:</h4>
     				{% for c in p.concerts %}
     				    <p>{{ c.start | date: "%A %-e %B %Y, %-l:%M%P" }}, {% include loc_citation.html loc=c.location %}</p>
@@ -158,19 +161,21 @@
                     {% if p.poster %}
                         {% assign posters = site.data.program.empty_array %}
                         {% if p.poster.pdf %}
-                            {% assign pdf_file = p.poster.pdf | split: "/0" %}
+                            {% assign pdf_file = p.poster.pdf | split: "\0" %}
+                            {%- comment -%} TODO don't use split to add to arrays {%- endcomment -%}
                             {% assign posters = posters | concat: pdf_file %}
                         {% endif %}
                         {% if p.poster.jpg %}
-                            {% assign jpg_file = p.poster.jpg.file | split: "/0" %}
+                            {% assign jpg_file = p.poster.jpg.file | split: "\0" %}
+                            {%- comment -%} TODO don't use split to add to arrays {%- endcomment -%}
                             {% assign posters = posters | concat: jpg_file %}
                         {% endif %}
                         {% assign link_label = p.quarter | append: " poster" %}
                         <li>Poster {% include file_links.html label=link_label versions=posters path=p_path %}</li>
                     {% endif %}
                     {% for r in p.repertoire %}
-                        {% assign fylp = site.fylp | where_exp: "item","item.composer == r.composer"
-                                                   | where_exp: "item","item.title == r.title"
+                        {% assign fylp = site.fylp | where: "composer",r.composer
+                                                   | where: "title",r.title
                                                    | first %}
                         {% if fylp %}
                         <li><a href="{{fylp.url | relative_url}}">For your listening pleasure: {% include piece_citation.html piece=r %}</a></li>
@@ -182,36 +187,6 @@
     			</ul>
     		</div>
 		{% endfor %}
-		<!-- ====================================================================== -->
-		<br class="clear">
-		<div id="f2016" class="middle">
-			<a class="photo" href="performances/F2016/F2016-Poster.jpg" rel="mediabox[463 720]" title="Duruflé: Requiem">
-				<img class="framed" src="performances/F2016/F2016-Poster.jpg" width="107" height="166" alt="Duruflé: Requiem">
-			</a>
-			<div class="middle_content">
-				<h3>Fall 2016</h3>
-				<p>Stanford Symphonic Chorus fall concert</p>
-				<ul class="artists">
-					<li>Maurice Duruflé <em>Requiem</em></li>
-					<li><ul class="soloists">
-						<li>Mindy Ella Chu, mezzo-soprano</li>
-						<li>Nathaniel Menifield, baritone</li>
-					</ul></li>
-					<li>Gabriel Fauré <em>Cantique de Jean Racine</em></li>
-					<li>Dukas <em>Fanfare from La péri</em></li>
-					<li>Ravel <em>Pavane for a dead princess</em></li>
-					<li>Ravel <em>Mother Goose suite</em></li>
-				</ul>
-				<p>Performed with the <a href="http://peninsulasymphony.org/">Peninsula Symphony Orchestra</a>.</p>
-				<p>Directed by Guest Conductor Dr. Craig Jessop</p>
-				<h4>Concerts:</h4>
-				<p>Friday 18 November 2016, 7:30 p.m., Bing Concert Hall</p>
-				<p>Sunday 20 November 2016, 2:30 p.m., Bing Concert Hall</p>
-			</div>
-			<ul class="middle_links">
-				<li>Poster (<a href="performances/F2016/F2016-Poster.pdf">PDF</a>&nbsp;|&nbsp;<a href="performances/F2016/F2016-Poster.jpg">JPG</a>)</li>
-			</ul>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="s2016" class="middle">

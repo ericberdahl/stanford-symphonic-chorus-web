@@ -1,12 +1,11 @@
 ---
 ---
-{% assign program = site.programs | where_exp: "item","item.concerts[0].start > site.time"
-                                  | nested_sort: "concerts[0].start"
+{% assign program = site.programs | where_exp: "item","item.first_concert.start > site.time"
+                                  | sort: "first_concert.start"
 								  | first %}
-{% assign upcoming = site.programs | where_exp: "item","item.concerts[0].start > site.time"
-                                   | nested_sort: "concerts[0].start"
-								   | shift
-								   | reverse %}
+{% assign upcoming = site.programs | where_exp: "item","item.first_concert.start > site.time"
+                                   | sort: "first_concert.start"
+								   | shift %}
 <!doctype html>
 <html lang="en">
 <head>

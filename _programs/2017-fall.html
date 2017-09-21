@@ -7,24 +7,24 @@ syllabus:
 -   "SSC Syllabus Fall 2017.pdf"
 -   "SSC Syllabus Fall 2017.docx"
 
-main_piece: &main-piece
+repertoire:
+-   &main-piece
     title: "The Music Makers"
     composer: "Elgar"
-
-repertoire:
--   *main-piece
 -   title: "Why fum'th in fight"
     composer: "Tallis"
 -   title: "Ward the Pirate"
     composer: "Trad. English"
     arranger: "Ralph Vaughan Williams"
 
+main_piece: *main-piece
+
 soloists:
 -   name: "Wendy Hillhouse"
     part: "mezzo-soprano"
 
 collaborators:
-- "PSO"
+-   "PSO"
 
 #poster:
 
@@ -40,13 +40,6 @@ limits:
 
 preregister: "2017-09-01"
 
-first_rehearsal: &first-rehearsal
-    start: 2017-09-25 19:30:00 -0700
-    end: 2017-09-25 22:00:00 -0700
-    location: "Campbell Recital Hall"
-    event: "Registration and Tutti rehearsal"
-    registration: 2017-09-25 18:30 -0700
-
 images:
 -   file: "Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff.jpg"
     width: 790
@@ -54,7 +47,12 @@ images:
     caption: "Photo by DAVID ILIFF. License: CC-BY-SA 3.0"
 
 schedule:
--   *first-rehearsal
+-   &first-rehearsal
+    start: 2017-09-25 19:30:00 -0700
+    end: 2017-09-25 22:00:00 -0700
+    location: "Campbell Recital Hall"
+    event: "Registration and Tutti rehearsal"
+    registration: 2017-09-25 18:30 -0700
 -   start: 2017-10-02 19:30:00 -0700
     end: 2017-10-02 22:00:00 -0700
     location: "Campbell Recital Hall"
@@ -100,6 +98,8 @@ schedule:
     location: "Braun 103"
     event: "Men&rsquo;s sectional (optional, but warmly encouraged)"
 
+first_rehearsal: *first-rehearsal
+
 dresses:
 -   start: 2017-11-14 19:00:00 -0800
     location: "Bing"
@@ -107,12 +107,15 @@ dresses:
     location: "Bing"
 
 concerts:
--   start: 2017-11-17 19:30:00 -0800
+-   &first-concert
+    start: 2017-11-17 19:30:00 -0800
     call: 2017-11-17 18:30:00 -0800
-    loction: "Bing"
+    location: "Bing"
 -   start: 2017-11-19 14:30:00 -0800
     call: 2017-11-19 13:30:00 -0800
     location: "Bing"
+
+first_concert: *first-concert
 ---
 <p>
     The Stanford Symphonic Chorus presents Edward Elgar's <em>The Music Makers
