@@ -1,11 +1,9 @@
 {%- assign style = include.style | default: "html" -%}
 {%- assign collaborators = site.data.program.empty_array -%}
-{%- for pc in include.collaborators -%}
+{%- for pc in include.collaborators reversed -%}
     {%- capture one_collaborator -%}
         {%- include collab_citation.html collab=pc style=style -%}
     {%- endcapture -%}
-    {%- assign one_collaborator = one_collaborator | split: "\0" -%}
-    {%- comment -%} TODO don't use split to add to arrays {%- endcomment -%}
-    {%- assign collaborators = collaborators | concat: one_collaborator -%}
+    {%- assign collaborators = collaborators | unshift: one_collaborator -%}
 {%- endfor -%}
 {{ collaborators | array_to_sentence_string }}

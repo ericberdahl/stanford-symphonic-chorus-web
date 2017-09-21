@@ -159,17 +159,9 @@
     			</div>
     			<ul class="middle_links">
                     {% if p.poster %}
-                        {% assign posters = site.data.program.empty_array %}
-                        {% if p.poster.pdf %}
-                            {% assign pdf_file = p.poster.pdf | split: "\0" %}
-                            {%- comment -%} TODO don't use split to add to arrays {%- endcomment -%}
-                            {% assign posters = posters | concat: pdf_file %}
-                        {% endif %}
-                        {% if p.poster.jpg %}
-                            {% assign jpg_file = p.poster.jpg.file | split: "\0" %}
-                            {%- comment -%} TODO don't use split to add to arrays {%- endcomment -%}
-                            {% assign posters = posters | concat: jpg_file %}
-                        {% endif %}
+                        {% assign posters = site.data.program.empty_array | unshift: p.poster.jpg.file
+                                                                          | unshift: p.poster.pdf
+                                                                          | compact %}
                         {% assign link_label = p.quarter | append: " poster" %}
                         <li>Poster {% include file_links.html label=link_label versions=posters path=p_path %}</li>
                     {% endif %}
