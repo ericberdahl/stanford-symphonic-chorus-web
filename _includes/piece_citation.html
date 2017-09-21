@@ -6,6 +6,11 @@
                                   | append: {{piece.arranger}} -%}
 {%- endif -%}
 {%- assign title = piece.title -%}
+{%- assign suffix = piece.suffix -%}
+{%- if suffix -%}
+    {%- assign title = title | append: ", "
+                             | append: suffix -%}
+{%- endif -%}
 {%- case style -%}
     {%- when "plain" -%}
         {%- assign composer = composer | append: ":" -%}
