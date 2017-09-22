@@ -32,7 +32,6 @@
         {%- assign title = title | prepend: "<em>"
                                  | append: "</em>" -%}
 {%- endcase -%}
-{%- comment -%}composer title (translation, note), suffix {%- endcomment -%}
 {{ site.data.program.empty_array | unshift: parenthetical
                                  | unshift: title
                                  | unshift: composer
