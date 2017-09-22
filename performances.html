@@ -190,7 +190,7 @@
                                                    | where: "title",r.title
                                                    | first %}
                         {% if fylp %}
-                        <li><a href="{{fylp.url | relative_url}}">For your listening pleasure: {% include piece_citation.html piece=r style="simple" %}</a></li>
+                            <li><a href="{{fylp.url | relative_url}}">For your listening pleasure: {% include piece_citation.html piece=r style="simple" %}</a></li>
                         {% endif %}
                     {% endfor %}
                     {% for l in p.links %}

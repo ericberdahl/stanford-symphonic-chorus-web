@@ -6,30 +6,36 @@
                                   | append: {{piece.arranger}} -%}
 {%- endif -%}
 {%- assign title = piece.title -%}
-{%- assign parenthetical = site.data.program.empty_array | unshift: piece.note
-                                                         | unshift: piece.translation
-                                                         | compact
-                                                         | join: ", " -%}
-{%- if parenthetical != "" -%}
-    {%- assign parenthetical = parenthetical | prepend: "("
-                                             | append: ")" -%}
-{%- endif -%}
-{%- assign post_title = site.data.program.empty_array | unshift: piece.suffix
-                                                      | unshift: parenthetical
-                                                      | compact
-                                                      | join: ", " -%}
-{%- if post_title != "" -%}
-  {%- assign post_title = post_title | prepend: " " -%}
+{%- if style == "simple" -%}
+    {%- assign parenthetical = nil -%}
+    {%- assign suffix = nil -%}
+{%- else -%}
+    {%- assign parenthetical = site.data.program.empty_array | unshift: piece.note
+                                                             | unshift: piece.translation
+                                                             | compact
+                                                             | join: ", " -%}
+    {%- if parenthetical != "" -%}
+        {%- assign parenthetical = parenthetical | prepend: "("
+                                                 | append: ")" -%}
+    {%- else -%}                                        
+        {%- assign parenthetical = nil -%}
+    {%- endif -%}
+    {%- assign suffix = piece.suffix -%}
+    {%- if suffix -%}
+        {%- assign suffix = suffix | prepend: ", " -%}
+    {%- endif -%}
 {%- endif -%}
 {%- case style -%}
     {%- when "plain" -%}
         {%- assign composer = composer | append: ":" -%}
-    {%- when "simple" -%}
-        {%- assign title = title | prepend: "<em>"
-                                 | append: "</em>" -%}
-        {%- assign post_title = "" -%}
     {%- else -%}
         {%- assign title = title | prepend: "<em>"
                                  | append: "</em>" -%}
 {%- endcase -%}
-{{composer}} {{title}}{{post_title}}
+{%- comment -%}composer title (translation, note), suffix {%- endcomment -%}
+{{ site.data.program.empty_array | unshift: parenthetical
+                                 | unshift: title
+                                 | unshift: composer
+                                 | compact
+                                 | join: " "
+                                 | append: suffix }}
