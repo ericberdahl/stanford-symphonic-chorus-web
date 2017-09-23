@@ -5,13 +5,13 @@
 # TODO: Update MediaBox to Lightbox (https://github.com/lokesh/lightbox2)
 # TODO: convert performances in performance.html to program collection, one program at a time
 plugins:
- - jekyll-tidy
+ - "jekyll-tidy"
 
-baseurl: /group/SymCh
+baseurl: "/group/SymCh"
 
-url: https://web.stanford.edu
+url: "https://web.stanford.edu"
 
-timezone: America/Los_Angeles
+timezone: "America/Los_Angeles"
 
 collections:
     albums:
@@ -24,12 +24,12 @@ collections:
 defaults:
     - scope:
         path: ""
-        type: albums
+        type: "albums"
       values:
-        director: Other recordings
+        director: "Other recordings"
         rating: 0
     - scope:
         path: ""
-        type: fylp
+        type: "fylp"
       values:
-        layout: fylp
+        layout: "fylp"
