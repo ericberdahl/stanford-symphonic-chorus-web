@@ -1,12 +1,17 @@
-{% assign albums = site.albums | where_exp: 'item', 'item.composer == page.composer'
-							   | where_exp: 'item', 'item.work == page.title'
+{% if page.piece.ref %}
+	{%- assign piece = site.pieces | where: "key",page.piece.ref | first -%}
+{% else %}
+	{% assign piece = page.piece %}
+{% endif %}
+{% assign albums = site.albums | where_exp: 'item', 'item.composer == piece.composer'
+							   | where_exp: 'item', 'item.work == piece.title'
 							   | sort: 'rating'
 							   | reverse %}
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Your Listening Pleasure - {% include piece_citation.html piece=page style="plain" %}</title>
+<title>For Your Listening Pleasure - {% include piece_citation.html piece=piece style="plain" %}</title>
 <!-- Base stylesheet which imports typography, resets, header/footer layout, and other miscellaneous styles -->
 <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/base.css %}">
 <!-- Page specific stylesheet for middle layout section (sidebars and content_main) -->
@@ -60,7 +65,7 @@
 	<div id="title">
 		<h1>
 			<!-- TemplateBeginEditable name="Page Title" -->
-			For Your Listening Pleasure - {% include piece_citation.html piece=page %}
+			For Your Listening Pleasure - {% include piece_citation.html piece=piece %}
 			<!-- TemplateEndEditable -->
 		</h1>
 	</div>
@@ -84,7 +89,7 @@
 				&raquo; 
 				<a href="{{site.baseurl}}{% link fylp.html %}">For Your Listening Pleasure</a>
 				&raquo;
-                {{page.title}}
+                {{piece.title}}
 				<!-- TemplateEndEditable -->
 			</p>
 		</div>
@@ -95,7 +100,7 @@
 		</div>
 		-->
 		<!--Optional On this page End-->    
-		<h2>{% include piece_citation.html piece=page %}</h2>
+		<h2>{% include piece_citation.html piece=piece %}</h2>
 		{{page.content}}
 		{% for a in albums %}
 		<h3 id="{{a.director | slugify}}">{{a.director}}</h3>
@@ -130,8 +135,8 @@
             <h2>Performances</h2>
 			{% assign p_list = site.data.program.empty_array %}
 			{% for p in site.programs %}
-				{% assign r = p.repertoire | where: "composer",page.composer
-										   | where: "title",page.title %}
+				{% assign r = p.repertoire | where: "composer",piece.composer
+										   | where: "title",piece.title %}
 			    {% if r.size > 0 %}
 					{% assign one_p = site.programs | where:"quarter",p.quarter %}
 					{% assign p_list = p_list | concat: one_p %}

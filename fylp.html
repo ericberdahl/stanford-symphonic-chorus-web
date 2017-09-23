@@ -56,7 +56,7 @@
 		</div>
 		<ul>
 			{% for f in fylp %}
-			<li><a href="#{{ f.items[0].composer | slugify }}">{{ f.items[0].composer }}</a></li>
+			<li><a href="#{{ f.items[0].piece.composer | slugify }}">{{ f.items[0].piece.composer }}</a></li>
 			{% endfor %}
 		</ul>
 		<!-- TemplateEndEditable -->
@@ -73,11 +73,11 @@
 		</div>
 		{% for f in fylp %}
 		<br class="clear">
-		<div id="{{ f.items[0].composer | slugify }}" class="middle">
-			<h3>{{ f.items[0].composer }}</h3>
+		<div id="{{ f.items[0].piece.composer | slugify }}" class="middle">
+			<h3>{{ f.items[0].piece.composer }}</h3>
 			<ul>
 				{% for w in f.items %}
-				<li><a href="{{ w.url | relative_url }}"><em>{{ w.title }}</em></a></li>
+				<li><a href="{{ w.url | relative_url }}"><em>{{ w.piece.title }}</em></a></li>
 				{% endfor %}
 			</ul>
 		</div>

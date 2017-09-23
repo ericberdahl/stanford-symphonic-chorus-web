@@ -17,6 +17,7 @@ collections:
     albums:
     collaborators:
     locations:
+    pieces:
     programs:
     fylp:
         output: true
