@@ -7,8 +7,11 @@
 {%- assign style = include.style | default: "em-tagged" -%}
 {%- if piece.ref -%}
     {%- assign prefix = piece.prefix -%}
+    {%- if prefix -%}
+        {%- assign prefix = prefix | append: " " -%}
+    {%- endif -%}
     {%- assign piece = site.pieces | where: "key",piece.ref | first -%}
-    {{prefix}} {% include piece_citation.html piece=piece style=style %}
+    {{prefix}}{% include piece_citation.html piece=piece style=style %}
 {%- else -%}
     {%- if piece.key -%}
         {%- assign composer = piece.composer_citation | default: piece.composer -%}
