@@ -1,4 +1,9 @@
-{%- assign piece = include.piece -%}
+{%- if include.piece_ref -%}
+    {%- assign piece = site.pieces | where: "key",include.piece_ref
+                                   | first -%}
+{%- else -%}
+    {%- assign piece = include.piece -%}
+{%- endif -%}
 {%- assign style = include.style | default: "em-tagged" -%}
 {%- if piece.ref -%}
     {%- assign prefix = piece.prefix -%}
@@ -11,6 +16,8 @@
         {%- if style == "plain" -%}
             {%- assign composer = composer | append: ":" -%}
             {%- assign citation = citation | strip_html -%}
+        {% elsif style == "title-only" -%}
+            {%- assign composer = nil -%}
         {%- endif -%}
         {{composer}} {{citation}}
     {%- else -%}
