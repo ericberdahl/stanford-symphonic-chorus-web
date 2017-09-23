@@ -1,10 +1,6 @@
-{% if page.piece.ref %}
-	{%- assign piece = site.pieces | where: "key",page.piece.ref | first -%}
-{% else %}
-	{% assign piece = page.piece %}
-{% endif %}
-{% assign albums = site.albums | where_exp: 'item', 'item.composer == piece.composer'
-							   | where_exp: 'item', 'item.work == piece.title'
+{%- assign piece_ref = page.piece_ref -%}
+{%- assign piece = site.pieces | where: "key",piece_ref | first -%}
+{% assign albums = site.albums | where_exp: 'item', 'item.piece_ref == piece_ref'
 							   | sort: 'rating'
 							   | reverse %}
 <!doctype html>
@@ -135,11 +131,9 @@
             <h2>Performances</h2>
 			{% assign p_list = site.data.program.empty_array %}
 			{% for p in site.programs %}
-				{% assign r = p.repertoire | where: "composer",piece.composer
-										   | where: "title",piece.title %}
+				{% assign r = p.repertoire | where: "ref",piece_ref %}
 			    {% if r.size > 0 %}
-					{% assign one_p = site.programs | where:"quarter",p.quarter %}
-					{% assign p_list = p_list | concat: one_p %}
+					{% assign p_list = p_list | unshift: p %}
 			    {% endif %}
 			{% endfor %}
 			{% for p in p_list %}
