@@ -103,11 +103,10 @@
 				<td>{{rehearsal.start | date: "%A"}}</td>
 				<td class="right">{{rehearsal.start | date: "%-e %B %Y"}}</td>
 				<td>{% include loc_citation.html loc=rehearsal.location %}</td>
-				<td>
-                    {{rehearsal.start | date: "%-l:%M%P"}} - {{rehearsal.end | date: "%-l:%M%P"}}
-                    {% if forloop.first %}
-                    Registration starts at {{rehearsal.registration | date: "%-l:%M%P"}}
-                    {% endif %}
+				<td>{{rehearsal.start | date: "%-l:%M%P"}} - {{rehearsal.end | date: "%-l:%M%P"}}
+                    {%- if forloop.first -%}
+                    <br>Registration starts at {{rehearsal.registration | date: "%-l:%M%P"}}
+                    {%- endif -%}
                 </td>
 				<td>{{rehearsal.event}}</td>
 			</tr>
