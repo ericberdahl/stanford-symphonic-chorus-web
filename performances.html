@@ -185,8 +185,7 @@
                         <li>Poster {% include file_links.html label=link_label versions=posters path=p_path %}</li>
                     {% endif %}
                     {% for r in p.repertoire %}
-                        {% assign fylp = site.fylp | where_exp: "item","item.piece.composer == r.composer"
-                                                   | where_exp: "item","item.piece.title == r.title"
+                        {% assign fylp = site.fylp | where: "piece_ref",r.ref
                                                    | first %}
                         {% if fylp %}
                             <li><a href="{{fylp.url | relative_url}}">For your listening pleasure: {% include piece_citation.html piece=r style="simple" %}</a></li>
