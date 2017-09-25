@@ -1,6 +1,5 @@
-{%- assign piece_ref = page.piece_ref -%}
-{%- assign piece = site.pieces | where: "key",piece_ref | first -%}
-{% assign albums = site.albums | where_exp: 'item', 'item.piece_ref == piece_ref'
+{%- assign piece = site.pieces | where: "key",page.piece_ref | first -%}
+{% assign albums = site.albums | where: "piece_ref",page.piece_ref
 							   | sort: 'rating'
 							   | reverse %}
 <!doctype html>
@@ -131,7 +130,7 @@
             <h2>Performances</h2>
 			{% assign p_list = site.data.program.empty_array %}
 			{% for p in site.programs %}
-				{% assign r = p.repertoire | where: "ref",piece_ref %}
+				{% assign r = p.repertoire | where: "ref",page.piece_ref %}
 			    {% if r.size > 0 %}
 					{% assign p_list = p_list | unshift: p %}
 			    {% endif %}
