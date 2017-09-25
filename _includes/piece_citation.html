@@ -1,70 +1,27 @@
-{%- if include.piece_ref -%}
-    {%- assign piece = site.pieces | where: "key",include.piece_ref
+{%- assign piece_ref = include.piece_ref | default: include.piece.ref -%}
+{%- assign prefix = include.piece.prefix -%}
+{%- if piece_ref -%}
+    {%- assign piece = site.pieces | where: "key",piece_ref
                                    | first -%}
 {%- else -%}
     {%- assign piece = include.piece -%}
 {%- endif -%}
 {%- assign style = include.style | default: "em-tagged" -%}
-{%- if piece.ref -%}
-    {%- assign prefix = piece.prefix -%}
-    {%- if prefix -%}
-        {%- assign prefix = prefix | append: " " -%}
-    {%- endif -%}
-    {%- assign piece = site.pieces | where: "key",piece.ref | first -%}
-    {{prefix}}{% include piece_citation.html piece=piece style=style %}
+{%- assign composer = piece.composer_citation | default: piece.composer -%}
+{%- if piece.citation -%}
+    {%- assign citation = piece.citation -%}
 {%- else -%}
-    {%- if piece.key -%}
-        {%- assign composer = piece.composer_citation | default: piece.composer -%}
-        {%- assign citation = piece.citation -%}
-        {%- if style == "plain" -%}
-            {%- assign composer = composer | append: ":" -%}
-            {%- assign citation = citation | strip_html -%}
-        {% elsif style == "title-only" -%}
-            {%- assign composer = nil -%}
-        {%- endif -%}
-        {{composer}} {{citation}}
-    {%- else -%}
-        {%- assign composer = piece.composer -%}
-        {%- assign arranger = piece.arranger -%}
-        {%- assign title = piece.title -%}
-        {%- assign note = piece.note -%}
-        {%- assign translation = piece.translation -%}
-        {%- if arranger -%}
-            {%- assign composer = composer | append: ", arr. "
-                                           | append: {{arranger}} -%}
-        {%- endif -%}
-        {%- if style == "simple" -%}
-            {%- assign parenthetical = nil -%}
-            {%- assign suffix = nil -%}
-        {%- else -%}
-            {%- assign parenthetical = site.data.program.empty_array | unshift: note
-                                                                     | unshift: translation
-                                                                     | compact
-                                                                     | join: ", " -%}
-            {%- if parenthetical != "" -%}
-                {%- assign parenthetical = parenthetical | prepend: "("
-                                                         | append: ")" -%}
-            {%- else -%}                                        
-                {%- assign parenthetical = nil -%}
-            {%- endif -%}
-            {%- assign suffix = piece.suffix -%}
-            {%- if suffix -%}
-                {%- assign suffix = suffix | prepend: ", " -%}
-            {%- endif -%}
-        {%- endif -%}
-        {%- case style -%}
-            {%- when "plain" -%}
-                {%- assign composer = composer | append: ":" -%}
-            {%- else -%}
-                {%- assign title = title | prepend: "<em>"
-                                         | append: "</em>" -%}
-        {%- endcase -%}
-        {{ site.data.program.empty_array | unshift: parenthetical
-                                         | unshift: title
-                                         | unshift: piece.prefix
-                                         | unshift: composer
-                                         | compact
-                                         | join: " "
-                                         | append: suffix }}
-    {%- endif -%}
+    {%- assign citation = piece.title | prepend: "<em>"
+                                      | append: "</em>" -%}
 {%- endif -%}
+{%- if style == "plain" -%}
+    {%- assign composer = composer | append: ":" -%}
+    {%- assign citation = citation | strip_html -%}
+{% elsif style == "title-only" -%}
+    {%- assign composer = nil -%}
+{%- endif -%}
+{{ site.data.program.empty_array | unshift: citation
+                                 | unshift: prefix
+                                 | unshift: composer
+                                 | compact
+                                 | join: " " }}
