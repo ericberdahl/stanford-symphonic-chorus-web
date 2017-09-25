@@ -7,8 +7,8 @@
 
     <td>
         <ul>
-            {% for piece in program.repertoire %}
-            <li>{% include piece_citation.html piece=piece %}</li>
+            {% for p in program.repertoire %}
+            <li>{% include piece_citation.html piece=p %}</li>
             {% endfor %}
         </ul>
     </td>
