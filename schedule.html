@@ -97,7 +97,8 @@
 				<th>Time</th>
 				<th>Description</th>
 			</tr>
-			{% assign display_schedule = program.schedule | sort: 'start' %}
+			{% assign display_schedule = program.rehearsals | concat: program.sectionals
+                                                            | sort: 'start' %}
 			{% for rehearsal in display_schedule %}
 			<tr>
 				<td>{{rehearsal.start | date: "%A"}}</td>
