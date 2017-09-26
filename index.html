@@ -6,7 +6,7 @@
 									      | last %}
 {% assign first_rehearsal = current_program.first_rehearsal %}
 {% assign concerts = current_program.concerts | sort: "start" %}
-{% assign current_events = site.data.program.events %}
+{% assign current_events = site.data.events %}
 
 {% assign concert_times = concerts | map: "start" %}
 {% assign event_times = current_events | map: "start"
@@ -178,7 +178,7 @@
 						{% endif %}
 						{{ current_program.content }}
 						<p>
-                            {% assign concert_dates = site.data.program.empty_array %}
+                            {% assign concert_dates = site.data.utils.empty_array %}
 							{% for c in concerts reversed %}
                                 {% assign c_start = c.start | date: "%A, %-e %B" %}
                                 {% assign concert_dates = concert_dates | unshift: c_start %}

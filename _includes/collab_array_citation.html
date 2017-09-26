@@ -1,5 +1,5 @@
 {%- assign style = include.style | default: "html" -%}
-{%- assign collaborators = site.data.program.empty_array -%}
+{%- assign collaborators = site.data.utils.empty_array -%}
 {%- for pc in include.collaborators reversed -%}
     {%- capture one_collaborator -%}
         {%- include collab_citation.html collab=pc style=style -%}

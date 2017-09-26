@@ -8,7 +8,7 @@
                                    | sort: "first_concert.start"
                                    | reverse %}
 {% assign first_concerts = programs | map: "first_concert" %}
-{% assign year_nav_programs = site.data.program.empty_array | unshift: current_program %}
+{% assign year_nav_programs = site.data.utils.empty_array | unshift: current_program %}
 {% assign ynp_current_year = current_program.first_concert.start | date: "%Y" %}
 {% for p in programs %}
     {% assign p_year = p.first_concert.start | date: "%Y" %}
@@ -178,9 +178,9 @@
     			</div>
     			<ul class="middle_links">
                     {% if p.poster %}
-                        {% assign posters = site.data.program.empty_array | unshift: p.poster.jpg.file
-                                                                          | unshift: p.poster.pdf
-                                                                          | compact %}
+                        {% assign posters = site.data.utils.empty_array | unshift: p.poster.jpg.file
+                                                                        | unshift: p.poster.pdf
+                                                                        | compact %}
                         {% assign link_label = p.quarter | append: " poster" %}
                         <li>Poster {% include file_links.html label=link_label versions=posters path=p_path %}</li>
                     {% endif %}
