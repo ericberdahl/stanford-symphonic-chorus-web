@@ -1,0 +1,12 @@
+-   key: "PSO"
+    name: "Peninsula Symphony Orchestra"
+    link: "https://peninsulasymphony.org"
+-   key: "SSO"
+    name: "Stanford Symphony Orchestra"
+    link: "https://web.stanford.edu/group/sso"
+-   key: "scc"
+    name: "Stanford Chamber Chorale"
+    # TODO: find url for Chamber Chorale
+-   key: "ragazzi boys"
+    name: "Ragazzi Boys Chorus"
+    # TODO: find url for ragazzi

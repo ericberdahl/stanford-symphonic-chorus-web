@@ -15,7 +15,6 @@ timezone: "America/Los_Angeles"
 
 collections:
     albums:
-    collaborators:
     locations:
     pieces:
     programs:
