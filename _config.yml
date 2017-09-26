@@ -5,7 +5,6 @@
 # TODO: Update MediaBox to Lightbox (https://github.com/lokesh/lightbox2)
 # TODO: convert performances in performance.html to program collection, one program at a time
 # TODO: create PDF posters for all performances that have only jpg posters
-# TODO: factor fylp citations so they can be normalized with historical content?
 # TODO: normalize historical collaborator citations
 plugins:
  - "jekyll-tidy"
