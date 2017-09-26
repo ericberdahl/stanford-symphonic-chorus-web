@@ -6,8 +6,13 @@
 									      | last %}
 {% assign first_rehearsal = current_program.first_rehearsal %}
 {% assign concerts = current_program.concerts | sort: "start" %}
-{% assign current_events = site.data.events %}
-
+{% assign current_events = site.utils.empty_array %}
+{% if site.data.events.size > 0 %}
+    {% assign current_events = current_events | concat: site.data.events %}
+{% endif %}
+{% if current_program.events.size > 0 %}
+    {% assign current_events = current_events | concat: current_program.events %}
+{% endif %}
 {% assign concert_times = concerts | map: "start" %}
 {% assign event_times = current_events | map: "start"
 									   | concat: concert_times
