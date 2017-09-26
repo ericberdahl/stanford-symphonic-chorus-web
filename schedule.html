@@ -61,6 +61,9 @@
 				<li><a href="#rehearsals">Rehearsals</a></li>
 				<li><a href="#dress">Dress Rehearsals</a></li>
 				<li><a href="#concerts">Concerts</a></li>
+                {% if program.events %}
+                <li><a href="#events">Events</a></li>
+                {% endif %}
 				<li><a href="#season">Looking Ahead</a></li>
 			</ul>
 		</div>
@@ -153,7 +156,29 @@
 			</tr>
 			{% endfor %}
 		</table>
-		
+
+        {% if program.events %}
+        <h2 id="events">Events</h2>
+		<table>
+			<tr>
+				<th>Day</th>
+				<th class="right">Date</th>
+				<th>Location</th>
+				<th>Time</th>
+				<th>Description</th>
+			</tr>
+			{% for e in program.events %}
+			<tr>
+				<td>{{e.start | date: "%A"}}</td>
+				<td class="right">{{e.start | date: "%-e %B %Y"}}</td>
+                <td>{{e.start | date: "%-l:%M%P"}}</td>
+				<td>{% include loc_citation.html loc=e.location %}</td>
+				<td>{{ e.title }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+        {% endif %}
+				
 		<div>
 			<h2 id="season">Looking Ahead</h2>
 			<table class="noborder">
