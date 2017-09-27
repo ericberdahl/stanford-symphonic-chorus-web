@@ -10,4 +10,10 @@
             {%- assign loc = location.casual -%}
     {%- endcase -%}
 {%- endif -%}
+{%- if location.link -%}
+<a href="{{location.link}}">
+{%- endif -%}
 {{loc}}
+{%- if location.link -%}
+</a>
+{%- endif -%}
