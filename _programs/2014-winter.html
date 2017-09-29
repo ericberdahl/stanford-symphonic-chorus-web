@@ -11,8 +11,6 @@ repertoire:
 -   &main-piece
     ref: "verdi/requiem"
 
-main_piece: *main-piece
-
 soloists:
 -   name: "Naranchimeg Shirmen"
     part: "soprano"
@@ -49,7 +47,7 @@ fees:
 limits:
 #    membership: 220
 
-#preregister: 
+preregister: 
 
 images:
 -   file: "JohannesBrahms.jpg"
@@ -93,8 +91,6 @@ rehearsals:
     location: "Bing"
     event: "Tutti rehearsal with Jindong"
 
-first_rehearsal: *first-rehearsal
-
 sectionals:
 
 dresses:
@@ -112,5 +108,9 @@ concerts:
     call: 2014-03-02 12:30:00 -0800
     location: "MemChu"
 
+events:
+
+main_piece: *main-piece
+first_rehearsal: *first-rehearsal
 first_concert: *first-concert
 ---
