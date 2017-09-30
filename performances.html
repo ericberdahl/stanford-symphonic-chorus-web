@@ -76,7 +76,6 @@
             {% for ynp in year_nav_programs %}
                 <li><a href="#{{ynp.label}}">{{ynp.first_concert.start | date: "%Y"}}</a></li>
             {% endfor %}
-			<li><a href="#f2008">2008</a></li>
 			<li><a href="#f2007">2007</a></li>
 			<li><a href="#f2006">2006</a></li>
 			<li><a href="#f2005">2005</a></li>
@@ -199,25 +198,6 @@
     			</ul>
     		</div>
 		{% endfor %}
-		<!-- ====================================================================== -->
-		<br class="clear">
-		<div id="f2008" class="middle">
-			<a class="photo" href="performances/F2008/SSC_E-FlyerF2008.jpg" title="Stanford Symphonic Chorus poster, Fall 2008" rel="mediabox[700 453]">
-				<img class="framed" src="performances/F2008/SSC_E-FlyerF2008_thumb.jpg" alt="Concert Poster Fall 2009">
-			</a>
-			<div class="middle_content">
-				<h3>Fall 2008</h3>
-				<p>Brian Holmes, <em>Amherst Requiem,</em> Premiere</p>
-				<p>Aaron Copland, <em>Quiet City</em></p>
-				<p>{% include piece_citation.html piece_ref="bernstein/chichester" %}</p>
-				<h4>Concerts:</h4>
-				<p>8 p.m. Friday 21 November, and 1:30 p.m. Sunday 23 November</p>
-			</div>
-			<ul class="middle_links">
-				<li>Poster (<a href="performances/F2008/SSC_PosterF2008.pdf">PDF</a>&nbsp;|&nbsp;<a href="performances/F2008/SSC_E-FlyerF2008.jpg">JPG</a>)</li>
-				<li><a href="performances/F2008/Chichester-text/heb-ChPs-120dpi.jpg" title="Hebrew text, Chichester Psalms" rel="mediabox[335 600]"> Hebrew text for <em>Chichester Psalms</em></a></li>
-			</ul>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="s2008.2" class="middle">
