@@ -1,6 +1,5 @@
-#
 # If there are events that should appear on the home page calendar, but don't
-# associate with a given program, enter them here, asan array of event hashes.
+# associate with a given program, enter them here, as an array of event hashes.
 #
 #- start: 2017-12-15 19:30:00 -0800
 #  location: "MemChu"
