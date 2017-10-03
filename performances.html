@@ -76,7 +76,6 @@
             {% for ynp in year_nav_programs %}
                 <li><a href="#{{ynp.label}}">{{ynp.first_concert.start | date: "%Y"}}</a></li>
             {% endfor %}
-			<li><a href="#f2007">2007</a></li>
 			<li><a href="#f2006">2006</a></li>
 			<li><a href="#f2005">2005</a></li>
 			<li><a href="#f2004">2004</a></li>
@@ -198,25 +197,6 @@
     			</ul>
     		</div>
 		{% endfor %}
-		<!-- ====================================================================== -->
-		<br class="clear">
-		<div id="f2007" class="middle">
-			<img src="images/M@S-roundedges.gif" alt="">
-			<div class="middle_content">
-				<h3>Fall 2007</h3>
-				<p>Ralph Vaughn Williams, <em>Fantasia on Greensleeves</em></p>
-				<p>Maurice Ravel, <em>Pavane pour une infante defunte (Pavane for a Dead Princess)</em></p>
-				<p>Gustav Holst, <em>Brook Green Suite</em></p>
-				<p>Maurice Ravel, <em>Ma Mere l'Oye (Mother Goose Suite)</em></p>
-				<p>{% include piece_citation.html piece_ref="poulenc/gloria" %}</p>
-				<h4>Concerts:</h4>
-				<p>8 p.m. Friday 30 November, and 1:30 p.m. Sunday 2 December</p>
-				<p>
-					With the {% include collab_citation.html collab="PSO" %},
-					<a href="http://www.peninsulasymphony.org/conductors.php">Mitchell Sardou Klein</a>, music director and conductor.
-				</p>
-			</div>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="s2007" class="middle">
