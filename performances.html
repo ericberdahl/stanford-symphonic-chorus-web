@@ -76,7 +76,6 @@
             {% for ynp in year_nav_programs %}
                 <li><a href="#{{ynp.label}}">{{ynp.first_concert.start | date: "%Y"}}</a></li>
             {% endfor %}
-			<li><a href="#f2004">2004</a></li>
 			<li><a href="#f2003">2003</a></li>
 			<li><a href="#f2002">2002</a></li>
 			<li><a href="#f2001">2001</a></li>
@@ -195,37 +194,6 @@
     			</ul>
     		</div>
 		{% endfor %}
-		<!-- ====================================================================== -->
-		<br class="clear">
-		<div id="f2004" class="middle">
-			<a class="photo" href="performances/F2004/SSC_Poster_Fall_2004.jpg" title="Fall 2004" rel="mediabox[899 517]">
-				<img class="framed" src="performances/F2004/SSC_Poster_Fall_2004_thumb.jpg" width="109" height="87" alt="Kudo, Mendelssohn, Bloch, Bruckner, Zeisl, Fall 2004">
-			</a>
-			<div class="middle_content">
-				<h3>Fall 2004</h3>
-				<p>Takeo Kudo, <em>Interlude</em></p>
-				<p>{% include piece_citation.html piece_ref="mendelssohn/psalm 114" %}</p>
-				<p>Ernest Bloch, <em>Psalm 114</em></p>
-				<p>{% include piece_citation.html piece_ref="bruckner/psalm-150" %}</p>
-				<p>{% include piece_citation.html piece_ref="zeisl/requiem ebraico" %}</p>
-				<h4>Concerts:</h4>
-				<ul class="concerts">
-					<li>8 p.m. Thursday 18 November, {% include loc_citation.html loc="MemChu" %}</li>
-					<li>1:30 p.m. Sunday 21 November, {% include loc_citation.html loc="MemChu" %}</li>
-					<li>7:30 p.m. Monday 22 November, {% include loc_citation.html loc="emanuelsf" %}</li>
-				</ul>
-				<p>
-					With the {% include collab_citation.html collab="PSO" %},
-					<a href="http://www.peninsulasymphony.org/conductors.php">Mitchell Sardou Klein</a>, music director and conductor.
-				</p>
-			</div>
-			<ul class="middle_links">
-				<li>Poster (<a href="performances/F2004/SSC_Poster_Fall_2004.pdf">PDF</a>&nbsp;|&nbsp;<a href="performances/F2004/SSC_Poster_Fall_2004.jpg">JPG</a>)</li>
-                <li><a href="fylp/bruckner-psalm150.html">For your listening pleasure: {% include piece_citation.html piece_ref="bruckner/psalm-150" style="simple" %}</a></li>
-                <li><a href="fylp/mendelssohn-psalm114.html">For your listening pleasure: {% include piece_citation.html piece_ref="mendelssohn/psalm 114" style="simple" %}</a></li>
-                <li><a href="fylp/zeisl-requiem-ebraico.html">For your listening pleasure: {% include piece_citation.html piece_ref="zeisl/requiem ebraico" style="simple" %}</a></li>
-			</ul>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="s2004" class="middle">
