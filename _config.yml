@@ -5,6 +5,7 @@
 # TODO: Update MediaBox to Lightbox (https://github.com/lokesh/lightbox2)
 # TODO: convert performances in performance.html to program collection, one program at a time
 # TODO: create PDF posters for all performances that have only jpg posters
+# BUG: "Concerts" on Performances page should be singular for single concerts
 plugins:
  - "jekyll-tidy"
 
