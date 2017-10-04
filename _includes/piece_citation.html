@@ -1,5 +1,6 @@
 {%- assign piece_ref = include.piece_ref | default: include.piece.ref -%}
 {%- assign prefix = include.piece.prefix -%}
+{%- assign suffix = include.piece.suffix -%}
 {%- if piece_ref -%}
     {%- assign piece = site.pieces | where: "key",piece_ref
                                    | first -%}
@@ -20,7 +21,8 @@
 {% elsif style == "title-only" -%}
     {%- assign composer = nil -%}
 {%- endif -%}
-{{ site.data.utils.empty_array | unshift: citation
+{{ site.data.utils.empty_array | unshift: suffix
+                               | unshift: citation
                                | unshift: prefix
                                | unshift: composer
                                | compact
