@@ -76,7 +76,6 @@
             {% for ynp in year_nav_programs %}
                 <li><a href="#{{ynp.label}}">{{ynp.first_concert.start | date: "%Y"}}</a></li>
             {% endfor %}
-			<li><a href="#f1996">1996</a></li>
 			<li><a href="#f1995">1995</a></li>
 		</ul>
 		<!-- TemplateEndEditable -->
@@ -187,31 +186,6 @@
     			</ul>
     		</div>
 		{% endfor %}
-		<!-- ====================================================================== -->
-		<br class="clear">
-		<div id="f1996" class="middle">
-			<img src="images/M@S-roundedges.gif" alt="">
-			<div class="middle_content">
-				<h3>Fall 1996—Music for the Spirit</h3>
-				<p>{% include piece_citation.html piece_ref="bloch/sacred service" %}</p>
-				<p>Antonin Dvorak, <em>Te Deum</em></p>
-				<ul class="artists">
-					<li>Boris Kazansky</li>
-					<li>Susan Gundunas</li>
-					<li>Douglas Nagel</li>
-					<li>
-						Stanford Symphonic Chorus, directed by
-						<a href="../../group/Music/faculty.html#Sano">Stephen M. Sano</a>
-					</li>
-					<li>
-						{% include collab_citation.html collab="PSO" %}, directed by
-						<a href="http://www.peninsulasymphony.org/conductors.php">Mitchell Sardou Klein</a>
-					</li>
-				</ul>
-				<h4>Concerts:</h4>
-				<p>8 p.m. Saturday 23 November, and 2 p.m. Sunday 24 November</p>
-			</div>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="s1996" class="middle">
