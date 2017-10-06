@@ -9,6 +9,7 @@
 # TODO: Add temporary hack to avoid printing times of concerts whose times are not accurately known
 # TODO: After historical data is converted, remove gathering performances explicitly from fylp items
 # MISSING: Spring 1997 program
+# MISSING: programs before Spring 1996
 plugins:
  - "jekyll-tidy"
 
