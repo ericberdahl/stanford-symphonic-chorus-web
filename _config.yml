@@ -6,6 +6,8 @@
 # TODO: convert performances in performance.html to program collection, one program at a time
 # TODO: create PDF posters for all performances that have only jpg posters
 # BUG: "Concerts" on Performances page should be singular for single concerts
+# TODO: Add temporary hack to avoid printing times of concerts whose times are not accurately known
+# TODO: After historical data is converted, remove gathering performances explicitly from fylp items
 plugins:
  - "jekyll-tidy"
 
