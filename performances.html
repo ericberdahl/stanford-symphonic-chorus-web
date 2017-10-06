@@ -76,7 +76,6 @@
             {% for ynp in year_nav_programs %}
                 <li><a href="#{{ynp.label}}">{{ynp.first_concert.start | date: "%Y"}}</a></li>
             {% endfor %}
-			<li><a href="#f1997">1997</a></li>
 			<li><a href="#f1996">1996</a></li>
 			<li><a href="#f1995">1995</a></li>
 		</ul>
@@ -188,27 +187,6 @@
     			</ul>
     		</div>
 		{% endfor %}
-		<!-- ====================================================================== -->
-		<br class="clear">
-		<div id="f1997" class="middle">
-			<img src="images/M@S-roundedges.gif" alt="">
-			<div class="middle_content">
-				<h3>Fall 1997</h3>
-				<p>Verdi, <em>Manzoni Requiem</em></p>
-				<ul class="artists">
-					<li>Margo Sherelle Alexander, <em>soprano</em></li>
-					<li>Jennifer Lane, <em>mezzo-soprano</em></li>
-					<li>Stephen Guggenheim, <em>tenor</em></li>
-					<li>Douglas Lawrence, <em>baritone</em></li>
-				</ul>
-				<h4>Concerts:</h4>
-				<p>8 p.m. 20 November, and 2 p.m. 23 November</p>
-				<p>
-					With the {% include collab_citation.html collab="PSO" %},
-					<a href="http://www.peninsulasymphony.org/conductors.php">Mitchell Sardou Klein</a>.
-				</p>
-			</div>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="w1997" class="middle">
