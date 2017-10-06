@@ -8,6 +8,7 @@
 # BUG: "Concerts" on Performances page should be singular for single concerts
 # TODO: Add temporary hack to avoid printing times of concerts whose times are not accurately known
 # TODO: After historical data is converted, remove gathering performances explicitly from fylp items
+# MISSING: Spring 1997 program
 plugins:
  - "jekyll-tidy"
 
