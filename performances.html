@@ -76,7 +76,6 @@
             {% for ynp in year_nav_programs %}
                 <li><a href="#{{ynp.label}}">{{ynp.first_concert.start | date: "%Y"}}</a></li>
             {% endfor %}
-			<li><a href="#f1995">1995</a></li>
 		</ul>
 		<!-- TemplateEndEditable -->
 	</div>
@@ -186,25 +185,6 @@
     			</ul>
     		</div>
 		{% endfor %}
-		<!-- ====================================================================== -->
-		<br class="clear">
-		<div id="f1995" class="middle">
-			<img src="images/M@S-roundedges.gif" alt="">
-			<div class="middle_content">
-				<h3>Fall 1995—A French Christmas</h3>
-				<p>Hector Berlioz, Scenes from <em>L'enfance du Christ</em></p>
-				<ul class="artists">
-					<li>Nancy Wait Kromm, <em>soprano</em></li>
-					<li>Leroy Kromm, <em>baritone</em></li>
-				</ul>
-				<p>{% include piece_citation.html piece_ref="poulenc/gloria" %}</p>
-				<ul class="artists">
-					<li>Nancy Wait Kromm, <em>soprano</em></li>
-				</ul>
-				<h4>Concerts:</h4>
-				<p>8 p.m. Saturday 2 December, and 2 p.m. Sunday 3 December, {% include loc_citation.html loc="MemChu" %}</p>
-			</div>
-		</div>
 		<!-- ====================================================================== -->
 		<br class="clear">
 		<div id="s1995" class="middle">
