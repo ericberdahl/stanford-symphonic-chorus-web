@@ -1,6 +1,7 @@
 ---
 ---
-{% assign current_program = site.programs | where_exp: "item","item.first_concert.start > site.time"
+{% assign current_time = site.time %}
+{% assign current_program = site.programs | where_exp: "item","item.first_concert.start > current_time"
                                           | sort: "first_concert.start"
 								          | reverse
 									      | last %}
@@ -101,6 +102,9 @@
 				{% endif %}
                 
 				{% for et in event_times %}
+					{% if et < current_time %}
+						{% continue %}
+					{% endif %}
 					{% assign et_events = current_events | where_exp: "item","item.start == et" %}
 					{% assign et_concerts = concerts | where_exp: "item","item.start == et" %}
 					
