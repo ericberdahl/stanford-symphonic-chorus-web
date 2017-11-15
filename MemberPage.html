@@ -1,9 +1,7 @@
 ---
 ---
-{% assign program = site.programs | where_exp: "item","item.first_concert.start > site.time"
-                                  | sort: "first_concert.start"
-								  | reverse
-								  | last %}
+{% assign program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
+								  | first %}
 {% assign program_path = "performances/" | append: program.label
                                          | append: "/" %}
 <!doctype html>
