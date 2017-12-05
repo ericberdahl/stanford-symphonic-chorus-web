@@ -3,8 +3,7 @@
 {% assign program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
 								  | first %}
 {% assign upcoming = site.programs | where_exp: "item","item.first_concert.start > program.first_concert.start"
-                                   | sort: "first_concert.start"
-								   | shift %}
+                                   | sort: "first_concert.start" %}
 <!doctype html>
 <html lang="en">
 <head>
