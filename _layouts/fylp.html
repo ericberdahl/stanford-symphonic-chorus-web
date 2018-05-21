@@ -1,4 +1,4 @@
-{%- assign piece = site.pieces | where: "key",page.piece_ref | first -%}
+{%- assign piece = site.data.pieces | where: "key",page.piece_ref | first -%}
 {% assign albums = site.albums | where: "piece_ref",page.piece_ref
 							   | sort: 'rating'
 							   | reverse %}

@@ -21,7 +21,6 @@ timezone: "America/Los_Angeles"
 
 collections:
     albums:
-    pieces:
     programs:
     fylp:
         output: true
