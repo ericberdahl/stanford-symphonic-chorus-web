@@ -1,7 +1,11 @@
 {%- assign loc = include.loc -%}
 {%- assign style = include.style | default: "casual" -%}
-{%- assign location = site.data.locations | where: "key",loc
-                                          | first -%}
+{%- if loc -%}
+    {%- assign location = site.data.locations | where: "key",loc
+                                              | first -%}
+{%- else -%}
+    {%- assign location = nil -%}
+{%- endif -%}
 {%- if location -%}
     {%- case style -%}
         {%- when "formal" -%}
