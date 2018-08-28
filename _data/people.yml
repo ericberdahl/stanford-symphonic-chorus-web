@@ -1,0 +1,27 @@
+webmaster:
+    full_name: "Eric Berdahl"
+    email: "berdahl"
+    domain: "serendipity"
+    long_tld: "organize"
+    obscure_tld: "-o-r-g-"
+
+director:
+    full_name: "Stephen Sano"
+    email: "sano"
+    domain: "stanford"
+    long_tld: "educator"
+    obscure_tld: "-e-d-u-"
+
+administrator:
+    full_name: "Eric Tuan"
+    email: "erictuan"
+    domain: "stanford"
+    long_tld: "educator"
+    obscure_tld: "-e-d-u-"
+
+w2010_photographer:
+    full_name: "R. A. Wilson"
+    email: "R.A.Wilson"
+    domain: "gmail"
+    long_tld: "commuter"
+    obscure_tld: "-c-o-m-"

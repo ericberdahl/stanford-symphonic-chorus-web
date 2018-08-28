@@ -513,17 +513,13 @@ Beethoven <em>Mass in C,</em> Winter 2010, Memorial Church
 		<div id="copyright">
 			<p class="vcard">
 				Website work by
-				<script type="text/javascript">
-					unScramble("berdahl","serendipity.organize","Eric Berdahl","SSC Website feedback");
-				</script>
-				<noscript>Eric Berdahl: berdahl/AT/serendipity/DOT/-o-r-g-/</noscript>
+				{% include people_citation.html person=site.data.people.webmaster subject="SSC Website feedback" %}
 				.
 			</p>
 			<p class="vcard">
-				Photos by <script type="text/javascript">
-						unScramble("R.A.Wilson","gmail.commuter","R. A. Wilson","W2010 gallery on the SSC Website");
-				</script>
-				<noscript>R. A. Wilson: R.A.Wilson/AT/gmail/DOT/-c-o-m-/</noscript>.
+				Photos by
+				{% include people_citation.html person=site.data.people.w2010_photographer subject="W2010 gallery on the SSC Website" %}
+				.
 			</p>
 			<p class="vcard">
 				&copy; <span class="fn org">Stanford University</span>.

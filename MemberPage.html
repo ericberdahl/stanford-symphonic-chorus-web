@@ -73,10 +73,8 @@
 
 			<p>
 				Singers must register online using the webform which will be
-				emailed to last quarter's members in {{program.preregister | date: "%B %Y"}}. New members please contact 				<script type="text/javascript">
-					unScramble("erictuan", "stanford.educator", "Eric Tuan", "Re SSC Registration Link");
-				</script>
-				<noscript>Eric Tuan at: erictuan/AT/stanford/DOT/-e-d-u-/</noscript>
+				emailed to last quarter's members in {{program.preregister | date: "%B %Y"}}. New members please contact
+				{% include people_citation.html person=site.data.people.administrator subject="Re SSC Registration Link" %}
 				to receive the registration link.
 			</p>
 			<p>
@@ -104,10 +102,7 @@
 				understand its meaning and effect, and agree to be bound by it.
 				If you would like a hard copy of this agreement, please
 				contact the Choral Studies Program Administrator,
-				<script type="text/javascript">
-					unScramble("erictuan", "stanford.educator", "Eric Tuan", "Re Choral Studies Liability Waiver");
-				</script>
-				<noscript>Eric Tuan at: erictuan/AT/stanford/DOT/-e-d-u-/</noscript>
+				{% include people_citation.html person=site.data.people.administrator subject="Re Choral Studies Liability Waiver" %}
 				.
 			</p>
 
@@ -148,10 +143,8 @@
 			each academic quarter.
 			If you are interested in auditioning for the chorus for the
 			{{program.quarter}} quarter, please email
-			<script type="text/javascript">
-				unScramble("erictuan", "stanford.educator", "Eric Tuan", "Regarding auditions");
-			</script>
-			<noscript>Eric Tuan at: erictuan/AT/stanford/DOT/-e-d-u-/</noscript>.
+			{% include people_citation.html person=site.data.people.administrator subject="Regarding auditions" %}
+			.
 		</p>
 
 		<p>Auditions take about ten minutes, are very "user-friendly," and consist of:</p>
