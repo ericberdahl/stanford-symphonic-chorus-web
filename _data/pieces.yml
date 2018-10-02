@@ -1,7 +1,16 @@
 - key: "aquilanti/sanctus"
-  composer: "Giancarlo Aquilanti"
+  composer: &aquilanti "Giancarlo Aquilanti"
   citation: "<em>Sanctus</em> from <em>Mass: A Celebration of Life</em>"
   title:  "Sanctus from Mass: A Celebration of Life"
+
+- key: "aquilanti/intermezzo for strings"  
+  composer: *aquilanti
+  citation: "<em>Intermezzo for strings</em> from <em>Mass: A Celebration of Life</em>"
+  title: "Intermezzo for strings from Mass: A Celebration of Life"
+
+- key: "aquilanti/prima missa"
+  composer: *aquilanti
+  title: "Prima Missa"
 
 - key: "bach/fantasia & fugue in c minor"
   composer: &bach "Johann Sebastian Bach"
@@ -13,13 +22,8 @@
   citation: "<em>Weihnachts-Oratorium</em> (Christmas Oratorio)"
   title: "Weihnachts-Oratorium"
 
-- key: "beethoven/mass in c"
-  composer: &beethoven "Ludwig von Beethoven"
-  citation: '<em>Mass in C</em>, Op. 86'
-  title: 'Mass in C'
-
 - key: "beethoven/6th"
-  composer: *beethoven
+  composer: &beethoven "Ludwig von Beethoven"
   citation: '<em>Symphony No. 6 in F Major</em> "Pastorale", Op. 68'
   title: 'Symphony No. 6 in F Major'
 
@@ -28,10 +32,47 @@
   citation: '<em>Symphony No. 9 in D minor</em>, Op. 125'
   title: 'Symphony No. 9 in D minor'
 
+- key: "beethoven/choral fantasy"
+  composer: *beethoven
+  title: "Choral Fantasy"
+
+- key: "beethoven/the creatures of prometheus overture"
+  composer: *beethoven
+  title: "The Creatures of Prometheus Overture"
+
+- key: "beethoven/egmont overture"
+  composer: *beethoven
+  title: "Egmont Overture"
+
+- key: "beethoven/magnificat"
+  composer: *beethoven
+  title: "Magnificat"
+
+- key: "beethoven/mass in c"
+  composer: *beethoven
+  citation: '<em>Mass in C</em>, Op. 86'
+  title: 'Mass in C'
+
+- key: "beethoven/meeresstille und glückliche fahrt"
+  composer: *beethoven
+  title: "Meeresstille und glückliche Fahrt"
+
+- key: "beethoven/piano concerto no. 4"
+  composer: *beethoven
+  title: "Piano Concerto No. 4"
+
 - key: "berlioz/requiem"
-  composer: "Hector Berlioz"
+  composer: &berlioz "Hector Berlioz"
   citation: '<em>Requiem</em>'
   title: "Requiem"
+
+- key: "berlioz/te deum"
+  composer: *berlioz
+  title: "Te Deum"
+
+- key: "berlioz/lenfance du christ"
+  composer: *berlioz
+  title: "L'enfance du Christ"
 
 - key: "bernstein/chichester"
   composer: "Leonard Bernstein"
@@ -51,6 +92,10 @@
   citation: "<em>Akademische Festovertüre</em> (Academic Festival Overture), Op. 80"
   title: "Akademische Festovertüre"
 
+- key: "brahms/gesang der parzen"
+  composer: *brahms
+  title: "Gesang der Parzen"
+
 - key: "brahms/nanie-schicksalslied"
   composer: *brahms
   citation: "<em>Nänie</em> and <em>Schicksalslied</em>"
@@ -61,6 +106,10 @@
   citation: "<em>Ein Deutsches Requiem</em> (A German Requiem), Op. 45"
   title: "Ein Deutsches Requiem"
 
+- key: "brahms/variations on a theme by haydn"
+  composer: *brahms
+  title: "Variations on a Theme by Haydn"
+
 - key: "bruckner/mass-#3-f-minor"
   composer: &bruckner "Anton Bruckner"
   citation: "<em>Mass No. 3 in F Minor</em>"
@@ -70,6 +119,10 @@
   composer: *bruckner
   citation: "<em>Psalm 150</em>, WAB 38"
   title: "Psalm 150"
+
+- key: "bruckner/te deum"
+  composer: *bruckner
+  title: "Te Deum"
 
 - key: "copland/suite from our town"
   composer: "Aaron Copland"
@@ -93,6 +146,14 @@
   composer: &finzi "Gerald Finzi"
   citation: "<em>God is Gone Up</em>"
   title: "God is Gone Up"
+
+- key: "finzi/in terra pax"
+  composer: *finzi
+  title: "In Terra Pax"
+
+- key: "finzi/let us garlands bring"
+  composer: *finzi 
+  title: "Let us garlands bring"
 
 - key: "finzi/magnificat"
   composer: *finzi 
@@ -141,6 +202,10 @@
   composer: *haydn
   title: "Te Deum"
 
+- key: "haydn/violin concerto in g major"
+  composer: *haydn
+  title: "Violin Concerto in G Major"
+
 - key: "hui/always"
   composer: "Melissa Hui"
   title: "Always"
@@ -152,22 +217,37 @@
 
 - key: "rutter/magnificat"
   composer: *rutter
-  citation: "<em>Magnificat</em>"
   title: "Magnificat"
 
 - key: "mascagni/easter hymn"
-  composer: "Mascagni"
+  composer: &mascagni "Mascagni"
   title: "Easter Hymn"
 
-- key: "mendelssohn/lobgesang"
+- key: "mascagni/intermezzo from cavaleria rusticana"
+  composer: *mascagni
+  citation: "<em>Intermezzo</em> from <em>Cavaleria Rusticana</em>"
+  title: "Intermezzo from Cavaleria Rusticana"
+
+- key: "mendelssohn/elijah"
   composer: &mendelssohn "Felix Mendelssohn"
+  title: "Elijah"
+
+- key: "mendelssohn/hebrides overture"
+  composer: *mendelssohn
+  title: "Hebrides Overture"
+
+- key: "mendelssohn/lobgesang"
+  composer: *mendelssohn
   citation: '<em>Symphony No. 2 "Lobgesang"</em> (Hymn of Praise)'
   title: 'Lobgesang'
 
 - key: "mendelssohn/psalm 114"
   composer: *mendelssohn
-  citation: "<em>Psalm 114</em>"
   title: "Psalm 114"
+
+- key: "mendelssohn/sinfonia no. 10 in b minor"
+  composer: *mendelssohn
+  title: "Sinfonia No. 10 in B Minor, Op. 36"
 
 - key: "mozart/coronation mass"
   composer: &mozart "Mozart"
@@ -190,12 +270,19 @@
 
 - key: "orff/carmina burana"
   composer: "Carl Orff"
-  citation: "<em>Carmina Burana</em>"
   title: "Carmina Burana"
 
 - key: "poulenc/gloria"
   composer: "Francis Poulenc"
   title: "Gloria"
+
+- key: "puccini/messa di gloria"
+  composer: &puccini "Puccini"
+  title: "Messa di Gloria"
+
+- key: "puccini/capriccio sinfonico"
+  composer: *puccini
+  title: "Capriccio Sinfonico"
 
 - key: "ravel/daphnis et chloe"
   composer: &ravel "Maurice Ravel"
@@ -233,7 +320,6 @@
 
 - key: "vaughan williams/ward the pirate"
   composer: "Trad. English, arr. Ralph Vaughan Williams"
-  citation: "<em>Ward the Pirate</em>"
   title: "Ward the Pirate"
 
 - key: "vaughan williams/dona nobis pacem"
@@ -242,7 +328,6 @@
 
 - key: "vaughan williams/fantasia on christmas carols"
   composer: *vaughan-williams
-  citation: "<em>Fantasia on Christmas Carols</em>"
   title: "Fantasia on Christmas Carols"
 
 - key: "vaughan williams/fantasia on theme of thomas tallis"
@@ -251,16 +336,26 @@
 
 - key: "vaughan williams/hodie"
   composer: *vaughan-williams
-  citation: "<em>Hodie</em>"
   title: "Hodie"
 
 - key: "vaughan williams/sea symphony"
   composer: *vaughan-williams
-  citation: "<em>A Sea Symphony</em>"
   title: "A Sea Symphony"
 
-- key: "verdi/requiem"
+- key: "verdi/aida: triumphal march"
   composer: &verdi "Giuseppe Verdi"
+  title: "Aïda: Triumphal March"
+
+- key: "verdi/il trovatore: anvil chorus"
+  composer: *verdi
+  title: "Il Trovatore: Anvil Chorus"
+
+- key: "verdi/manzoni requiem"
+  composer: *verdi
+  title: "Manzoni Requiem"
+
+- key: "verdi/requiem"
+  composer: *verdi
   title: "Messa da Requiem"
 
 - key: "verdi/stabat mater"
