@@ -1,0 +1,277 @@
+- key: "aquilanti/sanctus"
+  composer: "Giancarlo Aquilanti"
+  citation: "<em>Sanctus</em> from <em>Mass: A Celebration of Life</em>"
+  title:  "Sanctus from Mass: A Celebration of Life"
+
+- key: "bach/fantasia & fugue in c minor"
+  composer: "Johann Sebastian Bach"
+  citation: "<em>Fantasia &amp; Fugue in C Minor</em> (BWV 537), arranged by Edward Elgar"
+  title: "Fantasia &amp; Fugue in C Minor"
+
+- key: "bach/weihnachts"
+  composer: "Johann Sebastian Bach"
+  citation: "<em>Weihnachts-Oratorium</em> (Christmas Oratorio)"
+  title: "Weihnachts-Oratorium"
+
+- key: "beethoven/mass in c"
+  composer: "Ludwig von Beethoven"
+  citation: '<em>Mass in C</em>, Op. 86'
+  title: 'Mass in C'
+
+- key: "beethoven/6th"
+  composer: "Ludwig von Beethoven"
+  citation: '<em>Symphony No. 6 in F Major</em> "Pastorale", Op. 68'
+  title: 'Symphony No. 6 in F Major'
+
+- key: "beethoven/9th"
+  composer: "Ludwig von Beethoven"
+  citation: '<em>Symphony No. 9 in D minor</em>, Op. 125'
+  title: 'Symphony No. 9 in D minor'
+
+- key: "berlioz/requiem"
+  composer: "Hector Berlioz"
+  citation: '<em>Requiem</em>'
+  title: "Requiem"
+
+- key: "bernstein/chichester"
+  composer: "Leonard Bernstein"
+  title: 'Chichester Psalms'
+
+- key: "bloch/sacred service"
+  composer: "Ernest Bloch"
+  citation: '<em>Sacred Service</em> (Avodath Hakodesh)'
+  title: 'Sacred Service'
+
+- key: "borodin/polovtsian dances"
+  composer: "Alexander Borodin"
+  title: 'Polovtsian Dances'
+
+- key: "brahms/academic festival overture"
+  composer: "Johannes Brahms"
+  citation: "<em>Akademische Festovertüre</em> (Academic Festival Overture), Op. 80"
+  title: "Akademische Festovertüre"
+
+- key: "brahms/nanie-schicksalslied"
+  composer: "Johannes Brahms"
+  citation: "<em>Nänie</em> and <em>Schicksalslied</em>"
+  title: "Nänie and Schicksalslied"
+
+- key: "brahms/requiem"
+  composer: "Johannes Brahms"
+  citation: "<em>Ein Deutsches Requiem</em> (A German Requiem), Op. 45"
+  title: "Ein Deutsches Requiem"
+
+- key: "bruckner/mass-#3-f-minor"
+  composer: "Anton Bruckner"
+  citation: "<em>Mass No. 3 in F Minor</em>"
+  title: "Mass No. 3 in F Minor"
+
+- key: "bruckner/psalm-150"
+  composer: "Anton Bruckner"
+  citation: "<em>Psalm 150</em>, WAB 38"
+  title: "Psalm 150"
+
+- key: "copland/suite from our town"
+  composer: "Aaron Copland"
+  title: "Suite from Our Town"
+
+- key: "elgar/music makers"
+  composer: "Edward Elgar"
+  title: "The Music Makers"
+
+- key: "faure/elegy for cello and orchestra"
+  composer: "Gabriel Fauré"
+  citation: "<em>Elegy for Cello and Orchestra</em>, Op. 24"
+  title: "Elegy for Cello and Orchestra"
+
+- key: "faure/requiem"
+  composer: "Gabriel Fauré"
+  citation: "<em>Requiem</em>, Op. 48"
+  title: "Requiem"
+
+- key: "finzi/god is gone up"
+  composer: "Gerald Finzi"
+  citation: "<em>God is Gone Up</em>"
+  title: "God is Gone Up"
+
+- key: "finzi/magnificat"
+  composer: "Gerald Finzi"
+  citation: "<em>Magnificat</em>"
+  title: "Magnificat"
+
+- key: "glazunov/violin concerto"
+  composer: "Alexander Glazunov"
+  citation: "<em>Violin Concerto</em>, Op. 82"
+  title: "Violin Concerto"
+
+- key: "haydn/cello concerto in d major"
+  composer: "Franz Joseph Haydn"
+  citation: "<em>Cello Concerto in D Major</em>, Hob.VIIb/2"
+  title: "Cello Concerto in D Major"
+
+- key: "haydn/cello concerto in c major"
+  composer: "Franz Joseph Haydn"
+  citation: "<em>Cello Concerto in C Major</em>, Hob. VIIb:1"
+  title: "Cello Concerto in C Major"
+
+- key: "haydn/harmonie messe"
+  composer: "Franz Joseph Haydn"
+  title: "Harmonie Messe"
+
+- key: "haydn/heiligmesse"
+  composer: "Franz Joseph Haydn"
+  citation: "<em>Missa Sancti Bernardi von Offida</em> (Heiligmesse)"
+  title: "Missa Sancti Bernardi von Offida"
+
+- key: "haydn/lord nelson mass"
+  composer: "Franz Joseph Haydn"
+  title: "Lord Nelson Mass"
+
+- key: "haydn/overture to armida"
+  composer: "Franz Joseph Haydn"
+  citation: "<em>Overture to Armida</em>, Hob. XXVIII:12"
+  title: "Overture to Armida"
+
+- key: "haydn/paukenmesse"
+  composer: "Franz Joseph Haydn"
+  citation: "<em>Missa in tempore belli</em> (Paukenmesse), Hob. XXII:9"
+  title: "Missa in tempore belli"
+
+- key: "haydn/te deum"
+  composer: "Franz Joseph Haydn"
+  title: "Te Deum"
+
+- key: "hui/always"
+  composer: "Melissa Hui"
+  title: "Always"
+
+- key: "rutter/blow blow/good ale"
+  composer: "John Rutter"
+  citation: "<em>Blow, Blow, Thou Winter Wind</em> and <em>Good Ale</em>"
+  title: "Blow, Blow, Thou Winter Wind and Good Ale"
+
+- key: "rutter/magnificat"
+  composer: "John Rutter"
+  citation: "<em>Magnificat</em>"
+  title: "Magnificat"
+
+- key: "mascagni/easter hymn"
+  composer: "Mascagni"
+  title: "Easter Hymn"
+
+- key: "mendelssohn/lobgesang"
+  composer: "Felix Mendelssohn"
+  citation: '<em>Symphony No. 2 "Lobgesang"</em> (Hymn of Praise)'
+  title: 'Lobgesang'
+
+- key: "mendelssohn/psalm 114"
+  composer: "Felix Mendelssohn"
+  citation: "<em>Psalm 114</em>"
+  title: "Psalm 114"
+
+- key: "mozart/coronation mass"
+  composer: "Mozart"
+  citation: "<em>Krönungsmesse</em> (Coronation Mass)"
+  title: "Coronation Mass"
+
+- key: "mozart/mass in c minor"
+  composer: "Mozart"
+  title: "Mass in C Minor"
+
+- key: "mozart/a musical joke"
+  composer: "Mozart"
+  citation: "<em>Ein musikalischer Spaß</em> (A Musical Joke), K. 522"
+  title: "Ein musikalischer Spaß"
+
+- key: "mozart/solemn vespers"
+  composer: "Mozart"
+  citation: "<em>Solemn Vespers</em>, K. 339"
+  title: "Solemn Vespers"
+
+- key: "orff/carmina burana"
+  composer: "Carl Orff"
+  citation: "<em>Carmina Burana</em>"
+  title: "Carmina Burana"
+
+- key: "poulenc/gloria"
+  composer: "Francis Poulenc"
+  title: "Gloria"
+
+- key: "ravel/daphnis et chloe"
+  composer: "Maurice Ravel"
+  citation: "<em>Daphnis et Chloé</em>, Suite No. 2"
+  title: "Daphnis et Chloé"
+
+- key: "ravel/mother goose suite"
+  composer: "Maurice Ravel"
+  citation: "<em>Ma Mere l'Oye</em> (Mother Goose Suite)"
+  title: "Ma Mere l'Oye"
+
+- key: "ravel/pavane for a dead princess"
+  composer: "Maurice Ravel"
+  citation: "<em>Pavane pour une infante defunte</em> (Pavane for a Dead Princess)"
+  title: "Pavane pour une infante defunte"
+
+- key: "ravel/tzigane"
+  composer: "Maurice Ravel"
+  title: "Tzigane"
+
+- key: "reicha/requiem"
+  composer: "Anton Reicha"
+  citation: "<em>Missa pro defunctis</em> (Requiem)"
+  title: "Missa pro defunctis"
+
+- key: "schumann/mass in c minor"
+  composer: "Robert Schumann"
+  citation: "<em>Mass in C Minor</em>, Op. 147"
+  title: "Mass in C Minor"
+
+- key: "stravinsky/firebird suite 1919"
+  citation: "<em>Firebird Suite</em> (1919 version)"
+  title: "Firebird Suite"
+  composer: "Stravinsky"
+
+- key: "vaughan williams/ward the pirate"
+  citation: "<em>Ward the Pirate</em>"
+  title: "Ward the Pirate"
+  composer: "Trad. English, arr. Ralph Vaughan Williams"
+
+- key: "vaughan williams/dona nobis pacem"
+  composer: "Ralph Vaughan Williams"
+  title: "Dona Nobis Pacem"
+
+- key: "vaughan williams/fantasia on christmas carols"
+  composer: "Ralph Vaughan Williams"
+  citation: "<em>Fantasia on Christmas Carols</em>"
+  title: "Fantasia on Christmas Carols"
+
+- key: "vaughan williams/fantasia on theme of thomas tallis"
+  composer: "Ralph Vaughan Williams"
+  title: "Fantasia on a Theme of Thomas Tallis"
+
+- key: "vaughan williams/hodie"
+  composer: "Ralph Vaughan Williams"
+  citation: "<em>Hodie</em>"
+  title: "Hodie"
+
+- key: "vaughan williams/sea symphony"
+  composer: "Ralph Vaughan Williams"
+  citation: "<em>A Sea Symphony</em>"
+  title: "A Sea Symphony"
+
+- key: "verdi/requiem"
+  composer: "Giuseppe Verdi"
+  title: "Messa da Requiem"
+
+- key: "verdi/stabat mater"
+  composer: "Giuseppe Verdi"
+  title: "Stabat Mater"
+
+- key: "verdi/te deum"
+  composer: "Giuseppe Verdi"
+  title: "Te Deum"
+
+- key: "zeisl/requiem ebraico"
+  composer: "Erich Zeisl"
+  citation: "<em>Requiem Ebraico</em> (Psalm 92)"
+  title: "Requiem Ebraico"
