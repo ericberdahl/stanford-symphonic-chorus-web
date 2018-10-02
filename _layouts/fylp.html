@@ -1,7 +1,4 @@
 {%- assign piece = site.data.pieces | where: "key",page.piece_ref | first -%}
-{% assign albums = site.albums | where: "piece_ref",page.piece_ref
-							   | sort: 'rating'
-							   | reverse %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -69,7 +66,7 @@
 		<div id="sidebar_navigation">
 			<h2>Contents</h2>
 			<ul>
-				{% for a in albums %}
+				{% for a in page.albums %}
 				<li><a href="#{{a.director | slugify}}">{{a.director}}</a></li>
 				{% endfor %}
 			</ul>
@@ -97,7 +94,7 @@
 		<!--Optional On this page End-->    
 		<h2>{% include piece_citation.html piece=piece %}</h2>
 		{{page.content}}
-		{% for a in albums %}
+		{% for a in page.albums %}
 		<h3 id="{{a.director | slugify}}">{{a.director}}</h3>
 		<div class="pgraph">
 			{% if a.image %}
