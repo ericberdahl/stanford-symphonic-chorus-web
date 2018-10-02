@@ -92,6 +92,11 @@
   citation: "<em>Akademische Festovertüre</em> (Academic Festival Overture), Op. 80"
   title: "Akademische Festovertüre"
 
+- key: "brahms/feste und gedenkspruche"
+  composer: *brahms
+  citation: "<em>Festé und Gedenksprüche</em>, Op. 109"
+  title: "Festé und Gedenksprüche"
+
 - key: "brahms/gesang der parzen"
   composer: *brahms
   title: "Gesang der Parzen"
@@ -219,6 +224,18 @@
   composer: *rutter
   title: "Magnificat"
 
+- key: "rutter/requiem"
+  composer: *rutter
+  title: "Requiem"
+
+- key: "rutter/star carol"
+  composer: *rutter
+  title: "Star Carol"
+
+- key: "rutter/12 days of christmas"
+  composer: *rutter
+  title: "The 12 Days of Christmas"
+
 - key: "mascagni/easter hymn"
   composer: &mascagni "Mascagni"
   title: "Easter Hymn"
@@ -309,9 +326,13 @@
   title: "Missa pro defunctis"
 
 - key: "schumann/mass in c minor"
-  composer: "Robert Schumann"
+  composer: &schumann "Robert Schumann"
   citation: "<em>Mass in C Minor</em>, Op. 147"
   title: "Mass in C Minor"
+
+- key: "schumann/requiem mass"
+  composer: *schumann
+  title: "Requiem Mass"
 
 - key: "stravinsky/firebird suite 1919"
   composer: "Stravinsky"
