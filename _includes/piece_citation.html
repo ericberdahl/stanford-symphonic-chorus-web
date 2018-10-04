@@ -2,8 +2,7 @@
 {%- assign prefix = include.piece.prefix -%}
 {%- assign suffix = include.piece.suffix -%}
 {%- if piece_ref -%}
-    {%- assign piece = site.data.pieces | where: "key",piece_ref
-                                        | first -%}
+    {%- assign piece = site.data.pieces[piece_ref] -%}
 {%- else -%}
     {%- assign piece = include.piece -%}
 {%- endif -%}

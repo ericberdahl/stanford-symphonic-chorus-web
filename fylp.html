@@ -56,8 +56,9 @@
 		</div>
 		<ul>
 			{% for f in fylp %}
-                {% assign f_pieces = site.data.pieces | where:"key",f.items[0].piece_ref %}
-			    <li><a href="#{{ f_pieces[0].composer | slugify }}">{{ f_pieces[0].composer }}</a></li>
+                {% assign f_pieces_ref = f.items[0].piece_ref %}
+                {% assign f_pieces = site.data.pieces[ f_pieces_ref ] %}
+			    <li><a href="#{{ f_pieces.composer | slugify }}">{{ f_pieces.composer }}</a></li>
 			{% endfor %}
 		</ul>
 		<!-- TemplateEndEditable -->
@@ -73,10 +74,11 @@
 			</p>
 		</div>
 		{% for f in fylp %}
-            {% assign f_pieces = site.data.pieces | where:"key",f.items[0].piece_ref %}
+            {% assign f_pieces_ref = f.items[0].piece_ref %}
+            {% assign f_pieces = site.data.pieces[f_pieces_ref] %}
     		<br class="clear">
-    		<div id="{{ f_pieces[0].composer | slugify }}" class="middle">
-    			<h3>{{ f_pieces[0].composer }}</h3>
+    		<div id="{{ f_pieces.composer | slugify }}" class="middle">
+    			<h3>{{ f_pieces.composer }}</h3>
     			<ul>
     				{% for w in f.items %}
     				    <li><a href="{{ w.url | relative_url }}">{% include piece_citation.html piece_ref=w.piece_ref style="title-only" %}</a></li>

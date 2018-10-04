@@ -1,4 +1,4 @@
-{%- assign piece = site.data.pieces | where: "key",page.piece_ref | first -%}
+{%- assign piece = site.data.pieces[page.piece_ref] -%}
 <!doctype html>
 <html lang="en">
 <head>
