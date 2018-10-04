@@ -1,16 +1,5 @@
-{%- assign location = site.data.locations[ include.loc ] -%}
-{%- if location -%}
-    {%- case include.style | default: "casual" -%}
-        {%- when "formal" -%}
-            {%- assign loc = location.formal -%}
-        {%- else -%}
-            {%- assign loc = location.casual -%}
-    {%- endcase -%}
-{%- endif -%}
-{%- if location.link -%}
-<a href="{{location.link}}">
-{%- endif -%}
-{{loc}}
-{%- if location.link -%}
-</a>
-{%- endif -%}
+{%- assign _style = include.style | default: "casual" -%}
+{%- assign _location = site.data.locations[ include.loc ] -%}
+{%- if _location.link -%}<a href="{{ _location.link }}">{%- endif -%}
+    {{ _location[ _style ]}}
+{%- if _location.link -%}</a>{%- endif -%}
