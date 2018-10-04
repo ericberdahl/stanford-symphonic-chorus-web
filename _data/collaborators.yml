@@ -1,30 +1,39 @@
--   key: "PSO"
+"PSO":
     name: "Peninsula Symphony Orchestra"
     link: "https://peninsulasymphony.org"
--   key: "SSO"
+
+"SSO":
     name: "Stanford Symphony Orchestra"
     link: "https://web.stanford.edu/group/sso"
--   key: "scc"
+
+"scc":
     name: "Stanford Chamber Chorale"
     link: "https://chorale.stanford.edu"
--   key: "ragazzi boys"
+
+"ragazzi boys":
     name: "Ragazzi Boys Chorus"
     link: "https://ragazzi.org"
--   key: "stanford philharmonia"
+
+"stanford philharmonia":
     name: "Stanford Philharmonia Orchestra"
     link: "https://web.stanford.edu/group/sso/cgi-bin/wordpress/about/stanford-philharmonia-orchestra/"
--   key: "university singers"
+
+"university singers":
     name: "Stanford University Singers"
     link: "https://usingers.stanford.edu/"
--   key: "taiko"
+
+"taiko":
     name: "Stanford Taiko"
     link: "https://taiko.stanford.edu"
--   key: "vivace"
+
+"vivace":
     name: "Vivace Youth Chorus"
     link: "https://www.vivaceyouthchorus.org/"
--   key: "jinxing dance"
+
+"jinxing dance":
     name: "Jin Xing Dance Company"
     link: "http://www.jinxing-dance-theatre.com/"
--   key: "cantabile youth"
+
+"cantabile youth":
     name: "Cantabile Youth Singers"
     link: "http://cantabile.org/"

@@ -1,6 +1,5 @@
 {%- assign style = include.style | default: "html" -%}
-{%- assign collaborator = site.data.collaborators | where: "key",include.collab
-                                                  | first -%}
+{%- assign collaborator = site.data.collaborators[ include.collab ] -%}
 {%- if include.collab and collaborator -%}
     {%- if collaborator.link -%}
         <a href="{{ collaborator.link }}">
