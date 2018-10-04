@@ -1,32 +1,44 @@
--   key: "Bing"
+"Bing":
     casual: "Bing Concert Hall"
     formal: "Stanford University's Bing Concert Hall"
     link: "https://music.stanford.edu/venues/bing-concert-hall"
--   key: "MemChu"
+
+"MemChu":
     casual: "Memorial Church"
     formal: "Stanford Memorial Church"
     link: "https://music.stanford.edu/venues/memorial-church"
--   key: "CRH"
+
+"CRH":
     casual: "Campbell Recital Hall"
     formal: "Campbell Recital Hall"
     link: "https://music.stanford.edu/venues/campbell"
--   key: "Braun 103"
+
+"Braun 103":
     casual: "Braun 103"
     formal: "Braun Music Center, Room 103"
     link: "https://music.stanford.edu/venues/braun-music-center"
--   key: "Dink"
+
+"Dink":
     casual: "Dinkelspiel Auditorium"
     formal: "Dinkelspiel Auditorium"
     link: "https://music.stanford.edu/venues/dinkelspiel"
--   key: "SMPAC"
+
+"SMPAC":
     casual: "San Mateo Performing Arts Center"
     formal: "San Mateo Performing Arts Center"
     link: "http://smuhsd.theater/smpac/"
--   key: "Flint"
+
+"Flint":
     casual: "Flint Center"
     formal: "Flint Center for the Performing Arts"
     link: "http://www.flintcenter.com/"
--   key: "emanuelsf"
+
+"emanuelsf":
     casual: "Temple Emanu-El, San Francisco"
     formal: "Temple Emanu-El, San Francisco"
     link: "https://www.emanuelsf.org"
+
+"unknown":
+    casual: ""
+    formal: ""
+    
