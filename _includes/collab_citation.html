@@ -1,13 +1,8 @@
-{%- assign style = include.style | default: "html" -%}
 {%- assign collaborator = site.data.collaborators[ include.collab ] -%}
-{%- if include.collab and collaborator -%}
-    {%- if collaborator.link -%}
-        <a href="{{ collaborator.link }}">
-    {%- endif -%}
-    {{ collaborator.name }}
-    {%- if collaborator.link -%}
-        </a>
-    {%- endif -%}
-{%- else -%}
-    {{ include.collab }}
+{%- if collaborator.link -%}
+    <a href="{{ collaborator.link }}">
+{%- endif -%}
+{{ collaborator.name }}
+{%- if collaborator.link -%}
+    </a>
 {%- endif -%}
