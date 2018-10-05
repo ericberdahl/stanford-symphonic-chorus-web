@@ -20,18 +20,11 @@ url: "https://web.stanford.edu"
 timezone: "America/Los_Angeles"
 
 collections:
-    albums:
     programs:
     fylp:
         output: true
 
 defaults:
-    - scope:
-        path: ""
-        type: "albums"
-      values:
-        director: "Other recordings"
-        rating: 0
     - scope:
         path: ""
         type: "fylp"
