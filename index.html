@@ -110,7 +110,7 @@
 					<div>
 						<h3><span class="event_day">{{et | date: "%-e"}}</span><span class="event_month">{{et | date: "%b"}}<br>{{et | date: "%Y"}}</span></h3>
 						<div class="event_list">
-							<p>First rehearsal: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece %}</span></p>
+							<p>First rehearsal: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece style="em-tagged" %}</span></p>
 							<p>{{et | date: "%-l:%M%P"}} {% include loc_citation.html loc=first_rehearsal.location %}; <em>registration starts at {{first_rehearsal.registration | date: "%-l:%M%P"}}</em></p>
 						</div>
 					</div>
@@ -130,7 +130,7 @@
 					<div>
 						<h3><span class="event_day">{{c.start | date: "%-e"}}</span><span class="event_month">{{c.start | date: "%b"}}<br>{{c.start | date: "%Y"}}</span></h3>
 						<div class="event_list">
-							<p>Symphonic Chorus Performance: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece %}{{collaborators}}</span></p>
+							<p>Symphonic Chorus Performance: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece style="em-tagged" %}{{collaborators}}</span></p>
 							<p>{{c.start | date: "%-l:%M%P"}} {% include loc_citation.html loc=c.location %}</p>
 						</div>
 					</div>

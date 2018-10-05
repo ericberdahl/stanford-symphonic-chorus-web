@@ -81,7 +81,8 @@
     			<h3>{{ f_pieces.composer }}</h3>
     			<ul>
     				{% for w in f.items %}
-    				    <li><a href="{{ w.url | relative_url }}">{% include piece_citation.html piece_ref=w.piece_ref style="title-only" %}</a></li>
+						{%- assign _fylp_f_item_piece = site.data.pieces[ w.piece_ref ] -%}
+    				    <li><a href="{{ w.url | relative_url }}">{% include piece_citation.html piece=_fylp_f_item_piece style="title-only" %}</a></li>
     				{% endfor %}
     			</ul>
     		</div>

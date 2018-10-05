@@ -1,28 +1,26 @@
-{%- assign piece_ref = include.piece_ref | default: include.piece.ref -%}
-{%- assign prefix = include.piece.prefix -%}
-{%- assign suffix = include.piece.suffix -%}
-{%- if piece_ref -%}
-    {%- assign piece = site.data.pieces[piece_ref] -%}
+{%- if include.piece.ref -%}
+    {%- assign _piece_citation__piece = site.data.pieces[include.piece.ref] -%}
 {%- else -%}
-    {%- assign piece = include.piece -%}
+    {%- assign _piece_citation__piece = include.piece -%}
 {%- endif -%}
-{%- assign style = include.style | default: "em-tagged" -%}
-{%- assign composer = piece.composer_citation | default: piece.composer -%}
-{%- if piece.citation -%}
-    {%- assign citation = piece.citation -%}
+{%- if _piece_citation__piece.citation -%}
+    {%- assign _piece_citation__citation = _piece_citation__piece.citation -%}
 {%- else -%}
-    {%- assign citation = piece.title | prepend: "<em>"
-                                      | append: "</em>" -%}
+    {%- assign _piece_citation__citation = _piece_citation__piece.title | prepend: "<em>"
+                                                       | append: "</em>" -%}
 {%- endif -%}
-{%- if style == "plain" -%}
-    {%- assign composer = composer | append: ":" -%}
-    {%- assign citation = citation | strip_html -%}
-{% elsif style == "title-only" -%}
-    {%- assign composer = nil -%}
-{%- endif -%}
-{{ site.data.utils.empty_array | unshift: suffix
-                               | unshift: citation
-                               | unshift: prefix
-                               | unshift: composer
+{%- case include.style | default: "em-tagged" -%}
+    {%- when "em-tagged" -%}
+        {%- assign _piece_citation__composer = _piece_citation__piece.composer -%}
+    {%- when "plain" -%}
+        {%- assign _piece_citation__composer = _piece_citation__piece.composer | append: ":" -%}
+        {%- assign _piece_citation__citation = _piece_citation__citation | strip_html -%}
+    {%- when "title-only" -%}
+        {%- assign _piece_citation__composer = nil -%}
+{%- endcase -%}
+{{ site.data.utils.empty_array | unshift: include.piece.suffix
+                               | unshift: _piece_citation__citation
+                               | unshift: include.piece.prefix
+                               | unshift: _piece_citation__composer
                                | compact
                                | join: " " }}

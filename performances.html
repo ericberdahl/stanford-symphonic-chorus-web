@@ -125,7 +125,7 @@
             				<p>Repertoire:</p>
             				<ul class="artists">
         				{% endif %}
-    					        <li>{% include piece_citation.html piece=r %}</li>
+    					        <li>{% include piece_citation.html piece=r style="em-tagged" %}</li>
         				{% if forloop.last %}
         				    </ul>
         				{% endif %}
@@ -167,7 +167,7 @@
 						{% assign fylp = site.fylp | where: "piece_ref",r.ref
 													| first %}
 						{% if r.ref and fylp %}
-							<li><a href="{{fylp.url | relative_url}}">For your listening pleasure: {% include piece_citation.html piece=r style="simple" %}</a></li>
+							<li><a href="{{fylp.url | relative_url}}">For your listening pleasure: {% include piece_citation.html piece=r style="em-tagged" %}</a></li>
 						{% endif %}
                     {% endfor %}
                     {% for l in p.links %}
