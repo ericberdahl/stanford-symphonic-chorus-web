@@ -1,25 +1,19 @@
-{%- assign image = include.image -%}
-{%- assign display = include.display | default: image -%}
-{%- assign caption = include.caption -%}
-{%- assign width = include.width -%}
-{%- assign height = include.height -%}
-{%- assign img_width = include.img_width -%}
-{%- assign img_height = include.img_height | default: -1 -%}
-{%- assign style = include.style | default: "plain" -%}
-{%- case style -%}
+{%- assign _people_citation__display = include.display | default: include.image -%}
+{%- assign _people_citation__img_height = include.img_height | default: -1 -%}
+{%- case include.style | default: "plain" -%}
     {%- when "leadin" -%}
-        {%- assign anchor_class = "photo pgraph" -%}
-        {%- assign display_class = "" -%}
+        {%- assign _people_citation__anchor_class = "photo pgraph" -%}
+        {%- assign _people_citation__display_class = "" -%}
     {%- when "banner" -%}
-        {%- assign anchor_class = "photo" -%}
-        {%- assign display_class = "image_banner" -%}
+        {%- assign _people_citation__anchor_class = "photo" -%}
+        {%- assign _people_citation__display_class = "image_banner" -%}
     {%- else -%}
-        {%- assign anchor_class = "photo" -%}
-        {%- assign display_class = "framed" -%}
+        {%- assign _people_citation__anchor_class = "photo" -%}
+        {%- assign _people_citation__display_class = "framed" -%}
 {%- endcase -%}
-{%- if img_height == -1 -%}
-    {%- assign img_height = height | times: img_width | divided_by: width -%}
+{%- if _people_citation__img_height == -1 -%}
+    {%- assign _people_citation__img_height = include.height | times: include.img_width | divided_by: include.width -%}
 {%- endif -%}
-<a class="{{anchor_class}}" href="{{image | relative_url}}" title="{{caption}}" rel="mediabox[{{width}} {{height}}]">
-    <img class="{{display_class}}" src="{{display | relative_url}}" width="{{img_width}}" height="{{img_height}}" alt="{{caption}}">
+<a class="{{_people_citation__anchor_class}}" href="{{include.image | relative_url}}" title="{{include.caption}}" rel="mediabox[{{include.width}} {{include.height}}]">
+    <img class="{{_people_citation__display_class}}" src="{{_people_citation__display | relative_url}}" width="{{include.img_width}}" height="{{_people_citation__img_height}}" alt="{{include.caption}}">
 </a>

@@ -1,6 +1,4 @@
-{%- assign person = include.person -%}
-{%- assign subject = include.subject -%}
 <script type="text/javascript">
-    unScramble("{{ person.email }}", "{{ person.domain }}.{{ person.long_tld }}", "{{ person.full_name }}", "{{ subject }}");
+    unScramble("{{ include.person.email }}", "{{ include.person.domain }}.{{ include.person.long_tld }}", "{{ include.person.full_name }}", "{{ include.subject }}");
 </script>
-<noscript>{{ person.full_name}}: {{ person.email }}/AT/{{ person.domain }}/DOT/{{ person.obscure_tld}}/</noscript>
+<noscript>{{ include.person.full_name}}: {{ include.person.email }}/AT/{{ include.person.domain }}/DOT/{{ include.person.obscure_tld}}/</noscript>
