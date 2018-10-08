@@ -54,6 +54,12 @@
 		</h1>
 	</div>
 
+	{% if page.sections.introduction %}
+	<div id="sidebar_introduction">
+		{{ page.sections.introduction | liquify }}
+	</div>
+	{% endif %}
+
 	{{ content }}
 
 	{% if page.sections.supplement %}

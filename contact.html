@@ -14,23 +14,20 @@ ie6_stylesheets:
 scripts:
 
 sections:
+    introduction: |
+        <div id="sidebar_navigation">
+            <h2>Contact</h2>
+            <p>
+                For information about the chorus or auditions, contact {% include people_citation.html person=site.data.people.director subject="Re: Information about SSC or auditions" %}.
+            </p>
+        </div>
+
     supplement: |
         <div id="related_pages">
             {% include about_us.html %}
         </div>
 
 ---
-<div id="sidebar_introduction">
-	<!-- TemplateBeginEditable name="sidebar_introduction" -->
-	<div id="sidebar_navigation">
-		<h2>Contact</h2>
-		<p>
-			For information about the chorus or auditions, contact {% include people_citation.html person=site.data.people.director subject="Re: Information about SSC or auditions" %}.
-		</p>
-	</div>
-	<!-- TemplateEndEditable -->
-</div>
-
 <div id="content_main">
 	<div id="breadcrumb">
 		<p>
