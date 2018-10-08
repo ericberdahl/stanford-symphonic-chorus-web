@@ -20,8 +20,6 @@ sections:
         </div>
 
 ---
-{% assign upcoming = site.data.programs | where_exp: "item","item.first_concert.start > site.data.programs.current.first_concert.start"
-                                   | sort: "first_concert.start" %}
 <div id="sidebar_introduction">
 	<!-- TemplateBeginEditable name="sidebar_introduction" -->
 	<div id="sidebar_navigation">
@@ -146,12 +144,13 @@ sections:
 	<div>
 		<h2 id="season">Looking Ahead</h2>
 		<table class="noborder">
-			{% for ahead in upcoming %}
+			{% for ahead in site.data.programs.future %}
+			{% assign _future_program = ahead[1] %}
 			<tbody>
 				<tr>
-					<td class="emph" colspan="3">{{ahead.quarter}}</td>
+					<td class="emph" colspan="3">{{_future_program.quarter}}</td>
 				</tr>
-				{% include schedule_overview.html program=ahead %}
+				{% include schedule_overview.html program=_future_program %}
 			</tbody>
 			{% endfor %}
 		</table>
