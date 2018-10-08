@@ -7,13 +7,27 @@ logo_include: "logo_ssc.html"
 
 stylesheets:
 -   "tertiary"
--   "tertiary_nocol"
 
 ie6_stylesheets:
+-   "tertiary"
 
 scripts:
+-   "mootools"
+-   "mediabox"
+-   "functions"
 
 ---
+<div id="sidebar_introduction">
+	<!-- TemplateBeginEditable name="sidebar_introduction" -->
+	<div id="sidebar_navigation">
+		<h2>Contact</h2>
+		<p>
+			For information about the chorus or auditions, contact {% include people_citation.html person=site.data.people.director subject="Re: Information about SSC or auditions" %}.
+		</p>
+	</div>
+	<!-- TemplateEndEditable -->
+</div>
+
 <div id="content_main">
 	<div id="breadcrumb">
 		<p>
@@ -29,12 +43,9 @@ scripts:
 		<img src="{{ site.baseurl }}{% link images/graphics/SteveSano2014.jpg %}" width="323" height="201" alt="Sano conducting rehearsal">
 	</p>
 	<!--center-->
-	<!--center-->
-	<p>
-		For information about the chorus or auditions, contact
-		{% include people_citation.html person=site.data.people.director subject="Re: Information about SSC or auditions" %}
-		.
-	</p>
-	<!--center-->
 	<!-- TemplateEndEditable --> 
+</div>
+
+<div id="sidebar_supplementary">
+	{% include about_us.html %}
 </div>
