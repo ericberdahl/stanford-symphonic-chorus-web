@@ -1,0 +1,66 @@
+
+quarter: "Winter 1996"
+
+label: "W1996"
+
+syllabus:
+# MISSING: syllabus for Winter 1996
+
+repertoire:
+-   ref: "beethoven/egmont overture"
+-   ref: "beethoven/meeresstille und glückliche fahrt"
+-   &main-piece
+    ref: "beethoven/mass in c"
+
+soloists:
+-   name: "Kristin Genis"
+    part: "soprano"
+-   name: "Claire Giovannetti"
+    part: "mezzo-soprano"
+-   name: "Gregory Wait"
+    part: "tenor"
+-   name: "Michael Morris"
+    part: "baritone"
+
+collaborators:
+
+poster:
+# MISSING poster for Winter 1996
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+-   &first-rehearsal
+
+sectionals:
+
+dresses:
+
+concerts:
+-   &first-concert
+    start: 1996-03-01 20:00:00 -0800
+    location: "MemChu"
+-   start: 1996-03-02 20:00:00 -0800
+    location: "MemChu"
+
+events:
+
+main_piece: *main-piece
+first_rehearsal: *first-rehearsal
+first_concert: *first-concert
+

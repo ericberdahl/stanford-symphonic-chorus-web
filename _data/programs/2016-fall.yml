@@ -1,0 +1,129 @@
+
+quarter: "Fall 2016"
+
+label: "F2016"
+
+syllabus:
+-   "F2016 Syllabus.pdf"
+-   "F2016 Syllabus.docx"
+
+repertoire:
+-   &main-piece
+    title: "Requiem"
+    composer: "Maurice Duruflé"
+-   title: "Cantique de Jean Racine"
+    composer: "Gabriel Fauré"
+-   title: "Fanfare from La péri"
+    composer: "Dukas"
+-   ref: "ravel/pavane for a dead princess"
+-   ref: "ravel/mother goose suite"
+
+soloists:
+-   name: "Mindy Ella Chu"
+    part: "mezzo-soprano"
+-   name: "Nathaniel Menifield"
+    part: "baritone"
+
+collaborators:
+-   "PSO"
+
+poster:
+    pdf: "F2016-Poster.pdf"
+    jpg:
+        file: "F2016-Poster.jpg"
+        width: 463
+        height: 720
+        caption: "Duruflé: Requiem"
+
+directors:
+-   "Guest Conductor Dr. Craig Jessop"
+
+instructors:
+-   "Dr. Craig Jessop"
+
+links:
+
+fees:
+    registration: "$60"
+    
+limits:
+#    membership: 220
+
+preregister:
+
+images:
+-   file: "Claude_Monet_Rouen_Cathedral_Facade_and_Tour_dAlbaneI.jpg"
+    width: 545
+    height: 815
+
+rehearsals:
+-   &first-rehearsal
+    start: 2016-09-26 19:30:00 -0700
+    end: 2016-09-26 22:00:00 -0700
+    location: "CRH"
+    event: "Registration and Tutti rehearsal"
+    registration: 2016-09-26 18:30 -0700
+-   start: 2016-10-03 19:30:00 -0700
+    end: 2016-10-03 22:00:00 -0700
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2016-10-10 19:30:00 -0700
+    end: 2016-10-10 22:00:00 -0700
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2016-10-17 19:30:00 -0700
+    end: 2016-10-17 22:00:00 -0700
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2016-10-24 19:30:00 -0700
+    end: 2016-10-24 22:00:00 -0700
+    location: "CRH"
+    event: "Tutti rehearsal with guest conductor, Craig Jessop"
+-   start: 2016-10-31 19:30:00 -0700
+    end: 2016-10-31 22:00:00 -0700
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2016-11-07 19:30:00 -0800
+    end: 2016-11-07 22:00:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal with guest conductor, Craig Jessop"
+
+sectionals:
+-   start: 2016-10-05 17:30:00 -0800
+    end: 2016-10-05 18:30:00 -0800
+    location: "Braun 103"
+    event: "Women's sectional (optional, but warmly encouraged)"
+-   start: 2016-10-19 17:30:00 -0800
+    end: 2016-10-19 18:30:00 -0800
+    location: "Braun 103"
+    event: "Women's sectional (optional, but warmly encouraged)"
+-   start: 2016-10-12 17:30:00 -0800
+    end: 2016-10-12 18:30:00 -0800
+    location: "Braun 103"
+    event: "Men's sectional (optional, but warmly encouraged)"
+-   start: 2016-10-26 17:30:00 -0800
+    end: 2016-10-26 18:30:00 -0800
+    location: "Braun 103"
+    event: "Men's sectional (optional, but warmly encouraged)"
+
+dresses:
+-   start: 2016-11-14 19:00:00 -0800
+    location: "Bing"
+-   start: 2016-11-17 19:00:00 -0800
+    location: "Bing"
+
+concerts:
+-   &first-concert
+    start: 2016-11-18 19:30:00 -0800
+    call: 2016-11-18 18:30:00 -0800
+    location: "Bing"
+-   start: 2016-11-20 14:30:00 -0800
+    call: 2016-11-20 13:30:00 -0800
+    location: "Bing"
+
+events:
+
+main_piece: *main-piece
+first_rehearsal: *first-rehearsal
+first_concert: *first-concert
+

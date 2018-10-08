@@ -1,0 +1,133 @@
+
+quarter: "Winter 2013"
+
+label: "W2013"
+
+syllabus:
+-   "W2013syllabus.pdf"
+
+repertoire:
+-   &main-piece
+    ref: "beethoven/mass in c"
+-   ref: "beethoven/6th"
+
+soloists:
+-   name: "Clare Kelm"
+    part: "soprano"
+-   name: "Wendy Hillhouse"
+    part: "mezzo-soprano"
+-   name: "Chester Pidduck"
+    part: "tenor"
+-   name: "Steven Goodman"
+    part: "baritone"
+
+collaborators:
+-   "stanford philharmonia"
+
+poster:
+# MISSING: poster for Winter 2013
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: "$40"
+    
+limits:
+#    membership: 220
+
+preregister: 
+
+images:
+-   file: "Beethoven_pd.jpg"
+    height: 600
+    width: 499
+    caption: "Beethoven"
+-   file: "SSCPerf.jpg"
+    height: 300
+    width: 475
+
+rehearsals:
+-   &first-rehearsal
+    start: 2013-01-14 19:15:00 -0800
+    end: 2013-01-14 21:45:00 -0800
+    location: "CRH"
+    event: "Registration and Tutti rehearsal"
+    registration: 2013-01-06 18:30:00 -0800
+-   start: 2013-01-21 19:15:00 -0800
+    end: 2013-01-21 21:45:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2013-01-28 19:15:00 -0800
+    end: 2013-01-28 21:45:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2013-02-04 19:15:00 -0800
+    end: 2013-02-04 21:45:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2013-02-11 19:15:00 -0800
+    end: 2013-02-11 21:45:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2013-02-18 19:15:00 -0800
+    end: 2013-02-18 21:45:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal with Jindong"
+-   start: 2013-02-25 19:15:00 -0800
+    end: 2013-02-25 21:45:00 -0800
+    location: "Bing"
+    event: "Tutti rehearsal with Jindong"
+-   start: 2013-03-04 19:15:00 -0800
+    end: 2013-03-04 21:45:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2013-03-11 19:15:00 -0700
+    end: 2013-03-11 21:45:00 -0700
+    location: "CRH"
+    event: "Tutti rehearsal"
+
+sectionals:
+-   start: 2013-01-23 17:30:00 -0800
+    end: 2013-01-23 18:30:00 -0800
+    location: "Bing"
+    event: "Men's Sectional (optional)"
+-   start: 2013-02-06 17:30:00 -0800
+    end: 2013-02-06 18:30:00 -0800
+    location: "Bing"
+    event: "Men's Sectional (optional)"
+-   start: 2013-01-30 17:30:00 -0800
+    end: 2013-01-30 18:30:00 -0800
+    location: "Bing"
+    event: "Men's Sectional (optional)"
+-   start: 2013-02-13 17:30:00 -0800
+    end: 2013-02-13 18:30:00 -0800
+    location: "Bing"
+    event: "Men's Sectional (optional)"
+
+dresses:
+-   start: 2013-03-12 19:00:00 -0700
+    location: "Bing"
+-   start: 2013-03-14 19:00:00 -0700
+    location: "Bing"
+
+concerts:
+-   &first-concert
+    start: 2013-03-15 20:00:00 -0700
+    call: 2013-03-15 19:00:00 -0800
+    location: "Bing"
+-   start: 2013-03-17 14:30:00 -0700
+    call: 2013-03-17 13:30:00 -0700
+    location: "Bing"
+
+events:
+
+main_piece: *main-piece
+first_rehearsal: *first-rehearsal
+first_concert: *first-concert
+

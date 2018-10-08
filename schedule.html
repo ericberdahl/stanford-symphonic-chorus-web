@@ -20,9 +20,9 @@ sections:
         </div>
 
 ---
-{% assign program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
+{% assign program = site.data.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
 								  | first %}
-{% assign upcoming = site.programs | where_exp: "item","item.first_concert.start > program.first_concert.start"
+{% assign upcoming = site.data.programs | where_exp: "item","item.first_concert.start > program.first_concert.start"
                                    | sort: "first_concert.start" %}
 <div id="sidebar_introduction">
 	<!-- TemplateBeginEditable name="sidebar_introduction" -->

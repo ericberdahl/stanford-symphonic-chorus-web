@@ -20,7 +20,6 @@ url: "https://web.stanford.edu"
 timezone: "America/Los_Angeles"
 
 collections:
-    programs:
     fylp:
         output: true
 

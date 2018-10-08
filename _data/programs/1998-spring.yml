@@ -1,0 +1,56 @@
+
+quarter: "Spring 1998"
+
+label: "S1998"
+
+syllabus:
+# MISSING: syllabus for Spring 1998
+
+repertoire:
+-   &main-piece
+    ref: "vaughan williams/sea symphony"
+
+soloists:
+
+collaborators:
+
+poster:
+# MISSING poster for Spring 1998
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+
+sectionals:
+
+dresses:
+
+concerts:
+-   &first-concert
+    start: 1998-05-21 20:00:00 -0700
+    location: "MemChu"
+-   start: 1998-05-22 20:00:00 -0700
+    location: "MemChu"
+# MISSING confirmation of start times for Spring 1998 concerts
+
+events:
+
+main_piece: *main-piece
+first_rehearsal: *first-rehearsal
+first_concert: *first-concert
+

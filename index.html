@@ -46,7 +46,7 @@ sections:
 
 ---
 {% assign current_time = site.time %}
-{% assign current_program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
+{% assign current_program = site.data.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
 									      | first %}
 {% assign first_rehearsal = current_program.first_rehearsal %}
 {% assign concerts = current_program.concerts | sort: "start" %}

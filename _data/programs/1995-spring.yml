@@ -1,0 +1,62 @@
+
+quarter: "Spring 1995"
+
+label: "S1995"
+
+syllabus:
+# MISSING: syllabus for Spring 1995
+
+repertoire:
+-   ref: "brahms/academic festival overture"
+-   &main-piece
+    ref: "brahms/requiem"
+
+soloists:
+-   name: "Mary Linduska"
+    part: "soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+
+poster:
+# MISSING poster for Spring 1995
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+-   url: "performances/S1995/text.html"
+    text: "Text"
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+
+sectionals:
+
+dresses:
+
+concerts:
+-   &first-concert
+    start: 1995-05-22 20:00:00 -0700
+    location: "MemChu"
+-   start: 1995-05-23 20:00:00 -0700
+    location: "MemChu"
+
+events:
+
+main_piece: *main-piece
+first_rehearsal: *first-rehearsal
+first_concert: *first-concert
+
