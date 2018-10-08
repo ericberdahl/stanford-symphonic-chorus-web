@@ -1,4 +1,20 @@
 ---
+layout: default
+
+title: "Stanford Symphonic Chorus"
+
+logo_include: "logo_stanford.html"
+
+stylesheets:
+-   "primary"
+
+ie6_stylesheets:
+-   "primary"
+
+scripts:
+-   "mootools"
+-   "mediabox"
+-   "functions"
 ---
 {% assign current_time = site.time %}
 {% assign current_program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
@@ -17,260 +33,176 @@
 									   | concat: concert_times
 									   | unshift: first_rehearsal.start
 									   | sort %}
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Stanford Symphonic Chorus</title>
-<!-- Base stylesheet which imports typography, resets, header/footer layout, and other miscellaneous styles -->
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/base.css %}">
-<!-- Page specific stylesheet for middle layout section (sidebars and content_main) -->
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/primary.css %}">
-<script src="{{ site.baseurl }}{% link js/mootools.js %}" type="text/javascript"></script>
-<script src="{{ site.baseurl }}{% link js/mediabox.js %}" type="text/javascript"></script>
-<script src="{{ site.baseurl }}{% link js/functions.js %}" type="text/javascript"></script>
-<script src="{{ site.baseurl }}{% link js/emus.js %}" type="text/javascript"></script>
-<!--[if IE 6]>
-	<style type="text/css">
-		@import url(css/ie/ie_global.css);
-		@import url(css/ie/ie_primary.css);
-	</style>
-<![endif]-->
-<!--[if IE 7]>
-	<style type="text/css">
-		@import url(css/ie/ie7.css);
-	</style>
-<![endif]-->
-</head>
-<body>
-<!-- TemplateBeginEditable name="top" -->
-<!-- TemplateEndEditable -->
-<div class="skip">
-	<a href="#content_main">Skip to Content</a>
-</div>
-<div id="container">
-	<div id="container_header">
-		<div id="header">
-			{% include logo_stanford.html %}
-			{% include container_search.html %}
-		</div>
-	</div>
-	{% include nav_topic.html %}
-	<div id="title">
-		<h1>
-			<!-- TemplateBeginEditable name="Page Title" -->
-			Stanford Symphonic Chorus
-			<!-- TemplateEndEditable -->
-		</h1>
-	</div>
-	<div id="content_main">
-		<!-- TemplateBeginEditable name="banner" -->
-		<div id="spotlight">
-			<div id="banner">
-				<div>
-                    {% include lightbox.html image="performances/W2010/FullChorus27Feb2010.JPG"
-                                            display="images/graphics/ChorusBanner.jpg"
-                                            style="banner"
-                                            width=800
-                                            height=518
-                                            caption="Performance of Beethoven Mass in C on 27 February 2010. Photo by R. A. Wilson."
-                                            img_width=754
-                                            img_height=160 %}
-				</div>
+<div id="content_main">
+	<!-- TemplateBeginEditable name="banner" -->
+	<div id="spotlight">
+		<div id="banner">
+			<div>
+				{% include lightbox.html image="performances/W2010/FullChorus27Feb2010.JPG"
+										display="images/graphics/ChorusBanner.jpg"
+										style="banner"
+										width=800
+										height=518
+										caption="Performance of Beethoven Mass in C on 27 February 2010. Photo by R. A. Wilson."
+										img_width=754
+										img_height=160 %}
 			</div>
 		</div>
-		<!-- TemplateEndEditable -->
-		<div id="content_left">
-			<!-- TemplateBeginEditable name="content_left" -->
-			<div id="events">
-				<h2>Events</h2>
-                {% include lightbox.html image="images/graphics/MemChu.jpg"
-                                        width=1314
-                                        height=852
-                                        caption="Memorial Church, 22 February 2010. Photo by R. A. Wilson."
-                                        img_width=149 %}
-                                        
-                {% if current_program.collaborators %}
-                    {% capture collaborators %}
-                        {% include collab_array_citation.html collaborators=current_program.collaborators %}
-                    {% endcapture %}
-					{% assign collaborators = collaborators | prepend: " with " %}
-                {% else %}
-                    {% assign collaborators = "" %}
+	</div>
+	<!-- TemplateEndEditable -->
+	<div id="content_left">
+		<!-- TemplateBeginEditable name="content_left" -->
+		<div id="events">
+			<h2>Events</h2>
+			{% include lightbox.html image="images/graphics/MemChu.jpg"
+									width=1314
+									height=852
+									caption="Memorial Church, 22 February 2010. Photo by R. A. Wilson."
+									img_width=149 %}
+									
+			{% if current_program.collaborators %}
+				{% capture collaborators %}
+					{% include collab_array_citation.html collaborators=current_program.collaborators %}
+				{% endcapture %}
+				{% assign collaborators = collaborators | prepend: " with " %}
+			{% else %}
+				{% assign collaborators = "" %}
+			{% endif %}
+			
+			{% for et in event_times %}
+				{% if et < current_time %}
+					{% continue %}
 				{% endif %}
-                
-				{% for et in event_times %}
-					{% if et < current_time %}
-						{% continue %}
-					{% endif %}
-					{% assign et_events = current_events | where_exp: "item","item.start == et" %}
-					{% assign et_concerts = concerts | where_exp: "item","item.start == et" %}
-					
-					{% if first_rehearsal.start == et %}
-					<div>
-						<h3><span class="event_day">{{et | date: "%-e"}}</span><span class="event_month">{{et | date: "%b"}}<br>{{et | date: "%Y"}}</span></h3>
-						<div class="event_list">
-							<p>First rehearsal: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece style="em-tagged" %}</span></p>
-							<p>{{et | date: "%-l:%M%P"}} {% include loc_citation.html loc=first_rehearsal.location %}; <em>registration starts at {{first_rehearsal.registration | date: "%-l:%M%P"}}</em></p>
-						</div>
-					</div>
-					{% endif %}
-					
-					{% for ev in et_events %}
-					<div>
-						<h3><span class="event_day">{{ev.start | date: "%-e"}}</span><span class="event_month">{{ev.start | date: "%b"}}<br>{{ev.start | date: "%Y"}}</span></h3>
-						<div class="event_list">
-							<p>{{ev.title}}</p>
-							<p>{{ev.start | date: "%-l:%M%P"}} {% include loc_citation.html loc=ev.location %}</p>
-						</div>
-					</div>
-					{% endfor %}
-					
-					{% for c in et_concerts %}
-					<div>
-						<h3><span class="event_day">{{c.start | date: "%-e"}}</span><span class="event_month">{{c.start | date: "%b"}}<br>{{c.start | date: "%Y"}}</span></h3>
-						<div class="event_list">
-							<p>Symphonic Chorus Performance: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece style="em-tagged" %}{{collaborators}}</span></p>
-							<p>{{c.start | date: "%-l:%M%P"}} {% include loc_citation.html loc=c.location %}</p>
-						</div>
-					</div>
-					{% endfor %}
-				{% endfor %}
-			</div>
-			<!-- TemplateEndEditable -->
-			<hr class="clearer">
-		</div>
-		<div id="content_center">
-			<!-- TemplateBeginEditable name="content_center" -->
-			<h2>Welcome</h2>
+				{% assign et_events = current_events | where_exp: "item","item.start == et" %}
+				{% assign et_concerts = concerts | where_exp: "item","item.start == et" %}
+				
+				{% if first_rehearsal.start == et %}
 				<div>
-
-					<h3>The Chorus</h3>
-					<div>
-                        {% include lightbox.html image="images/graphics/SmallW10.jpg"
-                                                style="leadin"
-                                                width=700
-                                                height=448
-                                                caption="Performance of Beethoven's Mass in C, 27 February 2010. Photo by R. A. Wilson."
-                                                img_width=139 %}
-						<p>
-							The Stanford Symphonic Chorus is a group of
-							approximately 180 students, faculty, staff, and
-							members of the community led by Director of Music
-							and Conductor Stephen Sano. The Chorus generally
-							performs three works a year, one each academic
-							quarter. Each performance typically features a large
-							choral work, and includes other choral or
-							instrumental pieces. See our <a href="{{ site.baseurl }}{% link performances.html %}">
-							Performances</a> page for information about past
-							performances.
-						</p>
-					</div>
-
-					<hr class="clearer">
-
-					<h3><a href="{{ site.baseurl }}{% link performances.html %}">{{current_program.quarter}} Concert</a></h3>
-					<div>
-						{% if current_program.images %}
-    						{% assign image = current_program.images[0] %}
-    						{% assign image_path = "performances/" | append: current_program.label
-    						                                       | append: "/"
-    															   | append: image.file %}
-                            {% include lightbox.html image=image_path
-                                                    style="leadin"
-                                                    width=image.width
-                                                    height=image.height
-                                                    caption=image.caption
-                                                    img_width=109 %}
-						{% endif %}
-						{{ current_program.content }}
-						<p>
-                            {% assign concert_dates = site.data.utils.empty_array %}
-							{% for c in concerts reversed %}
-                                {% assign c_start = c.start | date: "%A, %-e %B" %}
-                                {% assign concert_dates = concert_dates | unshift: c_start %}
-							{% endfor %}
-                            Performance{% if concerts.size > 1 %}s{% endif %} at {% include loc_citation.html loc=concerts.first.location style="formal" %} on {{ concert_dates | array_to_sentence_string }}
-						</p>
-						<br>
-						<ul class="paragh">
-							<!-- <li><a
-								href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4634&z=182&pt=47,2,4,5,12,16">
-									Tickets for Friday 15 March</a></li>
-									<li><a href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4635&z=182&pt=47,2,4,5,12,16">
-							Tickets for Sunday 17 March</a></li> -->
-						</ul>
+					<h3><span class="event_day">{{et | date: "%-e"}}</span><span class="event_month">{{et | date: "%b"}}<br>{{et | date: "%Y"}}</span></h3>
+					<div class="event_list">
+						<p>First rehearsal: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece style="em-tagged" %}</span></p>
+						<p>{{et | date: "%-l:%M%P"}} {% include loc_citation.html loc=first_rehearsal.location %}; <em>registration starts at {{first_rehearsal.registration | date: "%-l:%M%P"}}</em></p>
 					</div>
 				</div>
-			<!-- TemplateEndEditable -->
-		</div>
-	</div>
-	<div id="sidebar">
-		<!-- TemplateBeginEditable name="sidebar" -->
-		<div id="related_pages">
-			<h2>Helpful links</h2>
-            {% include lightbox.html image="images/graphics/steve_altos.jpg"
-                                    width=800
-                                    height=533
-                                    caption="Alto section in rehearsal, 25 February 2010. Photo by R. A. Wilson."
-                                    img_width=149 %}
-			<h3>Symphonic Chorus</h3>
-			<ul>
-				<li><a href="{{ site.baseurl }}{% link performances.html %}">SSC Performances</a></li>
-				<li><a href="{{ site.baseurl }}{% link fylp.html %}">For your listening pleasure</a></li>
-				<li><a href="{{ site.baseurl }}{% link MemberPage.html %}#auditions">Joining the Chorus</a></li>
-				<li><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></li>
-			</ul>
-            {% include lightbox.html image="images/graphics/rehearsal_front.jpg"
-                                    width=800
-                                    height=533
-                                    caption="Rehearsal, 25 February 2010. Photo by R. A. Wilson."
-                                    img_width=149 %}
-			<h3>Stanford Arts</h3>
-			<ul>
-				<li><a href="http://music.stanford.edu/Home/index.html">Music Department</a></li>
-				<li><a href="http://music.stanford.edu/Ensembles/index.html">Stanford Ensembles</a></li>
-				<li><a href="http://live.stanford.edu/">Stanford Live</a></li>
-				<li><a href="http://arts.stanford.edu/">Stanford Arts</a></li>
-				<li><a href="/group/tickets/index.html">Stanford Ticket Office</a></li>
-			</ul>
+				{% endif %}
+				
+				{% for ev in et_events %}
+				<div>
+					<h3><span class="event_day">{{ev.start | date: "%-e"}}</span><span class="event_month">{{ev.start | date: "%b"}}<br>{{ev.start | date: "%Y"}}</span></h3>
+					<div class="event_list">
+						<p>{{ev.title}}</p>
+						<p>{{ev.start | date: "%-l:%M%P"}} {% include loc_citation.html loc=ev.location %}</p>
+					</div>
+				</div>
+				{% endfor %}
+				
+				{% for c in et_concerts %}
+				<div>
+					<h3><span class="event_day">{{c.start | date: "%-e"}}</span><span class="event_month">{{c.start | date: "%b"}}<br>{{c.start | date: "%Y"}}</span></h3>
+					<div class="event_list">
+						<p>Symphonic Chorus Performance: <span class="event_time">{% include piece_citation.html piece=current_program.main_piece style="em-tagged" %}{{collaborators}}</span></p>
+						<p>{{c.start | date: "%-l:%M%P"}} {% include loc_citation.html loc=c.location %}</p>
+					</div>
+				</div>
+				{% endfor %}
+			{% endfor %}
 		</div>
 		<!-- TemplateEndEditable -->
-		<div id="seal"></div>
+		<hr class="clearer">
 	</div>
-	<div id="footer" class="clear">
-		<hr class="hide">
-		<!-- TemplateBeginEditable name="footer" -->
-		<ul id="nav_footer">
-			<li><a href="http://www.stanford.edu" title="Stanford University">Stanford University</a></li>
-			<li><a href="http://music.stanford.edu" title="Stanford Music Department">Stanford Music Department</a></li>
-			<li><a href="http://music.stanford.edu/Ensembles/index.html">Stanford Music Ensembles</a></li>
-			<li class="last"><a href="{{ site.baseurl }}{% link index.html %}">Stanford Symphonic Chorus</a></li>
-		</ul>
-		<div id="copyright">
-			<p class="vcard">
-				Website work by
-				{% include people_citation.html person=site.data.people.webmaster subject="SSC Website feedback" %}
-				.
-				Chorus photos this page by
-				{% include people_citation.html person=site.data.people.w2010_photographer subject="Chorus photos on the SSC Website" %}
-				.
-			</p>
-			<p class="vcard">
-				&copy; <span class="fn org">Stanford University</span>.
-				<span class="adr">450 Serra Mall,
-					<span class="locality">Stanford</span>,
-					<span class="region">California</span>
-					<span class="postal-code">94305</span>.
-					<span class="tel">(650) 723-2300</span>
-				</span>.
-				<a href="http://www.stanford.edu/site/terms.html">Terms of Use</a> | <a href="http://www.stanford.edu/site/copyright.html">Copyright Complaints</a>
-			</p>
-		</div>
+	<div id="content_center">
+		<!-- TemplateBeginEditable name="content_center" -->
+		<h2>Welcome</h2>
+			<div>
+
+				<h3>The Chorus</h3>
+				<div>
+					{% include lightbox.html image="images/graphics/SmallW10.jpg"
+											style="leadin"
+											width=700
+											height=448
+											caption="Performance of Beethoven's Mass in C, 27 February 2010. Photo by R. A. Wilson."
+											img_width=139 %}
+					<p>
+						The Stanford Symphonic Chorus is a group of
+						approximately 180 students, faculty, staff, and
+						members of the community led by Director of Music
+						and Conductor Stephen Sano. The Chorus generally
+						performs three works a year, one each academic
+						quarter. Each performance typically features a large
+						choral work, and includes other choral or
+						instrumental pieces. See our <a href="{{ site.baseurl }}{% link performances.html %}">
+						Performances</a> page for information about past
+						performances.
+					</p>
+				</div>
+
+				<hr class="clearer">
+
+				<h3><a href="{{ site.baseurl }}{% link performances.html %}">{{current_program.quarter}} Concert</a></h3>
+				<div>
+					{% if current_program.images %}
+						{% assign image = current_program.images[0] %}
+						{% assign image_path = "performances/" | append: current_program.label
+																| append: "/"
+																| append: image.file %}
+						{% include lightbox.html image=image_path
+												style="leadin"
+												width=image.width
+												height=image.height
+												caption=image.caption
+												img_width=109 %}
+					{% endif %}
+					{{ current_program.content }}
+					<p>
+						{% assign concert_dates = site.data.utils.empty_array %}
+						{% for c in concerts reversed %}
+							{% assign c_start = c.start | date: "%A, %-e %B" %}
+							{% assign concert_dates = concert_dates | unshift: c_start %}
+						{% endfor %}
+						Performance{% if concerts.size > 1 %}s{% endif %} at {% include loc_citation.html loc=concerts.first.location style="formal" %} on {{ concert_dates | array_to_sentence_string }}
+					</p>
+					<br>
+					<ul class="pgraph" style="display:none;">
+						{%- comment %}HOWTO: The display:none style hides this element. Remove it and udpate the links when you're ready to include a link to the ticket ordering pages.{% endcomment -%}
+						<li><a href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4634&z=182&pt=47,2,4,5,12,16">Tickets for Friday 15 March</a></li>
+						<li><a href="http://liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4635&z=182&pt=47,2,4,5,12,16">Tickets for Sunday 17 March</a></li>
+					</ul>
+				</div>
+			</div>
 		<!-- TemplateEndEditable -->
 	</div>
 </div>
-<!-- TemplateBeginEditable name="bottom" -->
-<!-- TemplateEndEditable -->
-</body>
-</html>
+<div id="sidebar">
+	<!-- TemplateBeginEditable name="sidebar" -->
+	<div id="related_pages">
+		<h2>Helpful links</h2>
+		{% include lightbox.html image="images/graphics/steve_altos.jpg"
+								width=800
+								height=533
+								caption="Alto section in rehearsal, 25 February 2010. Photo by R. A. Wilson."
+								img_width=149 %}
+		<h3>Symphonic Chorus</h3>
+		<ul>
+			<li><a href="{{ site.baseurl }}{% link performances.html %}">SSC Performances</a></li>
+			<li><a href="{{ site.baseurl }}{% link fylp.html %}">For your listening pleasure</a></li>
+			<li><a href="{{ site.baseurl }}{% link MemberPage.html %}#auditions">Joining the Chorus</a></li>
+			<li><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></li>
+		</ul>
+		{% include lightbox.html image="images/graphics/rehearsal_front.jpg"
+								width=800
+								height=533
+								caption="Rehearsal, 25 February 2010. Photo by R. A. Wilson."
+								img_width=149 %}
+		<h3>Stanford Arts</h3>
+		<ul>
+			<li><a href="http://music.stanford.edu/Home/index.html">Music Department</a></li>
+			<li><a href="http://music.stanford.edu/Ensembles/index.html">Stanford Ensembles</a></li>
+			<li><a href="http://live.stanford.edu/">Stanford Live</a></li>
+			<li><a href="http://arts.stanford.edu/">Stanford Arts</a></li>
+			<li><a href="/group/tickets/index.html">Stanford Ticket Office</a></li>
+		</ul>
+	</div>
+	<!-- TemplateEndEditable -->
+	<div id="seal"></div>
+</div>

@@ -1,81 +1,40 @@
 ---
+layout: default
+
+title: "Contact Information"
+
+logo_include: "logo_ssc.html"
+
+stylesheets:
+-   "tertiary"
+-   "tertiary_nocol"
+
+ie6_stylesheets:
+
+scripts:
+
 ---
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Stanford Symphonic Chorus</title>
-<!-- Base stylesheet which imports typography, resets, header/footer layout, and other miscellaneous styles -->
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/base.css %}">
-<!-- Page specific stylesheet for middle layout section (sidebars and content_main) -->
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/tertiary.css %}">
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/tertiary_nocol.css %}">
-<script  src="{{ site.baseurl }}{% link js/emus.js %}" type="text/javascript"></script>
-<!--[if IE 6]>
-	<style type="text/css">
-		@import url(css/ie/ie_global.css);
-	</style>
-<![endif]-->
-<!--[if IE 7]>
-	<style type="text/css">
-		@import url(css/ie/ie7.css);
-	</style>
-<![endif]-->
-</head>
-<body>
-<!-- TemplateBeginEditable name="top" -->
-<!-- TemplateEndEditable -->
-<div class="skip">
-	<a href="#content_main">Skip to Content</a>
-</div>
-<div id="container">
-	<div id="container_header">
-		<div id="header">
-			{% include logo_ssc.html %}
-			{% include container_search.html %}
-		</div>
-	</div>
-	{% include nav_topic.html %}
-	<div id="title">
-		<h1>
-			<!-- TemplateBeginEditable name="Page Title" -->
-			Contact Information
+<div id="content_main">
+	<div id="breadcrumb">
+		<p>
+			<!-- TemplateBeginEditable name="breadcrumb" -->
+			<a href="{{ site.baseurl }}{% link index.html %}">Symphonic Chorus Home</a>
+			» {{page.title}}
 			<!-- TemplateEndEditable -->
-		</h1>
-	</div>
-	<div id="content_main">
-		<div id="breadcrumb">
-			<p>
-				<!-- TemplateBeginEditable name="breadcrumb" -->
-				<a href="{{ site.baseurl }}{% link index.html %}">Symphonic Chorus Home</a>
-				» Contact
-				<!-- TemplateEndEditable -->
-			</p>
-		</div>
-		<!-- TemplateBeginEditable name="content_main" -->
-		<!--Optional On this page Start-->
-		<!--
-		<div id="onthispage">
-		</div>
-		-->
-		<!--Optional On this page End-->
-		<!--center-->
-		<p>
-			<img src="{{ site.baseurl }}{% link images/graphics/SteveSano2014.jpg %}" width="323" height="201" alt="Sano conducting rehearsal">
 		</p>
-		<!--center-->
-		<!--center-->
-		<p>
-			For information about the chorus or auditions, contact
-			{% include people_citation.html person=site.data.people.director subject="Re: Information about SSC or auditions" %}
-			.
-		</p>
-		<!--center-->
-		<!-- TemplateEndEditable --> 
 	</div>
-	{% include footer.html %}
+	<!-- TemplateBeginEditable name="content_main" -->
+	<!--center-->
+	<p>
+		<img src="{{ site.baseurl }}{% link images/graphics/SteveSano2014.jpg %}" width="323" height="201" alt="Sano conducting rehearsal">
+	</p>
+	<!--center-->
+	<!--center-->
+	<p>
+		For information about the chorus or auditions, contact
+		{% include people_citation.html person=site.data.people.director subject="Re: Information about SSC or auditions" %}
+		.
+	</p>
+	<!--center-->
+	<!-- TemplateEndEditable --> 
 </div>
-<!-- TemplateBeginEditable name="bottom" -->
-<!-- TemplateEndEditable -->
-</body>
-</html>

@@ -1,219 +1,177 @@
 ---
+layout: default
+
+title: "Rehearsal and Performance Schedule"
+
+logo_include: "logo_ssc.html"
+
+stylesheets:
+-   "tertiary"
+
+ie6_stylesheets:
+-   "tertiary"
+
+scripts:
+-   "mootools"
+-   "mediabox"
+-   "functions"
 ---
 {% assign program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
 								  | first %}
 {% assign upcoming = site.programs | where_exp: "item","item.first_concert.start > program.first_concert.start"
                                    | sort: "first_concert.start" %}
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Stanford Symphonic Chorus</title>
-<!-- Base stylesheet which imports typography, resets, header/footer layout, and other miscellaneous styles -->
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/base.css %}">
-<!-- Page specific stylesheet for middle layout section (sidebars and content_main) -->
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/tertiary.css %}">
-<script src="{{ site.baseurl }}{% link js/mootools.js %}" type="text/javascript"></script>
-<script src="{{ site.baseurl }}{% link js/mediabox.js %}" type="text/javascript"></script>
-<script src="{{ site.baseurl }}{% link js/functions.js %}" type="text/javascript"></script>
-<script src="{{ site.baseurl }}{% link js/emus.js %}" type="text/javascript"></script>
-<!--[if IE 6]>
-	<style type="text/css">
-		@import url(css/ie/ie_global.css);
-		@import url(css/ie/ie_tertiary.css);
-	</style>
-<![endif]-->
-<!--[if IE 7]>
-	<style type="text/css">
-		@import url(css/ie/ie7.css);
-	</style>
-<![endif]-->
-</head>
-<body>
-<!-- TemplateBeginEditable name="top" -->
-<!-- TemplateEndEditable -->
-<div class="skip">
-	<a href="#content_main">Skip to Content</a>
-</div>
-<div id="container">
-	<div id="container_header">
-		<div id="header">
-			{% include logo_ssc.html %}
-			{% include container_search.html %}
-		</div>
+<div id="sidebar_introduction">
+	<!-- TemplateBeginEditable name="sidebar_introduction" -->
+	<div id="sidebar_navigation">
+		<h2>Contents</h2>
+		<ul>
+			<li><a href="#this">Overview</a></li>
+			<li><a href="#rehearsals">Rehearsals</a></li>
+			<li><a href="#dress">Dress Rehearsals</a></li>
+			<li><a href="#concerts">Concerts</a></li>
+			{% if program.events %}
+			<li><a href="#events">Events</a></li>
+			{% endif %}
+			<li><a href="#season">Looking Ahead</a></li>
+		</ul>
 	</div>
-	{% include nav_topic.html %}
-	<div id="title">
-		<h1>
-			<!-- TemplateBeginEditable name="Page Title" -->
-			Rehearsal and Performance Schedule
+	<!-- TemplateEndEditable -->
+</div>
+<div id="content_main">
+	<div id="breadcrumb">
+		<p>
+			<!-- TemplateBeginEditable name="breadcrumb" -->
+			<a href="{{ site.baseurl }}{% link index.html %}">Symphonic Chorus Home</a>
+			» <a href="{{ site.baseurl }}{% link MemberPage.html %}">Member Information</a>
+			» {{page.title}}
 			<!-- TemplateEndEditable -->
-		</h1>
+		</p>
 	</div>
-	<div id="sidebar_introduction">
-		<!-- TemplateBeginEditable name="sidebar_introduction" -->
-		<div id="sidebar_navigation">
-			<h2>Contents</h2>
-			<ul>
-				<li><a href="#this">Overview</a></li>
-				<li><a href="#rehearsals">Rehearsals</a></li>
-				<li><a href="#dress">Dress Rehearsals</a></li>
-				<li><a href="#concerts">Concerts</a></li>
-                {% if program.events %}
-                <li><a href="#events">Events</a></li>
-                {% endif %}
-				<li><a href="#season">Looking Ahead</a></li>
-			</ul>
-		</div>
-		<!-- TemplateEndEditable -->
-	</div>
-	<div id="content_main">
-		<div id="breadcrumb">
-			<p>
-				<!-- TemplateBeginEditable name="breadcrumb" -->
-				<a href="{{ site.baseurl }}{% link index.html %}">Symphonic Chorus Home</a>
-				» <a href="{{ site.baseurl }}{% link MemberPage.html %}">Member Information</a>
-				» Schedule
-				<!-- TemplateEndEditable -->
-			</p>
-		</div>
-		<!-- TemplateBeginEditable name="content_main" -->
-		<!--Optional On this page Start-->
-		<!--
-		<div id="onthispage">
-		</div>
-		-->
-		<!--Optional On this page End-->
-		<h2 id="this">Overview</h2>
+	<!-- TemplateBeginEditable name="content_main" -->
+	<h2 id="this">Overview</h2>
+	<table class="noborder">
+		{% include schedule_overview.html program=program showAuditions=true %}
+	</table>
+
+	<h2 id="rehearsals">Rehearsals</h2>
+	<table>
+		<tr>
+			<th>Day</th>
+			<th class="right">Date</th>
+			<th>Location</th>
+			<th>Time</th>
+			<th>Description</th>
+		</tr>
+		{% assign display_schedule = program.rehearsals | concat: program.sectionals
+														| sort: 'start' %}
+		{% for rehearsal in display_schedule %}
+		<tr>
+			<td>{{rehearsal.start | date: "%A"}}</td>
+			<td class="right">{{rehearsal.start | date: "%-e %B %Y"}}</td>
+			<td>{% include loc_citation.html loc=rehearsal.location %}</td>
+			<td>{{rehearsal.start | date: "%-l:%M%P"}} - {{rehearsal.end | date: "%-l:%M%P"}}
+				{%- if forloop.first -%}
+				<br>Registration starts at {{rehearsal.registration | date: "%-l:%M%P"}}
+				{%- endif -%}
+			</td>
+			<td>{{rehearsal.event}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	<h2 id="dress">Dress Rehearsals</h2>
+	<table>
+		<tr>
+			<th>Day</th>
+			<th class="right">Date</th>
+			<th>Location</th>
+			<th>Time</th>
+			<th>Description</th>
+		</tr>
+		{% for dress in program.dresses %}
+		<tr class="dress">
+			<td>{{dress.start | date: "%A"}}</td>
+			<td class="right">{{dress.start | date: "%-e %B %Y"}}</td>
+			<td>{% include loc_citation.html loc=dress.location %}</td>
+			<td>{{dress.start | date: "%-l:%M%P"}}</td>
+			<td>Dress rehearsal</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	<h2 id="concerts">Concerts</h2>
+	<table>
+		<tr>
+			<th>Day</th>
+			<th class="right">Date</th>
+			<th>Location</th>
+			<th>Time</th>
+			<th>Description</th>
+		</tr>
+		{% for concert in program.concerts %}
+		<tr>
+			<td>{{concert.start | date: "%A"}}</td>
+			<td class="right">{{concert.start | date: "%-e %B %Y"}}</td>
+			<td>{% include loc_citation.html loc=concert.location %}</td>
+			<td>{{concert.call | date: "%-l:%M%P"}}</td>
+			<td>Concert call for {{concert.start | date: "%-l:%M%P"}} concert</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	{% if program.events %}
+	<h2 id="events">Events</h2>
+	<table>
+		<tr>
+			<th>Day</th>
+			<th class="right">Date</th>
+			<th>Location</th>
+			<th>Time</th>
+			<th>Description</th>
+		</tr>
+		{% for e in program.events %}
+		<tr>
+			<td>{{e.start | date: "%A"}}</td>
+			<td class="right">{{e.start | date: "%-e %B %Y"}}</td>
+			<td>{{e.start | date: "%-l:%M%P"}}</td>
+			<td>{% include loc_citation.html loc=e.location %}</td>
+			<td>{{ e.title }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
+			
+	<div>
+		<h2 id="season">Looking Ahead</h2>
 		<table class="noborder">
-			{% include schedule_overview.html program=program showAuditions=true %}
-		</table>
-
-		<h2 id="rehearsals">Rehearsals</h2>
-		<table>
-			<tr>
-				<th>Day</th>
-				<th class="right">Date</th>
-				<th>Location</th>
-				<th>Time</th>
-				<th>Description</th>
-			</tr>
-			{% assign display_schedule = program.rehearsals | concat: program.sectionals
-                                                            | sort: 'start' %}
-			{% for rehearsal in display_schedule %}
-			<tr>
-				<td>{{rehearsal.start | date: "%A"}}</td>
-				<td class="right">{{rehearsal.start | date: "%-e %B %Y"}}</td>
-				<td>{% include loc_citation.html loc=rehearsal.location %}</td>
-				<td>{{rehearsal.start | date: "%-l:%M%P"}} - {{rehearsal.end | date: "%-l:%M%P"}}
-                    {%- if forloop.first -%}
-                    <br>Registration starts at {{rehearsal.registration | date: "%-l:%M%P"}}
-                    {%- endif -%}
-                </td>
-				<td>{{rehearsal.event}}</td>
-			</tr>
+			{% for ahead in upcoming %}
+			<tbody>
+				<tr>
+					<td class="emph" colspan="3">{{ahead.quarter}}</td>
+				</tr>
+				{% include schedule_overview.html program=ahead %}
+			</tbody>
 			{% endfor %}
 		</table>
-
-		<h2 id="dress">Dress Rehearsals</h2>
-		<table>
-			<tr>
-				<th>Day</th>
-				<th class="right">Date</th>
-				<th>Location</th>
-				<th>Time</th>
-				<th>Description</th>
-			</tr>
-			{% for dress in program.dresses %}
-			<tr class="dress">
-				<td>{{dress.start | date: "%A"}}</td>
-				<td class="right">{{dress.start | date: "%-e %B %Y"}}</td>
-				<td>{% include loc_citation.html loc=dress.location %}</td>
-				<td>{{dress.start | date: "%-l:%M%P"}}</td>
-				<td>Dress rehearsal</td>
-			</tr>
-			{% endfor %}
-		</table>
-
-		<h2 id="concerts">Concerts</h2>
-		<table>
-			<tr>
-				<th>Day</th>
-				<th class="right">Date</th>
-				<th>Location</th>
-				<th>Time</th>
-				<th>Description</th>
-			</tr>
-			{% for concert in program.concerts %}
-			<tr>
-				<td>{{concert.start | date: "%A"}}</td>
-				<td class="right">{{concert.start | date: "%-e %B %Y"}}</td>
-				<td>{% include loc_citation.html loc=concert.location %}</td>
-				<td>{{concert.call | date: "%-l:%M%P"}}</td>
-				<td>Concert call for {{concert.start | date: "%-l:%M%P"}} concert</td>
-			</tr>
-			{% endfor %}
-		</table>
-
-        {% if program.events %}
-        <h2 id="events">Events</h2>
-		<table>
-			<tr>
-				<th>Day</th>
-				<th class="right">Date</th>
-				<th>Location</th>
-				<th>Time</th>
-				<th>Description</th>
-			</tr>
-			{% for e in program.events %}
-			<tr>
-				<td>{{e.start | date: "%A"}}</td>
-				<td class="right">{{e.start | date: "%-e %B %Y"}}</td>
-                <td>{{e.start | date: "%-l:%M%P"}}</td>
-				<td>{% include loc_citation.html loc=e.location %}</td>
-				<td>{{ e.title }}</td>
-			</tr>
-			{% endfor %}
-		</table>
-        {% endif %}
-				
-		<div>
-			<h2 id="season">Looking Ahead</h2>
-			<table class="noborder">
-				{% for ahead in upcoming %}
-				<tbody>
-					<tr>
-                        <td class="emph" colspan="3">{{ahead.quarter}}</td>
-                    </tr>
-					{% include schedule_overview.html program=ahead %}
-				</tbody>
-				{% endfor %}
-			</table>
-		</div>
 	</div>
-	<div id="sidebar_supplementary">
-		<!-- TemplateBeginEditable name="sidebar_supplementary" -->
-		<div id="related_pages">
-			<h2>Related Pages</h2>
-			<div>
-				<!-- <span class="citation">Photo by R. A. Wilson</span> -->
-                {% include lightbox.html image="images/graphics/ConductingRehearsalA.jpg"
-    									width=800
-    									height=533
-    									caption="Steve Sano conducting dress rehearsal in Memorial Church, 25 February 2010. Photo by R. A. Wilson."
-    									img_width=149 %}
-			</div>
-			<h3><a href="{{ site.baseurl }}{% link MemberPage.html %}">Member Information</a></h3>
-			<p>See our member page for information about rehearsals, and information and member resources. </p>
-			<h3><a href="{{ site.baseurl }}{% link performances.html %}">Performances</a></h3>
-			<p>Information about upcoming and past performances, including posters and photos and ticket information.</p>
-		</div>
-		<!-- TemplateEndEditable -->
-		<div id="seal"></div>
-	</div>
-	{% include footer.html %}
 </div>
-<!-- TemplateBeginEditable name="bottom" -->
-<!-- TemplateEndEditable -->
-</body>
-</html>
+<div id="sidebar_supplementary">
+	<!-- TemplateBeginEditable name="sidebar_supplementary" -->
+	<div id="related_pages">
+		<h2>Related Pages</h2>
+		<div>
+			<!-- <span class="citation">Photo by R. A. Wilson</span> -->
+			{% include lightbox.html image="images/graphics/ConductingRehearsalA.jpg"
+									width=800
+									height=533
+									caption="Steve Sano conducting dress rehearsal in Memorial Church, 25 February 2010. Photo by R. A. Wilson."
+									img_width=149 %}
+		</div>
+		<h3><a href="{{ site.baseurl }}{% link MemberPage.html %}">Member Information</a></h3>
+		<p>See our member page for information about rehearsals, and information and member resources. </p>
+		<h3><a href="{{ site.baseurl }}{% link performances.html %}">Performances</a></h3>
+		<p>Information about upcoming and past performances, including posters and photos and ticket information.</p>
+	</div>
+	<!-- TemplateEndEditable -->
+	<div id="seal"></div>
+</div>
