@@ -20,8 +20,9 @@ sections:
         </div>
 
 ---
-{% assign past_programs = site.data.programs | where_exp: "item","item.first_concert.start <= site.data.programs.current.first_concert.start" %}
-{% assign programs = past_programs | sort: "first_concert.start"
+{% assign programs = site.data.programs.past | where_exp: "item","item.first_concert"
+									| unshift: site.data.programs.current
+									 | sort: "first_concert.start"
                                    | reverse %}
 {% assign year_nav_programs = site.data.utils.empty_array | unshift: site.data.programs.current %}
 {% assign ynp_current_year = site.data.programs.current.first_concert.start | date: "%Y" %}

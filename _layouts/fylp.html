@@ -120,10 +120,11 @@
         <div id="performances">
             <h2>Performances</h2>
 			{% assign p_list = site.data.utils.empty_array %}
-			{% for p in site.data.programs %}
-				{% assign r = p[1].repertoire | where: "ref",page.piece_ref %}
+			{% assign _all_programs = site.data.programs.past | where_exp: "item","item.first_concert" | unshift: site.data.programs.current %}
+			{% for p in _all_programs %}
+				{% assign r = p.repertoire | where: "ref",page.piece_ref %}
 			    {% if r.size > 0 %}
-					{% assign p_list = p_list | unshift: p[1] %}
+					{% assign p_list = p_list | unshift: p %}
 			    {% endif %}
 			{% endfor %}
 			{% assign p_list = p_list | sort: "first_concert.start" | reverse %}
