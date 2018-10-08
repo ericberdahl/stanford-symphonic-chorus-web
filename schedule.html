@@ -20,9 +20,7 @@ sections:
         </div>
 
 ---
-{% assign program = site.data.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
-								  | first %}
-{% assign upcoming = site.data.programs | where_exp: "item","item.first_concert.start > program.first_concert.start"
+{% assign upcoming = site.data.programs | where_exp: "item","item.first_concert.start > site.data.programs.current.first_concert.start"
                                    | sort: "first_concert.start" %}
 <div id="sidebar_introduction">
 	<!-- TemplateBeginEditable name="sidebar_introduction" -->
@@ -33,7 +31,7 @@ sections:
 			<li><a href="#rehearsals">Rehearsals</a></li>
 			<li><a href="#dress">Dress Rehearsals</a></li>
 			<li><a href="#concerts">Concerts</a></li>
-			{% if program.events %}
+			{% if site.data.programs.current.events %}
 			<li><a href="#events">Events</a></li>
 			{% endif %}
 			<li><a href="#season">Looking Ahead</a></li>
@@ -54,7 +52,7 @@ sections:
 	<!-- TemplateBeginEditable name="content_main" -->
 	<h2 id="this">Overview</h2>
 	<table class="noborder">
-		{% include schedule_overview.html program=program showAuditions=true %}
+		{% include schedule_overview.html program=site.data.programs.current showAuditions=true %}
 	</table>
 
 	<h2 id="rehearsals">Rehearsals</h2>
@@ -66,7 +64,7 @@ sections:
 			<th>Time</th>
 			<th>Description</th>
 		</tr>
-		{% assign display_schedule = program.rehearsals | concat: program.sectionals
+		{% assign display_schedule = site.data.programs.current.rehearsals | concat: site.data.programs.current.sectionals
 														| sort: 'start' %}
 		{% for rehearsal in display_schedule %}
 		<tr>
@@ -92,7 +90,7 @@ sections:
 			<th>Time</th>
 			<th>Description</th>
 		</tr>
-		{% for dress in program.dresses %}
+		{% for dress in site.data.programs.current.dresses %}
 		<tr class="dress">
 			<td>{{dress.start | date: "%A"}}</td>
 			<td class="right">{{dress.start | date: "%-e %B %Y"}}</td>
@@ -112,7 +110,7 @@ sections:
 			<th>Time</th>
 			<th>Description</th>
 		</tr>
-		{% for concert in program.concerts %}
+		{% for concert in site.data.programs.current.concerts %}
 		<tr>
 			<td>{{concert.start | date: "%A"}}</td>
 			<td class="right">{{concert.start | date: "%-e %B %Y"}}</td>
@@ -123,7 +121,7 @@ sections:
 		{% endfor %}
 	</table>
 
-	{% if program.events %}
+	{% if site.data.programs.current.events %}
 	<h2 id="events">Events</h2>
 	<table>
 		<tr>
@@ -133,7 +131,7 @@ sections:
 			<th>Time</th>
 			<th>Description</th>
 		</tr>
-		{% for e in program.events %}
+		{% for e in site.data.programs.current.events %}
 		<tr>
 			<td>{{e.start | date: "%A"}}</td>
 			<td class="right">{{e.start | date: "%-e %B %Y"}}</td>

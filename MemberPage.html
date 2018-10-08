@@ -44,9 +44,7 @@ sections:
         </div>
 
 ---
-{% assign program = site.data.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
-								  | first %}
-{% assign program_path = "performances/" | append: program.label
+{% assign program_path = "performances/" | append: site.data.programs.current.label
                                          | append: "/" %}
 <div id="sidebar_introduction">
 	<!-- TemplateBeginEditable name="sidebar_introduction" -->
@@ -61,17 +59,17 @@ sections:
 		<h2>Member Tools</h2>
 		<p></p>
 		<p><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></p>
-		{% if program.syllabus %}
+		{% if site.data.programs.current.syllabus %}
 		<p>
-			{{program.quarter}} Syllabus
-			{% include file_links.html versions=program.syllabus label="Syllabus" path=program_path %}
+			{{site.data.programs.current.quarter}} Syllabus
+			{% include file_links.html versions=site.data.programs.current.syllabus label="Syllabus" path=program_path %}
 		</p>
 		{% endif %}
 		<p><a href="{{ site.baseurl }}{% link assets/Choral Studies Liability Waiver Form.pdf %}">Choral Studies Liability Waiver</a></p>
 
 		<p>
 			Singers must register online using the webform which will be
-			emailed to last quarter's members in {{program.preregister | date: "%B %Y"}}. New members please contact
+			emailed to last quarter's members in {{site.data.programs.current.preregister | date: "%B %Y"}}. New members please contact
 			{% include people_citation.html person=site.data.people.administrator subject="Re SSC Registration Link" %}
 			to receive the registration link.
 		</p>
@@ -84,9 +82,9 @@ sections:
 				Junk folder to be sure it didn't get caught as spam.
 			</p>
 
-		{% if program.fees.registration %}
+		{% if site.data.programs.current.fees.registration %}
 		<p>
-			Registration fee is {{program.fees.registration}} (waived for
+			Registration fee is {{site.data.programs.current.fees.registration}} (waived for
 			students and faculty). The score for this quarter will be sold
 			at the first three rehearsals.
 		</p>
@@ -124,8 +122,8 @@ sections:
 		wonderful music.
 	</p>
 	<p>
-		Members who are not students or faculty pay a modest {% if program.fees.registration %}(currently
-		{{program.fees.registration}}){% endif %} participation fee. This money helps
+		Members who are not students or faculty pay a modest {% if site.data.programs.current.fees.registration %}(currently
+		{{site.data.programs.current.fees.registration}}){% endif %} participation fee. This money helps
 		to offset expenses, the largest of which is hiring orchestras.
 	</p>
 
@@ -134,7 +132,7 @@ sections:
 		New members are normally accepted by audition at the beginning of
 		each academic quarter.
 		If you are interested in auditioning for the chorus for the
-		{{program.quarter}} quarter, please email
+		{{site.data.programs.current.quarter}} quarter, please email
 		{% include people_citation.html person=site.data.people.administrator subject="Regarding auditions" %}
 		.
 	</p>
@@ -163,10 +161,10 @@ sections:
 			<em>Amazing Grace</em>, <em>Edelweiss</em>, etc.
 		</li>
 	</ul>
-	{% if program.limits.membership %}
+	{% if site.data.programs.current.limits.membership %}
 	<p>
 		NB: Due to facilities restrictions, the Symphonic Chorus is capped
-		at a <em><strong>maximum of {{program.limits.membership}} members</strong></em>.
+		at a <em><strong>maximum of {{site.data.programs.current.limits.membership}} members</strong></em>.
 		For potential new members wishing to join the ensemble, please
 		understand that members who have made the full year-long commitment
 		in previous seasons have first priority. New members will be
