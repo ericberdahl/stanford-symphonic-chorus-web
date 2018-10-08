@@ -12,9 +12,12 @@ ie6_stylesheets:
 -   "tertiary"
 
 scripts:
--   "mootools"
--   "mediabox"
--   "functions"
+
+sections:
+    supplement: |
+        <div id="related_pages">
+            {% include about_us.html %}
+        </div>
 
 ---
 <div id="sidebar_introduction">
@@ -44,9 +47,4 @@ scripts:
 	</p>
 	<!--center-->
 	<!-- TemplateEndEditable --> 
-</div>
-
-<div id="sidebar_supplementary">
-	{% include about_us.html %}
-	<div id="seal"></div>
 </div>

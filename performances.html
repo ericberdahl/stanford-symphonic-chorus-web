@@ -12,9 +12,13 @@ ie6_stylesheets:
 -   "secondary"
 
 scripts:
--   "mootools"
--   "mediabox"
--   "functions"
+
+sections:
+    supplement: |
+        <div id="see_also">
+            {% include china_2008_info.html %}
+        </div>
+
 ---
 {% assign current_program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
                                           | first %}
@@ -156,9 +160,4 @@ scripts:
 	<!-- ====================================================================== -->
 	<br class="clear">
 	<!-- TemplateEndEditable -->
-</div>
-
-<div id="sidebar_supplementary">
-	{% include china_2008_info.html %}
-	<div id="seal"></div>
 </div>

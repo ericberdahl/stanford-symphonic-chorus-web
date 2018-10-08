@@ -12,9 +12,37 @@ ie6_stylesheets:
 -   "tertiary"
 
 scripts:
--   "mootools"
--   "mediabox"
--   "functions"
+
+sections:
+    supplement: |
+        <div id="related_pages">
+            <div>
+                <h2>Music-Learning CD sites</h2>
+                <p>These sites offer CDs or mp3 files to aid singers in learning choral parts.</p>
+                <ul>
+                    <li><a href="http://www.choralia.net">Choralia.net</a></li>
+                    <li><a href="http://www.note-perfect.com/">Note Perfect</a></li>
+                    <li><a href="http://songlearning.com/">SongLearning.com</a></li>
+                </ul>
+                <p>The Choral Public Domain Library is a great resource for music scores and sound files that are in the public domain</p>
+                <ul>
+                    <li><a href="http://www1.cpdl.org/wiki/index.php/Main_Page">Choral Public Domain Library</a></li>
+                </ul>
+            </div>
+            <div id="folders">
+                <h2>Music Folders</h2>
+                <p>Black music folders are available at these sites.</p>
+                <ul>
+                    <li><a href="http://musicfolder.com/">MusicFolder.Com</a></li>
+                    <li><a href="http://www.mymusicfolders.com/index.html">mymusicfolders.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></h2>
+                <p>Listing of rehearsals, sectionals and performances for the current quarter.</p>
+            </div>
+        </div>
+
 ---
 {% assign program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
 								  | first %}
@@ -231,67 +259,5 @@ scripts:
 		for rehearsal.
 	</p>
 
-	<!-- TemplateEndEditable -->
-</div>
-<div id="sidebar_supplementary">
-	<!-- TemplateBeginEditable name="sidebar_supplementary" -->
-	<div id="related_pages">
-		<h2>Links for Singers</h2>
-		{% include lightbox.html image="images/graphics/steve1.jpg"
-								width=867
-								height=562
-								caption="Steve Sano conducting in Memorial Church: 1. Photo by R. A. Wilson."
-								img_width=149 %}
-		{% include lightbox.html image="images/graphics/steve2.jpg"
-								width=867
-								height=562
-								caption="Steve Sano conducting in Memorial Church: 2. Photo by R. A. Wilson."
-								img_width=149 %}
-		{% include lightbox.html image="images/graphics/steve3.jpg"
-								width=867
-								height=562
-								caption="Steve Sano conducting in Memorial Church: 3. Photo by R. A. Wilson."
-								img_width=149 %}
-		<br>
-		<br>
-		<br>
-		<br>
-
-		<h2>Music-Learning CD sites</h2>
-		<p>These sites offer CDs or mp3 files to aid singers in learning choral parts.</p>
-
-		<h3><a href="http://www.choralia.net">Choralia.net</a></h3>
-
-		<h3><a href="http://www.note-perfect.com/">Note Perfect</a></h3>
-
-		<h3><a href="http://songlearning.com/">SongLearning.com</a></h3>
-		<br>
-		<p>The Choral Public Domain Library is a great resource for music scores and sound files that are in the public domain</p>
-		
-		<h3><a href="http://www1.cpdl.org/wiki/index.php/Main_Page">Choral Public Domain Library</a></h3>
-
-		<br>
-		<br>
-		<br>
-
-		<div id="folders">
-			<br>
-			<h2>Music Folders</h2>
-			<p>Black music folders are available at these sites.</p>
-			<h3><a href="http://musicfolder.com/">MusicFolder.Com</a></h3>
-			<h3><a href="http://www.mymusicfolders.com/index.html">mymusicfolders.com</a></h3>
-		</div>
-
-		<br>
-		<br>
-		
-		<h2><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></h2>
-		<p>Listing of rehearsals, sectionals and performances for the current quarter.</p>
-	</div>
-
-	<br>
-	<br>
-	
-	<div id="seal"></div>
 	<!-- TemplateEndEditable -->
 </div>

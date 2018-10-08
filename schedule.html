@@ -12,9 +12,13 @@ ie6_stylesheets:
 -   "tertiary"
 
 scripts:
--   "mootools"
--   "mediabox"
--   "functions"
+
+sections:
+    supplement: |
+        <div id="related_pages">
+            {% include about_us.html %}
+        </div>
+
 ---
 {% assign program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
 								  | first %}
@@ -154,24 +158,4 @@ scripts:
 			{% endfor %}
 		</table>
 	</div>
-</div>
-<div id="sidebar_supplementary">
-	<!-- TemplateBeginEditable name="sidebar_supplementary" -->
-	<div id="related_pages">
-		<h2>Related Pages</h2>
-		<div>
-			<!-- <span class="citation">Photo by R. A. Wilson</span> -->
-			{% include lightbox.html image="images/graphics/ConductingRehearsalA.jpg"
-									width=800
-									height=533
-									caption="Steve Sano conducting dress rehearsal in Memorial Church, 25 February 2010. Photo by R. A. Wilson."
-									img_width=149 %}
-		</div>
-		<h3><a href="{{ site.baseurl }}{% link MemberPage.html %}">Member Information</a></h3>
-		<p>See our member page for information about rehearsals, and information and member resources. </p>
-		<h3><a href="{{ site.baseurl }}{% link performances.html %}">Performances</a></h3>
-		<p>Information about upcoming and past performances, including posters and photos and ticket information.</p>
-	</div>
-	<!-- TemplateEndEditable -->
-	<div id="seal"></div>
 </div>

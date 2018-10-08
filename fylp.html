@@ -12,9 +12,13 @@ ie6_stylesheets:
 -   "secondary"
 
 scripts:
--   "mootools"
--   "mediabox"
--   "functions"
+
+sections:
+    supplement: |
+        <div id="see_also">
+            {% include china_2008_info.html %}
+        </div>
+
 ---
 {% assign fylp = site.fylp | group_by: "sort_name"
                            | sort: "name" %}
@@ -57,9 +61,4 @@ scripts:
 		</div>
 	{% endfor %}
 	<br class="clear">
-</div>
-
-<div id="sidebar_supplementary">
-	{% include china_2008_info.html %}
-	<div id="seal"></div>
 </div>

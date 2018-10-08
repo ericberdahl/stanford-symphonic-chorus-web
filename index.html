@@ -12,9 +12,38 @@ ie6_stylesheets:
 -   "primary"
 
 scripts:
--   "mootools"
--   "mediabox"
--   "functions"
+
+sections:
+    sidebar: |
+        <div id="related_pages">
+            <h2>Helpful links</h2>
+            {% include lightbox.html image="images/graphics/steve_altos.jpg"
+                                     width=800
+                                     height=533
+                                     caption="Alto section in rehearsal, 25 February 2010. Photo by R. A. Wilson."
+                                     img_width=149 %}
+            <h3>Symphonic Chorus</h3>
+            <ul>
+                <li><a href="{{ site.baseurl }}{% link performances.html %}">SSC Performances</a></li>
+                <li><a href="{{ site.baseurl }}{% link fylp.html %}">For your listening pleasure</a></li>
+                <li><a href="{{ site.baseurl }}{% link MemberPage.html %}#auditions">Joining the Chorus</a></li>
+                <li><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></li>
+            </ul>
+            {% include lightbox.html image="images/graphics/rehearsal_front.jpg"
+                                     width=800
+                                     height=533
+                                     caption="Rehearsal, 25 February 2010. Photo by R. A. Wilson."
+                                     img_width=149 %}
+            <h3>Stanford Arts</h3>
+            <ul>
+                <li><a href="http://music.stanford.edu/Home/index.html">Music Department</a></li>
+                <li><a href="http://music.stanford.edu/Ensembles/index.html">Stanford Ensembles</a></li>
+                <li><a href="http://live.stanford.edu/">Stanford Live</a></li>
+                <li><a href="http://arts.stanford.edu/">Stanford Arts</a></li>
+                <li><a href="/group/tickets/index.html">Stanford Ticket Office</a></li>
+            </ul>
+        </div>
+
 ---
 {% assign current_time = site.time %}
 {% assign current_program = site.programs | where_exp: "item","item.quarter == site.data.utils.current_quarter"
@@ -172,37 +201,4 @@ scripts:
 			</div>
 		<!-- TemplateEndEditable -->
 	</div>
-</div>
-<div id="sidebar">
-	<!-- TemplateBeginEditable name="sidebar" -->
-	<div id="related_pages">
-		<h2>Helpful links</h2>
-		{% include lightbox.html image="images/graphics/steve_altos.jpg"
-								width=800
-								height=533
-								caption="Alto section in rehearsal, 25 February 2010. Photo by R. A. Wilson."
-								img_width=149 %}
-		<h3>Symphonic Chorus</h3>
-		<ul>
-			<li><a href="{{ site.baseurl }}{% link performances.html %}">SSC Performances</a></li>
-			<li><a href="{{ site.baseurl }}{% link fylp.html %}">For your listening pleasure</a></li>
-			<li><a href="{{ site.baseurl }}{% link MemberPage.html %}#auditions">Joining the Chorus</a></li>
-			<li><a href="{{ site.baseurl }}{% link schedule.html %}">Rehearsal Schedule</a></li>
-		</ul>
-		{% include lightbox.html image="images/graphics/rehearsal_front.jpg"
-								width=800
-								height=533
-								caption="Rehearsal, 25 February 2010. Photo by R. A. Wilson."
-								img_width=149 %}
-		<h3>Stanford Arts</h3>
-		<ul>
-			<li><a href="http://music.stanford.edu/Home/index.html">Music Department</a></li>
-			<li><a href="http://music.stanford.edu/Ensembles/index.html">Stanford Ensembles</a></li>
-			<li><a href="http://live.stanford.edu/">Stanford Live</a></li>
-			<li><a href="http://arts.stanford.edu/">Stanford Arts</a></li>
-			<li><a href="/group/tickets/index.html">Stanford Ticket Office</a></li>
-		</ul>
-	</div>
-	<!-- TemplateEndEditable -->
-	<div id="seal"></div>
 </div>
