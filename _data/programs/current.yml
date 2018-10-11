@@ -31,7 +31,7 @@ syllabus:
 # IMPORTANT: Exactly one piece MUST be labelled with the &main-piece anchor.
 repertoire:
 -   ref: "puccini/capriccio sinfonico"
--   ref: "mascagni/intermezzo from cavaleria rusticana"
+-   ref: "mascagni/intermezzo from cavalleria rusticana"
 -   ref: "mascagni/easter hymn"
 -   ref: "verdi/stabat mater"
 -   &main-piece

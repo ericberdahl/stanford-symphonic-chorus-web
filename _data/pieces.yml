@@ -240,10 +240,10 @@
     composer: &mascagni "Mascagni"
     title: "Easter Hymn"
 
-"mascagni/intermezzo from cavaleria rusticana":
+"mascagni/intermezzo from cavalleria rusticana":
     composer: *mascagni
-    citation: "<em>Intermezzo</em> from <em>Cavaleria Rusticana</em>"
-    title: "Intermezzo from Cavaleria Rusticana"
+    citation: "<em>Intermezzo</em> from <em>Cavalleria Rusticana</em>"
+    title: "Intermezzo from Cavalleria Rusticana"
 
 "mendelssohn/elijah":
     composer: &mendelssohn "Felix Mendelssohn"
