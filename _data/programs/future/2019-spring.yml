@@ -26,8 +26,23 @@ syllabus:
 #     title: "Mass in C"
 #
 # IMPORTANT: Exactly one piece MUST be labelled with the &main-piece anchor.
-repertoire: []
-#-   &main-piece
+repertoire:
+-   composer: "Handel"
+    title: "Fallen is the foe (Judas Maccabaeus)"
+-   composer: "Handel"
+    title: "See, the conqu'ring hero comes (Judas Maccabaeus)"
+-   composer: "Handel"
+    title: "May no rash intruder (Solomon)"
+-   composer: "Handel"
+    title: "Then round about the starry throne (Samson)"
+-   composer: "Handel"
+    title: "Zadok the priest (Coronation Anthems)"
+-   composer: "Handel"
+    title: "The king shall rejoice (Coronation Anthems)"
+-   composer: "Franz Joseph Haydn"
+    title: "The heavens are telling the glory of God (Creation)"
+-   &main-piece
+    ref: "haydn/te deum"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.

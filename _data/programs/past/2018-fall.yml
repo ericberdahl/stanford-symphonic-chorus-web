@@ -73,7 +73,11 @@ collaborators:
 # If either a pdf or jpg version of the poster is not available, omit that field completely from the poster
 # record.
 poster:
-
+    pdf: "F2018-Poster.pdf"
+    jpg:
+        file: "F2018-Poster.jpg"
+        width: 512
+        height: 792
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:

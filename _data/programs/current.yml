@@ -29,6 +29,13 @@ syllabus:
 #
 # IMPORTANT: Exactly one piece MUST be labelled with the &main-piece anchor.
 repertoire:
+-   title: "Fanfare from La Péri"
+    composer: "Paul Dukas"
+-   title: "Wave"
+    composer: "Paul Phillips"
+    citation: "<em>Wave</em> (West Coast Premiere)"
+-   title: "Flute Concerto"
+    composer: "Jacques Ibert"
 -   &main-piece
     ref: "vaughan williams/sea symphony"
 
@@ -38,6 +45,12 @@ repertoire:
 # -   name: "Plácido Domingo"
 #     part: "tenor"
 soloists:
+-   name: "Nnamdi Odita-Honnah"
+    part: "flute"
+-   name: "Marnie Breckenridge"
+    part: "soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
 
 
 # HOWTO: collaborators is a list of groups with whom we collaborate on this program.
@@ -64,10 +77,16 @@ collaborators:
 # If either a pdf or jpg version of the poster is not available, omit that field completely from the poster
 # record.
 poster:
-
+    pdf: "W2019-Poster.pdf"
+    jpg:
+        file: "W2019-Poster.jpg"
+        width: 502
+        height: 789
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
+-   "Paul Phillips"
+-   "Stephen M. Sano"
 
 
 # HOWTO: instructors is a list of strings that name the instructors for this quarter
