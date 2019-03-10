@@ -1,16 +1,18 @@
 # HOWTO: Set quarter to a single string that names the quarter and year. Use something like "Winter 1812",
 # "Spring 1812", or "Fall 1812"
-quarter: "Spring 2019"
+quarter: "Winter 2019"
 
 
 # HOWTO: Set label to a single string that names the directory in performances where assets for the quarter
 # are stored. Use something like "W1812", "S1812", or "F1812"
-label: "S2019"
+label: "W2019"
 
 
 # HOWTO: Set syllabus to an list of syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 1812.pdf" and "SSC Syllabus Spring 1812.docx"
 syllabus:
+-   "SSC Syllabus Spring 2019.pdf"
+-   "SSC Syllabus Spring 2019.docx"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program. Each element should be a reference to a
@@ -27,22 +29,15 @@ syllabus:
 #
 # IMPORTANT: Exactly one piece MUST be labelled with the &main-piece anchor.
 repertoire:
--   composer: "Handel"
-    title: "Fallen is the foe (Judas Maccabaeus)"
--   composer: "Handel"
-    title: "See, the conqu'ring hero comes (Judas Maccabaeus)"
--   composer: "Handel"
-    title: "May no rash intruder (Solomon)"
--   composer: "Handel"
-    title: "Then round about the starry throne (Samson)"
--   composer: "Handel"
-    title: "Zadok the priest (Coronation Anthems)"
--   composer: "Handel"
-    title: "The king shall rejoice (Coronation Anthems)"
--   composer: "Franz Joseph Haydn"
-    title: "The heavens are telling the glory of God (Creation)"
+-   title: "Fanfare from La Péri"
+    composer: "Paul Dukas"
+-   title: "Wave"
+    composer: "Paul Phillips"
+    citation: "<em>Wave</em> (West Coast Premiere)"
+-   title: "Flute Concerto"
+    composer: "Jacques Ibert"
 -   &main-piece
-    ref: "haydn/te deum"
+    ref: "vaughan williams/sea symphony"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -50,12 +45,19 @@ repertoire:
 # -   name: "Plácido Domingo"
 #     part: "tenor"
 soloists:
+-   name: "Nnamdi Odita-Honnah"
+    part: "flute"
+-   name: "Marnie Breckenridge"
+    part: "soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
 
 
 # HOWTO: collaborators is a list of groups with whom we collaborate on this program.
 # Each entry in the list should be a single string that matches the key field of a record in
 # _data/collaborators.yml
 collaborators:
+-   "SSO"
 
 
 # HOWTO:
@@ -75,10 +77,16 @@ collaborators:
 # If either a pdf or jpg version of the poster is not available, omit that field completely from the poster
 # record.
 poster:
-
+    pdf: "W2019-Poster.pdf"
+    jpg:
+        file: "W2019-Poster.jpg"
+        width: 502
+        height: 789
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
+-   "Paul Phillips"
+-   "Stephen M. Sano"
 
 
 # HOWTO: instructors is a list of strings that name the instructors for this quarter
@@ -103,7 +111,7 @@ limits:
 
 # HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
 # is expected to be sent out.
-preregister: "2019-04-01"
+preregister: "2018-12-01"
 
 
 # HOWTO: images is a list of image records associated with this quarter's program.
@@ -144,11 +152,35 @@ images:
 # fields.
 rehearsals:
 -   &first-rehearsal
-    start: 2019-04-01 19:30:00 -0700
-    end: 2019-04-01 22:00:00 -0700
+    start: 2019-01-07 19:30:00 -0800
+    end: 2019-01-07 22:00:00 -0800
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2019-04-07 18:30 -0700
+    registration: 2019-01-07 18:30 -0800
+-   start: 2019-01-14 19:30:00 -0800
+    end: 2019-01-14 22:00:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-01-21 19:30:00 -0800
+    end: 2019-01-21 22:00:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-01-28 19:30:00 -0800
+    end: 2019-01-28 22:00:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-02-04 19:30:00 -0800
+    end: 2019-02-04 22:00:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-02-11 19:30:00 -0800
+    end: 2019-02-11 22:00:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-02-18 19:30:00 -0800
+    end: 2019-02-04 22:00:00 -0800
+    location: "CRH"
+    event: "Tutti rehearsal"
 
 
 # HOWTO: sectionals is a list of sectional rehearsals for the quarter
@@ -165,7 +197,23 @@ rehearsals:
 # venue in which the concert will be performed.
 # Where event is a string describing the rehearsal. Typical values include "Men's Sectional (optional, but
 # warmly encouraged)" and "Women's Sectional (optional, but warmly encouraged)", as appropriate.
-sectionals: []
+sectionals:
+-   start: 2019-01-16 17:30:00 -0800
+    end: 2019-01-16 18:30:00 -0800
+    location: "Braun 103"
+    event: "Women's Sectional (optional, but warmly encouraged)"
+-   start: 2019-01-30 17:30:00 -0800
+    end: 2019-01-30 18:30:00 -0800
+    location: "Braun 103"
+    event: "Women's Sectional (optional, but warmly encouraged)"
+-   start: 2019-01-23 17:30:00 -0800
+    end: 2019-01-23 18:30:00 -0800
+    location: "Braun 103"
+    event: "Men's Sectional (optional, but warmly encouraged)"
+-   start: 2019-02-06 17:30:00 -0800
+    end: 2019-02-06 18:30:00 -0800
+    location: "Braun 103"
+    event: "Men's Sectional (optional, but warmly encouraged)"
 
 
 # HOWTO: dresses is a list of dress rehearsals
@@ -179,10 +227,10 @@ sectionals: []
 # Where location is a string that matches the key field of a record in _data/locations.yml and specifies the
 # venue in which the dress rehearsal will take place.
 dresses:
--   start: 2019-05-15 19:00:00 -0700
-    location: "MemChu"
--   start: 2019-05-17 19:00:00 -0700
-    location: "MemChu"
+-   start: 2019-02-25 19:00:00 -0800
+    location: "Bing"
+-   start: 2019-02-28 19:00:00 -0800
+    location: "Bing"
 
 
 # HOWTO: concerts is a list of concert dates
@@ -201,9 +249,12 @@ dresses:
 # labelled should be the first concert in this quarter's series.
 concerts:
 -   &first-concert
-    start: 2019-05-18 20:00:00 -0700
-    call: 2019-05-18 19:00:00 -0700
-    location: "MemChu"
+    start: 2019-03-01 19:30:00 -0800
+    call: 2019-03-01 18:30:00 -0800
+    location: "Bing"
+-   start: 2019-03-02 19:30:00 -0800
+    call: 2019-03-02 18:30:00 -0800
+    location: "Bing"
 
 
 # HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
@@ -223,7 +274,10 @@ events:
 
 # HOWTO: content contains HTML that is included on pages which need a synopsis of
 # the concert. The home page is a typical location where such text is used.
-content:
+content: >
+    <p>
+        The Stanford Symphonic Chorus, in collaboration with the Stanford Symphony Orchestra, presents Ralph Vaughan Williams' <em>A Sea Symphony</em>.
+    </p>
 
 
 # HOWTO: main_piece, first_rehearsal, and first_concert are standard fields that should not be edited
