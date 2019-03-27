@@ -1,0 +1,22 @@
+{
+  "name": "stanfordsymphonicchorus",
+  "version": "1.0.0",
+  "description": "Web site for Stanford Symphonic Chorus",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericberdahl/stanford-symphonic-chorus-web.git"
+  },
+  "author": "Eric Berdahl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericberdahl/stanford-symphonic-chorus-web/issues"
+  },
+  "homepage": "https://github.com/ericberdahl/stanford-symphonic-chorus-web#readme",
+  "dependencies": {
+    "metalsmith": "^2.3.0"
+  }
+}

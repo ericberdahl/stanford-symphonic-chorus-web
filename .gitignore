@@ -2,4 +2,6 @@
 _site
 _reference
 _original
+build/
+node_modules/
 .vscode/
