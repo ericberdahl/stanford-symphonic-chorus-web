@@ -71,7 +71,7 @@ images:
     caption: "Stanford Pan-Asian Music Festival, Winter 2009"
 
 rehearsals:
--   &first-rehearsal
+-   &first-rehearsal "missing historical data"
 
 sectionals:
 

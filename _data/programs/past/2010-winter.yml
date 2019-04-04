@@ -56,7 +56,7 @@ preregister:
 images:
 
 rehearsals:
--   &first-rehearsal
+-   &first-rehearsal "missing historical data"
 
 sectionals:
 

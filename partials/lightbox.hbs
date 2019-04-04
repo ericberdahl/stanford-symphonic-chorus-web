@@ -1,0 +1,3 @@
+<a class="{{ lookup (default style _data.lightbox.style.default) 'anchorClass' }}" href="{{ image }}" title="{{ caption }}" rel="mediabox[{{ width }} {{ height }}]">
+    <img class="{{lookup (default style _data.lightbox.style.default) 'displayClass' }}" src="{{ default display image }}" width="{{ img_width }}" height="{{ default img_height (round (divide (multiply height img_width) width)) }}" alt="{{ caption }}">
+</a>

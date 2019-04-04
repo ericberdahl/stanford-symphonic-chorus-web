@@ -5,12 +5,12 @@
         <li><a href="http://www.stanford.edu" title="Stanford University">Stanford University</a></li>
         <li><a href="http://music.stanford.edu" title="Stanford Music Department">Stanford Music Department</a></li>
         <li><a href="http://music.stanford.edu/Ensembles/index.html">Stanford Music Ensembles</a></li>
-        <li class="last"><a href="{{ site.baseurl }}{% link index.html %}">Stanford Symphonic Chorus</a></li>
+        <li class="last"><a href="/index.html">Stanford Symphonic Chorus</a></li>
     </ul>
     <div id="copyright">
         <p class="vcard">
             Website work by
-            {% include people_citation.html person=site.data.people.webmaster subject="SSC Website feedback" %}
+            {{> people_citation person=_data.people.webmaster subject="SSC Website feedback" }}
             .
         </p>
         <p class="vcard">

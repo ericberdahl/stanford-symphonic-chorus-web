@@ -10,7 +10,8 @@ repertoire:
 -   composer: "Schubert"
     title: "Rosamunde Overture"
 -   ref: "brahms/gesang der parzen"
--   ref: "bruckner/te deum"
+-   &main-piece
+    ref: "bruckner/te deum"
 
 soloists:
 -   name: "Kristin Genis-Lund"
@@ -47,6 +48,7 @@ preregister:
 images:
 
 rehearsals:
+-   &first-rehearsal "missing historical data"
 
 sectionals:
 
