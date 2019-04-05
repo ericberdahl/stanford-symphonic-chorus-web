@@ -1,0 +1,66 @@
+---
+title: "Contact Information"
+
+logo_include: "logo_ssc"
+
+stylesheets:
+-   "tertiary"
+
+ie6_stylesheets:
+-   "tertiary"
+
+scripts:
+
+sections:
+    introduction: |
+        <div id="sidebar_navigation">
+            <h2>Contact</h2>
+            <p>
+                For information about the chorus or auditions, contact {% include people_citation.html person=site.data.people.director subject="Re: Information about SSC or auditions" %}.
+            </p>
+        </div>
+
+    supplement: |
+        <div id="related_pages">
+            {% include about_us.html %}
+        </div>
+
+---
+{{#> default_layout }}
+	{{#*inline "section_intro"}}
+		{{#> sidebar_introduction}}
+			<div id="sidebar_navigation">
+				<h2>Contact</h2>
+				<p>
+					For information about the chorus or auditions, contact {{> people_citation person=_data.people.director subject="Re: Information about SSC or auditions" }}.
+				</p>
+			</div>
+		{{/sidebar_introduction}}
+	{{/inline}}
+
+	{{#*inline "section_supplement"}}
+		{{#> sidebar_supplementary}}
+        <div id="related_pages">
+            {{> about_us }}
+        </div>
+		{{/sidebar_supplementary}}
+	{{/inline}}
+
+	<div id="content_main">
+		<div id="breadcrumb">
+			<p>
+				<!-- TemplateBeginEditable name="breadcrumb" -->
+				<a href="/index.html">Symphonic Chorus Home</a>
+				» {{ this.title }}
+				<!-- TemplateEndEditable -->
+			</p>
+		</div>
+		<!-- TemplateBeginEditable name="content_main" -->
+		<!--center-->
+		<p>
+			<img src="/images/graphics/SteveSano2014.jpg" width="323" height="201" alt="Sano conducting rehearsal">
+		</p>
+		<!--center-->
+		<!-- TemplateEndEditable --> 
+	</div>
+{{/default_layout}}

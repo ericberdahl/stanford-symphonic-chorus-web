@@ -10,6 +10,7 @@
  */
 
 const Metalsmith = require('metalsmith');
+const collections = require('metalsmith-collections');
 const debug = require('metalsmith-debug-ui');
 const discoverPartials = require('metalsmith-discover-partials');
 const helpers = require('handlebars-helpers');
@@ -35,6 +36,7 @@ ms.source('./source')
         rootKey: '_data',
         pattern: '**/*.yml'
     }))
+    .use(collections())
     .use(inplace({
         pattern: '**/*.hbs',
     }))
@@ -52,6 +54,7 @@ ms.source('./source')
             'new-inline-tags': 'fb:fan',
             'output-html': true,
             'preserve-entities': true,
+            'tidy-mark': false,
             'vertical-space': false,
         }
     }))
