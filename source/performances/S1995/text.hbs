@@ -1,20 +1,18 @@
----
----
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Text - Brahms German Requiem</title>
 <!-- Base stylesheet which imports typography, resets, header/footer layout, and other miscellaneous styles -->
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/base.css %}">
+<link rel="stylesheet" type="text/css" href="/css/base.css">
 <!-- Page specific stylesheet for middle layout section (sidebars and content_main) -->
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/tertiary.css %}">
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/tertiary_nocol.css %}">
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}{% link css/custom.css %}">
-<script src="{{ site.baseurl }}{% link js/mootools.js %}" type="text/javascript"></script> 
-<script src="{{ site.baseurl }}{% link js/mediabox.js %}" type="text/javascript"></script> 
-<script src="{{ site.baseurl }}{% link js/functions.js %}" type="text/javascript"></script> 
-<script src="{{ site.baseurl }}{% link js/emus.js %}" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/css/tertiary.css">
+<link rel="stylesheet" type="text/css" href="/css/tertiary_nocol.css">
+<link rel="stylesheet" type="text/css" href="/css/custom.css">
+<script src="/js/mootools.js" type="text/javascript"></script> 
+<script src="/js/mediabox.js" type="text/javascript"></script> 
+<script src="/js/functions.js" type="text/javascript"></script> 
+<script src="/js/emus.js" type="text/javascript"></script>
 <!--[if IE 6]>
   <style type="text/css">
     @import url(css/ie/ie_global.css);
@@ -29,11 +27,11 @@ class="skip"><a href="#content_main">Skip to Content</a></div> <div
 id="container">
   <div id="container_header">
     <div id="header">
-			{% include logo_ssc.html %}
-			{% include container_search.html %}
+			{{> logo_ssc }}
+			{{> container_search }}
     </div>
   </div>
-	{% include nav_topic.html %}
+	{{> nav_topic }}
   <div id="title">
     
 <h1>
@@ -46,9 +44,9 @@ id="container">
 <p>
 <!-- TemplateBeginEditable name="breadcrumb" -->
       
-<a href="{{ site.baseurl }}{% link index.html %}">Symphonic Chorus Home</a> 
+<a href="/index.html">Symphonic Chorus Home</a> 
       » 
-<a href="{{ site.baseurl }}{% link performances.html %}">Performances</a> 
+<a href="/performances.html">Performances</a> 
       » Brahms Text
 <!-- TemplateEndEditable --></p>
     </div>
@@ -277,7 +275,7 @@ ihnen nach.
     
 <!-- TemplateEndEditable --> </div>
 </div>
-	{% include footer.html %}
+	{{> footer }}
 </div>
 <!-- TemplateBeginEditable name="bottom" -->
 <!-- TemplateEndEditable -->
