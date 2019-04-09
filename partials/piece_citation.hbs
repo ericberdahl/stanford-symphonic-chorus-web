@@ -1,0 +1,22 @@
+{{#with (extend this _citation=""
+                     _composer=""
+                     _style=(default this.style "em-tagged")
+                     _piece=this.piece) }}
+    {{#if this._piece.ref }}
+        {{~#with (merge this _piece=(lookup _data.pieces this._piece.ref)) }}{{/with~}}
+    {{/if~}}
+    
+    {{~#with (merge this _citation=(default this._piece.citation (append (append "<em>" this._piece.title) "</em>")))}}{{/with~}}
+    
+    {{#if (eq this._style "em-tagged")}}
+        {{~#with (merge this _composer=this._piece.composer)}}{{/with~}}
+    {{else if (eq this._style "plain") }}
+        {{~#with (merge this _composer=(append this._piece.composer ":"))
+                             _citation=(sanitize this._citation)}}{{/with~}}
+    {{/if~}}
+    {{{trim (join (arr this._composer
+                 this._piece.prefix
+                 this._citation
+                 this._piece.suffix)
+             " ") }}}
+{{~/with}}

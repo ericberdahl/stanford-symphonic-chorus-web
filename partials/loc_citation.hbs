@@ -1,0 +1,6 @@
+{{#with (extend this _style=(default this.style "casual")
+                     _location=(lookup this._data.locations this.loc) )}}
+    {{#if this._location.link}}<a href="{{ this._location.link }}">{{/if}}
+        {{lookup this._location this._style}}
+    {{~#if this._location.link}}</a>{{/if~}}
+{{/with}}

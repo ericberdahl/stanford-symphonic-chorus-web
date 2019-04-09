@@ -1,0 +1,162 @@
+{{#> default_layout title="Rehearsal and Performance Schedule"
+					logo_include="logo_ssc"
+					stylesheets=(split "tertiary" " ")
+					ie6_stylesheets=(split "tertiary" " ") }}
+	{{#*inline "section_supplement"}}
+		{{#> sidebar_supplementary}}
+			<div id="related_pages">
+				{{> about_us }}
+			</div>
+		{{/sidebar_supplementary}}
+	{{/inline}}
+
+	<div id="sidebar_introduction">
+		<!-- TemplateBeginEditable name="sidebar_introduction" -->
+		<div id="sidebar_navigation">
+			<h2>Contents</h2>
+			<ul>
+				<li><a href="#this">Overview</a></li>
+				<li><a href="#rehearsals">Rehearsals</a></li>
+				<li><a href="#dress">Dress Rehearsals</a></li>
+				<li><a href="#concerts">Concerts</a></li>
+				{{#if this.events }}
+					<li><a href="#events">Events</a></li>
+				{{/if}}
+				<li><a href="#season">Looking Ahead</a></li>
+			</ul>
+		</div>
+		<!-- TemplateEndEditable -->
+	</div>
+	<div id="content_main">
+		<div id="breadcrumb">
+			<p>
+				<!-- TemplateBeginEditable name="breadcrumb" -->
+				<a href="/index.html">Symphonic Chorus Home</a>
+				» <a href="/MemberPage.html">Member Information</a>
+				» {{ this.title }}
+				<!-- TemplateEndEditable -->
+			</p>
+		</div>
+		<!-- TemplateBeginEditable name="content_main" -->
+		<h2 id="this">Overview</h2>
+		<table class="noborder">
+			{{> schedule_overview showAuditions=true }}
+		</table>
+
+		<h2 id="rehearsals">Rehearsals</h2>
+		<table>
+			<tr>
+				<th>Day</th>
+				<th class="right">Date</th>
+				<th>Location</th>
+				<th>Time</th>
+				<th>Description</th>
+			</tr>
+			{{#each (sortBy (concat this.rehearsals this.sectionals) 'start') }}
+				<tr>
+					<td>{{ moment start "dddd" }}</td>
+					<td class="right">{{ moment start "D MMMM YYYY" }}</td>
+					<td>{{> loc_citation .. loc=this.location }}</td>
+					<td>{{ moment start "h:mma" }} - {{ moment end "h:mma" }}
+						{{#if registration }}
+							<br>Registration starts at {{ moment registration "h:mma" }} {{! date: "%-l:%M%P" }}
+						{{/if}}
+					</td>
+					<td>{{ event }}</td>
+				</tr>
+			{{/each}}
+		</table>
+
+		<h2 id="dress">Dress Rehearsals</h2>
+		<table>
+			<tr>
+				<th>Day</th>
+				<th class="right">Date</th>
+				<th>Location</th>
+				<th>Time</th>
+				<th>Description</th>
+			</tr>
+			{{#each this.dresses }}
+				<tr class="dress">
+					<td>{{moment this.start "dddd"}}</td>
+					<td class="right">{{moment this.start "DD MMMM YYYY"}}</td>
+					<td>{{> loc_citation .. loc=this.location }}</td>
+					<td>{{moment this.start "h:mma"}}</td>
+					<td>Dress rehearsal</td>
+				</tr>
+			{{/each}}
+		</table>
+
+		<h2 id="concerts">Concerts</h2>
+		<table>
+			<tr>
+				<th>Day</th>
+				<th class="right">Date</th>
+				<th>Location</th>
+				<th>Time</th>
+				<th>Description</th>
+			</tr>
+			{{#each this.concerts }}
+				<tr>
+					<td>{{moment this.start "dddd"}}</td>
+					<td class="right">{{moment this.start "DD MMMM YYYY"}}</td>
+					<td>{{> loc_citation .. loc=this.location }}</td>
+					<td>{{moment this.call "h:mma"}}</td>
+					<td>Concert call for {{moment this.start "h:mma"}} concert</td>
+				</tr>
+			{{/each}}
+		</table>
+
+		{{#if this.events }}
+			<h2 id="events">Events</h2>
+			<table>
+				<tr>
+					<th>Day</th>
+					<th class="right">Date</th>
+					<th>Location</th>
+					<th>Time</th>
+					<th>Description</th>
+				</tr>
+				{{#each this.events }}
+					<tr>
+						<td>{{moment this.start "dddd"}}</td>
+						<td class="right">{{moment this.start "DD MMMM YYYY"}}</td>
+						<td>{{moment this.start "h:mma"}}</td>
+						<td>{{> loc_citation .. loc=this.location }}</td>
+						<td>{{ this.title }}</td>
+					</tr>
+				{{/each}}
+			</table>
+		{{/if}}
+				
+		<div>
+			<h2 id="season">Looking Ahead</h2>
+			<table class="noborder">
+				<tbody>
+					<tr>
+						<td class="emph" colspan="3">{{this.next.quarter}}</td>
+					</tr>
+					{{#if this.next}}
+						{{> schedule_overview this.next }}
+					{{/if}}
+				</tbody>
+				{{#if this.next.next}}
+					<tbody>
+						<tr>
+							<td class="emph" colspan="3">{{this.next.next.quarter}}</td>
+						</tr>
+						{{> schedule_overview this.next.next }}
+					</tbody>
+				{{/if}}
+				{{#if this.next.next.next}}
+					<tbody>
+						<tr>
+							<td class="emph" colspan="3">{{this.next.next.next.quarter}}</td>
+						</tr>
+						{{> schedule_overview this.next.next.next }}
+					</tbody>
+				{{/if}}
+			</table>
+		</div>
+	</div>
+{{/default_layout}}
