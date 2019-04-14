@@ -1,83 +1,81 @@
-{{#with (extend this _showAuditions=(default this.showAuditions false)) }}
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;</td>
-        <td>Repertoire:</td>
+{{ -let '_showAuditions' (default showAuditions false) }}
+{{ -let '_performance' performance }}
 
-        <td>
-            <ul>
-                {{#each this.repertoire }}
-                    <li>{{> piece_citation .. piece=this style="em-tagged" }}</li>
-                {{/each}}
-            </ul>
-        </td>
-    </tr>
-    {{#each this.soloists }}
-        {{#if @first}}
-            <tr>
-                <td>&nbsp;&nbsp;&nbsp;</td>
-                <td>With:</td>
-                <td><ul>
-        {{/if}}
-                    <li>{{name}}, {{part}}</li>
-        {{#if @last}}
-                </ul></td>
-            </tr>
-        {{/if}}
-    {{/each}}
-    {{#each this.collaborators }}
-        {{#if @first}}
-            <tr>
-                <td>&nbsp;&nbsp;&nbsp;</td>
-                <td>In collaboration with:</td>
-                <td><ul>
-        {{/if}}
-                    <li>{{> collab_citation .. collab=this }}</li>
-        {{#if @last}}
-                </ul></td>
-            </tr>
-        {{/if}}
-    {{/each}}
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;</td>
-        {{!--
-        process this.path to create a sane version of the absolute path to the output file
-        "foo.hbs" => "/foo.html"
-        "dir/foo.hbs" => "/dir/foo.html"
-        --}}
-        <td><a href="{{pathJoin "/" (dirname this.path) (stem this.path)}}.html#rehearsals">First rehearsal</a>:</td>
-        <td><ul>
-            <li>
-                {{ moment this.first_rehearsal.start "dddd D MMMM YYYY" }} at {{ moment this.first_rehearsal.start "h:mma" }}, {{> loc_citation loc=this.first_rehearsal.location }}.
-                Registration starts at {{ moment this.first_rehearsal.registration "h:mma"}}
-            </li>
-        </ul></td>
-    </tr>
-    {{#if this._showAuditions}}
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;</td>
-        <td><a href="/MemberPage.html#auditions">Auditions</a>:</td>
-        <td><ul>
-            <li>See the <a href="/MemberPage.html#auditions">Auditions</a> section of our Member Page for information about how to audition.</li>
-        </ul></td>
-    </tr>
+{{#*inline "linkIf"}}
+    {{~#if _showAuditions}}<a href="{{link}}">{{/if}}{{ @partial-block }}{{#if _showAuditions}}</a>{{/if~}}
+{{/inline}}
+
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>Repertoire:</td>
+
+    <td><ul>
+        {{#each _performance.repertoire }}
+            <li>{{> piece_citation .. piece=this style="em-tagged" }}</li>
+        {{/each}}
+    </ul></td>
+</tr>
+{{#each _performance.soloists }}
+    {{#if @first}}
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+            <td>With:</td>
+            <td><ul>
     {{/if}}
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;</td>
-        <td>{{#if this._showAuditions}}<a href="{{pathJoin "/" (dirname this.path) (stem this.path)}}.html#dress">{{/if}}Dress rehearsals{{#if this._showAuditions}}</a>{{/if}}:</td>
-        <td><ul>
-            {{#each this.dresses }}
-                <li>{{ moment this.start "h:mma" }}, {{ moment this.start "dddd D MMMM YYYY" }}, {{> loc_citation .. loc=this.location }}</li>
-            {{/each}}
-        </ul></td>
-    </tr>
-    <tr>
-        <td>&nbsp;&nbsp;&nbsp;</td>
-        <td>{{#if this._showAuditions}}<a href="{{pathJoin "/" (dirname this.path) (stem this.path)}}.html#concerts">{{/if}}Concerts{{#if this._showAuditions}}</a>{{/if}}:</td>
-        <td><ul>
-            {{#each this.concerts }}
-                <li>{{ moment this.start "h:mma, dddd D MMMM YYYY" }} in {{> loc_citation .. loc=this.location }} ({{ moment this.call "h:mma" }} call)</li>
-            {{/each}}
-        </ul>
-        </td>
-    </tr>
-{{/with}}
+                    <li>{{name}}, {{part}}</li>
+    {{#if @last}}
+            </ul></td>
+        </tr>
+    {{/if}}
+{{/each}}
+{{#each _performance.collaborators }}
+    {{#if @first}}
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+            <td>In collaboration with:</td>
+            <td><ul>
+    {{/if}}
+                <li>{{> collab_citation .. collab=this }}</li>
+    {{#if @last}}
+            </ul></td>
+        </tr>
+    {{/if}}
+{{/each}}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>{{#> linkIf link=(append (f-join "/" (dirname _performance.path) (stem _performance.path)) ".html#rehearsals") }}First rehearsal{{/linkIf}}:</td>
+    <td><ul>
+        <li>
+            {{ moment _performance.first_rehearsal.start "dddd D MMMM YYYY" }} at {{ moment _performance.first_rehearsal.start "h:mma" }}, {{> loc_citation loc=_performance.first_rehearsal.location }}.
+            Registration starts at {{ moment _performance.first_rehearsal.reçgistration "h:mma"}}
+        </li>
+    </ul></td>
+</tr>
+{{#if _showAuditions}}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="/MemberPage.html#auditions">Auditions</a>:</td>
+    <td><ul>
+        <li>See the <a href="/MemberPage.html#auditions">Auditions</a> section of our Member Page for information about how to audition.</li>
+    </ul></td>
+</tr>
+{{/if}}
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>{{#> linkIf link=(append (f-join "/" (dirname _performance.path) (stem _performance.path)) ".html#dress") }}Dress rehearsals{{/linkIf}}:</td>
+    <td><ul>
+        {{#each _performance.dresses }}
+            <li>{{ moment start "h:mma" }}, {{ moment start "dddd D MMMM YYYY" }}, {{> loc_citation .. loc=location }}</li>
+        {{/each}}
+    </ul></td>
+</tr>
+<tr>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td>{{#> linkIf link=(append (f-join "/" (dirname _performance.path) (stem _performance.path)) ".html#concerts") }}Concerts{{/linkIf}}:</td>
+    <td><ul>
+        {{#each _performance.concerts }}
+            <li>{{ moment start "h:mma, dddd D MMMM YYYY" }} in {{> loc_citation .. loc=location }} ({{ moment call "h:mma" }} call)</li>
+        {{/each}}
+    </ul>
+    </td>
+</tr>

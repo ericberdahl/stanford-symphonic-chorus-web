@@ -1,8 +1,0 @@
-{%- assign collaborator = site.data.collaborators[ include.collab ] -%}
-{%- if collaborator.link -%}
-    <a href="{{ collaborator.link }}">
-{%- endif -%}
-{{ collaborator.name }}
-{%- if collaborator.link -%}
-    </a>
-{%- endif -%}

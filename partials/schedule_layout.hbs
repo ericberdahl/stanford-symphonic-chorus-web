@@ -22,7 +22,8 @@
 				{{#if this.events }}
 					<li><a href="#events">Events</a></li>
 				{{/if}}
-				<li><a href="#season">Looking Ahead</a></li>
+				<li><a href="#looking-ahead">Looking Ahead</a></li>
+				<li><a href="#looking-back">Looking Back</a></li>
 			</ul>
 		</div>
 		<!-- TemplateEndEditable -->
@@ -40,7 +41,7 @@
 		<!-- TemplateBeginEditable name="content_main" -->
 		<h2 id="this">Overview</h2>
 		<table class="noborder">
-			{{> schedule_overview showAuditions=true }}
+			{{> schedule_overview performance=this showAuditions=true }}
 		</table>
 
 		<h2 id="rehearsals">Rehearsals</h2>
@@ -52,7 +53,7 @@
 				<th>Time</th>
 				<th>Description</th>
 			</tr>
-			{{#each (sortBy (concat this.rehearsals this.sectionals) 'start') }}
+			{{#each (sortBy (-union this.rehearsals this.sectionals) 'start') }}
 				<tr>
 					<td>{{ moment start "dddd" }}</td>
 					<td class="right">{{ moment start "D MMMM YYYY" }}</td>
@@ -130,30 +131,57 @@
 		{{/if}}
 				
 		<div>
-			<h2 id="season">Looking Ahead</h2>
+			<h2 id="looking-ahead">Looking Ahead</h2>
 			<table class="noborder">
-				<tbody>
-					<tr>
-						<td class="emph" colspan="3">{{this.next.quarter}}</td>
-					</tr>
-					{{#if this.next}}
-						{{> schedule_overview this.next }}
-					{{/if}}
-				</tbody>
+				{{#if this.next}}
+					<tbody>
+						<tr>
+							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.path) (stem this.next.path)) ".html"}}>{{this.next.quarter}}</a></td>
+						</tr>
+							{{> schedule_overview performance=this.next }}
+					</tbody>
+				{{/if}}
 				{{#if this.next.next}}
 					<tbody>
 						<tr>
-							<td class="emph" colspan="3">{{this.next.next.quarter}}</td>
+							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.next.path) (stem this.next.next.path)) ".html"}}>{{this.next.next.quarter}}</a></td>
 						</tr>
-						{{> schedule_overview this.next.next }}
+						{{> schedule_overview performance=this.next.next }}
 					</tbody>
 				{{/if}}
 				{{#if this.next.next.next}}
 					<tbody>
 						<tr>
-							<td class="emph" colspan="3">{{this.next.next.next.quarter}}</td>
+							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.next.next.path) (stem this.next.next.next.path)) ".html"}}>{{this.next.next.next.quarter}}</a></td>
 						</tr>
-						{{> schedule_overview this.next.next.next }}
+						{{> schedule_overview performance=this.next.next.next }}
+					</tbody>
+				{{/if}}
+			</table>
+			<h2 id="looking-back">Looking Back</h2>
+			<table class="noborder">
+				{{#if this.previous}}
+					<tbody>
+						<tr>
+							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.path) (stem this.previous.path)) ".html"}}>{{this.previous.quarter}}</a></td>
+						</tr>
+							{{> schedule_overview performance=this.previous }}
+					</tbody>
+				{{/if}}
+				{{#if this.previous.previous}}
+					<tbody>
+						<tr>
+							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.previous.path) (stem this.previous.previous.path)) ".html"}}>{{this.previous.previous.quarter}}</a></td>
+						</tr>
+						{{> schedule_overview performance=this.previous.previous }}
+					</tbody>
+				{{/if}}
+				{{#if this.previous.previous.previous}}
+					<tbody>
+						<tr>
+							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.previous.previous.path) (stem this.previous.previous.previous.path)) ".html"}}>{{this.previous.previous.previous.quarter}}</a></td>
+						</tr>
+						{{> schedule_overview performance=this.previous.previous.previous }}
 					</tbody>
 				{{/if}}
 			</table>

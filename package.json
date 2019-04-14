@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ericberdahl/stanford-symphonic-chorus-web#readme",
   "dependencies": {
     "commander": "^2.20.0",
+    "dashbars": "^0.1.8",
     "handlebars": "^4.1.1",
     "handlebars-helpers": "^0.10.0",
     "jstransformer-handlebars": "^1.1.0",

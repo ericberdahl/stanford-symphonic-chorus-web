@@ -15,6 +15,7 @@ function buildSite(options)
     const browserSync = require('metalsmith-browser-sync');
     const collections = require('metalsmith-collections');
     const debug = require('metalsmith-debug-ui');
+    const dashbars = require('dashbars');
     const discoverPartials = require('metalsmith-discover-partials');
     const Handlebars = require('handlebars');
     const helpers = require('handlebars-helpers');
@@ -27,24 +28,13 @@ function buildSite(options)
     helpers({
         handlebars: Handlebars
     });
-
-    Handlebars.registerHelper('pathJoin', function() {
-        const segments = Array.prototype.slice.call(arguments, 0, -1);
-        return path.join.apply(path, segments);
-    });
-
-    Handlebars.registerHelper('arr', function() {
-        // Return arguments as an array, ommiting the final (options) item
-        return Array.prototype.slice.call(arguments, 0, -1);
-    });
-
-    Handlebars.registerHelper('concat', (first, second) => {
-        return first.concat(second);
-    });
+    dashbars.help(Handlebars);
 
     let metalsmith = Metalsmith(__dirname);
 
-    debug.patch(metalsmith);
+    if (options.debug) {
+        debug.patch(metalsmith);
+    }
 
     metalsmith = metalsmith.source('./source')
         .destination('./build')
@@ -60,7 +50,12 @@ function buildSite(options)
         .use(collections({
             performances: {
                 pattern: 'performances/*/schedule.hbs',
-                sortBy: 'first_concert.start',
+                sortBy: (a, b) => {
+                    if (a.first_concert.start == b.first_concert.start) {
+                        return 0;
+                    }
+                    return (a.first_concert.start > b.first_concert.start ? -1 : 1);
+                },
                 reverse: true
             }
         }))
@@ -109,6 +104,7 @@ function buildSite(options)
 const program = require('commander');
 
 program.version('0.1.0', '-v, --version')
+    .option('--debug', 'Build debug-ui into the output')
     .option('--no-tidy', 'Do not tidy the html output')
     .option('--serve', 'Build and launch as local server')
     .option('--basePath <path>', 'Specify base path from which the site will be served', '/group/SymCh')
