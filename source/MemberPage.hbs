@@ -12,6 +12,7 @@ ie6_stylesheets:
 scripts:
 
 ---
+{{! FIXME _current calculation needs to not assume the last performance is current }}
 {{#extend "default_layout" _current=( -last collections.performances) }}
 	{{#content "sidebar-intro"}}
 		<div id="sidebar_navigation">
