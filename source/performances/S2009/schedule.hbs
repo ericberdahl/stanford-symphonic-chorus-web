@@ -50,7 +50,8 @@ preregister:
 images:
 
 rehearsals:
--   &first-rehearsal "missing historical data"
+# MISSING: rehearsal schedule for Spring 2009
+# -   &first-rehearsal
 
 sectionals:
 
@@ -58,14 +59,14 @@ dresses:
 
 concerts:
 -   &first-concert
-    start: 2009-05-15 20:00:00 -0700
-    call: 2009-05-15 19:00:00 -0700
+    start: 2009-05-15 20:00-07
+    call: 2009-05-15 19:00-07
     location: "MemChu"
 
 events:
 
 main_piece: *main-piece
-first_rehearsal: *first-rehearsal
+# first_rehearsal: *first-rehearsal
 first_concert: *first-concert
 ---
 {{> schedule_layout }}

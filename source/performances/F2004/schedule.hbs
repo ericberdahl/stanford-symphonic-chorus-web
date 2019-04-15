@@ -53,26 +53,27 @@ preregister:
 images:
 
 rehearsals:
--   &first-rehearsal "missing historical data"
+# MISSING: rehearsal schedule for Fall 2004
+# -   &first-rehearsal
 
 dresses:
 
 concerts:
 -   &first-concert
-    start: 2004-11-18 20:00:00 -0800
-    call: 2004-11-18 19:00:00 -0800
+    start: 2004-11-18 20:00-08
+    call: 2004-11-18 19:00-08
     location: "MemChu"
--   start: 2004-11-21 13:30:00 -0800
-    call: 2004-11-21 12:30:00 -0800
+-   start: 2004-11-21 13:30-08
+    call: 2004-11-21 12:30-08
     location: "MemChu"
--   start: 2004-11-22 19:30:00 -0800
-    call: 2004-11-22 18:30:00 -0800
+-   start: 2004-11-22 19:30-08
+    call: 2004-11-22 18:30-08
     location: "emanuelsf"
 
 events:
 
 main_piece: *main-piece
-first_rehearsal: *first-rehearsal
+# first_rehearsal: *first-rehearsal
 first_concert: *first-concert
 ---
 {{> schedule_layout }}

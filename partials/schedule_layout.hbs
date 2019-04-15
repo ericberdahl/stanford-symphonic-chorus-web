@@ -53,14 +53,15 @@
 				<th>Time</th>
 				<th>Description</th>
 			</tr>
-			{{#each (sortBy (-union this.rehearsals this.sectionals) 'start') }}
+			{{ -let '_rehearsals' (sortBy (-union (default this.rehearsals (-array)) (default this.sectionals (-array))) 'start') }}
+			{{#each _rehearsals }}
 				<tr>
-					<td>{{ moment start "dddd" }}</td>
-					<td class="right">{{ moment start "D MMMM YYYY" }}</td>
+					<td>{{ d-format "dddd" start }}</td>
+					<td class="right">{{ d-format "D MMMM YYYY" start }}</td>
 					<td>{{> loc_citation .. loc=this.location }}</td>
-					<td>{{ moment start "h:mma" }} - {{ moment end "h:mma" }}
+					<td>{{ d-format "h:mma" start }} - {{ d-format "h:mma" end }}
 						{{#if registration }}
-							<br>Registration starts at {{ moment registration "h:mma" }} {{! date: "%-l:%M%P" }}
+							<br>Registration starts at {{ d-format "h:mma" registration }}
 						{{/if}}
 					</td>
 					<td>{{ event }}</td>
@@ -79,10 +80,10 @@
 			</tr>
 			{{#each this.dresses }}
 				<tr class="dress">
-					<td>{{moment this.start "dddd"}}</td>
-					<td class="right">{{moment this.start "DD MMMM YYYY"}}</td>
+					<td>{{ d-format "dddd" this.start }}</td>
+					<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
 					<td>{{> loc_citation .. loc=this.location }}</td>
-					<td>{{moment this.start "h:mma"}}</td>
+					<td>{{ d-format "h:mma" this.start }}</td>
 					<td>Dress rehearsal</td>
 				</tr>
 			{{/each}}
@@ -99,11 +100,11 @@
 			</tr>
 			{{#each this.concerts }}
 				<tr>
-					<td>{{moment this.start "dddd"}}</td>
-					<td class="right">{{moment this.start "DD MMMM YYYY"}}</td>
+					<td>{{ d-format "dddd" this.start }}</td>
+					<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
 					<td>{{> loc_citation .. loc=this.location }}</td>
-					<td>{{moment this.call "h:mma"}}</td>
-					<td>Concert call for {{moment this.start "h:mma"}} concert</td>
+					<td>{{#if this.call}}{{ d-format "h:mma" this.call }}{{/if}}</td>
+					<td>{{#if this.call}}Concert call for {{/if}}{{ d-format "h:mma" this.start }} concert</td>
 				</tr>
 			{{/each}}
 		</table>
@@ -120,9 +121,9 @@
 				</tr>
 				{{#each this.events }}
 					<tr>
-						<td>{{moment this.start "dddd"}}</td>
-						<td class="right">{{moment this.start "DD MMMM YYYY"}}</td>
-						<td>{{moment this.start "h:mma"}}</td>
+						<td>{{ d-format "dddd" this.start }}</td>
+						<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
+						<td>{{ d-format "h:mma" this.start }}</td>
 						<td>{{> loc_citation .. loc=this.location }}</td>
 						<td>{{ this.title }}</td>
 					</tr>

@@ -25,9 +25,13 @@ function buildSite(options)
     const prefix = require('metalsmith-prefixoid');
     const tidy = require('metalsmith-html-tidy');
 
-    helpers({
-        handlebars: Handlebars
-    });
+    helpers.array({ handlebars: Handlebars });
+    helpers.comparison({ handlebars: Handlebars });
+    helpers.html({ handlebars: Handlebars });
+    helpers.math({ handlebars: Handlebars });
+    helpers.path({ handlebars: Handlebars });
+    helpers.string({ handlebars: Handlebars });
+    
     dashbars.help(Handlebars);
 
     let metalsmith = Metalsmith(__dirname);

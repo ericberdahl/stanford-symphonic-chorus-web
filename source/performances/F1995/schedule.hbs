@@ -42,7 +42,8 @@ preregister:
 images:
 
 rehearsals:
--   &first-rehearsal "missing historical data"
+# MISSING: rehearsal schedule for Fall 1995
+# -   &first-rehearsal
 
 sectionals:
 
@@ -50,15 +51,15 @@ dresses:
 
 concerts:
 -   &first-concert
-    start: 1995-12-02 20:00:00 -0800
+    start: 1995-12-02 20:00-08
     location: "MemChu"
--   start: 1995-12-03 14:00:00 -0800
+-   start: 1995-12-03 14:00-08
     location: "MemChu"
 
 events:
 
 main_piece: *main-piece
-first_rehearsal: *first-rehearsal
+# first_rehearsal: *first-rehearsal
 first_concert: *first-concert
 ---
 {{> schedule_layout }}

@@ -54,23 +54,24 @@ preregister:
 images:
 
 rehearsals:
--   &first-rehearsal "missing historical data"
+# MISSING: rehearsal schedule for Fall 2006
+# -   &first-rehearsal
 
 dresses:
 
 concerts:
 -   &first-concert
-    start: 2006-12-01 20:00:00 -0800
-    call: 2006-12-01 19:00:00 -0800
+    start: 2006-12-01 20:00-08
+    call: 2006-12-01 19:00-08
     location: "MemChu"
--   start: 2006-12-03 13:30:00 -0800
-    call: 2006-12-03 12:30:00 -0800
+-   start: 2006-12-03 13:30-08
+    call: 2006-12-03 12:30-08
     location: "MemChu"
 
 events:
 
 main_piece: *main-piece
-first_rehearsal: *first-rehearsal
+# first_rehearsal: *first-rehearsal
 first_concert: *first-concert
 ---
 {{> schedule_layout }}
