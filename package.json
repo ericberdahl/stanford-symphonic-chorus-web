@@ -21,6 +21,7 @@
     "dashbars": "^0.1.8",
     "handlebars": "^4.1.1",
     "handlebars-helpers": "^0.10.0",
+    "handlebars-layouts": "^3.1.4",
     "jstransformer-handlebars": "^1.1.0",
     "metalsmith": "^2.3.0",
     "metalsmith-broken-link-checker": "^1.0.1",

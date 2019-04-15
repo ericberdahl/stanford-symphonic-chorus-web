@@ -52,10 +52,27 @@
 		</h1>
 	</div>
 
-	{{#> section_intro }}{{/section_intro}}
-	{{> @partial-block }}
-	{{#> section_supplement }}{{/section_supplement}}
-	{{#> section_sidebar }}{{/section_sidebar}}
+	{{#if (content "sidebar-intro") }}
+		<div id="sidebar_introduction">
+			{{{ block "sidebar-intro" }}}
+		</div>
+	{{/if}}
+
+	{{#block "main-content"}}{{/block}}
+
+	{{#if (content "sidebar-supplement") }}
+		<div id="sidebar_supplementary">
+			{{{ block "sidebar-supplement" }}}
+			<div id="seal"></div>
+		</div>
+	{{/if}}
+	
+	{{#if (content "sidebar") }}
+		<div id="sidebar">
+			{{{ block "sidebar" }}}
+			<div id="seal"></div>
+		</div>
+	{{/if}}
 
 	{{> footer }}
 </div>

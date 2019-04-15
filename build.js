@@ -20,8 +20,8 @@ function buildSite(options)
     const Handlebars = require('handlebars');
     const helpers = require('handlebars-helpers');
     const inplace = require('metalsmith-in-place');
+    const layouts = require('handlebars-layouts');
     const metadata = require('./lib/metadata');
-    const path = require('path');
     const prefix = require('metalsmith-prefixoid');
     const tidy = require('metalsmith-html-tidy');
 
@@ -33,6 +33,8 @@ function buildSite(options)
     helpers.string({ handlebars: Handlebars });
     
     dashbars.help(Handlebars);
+
+    layouts.register(Handlebars);
 
     let metalsmith = Metalsmith(__dirname);
 

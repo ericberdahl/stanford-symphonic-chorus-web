@@ -1,116 +1,49 @@
-{{#> default_layout title="Rehearsal and Performance Schedule"
+{{#extend "default_layout" title="Rehearsal and Performance Schedule"
 					logo_include="logo_ssc"
-					stylesheets=(split "tertiary" " ")
-					ie6_stylesheets=(split "tertiary" " ") }}
-	{{#*inline "section_supplement"}}
-		{{#> sidebar_supplementary}}
-			<div id="related_pages">
-				{{> about_us }}
+					stylesheets=(-array "tertiary")
+					ie6_stylesheets=(-array "tertiary") }}
+	{{#content "sidebar-supplement"}}
+		<div id="related_pages">
+			{{> about_us }}
+		</div>
+	{{/content}}
+
+	{{#content "main-content"}}
+		<div id="sidebar_introduction">
+			<!-- TemplateBeginEditable name="sidebar_introduction" -->
+			<div id="sidebar_navigation">
+				<h2>Contents</h2>
+				<ul>
+					<li><a href="#this">Overview</a></li>
+					<li><a href="#rehearsals">Rehearsals</a></li>
+					<li><a href="#dress">Dress Rehearsals</a></li>
+					<li><a href="#concerts">Concerts</a></li>
+					{{#if this.events }}
+						<li><a href="#events">Events</a></li>
+					{{/if}}
+					<li><a href="#looking-ahead">Looking Ahead</a></li>
+					<li><a href="#looking-back">Looking Back</a></li>
+				</ul>
 			</div>
-		{{/sidebar_supplementary}}
-	{{/inline}}
-
-	<div id="sidebar_introduction">
-		<!-- TemplateBeginEditable name="sidebar_introduction" -->
-		<div id="sidebar_navigation">
-			<h2>Contents</h2>
-			<ul>
-				<li><a href="#this">Overview</a></li>
-				<li><a href="#rehearsals">Rehearsals</a></li>
-				<li><a href="#dress">Dress Rehearsals</a></li>
-				<li><a href="#concerts">Concerts</a></li>
-				{{#if this.events }}
-					<li><a href="#events">Events</a></li>
-				{{/if}}
-				<li><a href="#looking-ahead">Looking Ahead</a></li>
-				<li><a href="#looking-back">Looking Back</a></li>
-			</ul>
+			<!-- TemplateEndEditable -->
 		</div>
-		<!-- TemplateEndEditable -->
-	</div>
-	<div id="content_main">
-		<div id="breadcrumb">
-			<p>
-				<!-- TemplateBeginEditable name="breadcrumb" -->
-				<a href="/index.html">Symphonic Chorus Home</a>
-				» <a href="/MemberPage.html">Member Information</a>
-				» {{ this.title }}
-				<!-- TemplateEndEditable -->
-			</p>
-		</div>
-		<!-- TemplateBeginEditable name="content_main" -->
-		<h2 id="this">Overview</h2>
-		<table class="noborder">
-			{{> schedule_overview performance=this showAuditions=true }}
-		</table>
+		<div id="content_main">
+			<div id="breadcrumb">
+				<p>
+					<!-- TemplateBeginEditable name="breadcrumb" -->
+					<a href="/index.html">Symphonic Chorus Home</a>
+					» <a href="/MemberPage.html">Member Information</a>
+					» {{ this.title }}
+					<!-- TemplateEndEditable -->
+				</p>
+			</div>
+			<!-- TemplateBeginEditable name="content_main" -->
+			<h2 id="this">Overview</h2>
+			<table class="noborder">
+				{{> schedule_overview performance=this showAuditions=true }}
+			</table>
 
-		<h2 id="rehearsals">Rehearsals</h2>
-		<table>
-			<tr>
-				<th>Day</th>
-				<th class="right">Date</th>
-				<th>Location</th>
-				<th>Time</th>
-				<th>Description</th>
-			</tr>
-			{{ -let '_rehearsals' (sortBy (-union (default this.rehearsals (-array)) (default this.sectionals (-array))) 'start') }}
-			{{#each _rehearsals }}
-				<tr>
-					<td>{{ d-format "dddd" start }}</td>
-					<td class="right">{{ d-format "D MMMM YYYY" start }}</td>
-					<td>{{> loc_citation .. loc=this.location }}</td>
-					<td>{{ d-format "h:mma" start }} - {{ d-format "h:mma" end }}
-						{{#if registration }}
-							<br>Registration starts at {{ d-format "h:mma" registration }}
-						{{/if}}
-					</td>
-					<td>{{ event }}</td>
-				</tr>
-			{{/each}}
-		</table>
-
-		<h2 id="dress">Dress Rehearsals</h2>
-		<table>
-			<tr>
-				<th>Day</th>
-				<th class="right">Date</th>
-				<th>Location</th>
-				<th>Time</th>
-				<th>Description</th>
-			</tr>
-			{{#each this.dresses }}
-				<tr class="dress">
-					<td>{{ d-format "dddd" this.start }}</td>
-					<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
-					<td>{{> loc_citation .. loc=this.location }}</td>
-					<td>{{ d-format "h:mma" this.start }}</td>
-					<td>Dress rehearsal</td>
-				</tr>
-			{{/each}}
-		</table>
-
-		<h2 id="concerts">Concerts</h2>
-		<table>
-			<tr>
-				<th>Day</th>
-				<th class="right">Date</th>
-				<th>Location</th>
-				<th>Time</th>
-				<th>Description</th>
-			</tr>
-			{{#each this.concerts }}
-				<tr>
-					<td>{{ d-format "dddd" this.start }}</td>
-					<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
-					<td>{{> loc_citation .. loc=this.location }}</td>
-					<td>{{#if this.call}}{{ d-format "h:mma" this.call }}{{/if}}</td>
-					<td>{{#if this.call}}Concert call for {{/if}}{{ d-format "h:mma" this.start }} concert</td>
-				</tr>
-			{{/each}}
-		</table>
-
-		{{#if this.events }}
-			<h2 id="events">Events</h2>
+			<h2 id="rehearsals">Rehearsals</h2>
 			<table>
 				<tr>
 					<th>Day</th>
@@ -119,73 +52,140 @@
 					<th>Time</th>
 					<th>Description</th>
 				</tr>
-				{{#each this.events }}
+				{{ -let '_rehearsals' (sortBy (-union (default this.rehearsals (-array)) (default this.sectionals (-array))) 'start') }}
+				{{#each _rehearsals }}
 					<tr>
-						<td>{{ d-format "dddd" this.start }}</td>
-						<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
-						<td>{{ d-format "h:mma" this.start }}</td>
+						<td>{{ d-format "dddd" start }}</td>
+						<td class="right">{{ d-format "D MMMM YYYY" start }}</td>
 						<td>{{> loc_citation .. loc=this.location }}</td>
-						<td>{{ this.title }}</td>
+						<td>{{ d-format "h:mma" start }} - {{ d-format "h:mma" end }}
+							{{#if registration }}
+								<br>Registration starts at {{ d-format "h:mma" registration }}
+							{{/if}}
+						</td>
+						<td>{{ event }}</td>
 					</tr>
 				{{/each}}
 			</table>
-		{{/if}}
-				
-		<div>
-			<h2 id="looking-ahead">Looking Ahead</h2>
-			<table class="noborder">
-				{{#if this.next}}
-					<tbody>
-						<tr>
-							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.path) (stem this.next.path)) ".html"}}>{{this.next.quarter}}</a></td>
-						</tr>
-							{{> schedule_overview performance=this.next }}
-					</tbody>
-				{{/if}}
-				{{#if this.next.next}}
-					<tbody>
-						<tr>
-							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.next.path) (stem this.next.next.path)) ".html"}}>{{this.next.next.quarter}}</a></td>
-						</tr>
-						{{> schedule_overview performance=this.next.next }}
-					</tbody>
-				{{/if}}
-				{{#if this.next.next.next}}
-					<tbody>
-						<tr>
-							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.next.next.path) (stem this.next.next.next.path)) ".html"}}>{{this.next.next.next.quarter}}</a></td>
-						</tr>
-						{{> schedule_overview performance=this.next.next.next }}
-					</tbody>
-				{{/if}}
+
+			<h2 id="dress">Dress Rehearsals</h2>
+			<table>
+				<tr>
+					<th>Day</th>
+					<th class="right">Date</th>
+					<th>Location</th>
+					<th>Time</th>
+					<th>Description</th>
+				</tr>
+				{{#each this.dresses }}
+					<tr class="dress">
+						<td>{{ d-format "dddd" this.start }}</td>
+						<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
+						<td>{{> loc_citation .. loc=this.location }}</td>
+						<td>{{ d-format "h:mma" this.start }}</td>
+						<td>Dress rehearsal</td>
+					</tr>
+				{{/each}}
 			</table>
-			<h2 id="looking-back">Looking Back</h2>
-			<table class="noborder">
-				{{#if this.previous}}
-					<tbody>
-						<tr>
-							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.path) (stem this.previous.path)) ".html"}}>{{this.previous.quarter}}</a></td>
-						</tr>
-							{{> schedule_overview performance=this.previous }}
-					</tbody>
-				{{/if}}
-				{{#if this.previous.previous}}
-					<tbody>
-						<tr>
-							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.previous.path) (stem this.previous.previous.path)) ".html"}}>{{this.previous.previous.quarter}}</a></td>
-						</tr>
-						{{> schedule_overview performance=this.previous.previous }}
-					</tbody>
-				{{/if}}
-				{{#if this.previous.previous.previous}}
-					<tbody>
-						<tr>
-							<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.previous.previous.path) (stem this.previous.previous.previous.path)) ".html"}}>{{this.previous.previous.previous.quarter}}</a></td>
-						</tr>
-						{{> schedule_overview performance=this.previous.previous.previous }}
-					</tbody>
-				{{/if}}
+
+			<h2 id="concerts">Concerts</h2>
+			<table>
+				<tr>
+					<th>Day</th>
+					<th class="right">Date</th>
+					<th>Location</th>
+					<th>Time</th>
+					<th>Description</th>
+				</tr>
+				{{#each this.concerts }}
+					<tr>
+						<td>{{ d-format "dddd" this.start }}</td>
+						<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
+						<td>{{> loc_citation .. loc=this.location }}</td>
+						<td>{{#if this.call}}{{ d-format "h:mma" this.call }}{{/if}}</td>
+						<td>{{#if this.call}}Concert call for {{/if}}{{ d-format "h:mma" this.start }} concert</td>
+					</tr>
+				{{/each}}
 			</table>
+
+			{{#if this.events }}
+				<h2 id="events">Events</h2>
+				<table>
+					<tr>
+						<th>Day</th>
+						<th class="right">Date</th>
+						<th>Location</th>
+						<th>Time</th>
+						<th>Description</th>
+					</tr>
+					{{#each this.events }}
+						<tr>
+							<td>{{ d-format "dddd" this.start }}</td>
+							<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
+							<td>{{ d-format "h:mma" this.start }}</td>
+							<td>{{> loc_citation .. loc=this.location }}</td>
+							<td>{{ this.title }}</td>
+						</tr>
+					{{/each}}
+				</table>
+			{{/if}}
+					
+			<div>
+				<h2 id="looking-ahead">Looking Ahead</h2>
+				<table class="noborder">
+					{{#if this.next}}
+						<tbody>
+							<tr>
+								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.path) (stem this.next.path)) ".html"}}>{{this.next.quarter}}</a></td>
+							</tr>
+								{{> schedule_overview performance=this.next }}
+						</tbody>
+					{{/if}}
+					{{#if this.next.next}}
+						<tbody>
+							<tr>
+								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.next.path) (stem this.next.next.path)) ".html"}}>{{this.next.next.quarter}}</a></td>
+							</tr>
+							{{> schedule_overview performance=this.next.next }}
+						</tbody>
+					{{/if}}
+					{{#if this.next.next.next}}
+						<tbody>
+							<tr>
+								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.next.next.path) (stem this.next.next.next.path)) ".html"}}>{{this.next.next.next.quarter}}</a></td>
+							</tr>
+							{{> schedule_overview performance=this.next.next.next }}
+						</tbody>
+					{{/if}}
+				</table>
+				<h2 id="looking-back">Looking Back</h2>
+				<table class="noborder">
+					{{#if this.previous}}
+						<tbody>
+							<tr>
+								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.path) (stem this.previous.path)) ".html"}}>{{this.previous.quarter}}</a></td>
+							</tr>
+								{{> schedule_overview performance=this.previous }}
+						</tbody>
+					{{/if}}
+					{{#if this.previous.previous}}
+						<tbody>
+							<tr>
+								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.previous.path) (stem this.previous.previous.path)) ".html"}}>{{this.previous.previous.quarter}}</a></td>
+							</tr>
+							{{> schedule_overview performance=this.previous.previous }}
+						</tbody>
+					{{/if}}
+					{{#if this.previous.previous.previous}}
+						<tbody>
+							<tr>
+								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.previous.previous.path) (stem this.previous.previous.previous.path)) ".html"}}>{{this.previous.previous.previous.quarter}}</a></td>
+							</tr>
+							{{> schedule_overview performance=this.previous.previous.previous }}
+						</tbody>
+					{{/if}}
+				</table>
+			</div>
 		</div>
-	</div>
-{{/default_layout}}
+	{{/content}}
+{{/extend}}
