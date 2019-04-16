@@ -9,7 +9,7 @@ albums:
         file: "EMI-7243-5-66540-2-0.jpg"
         height: 300
         width: 296
-    content: >
+    description: >
         <p>
             Sir Adrian Boult’s famous 1966 recording is generously coupled with the
             grandest of Elgar’s large-scale choral works, The Dream of Gerontius in a
@@ -34,7 +34,7 @@ albums:
         file: "Teldec-92374.jpg"
         height: 351
         width: 355
-    content: >
+    description: >
         <p>
             Perhaps the strongest performance in every aspect is Andrew Davis’ 1994
             recording with the BBC Symphony Orchestra and Chorus and Jean Rigby, mezzo
@@ -59,7 +59,7 @@ albums:
         file: "Chandos-CHAN-9022.jpg"
         height: 1059
         width: 1071
-    content: >
+    description: >
         <p>
             The late Bryden Thomson recorded <em>The Music Makers</em> for the Chandos
             label in 1992, and it is far and away the most sonically arresting recording
@@ -79,7 +79,7 @@ albums:
         </p>
 
 -   director: "Leonard Slatkin"
-    content: >
+    description: >
         <p>
             There is a fine performance
             <a href="https://www.youtube.com/watch?v=EixX7n3QAjg">online at YouTube</a>
@@ -92,9 +92,13 @@ albums:
             Lieberson is a stunning soloist. Highly recommended!
         </p>
 ---
-<p>
-	Elgar’s <em>The Music Makers</em> is well represented in the current catalog
-    of recordings and online, despite the fact that it is very rarely performed
-    here in the U.S. There are three readily available recordings, and all can
-    be strongly recommended.
-</p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            Elgar’s <em>The Music Makers</em> is well represented in the current catalog
+            of recordings and online, despite the fact that it is very rarely performed
+            here in the U.S. There are three readily available recordings, and all can
+            be strongly recommended.
+        </p>
+    {{/content}}
+{{/extend}}

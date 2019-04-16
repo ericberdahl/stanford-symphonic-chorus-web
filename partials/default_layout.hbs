@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Stanford Symphonic Chorus</title>
+{{#block "head-title"}}
+	<title>Stanford Symphonic Chorus</title>
+{{/block}}
 <!-- Base stylesheet which imports typography, resets, header/footer layout, and other miscellaneous styles -->
 <link rel="stylesheet" type="text/css" href="/css/base.css">
 <!-- Page specific stylesheet for middle layout section (sidebars and content_main) -->
@@ -46,9 +48,11 @@
 	{{> nav_topic }}
 	<div id="title">
 		<h1>
-			<!-- TemplateBeginEditable name="Page Title" -->
-			{{ this.title }}
-			<!-- TemplateEndEditable -->
+			{{#block "body-title"}}
+				<!-- TemplateBeginEditable name="Page Title" -->
+				{{ this.title }}
+				<!-- TemplateEndEditable -->
+			{{/block}}
 		</h1>
 	</div>
 

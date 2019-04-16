@@ -9,7 +9,7 @@ albums:
         file: colin-davis-berlioz-requiem.jpg
         width: 300
         height: 300
-    content: >
+    description: >
         <p>
             Colin Davis's reading has long been regarded as one of the strongest available
             (Philips 415 283-2, coupled with Berlioz' <em>Symphonie funèbre et triomphale,</em> op. 15).
@@ -35,7 +35,7 @@ albums:
         file: robert-shaw-berlioz-requiem.jpg
         width: 300
         height: 300
-    content: >
+    description: >
         <p>
             More recently, Robert Shaw has recorded the <em>Requiem</em> with his Atlanta forces (Telarc CD-80109, coupled with Boïto's <em>Prolog to Mefistolfele</em> and Verdi's <em>Te Deum</em>). 
             Though a more straightforward, and perhaps less emotionally charged reading than Davis', Shaws' Atlanta Symphony Chorus is the ultimate in polish and percision.
@@ -53,7 +53,7 @@ albums:
         file: leonard-bernstein-berlioz-requiem.jpg
         width: 130
         height: 130
-    content: >
+    description: >
         <p>
             For unbridled energy and visceral excitement, Bernstein's 1975 performance with the orchestre 
             Nationale de France and the French Radio/TV Chorus is unmatched (Sony M2YK 46461 or Sony SM2K 47526).
@@ -69,7 +69,7 @@ albums:
         file: james-levine-berlioz-requiem.jpg
         width: 300
         height: 300
-    content: >
+    description: >
         <p>
             James Levine has the advantage of having Pavarotti as his tenor soloist fo rhte <em>Sanctus,</em> 
             and Luciano sounds as ravishing as one would expect (Deutsche Grammophon 429 724-2). 
@@ -85,7 +85,7 @@ albums:
         file: seiji-ozawa-berlioz-requiem.jpg
         width: 300
         height: 300
-    content: >
+    description: >
         <p>
             Ozawa and French repertoire is often a rewarding match, and his 1994 recording of the <em>Messe des morts</em> 
             is no exception (RCA 09026-62544-2). The playing of the Boston Symphony Orchestra is beautiful as ever, 
@@ -94,7 +94,11 @@ albums:
         </p>
 
 ---
-<p>
-	There are several wonderful recordings of Berlioz's mighty <em>Requiem</em>
-	currently available.
-</p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            There are several wonderful recordings of Berlioz's mighty <em>Requiem</em>
+            currently available.
+        </p>
+    {{/content}}
+{{/extend}}

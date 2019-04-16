@@ -9,7 +9,7 @@ albums:
         file: wolfgang-sawallisch-schumann-messe-op147.jpg
         width: 500
         height: 474
-    content: >
+    description: >
         <p>
             One of the strongest performances available is Wolfgang
             Sawallisch’s live recording from 1987 with the Chor des
@@ -37,7 +37,7 @@ albums:
         file: michel-corboz-schumann-requiem-messe.jpg
         width: 500
         height: 474
-    content: >
+    description: >
         <p>
             Michel Corboz’s 1988 release with the Choeur et Orchestre de
             la foundation Gulbenkian de Lisbonne (WEA Apex Classics ECD75542)
@@ -58,7 +58,7 @@ albums:
         file: peter-neumann-brahms-kyrie-schumann-messe.jpg
         width: 305
         height: 305
-    content: >
+    description: >
         <p>
             Peter Neumann’s performance with the Kölner Kammerchor
             and organ accompaniment by Christoph Anselm Noll instead of
@@ -71,8 +71,12 @@ albums:
         </p>
 
 ---
-<p>
-	Schumann's <em>Mass in C minor,</em> Op. 147, certainly
-	doesn't suffer from over-exposure in the catalog of available
-	recordings.
-</p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            Schumann's <em>Mass in C minor,</em> Op. 147, certainly
+            doesn't suffer from over-exposure in the catalog of available
+            recordings.
+        </p>
+    {{/content}}
+{{/extend}}

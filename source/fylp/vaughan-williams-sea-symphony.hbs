@@ -5,7 +5,7 @@ piece_ref: "vaughan williams/sea symphony"
 albums:
 -   director: Adrian Boult
     label: EMI CDM 64016 2
-    content: >
+    description: >
         <p>
             For the strongest recordins in the catalog, one would logically turn to
             conductors from the UK, and in this instance the results are most pleasing.
@@ -27,7 +27,7 @@ albums:
 
 -   director: Bryden Thomson
     label: Chandos CHAN 8764
-    content: >
+    description: >
         <p>
             For an equally successful, though quite different experience, Bryden
             Thomson's recording (Chandos CHAN 8764) is a winner. Compelling and
@@ -44,7 +44,7 @@ albums:
 
 -   director: Andrew Davis
     label: Teldec 4509-94550-2
-    content: >
+    description: >
         <p>
             Fans of baritone Thomas Hampson can hear him on Teldec's offering (Teldec
             4509-94550-2) conducted by Andrew Davis. With this recording the BBC
@@ -58,7 +58,7 @@ albums:
 
 -   director: André Previn
     label: RCA 60580-2-RG
-    content: >
+    description: >
         <p>
             A young André Previn conducts a young RVW on RCA's recording (RCA
             60580-2-RG). Lojng a strong recommendation in the catalog, this performance
@@ -69,7 +69,7 @@ albums:
         </p>
 
 -   director: "Other recordings"
-    content: >
+    description: >
         <p>
             Other strong recordings include Vernon Handley conducting the Liverpool
             Philharmonic Orchestra and Chorus (Virgin VJ 759687-4), and Bernard Haitink
@@ -77,10 +77,14 @@ albums:
         </p>
 
 ---
-<p>
-    Happily, there are a good number of excellent recordings of all of Ralph
-    Vaughan Williams symphonies. His first symphony, <em>A Sea Symphony</em>,
-    was completed in 1909. A vast and majestic work of grand proportions, it is
-    composed in the typical symphonic four movements and sets wonderful text by
-    Walt Whitman.
-</p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            Happily, there are a good number of excellent recordings of all of Ralph
+            Vaughan Williams symphonies. His first symphony, <em>A Sea Symphony</em>,
+            was completed in 1909. A vast and majestic work of grand proportions, it is
+            composed in the typical symphonic four movements and sets wonderful text by
+            Walt Whitman.
+        </p>
+    {{/content}}
+{{/extend}}

@@ -4,8 +4,6 @@
  TODO:
  - metalsmith-broken-link-checker
  - metalsmith-paths
- - metalsmith-serve
- - metalsmith-collections
  - move /group/SymCh into data configuration
  */
 
@@ -23,14 +21,18 @@ function buildSite(options)
     const layouts = require('handlebars-layouts');
     const metadata = require('./lib/metadata');
     const prefix = require('metalsmith-prefixoid');
+    const references = require('./lib/collection-references');
     const tidy = require('metalsmith-html-tidy');
 
+    // string helpers must be registered before array helpers is
+    // because reverse is defined in both places, and array's
+    // version is correct for strings, but not vice-versa.
+    helpers.string({ handlebars: Handlebars });
     helpers.array({ handlebars: Handlebars });
     helpers.comparison({ handlebars: Handlebars });
     helpers.html({ handlebars: Handlebars });
     helpers.math({ handlebars: Handlebars });
     helpers.path({ handlebars: Handlebars });
-    helpers.string({ handlebars: Handlebars });
     
     dashbars.help(Handlebars);
 
@@ -63,6 +65,20 @@ function buildSite(options)
                     return (a.first_concert.start > b.first_concert.start ? -1 : 1);
                 },
                 reverse: true
+            },
+            fylp: {
+                pattern: 'fylp/*.hbs',
+                sortBy: 'piece_ref'
+            }
+        }))
+        .use(references({
+            source: 'performances',
+            destination: 'fylp',
+            match: (src, dest) => {
+                const found = src.repertoire.find((piece) => {
+                    return (piece.ref == dest.piece_ref);
+                });
+                return found;
             }
         }))
         .use(inplace({

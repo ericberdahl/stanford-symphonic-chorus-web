@@ -9,7 +9,7 @@ albums:
         file: john-eliot-gardiner-brahms-requiem.jpg
         width: 500
         height: 500
-    content: >
+    description: >
         <p>
             Stunning it its clarity, tautness, drama, polished playing and singing, and
             overwhelming musicality is John Eliot Gardner's 1990 recording with the
@@ -39,7 +39,7 @@ albums:
         file: claudio-abbado-brahms-requiem.jpg
         width: 600
         height: 600
-    content: >
+    description: >
         <p>
             Of the "big-band" versions available, Claudio Abbado's newest with the Berlin
             Philharmonic and the Swedish Radio Chorus and Eric Ericson Chamber Choir
@@ -62,7 +62,7 @@ albums:
         file: otto-klemperer-brahms-requiem.jpg
         width: 600
         height: 600
-    content: >
+    description: >
         <p>
             Otto Klemperer's 1962 reading with the Philharmonia Chorus 
             and Orchestra has long been a favorite (EMI CDC 7 47238 2). 
@@ -82,7 +82,7 @@ albums:
         file: robert-shaw-brahms-requiem.jpg
         width: 500
         height: 499
-    content: >
+    description: >
         <p>
             Robert Shaw recorded the <em>Requiem</em> in 1984 for Telarc (Telarc CD-80092)
             as part of his traversal of the great choral/orchestral masterworks for that
@@ -96,7 +96,7 @@ albums:
         </p>
 
 -   director: "Other recordings"
-    content: >
+    description: >
         <p>
             There are many other highly recommended recordings, and the listener really
             can't go wrong with any of several versions.  
@@ -110,10 +110,14 @@ albums:
         </p>
 
 ---
-<p>
-	A wonderful embarrassment of riches faces those looking to procure a recording
-	of Brahms' <em>Ein Deutsches Requeim</em> for their collection.
-	This monument of Brahms' <em>oeuvre</em> has always been well represented on disc,
-	and from the continuous output of outstanding versions, it looks as though the
-	trend will happily continue.
-</p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            A wonderful embarrassment of riches faces those looking to procure a recording
+            of Brahms' <em>Ein Deutsches Requeim</em> for their collection.
+            This monument of Brahms' <em>oeuvre</em> has always been well represented on disc,
+            and from the continuous output of outstanding versions, it looks as though the
+            trend will happily continue.
+        </p>
+    {{/content}}
+{{/extend}}

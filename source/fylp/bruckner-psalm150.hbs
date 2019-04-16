@@ -5,7 +5,7 @@ piece_ref: "bruckner/psalm-150"
 albums:
 -   director: Helmuth Rilling
     label: Hänssler 98.119
-    content: >
+    description: >
         <p>
             Wonderfully successful (as would be expected!) is Helmuth Rilling conducting
             the Gächinger Kantorei Stuttgart and the Bach-Collegium Stuttgart (Hänssler
@@ -18,7 +18,7 @@ albums:
 
 -   director: Eugen Jochum
     label: Deutsche Grammophon 457 743-2
-    content: >
+    description: >
         <p>
             One of the classic recordings of Bruckner's Psalm 150 is Eugen Jochum
             conducting the Chor der Deutschen Oper Belin and the Berlin Philharmoniker
@@ -34,7 +34,7 @@ albums:
 
 -   director: Matthew Best
     label: Hyperion CDA66599
-    content: >
+    description: >
         <p>
             If it's clean you want, it's clean you get with Matthew Best conducting the
             Corydon Singers and Orchestra (Hyperion CDA66599). This is British Cathedral
@@ -45,8 +45,12 @@ albums:
         </p>
 
 ---
-<p>
-    Bruckner's Psalm 150 is relative easy to find, and the piece(s) it's coupled
-     with on different CDs might well determine which version you wish to
-     purchase.
- </p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            Bruckner's Psalm 150 is relative easy to find, and the piece(s) it's coupled
+            with on different CDs might well determine which version you wish to
+            purchase.
+        </p>
+    {{/content}}
+{{/extend}}

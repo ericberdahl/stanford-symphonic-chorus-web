@@ -11,7 +11,7 @@ albums:
         file: herbert-blomstedt-nanie-schicksalslied.jpg
         width: 500
         height: 474
-    content: >
+    description: >
         <p>
             There are four excellent recordings that contain both Nänie and Schiscksalslied on a single disc. 
             Herbert Blomstedt's performance with the San Francisco Symphony Orchestra and Chorus 
@@ -32,7 +32,7 @@ albums:
         file: helmut-rilling-schicksalslied.jpg
         width: 305
         height: 305
-    content: >
+    description: >
         <p>
             Among his conducting students, it is often said that "[Helmuth] Rilling is thrilling" – and 
             this is readily apparent in his recording of both Nänie and Schicksalslied 
@@ -49,7 +49,7 @@ albums:
         file: gerd-albrecht-brahms.jpg
         width: 500
         height: 474
-    content: >
+    description: >
         <p>
             Gerd Albrecht conducts the Danish National Choir/DR and Danish National Symphony Orchestra 
             in a disc that includes both Nänie and Shicksalslied as well as Brahms' Triumphlied 
@@ -67,7 +67,7 @@ albums:
         file: robert-shaw-brahms.jpg
         width: 305
         height: 305
-    content: >
+    description: >
         <p>
             Robert Shaw's recording of Nänie and Schiscksalslied is also coupled with the Alto Rhapsody 
             (Marilyn Horne, mezzo–wow!), and Gesang der Parzen (Telarc CD-801760).  
@@ -85,7 +85,7 @@ albums:
         file: claudio-abbado-brahms.jpg
         width: 305
         height: 305
-    content: >
+    description: >
         <p>
             Among recordings that include this quarter's repertoire as fill-ups, 
             Abbado's version of Nänie is warm and expansive (Deutsche Grammophon 435 349-2).  
@@ -104,7 +104,7 @@ albums:
         file: klaus-tennstedt-brahms.jpg
         width: 305
         height: 305
-    content: >
+    description: >
         <p>
             German conductor Klaus Tennstedt passed away in 1998 – a year in which the Stanford Symphonic Chorus 
             last performed Brahms' Schiscksalslied – 
@@ -128,7 +128,7 @@ albums:
         file: wolfgang-sawallisch-brahms.jpg
         width: 305
         height: 305
-    content: >
+    description: >
         <p>
             Sawallisch's recording of Schiscksalslied coupled with Brahms 4th Symphony 
             and the Academic Festival Overture is an attractively budget-priced entry (EMI 7243 5 69857 2 8).  
@@ -136,8 +136,12 @@ albums:
         </p>
 
 ---
-<p>
-	Brahms' shorter large-scale choral/orchestral works are well-served among
-	available recordings, though they are often inconvenient to collect as they
-	often serve as fill-ups for longer works.
-</p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            Brahms' shorter large-scale choral/orchestral works are well-served among
+            available recordings, though they are often inconvenient to collect as they
+            often serve as fill-ups for longer works.
+        </p>
+    {{/content}}
+{{/extend}}

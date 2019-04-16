@@ -5,7 +5,7 @@ piece_ref: "orff/carmina burana"
 albums:
 -   director: Seiji Ozawa
     label: Philips 422 363-2
-    content: >
+    description: >
         <p>
             If you choose to own only one recording, Ozawa's most recent version (Philips 422 363-
             2) is a winner. Every aspect of the performance is exuberant and energized, colorful and
@@ -25,7 +25,7 @@ albums:
 
 -   director: Herbert Blomstedt
     label: London 430 509-2
-    content: >
+    description: >
         <p>
             Herbert Blomstedt's recording with the San Francisco Symphony Orchestra and Chorus is
             a strong contender in a crowded field (London 430 509-2). As Penguin puts it, the scope
@@ -42,7 +42,7 @@ albums:
 
 -   director: André Previn
     label: EMI CDC 7 47411 2
-    content: >
+    description: >
         <p>
             Since its release, André Previn's 1975 reading on (EMI CDC 7 47411 2) has always remained
             at or near the top of the recommended list. Though not always the cutting edge in
@@ -69,7 +69,7 @@ albums:
 
 -   director: Rafael Frühbeck de Burgos
     label: EMI CDM 7 69060 2
-    content: >
+    description: >
         <p>
             Rafael Frühbeck de Burgos presents a rhythmically vital performance—perhaps the most
             "live" sounding (spontaneity-wise) of all the studio recordings currently available. This
@@ -89,7 +89,7 @@ albums:
 
 -   director: Robert Shaw
     label: Telarc CD-80056
-    content: >
+    description: >
         <p>
             Robert Shaw's 1981 recording (Telarc CD-80056) arguably boasts the most polished
             choral singing among current releases. The Atlanta Symphony Chorus sing with
@@ -110,7 +110,7 @@ albums:
         </p>
 
 -   director: "Other recordings"
-    content: >
+    description: >
         <p>
             Other excellent versions are offered by Muti—intense and fiery (EMI CD: CDC 7 47100
             2), Jochum—splendor and excitement (Deutsche Gramophon CD: 423 886-2), and
@@ -118,7 +118,11 @@ albums:
         </p>
 
 ---
-<p>
-	As one of the most popular of all major choral works, Carl Orff's
-	<em>Carmina Burana</em> is well represented in available recordings.
-</p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            As one of the most popular of all major choral works, Carl Orff's
+            <em>Carmina Burana</em> is well represented in available recordings.
+        </p>
+    {{/content}}
+{{/extend}}

@@ -1,0 +1,82 @@
+{{#extend "default_layout" stylesheets=(-array "tertiary" "custom")
+							ie6_stylesheets=(-array "tertiary")
+							logo_include="logo_ssc" }}
+	{{ -let '_piece' ( lookup _data.pieces piece_ref ) }}
+
+	{{#content "head-title"}}
+		<title>For Your Listening Pleasure - {{> piece_citation piece=_piece style="plain" }}</title>
+	{{/content}}
+
+	{{#content "body-title"}}
+		<!-- TemplateBeginEditable name="Page Title" -->
+		For Your Listening Pleasure - {{> piece_citation piece=_piece style="em-tagged" }}
+		<!-- TemplateEndEditable -->
+	{{/content}}
+
+	{{#content "sidebar-intro"}}
+		<!-- TemplateBeginEditable name="sidebar_introduction" -->
+		<div id="sidebar_navigation">
+			<h2>Contents</h2>
+			<ul>
+				{{#each this.albums }}
+					<li><a href="#{{ dashcase director }}">{{ director }}</a></li>
+				{{/each}}
+			</ul>
+		</div>
+		<!-- TemplateEndEditable -->
+	{{/content}}
+
+	{{#content "main-content"}}
+		<div id="content_main">
+			<div id="breadcrumb">
+				<p>
+					<!-- TemplateBeginEditable name="breadcrumb" -->
+					<a href="/index.html">Symphonic Chorus Home</a>
+					» 
+					<a href="/fylp.html">For Your Listening Pleasure</a>
+					»
+					{{ _piece.title }}
+					<!-- TemplateEndEditable -->
+				</p>
+			</div>
+			<!-- TemplateBeginEditable name="content_main" -->
+			<h2>{{> piece_citation piece=_piece style="em-tagged" }}</h2>
+
+			{{#block "fylp-content"}}{{/block}}
+
+			{{#each albums }}
+				<h3 id="{{ dashcase director }}">{{ director }}</h3>
+				<div class="pgraph">
+					{{#if image }}
+						{{> lightbox .. image=( f-join "/images/fylp" image.file )
+									style=../_data.lightbox.style.leadin
+									width=image.width
+									height=image.height
+									caption=( s-concat director ", " label )
+									img_width=109 }}
+					{{/if}}
+					{{{ description }}}
+				</div>
+			{{/each}}
+			<!-- TemplateEndEditable -->
+		</div>
+	{{/content}}
+
+	{{#content "sidebar-supplement"}}
+		<!-- TemplateBeginEditable name="sidebar_supplementary" -->
+		<!-- TemplateEndEditable -->
+		<div>
+			{{> lightbox image="/images/graphics/Sano.jpg"
+						width=220
+						height=291
+						caption="Director of Music and Conductor Stephen Sano"
+						img_width=149 }}
+		</div>
+		<div id="performances">
+			<h2>Performances</h2>
+			{{#each (reverse ( -union references.performances )) }}
+				<h3><a href="/performances.html#{{ dashcase quarter }}">{{ quarter }}</a></h3>
+			{{/each}}
+		</div>
+	{{/content}}
+{{/extend}}

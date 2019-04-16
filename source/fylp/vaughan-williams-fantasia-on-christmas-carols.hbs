@@ -12,7 +12,7 @@ albums:
         file: david-willcock.jpg
         width: 300
         height: 300
-    content: >
+    description: >
         <p>
             David Willcocks' classic reading with the Choir of King's College,
             Cambridge, and the soloist Harvey Allen is still available
@@ -29,7 +29,7 @@ albums:
         file: john-rutter.jpg
         width: 300
         height: 300
-    content: >
+    description: >
         <p>
             John Rutter's excellent version with the Cambridge Singers
             and the City of London Sinfonia presents the version for full orchestra
@@ -42,7 +42,11 @@ albums:
         </p>
 
 ---
-<p>
-	Vaughan William's <em>Fantasia on Christmas Carols</em>
-	is well-served on a number of fine recordings.
-</p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            Vaughan William's <em>Fantasia on Christmas Carols</em>
+            is well-served on a number of fine recordings.
+        </p>
+    {{/content}}
+{{/extend}}

@@ -9,7 +9,7 @@ albums:
         file: "john-eliot-gardiner-beethoven-mass-in-c.jpg"
         width: 500
         height: 474
-    content: >
+    description: >
         <p>
             John Eliot Gardiner's reading (Archiv 435 391-2) is an easy first 
             choice.
@@ -34,7 +34,7 @@ albums:
         file: robert-shaw-beethoven-mass-in-c.jpg
         width: 305
         height: 305
-    content: >
+    description: >
         <p>
             Robert Shaw's 1990 recording (Telarc CD-80248) is a "big-band" 
             performance with precision and beauty of tone in both the singing and 
@@ -53,7 +53,7 @@ albums:
         file: sir-thomas-beecham-beethoven-mass-in-c.jpg
         width: 400
         height: 400
-    content: >
+    description: >
         <p>
             Sir Thomas Beecham's 1959 recording has long been a yardstick of 
             measurement for performances of this work, and is available in a 
@@ -73,7 +73,7 @@ albums:
         file: colin-davis-beethoven-mass-in-c.jpg
         width: 130
         height: 130
-    content: >
+    description: >
         <p>
             Colin Davis' recording is available as part of a 2 CD set (Philips 438 362-2) 
             with the <em>Missa solemnis</em> at a 2 for 1 price.  
@@ -89,7 +89,7 @@ albums:
 
 -   director: George Guest
     label: Decca ‎– 430 361-2
-    content: >
+    description: >
         <p>
             Lighter-weight, intimate, and currently out of print, is George 
             Guest's performance with the St. John's College Choir, Cambridge 
@@ -99,8 +99,12 @@ albums:
             lovely performance to own if you can find it.
         </p>
 ---
-<p>
-    Beethoven's <em>Mass in C</em> Op. 86 has never received the same 
-    recorded attention as the <em>Missa solemnis</em>, but there are still 
-    several excellent recordings to choose from.
-</p>
+{{#extend "fylp_layout"}}
+    {{#content "fylp-content"}}
+        <p>
+            Beethoven's <em>Mass in C</em> Op. 86 has never received the same 
+            recorded attention as the <em>Missa solemnis</em>, but there are still 
+            several excellent recordings to choose from.
+        </p>
+    {{/content}}
+{{/extend}}
