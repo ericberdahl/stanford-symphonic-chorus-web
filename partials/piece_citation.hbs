@@ -16,7 +16,7 @@
     {{~ -let '_citation' (sanitize this._citation) ~}}
 {{/if~}}
 {{{trim (join (-array this._composer
-                this._piece.prefix
+                this.piece.prefix
                 this._citation
-                this._piece.suffix)
+                this.piece.suffix)
             " ") }}}

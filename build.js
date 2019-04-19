@@ -3,6 +3,7 @@
 /*
  TODO:
  - metalsmith-broken-link-checker
+ - metalsmith-linkcheck
  - metalsmith-paths
  - move /group/SymCh into data configuration
  */
@@ -38,6 +39,10 @@ function buildSite(options)
 
     layouts.register(Handlebars);
 
+    Handlebars.registerHelper('ssc-getYearOfProgram', (program) => {
+        return new Date(program.first_concert.start).getFullYear();
+    });
+
     let metalsmith = Metalsmith(__dirname);
 
     if (options.debug) {
@@ -62,9 +67,8 @@ function buildSite(options)
                     if (a.first_concert.start == b.first_concert.start) {
                         return 0;
                     }
-                    return (a.first_concert.start > b.first_concert.start ? -1 : 1);
+                    return (a.first_concert.start < b.first_concert.start ? -1 : 1);
                 },
-                reverse: true
             },
             fylp: {
                 pattern: 'fylp/*.hbs',
@@ -79,7 +83,19 @@ function buildSite(options)
                     return (piece.ref == dest.piece_ref);
                 });
                 return found;
-            }
+            },
+            sortSource: (src) => {
+                src.references.fylp.sort((a, b) => {
+                    const aIndex = src.repertoire.findIndex((piece) => {
+                        return (a.piece_ref == piece.ref);
+                    });
+                    const bIndex = src.repertoire.findIndex((piece) => {
+                        return (b.piece_ref == piece.ref);
+                    });
+                    if (aIndex == bIndex) return 0;
+                    return (aIndex < bIndex ? -1 : 1);
+                });
+            },
         }))
         .use(inplace({
             pattern: '**/*.hbs',

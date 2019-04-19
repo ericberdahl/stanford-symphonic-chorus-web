@@ -1,9 +1,8 @@
 {{ -let '_collaborator' (lookup _data.collaborators this.collab) }}
-
 {{#if this._collaborator.link }}
     <a href="{{ this._collaborator.link }}">
 {{/if}}
 {{ this._collaborator.name }}
-{{#if this._collaborator.link }}
+{{~#if this._collaborator.link ~}}
     </a>
-{{/if}}
+{{~/if~}}

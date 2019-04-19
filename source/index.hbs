@@ -185,21 +185,7 @@ scripts:
 								Performance{{#if ( -gt? ( -size _concerts ) 1) }}s{{/if}}
 								at {{> loc_citation loc=(lookup (-first _concerts) 'location') style="formal" }}
 								on
-								{{#if ( -equal? ( -size _concerts ) 1 ) }}
-									{{ -let '__joint' '' }}
-									{{ -let '__last_joint' '' }}
-								{{else if ( -equal? ( -size _concerts ) 2 ) }}
-									{{ -let '__joint' ' ' }}
-									{{ -let '__last_joint' 'and ' }}
-								{{else}}
-									{{ -let '__joint' ', ' }}
-									{{ -let '__last_joint' 'and ' }}
-								{{/if}}
-								{{#each _concerts }}
-									{{#unless @first }}{{../__joint}}{{/unless}}
-									{{#if @last }}{{../__last_joint}}{{/if}}
-									{{ d-format "dddd, MMMM Do" start }}
-								{{/each}}
+								{{> array_sentence_join (map (pluck _concerts 'start') ( -partial 'd-format' 'dddd, MMMM Do' ) ) }}
 							</p>
 							<br>
 							<ul class="pgraph" style="display:none;">

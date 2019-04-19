@@ -1,0 +1,147 @@
+---
+title: "Performances"
+
+logo_include: "logo_ssc"
+
+stylesheets:
+-   "secondary"
+
+ie6_stylesheets:
+-   "secondary"
+
+scripts:
+
+---
+{{#extend "default_layout" }}
+
+	{{ -let '_programsByYear' ( -group-by 'ssc-getYearOfProgram' (reverse performances) ) }}
+
+	{{#content "sidebar-intro"}}
+		<!-- TemplateBeginEditable name="sidebar_introduction" -->
+		<div id="content_introduction">
+			<h2>Performances</h2>
+			<p class="introduction">Stanford Symphonic Chorus performs symphonic works three times a year - each academic quarter.</p>
+		</div>
+		<h3>Years</h3>
+		<ul>
+			{{#each ( reverse ( -keys _programsByYear )) }}
+				<li><a href="#{{ dashcase (lookup (-first (lookup ../_programsByYear .)) 'quarter') }}">{{ . }}</a></li>
+			{{/each}}
+		</ul>
+		<!-- TemplateEndEditable -->
+	{{/content}}
+
+	{{#content "sidebar-supplement"}}
+		<div id="see_also">
+            {{> china_2008_info }}
+        </div>
+	{{/content}}
+
+	{{#content "main-content"}}
+		<div id="content_main">
+			<div id="breadcrumb">
+				<p>
+					<!-- TemplateBeginEditable name="breadcrumb" -->
+					<a href="/index.html">Symphonic Chorus Home</a>
+					» {{ title }}
+					<!-- TemplateEndEditable -->
+				</p>
+			</div>
+			<!-- TemplateBeginEditable name="content_main" -->
+			{{#each ( reverse ( -keys _programsByYear )) }}
+				{{#with ..}}
+					{{ -let '_programIterator' (lookup _programsByYear ..) }}
+				{{/with}}
+				{{#each ../_programIterator}}
+					<br class="clear">
+					<div id="{{ dashcase quarter }}" class="middle">
+						{{#if poster}}
+							{{ -let '_lightBox_display' poster.jpg }}
+							{{ -let '_lightBox_image' (default poster.pdf poster.jpg.file) }}
+
+							{{> lightbox ../.. image=(f-join '/' (f-dirname path) _lightBox_image)
+										display=(f-join '/' (f-dirname path) _lightBox_display.file)
+										width=_lightBox_display.width
+										height=_lightBox_display.height
+										caption=_lightBox_display.caption
+										img_width=107 }}
+						{{else if images}}
+							{{ -let '_lightBox_display' (lookup images 0) }}
+							{{ -let '_lightBox_image' _lightBox_display.file }}
+
+							{{> lightbox ../.. image=(f-join '/' (f-dirname path) _lightBox_image)
+										display=(f-join '/' (f-dirname path) _lightBox_display.file)
+										width=_lightBox_display.width
+										height=_lightBox_display.height
+										caption=_lightBox_display.caption
+										img_width=107 }}
+						{{else}}
+							<img src="/images/M@S-roundedges.gif" alt="">
+						{{/if}}
+
+						<div class="middle_content">
+							<h3>{{ quarter }}</h3>
+							
+							{{#each repertoire }}
+								{{#if @first}}
+									<p>Repertoire:</p>
+									<ul class="artists">
+								{{/if}}
+										<li>{{> piece_citation ../../.. piece=. style="em-tagged" }}</li>
+								{{#if @last}}
+									</ul>
+								{{/if}}
+							{{/each}}
+							
+							{{#each soloists }}
+								{{#if @first }}
+									<p>With soloists:</p>
+									<ul class="artists">
+								{{/if}}
+										<li>{{ name }}, {{ part }}</li>
+								{{#if @last }}
+									</ul>
+								{{/if}}
+							{{/each}}
+							
+							{{#if collaborators }}
+								<p>Performed with {{> collab_array_citation ../.. collaborators=collaborators }}.</p>
+							{{/if}}
+
+							{{#if directors }}
+								<p>Directed by {{> array_sentence_join directors }}.</p>
+							{{/if}}
+							
+							<h4>Concerts:</h4>
+							{{#each concerts}}
+								<p>{{ d-format 'dddd D MMMM YYYY, h:mma' start }}, {{> loc_citation ../../.. loc=location }}</p>
+							{{/each}}
+						</div>
+						<ul class="middle_links">
+							{{#if poster }}
+								<li>Poster {{> file_links label=(s-concat quarter ' poster')
+														  versions=( -array poster.pdf poster.jpg.file )
+														  path=(f-dirname path) }}</li>
+							{{/if}}
+							{{#each references.fylp }}
+								<li><a href="{{ f-join '/' (s-concat (f-drop-extname path) '.html') }}">For your listening pleasure: {{> piece_citation ../../.. piece=(lookup ../../../_data.pieces piece_ref) style="em-tagged" }}</a></li>
+							{{/each}}
+							{{#each links}}
+								{{#if file }}
+									{{ -let '_linkUrl' ( f-join '/' ( f-dirname ../path ) file ) }}
+								{{else}}
+									{{ -let '_linkUrl' url }}
+								{{/if}}
+								<li><a href="{{{ _linkUrl }}}">{{{ text }}}</a></li>
+							{{/each}}
+						</ul>
+					</div>
+				{{/each}}
+			{{/each}}
+			<!-- ====================================================================== -->
+			<br class="clear">
+			<!-- TemplateEndEditable -->
+		</div>
+	{{/content}}
+
+{{/extend}}
