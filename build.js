@@ -2,15 +2,53 @@
 
 /*
  TODO:
- - metalsmith-broken-link-checker
- - metalsmith-linkcheck
- - metalsmith-paths
  - move /group/SymCh into data configuration
  */
+const debug = require('debug');
+const info = debug('build-ssc');
+
+debug.enable('build-ssc');
+info.log = console.info.bind(console);
+
+function showProgress() {
+    return (files, metalsmith, done) => {
+        info.apply(info, arguments);
+        done();
+    }
+}
+
+function sortFylpLinks(files, metalsmith, done) {
+    const metadata = metalsmith.metadata();
+    const performances = metadata.collections.performances;
+
+    performances.forEach((program) => {
+        program.references.fylp.sort((a, b) => {
+            const pieceFinder = (pieceRef) => {
+                return (piece) => {
+                    return pieceRef == piece.ref;
+                }
+            }
+
+            const aIndex = program.repertoire.findIndex((piece) => {
+                return (a.piece_ref == piece.ref);
+            });
+            const bIndex = program.repertoire.findIndex((piece) => {
+                return (b.piece_ref == piece.ref);
+            });
+            if (aIndex == bIndex) return 0;
+            return (aIndex < bIndex ? -1 : 1);
+        });
+    });
+
+    done();
+}
 
 function buildSite(options)
 {
+    const applyPrefix = !options.serve;
+
     const Metalsmith = require('metalsmith');
+    const blc = require('metalsmith-broken-link-checker');
     const browserSync = require('metalsmith-browser-sync');
     const collections = require('metalsmith-collections');
     const debug = require('metalsmith-debug-ui');
@@ -20,6 +58,7 @@ function buildSite(options)
     const helpers = require('handlebars-helpers');
     const inplace = require('metalsmith-in-place');
     const layouts = require('handlebars-layouts');
+    const linkcheck = require('metalsmith-linkcheck');
     const metadata = require('./lib/metadata');
     const prefix = require('metalsmith-prefixoid');
     const references = require('./lib/collection-references');
@@ -49,17 +88,22 @@ function buildSite(options)
         debug.patch(metalsmith);
     }
 
-    metalsmith = metalsmith.source('./source')
+    metalsmith = metalsmith.use(showProgress('# Starting'))
+        .source('./source')
         .destination('./build')
+        .use(showProgress('# Cleaning previous build'))
         .clean(true)
+        .use(showProgress('# Finding Handlebars partials'))
         .use(discoverPartials({
             directory: 'partials',
         }))
+        .use(showProgress('# Loading external metadata'))
         .use(metadata({
             directory: '_data',
             rootKey: '_data',
             pattern: '**/*.yml'
         }))
+        .use(showProgress('# Building collections'))
         .use(collections({
             performances: {
                 pattern: 'performances/*/schedule.hbs',
@@ -75,6 +119,7 @@ function buildSite(options)
                 sortBy: 'piece_ref'
             }
         }))
+        .use(showProgress('# Creating cross-references'))
         .use(references({
             source: 'performances',
             destination: 'fylp',
@@ -84,55 +129,55 @@ function buildSite(options)
                 });
                 return found;
             },
-            sortSource: (src) => {
-                src.references.fylp.sort((a, b) => {
-                    const aIndex = src.repertoire.findIndex((piece) => {
-                        return (a.piece_ref == piece.ref);
-                    });
-                    const bIndex = src.repertoire.findIndex((piece) => {
-                        return (b.piece_ref == piece.ref);
-                    });
-                    if (aIndex == bIndex) return 0;
-                    return (aIndex < bIndex ? -1 : 1);
-                });
-            },
         }))
+        .use(sortFylpLinks)
+        .use(showProgress('# Processing Handlebars templates'))
         .use(inplace({
             pattern: '**/*.hbs',
         }));
 
-    if (!options.serve) {
+    if (applyPrefix) {
         // Prefixing is only needed for actual deployment and messes with the
         // local server.
-        metalsmith = metalsmith.use(prefix([
-            { prefix: options.basePath, tag: 'a', attr: 'href' },
-            { prefix: options.basePath, tag: 'area', attr: 'href' },
-            { prefix: options.basePath, tag: 'img', attr: 'src' },
-            { prefix: options.basePath, tag: 'link', attr: 'href' },
-            { prefix: options.basePath, tag: 'script', attr: 'src' },
-        ]));
+        metalsmith = metalsmith.use(showProgress('# Adding basePath prefix'))
+            .use(prefix([
+                { prefix: options.basePath, tag: 'a', attr: 'href' },
+                { prefix: options.basePath, tag: 'area', attr: 'href' },
+                { prefix: options.basePath, tag: 'img', attr: 'src' },
+                { prefix: options.basePath, tag: 'link', attr: 'href' },
+                { prefix: options.basePath, tag: 'script', attr: 'src' },
+            ]));
     }
 
     if (options.tidy) {
-        metalsmith = metalsmith.use(tidy({
-            tidyOptions: {
-                'doctype': 'html5',
-                'indent': true,
-                'new-inline-tags': 'fb:fan',
-                'output-html': true,
-                'preserve-entities': true,
-                'tidy-mark': false,
-                'vertical-space': false,
-            }
-        }));
+        metalsmith = metalsmith.use(showProgress('# Tidying HTML'))
+            .use(tidy({
+                tidyOptions: {
+                    'doctype': 'html5',
+                    'indent': true,
+                    'new-inline-tags': 'fb:fan',
+                    'output-html': true,
+                    'preserve-entities': true,
+                    'tidy-mark': false,
+                    'vertical-space': false,
+                }
+            }));
     }
 
     if (options.serve) {
-        metalsmith = metalsmith.use(browserSync({
-            server: "build",
-            files: [ "source/**/*", "partials/**/*", "_data/**/*" ],
-        }))
+        metalsmith = metalsmith.use(showProgress('# Starting local server'))
+            .use(browserSync({
+                server: "build",
+                files: [ "source/**/*", "partials/**/*", "_data/**/*" ],
+            }))
     }
+
+    const blcOptions = {};
+    if (applyPrefix) {
+        blcOptions.baseUrl = options.basePath;
+    }
+    //metalsmith = metalsmith.use(blc(blcOptions));
+    //metalsmith = metalsmith.use(linkcheck());
 
     metalsmith.build((err) => {
             if (err) throw err;
