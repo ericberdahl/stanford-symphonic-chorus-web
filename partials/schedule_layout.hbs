@@ -131,60 +131,60 @@
 			{{/if}}
 					
 			<div>
-				<h2 id="looking-ahead">Looking Ahead</h2>
-				<table class="noborder">
-					{{#if this.next}}
+				{{#if this.next}}
+					<h2 id="looking-ahead">Looking Ahead</h2>
+					<table class="noborder">
 						<tbody>
 							<tr>
-								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.path) (stem this.next.path)) ".html"}}>{{this.next.quarter}}</a></td>
+								<td class="emph" colspan="3">{{#> link_object href=this.next}}{{this.next.quarter}}{{/link_object}}</td>
 							</tr>
 								{{> schedule_overview performance=this.next }}
 						</tbody>
-					{{/if}}
-					{{#if this.next.next}}
+						{{#if this.next.next}}
+							<tbody>
+								<tr>
+									<td class="emph" colspan="3">{{#> link_object href=this.next.next}}{{this.next.next.quarter}}{{/link_object}}</td>
+								</tr>
+								{{> schedule_overview performance=this.next.next }}
+							</tbody>
+						{{/if}}
+						{{#if this.next.next.next}}
+							<tbody>
+								<tr>
+									<td class="emph" colspan="3">{{#> link_object href=this.next.next.next}}{{this.next.next.next.quarter}}{{/link_object}}</td>
+								</tr>
+								{{> schedule_overview performance=this.next.next.next }}
+							</tbody>
+						{{/if}}
+					</table>
+				{{/if}}
+				{{#if this.previous}}
+					<h2 id="looking-back">Looking Back</h2>
+					<table class="noborder">
 						<tbody>
 							<tr>
-								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.next.path) (stem this.next.next.path)) ".html"}}>{{this.next.next.quarter}}</a></td>
-							</tr>
-							{{> schedule_overview performance=this.next.next }}
-						</tbody>
-					{{/if}}
-					{{#if this.next.next.next}}
-						<tbody>
-							<tr>
-								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.next.next.next.path) (stem this.next.next.next.path)) ".html"}}>{{this.next.next.next.quarter}}</a></td>
-							</tr>
-							{{> schedule_overview performance=this.next.next.next }}
-						</tbody>
-					{{/if}}
-				</table>
-				<h2 id="looking-back">Looking Back</h2>
-				<table class="noborder">
-					{{#if this.previous}}
-						<tbody>
-							<tr>
-								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.path) (stem this.previous.path)) ".html"}}>{{this.previous.quarter}}</a></td>
+								<td class="emph" colspan="3">{{#> link_object href=this.previous}}{{this.previous.quarter}}{{/link_object}}</td>
 							</tr>
 								{{> schedule_overview performance=this.previous }}
 						</tbody>
-					{{/if}}
-					{{#if this.previous.previous}}
-						<tbody>
-							<tr>
-								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.previous.path) (stem this.previous.previous.path)) ".html"}}>{{this.previous.previous.quarter}}</a></td>
-							</tr>
-							{{> schedule_overview performance=this.previous.previous }}
-						</tbody>
-					{{/if}}
-					{{#if this.previous.previous.previous}}
-						<tbody>
-							<tr>
-								<td class="emph" colspan="3"><a href={{append (f-join "/" (dirname this.previous.previous.previous.path) (stem this.previous.previous.previous.path)) ".html"}}>{{this.previous.previous.previous.quarter}}</a></td>
-							</tr>
-							{{> schedule_overview performance=this.previous.previous.previous }}
-						</tbody>
-					{{/if}}
-				</table>
+						{{#if this.previous.previous}}
+							<tbody>
+								<tr>
+									<td class="emph" colspan="3">{{#> link_object href=this.previous.previous}}{{this.previous.previous.quarter}}{{/link_object}}</td>
+								</tr>
+								{{> schedule_overview performance=this.previous.previous }}
+							</tbody>
+						{{/if}}
+						{{#if this.previous.previous.previous}}
+							<tbody>
+								<tr>
+									<td class="emph" colspan="3">{{#> link_object href=this.previous.previous.previous}}{{this.previous.previous.previous.quarter}}{{/link_object}}</td>
+								</tr>
+								{{> schedule_overview performance=this.previous.previous.previous }}
+							</tbody>
+						{{/if}}
+					</table>
+				{{/if}}
 			</div>
 		</div>
 	{{/content}}

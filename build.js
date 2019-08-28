@@ -43,6 +43,20 @@ function sortFylpLinks(files, metalsmith, done) {
     done();
 }
 
+function findCurrentProgram(options)
+{
+    return (files, metalsmith, done) => {
+        const metadata = metalsmith.metadata();
+        const performances = metadata.collections.performances;
+
+        metadata.currentProgram = performances.slice().reverse().find((value, index, array) => {
+            return !value.isFuture;
+        });
+
+        done();
+    };
+}
+
 function buildSite(options)
 {
     const applyPrefix = !options.serve;
@@ -90,20 +104,23 @@ function buildSite(options)
 
     metalsmith = metalsmith.use(showProgress('# Starting'))
         .source('./source')
-        .destination('./build')
-        .use(showProgress('# Cleaning previous build'))
+        .destination('./build');
+
+    metalsmith = metalsmith.use(showProgress('# Cleaning previous build'))
         .clean(true)
         .use(showProgress('# Finding Handlebars partials'))
         .use(discoverPartials({
             directory: 'partials',
-        }))
-        .use(showProgress('# Loading external metadata'))
+        }));
+    
+    metalsmith = metalsmith.use(showProgress('# Loading external metadata'))
         .use(metadata({
             directory: '_data',
             rootKey: '_data',
             pattern: '**/*.yml'
-        }))
-        .use(showProgress('# Building collections'))
+        }));
+
+    metalsmith = metalsmith.use(showProgress('# Building collections'))
         .use(collections({
             performances: {
                 pattern: 'performances/*/schedule.hbs',
@@ -118,8 +135,12 @@ function buildSite(options)
                 pattern: 'fylp/*.hbs',
                 sortBy: 'piece_ref'
             }
-        }))
-        .use(showProgress('# Creating cross-references'))
+        }));
+
+    metalsmith = metalsmith.use(showProgress('# Finding current program'))
+        .use(findCurrentProgram());
+
+    metalsmith = metalsmith.use(showProgress('# Creating cross-references'))
         .use(references({
             source: 'performances',
             destination: 'fylp',
@@ -130,8 +151,9 @@ function buildSite(options)
                 return found;
             },
         }))
-        .use(sortFylpLinks)
-        .use(showProgress('# Processing Handlebars templates'))
+        .use(sortFylpLinks);
+
+    metalsmith = metalsmith.use(showProgress('# Processing Handlebars templates'))
         .use(inplace({
             pattern: '**/*.hbs',
         }));

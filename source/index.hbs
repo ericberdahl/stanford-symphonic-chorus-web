@@ -12,9 +12,7 @@ ie6_stylesheets:
 scripts:
 
 ---
-{{! FIXME _current calculation needs to not assume the last performance is current }}
-{{ -let '_current' ( -last collections.performances ) }}
-{{ -let '_concerts' (sortBy (-union _current.concerts) 'start') }}
+{{ -let '_concerts' (sortBy (-union currentProgram.concerts) 'start') }}
 
 {{#extend "default_layout" }}
 
@@ -31,7 +29,7 @@ scripts:
                 <li><a href="/performances.html">SSC Performances</a></li>
                 <li><a href="/fylp.html">For your listening pleasure</a></li>
                 <li><a href="/MemberPage.html#auditions">Joining the Chorus</a></li>
-                <li><a href="/schedule.html">Rehearsal Schedule</a></li>
+                <li>{{#> link_object href=currentProgram}}Rehearsal Schedule{{/link_object}}</li>
             </ul>
             {{> lightbox image="/images/graphics/rehearsal_front.jpg"
                          width=800
@@ -78,7 +76,7 @@ scripts:
 								img_width=149 }}
 
 					{{#*inline "first-rehearsal-event"}}
-						<p>First rehearsal: <span class="event_time">{{> piece_citation piece=_current.main_piece style="em-tagged" }}</span></p>
+						<p>First rehearsal: <span class="event_time">{{> piece_citation piece=currentProgram.main_piece style="em-tagged" }}</span></p>
 						<p>{{ d-format 'h:mma' event.start }} {{> loc_citation loc=event.location }}; <em>registration starts at {{ d-format 'h:mma' event.registration }}</em></p>
 					{{/inline}}
 					
@@ -86,9 +84,9 @@ scripts:
 						<p>
 							Symphonic Chorus Performance:
 							<span class="event_time">
-								{{> piece_citation piece=_current.main_piece style="em-tagged" }}
-								{{#if _current.collaborators}}
-									with {{> collab_array_citation collaborators=_current.collaborators}}
+								{{> piece_citation piece=currentProgram.main_piece style="em-tagged" }}
+								{{#if currentProgram.collaborators}}
+									with {{> collab_array_citation collaborators=currentProgram.collaborators}}
 								{{/if}}
 							</span>
 						</p>
@@ -96,31 +94,31 @@ scripts:
 					{{/inline}}
 
 					{{#*inline "other-event"}}
-						<p>{{ title }}</p>
+						<p>{{ event.title }}</p>
 						<p>{{ d-format 'h:mma' event.start }} {{> loc_citation loc=event.location }}</p>
 					{{/inline}}
 
-					{{#if _current.first_rehearsal}}
-						{{#with _current.first_rehearsal}}
+					{{#if currentProgram.first_rehearsal}}
+						{{#with currentProgram.first_rehearsal}}
 							{{ -let '_eventPartial' 'first-rehearsal-event' }}
 						{{/with}}
 					{{/if}}
-					{{#each _current.concerts}}
+					{{#each currentProgram.concerts}}
 						{{ -let '_eventPartial' 'concert-event' }}
 					{{/each}}
-					{{#each _current.events}}
+					{{#each currentProgram.events}}
 						{{ -let '_eventPartial' 'other-event' }}
 					{{/each}}
 
 					{{ -let '_events' (-array) }}
-					{{#if _current.concerts }}
-						{{ -let '_events' (-union _events _current.concerts) }}
+					{{#if currentProgram.concerts }}
+						{{ -let '_events' (-union _events currentProgram.concerts) }}
 					{{/if}}
-					{{#if _current.first_rehearsal }}
-						{{ -let '_events' (-union _events _current.first_rehearsal) }}
+					{{#if currentProgram.first_rehearsal }}
+						{{ -let '_events' (-union _events currentProgram.first_rehearsal) }}
 					{{/if}}
-					{{#if _current.events }}
-						{{ -let '_events' (-union _events _current.events) }}
+					{{#if currentProgram.events }}
+						{{ -let '_events' (-union _events currentProgram.events) }}
 					{{/if}}
 					{{ -let '_events' (sortBy _events 'start') }}
 
@@ -168,19 +166,19 @@ scripts:
 
 						<hr class="clearer">
 
-						<h3><a href="/performances.html">{{_current.quarter}} Concert</a></h3>
+						<h3><a href="/performances.html">{{currentProgram.quarter}} Concert</a></h3>
 						<div>
-							{{#if _current.images }}
+							{{#if currentProgram.images }}
 								{{> lightbox image=( f-join '/'
-															(f-dirname _current.path)
-															(lookup (lookup _current.images 0) 'file'))
+															(f-dirname currentProgram.path)
+															(lookup (lookup currentProgram.images 0) 'file'))
 											style=_data.lightbox.style.leadin
 											width=image.width
 											height=image.height
 											caption=image.caption
 											img_width=109 }}
 							{{/if}}
-							{{ _current.description }}
+							{{ currentProgram.description }}
 							<p>
 								Performance{{#if ( -gt? ( -size _concerts ) 1) }}s{{/if}}
 								at {{> loc_citation loc=(lookup (-first _concerts) 'location') style="formal" }}
