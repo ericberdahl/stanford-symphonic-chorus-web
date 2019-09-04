@@ -57,6 +57,21 @@ function findCurrentProgram(options)
     };
 }
 
+function createProgramHistory(options)
+{
+    return (files, metalsmith, done) => {
+        const metadata = metalsmith.metadata();
+        const currentProgram = metadata.currentProgram;
+        const performances = metadata.collections.performances;
+
+        metadata.programHistory = performances.filter((item) => {
+            return item.first_concert.start <= currentProgram.first_concert.start;
+        });
+
+        done();
+    };
+}
+
 function buildSite(options)
 {
     const applyPrefix = !options.serve;
@@ -141,6 +156,9 @@ function buildSite(options)
 
     metalsmith = metalsmith.use(showProgress('# Finding current program'))
         .use(findCurrentProgram());
+
+    metalsmith = metalsmith.use(showProgress('# Finding program history'))
+        .use(createProgramHistory());
 
     metalsmith = metalsmith.use(showProgress('# Creating cross-references'))
         .use(references({
