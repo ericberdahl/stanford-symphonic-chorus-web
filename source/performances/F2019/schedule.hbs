@@ -29,7 +29,8 @@ syllabus:
 #
 # IMPORTANT: Exactly one piece MUST be labelled with the &main-piece anchor.
 repertoire:
--   composer: "Stravinsky"
+-   &main-piece-1
+    composer: "Stravinsky"
     title: "Symphony of Psalms"
 -   &main-piece
     ref: "bernstein/chichester"
@@ -279,7 +280,9 @@ description:
 
 
 # HOWTO: main_piece, first_rehearsal, and first_concert are standard fields that should not be edited
-main_piece: *main-piece
+main_piece:
+-   *main-piece
+-   *main-piece-1
 first_rehearsal: *first-rehearsal
 first_concert: *first-concert
 ---

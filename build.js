@@ -75,6 +75,7 @@ function buildSite(options)
     const linkcheck = require('metalsmith-linkcheck');
     const metadata = require('./lib/metadata');
     const prefix = require('metalsmith-prefixoid');
+    const sentence_helper = require('./lib/sentence');
     const references = require('./lib/collection-references');
     const tidy = require('metalsmith-html-tidy');
 
@@ -95,6 +96,7 @@ function buildSite(options)
     Handlebars.registerHelper('ssc-getYearOfProgram', (program) => {
         return new Date(program.first_concert.start).getFullYear();
     });
+    Handlebars.registerHelper('ssc-sentence', sentence_helper);
 
     let metalsmith = Metalsmith(__dirname);
 

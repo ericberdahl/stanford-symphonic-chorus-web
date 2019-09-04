@@ -1,1 +1,2 @@
-{{#if (gt (length this) 1) }}{{~ join ( -slice this 0 -1 ) ', ' }}{{#if (gt (length this) 2) }}, {{/if}} and {{/if}}{{ last this ~}}
+{{! TODO replace all uses of array_sentence_join with #ssc-sentence. Much cleaner. }}
+{{#ssc-sentence this}}{{.}}{{/ssc-sentence}}

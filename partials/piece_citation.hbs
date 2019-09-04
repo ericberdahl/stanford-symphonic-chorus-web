@@ -1,22 +1,25 @@
-{{ -let '_citation' '' }}
-{{ -let '_composer' '' }}
 {{ -let '_style' (default this.style "em-tagged") }}
-{{ -let '_piece' this.piece }}
 
-{{#if this._piece.ref }}
-    {{~ -let '_piece' (lookup _data.pieces this._piece.ref) ~}}
-{{/if~}}
+{{#ssc-sentence (arrayify this.piece) }}
+    {{#if this.ref }}
+        {{~ -let '_piece' (lookup ../_data.pieces this.ref) ~}}
+    {{else}}
+        {{~ -let '_piece' this ~}}
+    {{/if~}}
 
-{{~ -let '_citation' (default this._piece.citation (append (append "<em>" this._piece.title) "</em>")) ~}}
+    {{~ -let '_citation' (default _piece.citation (append (append "<em>" _piece.title) "</em>")) ~}}
 
-{{#if (eq this._style "em-tagged")}}
-    {{~ -let '_composer' this._piece.composer ~}}
-{{else if (eq this._style "plain") }}
-    {{~ -let '_composer' (append this._piece.composer ":") ~}}
-    {{~ -let '_citation' (sanitize this._citation) ~}}
-{{/if~}}
-{{{trim (join (-array this._composer
-                this.piece.prefix
-                this._citation
-                this.piece.suffix)
-            " ") }}}
+    {{#if (eq ../_style "em-tagged")}}
+        {{~ -let '_composer' _piece.composer ~}}
+    {{else if (eq ../_style "plain") }}
+        {{~ -let '_composer' (append _piece.composer ":") ~}}
+        {{~ -let '_citation' (sanitize _citation) ~}}
+    {{else}}
+        {{~ -let '_composer' '' ~}}
+    {{/if~}}
+    {{{trim (join (-array _composer
+                    this.prefix
+                    _citation
+                    this.suffix)
+                " ") }}}
+{{/ssc-sentence}}
