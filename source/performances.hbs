@@ -14,7 +14,7 @@ scripts:
 ---
 {{#extend "default_layout" }}
 	
-	{{ -let '_programList' (reverse programHistory) }}
+	{{ -let '_programList' (reverse performances.upToDate) }}
 	{{ -let '_programsByYear' ( -group-by 'ssc-getYearOfProgram' _programList ) }}
 	{{ -let '_programYears' (reverse (-keys _programsByYear)) }}
 

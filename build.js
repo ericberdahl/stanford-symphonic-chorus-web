@@ -43,35 +43,6 @@ function sortFylpLinks(files, metalsmith, done) {
     done();
 }
 
-function findCurrentProgram(options)
-{
-    return (files, metalsmith, done) => {
-        const metadata = metalsmith.metadata();
-        const performances = metadata.collections.performances;
-
-        metadata.currentProgram = performances.slice().reverse().find((value, index, array) => {
-            return !value.isFuture;
-        });
-
-        done();
-    };
-}
-
-function createProgramHistory(options)
-{
-    return (files, metalsmith, done) => {
-        const metadata = metalsmith.metadata();
-        const currentProgram = metadata.currentProgram;
-        const performances = metadata.collections.performances;
-
-        metadata.programHistory = performances.filter((item) => {
-            return item.first_concert.start <= currentProgram.first_concert.start;
-        });
-
-        done();
-    };
-}
-
 function buildSite(options)
 {
     const applyPrefix = !options.serve;
@@ -83,6 +54,7 @@ function buildSite(options)
     const debug = require('metalsmith-debug-ui');
     const dashbars = require('dashbars');
     const discoverPartials = require('metalsmith-discover-partials');
+    const findPerformances = require('./lib/find-performances');
     const Handlebars = require('handlebars');
     const helpers = require('handlebars-helpers');
     const inplace = require('metalsmith-in-place');
@@ -154,11 +126,8 @@ function buildSite(options)
             }
         }));
 
-    metalsmith = metalsmith.use(showProgress('# Finding current program'))
-        .use(findCurrentProgram());
-
-    metalsmith = metalsmith.use(showProgress('# Finding program history'))
-        .use(createProgramHistory());
+    metalsmith = metalsmith.use(showProgress('# Finding performances'))
+        .use(findPerformances());
 
     metalsmith = metalsmith.use(showProgress('# Creating cross-references'))
         .use(references({
