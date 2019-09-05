@@ -107,7 +107,7 @@ scripts:
 							{{/each}}
 							
 							{{#if collaborators }}
-								<p>Performed with {{#ssc-sentence collaborators }}{{> collab_citation ../../.. collab=.}}{{/ssc-sentence}}.</p>
+								<p>Performed with {{> collab_citation collaborators}}.</p>
 							{{/if}}
 
 							{{#if directors }}

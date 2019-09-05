@@ -28,19 +28,17 @@
         </tr>
     {{/if}}
 {{/each}}
-{{#each _performance.collaborators }}
-    {{#if @first}}
+{{#if _performance.collaborators }}
         <tr>
             <td>&nbsp;&nbsp;&nbsp;</td>
             <td>In collaboration with:</td>
             <td><ul>
-    {{/if}}
-                <li>{{> collab_citation .. collab=this }}</li>
-    {{#if @last}}
+    {{#each _performance.collaborators }}
+                <li>{{> collab_citation }}</li>
+    {{/each}}
             </ul></td>
         </tr>
-    {{/if}}
-{{/each}}
+{{/if}}
 <tr>
     <td>&nbsp;&nbsp;&nbsp;</td>
     <td>{{#> linkIf link=(append (f-join "/" (dirname _performance.path) (stem _performance.path)) ".html#rehearsals") }}First rehearsal{{/linkIf}}:</td>

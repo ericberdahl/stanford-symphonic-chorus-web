@@ -53,6 +53,7 @@ function buildSite(options)
     const collections = require('metalsmith-collections');
     const debug = require('metalsmith-debug-ui');
     const dashbars = require('dashbars');
+    const dataLookupHelper = require('./lib/data-lookup-helper');
     const discoverPartials = require('metalsmith-discover-partials');
     const findPerformances = require('./lib/find-performances');
     const Handlebars = require('handlebars');
@@ -61,10 +62,13 @@ function buildSite(options)
     const layouts = require('handlebars-layouts');
     const linkcheck = require('metalsmith-linkcheck');
     const metadata = require('./lib/metadata');
+    const path = require('path');
     const prefix = require('metalsmith-prefixoid');
     const sentence_helper = require('./lib/sentence');
     const references = require('./lib/collection-references');
     const tidy = require('metalsmith-html-tidy');
+
+    let metalsmith = Metalsmith(__dirname);
 
     // string helpers must be registered before array helpers is
     // because reverse is defined in both places, and array's
@@ -84,8 +88,7 @@ function buildSite(options)
         return new Date(program.first_concert.start).getFullYear();
     });
     Handlebars.registerHelper('ssc-sentence', sentence_helper);
-
-    let metalsmith = Metalsmith(__dirname);
+    Handlebars.registerHelper('ssc-findCollaborator', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'collaborators.yml')));
 
     if (options.debug) {
         debug.patch(metalsmith);
