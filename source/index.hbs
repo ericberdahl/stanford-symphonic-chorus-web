@@ -55,7 +55,7 @@ scripts:
 					<div>
 						{{> lightbox image="/performances/W2010/FullChorus27Feb2010.JPG"
 									display="/images/graphics/ChorusBanner.jpg"
-									style=_data.lightbox.style.banner
+									style='banner'
 									width=800
 									height=518
 									caption="Performance of Beethoven Mass in C on 27 February 2010. Photo by R. A. Wilson."
@@ -145,7 +145,7 @@ scripts:
 						<h3>The Chorus</h3>
 						<div>
 							{{> lightbox image="/images/graphics/SmallW10.jpg"
-										style=_data.lightbox.style.leadin
+										style='leadin'
 										width=700
 										height=448
 										caption="Performance of Beethoven's Mass in C, 27 February 2010. Photo by R. A. Wilson."
@@ -172,7 +172,7 @@ scripts:
 								{{> lightbox image=( f-join '/'
 															(f-dirname performances.current.path)
 															(lookup (lookup performances.current.images 0) 'file'))
-											style=_data.lightbox.style.leadin
+											style='leadin'
 											width=image.width
 											height=image.height
 											caption=image.caption

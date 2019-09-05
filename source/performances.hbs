@@ -61,7 +61,7 @@ scripts:
 							{{ -let '_lightBox_display' poster.jpg }}
 							{{ -let '_lightBox_image' (default poster.pdf poster.jpg.file) }}
 
-							{{> lightbox ../.. image=(f-join '/' (f-dirname path) _lightBox_image)
+							{{> lightbox image=(f-join '/' (f-dirname path) _lightBox_image)
 										display=(f-join '/' (f-dirname path) _lightBox_display.file)
 										width=_lightBox_display.width
 										height=_lightBox_display.height
@@ -71,7 +71,7 @@ scripts:
 							{{ -let '_lightBox_display' (lookup images 0) }}
 							{{ -let '_lightBox_image' _lightBox_display.file }}
 
-							{{> lightbox ../.. image=(f-join '/' (f-dirname path) _lightBox_image)
+							{{> lightbox image=(f-join '/' (f-dirname path) _lightBox_image)
 										display=(f-join '/' (f-dirname path) _lightBox_display.file)
 										width=_lightBox_display.width
 										height=_lightBox_display.height

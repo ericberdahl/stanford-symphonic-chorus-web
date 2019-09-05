@@ -48,8 +48,8 @@
 				<h3 id="{{ dashcase director }}">{{ director }}</h3>
 				<div class="pgraph">
 					{{#if image }}
-						{{> lightbox .. image=( f-join "/images/fylp" image.file )
-									style=../_data.lightbox.style.leadin
+						{{> lightbox image=( f-join "/images/fylp" image.file )
+									style='leadin'
 									width=image.width
 									height=image.height
 									caption=( s-concat director ", " label )

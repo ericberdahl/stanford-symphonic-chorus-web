@@ -1,0 +1,13 @@
+leadin:
+    anchorClass: "photo pgraph"
+    displayClass: ""
+
+banner:
+    anchorClass: "photo"
+    displayClass: "image_banner"
+
+plain: &default-style
+    anchorClass: "photo"
+    displayClass: "framed"
+
+default: *default-style
