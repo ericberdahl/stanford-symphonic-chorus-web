@@ -88,7 +88,9 @@ function buildSite(options)
         return new Date(program.first_concert.start).getFullYear();
     });
     Handlebars.registerHelper('ssc-sentence', sentence_helper);
+
     Handlebars.registerHelper('ssc-findCollaborator', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'collaborators.yml')));
+    Handlebars.registerHelper('ssc-findPiece', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'pieces.yml')));
 
     if (options.debug) {
         debug.patch(metalsmith);

@@ -30,7 +30,7 @@ scripts:
 		<ul>
 			{{#each ( -keys _fylpByComposer) }}
 				{{#with ..}}
-					{{ -let '_currentPieceIterator' (lookup _data.pieces (lookup (lookup (lookup _fylpByComposer ..) 0) 'piece_ref')) }}
+					{{ -let '_currentPieceIterator' (ssc-findPiece (lookup (lookup (lookup _fylpByComposer ..) 0) 'piece_ref')) }}
 				{{/with}}
 				<li><a href="#{{ dashcase ../_currentPieceIterator.composer }}">{{ ../_currentPieceIterator.composer }}</a></li>
 			{{/each}}
@@ -54,13 +54,13 @@ scripts:
 				{{/with}}
 				<br class="clear">
 				{{#each ../_composerIterator}}
-					{{ -let '_resolvedPiece' (lookup ../../_data.pieces piece_ref) }}
+					{{ -let '_resolvedPiece' (ssc-findPiece piece_ref) }}
 					{{#if @first}}
 					<div id="{{ dashcase _resolvedPiece.composer }}" class="middle">
 						<h3>{{ _resolvedPiece.composer }}</h3>
 						<ul>
 					{{/if}}
-							<li><a href="{{ f-join '/' ( s-concat ( f-drop-extname path ) '.html') }}">{{> piece_citation ../.. piece=_resolvedPiece style="title-only" }}</a></li>
+							<li><a href="{{ f-join '/' ( s-concat ( f-drop-extname path ) '.html') }}">{{> piece_citation piece=_resolvedPiece style="title-only" }}</a></li>
 					{{#if @last}}
 						</ul>
 					</div>

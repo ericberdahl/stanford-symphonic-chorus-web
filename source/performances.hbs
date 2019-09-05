@@ -89,7 +89,7 @@ scripts:
 									<p>Repertoire:</p>
 									<ul class="artists">
 								{{/if}}
-										<li>{{> piece_citation ../../.. piece=. style="em-tagged" }}</li>
+										<li>{{> piece_citation piece=. style="em-tagged" }}</li>
 								{{#if @last}}
 									</ul>
 								{{/if}}
@@ -126,7 +126,7 @@ scripts:
 														path=(f-dirname path) }}</li>
 							{{/if}}
 							{{#each references.fylp }}
-								<li><a href="{{ f-join '/' (s-concat (f-drop-extname path) '.html') }}">For your listening pleasure: {{> piece_citation ../../.. piece=(lookup ../../../_data.pieces piece_ref) style="em-tagged" }}</a></li>
+								<li><a href="{{ f-join '/' (s-concat (f-drop-extname path) '.html') }}">For your listening pleasure: {{> piece_citation piece=(ssc-findPiece piece_ref) style="em-tagged" }}</a></li>
 							{{/each}}
 							{{#each links}}
 								{{#if file }}

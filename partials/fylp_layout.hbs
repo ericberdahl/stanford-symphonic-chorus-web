@@ -1,7 +1,7 @@
 {{#extend "default_layout" stylesheets=(-array "tertiary" "custom")
 							ie6_stylesheets=(-array "tertiary")
 							logo_include="logo_ssc" }}
-	{{ -let '_piece' ( lookup _data.pieces piece_ref ) }}
+	{{ -let '_piece' ( ssc-findPiece piece_ref ) }}
 
 	{{#content "head-title"}}
 		<title>For Your Listening Pleasure - {{> piece_citation piece=_piece style="plain" }}</title>

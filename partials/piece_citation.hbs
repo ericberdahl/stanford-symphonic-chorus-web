@@ -2,7 +2,7 @@
 
 {{#ssc-sentence (arrayify this.piece) }}
     {{#if this.ref }}
-        {{~ -let '_piece' (lookup ../_data.pieces this.ref) ~}}
+        {{~ -let '_piece' (ssc-findPiece this.ref) ~}}
     {{else}}
         {{~ -let '_piece' this ~}}
     {{/if~}}
