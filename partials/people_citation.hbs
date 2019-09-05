@@ -1,4 +1,6 @@
+{{#with (ssc-findPerson this.person) }}
 <script type="text/javascript">
-    unScramble("{{ person.email }}", "{{ person.domain }}.{{ person.long_tld }}", "{{ person.full_name }}", "{{ subject }}");
+    unScramble("{{ this.email }}", "{{ this.domain }}.{{ this.long_tld }}", "{{ this.full_name }}", "{{ ../subject }}");
 </script>
-<noscript>{{ person.full_name}}: {{ person.email }}/AT/{{ person.domain }}/DOT/{{ person.obscure_tld}}/</noscript>
+<noscript>{{ this.full_name}}: {{ this.email }}/AT/{{ this.domain }}/DOT/{{ this.obscure_tld}}/</noscript>
+{{/with}}
