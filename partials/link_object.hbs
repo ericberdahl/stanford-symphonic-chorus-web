@@ -1,1 +1,1 @@
-<a href={{s-concat (f-join "/" (dirname this.href.path) (stem this.href.path)) ".html"}}>{{> @partial-block }}</a>
+<a href={{s-concat (f-join "/" (f-drop-extname this.href.path)) ".html"}}>{{> @partial-block }}</a>

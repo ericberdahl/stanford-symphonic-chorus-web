@@ -77,7 +77,6 @@ function buildSite(options)
     helpers.comparison({ handlebars: Handlebars });
     helpers.html({ handlebars: Handlebars });
     helpers.math({ handlebars: Handlebars });
-    helpers.path({ handlebars: Handlebars });
     
     dashbars.help(Handlebars);
 
