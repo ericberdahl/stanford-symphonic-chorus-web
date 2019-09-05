@@ -107,11 +107,11 @@ scripts:
 							{{/each}}
 							
 							{{#if collaborators }}
-								<p>Performed with {{> collab_array_citation ../.. collaborators=collaborators }}.</p>
+								<p>Performed with {{#ssc-sentence collaborators }}{{> collab_citation ../../.. collab=.}}{{/ssc-sentence}}.</p>
 							{{/if}}
 
 							{{#if directors }}
-								<p>Directed by {{> array_sentence_join directors }}.</p>
+								<p>Directed by {{#ssc-sentence directors }}{{.}}{{/ssc-sentence}}.</p>
 							{{/if}}
 							
 							<h4>Concerts:</h4>

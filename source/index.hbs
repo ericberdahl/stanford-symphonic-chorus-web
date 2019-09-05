@@ -86,7 +86,7 @@ scripts:
 							<span class="event_time">
 								{{> piece_citation piece=performances.current.main_piece style="em-tagged" }}
 								{{#if performances.current.collaborators}}
-									with {{> collab_array_citation collaborators=performances.current.collaborators}}
+									with {{#ssc-sentence performances.current.collaborators}}{{> collab_citation .. collab=.}}{{/ssc-sentence}}
 								{{/if}}
 							</span>
 						</p>
@@ -183,7 +183,7 @@ scripts:
 								Performance{{#if ( -gt? ( -size _concerts ) 1) }}s{{/if}}
 								at {{> loc_citation loc=(lookup (-first _concerts) 'location') style="formal" }}
 								on
-								{{> array_sentence_join (map (pluck _concerts 'start') ( -partial 'd-format' 'dddd, MMMM Do' ) ) }}
+								{{#ssc-sentence (pluck _concerts 'start')}}{{d-format 'dddd, MMMM Do' .}}{{/ssc-sentence}}
 							</p>
 							<br>
 							<ul class="pgraph" style="display:none;">

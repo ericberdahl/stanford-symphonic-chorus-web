@@ -1,8 +1,0 @@
-{{~ -let '_style' (default style "html") ~}}
-{{#each ( -slice collaborators 0 -1 ) }}
-    {{~#unless @first }}, {{/unless~}}
-    {{~> collab_citation .. collab=. style=../_style ~}}
-{{/each}}
-{{~#if ( gt ( length collaborators ) 2)}}, {{/if~}}
-{{~#if ( gt ( length collaborators ) 1)}} and {{/if~}}
-{{~> collab_citation . collab=( last collaborators ) style=_style ~}}
