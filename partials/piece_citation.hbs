@@ -9,9 +9,9 @@
 
     {{~ -let '_citation' (default _piece.citation (s-concat "<em>" _piece.title "</em>")) ~}}
 
-    {{#if (eq ../_style "em-tagged")}}
+    {{#if (-equal? ../_style "em-tagged")}}
         {{~ -let '_composer' _piece.composer ~}}
-    {{else if (eq ../_style "plain") }}
+    {{else if (-equal? ../_style "plain") }}
         {{~ -let '_composer' (s-concat _piece.composer ":") ~}}
         {{~ -let '_citation' (sanitize _citation) ~}}
     {{else}}

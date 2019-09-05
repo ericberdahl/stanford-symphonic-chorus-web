@@ -4,7 +4,7 @@
     {{~#if @first ~}}({{~/if~}}
     {{#with ..}}
         {{~ -let '_format' ( s-drop 1 ( s-uppercase ( f-extname .. ))) ~}}
-        {{~#if (eq _format 'DOCX') ~}}
+        {{~#if (-equal? _format 'DOCX') ~}}
             {{~ -let '_format' 'Word' ~}}
         {{~/if~}}
     {{/with}}
