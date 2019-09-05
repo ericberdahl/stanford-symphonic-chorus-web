@@ -15,29 +15,27 @@
         {{/each}}
     </ul></td>
 </tr>
-{{#each _performance.soloists }}
-    {{#if @first}}
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;</td>
-            <td>With:</td>
-            <td><ul>
-    {{/if}}
-                    <li>{{name}}, {{part}}</li>
-    {{#if @last}}
-            </ul></td>
-        </tr>
-    {{/if}}
-{{/each}}
-{{#if _performance.collaborators }}
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;</td>
-            <td>In collaboration with:</td>
-            <td><ul>
-    {{#each _performance.collaborators }}
-                <li>{{> collab_citation }}</li>
+{{#if _performance.soloists }}
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td>With:</td>
+        <td><ul>
+    {{#each _performance.soloists }}
+            <li>{{name}}, {{part}}</li>
     {{/each}}
-            </ul></td>
-        </tr>
+        </ul></td>
+    </tr>
+{{/if}}
+{{#if _performance.collaborators }}
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td>In collaboration with:</td>
+        <td><ul>
+    {{#each _performance.collaborators }}
+            <li>{{> collab_citation }}</li>
+    {{/each}}
+        </ul></td>
+    </tr>
 {{/if}}
 <tr>
     <td>&nbsp;&nbsp;&nbsp;</td>
