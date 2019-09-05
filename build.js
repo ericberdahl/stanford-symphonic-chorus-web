@@ -90,6 +90,7 @@ function buildSite(options)
     Handlebars.registerHelper('ssc-sentence', sentence_helper);
 
     Handlebars.registerHelper('ssc-findCollaborator', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'collaborators.yml')));
+    Handlebars.registerHelper('ssc-findLocation', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'locations.yml')));
     Handlebars.registerHelper('ssc-findPiece', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'pieces.yml')));
 
     if (options.debug) {

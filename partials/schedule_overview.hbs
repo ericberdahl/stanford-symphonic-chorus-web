@@ -63,7 +63,7 @@
     <td>{{#> linkIf link=(append (f-join "/" (dirname _performance.path) (stem _performance.path)) ".html#dress") }}Dress rehearsals{{/linkIf}}:</td>
     <td><ul>
         {{#each _performance.dresses }}
-            <li>{{ d-format "h:mma, dddd D MMMM YYYY" start }}, {{> loc_citation .. loc=location }}</li>
+            <li>{{ d-format "h:mma, dddd D MMMM YYYY" start }}, {{> loc_citation loc=location }}</li>
         {{/each}}
     </ul></td>
 </tr>
@@ -72,7 +72,7 @@
     <td>{{#> linkIf link=(append (f-join "/" (dirname _performance.path) (stem _performance.path)) ".html#concerts") }}Concerts{{/linkIf}}:</td>
     <td><ul>
         {{#each _performance.concerts }}
-            <li>{{ d-format "h:mma, dddd D MMMM YYYY" start }}{{#if location}} in {{> loc_citation .. loc=location }}{{/if}}{{#if call}} ({{ d-format "h:mma" call }} call){{/if}}</li>
+            <li>{{ d-format "h:mma, dddd D MMMM YYYY" start }}{{#if location}} in {{> loc_citation loc=location }}{{/if}}{{#if call}} ({{ d-format "h:mma" call }} call){{/if}}</li>
         {{/each}}
     </ul>
     </td>

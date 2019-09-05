@@ -57,7 +57,7 @@
 					<tr>
 						<td>{{ d-format "dddd" start }}</td>
 						<td class="right">{{ d-format "D MMMM YYYY" start }}</td>
-						<td>{{> loc_citation .. loc=this.location }}</td>
+						<td>{{> loc_citation loc=this.location }}</td>
 						<td>{{ d-format "h:mma" start }} - {{ d-format "h:mma" end }}
 							{{#if registration }}
 								<br>Registration starts at {{ d-format "h:mma" registration }}
@@ -81,7 +81,7 @@
 					<tr class="dress">
 						<td>{{ d-format "dddd" this.start }}</td>
 						<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
-						<td>{{> loc_citation .. loc=this.location }}</td>
+						<td>{{> loc_citation loc=this.location }}</td>
 						<td>{{ d-format "h:mma" this.start }}</td>
 						<td>Dress rehearsal</td>
 					</tr>
@@ -101,7 +101,7 @@
 					<tr>
 						<td>{{ d-format "dddd" this.start }}</td>
 						<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
-						<td>{{> loc_citation .. loc=this.location }}</td>
+						<td>{{> loc_citation loc=this.location }}</td>
 						<td>{{#if this.call}}{{ d-format "h:mma" this.call }}{{/if}}</td>
 						<td>{{#if this.call}}Concert call for {{/if}}{{ d-format "h:mma" this.start }} concert</td>
 					</tr>
@@ -123,7 +123,7 @@
 							<td>{{ d-format "dddd" this.start }}</td>
 							<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
 							<td>{{ d-format "h:mma" this.start }}</td>
-							<td>{{> loc_citation .. loc=this.location }}</td>
+							<td>{{> loc_citation loc=this.location }}</td>
 							<td>{{ this.title }}</td>
 						</tr>
 					{{/each}}
