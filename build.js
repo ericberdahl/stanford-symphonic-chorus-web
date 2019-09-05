@@ -61,7 +61,6 @@ function buildSite(options)
     const inplace = require('metalsmith-in-place');
     const layouts = require('handlebars-layouts');
     const linkcheck = require('metalsmith-linkcheck');
-    const metadata = require('./lib/metadata');
     const path = require('path');
     const prefix = require('metalsmith-prefixoid');
     const sentence_helper = require('./lib/sentence');
@@ -110,13 +109,6 @@ function buildSite(options)
             directory: 'partials',
         }));
     
-    metalsmith = metalsmith.use(showProgress('# Loading external metadata'))
-        .use(metadata({
-            directory: '_data',
-            rootKey: '_data',
-            pattern: '**/*.yml'
-        }));
-
     metalsmith = metalsmith.use(showProgress('# Building collections'))
         .use(collections({
             performances: {
