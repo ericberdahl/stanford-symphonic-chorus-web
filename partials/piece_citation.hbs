@@ -17,7 +17,7 @@
     {{else}}
         {{~ -let '_composer' '' ~}}
     {{/if~}}
-    {{{trim (join (-array _composer
+    {{{s-trim (join (-array _composer
                     this.prefix
                     _citation
                     this.suffix)
