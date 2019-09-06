@@ -183,7 +183,7 @@ scripts:
 								Performance{{#if ( -gt? ( -size _concerts ) 1) }}s{{/if}}
 								at {{> loc_citation loc=(lookup (-first _concerts) 'location') style="formal" }}
 								on
-								{{#ssc-sentence (pluck _concerts 'start')}}{{d-format 'dddd, MMMM Do' .}}{{/ssc-sentence}}
+								{{#ssc-sentence _concerts}}{{d-format 'dddd, MMMM Do' start}}{{/ssc-sentence}}
 							</p>
 							<br>
 							<ul class="pgraph" style="display:none;">
