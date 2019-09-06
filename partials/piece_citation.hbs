@@ -1,6 +1,6 @@
 {{ -let '_style' (default this.style "em-tagged") }}
 
-{{#ssc-sentence (arrayify this.piece) }}
+{{#ssc-sentence (-union (-array) this.piece) }}
     {{#if this.ref }}
         {{~ -let '_piece' (ssc-findPiece this.ref) ~}}
     {{else}}
