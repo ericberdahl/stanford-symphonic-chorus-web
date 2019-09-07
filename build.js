@@ -50,6 +50,7 @@ function buildSite(options)
     const Metalsmith = require('metalsmith');
     const blc = require('metalsmith-broken-link-checker');
     const browserSync = require('metalsmith-browser-sync');
+    const createCurrentEvents = require('./lib/create-current-events');
     const collections = require('metalsmith-collections');
     const debug = require('metalsmith-debug-ui');
     const dashbars = require('dashbars');
@@ -127,6 +128,9 @@ function buildSite(options)
 
     metalsmith = metalsmith.use(showProgress('# Finding performances'))
         .use(findPerformances());
+
+    metalsmith = metalsmith.use(showProgress('# Creating current event list'))
+        .use(createCurrentEvents());
 
     metalsmith = metalsmith.use(showProgress('# Creating cross-references'))
         .use(references({

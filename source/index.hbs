@@ -110,19 +110,7 @@ scripts:
 						{{ -let '_eventPartial' 'other-event' }}
 					{{/each}}
 
-					{{ -let '_events' (-array) }}
-					{{#if performances.current.concerts }}
-						{{ -let '_events' (-union _events performances.current.concerts) }}
-					{{/if}}
-					{{#if performances.current.first_rehearsal }}
-						{{ -let '_events' (-union _events performances.current.first_rehearsal) }}
-					{{/if}}
-					{{#if performances.current.events }}
-						{{ -let '_events' (-union _events performances.current.events) }}
-					{{/if}}
-					{{ -let '_events' (sortBy _events 'start') }}
-
-					{{#each _events}}
+					{{#each currentEvents}}
 						<div>
 							<h3>
 								<span class="event_day">{{ d-format 'D' start }}</span>
