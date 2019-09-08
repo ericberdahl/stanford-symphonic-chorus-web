@@ -1,4 +1,4 @@
-{{#hlp-sentence (-union (-array) this)}}
+{{#_sentence (-union (-array) this)}}
     {{#with (ssc-findCollaborator this) }}
         {{#if this.link }}
             <a href="{{ this.link }}">
@@ -8,4 +8,4 @@
             </a>
         {{~/if~}}
     {{/with}}
-{{/hlp-sentence}}
+{{/_sentence}}

@@ -90,7 +90,8 @@ function buildSite(options)
         metalsmith: metalsmith
     });
     helpers2.register({
-        handlebars: Handlebars
+        handlebars: Handlebars,
+        namespace: '_'
     });
 
     if (options.debug) {
