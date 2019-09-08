@@ -133,14 +133,14 @@ images:
 
 # HOWTO: rehearsals is a list of tutti rehearsals for the quarter
 # A rehearsal entry looks like this:
-# -   start: 2018-09-24 19:30-08
-#     end: 2018-09-24 22:00-08
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     end: YYYY-MM-DD HH:MM:SS -TT
 #     location: "CRH"
 #     event: "Registration and Tutti rehearsal"
 # Where start and end are the start time and end time for the rehearsal, respectively. The time is
-# specified in YYYY-MM-DD for the date, HH:MM for the local time, and TT is a two digit number that
-# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Daylight Time and 07
-# is the UTC offset for Pacific Standard Time).
+# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
+# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
+# is the UTC offset for Pacific Daylight Time).
 # Where location is a string that matches the key field of a record in _data/locations.yml and specifies the
 # venue in which the concert will be performed.
 # Where event is a string describing the rehearsal. Typical values include "Tutti rehearsal" for most
@@ -186,14 +186,14 @@ rehearsals:
 
 # HOWTO: sectionals is a list of sectional rehearsals for the quarter
 # A sectional entry looks like this:
-# -   start: 2018-09-24 19:30-08
-#     end: 2018-09-24 22:00-08
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     end: YYYY-MM-DD HH:MM:SS -TT
 #     location: "Braun 103"
 #     event: "Women's Sectional (optional, but warmly encouraged)"
 # Where start and end are the start time and end time for the rehearsal, respectively. The time is
-# specified in YYYY-MM-DD for the date, HH:MM for the local time, and TT is a two digit number that
-# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Daylight Time and 07
-# is the UTC offset for Pacific Standard Time).
+# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
+# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
+# is the UTC offset for Pacific Daylight Time).
 # Where location is a string that matches the key field of a record in _data/locations.yml and specifies the
 # venue in which the concert will be performed.
 # Where event is a string describing the rehearsal. Typical values include "Men's Sectional (optional, but
@@ -219,11 +219,11 @@ sectionals:
 
 # HOWTO: dresses is a list of dress rehearsals
 # A dress rehearsal entry looks like this:
-# -   start: 2018-11-13 19:00-07
+# -   start: YYYY-MM-DD HH:MM:SS -TT
 #     location: "Bing"
 # Where start is the starting time for the dress rehearsal. The time is specified in YYYY-MM-DD for the date,
-# HH:MM for the local time, and TT is a two digit number that specifies the UTC offset for the time
-# zone (N.B. 08 is the UTC offset for Pacific Daylight Time and 07 is the UTC offset for Pacific Standard
+# HH:MM:SS for the local time, and TT is a two digit number that specifies the UTC offset for the time
+# zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07 is the UTC offset for Pacific Daylight
 # Time).
 # Where location is a string that matches the key field of a record in _data/locations.yml and specifies the
 # venue in which the dress rehearsal will take place.
@@ -236,13 +236,13 @@ dresses:
 
 # HOWTO: concerts is a list of concert dates
 # A concert entry looks like this:
-# -   start: YYYY-MM-DD HH:MM -TT
-#     call: YYYY-MM-DD HH:MM -TT
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     call: YYYY-MM-DD HH:MM:SS -TT
 #     location: "Bing"
 # Where start and call are the curtain time and call time for the concert, respectively. The time is
-# specified in YYYY-MM-DD for the date, HH:MM for the local time, and TT is a two digit number that
-# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Daylight Time and 07
-# is the UTC offset for Pacific Standard Time).
+# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
+# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
+# is the UTC offset for Pacific Daylight Time).
 # Where location is a string that matches the key field of a record in _data/locations.yml and specifies the
 # venue in which the concert will be performed.
 #
@@ -261,15 +261,15 @@ concerts:
 # HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
 # schedule.
 # An individual event looks like this:
-# -   start: YYYY-MM-DD HH:MM -TT
+# -   start: YYYY-MM-DD HH:MM:SS -TT
 #     location: "MemChu"
 #     title: "Messiah Sing/Play Along"
 # Where location is a string that matches the key field of a record in _data/locations.yml and specifies the
 # venue in which the event will take place.
 # Where title is a string that labels the event itself.
-# Where start is the starting time event. The time is specified in YYYY-MM-DD for the date, HH:MM for the
-# local time, and TT is a two digit number that specifies the UTC offset for the time zone (N.B. 0800 is
-# the UTC offset for Pacific Daylight Time and 07 is the UTC offset for Pacific Standard Time).
+# Where start is the starting time event. The time is specified in YYYY-MM-DD for the date, HH:MM:SS for the
+# local time, and TT is a two digit number that specifies the UTC offset for the time zone (N.B. 08 is
+# the UTC offset for Pacific Standard Time and 07 is the UTC offset for Pacific Daylight Time).
 events:
 
 
