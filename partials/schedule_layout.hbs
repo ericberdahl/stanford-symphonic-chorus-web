@@ -52,8 +52,7 @@
 					<th>Time</th>
 					<th>Description</th>
 				</tr>
-				{{ -let '_rehearsals' (sortBy (-union (default this.rehearsals (-array)) (default this.sectionals (-array))) 'start') }}
-				{{#each _rehearsals }}
+				{{#each _allRehearsals }}
 					<tr>
 						<td>{{ d-format "dddd" start }}</td>
 						<td class="right">{{ d-format "D MMMM YYYY" start }}</td>

@@ -12,8 +12,6 @@ ie6_stylesheets:
 scripts:
 
 ---
-{{ -let '_concerts' (sortBy (-union performances.current.concerts) 'start') }}
-
 {{#extend "default_layout" }}
 
 	{{#content "sidebar"}}
@@ -168,10 +166,10 @@ scripts:
 							{{/if}}
 							{{ performances.current.description }}
 							<p>
-								Performance{{#if ( -gt? ( -size _concerts ) 1) }}s{{/if}}
-								at {{> loc_citation loc=(lookup (-first _concerts) 'location') style="formal" }}
+								Performance{{#if ( -gt? ( -size performances.current.concerts ) 1) }}s{{/if}}
+								at {{> loc_citation loc=(lookup (-first performances.current.concerts) 'location') style="formal" }}
 								on
-								{{#ssc-sentence _concerts}}{{d-format 'dddd, MMMM Do' start}}{{/ssc-sentence}}
+								{{#ssc-sentence performances.current.concerts}}{{d-format 'dddd, MMMM Do' start}}{{/ssc-sentence}}
 							</p>
 							<br>
 							<ul class="pgraph" style="display:none;">

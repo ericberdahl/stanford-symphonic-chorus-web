@@ -7,7 +7,7 @@
 const debug = require('debug');
 const info = debug('build-ssc');
 
-debug.enable('build-ssc');
+debug.enable('build-ssc,sanity-check-dates,' + process.env.DEBUG);
 info.log = console.info.bind(console);
 
 function showProgress() {
@@ -62,8 +62,10 @@ function buildSite(options)
     const inplace = require('metalsmith-in-place');
     const layouts = require('handlebars-layouts');
     const linkcheck = require('metalsmith-linkcheck');
+    const mergeRehearsals = require('./lib/merge-rehearsals');
     const path = require('path');
     const prefix = require('metalsmith-prefixoid');
+    const sanityCheckDates = require('./lib/sanity-check-dates');
     const sentence_helper = require('./lib/sentence');
     const references = require('./lib/collection-references');
     const tidy = require('metalsmith-html-tidy');
@@ -78,7 +80,7 @@ function buildSite(options)
     helpers.comparison({ handlebars: Handlebars });
     helpers.html({ handlebars: Handlebars });
     helpers.math({ handlebars: Handlebars });
-    
+
     dashbars.help(Handlebars);
 
     layouts.register(Handlebars);
@@ -87,7 +89,7 @@ function buildSite(options)
         return new Date(program.first_concert.start).getFullYear();
     });
     Handlebars.registerHelper('ssc-sentence', sentence_helper);
-
+    
     Handlebars.registerHelper('ssc-findCollaborator', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'collaborators.yml')));
     Handlebars.registerHelper('ssc-findLightboxStyle', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'lightbox-style.yml')));
     Handlebars.registerHelper('ssc-findLocation', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'locations.yml')));
@@ -126,11 +128,17 @@ function buildSite(options)
             }
         }));
 
+    metalsmith = metalsmith.use(showProgress('# Sanity checking dates'))
+        .use(sanityCheckDates());
+
     metalsmith = metalsmith.use(showProgress('# Finding performances'))
         .use(findPerformances());
 
     metalsmith = metalsmith.use(showProgress('# Creating current event list'))
         .use(createCurrentEvents());
+
+    metalsmith = metalsmith.use(showProgress('# Merging rehearsal list for each program'))
+        .use(mergeRehearsals());
 
     metalsmith = metalsmith.use(showProgress('# Creating cross-references'))
         .use(references({
