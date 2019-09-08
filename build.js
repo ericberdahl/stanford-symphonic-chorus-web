@@ -57,8 +57,7 @@ function buildSite(options)
     const discoverPartials = require('metalsmith-discover-partials');
     const findPerformances = require('./lib/find-performances');
     const Handlebars = require('handlebars');
-    const helpers = require('handlebars-helpers');
-    const helpers2 = require('./lib/handlebars-helpers');
+    const helpers = require('./lib/handlebars-helpers');
     const inplace = require('metalsmith-in-place');
     const layouts = require('handlebars-layouts');
     const linkcheck = require('metalsmith-linkcheck');
@@ -70,15 +69,6 @@ function buildSite(options)
     const tidy = require('metalsmith-html-tidy');
 
     let metalsmith = Metalsmith(__dirname);
-
-    // string helpers must be registered before array helpers is
-    // because reverse is defined in both places, and array's
-    // version is correct for strings, but not vice-versa.
-    helpers.string({ handlebars: Handlebars });   // dashcase
-    helpers.array({ handlebars: Handlebars });  // reverse
-    helpers.comparison({ handlebars: Handlebars });   // default
-    helpers.html({ handlebars: Handlebars }); // sanitize
-    helpers.math({ handlebars: Handlebars }); // round
     
     //
     // Register Handlebars helper functions
@@ -89,7 +79,7 @@ function buildSite(options)
         handlebars: Handlebars,
         metalsmith: metalsmith
     });
-    helpers2.register({
+    helpers.register({
         handlebars: Handlebars,
         namespace: '_'
     });

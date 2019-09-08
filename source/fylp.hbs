@@ -32,7 +32,7 @@ scripts:
 				{{#with ..}}
 					{{ -let '_currentPieceIterator' (ssc-findPiece (lookup (lookup (lookup _fylpByComposer ..) 0) 'piece_ref')) }}
 				{{/with}}
-				<li><a href="#{{ dashcase ../_currentPieceIterator.composer }}">{{ ../_currentPieceIterator.composer }}</a></li>
+				<li><a href="#{{ _dashcase ../_currentPieceIterator.composer }}">{{ ../_currentPieceIterator.composer }}</a></li>
 			{{/each}}
 		</ul>
 		<!-- TemplateEndEditable -->
@@ -56,7 +56,7 @@ scripts:
 				{{#each ../_composerIterator}}
 					{{ -let '_resolvedPiece' (ssc-findPiece piece_ref) }}
 					{{#if @first}}
-					<div id="{{ dashcase _resolvedPiece.composer }}" class="middle">
+					<div id="{{ _dashcase _resolvedPiece.composer }}" class="middle">
 						<h3>{{ _resolvedPiece.composer }}</h3>
 						<ul>
 					{{/if}}

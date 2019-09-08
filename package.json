@@ -19,11 +19,11 @@
   "dependencies": {
     "commander": "^2.20.0",
     "dashbars": "^0.1.8",
+    "dashify": "^2.0.0",
     "debug": "^4.1.1",
     "defaults": "^1.0.3",
     "glob": "^7.1.3",
     "handlebars": "^4.1.1",
-    "handlebars-helpers": "^0.10.0",
     "handlebars-layouts": "^3.1.4",
     "jstransformer-handlebars": "^1.1.0",
     "metalsmith": "^2.3.0",
@@ -36,6 +36,7 @@
     "metalsmith-in-place": "^4.3.0",
     "metalsmith-linkcheck": "^0.3.4",
     "metalsmith-prefixoid": "^1.0.3",
-    "node-yaml": "^3.2.0"
+    "node-yaml": "^3.2.0",
+    "sanitize-html": "^1.20.1"
   }
 }

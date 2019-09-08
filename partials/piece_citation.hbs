@@ -1,4 +1,4 @@
-{{ -let '_style' (default this.style "em-tagged") }}
+{{ -let '_style' (_default this.style "em-tagged") }}
 
 {{#_sentence (-union (-array) this.piece) }}
     {{#if this.ref }}
@@ -7,13 +7,13 @@
         {{~ -let '_piece' this ~}}
     {{/if~}}
 
-    {{~ -let '_citation' (default _piece.citation (s-concat "<em>" _piece.title "</em>")) ~}}
+    {{~ -let '_citation' (_default _piece.citation (s-concat "<em>" _piece.title "</em>")) ~}}
 
     {{#if (-equal? ../_style "em-tagged")}}
         {{~ -let '_composer' _piece.composer ~}}
     {{else if (-equal? ../_style "plain") }}
         {{~ -let '_composer' (s-concat _piece.composer ":") ~}}
-        {{~ -let '_citation' (sanitize _citation) ~}}
+        {{~ -let '_citation' (_sanitize _citation) ~}}
     {{else}}
         {{~ -let '_composer' '' ~}}
     {{/if~}}

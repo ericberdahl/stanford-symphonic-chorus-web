@@ -19,7 +19,7 @@
 			<h2>Contents</h2>
 			<ul>
 				{{#each this.albums }}
-					<li><a href="#{{ dashcase director }}">{{ director }}</a></li>
+					<li><a href="#{{ _dashcase director }}">{{ director }}</a></li>
 				{{/each}}
 			</ul>
 		</div>
@@ -45,7 +45,7 @@
 			{{#block "fylp-content"}}{{/block}}
 
 			{{#each albums }}
-				<h3 id="{{ dashcase director }}">{{ director }}</h3>
+				<h3 id="{{ _dashcase director }}">{{ director }}</h3>
 				<div class="pgraph">
 					{{#if image }}
 						{{> lightbox image=( f-join "/images/fylp" image.file )
@@ -74,8 +74,8 @@
 		</div>
 		<div id="performances">
 			<h2>Performances</h2>
-			{{#each (reverse ( -union references.performances )) }}
-				<h3><a href="/performances.html#{{ dashcase quarter }}">{{ quarter }}</a></h3>
+			{{#each (_reverse references.performances) }}
+				<h3><a href="/performances.html#{{ _dashcase quarter }}">{{ quarter }}</a></h3>
 			{{/each}}
 		</div>
 	{{/content}}

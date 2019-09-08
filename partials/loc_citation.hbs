@@ -1,4 +1,4 @@
-{{ -let '_style' (default this.style "casual") }}
+{{ -let '_style' (_default this.style "casual") }}
 
 {{#with (ssc-findLocation this.loc) }}
     {{#if this.link}}<a href="{{ this.link }}">{{/if}}
