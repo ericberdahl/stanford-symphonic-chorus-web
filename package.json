@@ -28,7 +28,7 @@
     "jstransformer-handlebars": "^1.1.0",
     "metalsmith": "^2.3.0",
     "metalsmith-broken-link-checker": "^1.0.2",
-    "metalsmith-browser-sync": "^1.1.1",
+    "metalsmith-browser-sync": "git+https://github.com/ericberdahl/metalsmith-browser-sync.git",
     "metalsmith-collections": "git+https://github.com/segmentio/metalsmith-collections.git",
     "metalsmith-debug-ui": "^0.3.2",
     "metalsmith-discover-partials": "^0.1.2",
