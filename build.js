@@ -75,12 +75,12 @@ function buildSite(options)
     // string helpers must be registered before array helpers is
     // because reverse is defined in both places, and array's
     // version is correct for strings, but not vice-versa.
-    helpers.string({ handlebars: Handlebars });
-    helpers.array({ handlebars: Handlebars });
-    helpers.comparison({ handlebars: Handlebars });
-    helpers.html({ handlebars: Handlebars });
-    helpers.math({ handlebars: Handlebars });
-
+    helpers.string({ handlebars: Handlebars });   // dashcase
+    helpers.array({ handlebars: Handlebars });  // reverse
+    helpers.comparison({ handlebars: Handlebars });   // default
+    helpers.html({ handlebars: Handlebars }); // sanitize
+    helpers.math({ handlebars: Handlebars }); // round
+    
     dashbars.help(Handlebars);
 
     layouts.register(Handlebars);
