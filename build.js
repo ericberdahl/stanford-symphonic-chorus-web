@@ -54,19 +54,18 @@ function buildSite(options)
     const collections = require('metalsmith-collections');
     const debug = require('metalsmith-debug-ui');
     const dashbars = require('dashbars');
-    const dataLookupHelper = require('./lib/data-lookup-helper');
     const discoverPartials = require('metalsmith-discover-partials');
     const findPerformances = require('./lib/find-performances');
     const Handlebars = require('handlebars');
     const helpers = require('handlebars-helpers');
+    const helpers2 = require('./lib/handlebars-helpers');
     const inplace = require('metalsmith-in-place');
     const layouts = require('handlebars-layouts');
     const linkcheck = require('metalsmith-linkcheck');
     const mergeRehearsals = require('./lib/merge-rehearsals');
-    const path = require('path');
     const prefix = require('metalsmith-prefixoid');
     const sanityCheckDates = require('./lib/sanity-check-dates');
-    const sentence_helper = require('./lib/sentence');
+    const ssc_helpers = require('./lib/ssc-helpers');
     const references = require('./lib/collection-references');
     const tidy = require('metalsmith-html-tidy');
 
@@ -81,20 +80,18 @@ function buildSite(options)
     helpers.html({ handlebars: Handlebars }); // sanitize
     helpers.math({ handlebars: Handlebars }); // round
     
+    //
+    // Register Handlebars helper functions
+    //
     dashbars.help(Handlebars);
-
     layouts.register(Handlebars);
-
-    Handlebars.registerHelper('ssc-getYearOfProgram', (program) => {
-        return new Date(program.first_concert.start).getFullYear();
+    ssc_helpers.register({
+        handlebars: Handlebars,
+        metalsmith: metalsmith
     });
-    Handlebars.registerHelper('ssc-sentence', sentence_helper);
-    
-    Handlebars.registerHelper('ssc-findCollaborator', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'collaborators.yml')));
-    Handlebars.registerHelper('ssc-findLightboxStyle', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'lightbox-style.yml')));
-    Handlebars.registerHelper('ssc-findLocation', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'locations.yml')));
-    Handlebars.registerHelper('ssc-findPerson', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'people.yml')));
-    Handlebars.registerHelper('ssc-findPiece', dataLookupHelper(path.join(metalsmith.directory(), '_data', 'pieces.yml')));
+    helpers2.register({
+        handlebars: Handlebars
+    });
 
     if (options.debug) {
         debug.patch(metalsmith);

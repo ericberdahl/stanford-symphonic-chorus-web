@@ -1,6 +1,6 @@
 {{ -let '_style' (default this.style "em-tagged") }}
 
-{{#ssc-sentence (-union (-array) this.piece) }}
+{{#hlp-sentence (-union (-array) this.piece) }}
     {{#if this.ref }}
         {{~ -let '_piece' (ssc-findPiece this.ref) ~}}
     {{else}}
@@ -22,4 +22,4 @@
                     _citation
                     this.suffix)
                 " ") }}}
-{{/ssc-sentence}}
+{{/hlp-sentence}}
