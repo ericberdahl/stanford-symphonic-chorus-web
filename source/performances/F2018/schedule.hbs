@@ -124,14 +124,14 @@ images:
 
 # HOWTO: rehearsals is a list of tutti rehearsals for the quarter
 # A rehearsal entry looks like this:
-# -   start: 2018-09-24 19:30-08
-#     end: 2018-09-24 22:00-08
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     end: YYYY-MM-DD HH:MM:SS -TT
 #     location: "CRH"
 #     event: "Registration and Tutti rehearsal"
 # Where start and end are the start time and end time for the rehearsal, respectively. The time is
-# specified in YYYY-MM-DD for the date, HH:MM for the local time, and TT is a two digit number that
-# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Daylight Time and 07
-# is the UTC offset for Pacific Standard Time).
+# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
+# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
+# is the UTC offset for Pacific Daylight Time).
 # Where location is a string that matches the key field of a record in _data/locations.yml and specifies the
 # venue in which the concert will be performed.
 # Where event is a string describing the rehearsal. Typical values include "Tutti rehearsal" for most
@@ -144,37 +144,37 @@ images:
 # fields.
 rehearsals:
 -   &first-rehearsal
-    start: 2018-09-24 19:30-08
-    end: 2018-09-24 22:00-08
+    start: 2018-09-24 19:30:00 -08
+    end: 2018-09-24 22:00:00 -08
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2018-09-25 18:30-08
--   start: 2018-10-01 19:30-08
-    end: 2018-10-01 22:00-08
+    registration: 2018-09-25 18:30:00 -08
+-   start: 2018-10-01 19:30:00 -08
+    end: 2018-10-01 22:00:00 -08
     location: "CRH"
     event: "Tutti rehearsal"
--   start: 2018-10-08 19:30-08
-    end: 2018-10-08 22:00-08
+-   start: 2018-10-08 19:30:00 -08
+    end: 2018-10-08 22:00:00 -08
     location: "CRH"
     event: "Tutti rehearsal"
--   start: 2018-10-15 19:30-08
-    end: 2018-10-15 22:00-08
+-   start: 2018-10-15 19:30:00 -08
+    end: 2018-10-15 22:00:00 -08
     location: "CRH"
     event: "Tutti rehearsal"
--   start: 2018-10-22 19:30-08
-    end: 2018-10-22 22:00-08
+-   start: 2018-10-22 19:30:00 -08
+    end: 2018-10-22 22:00:00 -08
     location: "CRH"
     event: "Tutti rehearsal"
--   start: 2018-10-29 19:30-08
-    end: 2018-10-29 22:00-08
+-   start: 2018-10-29 19:30:00 -08
+    end: 2018-10-29 22:00:00 -08
     location: "CRH"
     event: "Tutti rehearsal"
--   start: 2018-11-05 19:30-07
-    end: 2018-11-05 22:00-07
+-   start: 2018-11-05 19:30:00 -07
+    end: 2018-11-05 22:00:00 -07
     location: "CRH"
     event: "Tutti rehearsal"
--   start: 2018-11-12 19:30-07
-    end: 2018-11-12 22:00-07
+-   start: 2018-11-12 19:30:00 -07
+    end: 2018-11-12 22:00:00 -07
     location: "CRH"
     event: "Tutti rehearsal"
 
@@ -194,20 +194,20 @@ rehearsals:
 # Where event is a string describing the rehearsal. Typical values include "Men's Sectional (optional, but
 # warmly encouraged)" and "Women's Sectional (optional, but warmly encouraged)", as appropriate.
 sectionals:
--   start: 2018-10-03 17:30-08
-    end: 2018-10-03 18:30-08
+-   start: 2018-10-03 17:30:00 -08
+    end: 2018-10-03 18:30:00 -08
     location: "Braun 103"
     event: "Women's Sectional (optional, but warmly encouraged)"
--   start: 2018-10-10 17:30-08
-    end: 2018-10-10 18:30-08
+-   start: 2018-10-10 17:30:00 -08
+    end: 2018-10-10 18:30:00 -08
     location: "Braun 103"
     event: "Men's Sectional (optional, but warmly encouraged)"
--   start: 2018-10-17 17:30-08
-    end: 2018-10-17 18:30-08
+-   start: 2018-10-17 17:30:00 -08
+    end: 2018-10-17 18:30:00 -08
     location: "Braun 103"
     event: "Women's Sectional (optional, but warmly encouraged)"
--   start: 2018-10-24 17:30-08
-    end: 2018-10-24 18:30-08
+-   start: 2018-10-24 17:30:00 -08
+    end: 2018-10-24 18:30:00 -08
     location: "Braun 103"
     event: "Men's Sectional (optional, but warmly encouraged)"
 
@@ -223,9 +223,9 @@ sectionals:
 # Where location is a string that matches the key field of a record in _data/locations.yml and specifies the
 # venue in which the dress rehearsal will take place.
 dresses:
--   start: 2018-11-13 19:00-07
+-   start: 2018-11-13 19:00:00 -07
     location: "Bing"
--   start: 2018-11-15 19:00-07
+-   start: 2018-11-15 19:00:00 -07
     location: "Bing"
 
 
@@ -245,11 +245,11 @@ dresses:
 # labelled should be the first concert in this quarter's series.
 concerts:
 -   &first-concert
-    start: 2018-11-16 19:30-08
-    call: 2018-11-16 18:30-08
+    start: 2018-11-16 19:30:00 -08
+    call: 2018-11-16 18:30:00 -08
     location: "Bing"
--   start: 2018-11-18 14:30-08
-    call: 2018-11-18 13:30-08
+-   start: 2018-11-18 14:30:00 -08
+    call: 2018-11-18 13:30:00 -08
     location: "Bing"
 
 
@@ -266,7 +266,7 @@ concerts:
 # local time, and TT is a two digit number that specifies the UTC offset for the time zone (N.B. 08 is
 # the UTC offset for Pacific Standard Time and 07 is the UTC offset for Pacific Daylight Time).
 events:
--   start: 2018-12-14 19:30-07
+-   start: 2018-12-14 19:30:00 -07
     location: "MemChu"
     title: "Messiah Sing/Play Along"
 
