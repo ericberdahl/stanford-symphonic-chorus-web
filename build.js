@@ -61,6 +61,7 @@ function buildSite(options)
     const inplace = require('metalsmith-in-place');
     const layouts = require('handlebars-layouts');
     const linkcheck = require('metalsmith-linkcheck');
+    const lodashHelpers = require('./lib/lodash-helpers');
     const mergeRehearsals = require('./lib/merge-rehearsals');
     const prefix = require('metalsmith-prefixoid');
     const sanityCheckDates = require('./lib/sanity-check-dates');
@@ -75,6 +76,9 @@ function buildSite(options)
     //
     dashbars.help(Handlebars);
     layouts.register(Handlebars);
+    lodashHelpers.register({
+        handlebars: Handlebars
+    });
     ssc_helpers.register({
         handlebars: Handlebars,
         metalsmith: metalsmith

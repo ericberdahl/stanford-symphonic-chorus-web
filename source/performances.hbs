@@ -14,9 +14,8 @@ scripts:
 ---
 {{#extend "default_layout" }}
 	
-	{{ -let '_programList' (_reverse performances.upToDate) }}
-	{{ -let '_programsByYear' ( -group-by 'ssc-getYearOfProgram' _programList ) }}
-	{{ -let '_programYears' (_reverse (-keys _programsByYear)) }}
+	{{!-- TODO get rid of the ssc-getYearOfProgram helper --}}
+	{{ -let '_programsByYear' ( -group-by 'ssc-getYearOfProgram' (_reverse performances.upToDate) ) }}
 
 	{{#content "sidebar-intro"}}
 		<!-- TemplateBeginEditable name="sidebar_introduction" -->
@@ -26,9 +25,9 @@ scripts:
 		</div>
 		<h3>Years</h3>
 		<ul>
-			{{#each _programYears }}
-				<li><a href="#{{ _dashcase (lookup (-first (lookup ../_programsByYear .)) 'quarter') }}">{{ . }}</a></li>
-			{{/each}}
+			{{#_forEachRight _programsByYear }}
+				<li><a href="#{{ _kebabCase (lookup (-first .) 'quarter') }}">{{ @key }}</a></li>
+			{{/_forEachRight}}
 		</ul>
 		<!-- TemplateEndEditable -->
 	{{/content}}
@@ -50,13 +49,10 @@ scripts:
 				</p>
 			</div>
 			<!-- TemplateBeginEditable name="content_main" -->
-			{{#each _programYears }}
-				{{#with ..}}
-					{{ -let '_programIterator' (lookup _programsByYear ..) }}
-				{{/with}}
-				{{#each ../_programIterator}}
+			{{#_forEachRight _programsByYear}}
+				{{#each .}}
 					<br class="clear">
-					<div id="{{ _dashcase quarter }}" class="middle">
+					<div id="{{ _kebabCase quarter }}" class="middle">
 						{{#if poster}}
 							{{ -let '_lightBox_display' poster.jpg }}
 							{{ -let '_lightBox_image' (_default poster.pdf poster.jpg.file) }}
@@ -139,7 +135,7 @@ scripts:
 						</ul>
 					</div>
 				{{/each}}
-			{{/each}}
+			{{/_forEachRight}}
 			<!-- ====================================================================== -->
 			<br class="clear">
 			<!-- TemplateEndEditable -->

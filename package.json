@@ -19,12 +19,12 @@
   "dependencies": {
     "commander": "^2.20.0",
     "dashbars": "^0.1.8",
-    "dashify": "^2.0.0",
     "debug": "^4.1.1",
     "defaults": "^1.0.3",
     "handlebars": "^4.2.0",
     "handlebars-layouts": "^3.1.4",
     "jstransformer-handlebars": "^1.1.0",
+    "lodash": "^4.17.15",
     "metalsmith": "^2.3.0",
     "metalsmith-broken-link-checker": "^1.0.2",
     "metalsmith-browser-sync": "git+https://github.com/ericberdahl/metalsmith-browser-sync.git",

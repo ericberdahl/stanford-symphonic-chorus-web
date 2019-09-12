@@ -13,7 +13,7 @@ scripts:
 
 ---
 {{#extend "default_layout" }}
-	{{ -let '_fylpByComposer' ( -group-by ( -partial '-get' 'sort_name' ) collections.fylp) }}
+	{{ -let '_fylpByComposer' ( -group-by ( _partial '-get' 'sort_name' ) collections.fylp) }}
 
 	{{#content "sidebar-supplement"}}
         <div id="see_also">
@@ -28,12 +28,10 @@ scripts:
 			<p class="introduction">Stanford Symphonic Chorus recommends recordings of other performances that you may enjoy, in addition to attending its concerts.</p>
 		</div>
 		<ul>
-			{{#each ( -keys _fylpByComposer) }}
-				{{#with ..}}
-					{{ -let '_currentPieceIterator' (ssc-findPiece (lookup (lookup (lookup _fylpByComposer ..) 0) 'piece_ref')) }}
-				{{/with}}
-				<li><a href="#{{ _dashcase ../_currentPieceIterator.composer }}">{{ ../_currentPieceIterator.composer }}</a></li>
-			{{/each}}
+			{{#_forEach _fylpByComposer }} {{!-- TODO this should be simpler, loop over a list of composers --}}
+				{{ -let '_currentPiece' (ssc-findPiece (lookup (lookup . 0) 'piece_ref')) }}
+				<li><a href="#{{ _kebabCase _currentPiece.composer }}">{{ _currentPiece.composer }}</a></li>
+			{{/_forEach}}
 		</ul>
 		<!-- TemplateEndEditable -->
 	{{/content}}
@@ -48,15 +46,12 @@ scripts:
 					<!-- TemplateEndEditable -->
 				</p>
 			</div>
-			{{#each ( -keys _fylpByComposer) }}
-				{{#with ..}}
-					{{ -let '_composerIterator' (lookup _fylpByComposer ..) }}
-				{{/with}}
+			{{#_forEach _fylpByComposer }}
 				<br class="clear">
-				{{#each ../_composerIterator}}
+				{{#each .}}
 					{{ -let '_resolvedPiece' (ssc-findPiece piece_ref) }}
 					{{#if @first}}
-					<div id="{{ _dashcase _resolvedPiece.composer }}" class="middle">
+					<div id="{{ _kebabCase _resolvedPiece.composer }}" class="middle">
 						<h3>{{ _resolvedPiece.composer }}</h3>
 						<ul>
 					{{/if}}
@@ -66,7 +61,7 @@ scripts:
 					</div>
 					{{/if}}
 				{{/each}}
-			{{/each}}
+			{{/_forEach}}
 			<br class="clear">
 		</div>
 	{{/content}}
