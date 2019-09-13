@@ -20,7 +20,6 @@
     "commander": "^2.20.0",
     "dashbars": "^0.1.8",
     "debug": "^4.1.1",
-    "defaults": "^1.0.3",
     "handlebars": "^4.2.0",
     "handlebars-layouts": "^3.1.4",
     "jstransformer-handlebars": "^1.1.0",
