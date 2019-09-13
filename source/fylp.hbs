@@ -13,7 +13,7 @@ scripts:
 
 ---
 {{#extend "default_layout" }}
-	{{ -let '_fylpByComposer' ( -group-by ( _partial '-get' 'sort_name' ) collections.fylp) }}
+	{{ -let '_fylpByComposer' ( _groupBy collections.fylp 'sort_name' ) }}
 
 	{{#content "sidebar-supplement"}}
         <div id="see_also">
