@@ -53,7 +53,6 @@ function buildSite(options)
     const createCurrentEvents = require('./lib/create-current-events');
     const collections = require('metalsmith-collections');
     const debug = require('metalsmith-debug-ui');
-    const dashbars = require('dashbars');
     const discoverPartials = require('metalsmith-discover-partials');
     const findPerformances = require('./lib/find-performances');
     const Handlebars = require('handlebars');
@@ -74,7 +73,6 @@ function buildSite(options)
     //
     // Register Handlebars helper functions
     //
-    dashbars.help(Handlebars);
     layouts.register(Handlebars);
     lodashHelpers.register({
         handlebars: Handlebars
@@ -85,7 +83,7 @@ function buildSite(options)
     });
     helpers.register({
         handlebars: Handlebars,
-        namespace: '_'
+        namespace: 'x-'
     });
 
     if (options.debug) {

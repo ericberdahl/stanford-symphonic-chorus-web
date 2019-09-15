@@ -1,11 +1,11 @@
 <div id="nav_topic">
 	<!-- TemplateBeginEditable name="nav_topic" -->
 	<ul>
-		<li{{#if (-equal? path "index.hbs")}} class="current"{{/if}}><a href="/index.html">Symphonic Chorus Home</a></li>
-		<li{{#if (-equal? path "about.hbs")}} class="current"{{/if}}><a href="/about.html">About the Chorus</a></li>
-		<li{{#if (-equal? path "performances.hbs")}} class="current"{{/if}}><a href="/performances.html">Performances</a></li>
-		<li{{#if (-equal? path "MemberPage.hbs")}} class="current"{{/if}}><a href="/MemberPage.html">Member Information</a></li>
-		<li{{#if (-equal? path "contact.hbs")}} class="current"{{/if}}><a href="/contact.html">Contact</a></li>
+		<li{{#if (_eq path "index.hbs")}} class="current"{{/if}}><a href="/index.html">Symphonic Chorus Home</a></li>
+		<li{{#if (_eq path "about.hbs")}} class="current"{{/if}}><a href="/about.html">About the Chorus</a></li>
+		<li{{#if (_eq path "performances.hbs")}} class="current"{{/if}}><a href="/performances.html">Performances</a></li>
+		<li{{#if (_eq path "MemberPage.hbs")}} class="current"{{/if}}><a href="/MemberPage.html">Member Information</a></li>
+		<li{{#if (_eq path "contact.hbs")}} class="current"{{/if}}><a href="/contact.html">Contact</a></li>
 	</ul>
 	<!-- TemplateEndEditable -->
 </div>

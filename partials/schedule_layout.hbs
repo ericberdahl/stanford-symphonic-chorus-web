@@ -1,7 +1,7 @@
 {{#extend "default_layout" title="Rehearsal and Performance Schedule"
 					logo_include="logo_ssc"
-					stylesheets=(-array "tertiary")
-					ie6_stylesheets=(-array "tertiary") }}
+					stylesheets=(x-array "tertiary")
+					ie6_stylesheets=(x-array "tertiary") }}
 	{{#content "sidebar-supplement"}}
 		<div id="related_pages">
 			{{> about_us }}
@@ -54,12 +54,12 @@
 				</tr>
 				{{#each _allRehearsals }}
 					<tr>
-						<td>{{ d-format "dddd" start }}</td>
-						<td class="right">{{ d-format "D MMMM YYYY" start }}</td>
+						<td>{{ x-formatDate "dddd" start }}</td>
+						<td class="right">{{ x-formatDate "D MMMM YYYY" start }}</td>
 						<td>{{> loc_citation loc=this.location }}</td>
-						<td>{{ d-format "h:mma" start }} - {{ d-format "h:mma" end }}
+						<td>{{ x-formatDate "h:mma" start }} - {{ x-formatDate "h:mma" end }}
 							{{#if registration }}
-								<br>Registration starts at {{ d-format "h:mma" registration }}
+								<br>Registration starts at {{ x-formatDate "h:mma" registration }}
 							{{/if}}
 						</td>
 						<td>{{ event }}</td>
@@ -78,10 +78,10 @@
 				</tr>
 				{{#each this.dresses }}
 					<tr class="dress">
-						<td>{{ d-format "dddd" this.start }}</td>
-						<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
+						<td>{{ x-formatDate "dddd" this.start }}</td>
+						<td class="right">{{ x-formatDate "DD MMMM YYYY" this.start }}</td>
 						<td>{{> loc_citation loc=this.location }}</td>
-						<td>{{ d-format "h:mma" this.start }}</td>
+						<td>{{ x-formatDate "h:mma" this.start }}</td>
 						<td>Dress rehearsal</td>
 					</tr>
 				{{/each}}
@@ -98,11 +98,11 @@
 				</tr>
 				{{#each this.concerts }}
 					<tr>
-						<td>{{ d-format "dddd" this.start }}</td>
-						<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
+						<td>{{ x-formatDate "dddd" this.start }}</td>
+						<td class="right">{{ x-formatDate "DD MMMM YYYY" this.start }}</td>
 						<td>{{> loc_citation loc=this.location }}</td>
-						<td>{{#if this.call}}{{ d-format "h:mma" this.call }}{{/if}}</td>
-						<td>{{#if this.call}}Concert call for {{/if}}{{ d-format "h:mma" this.start }} concert</td>
+						<td>{{#if this.call}}{{ x-formatDate "h:mma" this.call }}{{/if}}</td>
+						<td>{{#if this.call}}Concert call for {{/if}}{{ x-formatDate "h:mma" this.start }} concert</td>
 					</tr>
 				{{/each}}
 			</table>
@@ -119,9 +119,9 @@
 					</tr>
 					{{#each this.events }}
 						<tr>
-							<td>{{ d-format "dddd" this.start }}</td>
-							<td class="right">{{ d-format "DD MMMM YYYY" this.start }}</td>
-							<td>{{ d-format "h:mma" this.start }}</td>
+							<td>{{ x-formatDate "dddd" this.start }}</td>
+							<td class="right">{{ x-formatDate "DD MMMM YYYY" this.start }}</td>
+							<td>{{ x-formatDate "h:mma" this.start }}</td>
 							<td>{{> loc_citation loc=this.location }}</td>
 							<td>{{ this.title }}</td>
 						</tr>

@@ -12,10 +12,8 @@ ie6_stylesheets:
 scripts:
 
 ---
-{{#extend "default_layout" }}
+{{#extend "default_layout" _programsByYear=( _groupBy performances.upToDate '_.year' ) }}
 	
-	{{ -let '_programsByYear' ( _groupBy (_reverse performances.upToDate) '_.year' ) }}
-
 	{{#content "sidebar-intro"}}
 		<!-- TemplateBeginEditable name="sidebar_introduction" -->
 		<div id="content_introduction">
@@ -25,7 +23,7 @@ scripts:
 		<h3>Years</h3>
 		<ul>
 			{{#_forEachRight _programsByYear }}
-				<li><a href="#{{ _kebabCase (lookup (-first .) 'quarter') }}">{{ @key }}</a></li>
+				<li><a href="#{{ _kebabCase (_get (_last .) 'quarter') }}">{{ @key }}</a></li>
 			{{/_forEachRight}}
 		</ul>
 		<!-- TemplateEndEditable -->
@@ -49,29 +47,29 @@ scripts:
 			</div>
 			<!-- TemplateBeginEditable name="content_main" -->
 			{{#_forEachRight _programsByYear}}
-				{{#each .}}
+				{{#_forEachRight .}}
 					<br class="clear">
 					<div id="{{ _kebabCase quarter }}" class="middle">
 						{{#if poster}}
-							{{ -let '_lightBox_display' poster.jpg }}
-							{{ -let '_lightBox_image' (_default poster.pdf poster.jpg.file) }}
-
-							{{> lightbox image=(f-join '/' (f-dirname path) _lightBox_image)
-										display=(f-join '/' (f-dirname path) _lightBox_display.file)
-										width=_lightBox_display.width
-										height=_lightBox_display.height
-										caption=_lightBox_display.caption
-										img_width=107 }}
+							{{#x-let . _lightBox_display=poster.jpg
+							           _lightBox_image=(_defaultTo poster.pdf poster.jpg.file) }}
+								{{> lightbox image=(x-join '/' (x-dirname path) _lightBox_image)
+											display=(x-join '/' (x-dirname path) _lightBox_display.file)
+											width=_lightBox_display.width
+											height=_lightBox_display.height
+											caption=_lightBox_display.caption
+											img_width=107 }}
+							{{/x-let}}
 						{{else if images}}
-							{{ -let '_lightBox_display' (lookup images 0) }}
-							{{ -let '_lightBox_image' _lightBox_display.file }}
-
-							{{> lightbox image=(f-join '/' (f-dirname path) _lightBox_image)
-										display=(f-join '/' (f-dirname path) _lightBox_display.file)
-										width=_lightBox_display.width
-										height=_lightBox_display.height
-										caption=_lightBox_display.caption
-										img_width=107 }}
+							{{#x-let . _lightBox_display=(_first images)
+							           _lightBox_image=(_get images '[0].file') }}
+								{{> lightbox image=(x-join '/' (x-dirname path) _lightBox_image)
+											display=(x-join '/' (x-dirname path) _lightBox_display.file)
+											width=_lightBox_display.width
+											height=_lightBox_display.height
+											caption=_lightBox_display.caption
+											img_width=107 }}
+							{{/x-let}}
 						{{else}}
 							<img src="/images/M@S-roundedges.gif" alt="">
 						{{/if}}
@@ -106,34 +104,34 @@ scripts:
 							{{/if}}
 
 							{{#if directors }}
-								<p>Directed by {{#_sentence directors }}{{.}}{{/_sentence}}.</p>
+								<p>Directed by {{#x-sentence directors }}{{.}}{{/x-sentence}}.</p>
 							{{/if}}
 							
 							<h4>Concerts:</h4>
 							{{#each concerts}}
-								<p>{{ d-format 'dddd D MMMM YYYY, h:mma' start }}, {{> loc_citation loc=location }}</p>
+								<p>{{ x-formatDate 'dddd D MMMM YYYY, h:mma' start }}, {{> loc_citation loc=location }}</p>
 							{{/each}}
 						</div>
 						<ul class="middle_links">
 							{{#if poster }}
-								<li>Poster {{> file_links label=(s-concat quarter ' poster')
-														versions=( -array poster.pdf poster.jpg.file )
-														path=(f-dirname path) }}</li>
+								<li>Poster {{> file_links label=(x-stringConcat quarter ' poster')
+														versions=( x-array poster.pdf poster.jpg.file )
+														path=(x-dirname path) }}</li>
 							{{/if}}
 							{{#each references.fylp }}
-								<li><a href="{{ f-join '/' (s-concat (f-drop-extname path) '.html') }}">For your listening pleasure: {{> piece_citation piece=(ssc-findPiece piece_ref) style="em-tagged" }}</a></li>
+								<li><a href="{{ x-join '/' (x-stringConcat (x-dropExtname path) '.html') }}">For your listening pleasure: {{> piece_citation piece=(ssc-findPiece piece_ref) style="em-tagged" }}</a></li>
 							{{/each}}
 							{{#each links}}
 								{{#if file }}
-									{{ -let '_linkUrl' ( f-join '/' ( f-dirname ../path ) file ) }}
+									{{_set . '_linkUrl' ( x-join '/' ( x-dirname ../path ) file ) }}
 								{{else}}
-									{{ -let '_linkUrl' url }}
+									{{_set . '_linkUrl' url }}
 								{{/if}}
 								<li><a href="{{{ _linkUrl }}}">{{{ text }}}</a></li>
 							{{/each}}
 						</ul>
 					</div>
-				{{/each}}
+				{{/_forEachRight}}
 			{{/_forEachRight}}
 			<!-- ====================================================================== -->
 			<br class="clear">

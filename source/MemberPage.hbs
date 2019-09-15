@@ -28,14 +28,14 @@ scripts:
 			{{#if performances.current.syllabus }}
 			<p>
 				{{ performances.current.quarter }} Syllabus
-				{{> file_links versions=performances.current.syllabus label="Syllabus" path=( f-dirname performances.current.path ) }}
+				{{> file_links versions=performances.current.syllabus label="Syllabus" path=( x-dirname performances.current.path ) }}
 			</p>
 			{{/if}}
 			<p><a href="/assets/Choral Studies Liability Waiver Form.pdf">Choral Studies Liability Waiver</a></p>
 
 			<p>
 				Singers must register online using the webform which will be
-				emailed to last quarter's members in {{ d-format "MMMM YYYY" performances.current.preregister }}. New members please contact
+				emailed to last quarter's members in {{ x-formatDate "MMMM YYYY" performances.current.preregister }}. New members please contact
 				{{> people_citation person='administrator' subject="Re SSC Registration Link" }}
 				to receive the registration link.
 			</p>

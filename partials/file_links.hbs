@@ -1,13 +1,12 @@
-{{~ -let '_prefixPath' (_default path "") ~}}
-{{~ -let '_label' label ~}}
-{{~#each versions ~}}
-    {{~#if @first ~}}({{~/if~}}
-    {{#with ..}}
-        {{~ -let '_format' ( s-drop 1 ( s-uppercase ( f-extname .. ))) ~}}
-        {{~#if (-equal? _format 'DOCX') ~}}
-            {{~ -let '_format' 'Word' ~}}
-        {{~/if~}}
-    {{/with}}
-    {{~#unless @first ~}}&nbsp;|&nbsp;{{~/unless~}}<a href="{{ f-join '/' ../_prefixPath this }}" title="{{ ../_label }} in {{ ../_format }} format">{{ ../_format }}</a>
-    {{~#if @last ~}}){{~/if~}}
-{{~/each~}}
+{{#x-let . path=(_defaultTo path "")
+           _format=''}}
+    {{#each versions}}
+        {{~#if @first ~}}({{~/if~}}
+        {{_set .. '_format' ( _upperCase ( x-extname . )) ~}}
+        {{#if (_eq _format 'DOCX') }}
+            {{_set .. '_format' 'Word' }}
+        {{/if}}
+        {{~#unless @first ~}}&nbsp;|&nbsp;{{~/unless~}}<a href="{{ x-join '/' ../path this }}" title="{{ ../label }} in {{ ../_format }} format">{{ ../_format }}</a>
+        {{~#if @last ~}}){{~/if~}}
+    {{/each}}
+{{/x-let}}

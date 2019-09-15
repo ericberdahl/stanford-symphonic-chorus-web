@@ -1,79 +1,78 @@
-{{ -let '_showAuditions' (_default showAuditions false) }}
-{{ -let '_performance' performance }}
+{{#x-let . showAuditions=(_defaultTo showAuditions false)}}
+    {{#*inline "linkIf"}}
+        {{~#if showAuditions}}<a href="{{link}}">{{/if}}{{ @partial-block }}{{#if showAuditions}}</a>{{/if~}}
+    {{/inline}}
 
-{{#*inline "linkIf"}}
-    {{~#if _showAuditions}}<a href="{{link}}">{{/if}}{{ @partial-block }}{{#if _showAuditions}}</a>{{/if~}}
-{{/inline}}
-
-<tr>
-    <td>&nbsp;&nbsp;&nbsp;</td>
-    <td>Repertoire:</td>
-
-    <td><ul>
-        {{#each _performance.repertoire }}
-            <li>{{> piece_citation piece=this style="em-tagged" }}</li>
-        {{/each}}
-    </ul></td>
-</tr>
-{{#if _performance.soloists }}
     <tr>
         <td>&nbsp;&nbsp;&nbsp;</td>
-        <td>With:</td>
+        <td>Repertoire:</td>
+
         <td><ul>
-    {{#each _performance.soloists }}
-            <li>{{name}}, {{part}}</li>
-    {{/each}}
+            {{#each performance.repertoire }}
+                <li>{{> piece_citation piece=this style="em-tagged" }}</li>
+            {{/each}}
         </ul></td>
     </tr>
-{{/if}}
-{{#if _performance.collaborators }}
+    {{#if performance.soloists }}
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+            <td>With:</td>
+            <td><ul>
+        {{#each performance.soloists }}
+                <li>{{name}}, {{part}}</li>
+        {{/each}}
+            </ul></td>
+        </tr>
+    {{/if}}
+    {{#if performance.collaborators }}
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;</td>
+            <td>In collaboration with:</td>
+            <td><ul>
+        {{#each performance.collaborators }}
+                <li>{{> collab_citation }}</li>
+        {{/each}}
+            </ul></td>
+        </tr>
+    {{/if}}
     <tr>
         <td>&nbsp;&nbsp;&nbsp;</td>
-        <td>In collaboration with:</td>
+        <td>{{#> linkIf link=(x-stringConcat (x-join "/" (x-dropExtname performance.path)) ".html#rehearsals") }}First rehearsal{{/linkIf}}:</td>
         <td><ul>
-    {{#each _performance.collaborators }}
-            <li>{{> collab_citation }}</li>
-    {{/each}}
+            {{#if performance.first_rehearsal }}
+                <li>
+                    {{ x-formatDate "dddd D MMMM YYYY \at h:mma" performance.first_rehearsal.start }}, {{> loc_citation loc=performance.first_rehearsal.location }}.
+                    Registration starts at {{ x-formatDate "h:mma" performance.first_rehearsal.registration }}
+                </li>
+            {{/if}}
         </ul></td>
     </tr>
-{{/if}}
-<tr>
-    <td>&nbsp;&nbsp;&nbsp;</td>
-    <td>{{#> linkIf link=(s-concat (f-join "/" (f-drop-extname _performance.path)) ".html#rehearsals") }}First rehearsal{{/linkIf}}:</td>
-    <td><ul>
-        {{#if _performance.first_rehearsal }}
-            <li>
-                {{ d-format "dddd D MMMM YYYY \at h:mma" _performance.first_rehearsal.start }}, {{> loc_citation loc=_performance.first_rehearsal.location }}.
-                Registration starts at {{ d-format "h:mma" _performance.first_rehearsal.registration }}
-            </li>
-        {{/if}}
-    </ul></td>
-</tr>
-{{#if _showAuditions}}
-<tr>
-    <td>&nbsp;&nbsp;&nbsp;</td>
-    <td><a href="/MemberPage.html#auditions">Auditions</a>:</td>
-    <td><ul>
-        <li>See the <a href="/MemberPage.html#auditions">Auditions</a> section of our Member Page for information about how to audition.</li>
-    </ul></td>
-</tr>
-{{/if}}
-<tr>
-    <td>&nbsp;&nbsp;&nbsp;</td>
-    <td>{{#> linkIf link=(s-concat (f-join "/" (f-drop-extname _performance.path)) ".html#dress") }}Dress rehearsals{{/linkIf}}:</td>
-    <td><ul>
-        {{#each _performance.dresses }}
-            <li>{{ d-format "h:mma, dddd D MMMM YYYY" start }}, {{> loc_citation loc=location }}</li>
-        {{/each}}
-    </ul></td>
-</tr>
-<tr>
-    <td>&nbsp;&nbsp;&nbsp;</td>
-    <td>{{#> linkIf link=(s-concat (f-join "/" (f-drop-extname _performance.path)) ".html#concerts") }}Concerts{{/linkIf}}:</td>
-    <td><ul>
-        {{#each _performance.concerts }}
-            <li>{{ d-format "h:mma, dddd D MMMM YYYY" start }}{{#if location}} in {{> loc_citation loc=location }}{{/if}}{{#if call}} ({{ d-format "h:mma" call }} call){{/if}}</li>
-        {{/each}}
-    </ul>
-    </td>
-</tr>
+    {{#if showAuditions}}
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td><a href="/MemberPage.html#auditions">Auditions</a>:</td>
+        <td><ul>
+            <li>See the <a href="/MemberPage.html#auditions">Auditions</a> section of our Member Page for information about how to audition.</li>
+        </ul></td>
+    </tr>
+    {{/if}}
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td>{{#> linkIf link=(x-stringConcat (x-join "/" (x-dropExtname performance.path)) ".html#dress") }}Dress rehearsals{{/linkIf}}:</td>
+        <td><ul>
+            {{#each performance.dresses }}
+                <li>{{ x-formatDate "h:mma, dddd D MMMM YYYY" start }}, {{> loc_citation loc=location }}</li>
+            {{/each}}
+        </ul></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td>{{#> linkIf link=(x-stringConcat (x-join "/" (x-dropExtname performance.path)) ".html#concerts") }}Concerts{{/linkIf}}:</td>
+        <td><ul>
+            {{#each performance.concerts }}
+                <li>{{ x-formatDate "h:mma, dddd D MMMM YYYY" start }}{{#if location}} in {{> loc_citation loc=location }}{{/if}}{{#if call}} ({{ x-formatDate "h:mma" call }} call){{/if}}</li>
+            {{/each}}
+        </ul>
+        </td>
+    </tr>
+{{/x-let}}

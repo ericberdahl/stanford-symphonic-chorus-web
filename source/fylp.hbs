@@ -12,8 +12,7 @@ ie6_stylesheets:
 scripts:
 
 ---
-{{#extend "default_layout" }}
-	{{ -let '_fylpByComposer' ( _groupBy collections.fylp 'sort_name' ) }}
+{{#extend "default_layout" _fylpByComposer=( _groupBy collections.fylp 'sort_name' ) }}
 
 	{{#content "sidebar-supplement"}}
         <div id="see_also">
@@ -29,8 +28,9 @@ scripts:
 		</div>
 		<ul>
 			{{#_forEach _fylpByComposer }} {{!-- TODO this should be simpler, loop over a list of composers --}}
-				{{ -let '_currentPiece' (ssc-findPiece (lookup (lookup . 0) 'piece_ref')) }}
-				<li><a href="#{{ _kebabCase _currentPiece.composer }}">{{ _currentPiece.composer }}</a></li>
+				{{#with (ssc-findPiece (_get . '[0].piece_ref')) }}
+					<li><a href="#{{ _kebabCase composer }}">{{ composer }}</a></li>
+				{{/with}}
 			{{/_forEach}}
 		</ul>
 		<!-- TemplateEndEditable -->
@@ -49,17 +49,19 @@ scripts:
 			{{#_forEach _fylpByComposer }}
 				<br class="clear">
 				{{#each .}}
-					{{ -let '_resolvedPiece' (ssc-findPiece piece_ref) }}
-					{{#if @first}}
-					<div id="{{ _kebabCase _resolvedPiece.composer }}" class="middle">
-						<h3>{{ _resolvedPiece.composer }}</h3>
-						<ul>
-					{{/if}}
-							<li><a href="{{ f-join '/' ( s-concat ( f-drop-extname path ) '.html') }}">{{> piece_citation piece=_resolvedPiece style="title-only" }}</a></li>
-					{{#if @last}}
-						</ul>
-					</div>
-					{{/if}}
+
+					{{#with (ssc-findPiece piece_ref) }}
+						{{#if @first}}
+						<div id="{{ _kebabCase composer }}" class="middle">
+							<h3>{{ composer }}</h3>
+							<ul>
+						{{/if}}
+								<li><a href="{{ x-join '/' ( x-stringConcat ( x-dropExtname ../path ) '.html') }}">{{> piece_citation piece=. style="title-only" }}</a></li>
+						{{#if @last}}
+							</ul>
+						</div>
+						{{/if}}
+					{{/with}}
 				{{/each}}
 			{{/_forEach}}
 			<br class="clear">

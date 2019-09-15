@@ -75,7 +75,7 @@ scripts:
 
 					{{#*inline "first-rehearsal-event"}}
 						<p>First rehearsal: <span class="event_time">{{> piece_citation piece=performances.current.main_piece style="em-tagged" }}</span></p>
-						<p>{{ d-format 'h:mma' event.start }} {{> loc_citation loc=event.location }}; <em>registration starts at {{ d-format 'h:mma' event.registration }}</em></p>
+						<p>{{ x-formatDate 'h:mma' event.start }} {{> loc_citation loc=event.location }}; <em>registration starts at {{ x-formatDate 'h:mma' event.registration }}</em></p>
 					{{/inline}}
 					
 					{{#*inline "concert-event"}}
@@ -88,34 +88,32 @@ scripts:
 								{{/if}}
 							</span>
 						</p>
-						<p>{{ d-format 'h:mma' event.start }} {{> loc_citation loc=event.location }}</p>
+						<p>{{ x-formatDate 'h:mma' event.start }} {{> loc_citation loc=event.location }}</p>
 					{{/inline}}
 
 					{{#*inline "other-event"}}
 						<p>{{ event.title }}</p>
-						<p>{{ d-format 'h:mma' event.start }} {{> loc_citation loc=event.location }}</p>
+						<p>{{ x-formatDate 'h:mma' event.start }} {{> loc_citation loc=event.location }}</p>
 					{{/inline}}
 
 					{{#if performances.current.first_rehearsal}}
-						{{#with performances.current.first_rehearsal}}
-							{{ -let '_eventPartial' 'first-rehearsal-event' }}
-						{{/with}}
+						{{_set performances.current.first_rehearsal '_eventPartial' 'first-rehearsal-event' }}
 					{{/if}}
 					{{#each performances.current.concerts}}
-						{{ -let '_eventPartial' 'concert-event' }}
+						{{_set . '_eventPartial' 'concert-event' }}
 					{{/each}}
 					{{#each performances.current.events}}
-						{{ -let '_eventPartial' 'other-event' }}
+						{{_set . '_eventPartial' 'other-event' }}
 					{{/each}}
 
 					{{#each currentEvents}}
 						<div>
 							<h3>
-								<span class="event_day">{{ d-format 'D' start }}</span>
-								<span class="event_month">{{ d-format 'MMM' start }}<br>{{ d-format 'YYYY' start }}</span>
+								<span class="event_day">{{ x-formatDate 'D' start }}</span>
+								<span class="event_month">{{ x-formatDate 'MMM' start }}<br>{{ x-formatDate 'YYYY' start }}</span>
 							</h3>
 							<div class="event_list">
-								{{> (lookup . '_eventPartial') .. event=.}}
+								{{> (_get . '_eventPartial') .. event=.}}
 							</div>
 						</div>
 					{{/each}}
@@ -155,9 +153,9 @@ scripts:
 						<h3><a href="/performances.html">{{performances.current.quarter}} Concert</a></h3>
 						<div>
 							{{#if performances.current.images }}
-								{{> lightbox image=( f-join '/'
-															(f-dirname performances.current.path)
-															(lookup (lookup performances.current.images 0) 'file'))
+								{{> lightbox image=( x-join '/'
+															(x-dirname performances.current.path)
+															(_get performances.current.images '[0].file'))
 											style='leadin'
 											width=image.width
 											height=image.height
@@ -166,10 +164,10 @@ scripts:
 							{{/if}}
 							{{ performances.current.description }}
 							<p>
-								Performance{{#if ( -gt? ( -size performances.current.concerts ) 1) }}s{{/if}}
-								at {{> loc_citation loc=(lookup (-first performances.current.concerts) 'location') style="formal" }}
+								{{x-pluralize 'Performance' 'Performances' performances.current.concerts}}
+								at {{> loc_citation loc=(_get performances.current.concerts '[0].location') style="formal" }}
 								on
-								{{#_sentence performances.current.concerts}}{{d-format 'dddd, MMMM Do' start}}{{/_sentence}}
+								{{#x-sentence performances.current.concerts}}{{x-formatDate 'dddd, MMMM Do' start}}{{/x-sentence}}
 							</p>
 							<br>
 							<ul class="pgraph" style="display:none;">
