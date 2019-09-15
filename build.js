@@ -5,9 +5,8 @@
  - move /group/SymCh into data configuration
  */
 const debug = require('debug');
-const info = debug('build-ssc');
+const info = debug('build-ssc*');
 
-debug.enable('build-ssc,sanity-check-dates,' + process.env.DEBUG);
 info.log = console.info.bind(console);
 
 function showProgress() {
