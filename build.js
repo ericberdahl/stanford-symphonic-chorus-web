@@ -80,6 +80,8 @@ function buildSite(options)
         handlebars: Handlebars,
         metalsmith: metalsmith
     });
+
+    helpers.defaultTimezone('America/Los_Angeles');
     helpers.register({
         handlebars: Handlebars,
         namespace: 'x-'
