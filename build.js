@@ -94,8 +94,9 @@ function buildSite(options)
         .destination('./build');
 
     metalsmith = metalsmith.use(showProgress('# Cleaning previous build'))
-        .clean(true)
-        .use(showProgress('# Finding Handlebars partials'))
+        .clean(true);
+        
+    metalsmith.use(showProgress('# Finding Handlebars partials'))
         .use(discoverPartials({
             directory: 'partials',
         }));
