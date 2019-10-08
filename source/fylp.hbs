@@ -27,7 +27,7 @@ scripts:
 			<p class="introduction">Stanford Symphonic Chorus recommends recordings of other performances that you may enjoy, in addition to attending its concerts.</p>
 		</div>
 		<ul>
-			{{#_forEach fylp.composers }}
+			{{#_forEach catalog.fylp.composers }}
 				<li><a href="#{{ _kebabCase . }}">{{ . }}</a></li>
 			{{/_forEach}}
 		</ul>
@@ -44,9 +44,9 @@ scripts:
 					<!-- TemplateEndEditable -->
 				</p>
 			</div>
-			{{#_forEach fylp.composers }}
+			{{#_forEach catalog.fylp.composers }}
 				<br class="clear">
-				{{#each (_get ../fylp.byComposer .) }}
+				{{#each (_get ../catalog.fylp.byComposer .) }}
 
 					{{#if @first}}
 					<div id="{{ _kebabCase piece.composer }}" class="middle">

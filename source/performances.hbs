@@ -12,7 +12,7 @@ ie6_stylesheets:
 scripts:
 
 ---
-{{#extend "default_layout" _programsByYear=( _groupBy performances.upToDate '_.year' ) }}
+{{#extend "default_layout" _programsByYear=( _groupBy catalog.performances.upToDate '_.year' ) }}
 	
 	{{#content "sidebar-intro"}}
 		<!-- TemplateBeginEditable name="sidebar_introduction" -->

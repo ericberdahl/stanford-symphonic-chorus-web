@@ -22,7 +22,7 @@ function compareGeneric(a, b) {
 
 function sortFylpLinks(files, metalsmith, done) {
     const metadata = metalsmith.metadata();
-    const performances = metadata.performances.all;
+    const performances = metadata.catalog.performances.all;
 
     const fieldsToOmit = ['prefix', 'suffix', 'ref'];
 
@@ -95,7 +95,7 @@ function buildSite(options)
 
     metalsmith = metalsmith.use(showProgress('# Cleaning previous build'))
         .clean(true);
-        
+
     metalsmith.use(showProgress('# Finding Handlebars partials'))
         .use(discoverPartials({
             directory: 'partials',

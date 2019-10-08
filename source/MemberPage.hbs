@@ -24,18 +24,18 @@ scripts:
 			<br> <br> <br>
 			<h2>Member Tools</h2>
 			<p></p>
-			<p>{{#> link_object href=performances.current}}Rehearsal Schedule{{/link_object}}</p>
-			{{#if performances.current.syllabus }}
+			<p>{{#> link_object href=catalog.performances.current}}Rehearsal Schedule{{/link_object}}</p>
+			{{#if catalog.performances.current.syllabus }}
 			<p>
-				{{ performances.current.quarter }} Syllabus
-				{{> file_links versions=performances.current.syllabus label="Syllabus" path=( x-dirname performances.current.path ) }}
+				{{ catalog.performances.current.quarter }} Syllabus
+				{{> file_links versions=catalog.performances.current.syllabus label="Syllabus" path=( x-dirname catalog.performances.current.path ) }}
 			</p>
 			{{/if}}
 			<p><a href="/assets/Choral Studies Liability Waiver Form.pdf">Choral Studies Liability Waiver</a></p>
 
 			<p>
 				Singers must register online using the webform which will be
-				emailed to last quarter's members in {{ x-formatDate "MMMM YYYY" performances.current.preregister tz='' }}. New members please contact
+				emailed to last quarter's members in {{ x-formatDate "MMMM YYYY" catalog.performances.current.preregister tz='' }}. New members please contact
 				{{> people_citation person='administrator' subject="Re SSC Registration Link" }}
 				to receive the registration link.
 			</p>
@@ -48,9 +48,9 @@ scripts:
 					Junk folder to be sure it didn't get caught as spam.
 				</p>
 
-			{{#if performances.current.fees.registration }}
+			{{#if catalog.performances.current.fees.registration }}
 			<p>
-				Registration fee is {{ performances.current.fees.registration }} (waived for
+				Registration fee is {{ catalog.performances.current.fees.registration }} (waived for
 				students and faculty). The score for this quarter will be sold
 				at the first three rehearsals.
 			</p>
@@ -95,7 +95,7 @@ scripts:
                 </ul>
             </div>
             <div>
-                <h2>{{#> link_object href=performances.current}}Rehearsal Schedule{{/link_object}}</h2>
+                <h2>{{#> link_object href=catalog.performances.current}}Rehearsal Schedule{{/link_object}}</h2>
                 <p>Listing of rehearsals, sectionals and performances for the current quarter.</p>
             </div>
         </div>
@@ -119,8 +119,8 @@ scripts:
 			wonderful music.
 		</p>
 		<p>
-			Members who are not students or faculty pay a modest {{#if performances.current.fees.registration }}(currently
-			{{ performances.current.fees.registration }}){{/if}} participation fee. This money helps
+			Members who are not students or faculty pay a modest {{#if catalog.performances.current.fees.registration }}(currently
+			{{ catalog.performances.current.fees.registration }}){{/if}} participation fee. This money helps
 			to offset expenses, the largest of which is hiring orchestras.
 		</p>
 
@@ -129,7 +129,7 @@ scripts:
 			New members are normally accepted by audition at the beginning of
 			each academic quarter.
 			If you are interested in auditioning for the chorus for the
-			{{ performances.current.quarter }} quarter, please email
+			{{ catalog.performances.current.quarter }} quarter, please email
 			{{> people_citation person='administrator' subject="Regarding auditions" }}
 			.
 		</p>
@@ -158,10 +158,10 @@ scripts:
 				<em>Amazing Grace</em>, <em>Edelweiss</em>, etc.
 			</li>
 		</ul>
-		{{#if performances.current.limits.membership }}
+		{{#if catalog.performances.current.limits.membership }}
 		<p>
 			NB: Due to facilities restrictions, the Symphonic Chorus is capped
-			at a <em><strong>maximum of {{ performances.current.limits.membership }} members</strong></em>.
+			at a <em><strong>maximum of {{ catalog.performances.current.limits.membership }} members</strong></em>.
 			For potential new members wishing to join the ensemble, please
 			understand that members who have made the full year-long commitment
 			in previous seasons have first priority. New members will be
