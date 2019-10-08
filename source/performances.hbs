@@ -119,7 +119,7 @@ scripts:
 														path=(x-dirname path) }}</li>
 							{{/if}}
 							{{#each references.fylp }}
-								<li><a href="{{ x-join '/' (x-stringConcat (x-dropExtname path) '.html') }}">For your listening pleasure: {{> piece_citation piece=(ssc-findPiece piece_ref) style="em-tagged" }}</a></li>
+								<li><a href="{{ x-join '/' (x-stringConcat (x-dropExtname path) '.html') }}">For your listening pleasure: {{> piece_citation piece=piece style="em-tagged" }}</a></li>
 							{{/each}}
 							{{#each links}}
 								{{#if file }}

@@ -16,28 +16,38 @@ syllabus:
 -   "SSC Syllabus Spring 2018.docx"
 
 
-# HOWTO: Set repertoire to a list of items that compose the program. Each element should be a reference to a
-# piece or a piece itself.
+# HOWTO: Set repertoire to a list of items that compose the program.
 #
-# A reference to a piece looks like this:
-# -   ref: "beethoven/mass in c"
-# The reference string will match the key field of a data file in _data/pieces
-#
-# A piece in itself looks like this:
+# A simple piece looks like this:
 # -   composer: "Ludwig von Beethoven"
-#     citation: "<em>Mass in C</em>, Op. 86"
-#     title: "Mass in C"
+#     title: "Magnificat"
+#
+# For more complex piece formulae, look at the reference in piece_citation.hbs
 #
 # IMPORTANT: Exactly one piece MUST be labelled with the &main-piece anchor.
 repertoire:
--   ref: "puccini/capriccio sinfonico"
--   ref: "mascagni/intermezzo from cavalleria rusticana"
--   ref: "mascagni/easter hymn"
--   ref: "verdi/stabat mater"
+-   composer: "Puccini"
+    title: "Capriccio Sinfonico"
+-   composer: "Mascagni"
+    movement: "Intermezzo"
+    title: "Cavalleria Rusticana"
+-   composer: "Mascagni"
+    title: "Easter Hymn"
+    ref: "mascagni/easter hymn"
+-   composer: "Giuseppe Verdi"
+    title: "Stabat Mater"
+    ref: "verdi/stabat mater"
 -   &main-piece
     ref: "verdi/te deum"
--   ref: "aquilanti/intermezzo for strings"
--   ref: "aquilanti/sanctus"
+    composer: "Giuseppe Verdi"
+    title: "Te Deum"
+-   composer: "Giancarlo Aquilanti"
+    movement: "Intermezzo for strings"
+    title: "Mass: A Celebration of Life"
+-   composer: "Giancarlo Aquilanti"
+    movement: "Sanctus"
+    title:  "Mass: A Celebration of Life"
+    ref: "aquilanti/sanctus"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.

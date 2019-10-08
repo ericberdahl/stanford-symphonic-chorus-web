@@ -12,7 +12,7 @@ ie6_stylesheets:
 scripts:
 
 ---
-{{#extend "default_layout" _fylpByComposer=( _groupBy collections.fylp 'sort_name' ) }}
+{{#extend "default_layout" }}
 
 	{{#content "sidebar-supplement"}}
         <div id="see_also">
@@ -27,10 +27,8 @@ scripts:
 			<p class="introduction">Stanford Symphonic Chorus recommends recordings of other performances that you may enjoy, in addition to attending its concerts.</p>
 		</div>
 		<ul>
-			{{#_forEach _fylpByComposer }} {{!-- TODO this should be simpler, loop over a list of composers --}}
-				{{#with (ssc-findPiece (_get . '[0].piece_ref')) }}
-					<li><a href="#{{ _kebabCase composer }}">{{ composer }}</a></li>
-				{{/with}}
+			{{#_forEach fylp.composers }}
+				<li><a href="#{{ _kebabCase . }}">{{ . }}</a></li>
 			{{/_forEach}}
 		</ul>
 		<!-- TemplateEndEditable -->
@@ -46,22 +44,20 @@ scripts:
 					<!-- TemplateEndEditable -->
 				</p>
 			</div>
-			{{#_forEach _fylpByComposer }}
+			{{#_forEach fylp.composers }}
 				<br class="clear">
-				{{#each .}}
+				{{#each (_get ../fylp.byComposer .) }}
 
-					{{#with (ssc-findPiece piece_ref) }}
-						{{#if @first}}
-						<div id="{{ _kebabCase composer }}" class="middle">
-							<h3>{{ composer }}</h3>
-							<ul>
-						{{/if}}
-								<li><a href="{{ x-join '/' ( x-stringConcat ( x-dropExtname ../path ) '.html') }}">{{> piece_citation piece=. style="title-only" }}</a></li>
-						{{#if @last}}
-							</ul>
-						</div>
-						{{/if}}
-					{{/with}}
+					{{#if @first}}
+					<div id="{{ _kebabCase piece.composer }}" class="middle">
+						<h3>{{ piece.composer }}</h3>
+						<ul>
+					{{/if}}
+							<li><a href="{{ x-join '/' ( x-stringConcat ( x-dropExtname path ) '.html') }}">{{> piece_citation piece=piece style="title-only" }}</a></li>
+					{{#if @last}}
+						</ul>
+					</div>
+					{{/if}}
 				{{/each}}
 			{{/_forEach}}
 			<br class="clear">

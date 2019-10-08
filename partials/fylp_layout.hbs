@@ -1,15 +1,14 @@
 {{#extend "default_layout" stylesheets=(x-array "tertiary" "custom")
 							ie6_stylesheets=(x-array "tertiary")
-							logo_include="logo_ssc"
-							_piece=( ssc-findPiece piece_ref ) }}
+							logo_include="logo_ssc" }}
 
 	{{#content "head-title"}}
-		<title>For Your Listening Pleasure - {{> piece_citation piece=_piece style="plain" }}</title>
+		<title>For Your Listening Pleasure - {{> piece_citation piece=piece style="plain" }}</title>
 	{{/content}}
 
 	{{#content "body-title"}}
 		<!-- TemplateBeginEditable name="Page Title" -->
-		For Your Listening Pleasure - {{> piece_citation piece=_piece style="em-tagged" }}
+		For Your Listening Pleasure - {{> piece_citation piece=piece style="em-tagged" }}
 		<!-- TemplateEndEditable -->
 	{{/content}}
 
@@ -35,12 +34,12 @@
 					» 
 					<a href="/fylp.html">For Your Listening Pleasure</a>
 					»
-					{{ _piece.title }}
+					{{> piece_citation piece=piece style="em-tagged" }}
 					<!-- TemplateEndEditable -->
 				</p>
 			</div>
 			<!-- TemplateBeginEditable name="content_main" -->
-			<h2>{{> piece_citation piece=_piece style="em-tagged" }}</h2>
+			<h2>{{> piece_citation piece=piece style="em-tagged" }}</h2>
 
 			{{#block "fylp-content"}}{{/block}}
 

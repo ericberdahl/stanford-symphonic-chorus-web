@@ -4,38 +4,37 @@
  TODO:
  - move /group/SymCh into data configuration
  */
-const debug = require('debug');
-const info = debug('build-ssc*');
+const _ = require('lodash');
+const logs = require('./lib/logs').forFilename(__filename);
+const pieceUtils = require('./lib/piece-utils');
 
-info.log = console.info.bind(console);
-
-function showProgress() {
+function showProgress(...args) {
     return (files, metalsmith, done) => {
-        info.apply(info, arguments);
+        logs.info(...args);
         done();
     }
 }
 
+function compareGeneric(a, b) {
+    if (a == b) return 0;
+    return (a < b ? -1 : 1);
+}
+
 function sortFylpLinks(files, metalsmith, done) {
     const metadata = metalsmith.metadata();
-    const performances = metadata.collections.performances;
+    const performances = metadata.performances.all;
+
+    const fieldsToOmit = ['prefix', 'suffix', 'ref'];
 
     performances.forEach((program) => {
         program.references.fylp.sort((a, b) => {
-            const pieceFinder = (pieceRef) => {
-                return (piece) => {
-                    return pieceRef == piece.ref;
-                }
-            }
-
             const aIndex = program.repertoire.findIndex((piece) => {
-                return (a.piece_ref == piece.ref);
+                return _.isEqual(_.omit(a.piece, fieldsToOmit), _.omit(piece, fieldsToOmit));
             });
             const bIndex = program.repertoire.findIndex((piece) => {
-                return (b.piece_ref == piece.ref);
+                return _.isEqual(_.omit(b.piece, fieldsToOmit), _.omit(piece, fieldsToOmit));
             });
-            if (aIndex == bIndex) return 0;
-            return (aIndex < bIndex ? -1 : 1);
+            return compareGeneric(aIndex, bIndex);
         });
     });
 
@@ -50,17 +49,16 @@ function buildSite(options)
     const blc = require('metalsmith-broken-link-checker');
     const browserSync = require('metalsmith-browser-sync');
     const createCurrentEvents = require('./lib/create-current-events');
-    const collections = require('metalsmith-collections');
     const debug = require('metalsmith-debug-ui');
     const discoverPartials = require('metalsmith-discover-partials');
-    const findPerformances = require('./lib/find-performances');
+    const fylp = require('./lib/fylp');
     const Handlebars = require('handlebars');
     const helpers = require('./lib/handlebars-helpers');
     const inplace = require('metalsmith-in-place');
     const layouts = require('handlebars-layouts');
     const linkcheck = require('metalsmith-linkcheck');
     const lodashHelpers = require('./lib/lodash-helpers');
-    const mergeRehearsals = require('./lib/merge-rehearsals');
+    const performances = require('./lib/performances');
     const prefix = require('metalsmith-prefixoid');
     const sanityCheckDates = require('./lib/sanity-check-dates');
     const ssc_helpers = require('./lib/ssc-helpers');
@@ -101,35 +99,26 @@ function buildSite(options)
         .use(discoverPartials({
             directory: 'partials',
         }));
-    
-    metalsmith = metalsmith.use(showProgress('# Building collections'))
-        .use(collections({
-            performances: {
-                pattern: 'performances/*/schedule.hbs',
-                sortBy: (a, b) => {
-                    if (a.first_concert.start == b.first_concert.start) {
-                        return 0;
-                    }
-                    return (a.first_concert.start < b.first_concert.start ? -1 : 1);
-                },
-            },
-            fylp: {
-                pattern: 'fylp/*.hbs',
-                sortBy: 'piece_ref'
-            }
-        }));
+
+    metalsmith = metalsmith.use(showProgress('# Adding paths to each object'))
+        .use((files, metalsmith, done) => {
+            _.forEach(files, (fileObject, filename) => {
+                fileObject.path = filename;
+            });
+            done();
+        });
+
+    metalsmith = metalsmith.use(showProgress('# Processing FYLP'))
+        .use(fylp());
+
+    metalsmith = metalsmith.use(showProgress('# Processing Peformances'))
+        .use(performances());
 
     metalsmith = metalsmith.use(showProgress('# Sanity checking dates'))
         .use(sanityCheckDates());
 
-    metalsmith = metalsmith.use(showProgress('# Finding performances'))
-        .use(findPerformances());
-
     metalsmith = metalsmith.use(showProgress('# Creating current event list'))
         .use(createCurrentEvents());
-
-    metalsmith = metalsmith.use(showProgress('# Merging rehearsal list for each program'))
-        .use(mergeRehearsals());
 
     metalsmith = metalsmith.use(showProgress('# Creating cross-references'))
         .use(references({
@@ -137,7 +126,7 @@ function buildSite(options)
             destination: 'fylp',
             match: (src, dest) => {
                 const found = src.repertoire.find((piece) => {
-                    return (piece.ref == dest.piece_ref);
+                    return 0 == pieceUtils.compare(piece, dest.piece);
                 });
                 return found;
             },

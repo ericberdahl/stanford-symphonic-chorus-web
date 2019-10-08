@@ -1,25 +1,69 @@
+{{!--
+    Render the citation of a piece of music. This partial template assumes that the piece data contains at least
+    a title field, and zero or more additional fields. Declared in YAML with the following fields:
+
+        # title of the piece
+        title: "Symphony No. 9"
+
+        # title can also be an array of strings when a given piece is performed as a set or medley.
+        # The composite piece is rendered with each segment decorated as its own piece (e.g. italicized)
+        # with each segement joined as a proper English list (e.g. A, B, and C)
+        title:
+        -   "Nänie"
+        -   "Schicksalslied"
+
+        # (optional) name of the composer
+        composer: "Beethoven"
+
+        # The family name of the composer is inferred (e.g. for sorting purposes) from the last word of the
+        # composer's name. If that is not desired, the composer's name can be specified as an array of name segments.
+        # When done in this way, the composer's name will be displayed by joining each segment with spaces, and
+        # the last element of the array will be used as the composer's family name.
+        composer: ["Ralph", "Vaughan Williams"]
+
+        # (optional) name of the movement from a major piece (when performing only one movement)
+        movement: "Ode to Joy"
+
+        # (optional) when pieces are named in a foreign language, citations might include a translation of the name
+        translaton: "Requiem"
+
+        # (optional) some pieces will have a commonly known name in addition to their formal name
+        commonTitle: "Pastorale"
+
+        # (optional) some pieces will be commonly cited with a catalog reference
+        catalog: "Op. 65"
+
+        # (optional) some pieces will be an arrangement for which the arranger should be cited
+        arranger: "Elgar"
+
+    Given such data, the piece will be cited like this general formula:
+
+        <em>{movement}</em> from
+        <em>{title[0]}</em>, {title[1]}, ..., and <em>{title[N]}</em>
+        ({translation})
+        "{commonTitle}"
+        , {catalog}
+        , arranged by {arranger}
+--}}
 {{#x-let . style=(_defaultTo style "em-tagged") }}
     {{#x-sentence this.piece }}
-        {{#if this.ref }}
-            {{_set . '_piece' (ssc-findPiece this.ref)}}
+        {{_set . '_piece' this}}
+        {{#if (_eq ../style "plain") }}
+            {{_set . '_openTag' ''}}
+            {{_set . '_closeTag' ''}}
         {{else}}
-            {{_set . '_piece' this}}
+            {{_set . '_openTag' '<em>'}}
+            {{_set . '_closeTag' '</em>'}}
         {{/if}}
 
-        {{_set . '_citation' (_defaultTo _piece.citation (x-stringConcat "<em>" _piece.title "</em>"))}}
-
-        {{#if (_eq ../style "em-tagged")}}
-            {{_set . '_composer' _piece.composer}}
-        {{else if (_eq ../style "plain") }}
-            {{_set . '_composer' (x-stringConcat _piece.composer ":") }}
-            {{_set . '_citation' (x-sanitize _citation) }}
-        {{else}}
-            {{_set . '_composer' '' }}
-        {{/if}}
-        {{{_trim (_join (x-array _composer
-                                this.prefix
-                                _citation
-                                this.suffix)
-                        " ") }}}
+        {{#unless (_eq ../style "title-only") }}{{_piece.composer}}{{/unless}}{{#if (_eq ../style "plain")}}:{{/if}}
+        {{this.prefix}}
+        {{#if _piece.movement}}{{{_openTag}}}{{_piece.movement}}{{{_closeTag}}} from {{/if}}
+        {{~#x-sentence _piece.title~}}{{{../_openTag}}}{{.}}{{{../_closeTag}}}{{/x-sentence}}
+        {{~#if _piece.translation}} ({{_piece.translation}}){{/if}}
+        {{~#if _piece.commonTitle}} &quot;{{_piece.commonTitle}}&quot;{{/if}}
+        {{~#if _piece.catalog}}, {{_piece.catalog}}{{/if}}
+        {{~#if _piece.arranger}}, arranged by {{_piece.arranger}}{{/if}}
+        {{this.suffix}}
     {{/x-sentence}}
 {{/x-let}}

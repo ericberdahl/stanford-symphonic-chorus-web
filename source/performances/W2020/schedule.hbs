@@ -14,27 +14,23 @@ isFuture: true
 syllabus:
 
 
-# HOWTO: Set repertoire to a list of items that compose the program. Each element should be a reference to a
-# piece or a piece itself.
+# HOWTO: Set repertoire to a list of items that compose the program.
 #
-# A reference to a piece looks like this:
-# -   ref: "beethoven/mass in c"
-# The reference string will match the key field of a data file in _data/pieces
-#
-# A piece in itself looks like this:
+# A simple piece looks like this:
 # -   composer: "Ludwig von Beethoven"
-#     citation: "<em>Mass in C</em>, Op. 86"
-#     title: "Mass in C"
+#     title: "Magnificat"
+#
+# For more complex piece formulae, look at the reference in piece_citation.hbs
 #
 # IMPORTANT: Exactly one piece MUST be labelled with the &main-piece anchor.
 repertoire:
 -   &main-piece
     composer: "Leoš Janáček"
     title: "Mša glagolskaja"
-    citation: "<em>Mša glagolskaja</em> (Glagolitic Mass)"
+    translation: "Glagolitic Mass"
 -   composer: "Ludwig von Beethoven"
     title: "Symphony No. 3"
-    citation: '<em>Symphony No. 3</em>, "Eroica"'
+    commonTitle: "Eroica"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.

@@ -15,17 +15,13 @@ syllabus:
 -   "SSC Syllabus Spring 2019.pdf"
 
 
-# HOWTO: Set repertoire to a list of items that compose the program. Each element should be a reference to a
-# piece or a piece itself.
+# HOWTO: Set repertoire to a list of items that compose the program.
 #
-# A reference to a piece looks like this:
-# -   ref: "beethoven/mass in c"
-# The reference string will match the key field of a data file in _data/pieces
-#
-# A piece in itself looks like this:
+# A simple piece looks like this:
 # -   composer: "Ludwig von Beethoven"
-#     citation: "<em>Mass in C</em>, Op. 86"
-#     title: "Mass in C"
+#     title: "Magnificat"
+#
+# For more complex piece formulae, look at the reference in piece_citation.hbs
 #
 # IMPORTANT: Exactly one piece MUST be labelled with the &main-piece anchor.
 repertoire:
@@ -44,8 +40,8 @@ repertoire:
 -   composer: "Franz Joseph Haydn"
     title: "The heavens are telling the glory of God (Creation)"
 -   &main-piece
-    ref: "haydn/te deum"
-
+    composer: "Franz Joseph Haydn"
+    title: "Te Deum"
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
 # An individual soloist looks like this:
