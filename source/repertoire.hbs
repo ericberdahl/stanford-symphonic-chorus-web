@@ -1,0 +1,80 @@
+---
+title: "Repertoire"
+
+logo_include: "logo_ssc"
+
+stylesheets:
+-   "secondary"
+
+ie6_stylesheets:
+-   "secondary"
+
+scripts:
+
+---
+{{#extend "default_layout" }}
+	
+	{{#content "sidebar-supplement"}}
+		<div id="see_also">
+            {{> china_2008_info }}
+        </div>
+	{{/content}}
+
+	{{#content "sidebar-intro"}}
+		<div id="content_introduction">
+			<h2>Repertoire</h2>
+			<p class="introduction">Stanford Symphonic Chorus has performed many and varied pieces through the years.</p>
+		</div>
+		<h3>Composers</h3>
+		<ul>
+			{{#_forEach catalog.repertoire.composers }}
+				<li><a href="#{{ _kebabCase . }}">{{ . }}</a></li>
+			{{/_forEach}}
+		</ul>
+	{{/content}}
+
+	{{#content "main-content"}}
+		<div id="content_main">
+			<div id="breadcrumb">
+				<p>
+					<a href="/index.html">Symphonic Chorus Home</a>
+					» {{ title }}
+				</p>
+			</div>
+			{{#_forEach catalog.repertoire.composers }}
+				<br class="clear">
+				<div id="{{ _kebabCase . }}" class="middle">
+					{{#_forEach (_get ../catalog.repertoire.byComposer .) }}
+						<div>
+							<h3>{{> piece_citation piece=piece }}</h3>
+							{{#if fylp}}
+								{{#> link_object href=fylp }}For Your Listening Pleasure{{/link_object}}
+							{{/if}}
+							<table>
+								<thead>
+									<tr>
+										<th style="width=25%;"></th>
+										<th style="width=25%;"></th>
+										<th style="width=25%;"></th>
+										<th style="width=25%;"></th>
+									</tr>
+								</thead>
+								<tbody>
+							{{#_forEach (_chunk performances 4) }}
+								<tr>
+								{{#_forEach . }}
+									<td>{{#> link_object href=.}}{{quarter}}{{/link_object}}</td>
+								{{/_forEach}}
+								</tr>
+							{{/_forEach}}
+								</tbody>
+							</table>
+						</div>
+					{{/_forEach}}
+				</div>
+			{{/_forEach}}
+			<br class="clear">
+		</div>
+	{{/content}}
+
+{{/extend}}

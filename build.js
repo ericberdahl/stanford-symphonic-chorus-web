@@ -6,39 +6,12 @@
  */
 const _ = require('lodash');
 const logs = require('./lib/logs').forFilename(__filename);
-const pieceUtils = require('./lib/piece-utils');
 
 function showProgress(...args) {
     return (files, metalsmith, done) => {
         logs.info(...args);
         done();
     }
-}
-
-function compareGeneric(a, b) {
-    if (a == b) return 0;
-    return (a < b ? -1 : 1);
-}
-
-function sortFylpLinks(files, metalsmith, done) {
-    const metadata = metalsmith.metadata();
-    const performances = metadata.catalog.performances.all;
-
-    const fieldsToOmit = ['prefix', 'suffix', 'ref'];
-
-    performances.forEach((program) => {
-        program.references.fylp.sort((a, b) => {
-            const aIndex = program.repertoire.findIndex((piece) => {
-                return _.isEqual(_.omit(a.piece, fieldsToOmit), _.omit(piece, fieldsToOmit));
-            });
-            const bIndex = program.repertoire.findIndex((piece) => {
-                return _.isEqual(_.omit(b.piece, fieldsToOmit), _.omit(piece, fieldsToOmit));
-            });
-            return compareGeneric(aIndex, bIndex);
-        });
-    });
-
-    done();
 }
 
 function buildSite(options)
@@ -59,10 +32,10 @@ function buildSite(options)
     const linkcheck = require('metalsmith-linkcheck');
     const lodashHelpers = require('./lib/lodash-helpers');
     const performances = require('./lib/performances');
+    const repertoire = require('./lib/repertoire');
     const prefix = require('metalsmith-prefixoid');
     const sanityCheckDates = require('./lib/sanity-check-dates');
     const ssc_helpers = require('./lib/ssc-helpers');
-    const references = require('./lib/collection-references');
     const tidy = require('metalsmith-html-tidy');
 
     let metalsmith = Metalsmith(__dirname);
@@ -121,18 +94,8 @@ function buildSite(options)
     metalsmith = metalsmith.use(showProgress('# Creating current event list'))
         .use(createCurrentEvents());
 
-    metalsmith = metalsmith.use(showProgress('# Creating cross-references'))
-        .use(references({
-            source: 'performances',
-            destination: 'fylp',
-            match: (src, dest) => {
-                const found = src.repertoire.find((piece) => {
-                    return 0 == pieceUtils.compare(piece, dest.piece);
-                });
-                return found;
-            },
-        }))
-        .use(sortFylpLinks);
+    metalsmith = metalsmith.use(showProgress('# Creating repertoire'))
+        .use(repertoire());
 
     metalsmith = metalsmith.use(showProgress('# Processing Handlebars templates'))
         .use(inplace({
