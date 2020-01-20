@@ -97,6 +97,11 @@ function buildSite(options)
     metalsmith = metalsmith.use(showProgress('# Creating repertoire'))
         .use(repertoire());
 
+    metalsmith = metalsmith.use(showProgress('# Processing less stylesheets'))
+        .use(inplace({
+            pattern: '**/*.less',
+        }));
+
     metalsmith = metalsmith.use(showProgress('# Processing Handlebars templates'))
         .use(inplace({
             pattern: '**/*.hbs',

@@ -19,9 +19,10 @@
   "dependencies": {
     "commander": "^3.0.1",
     "debug": "^4.1.1",
-    "handlebars": "^4.4.2",
+    "handlebars": "^4.7.2",
     "handlebars-layouts": "^3.1.4",
     "jstransformer-handlebars": "^1.1.0",
+    "jstransformer-less": "^2.3.0",
     "lodash": "^4.17.15",
     "metalsmith": "^2.3.0",
     "metalsmith-broken-link-checker": "^1.0.2",
