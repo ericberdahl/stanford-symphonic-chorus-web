@@ -3,6 +3,8 @@ Stylesheet for Tertiary middle content: defines widths, margins, floats, and typ
 attributes for the middle section (sidebars and main content)
 ****************************************************************************************/
 
+body.tertiary {
+
 /***********************************
 Sidebars - Introduction
 ************************************/
@@ -79,17 +81,6 @@ On this Page
 #content_main #onthispage li:first-child:before {font-weight: normal; content: ""; }
 #content_main #onthispage a {font-weight: normal;}
 
-/*IE workaround*/
-/*All IE browsers*/
-* html #content_main #onthispage ul {margin-left: -10px;}
-* html #content_main #onthispage li {background-image: url("../images/pipe.gif"); background-repeat: no-repeat; background-position: 0px 50%; padding: 0px 5px 0px 10px; margin: 0px;}
-*:first-child+html #content_main #onthispage ul {margin-left: -10px;}
-*:first-child+html #content_main #onthispage li {background-image: url("../images/pipe.gif"); background-repeat: no-repeat; background-position: 0px 50%; padding: 0px 5px 0px 10px; margin: 0px;}
-
-/*Mac IE 5*/
-* html #content_main #onthispage li:first-child {background-image: none;}
-*:first-child+html #content_main #onthispage li:first-child {background-image: none;}
-
 /*********************************
 Content Specific Styles
 **********************************/
@@ -107,13 +98,6 @@ hr {display: block; height: 2px; border: 1px inset; margin: 0.5em auto 0.5em aut
 pre {font-size: 1.2em; font-weight: bold;}
 code {font-size: 1.2em; font-weight: bold;}
 
-/* Hide from IE5-mac. Only IE-win sees this. \*/
-* html pre {font-size: 1em; font-weight: bold;}
-*:first-child+html pre {font-size: 1em; font-weight: bold;}
-* html code {font-size: 1em; font-weight: bold;}
-*:first-child+html code {font-size: 1em; font-weight: bold;}
-/* End hide from IE5-mac */
-
 form {margin: 0px;}
 map {margin: 0px;}
 
@@ -122,31 +106,15 @@ map {margin: 0px;}
 
 /* Horizontal Rule For Internet Explorer */	
 hr {height: 1px; color: #bbb; border: none;}
-/* Horizontal Rule For Gecko-based browsers */
-html>body hr {height: 1px; background: #bbb; border: none;}
-/* Horizontal Rule For Opera and Gecko-based browsers */
-html>body hr {height: 1px; background: #bbb; border: 0px solid #999;}
 
 /* Horizontal Rule For Internet Explorer */	
 hr.brown {height: 1px; color: #D0A760; border: none;}
-/* Horizontal Rule For Gecko-based browsers */
-html>body hr.brown {height: 1px; background: #D0A760; border: none;}
-/* Horizontal Rule For Opera and Gecko-based browsers */
-html>body hr.brown {height: 1px; background: #D0A760; border: 0px solid #999;}
 
 /* Horizontal Rule For Internet Explorer */	
 hr.gold {height: 1px; color: #E7D19A; border: none;}
-/* Horizontal Rule For Gecko-based browsers */
-html>body hr.gold {height: 1px; background: #E7D19A; border: none;}
-/* Horizontal Rule For Opera and Gecko-based browsers */
-html>body hr.gold {height: 1px; background: #E7D19A; border: 0px solid #999;}
 
 /* Horizontal Rule For Internet Explorer */	
 hr.red {height: 1px; color: #820000; border: none;}
-/* Horizontal Rule For Gecko-based browsers */
-html>body hr.red {height: 1px; background: #820000; border: none;}
-/* Horizontal Rule For Opera and Gecko-based browsers */
-html>body hr.red {height: 1px; background: #820000; border: 0px solid #999;}
 
 /* Default Link --------------------------------- */
 sup a {text-decoration: none;}
@@ -181,3 +149,5 @@ img {border: 0px;}
 /* Text--------------------------------- */
 
 .last {margin: 0px; padding: 0px;}
+
+}
