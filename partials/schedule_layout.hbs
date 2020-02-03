@@ -8,25 +8,24 @@
 		</div>
 	{{/content}}
 
-	{{#content "main-content"}}
-		<div id="sidebar_introduction">
-			<!-- TemplateBeginEditable name="sidebar_introduction" -->
-			<div id="sidebar_navigation">
-				<h2>Contents</h2>
-				<ul>
-					<li><a href="#this">Overview</a></li>
-					<li><a href="#rehearsals">Rehearsals</a></li>
-					<li><a href="#dress">Dress Rehearsals</a></li>
-					<li><a href="#concerts">Concerts</a></li>
-					{{#if this.events }}
-						<li><a href="#events">Events</a></li>
-					{{/if}}
-					<li><a href="#looking-ahead">Looking Ahead</a></li>
-					<li><a href="#looking-back">Looking Back</a></li>
-				</ul>
-			</div>
-			<!-- TemplateEndEditable -->
+	{{#content "introduction"}}
+		<div id="sidebar_navigation">
+			<h2>Contents</h2>
+			<ul>
+				<li><a href="#this">Overview</a></li>
+				<li><a href="#rehearsals">Rehearsals</a></li>
+				<li><a href="#dress">Dress Rehearsals</a></li>
+				<li><a href="#concerts">Concerts</a></li>
+				{{#if this.events }}
+					<li><a href="#events">Events</a></li>
+				{{/if}}
+				<li><a href="#looking-ahead">Looking Ahead</a></li>
+				<li><a href="#looking-back">Looking Back</a></li>
+			</ul>
 		</div>
+	{{/content}}
+
+	{{#content "main-content"}}
 		<div id="content_main">
 			<div id="breadcrumb">
 				<p>
