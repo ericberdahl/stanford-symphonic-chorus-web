@@ -23,7 +23,6 @@ a,
 abbr, 
 acronym, 
 address, 
-
 cite, 
 code,
 del, 
@@ -37,7 +36,6 @@ s,
 samp,
 small, 
 strike, 
-/* sub, sup, */
 tt, 
 var,
 dl, 
@@ -57,12 +55,52 @@ tfoot,
 thead, 
 tr, 
 th, 
-td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; vertical-align: baseline; }
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
 
-:focus { outline: 0; }
-body { line-height: 1; color: black; background: white; }
-ol, ul { list-style: none;}
-table { border-collapse: separate; border-spacing: 0; }
-caption, th, td { text-align: left; font-weight: normal; }
-blockquote:before, blockquote:after, q:before, q:after { content: "" }
-blockquote, q { quotes: "" "" }
+:focus {
+    outline: 0;
+}
+
+body {
+    line-height: 1;
+    color: black;
+    background: white;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+caption,
+th,
+td {
+    text-align: left;
+    font-weight: normal;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+}
+
+blockquote,
+q {
+    quotes: "" "";
+}

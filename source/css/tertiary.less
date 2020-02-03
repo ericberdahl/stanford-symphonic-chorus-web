@@ -41,7 +41,8 @@ Sidebars - Introduction
 	border-bottom: 1px dotted #81785a;
 	color: #565347;
 }
-#sidebar_introduction a:hover, #sidebar_introduction a:active {
+#sidebar_introduction a:hover,
+#sidebar_introduction a:active {
     color: #820000;
 }
 
@@ -69,12 +70,6 @@ Sidebars - Introduction
 }
 #sidebar_navigation ul ul {
     margin: 0;
-}
-
-/*Class to highlight current list item - notably used on /about/facts/ */
-#sidebar_navigation .current {
-    color: #820000;
-	font-weight: bold;
 }
 
 /*********************************
@@ -218,47 +213,13 @@ Main Content
 }
 
 /*********************************
-On this Page
-**********************************/	
-#content_main #onthispage {
-    padding: 0px;
-	margin: 15px 0px 20px 0px;
-	font-weight: bold;
-}
-#content_main #onthispage h1 {
-    padding: 0px 0px 5px 0px;
-	margin: 0px;
-	font-size: 0.833em/*thomas*/;
-	font-weight: bold;
-}
-#content_main #onthispage ul {
-    list-style: none;
-	padding: 0px;
-	margin: 0px;
-}
-#content_main #onthispage li {
-    display: inline;
-	padding: 0px;
-	margin: 0px;
-}
-#content_main #onthispage li:before {
-    font-weight: normal;
-	content: " | ";
-}
-#content_main #onthispage li:first-child:before {
-    font-weight: normal;
-	content: "";
-}
-#content_main #onthispage a {
-    font-weight: normal;
-}
-
-/*********************************
 Content Specific Styles
 **********************************/
 
 /* Mozilla Firefox & IE Default Styles --------------------------------- */
-p, dl, multicol {
+p,
+dl,
+multicol {
     display: block;
 	margin: 0.63em 0;
 }
@@ -270,7 +231,9 @@ blockquote {
     display: block;
 	margin: 0.63em 40px;
 }
-ul, menu, dir {
+ul,
+menu,
+dir {
     display: block;
 	list-style-type: disc;
 	margin: 0.63em 0 0.63em 40px;
@@ -291,6 +254,7 @@ hr {
 	color: gray;
 	-moz-float-edge: margin-box;
 	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /* Base Formatting --------------------------------- */
@@ -310,38 +274,10 @@ map {
     margin: 0px;
 }
 
-.inline {
-    display: inline;
-}
-.inline-end {
-    margin-top: 15px;
-}
-
 /* Horizontal Rule For Internet Explorer */	
 hr {
     height: 1px;
 	color: #bbb;
-	border: none;
-}
-
-/* Horizontal Rule For Internet Explorer */	
-hr.brown {
-    height: 1px;
-	color: #D0A760;
-	border: none;
-}
-
-/* Horizontal Rule For Internet Explorer */	
-hr.gold {
-    height: 1px;
-	color: #E7D19A;
-	border: none;
-}
-
-/* Horizontal Rule For Internet Explorer */	
-hr.red {
-    height: 1px;
-	color: #820000;
 	border: none;
 }
 
