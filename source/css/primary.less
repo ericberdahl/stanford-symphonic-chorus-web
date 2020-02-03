@@ -4,20 +4,6 @@ advanced display attributes for the middle section (sidebars and main content)
 ****************************************************************************************/
 
 /*********************************
-General Classes
-**********************************/
-.image_banner {
-    /*Style for spotlight feature image - determines distance between photo and background drop shadow */
-    position: relative;
-	left: -5px;
-	top: 5px;
-	margin-bottom: 10px;
-	padding: 10px;
-	border: none;
-	background-repeat: no-repeat;
-}
-
-/*********************************
 Title
 **********************************/
 .primary #title * {
@@ -41,11 +27,25 @@ Spotlight
 *******************************************************************
 Spotlight is the featured banner area of the main Stanford homepage
 *******************************************************************/
-#spotlight {
-	margin-bottom: 10px;
-}
-#spotlight a {
-    border: none;
+.primary {
+
+	.spotlight {
+		margin-bottom: 10px;
+
+		a {
+			border: none;
+		}
+	
+		.image_banner {
+			/*Style for spotlight feature image - determines distance between photo and background drop shadow */
+			position: relative;
+			left: -5px;
+			top: 5px;
+			margin-bottom: 10px;
+			background-repeat: no-repeat;
+		}
+	}
+
 }
 
 /*********************************
