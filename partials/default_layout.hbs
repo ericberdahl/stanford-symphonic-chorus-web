@@ -51,13 +51,6 @@
 
 	{{#block "main-content"}}{{/block}}
 
-	{{#if (content "sidebar-supplement") }}
-		<div id="sidebar_supplementary">
-			{{{ block "sidebar-supplement" }}}
-			<div id="seal"></div>
-		</div>
-	{{/if}}
-	
 	{{#if (content "sidebar") }}
 		<div id="sidebar">
 			{{{ block "sidebar" }}}
