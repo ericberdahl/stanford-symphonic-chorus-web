@@ -91,13 +91,35 @@ Navigation
 #nav_topic li.current a { color: #820000; }
 
 /*********************************
-Title/Breadcrumb
+Title
 **********************************/	
 #title { clear: both; margin-top: 25px; margin-bottom: 12px; letter-spacing:-1px/*thomas*/; }
-#breadcrumb {padding: 0px 0px 2px 0px;}
-#breadcrumb p { margin: 0; padding: 0; line-height: 1.2500em/*thomas*/; color: #565347; }
-#breadcrumb a { text-decoration: none; border-bottom: none; color: #9D9573; }
-#breadcrumb a:hover { text-decoration: none; border-bottom: 1px dotted; color: #820000; }
+
+/*********************************
+Breadcrumb
+**********************************/	
+#breadcrumb {
+    padding: 0px 0px 2px 0px;
+
+    p {
+        margin: 0;
+        padding: 0;
+        line-height: 1.2500em/*thomas*/;
+        color: #565347;
+    }
+
+    a {
+        text-decoration: none;
+        border-bottom: none;
+        color: #9D9573;
+
+        &:hover {
+            text-decoration: none;
+            border-bottom: 1px dotted;
+            color: #820000;
+        }
+    }
+}
 
 /*********************************
 Footer

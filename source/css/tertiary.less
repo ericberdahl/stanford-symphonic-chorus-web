@@ -122,25 +122,6 @@ Stanford Seal Watermark
 }
 
 /*********************************
-Breadcrumb - Tertiary Override (original style rule located in layout.css)
-**********************************/
-#content_main #breadcrumb p {
-    margin: 0;
-	font-size: 0.833em/*thomas*/;
-	line-height: 1.2500em/*thomas*/;
-}
-#content_main #breadcrumb {
-	border-bottom: 6px solid #820000;
-	margin-bottom: 10px;
-}
-#content_main #breadcrumb ul {
-	margin-bottom: 0;
-}
-#content_main #breadcrumb a {
-    border: 0px;
-}
-
-/*********************************
 Main Content
 **********************************/
 #content_main {
@@ -208,6 +189,23 @@ Main Content
 	color: #565245;
 	margin: 20px 0px 5px 0px;
 	line-height: 1.2em;
+}
+/*********************************
+Breadcrumb - Tertiary Override (original style rule located in layout.css)
+**********************************/
+#breadcrumb {
+	border-bottom: 6px solid #820000;
+	margin-bottom: 10px;
+
+	p {
+		margin: 0;
+		font-size: 0.833em/*thomas*/;
+		line-height: 1.2500em/*thomas*/;
+	}
+	
+	a {
+		border: 0px;
+	}
 }
 
 /*********************************
