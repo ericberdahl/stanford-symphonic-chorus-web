@@ -179,15 +179,49 @@ Breadcrumb
 /*********************************
 Footer
 **********************************/
-#footer { width: 960px; margin: 0 auto; text-align: center; border-top: 1px solid #eae9e6; padding-top: 10px; }
+#footer {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid #eae9e6;
+    padding-top: 10px;
 
-#nav_footer {margin: 0px; padding: 0px;}
-#nav_footer li {display: inline; padding-left: 15px; padding-right: 15px; border-right: 1px solid #eae9e6;}
-#nav_footer li.last {border: 0px;}
-#nav_footer li a { font-size: 1.1667em/*thomas*/; text-decoration: none; color: #3f3c30; border: none; }
-#nav_footer li a:hover { color: #820000; }
+    .nav {
+        margin: 0px;
+        padding: 0px;
 
-#copyright { font-size: 1.0em/*thomas*/; padding-top: 10px; }
+        li {
+            display: inline;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-right: 1px solid #eae9e6;
+
+            &.last {
+                border: 0px;
+            }
+
+            a {
+                font-size: 1.1667em/*thomas*/;
+                text-decoration: none;
+                color: #3f3c30;
+                border: none;
+
+                &:hover {
+                    color: #820000;
+                }
+            }
+        }
+    }
+
+    .copyright {
+        font-size: 1.0em/*thomas*/;
+        padding-top: 10px;
+    }
+}
 
 /* Print CSS - remove red banner body background */
-@media print {body {background-image: none;}}
+@media print {
+    body {
+        background-image: none;
+    }
+}
