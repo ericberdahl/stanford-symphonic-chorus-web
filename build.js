@@ -7,7 +7,7 @@
 const _ = require('lodash');
 const logs = require('./lib/logs').forFilename(__filename);
 
-const buildDir = './build';
+const buildDir = './_build';
 
 function showProgress(...args) {
     return (files, metalsmith, done) => {
@@ -141,7 +141,7 @@ function buildSite(options)
         metalsmith = metalsmith.use(showProgress('# Starting local server'))
             .use(browserSync({
                 server: buildDir,
-                files: [ "source/**/*", "partials/**/*", "_data/**/*" ],
+                files: [ "source/**/*", "partials/**/*", "data/**/*" ],
             }))
     }
 

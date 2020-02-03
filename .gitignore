@@ -1,7 +1,4 @@
 .DS_Store
-_site/
-_reference*/
-_original/
-build/
-node_modules/
 .vscode/
+_*/
+node_modules/
