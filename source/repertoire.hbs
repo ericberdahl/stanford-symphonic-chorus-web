@@ -31,47 +31,45 @@ scripts:
 	{{/content}}
 
 	{{#content "main-content"}}
-		<div id="content_main">
-			<div id="breadcrumb">
-				<p>
-					<a href="/index.html">Symphonic Chorus Home</a>
-					» {{ title }}
-				</p>
-			</div>
-			{{#_forEach catalog.repertoire.composers }}
-				<br class="clear">
-				<div id="{{ _kebabCase . }}" class="middle">
-					{{#_forEach (_get ../catalog.repertoire.byComposer .) }}
-						<div>
-							<h3>{{> piece_citation piece=piece }}</h3>
-							{{#if fylp}}
-								{{#> link_object href=fylp }}For Your Listening Pleasure{{/link_object}}
-							{{/if}}
-							<table>
-								<thead>
-									<tr>
-										<th style="width=25%;"></th>
-										<th style="width=25%;"></th>
-										<th style="width=25%;"></th>
-										<th style="width=25%;"></th>
-									</tr>
-								</thead>
-								<tbody>
-							{{#_forEach (_chunk performances 4) }}
-								<tr>
-								{{#_forEach . }}
-									<td>{{#> link_object href=.}}{{quarter}}{{/link_object}}</td>
-								{{/_forEach}}
-								</tr>
-							{{/_forEach}}
-								</tbody>
-							</table>
-						</div>
-					{{/_forEach}}
-				</div>
-			{{/_forEach}}
-			<br class="clear">
+		<div id="breadcrumb">
+			<p>
+				<a href="/index.html">Symphonic Chorus Home</a>
+				» {{ title }}
+			</p>
 		</div>
+		{{#_forEach catalog.repertoire.composers }}
+			<br class="clear">
+			<div id="{{ _kebabCase . }}" class="middle">
+				{{#_forEach (_get ../catalog.repertoire.byComposer .) }}
+					<div>
+						<h3>{{> piece_citation piece=piece }}</h3>
+						{{#if fylp}}
+							{{#> link_object href=fylp }}For Your Listening Pleasure{{/link_object}}
+						{{/if}}
+						<table>
+							<thead>
+								<tr>
+									<th style="width=25%;"></th>
+									<th style="width=25%;"></th>
+									<th style="width=25%;"></th>
+									<th style="width=25%;"></th>
+								</tr>
+							</thead>
+							<tbody>
+						{{#_forEach (_chunk performances 4) }}
+							<tr>
+							{{#_forEach . }}
+								<td>{{#> link_object href=.}}{{quarter}}{{/link_object}}</td>
+							{{/_forEach}}
+							</tr>
+						{{/_forEach}}
+							</tbody>
+						</table>
+					</div>
+				{{/_forEach}}
+			</div>
+		{{/_forEach}}
+		<br class="clear">
 	{{/content}}
 
 {{/extend}}

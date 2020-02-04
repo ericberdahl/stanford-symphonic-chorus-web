@@ -28,22 +28,20 @@ scripts:
 	{{/content}}
 
 	{{#content "main-content"}}
-		<div id="content_main">
-			<div id="breadcrumb">
-				<p>
-					<!-- TemplateBeginEditable name="breadcrumb" -->
-					<a href="/index.html">Symphonic Chorus Home</a>
-					» {{ this.title }}
-					<!-- TemplateEndEditable -->
-				</p>
-			</div>
-			<!-- TemplateBeginEditable name="content_main" -->
-			<!--center-->
+		<div id="breadcrumb">
 			<p>
-				<img src="/images/graphics/SteveSano2014.jpg" width="323" height="201" alt="Sano conducting rehearsal">
+				<!-- TemplateBeginEditable name="breadcrumb" -->
+				<a href="/index.html">Symphonic Chorus Home</a>
+				» {{ this.title }}
+				<!-- TemplateEndEditable -->
 			</p>
-			<!--center-->
-			<!-- TemplateEndEditable --> 
 		</div>
+		<!-- TemplateBeginEditable name="content_main" -->
+		<!--center-->
+		<p>
+			<img src="/images/graphics/SteveSano2014.jpg" width="323" height="201" alt="Sano conducting rehearsal">
+		</p>
+		<!--center-->
+		<!-- TemplateEndEditable --> 
 	{{/content}}
 {{/extend}}

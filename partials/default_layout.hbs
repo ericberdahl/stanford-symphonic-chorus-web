@@ -48,7 +48,9 @@
 		</div>
 	{{/if}}
 
-	{{#block "main-content"}}{{/block}}
+	<div id="content_main">
+		{{{ block "main-content" }}}
+	</div>
 
 	{{#if (content "sidebar") }}
 		<div id="sidebar">

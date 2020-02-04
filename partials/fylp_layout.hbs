@@ -24,39 +24,37 @@
 	{{/content}}
 
 	{{#content "main-content"}}
-		<div id="content_main">
-			<div id="breadcrumb">
-				<p>
-					<!-- TemplateBeginEditable name="breadcrumb" -->
-					<a href="/index.html">Symphonic Chorus Home</a>
-					» 
-					<a href="/fylp.html">For Your Listening Pleasure</a>
-					»
-					{{> piece_citation piece=piece style="em-tagged" }}
-					<!-- TemplateEndEditable -->
-				</p>
-			</div>
-			<!-- TemplateBeginEditable name="content_main" -->
-			<h2>{{> piece_citation piece=piece style="em-tagged" }}</h2>
-
-			{{#block "fylp-content"}}{{/block}}
-
-			{{#each albums }}
-				<h3 id="{{ _kebabCase director }}">{{ director }}</h3>
-				<div class="pgraph">
-					{{#if image }}
-						{{> lightbox image=( x-join "/images/fylp" image.file )
-									style='leadin'
-									width=image.width
-									height=image.height
-									caption=( x-stringConcat director ", " label )
-									img_width=109 }}
-					{{/if}}
-					{{x-renderTemplate . description}}
-				</div>
-			{{/each}}
-			<!-- TemplateEndEditable -->
+		<div id="breadcrumb">
+			<p>
+				<!-- TemplateBeginEditable name="breadcrumb" -->
+				<a href="/index.html">Symphonic Chorus Home</a>
+				» 
+				<a href="/fylp.html">For Your Listening Pleasure</a>
+				»
+				{{> piece_citation piece=piece style="em-tagged" }}
+				<!-- TemplateEndEditable -->
+			</p>
 		</div>
+		<!-- TemplateBeginEditable name="content_main" -->
+		<h2>{{> piece_citation piece=piece style="em-tagged" }}</h2>
+
+		{{#block "fylp-content"}}{{/block}}
+
+		{{#each albums }}
+			<h3 id="{{ _kebabCase director }}">{{ director }}</h3>
+			<div class="pgraph">
+				{{#if image }}
+					{{> lightbox image=( x-join "/images/fylp" image.file )
+								style='leadin'
+								width=image.width
+								height=image.height
+								caption=( x-stringConcat director ", " label )
+								img_width=109 }}
+				{{/if}}
+				{{x-renderTemplate . description}}
+			</div>
+		{{/each}}
+		<!-- TemplateEndEditable -->
 	{{/content}}
 
 	{{#content "sidebar"}}

@@ -32,32 +32,30 @@ scripts:
 	{{/content}}
 
 	{{#content "main-content"}}
-		<div id="content_main">
-			<div id="breadcrumb">
-				<p>
-					<!-- TemplateBeginEditable name="breadcrumb" -->
-					<a href="/index.html">Symphonic Chorus Home</a>
-					» {{ title }}
-					<!-- TemplateEndEditable -->
-				</p>
-			</div>
-			{{#_forEach catalog.fylp.composers }}
-				<br class="clear">
-				{{#each (_get ../catalog.fylp.byComposer .) }}
-
-					{{#if @first}}
-					<div id="{{ _kebabCase piece.composer }}" class="middle">
-						<h3>{{ piece.composer }}</h3>
-						<ul>
-					{{/if}}
-							<li><a href="{{ x-join '/' ( x-stringConcat ( x-dropExtname path ) '.html') }}">{{> piece_citation piece=piece style="title-only" }}</a></li>
-					{{#if @last}}
-						</ul>
-					</div>
-					{{/if}}
-				{{/each}}
-			{{/_forEach}}
-			<br class="clear">
+		<div id="breadcrumb">
+			<p>
+				<!-- TemplateBeginEditable name="breadcrumb" -->
+				<a href="/index.html">Symphonic Chorus Home</a>
+				» {{ title }}
+				<!-- TemplateEndEditable -->
+			</p>
 		</div>
+		{{#_forEach catalog.fylp.composers }}
+			<br class="clear">
+			{{#each (_get ../catalog.fylp.byComposer .) }}
+
+				{{#if @first}}
+				<div id="{{ _kebabCase piece.composer }}" class="middle">
+					<h3>{{ piece.composer }}</h3>
+					<ul>
+				{{/if}}
+						<li><a href="{{ x-join '/' ( x-stringConcat ( x-dropExtname path ) '.html') }}">{{> piece_citation piece=piece style="title-only" }}</a></li>
+				{{#if @last}}
+					</ul>
+				</div>
+				{{/if}}
+			{{/each}}
+		{{/_forEach}}
+		<br class="clear">
 	{{/content}}
 {{/extend}}
