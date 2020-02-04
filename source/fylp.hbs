@@ -45,7 +45,7 @@ scripts:
 			{{#each (_get ../catalog.fylp.byComposer .) }}
 
 				{{#if @first}}
-				<div id="{{ _kebabCase piece.composer }}" class="middle">
+				<div id="{{ _kebabCase piece.composer }}" class="fylp_pieces">
 					<h3>{{ piece.composer }}</h3>
 					<ul>
 				{{/if}}

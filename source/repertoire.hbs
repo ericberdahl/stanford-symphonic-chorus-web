@@ -39,7 +39,7 @@ scripts:
 		</div>
 		{{#_forEach catalog.repertoire.composers }}
 			<br class="clear">
-			<div id="{{ _kebabCase . }}" class="middle">
+			<div id="{{ _kebabCase . }}" class="repertoire_piece">
 				{{#_forEach (_get ../catalog.repertoire.byComposer .) }}
 					<div>
 						<h3>{{> piece_citation piece=piece }}</h3>
