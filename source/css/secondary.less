@@ -4,36 +4,42 @@ display attributes for the middle section (sidebars and main content)
 ****************************************************************************************/
 
 /***********************************
-Sidebars - Introduction
+Sidebar - Introduction
 ************************************/
-#introduction {
+.secondary #introduction {
     float: left;
 	width: 155px;
 	margin-right: 20px;
+
+	h2 {
+		width: 155px;
+		border-bottom: 6px solid #820000;
+		letter-spacing: 2px/*thomas*/;
+	}
+
+	img {
+		margin-bottom: 5px;
+	}
+
+	p {
+		padding-bottom: 10px;
+		font-size: 1.1667em/*thomas*/;
+		line-height: 1.3333em/*thomas*/;
+	}
+
+	ul {
+		padding-bottom: 5px;
+	}
+
+	li {
+		list-style-image: url("../images/raquo.gif");
+		margin-left: 15px;
+		padding-bottom: 5px;
+		font-size: 1.1667em/*thomas*/;
+		line-height: 1.1667em/*thomas*/;
+	}
 }
-#introduction h2 {
-	width: 155px;
-	border-bottom: 6px solid #820000;
-	letter-spacing: 2px/*thomas*/;
-}
-#introduction img {
-	margin-bottom: 5px;
-}
-#introduction p {
-	padding-bottom: 10px;
-	font-size: 1.1667em/*thomas*/;
-	line-height: 1.3333em/*thomas*/;
-}
-#introduction ul {
-	padding-bottom: 5px;
-}
-#introduction li {
-	list-style-image: url("../images/raquo.gif");
-	margin-left: 15px;
-	padding-bottom: 5px;
-	font-size: 1.1667em/*thomas*/;
-	line-height: 1.1667em/*thomas*/;
-}
+
 
 /*********************************
 Sidebars - Supplementary
