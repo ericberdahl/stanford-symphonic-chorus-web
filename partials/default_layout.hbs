@@ -42,14 +42,22 @@
 		</h1>
 	</div>
 
-	{{#if (content "introduction") }}
-		<div id="introduction">
-			{{{ block "introduction" }}}
-		</div>
-	{{/if}}
+	<div id="content_container">
+		{{#if (content "spotlight") }}
+			<div id="spotlight">
+				{{{ block "spotlight" }}}
+			</div>
+		{{/if}}
 
-	<div id="content_main">
-		{{{ block "main-content" }}}
+		{{#if (content "introduction") }}
+			<div id="introduction">
+				{{{ block "introduction" }}}
+			</div>
+		{{/if}}
+
+		<div id="content_main">
+			{{{ block "main-content" }}}
+		</div>
 	</div>
 
 	{{#if (content "sidebar") }}

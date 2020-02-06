@@ -14,12 +14,28 @@ Title
 /*********************************
 Main Content - Wrapper
 **********************************/
-.primary #content_main {
-	margin: 0 0 30px 0;
+.primary #content_container {
 	float: left;
 	width: 784px;
 	padding: 0;
 	border-right: 1px solid #e6e4db;
+}
+
+.primary #content_main {
+	margin: 0;
+	padding: 0 20px;
+	float: left;
+	width: 568px;
+	border-left: 1px solid #eae9e6;
+
+	h2 {
+		border-bottom: 6px solid #820000;
+		letter-spacing: 2px/*thomas*/;
+		margin-top: 8px;
+	}
+	div {
+		margin-bottom: 15px;
+	}
 }
 
 /*********************************
@@ -27,7 +43,7 @@ Spotlight
 *******************************************************************
 Spotlight is the featured banner area of the main Stanford homepage
 *******************************************************************/
-.spotlight {
+.primary #spotlight {
 	margin-bottom: 10px;
 
 	a {
@@ -47,7 +63,7 @@ Spotlight is the featured banner area of the main Stanford homepage
 /*********************************
 Events/Sports
 **********************************/
-#content_left  {
+.primary #introduction  {
 	float: left;
 	width: 155px;
 	margin-right: 20px;
@@ -73,25 +89,6 @@ Events/Sports
 			line-height: 1.2500em/*thomas*/;
 		}
 	}
-}
-
-/*********************************
-Center/Container styles
-**********************************/
-#content_center {
-	margin: 0;
-	padding: 0 20px;
-	float: left;
-	width: 568px;
-	border-left: 1px solid #eae9e6;
-}
-#content_center h2 {
-	border-bottom: 6px solid #820000;
-	letter-spacing: 2px/*thomas*/;
-	margin-top: 8px;
-}
-#content_center div {
-    margin-bottom: 15px;
 }
 
 /******************************
