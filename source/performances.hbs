@@ -14,7 +14,6 @@ scripts:
 {{#extend "default_layout" _programsByYear=( _groupBy catalog.performances.upToDate '_.year' ) }}
 	
 	{{#content "introduction"}}
-		<!-- TemplateBeginEditable name="sidebar_introduction" -->
 		<h2>Performances</h2>
 		<p class="introduction">Stanford Symphonic Chorus performs symphonic works three times a year - each academic quarter.</p>
 		<h3>Years</h3>
@@ -23,7 +22,6 @@ scripts:
 				<li><a href="#{{ _kebabCase (_get (_last .) 'quarter') }}">{{ @key }}</a></li>
 			{{/_forEachRight}}
 		</ul>
-		<!-- TemplateEndEditable -->
 	{{/content}}
 
 	{{#content "sidebar"}}
@@ -35,10 +33,8 @@ scripts:
 	{{#content "main-content"}}
 		<div id="breadcrumb">
 			<p>
-				<!-- TemplateBeginEditable name="breadcrumb" -->
 				<a href="/index.html">Symphonic Chorus Home</a>
 				» {{ title }}
-				<!-- TemplateEndEditable -->
 			</p>
 		</div>
 		{{#_forEachRight _programsByYear}}
@@ -128,7 +124,6 @@ scripts:
 				</div>
 			{{/_forEachRight}}
 		{{/_forEachRight}}
-		<!-- ====================================================================== -->
 		<br class="clear">
 	{{/content}}
 

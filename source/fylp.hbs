@@ -20,7 +20,6 @@ scripts:
 	{{/content}}
 
 	{{#content "introduction"}}
-		<!-- TemplateBeginEditable name="sidebar_introduction" -->
 		<h2>For Your Listening Pleasure</h2>
 		<p class="introduction">Stanford Symphonic Chorus recommends recordings of other performances that you may enjoy, in addition to attending its concerts.</p>
 		<ul>
@@ -28,16 +27,13 @@ scripts:
 				<li><a href="#{{ _kebabCase . }}">{{ . }}</a></li>
 			{{/_forEach}}
 		</ul>
-		<!-- TemplateEndEditable -->
 	{{/content}}
 
 	{{#content "main-content"}}
 		<div id="breadcrumb">
 			<p>
-				<!-- TemplateBeginEditable name="breadcrumb" -->
 				<a href="/index.html">Symphonic Chorus Home</a>
 				» {{ title }}
-				<!-- TemplateEndEditable -->
 			</p>
 		</div>
 		{{#_forEach catalog.fylp.composers }}
