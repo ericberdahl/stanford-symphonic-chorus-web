@@ -102,6 +102,12 @@ function buildSite(options)
     metalsmith = metalsmith.use(showProgress('# Processing less stylesheets'))
         .use(inplace({
             pattern: '**/*.less',
+            engineOptions: {
+                paths: [
+                    './less/',
+                    './source/css/'
+                ]
+            }
         }));
 
     metalsmith = metalsmith.use(showProgress('# Processing Handlebars templates'))

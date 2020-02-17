@@ -6,11 +6,8 @@
 	<title>Stanford Symphonic Chorus</title>
 {{/block}}
 <!-- Base stylesheet which imports typography, resets, header/footer layout, and other miscellaneous styles -->
-<link rel="stylesheet" type="text/css" href="/css/base.css">
-<!-- Page specific stylesheet for middle layout section (sidebars and content_main) -->
-{{#each this.stylesheets as |css| }}
-	<link rel="stylesheet" type="text/css" href="/css/{{css}}.css">
-{{/each}}
+<link rel="stylesheet" type="text/css" href="/css/{{body_class}}.css">
+<link rel="stylesheet" type="text/css" href="/css/slimbox.css">
 {{#each this.scripts as |js| }}
 	<script src="/js/{{js}}.js" type="text/javascript"></script>
 {{/each}}
@@ -18,7 +15,7 @@
 <script src="/js/mediabox.js" type="text/javascript"></script>
 <script src="/js/emus.js" type="text/javascript"></script>
 </head>
-<body{{#if body_class}} class="{{body_class}}"{{/if}}>
+<body class="{{body_class}}">
 <div id="container">
 	<div id="container_header">
 		<div id="header">
