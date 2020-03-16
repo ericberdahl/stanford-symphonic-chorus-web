@@ -7,41 +7,41 @@ body { background-image: url("../images/body_bg.jpg"); background-repeat: repeat
 /********************************
 Global
 *********************************/
-body { font-size: 68.75%/*thomas*/; font-family:  Arial,Helvetica,FreeSans,sans-serif; }
+body { font-size: 68.75%/*thomas*/; font-family: @font-family-sanserif; }
 /*Removal of underline and addition of border-bottom for links */
-a { text-decoration: none; border-bottom: 1px dotted #81785a; color: #565347; }
-a:focus { outline:1px #8a887d dotted; }
-a:hover { color: #820000; }
-hr { background:#eae9e6; border:0; clear:both; height:1px; }
+a { text-decoration: none; border-bottom: 1px dotted #81785a; color: @color-warmgray90; }
+a:focus { outline:1px @color-warmgray60 dotted; }
+a:hover { color: @color-red; }
+hr { background:@color-warmgray10; border:0; clear:both; height:1px; }
 img {border: none; }
 
 /**********************************
 Headers
 ************************************/
-h1 { font-size: 2.9167em/*thomas*/; font-family: Georgia, "Times New Roman", Times, serif; color: #565245; font-weight: normal; }
-h2 { font-size: 0.833em/*thomas*/; font-family: Georgia, "Times New Roman", Times, serif; text-transform: uppercase; color: #820000; padding-bottom: 3px; letter-spacing: 2px/*thomas*/; font-weight: normal; }
-h3 { font-size: 1.1667em/*thomas*/; font-family: Arial, Helvetica, sans-serif; font-weight: normal; }
-h4 { font-size: 1.1667em/*thomas*/; font-family: Arial, Helvetica, sans-serif; font-weight: normal; }
-h5 { font-size: 0.833em/*thomas*/; font-family: Arial, Helvetica, sans-serif; font-weight: normal; }
+h1 { font-size: 2.9167em/*thomas*/; font-family: @font-family-serif; color: #565245; font-weight: normal; }
+h2 { font-size: 0.833em/*thomas*/; font-family: @font-family-serif; text-transform: uppercase; color: @color-red; padding-bottom: 3px; letter-spacing: 2px/*thomas*/; font-weight: normal; }
+h3 { font-size: 1.1667em/*thomas*/; font-family: @font-family-sanserif; font-weight: normal; }
+h4 { font-size: 1.1667em/*thomas*/; font-family: @font-family-sanserif; font-weight: normal; }
+h5 { font-size: 0.833em/*thomas*/; font-family: @font-family-sanserif; font-weight: normal; }
 	
 /**********************************
 Block-level
 ***********************************/
 p,hr,h1,h2,h3,h4,h5,h6,ol,ul,table { margin-bottom:5px; }
-p { color: #565347; line-height: 1.3333em/*thomas*/; }
-ul li { color: #565347; line-height: 1.3333em/*thomas*/; }
+p { color: @color-warmgray90; line-height: 1.3333em/*thomas*/; }
+ul li { color: @color-warmgray90; line-height: 1.3333em/*thomas*/; }
 	
 /**********************************
 Sidebar - Introduction
 ***********************************/	
 #introduction h2 {
-    color: #820000;
+    color: @color-red;
 }
 
 /**********************************
 Main Content
 ***********************************/	
-#content_main h3 { font-size: 1.2500em/*thomas*/; font-family: Georgia, "Times New Roman", Times, serif; }
+#content_main h3 { font-size: 1.2500em/*thomas*/; font-family: @font-family-serif; }
 	
 /**********************************
 General classes
@@ -50,12 +50,12 @@ General classes
 
 hr.clearer { clear: both; visibility: hidden; border:none; }
 
-p.introduction { color: #8a887d; line-height: 1.6667em/*thomas*/; font-size: 1.1667em/*thomas*/; font-family:Georgia, "Times New Roman", Times, serif; font-style:italic; }
+p.introduction { color: @color-warmgray60; line-height: 1.6667em/*thomas*/; font-size: 1.1667em/*thomas*/; font-family:@font-family-serif; font-style:italic; }
 
 /*********************************
 Header
 **********************************/
-#header { width: 960px; min-width:960px; height: 90px; margin: 0 auto; color: #fff; }
+#header { width: 960px; min-width:960px; height: 90px; margin: 0 auto; color: @color-white; }
 #header a { border: none; }
 #container_header { height: 90px; width: 100%; background-image: url("../images/red_header_bg.jpg"); background-repeat: repeat-x; }
 
@@ -64,9 +64,9 @@ Header
 /*********************************
 Search
 **********************************/
-#container_search { width: 191px; float: right; margin-right: 2px; color: #fff; margin-top: 4px; padding-top: 0; height: 48px; z-index: 200;}
+#container_search { width: 191px; float: right; margin-right: 2px; color: @color-white; margin-top: 4px; padding-top: 0; height: 48px; z-index: 200;}
 
-#searchformhome { width: 191px; float: right; margin-right: 2px; color: #fff;  margin-top: 2px; padding-top: 0;  }
+#searchformhome { width: 191px; float: right; margin-right: 2px; color: @color-white;  margin-top: 2px; padding-top: 0;  }
 #searchformhome form { width: 190px; margin-top: 0;}
 #search_filters { margin-bottom: 3px; margin-left: 10px;}
 #web { vertical-align: middle;margin: 0; padding: 0; }
@@ -79,7 +79,7 @@ Search
 #search_string_people { border: 0;padding:0;height: 17px; }
 
 .searchbox { background: url("../images/search_box_bg.png") no-repeat left top; height: 24px; padding-left: 3px; margin-bottom: 0; padding-bottom: 0; margin-top: 0px; padding-top: 0; z-index: 300; }
-.searchbox input { width: 153px; color: #3f3c30; margin-left: 6px; margin-top: 0; padding-top:0; border:0; outline: none; padding-right: 0; margin-right: 0; height:15px; float: left; margin-top: 2px; }
+.searchbox input { width: 153px; color: @color-warmgray; margin-left: 6px; margin-top: 0; padding-top:0; border:0; outline: none; padding-right: 0; margin-right: 0; height:15px; float: left; margin-top: 2px; }
 .searchbox label {position: absolute; left: -1000em; width: 20em; text-align: left;}
 .search_button { border: 0; background: url("../images/search_button.gif") no-repeat top left; height: 20px; width: 20px; text-indent: -9999px;  margin-left: 3px; margin-top: 1px; float: right; cursor: pointer;}
 
@@ -97,7 +97,7 @@ Navigation
     ul {
         margin: 0 auto;
         width: 960px;
-        border-left: 1px solid #8a887d;
+        border-left: 1px solid @color-warmgray60;
         height: 24px/*thomas*/;
     }
     
@@ -107,7 +107,7 @@ Navigation
         height: 24px/*thomas*/;
         list-style-type: none;
         text-align: left;
-        border-right: 1px solid #8a887d;
+        border-right: 1px solid @color-warmgray60;
         padding-top: 0px;
         padding-left: 0.625em;
         padding-right: 0.625em;
@@ -128,7 +128,7 @@ Navigation
             background-repeat:no-repeat;
             
             a {
-                color: #820000;
+                color: @color-red;
             }
         }
 
@@ -142,7 +142,7 @@ Navigation
             padding-right:0.625em;
             font-size: 12px/*thomas*/;
             border: none;
-            color:#3f3c30;
+            color:@color-warmgray;
             font-weight: 300;
             letter-spacing: 1px/*thomas*/;
         }
@@ -169,18 +169,18 @@ Breadcrumb
         margin: 0;
         padding: 0;
         line-height: 1.2500em/*thomas*/;
-        color: #565347;
+        color: @color-warmgray90;
     }
 
     a {
         text-decoration: none;
         border-bottom: none;
-        color: #9D9573;
+        color: @color-beige;
 
         &:hover {
             text-decoration: none;
             border-bottom: 1px dotted;
-            color: #820000;
+            color: @color-red;
         }
     }
 }
@@ -192,7 +192,7 @@ Footer
     width: 960px;
     margin: 0 auto;
     text-align: center;
-    border-top: 1px solid #eae9e6;
+    border-top: 1px solid @color-warmgray10;
     padding-top: 10px;
 
     .nav {
@@ -203,7 +203,7 @@ Footer
             display: inline;
             padding-left: 15px;
             padding-right: 15px;
-            border-right: 1px solid #eae9e6;
+            border-right: 1px solid @color-warmgray10;
 
             &.last {
                 border: 0px;
@@ -212,11 +212,11 @@ Footer
             a {
                 font-size: 1.1667em/*thomas*/;
                 text-decoration: none;
-                color: #3f3c30;
+                color: @color-warmgray;
                 border: none;
 
                 &:hover {
-                    color: #820000;
+                    color: @color-red;
                 }
             }
         }

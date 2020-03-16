@@ -17,7 +17,7 @@ Sidebar - Introduction
 
 	h2 {
 		width: 155px;
-		border-bottom: 6px solid #820000;
+		border-bottom: 6px solid @color-red;
 		letter-spacing: 2px/*thomas*/;
 	}
 
@@ -46,11 +46,11 @@ Sidebar - Introduction
 	a {
 		text-decoration: none;
 		border-bottom: 1px dotted #81785a;
-		color: #565347;
+		color: @color-warmgray90;
 
 		&:hover,
 		&:active {
-			color: #820000;
+			color: @color-red;
 		}
 	}
 }
@@ -70,14 +70,14 @@ Sidebar - Introduction
 		list-style-image: none;
 		padding: 10px 0px;
 		margin: 0px;
-		border-bottom: 1px solid #eae9e6;
+		border-bottom: 1px solid @color-warmgray10;
 
 		a {
-			color: #565347;
+			color: @color-warmgray90;
 			border-bottom: none;
 	
 			&:hover {
-				border-bottom: 1px dotted #565347;
+				border-bottom: 1px dotted @color-warmgray90;
 			}	
 		}
 	
@@ -97,8 +97,8 @@ Sidebar - Supplementary
 	width: 155px;
 
 	h2 {
-		border-bottom: 6px solid #3F3C30;
-		color: #3f3c30;
+		border-bottom: 6px solid @color-warmgray;
+		color: @color-warmgray;
 		letter-spacing: 2px/*thomas*/;
 	}
 
@@ -140,8 +140,8 @@ Main Content
 	width: 568px;
 	padding-left: 20px;
 	padding-right: 20px;
-	border-right: 1px solid #eae9e6;
-	border-left: 1px solid #eae9e6;
+	border-right: 1px solid @color-warmgray10;
+	border-left: 1px solid @color-warmgray10;
 	font-size: 1.1667em/*thomas*/;
 	color: #333;
 
@@ -160,16 +160,16 @@ Main Content
 	}
 
 	h1 {
-		font-family: Georgia, "Times New Roman", Times, serif;
+		font-family: @font-family-serif;
 		font-size: 2.9167em/*thomas*/;
 		font-weight: normal;
 		color: #565245;
 	}
 
 	h2 {
-		font-family: Georgia, "Times New Roman", Times, serif;
+		font-family: @font-family-serif;
 		font-size: 1.5em;
-		color: #820000;
+		color: @color-red;
 		margin: 20px 0px 5px 0px;
 		letter-spacing: 2px/*thomas*/;
 		line-height: 1.2em;
@@ -177,7 +177,7 @@ Main Content
 	}
 
 	h3 {
-		font-family: Georgia, "Times New Roman", Times, serif;
+		font-family: @font-family-serif;
 		font-size: 1.4em;
 		color: #565245;
 		margin: 20px 0px 5px 0px;
@@ -185,15 +185,15 @@ Main Content
 	}
 
 	h4 {
-		font-family: Georgia, "Times New Roman", Times, serif;
+		font-family: @font-family-serif;
 		font-size: 1.3em;
-		color: #820000;
+		color: @color-red;
 		margin: 20px 0px 5px 0px;
 		line-height: 1.2em;
 	}
 
 	h5 {
-		font-family: Georgia, "Times New Roman", Times, serif;
+		font-family: @font-family-serif;
 		font-size: 1.2em;
 		color: #565245;
 		margin: 20px 0px 5px 0px;
@@ -204,7 +204,7 @@ Main Content
 Breadcrumb - Tertiary Override (original style rule located in layout.css)
 **********************************/
 .tertiary #breadcrumb {
-	border-bottom: 6px solid #820000;
+	border-bottom: 6px solid @color-red;
 	margin-bottom: 10px;
 
 	p {
