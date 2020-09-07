@@ -19,7 +19,7 @@
   "dependencies": {
     "commander": "^3.0.1",
     "debug": "^4.1.1",
-    "handlebars": "^4.4.2",
+    "handlebars": "^4.5.3",
     "handlebars-layouts": "^3.1.4",
     "jstransformer-handlebars": "^1.1.0",
     "lodash": "^4.17.15",
