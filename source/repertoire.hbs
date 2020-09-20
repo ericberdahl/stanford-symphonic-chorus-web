@@ -38,6 +38,23 @@ scripts:
 			<br class="clear">
 			<div id="{{ _kebabCase . }}" class="repertoire_piece">
 				{{#_forEach (_get ../catalog.repertoire.byComposer .) }}
+					{{#if 0}} {{! EMB 2020-Sep-20 experiment with CSS Grid layout }}
+					<div class="piece" style="display: grid;
+											grid-template-columns: 1fr 1fr 1fr 1fr;
+											grid-template-rows: auto;
+											grid-template-areas:
+												\"title title title title\"
+												\"fylp fylp fylp fylp\"
+												\". . . .\";">
+						<h3 class="title" style="grid-area: title;">{{> piece_citation piece=piece }}</h3>
+						{{#if fylp}}
+							<div class="fylp" style="grid-area: fylp;">{{#> link_object href=fylp }}For Your Listening Pleasure{{/link_object}}</div>
+						{{/if}}
+						{{#_forEach performances }}
+							<div class="performance">{{#> link_object href=.}}{{quarter}}{{/link_object}}</div>
+						{{/_forEach}}
+					</div>
+					{{else}}
 					<div>
 						<h3>{{> piece_citation piece=piece }}</h3>
 						{{#if fylp}}
@@ -63,6 +80,7 @@ scripts:
 							</tbody>
 						</table>
 					</div>
+					{{/if}}
 				{{/_forEach}}
 			</div>
 		{{/_forEach}}
