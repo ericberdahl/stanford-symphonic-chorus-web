@@ -26,7 +26,7 @@
     "lodash": "^4.17.20",
     "metalsmith": "^2.3.0",
     "metalsmith-broken-link-checker": "^1.0.2",
-    "metalsmith-browser-sync": "git+https://github.com/ericberdahl/metalsmith-browser-sync.git",
+    "metalsmith-browser-sync": "^1.1.1",
     "metalsmith-debug-ui": "^0.3.2",
     "metalsmith-discover-partials": "^0.1.2",
     "metalsmith-html-tidy": "^1.1.2",
