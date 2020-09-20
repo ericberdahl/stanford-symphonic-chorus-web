@@ -17,25 +17,25 @@
   },
   "homepage": "https://github.com/ericberdahl/stanford-symphonic-chorus-web#readme",
   "dependencies": {
-    "commander": "^3.0.1",
-    "debug": "^4.1.1",
-    "handlebars": "^4.7.2",
+    "commander": "^3.0.2",
+    "debug": "^4.2.0",
+    "handlebars": "^4.7.6",
     "handlebars-layouts": "^3.1.4",
     "jstransformer-handlebars": "^1.1.0",
     "jstransformer-less": "^2.3.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
     "metalsmith": "^2.3.0",
     "metalsmith-broken-link-checker": "^1.0.2",
     "metalsmith-browser-sync": "git+https://github.com/ericberdahl/metalsmith-browser-sync.git",
     "metalsmith-debug-ui": "^0.3.2",
     "metalsmith-discover-partials": "^0.1.2",
     "metalsmith-html-tidy": "^1.1.2",
-    "metalsmith-in-place": "^4.4.0",
+    "metalsmith-in-place": "^4.4.1",
     "metalsmith-linkcheck": "^0.3.4",
-    "metalsmith-plugin-kit": "^1.0.1",
+    "metalsmith-plugin-kit": "^1.1.4",
     "metalsmith-prefixoid": "^1.0.3",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.31",
     "node-yaml": "^4.0.1",
-    "sanitize-html": "^1.20.1"
+    "sanitize-html": "^1.27.4"
   }
 }
