@@ -16,53 +16,37 @@ function showProgress(...args) {
     }
 }
 
-function buildSite(options)
+function registerHelpers(metalsmith, handlebars)
 {
-    const applyPrefix = !options.serve;
-
-    const Metalsmith = require('metalsmith');
-    const blc = require('metalsmith-broken-link-checker');
-    const browserSync = require('metalsmith-browser-sync');
-    const createCurrentEvents = require('./lib/create-current-events');
-    const debug = require('metalsmith-debug-ui');
-    const discoverPartials = require('metalsmith-discover-partials');
-    const fylp = require('./lib/fylp');
-    const Handlebars = require('handlebars');
     const helpers = require('./lib/handlebars-helpers');
-    const inplace = require('metalsmith-in-place');
     const layouts = require('handlebars-layouts');
-    const linkcheck = require('metalsmith-linkcheck');
     const lodashHelpers = require('./lib/lodash-helpers');
-    const performances = require('./lib/performances');
-    const repertoire = require('./lib/repertoire');
-    const prefix = require('metalsmith-prefixoid');
-    const sanityCheckDates = require('./lib/sanity-check-dates');
     const ssc_helpers = require('./lib/ssc-helpers');
-    const tidy = require('metalsmith-html-tidy');
 
-    let metalsmith = Metalsmith(__dirname);
-    
     //
     // Register Handlebars helper functions
     //
-    layouts.register(Handlebars);
+    layouts.register(handlebars);
     lodashHelpers.register({
-        handlebars: Handlebars
+        handlebars: handlebars
     });
     ssc_helpers.register({
-        handlebars: Handlebars,
+        handlebars: handlebars,
         metalsmith: metalsmith
     });
 
     helpers.defaultTimezone('America/Los_Angeles');
     helpers.register({
-        handlebars: Handlebars,
+        handlebars: handlebars,
         namespace: 'x-'
     });
 
-    if (options.debug) {
-        debug.patch(metalsmith);
-    }
+    return metalsmith;
+}
+
+function initializeBuild(metalsmith)
+{
+    const discoverPartials = require('metalsmith-discover-partials');
 
     metalsmith = metalsmith.use(showProgress('# Starting'))
         .source('./source')
@@ -84,6 +68,17 @@ function buildSite(options)
             done();
         });
 
+    return metalsmith;
+}
+
+function setupProgramMetadata(metalsmith)
+{
+    const createCurrentEvents = require('./lib/create-current-events');
+    const fylp = require('./lib/fylp');
+    const performances = require('./lib/performances');
+    const repertoire = require('./lib/repertoire');
+    const sanityCheckDates = require('./lib/sanity-check-dates');
+
     metalsmith = metalsmith.use(showProgress('# Processing FYLP'))
         .use(fylp());
 
@@ -99,6 +94,13 @@ function buildSite(options)
     metalsmith = metalsmith.use(showProgress('# Creating repertoire'))
         .use(repertoire());
 
+    return metalsmith;
+}
+
+function processStylesheets(metalsmith)
+{
+    const inplace = require('metalsmith-in-place');
+
     metalsmith = metalsmith.use(showProgress('# Processing less stylesheets'))
         .use(inplace({
             pattern: '**/*.less',
@@ -110,53 +112,125 @@ function buildSite(options)
             }
         }));
 
+    return metalsmith;
+}
+
+function processHandlebars(metalsmith)
+{
+    const inplace = require('metalsmith-in-place');
+
     metalsmith = metalsmith.use(showProgress('# Processing Handlebars templates'))
         .use(inplace({
             pattern: '**/*.hbs',
         }));
 
-    if (applyPrefix) {
-        // Prefixing is only needed for actual deployment and messes with the
-        // local server.
-        metalsmith = metalsmith.use(showProgress('# Adding basePath prefix'))
-            .use(prefix([
-                { prefix: options.basePath, tag: 'a', attr: 'href' },
-                { prefix: options.basePath, tag: 'area', attr: 'href' },
-                { prefix: options.basePath, tag: 'img', attr: 'src' },
-                { prefix: options.basePath, tag: 'link', attr: 'href' },
-                { prefix: options.basePath, tag: 'script', attr: 'src' },
-            ]));
-    }
+    return metalsmith;
+}
 
-    if (options.tidy) {
-        metalsmith = metalsmith.use(showProgress('# Tidying HTML'))
-            .use(tidy({
-                tidyOptions: {
-                    'doctype': 'html5',
-                    'indent': true,
-                    'new-inline-tags': 'fb:fan',
-                    'output-html': true,
-                    'preserve-entities': true,
-                    'tidy-mark': false,
-                    'vertical-space': false,
-                }
-            }));
-    }
+function applyPrefixes(metalsmith, basePath)
+{
+    const prefix = require('metalsmith-prefixoid');
 
-    if (options.serve) {
-        metalsmith = metalsmith.use(showProgress('# Starting local server'))
-            .use(browserSync({
-                server: buildDir,
-                files: [ "source/**/*", "partials/**/*", "data/**/*" ],
-            }))
-    }
+    // Prefixing is only needed for actual deployment and messes with the
+    // local server.
+    metalsmith = metalsmith.use(showProgress('# Adding basePath prefix'))
+        .use(prefix([
+            { prefix: basePath, tag: 'a', attr: 'href' },
+            { prefix: basePath, tag: 'area', attr: 'href' },
+            { prefix: basePath, tag: 'img', attr: 'src' },
+            { prefix: basePath, tag: 'link', attr: 'href' },
+            { prefix: basePath, tag: 'script', attr: 'src' },
+        ]));
+
+    return metalsmith;
+}
+
+function tidyOutput(metalsmith)
+{
+    const tidy = require('metalsmith-html-tidy');
+
+    metalsmith = metalsmith.use(showProgress('# Tidying HTML'))
+        .use(tidy({
+            tidyOptions: {
+                'doctype': 'html5',
+                'indent': true,
+                'new-inline-tags': 'fb:fan',
+                'output-html': true,
+                'preserve-entities': true,
+                'tidy-mark': false,
+                'vertical-space': false,
+            }
+        }));
+
+    return metalsmith;
+}
+
+function serveOutputLocally(metalsmith)
+{
+    const browserSync = require('metalsmith-browser-sync');
+
+    metalsmith = metalsmith.use(showProgress('# Starting local server'))
+        .use(browserSync({
+            server: buildDir,
+            files: [ "source/**/*", "partials/**/*", "data/**/*" ],
+        }));
+
+    return metalsmith;
+}
+
+function performBrokenLinkChecks(metalsmith, baseUrl)
+{
+    const blc = require('metalsmith-broken-link-checker');
+    const linkcheck = require('metalsmith-linkcheck');
 
     const blcOptions = {};
-    if (applyPrefix) {
-        blcOptions.baseUrl = options.basePath;
+    if (baseUrl) {
+        blcOptions.baseUrl = baseUrl;
     }
     //metalsmith = metalsmith.use(blc(blcOptions));
     //metalsmith = metalsmith.use(linkcheck());
+
+    return metalsmith;
+}
+
+function buildSite(options)
+{
+    const applyPrefix = !options.serve;
+
+    const Metalsmith = require('metalsmith');
+    const debug = require('metalsmith-debug-ui');
+    const Handlebars = require('handlebars');
+
+    let metalsmith = Metalsmith(__dirname);
+    
+    metalsmith = registerHelpers(metalsmith, Handlebars);
+
+    if (options.debug) {
+        debug.patch(metalsmith);
+    }
+
+    metalsmith = initializeBuild(metalsmith);
+    metalsmith = setupProgramMetadata(metalsmith);
+    metalsmith = processStylesheets(metalsmith);
+    metalsmith = processHandlebars(metalsmith);
+
+    if (applyPrefix) {
+        // Prefixing is only needed for actual deployment and messes with the
+        // local server.
+        metalsmith = applyPrefixes(metalsmith, options.basePath);
+    }
+
+    if (options.tidy) {
+        metalsmith = tidyOutput(metalsmith);
+    }
+
+    if (options.serve) {
+        metalsmith = serveOutputLocally(metalsmith);
+    }
+
+    if (false) {
+        metalsmith = performBrokenLinkChecks(metalsmith, applyPrefix ? options.basePath : null);
+    }
 
     metalsmith.build((err) => {
             if (err) throw err;
@@ -164,6 +238,7 @@ function buildSite(options)
 }
 
 const program = require('commander');
+const metalsmith = require('metalsmith');
 
 program.version('0.1.0', '-v, --version')
     .option('--debug', 'Build debug-ui into the output')
