@@ -31,7 +31,6 @@
     "metalsmith-discover-partials": "^0.1.2",
     "metalsmith-html-tidy": "^1.1.2",
     "metalsmith-in-place": "^4.4.1",
-    "metalsmith-linkcheck": "^0.3.4",
     "metalsmith-plugin-kit": "^1.1.4",
     "metalsmith-prefixoid": "^1.0.3",
     "moment-timezone": "^0.5.31",

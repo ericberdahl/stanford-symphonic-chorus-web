@@ -180,15 +180,13 @@ function serveOutputLocally(metalsmith)
 
 function performBrokenLinkChecks(metalsmith, baseUrl)
 {
-    const blc = require('metalsmith-broken-link-checker');
-    const linkcheck = require('metalsmith-linkcheck');
+    // const blc = require('metalsmith-broken-link-checker');
 
     const blcOptions = {};
     if (baseUrl) {
         blcOptions.baseUrl = baseUrl;
     }
     //metalsmith = metalsmith.use(blc(blcOptions));
-    //metalsmith = metalsmith.use(linkcheck());
 
     return metalsmith;
 }
