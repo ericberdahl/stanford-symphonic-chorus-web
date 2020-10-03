@@ -1,11 +1,13 @@
-#!/usr/bin/env node
+#!/usr/bin/env npx ts-node-script
 
 /*
  TODO:
  - move /group/SymCh into data configuration
  */
-const _ = require('lodash');
-const logs = require('./lib/logs').forFilename(__filename);
+import * as _ from 'lodash';
+import * as Logs from './lib/logs';
+
+const logs = Logs.forFilename(__filename);
 
 const buildDir = './_build';
 
@@ -180,13 +182,17 @@ function serveOutputLocally(metalsmith)
 
 function performBrokenLinkChecks(metalsmith, baseUrl)
 {
-    // const blc = require('metalsmith-broken-link-checker');
+    const blc = require('metalsmith-broken-link-checker');
 
-    const blcOptions = {};
+    interface BlcOptions {
+        baseUrl?: string;
+    }
+
+    const blcOptions : BlcOptions = {};
     if (baseUrl) {
         blcOptions.baseUrl = baseUrl;
     }
-    //metalsmith = metalsmith.use(blc(blcOptions));
+    metalsmith = metalsmith.use(blc(blcOptions));
 
     return metalsmith;
 }
@@ -235,8 +241,8 @@ function buildSite(options)
         });
 }
 
-const program = require('commander');
-const metalsmith = require('metalsmith');
+import * as program from 'commander';
+import * as metalsmith from 'metalsmith';
 
 program.version('0.1.0', '-v, --version')
     .option('--debug', 'Build debug-ui into the output')
