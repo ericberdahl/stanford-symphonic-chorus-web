@@ -1,12 +1,16 @@
-const debug = require('debug');
-const path = require('path');
+import { default as debug } from 'debug';
+import { basename, extname } from 'path';
 
 const boundConsoleLog = console.info.bind(console);
 
-class Logs
+export class Logs
 {
-    constructor(filename) {
-        const debugname = path.basename(filename, path.extname(filename));
+    readonly debug;
+    readonly info;
+    readonly error;
+    
+    constructor(filename: string) {
+        const debugname = basename(filename, extname(filename));
     
         this.debug = debug(debugname);
         this.info = debug(debugname + '*');
@@ -17,11 +21,6 @@ class Logs
     }
 }
 
-function createFromFilename(filename) {
+export function forFilename(filename: string) {
     return new Logs(filename);
-}
-
-module.exports = {
-    Logs: Logs,
-    forFilename: createFromFilename,
 }
