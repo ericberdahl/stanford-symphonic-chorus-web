@@ -5,9 +5,9 @@
  - move /group/SymCh into data configuration
  */
 import * as _ from 'lodash';
-import * as Logs from './lib/logs';
+import { Logs } from './lib/logs';
 
-const logs = Logs.forFilename(__filename);
+const logs = new Logs(__filename);
 
 const buildDir = './_build';
 
