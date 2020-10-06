@@ -11,9 +11,9 @@ const logs = new Logs(__filename);
 
 const buildDir = './_build';
 
-function showProgress(...args) {
+function showProgress(formatter: any, ...args: any[]) {
     return (files, metalsmith, done) => {
-        logs.info(...args);
+        logs.info(formatter, ...args);
         done();
     }
 }
