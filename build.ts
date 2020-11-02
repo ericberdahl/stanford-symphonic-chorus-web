@@ -4,21 +4,27 @@
  TODO:
  - move /group/SymCh into data configuration
  */
+
+// Dependent libraries
+import { program } from 'commander';
 import * as _ from 'lodash';
+import * as Metalsmith from 'metalsmith';
+
+// Local libraries
 import { Logs } from './lib/logs';
 
 const logs = new Logs(__filename);
 
 const buildDir = './_build';
 
-function showProgress(formatter: any, ...args: any[]) {
+function showProgress(formatter: any, ...args: any[])  : Metalsmith.Plugin {
     return (files, metalsmith, done) => {
         logs.info(formatter, ...args);
-        done();
+        done(null, files, metalsmith);
     }
 }
 
-function registerHelpers(metalsmith, handlebars)
+function registerHelpers(metalsmith : Metalsmith, handlebars) : Metalsmith
 {
     const helpers = require('./lib/handlebars-helpers');
     const layouts = require('handlebars-layouts');
@@ -46,7 +52,7 @@ function registerHelpers(metalsmith, handlebars)
     return metalsmith;
 }
 
-function initializeBuild(metalsmith)
+function initializeBuild(metalsmith : Metalsmith) : Metalsmith
 {
     const discoverPartials = require('metalsmith-discover-partials');
 
@@ -67,13 +73,13 @@ function initializeBuild(metalsmith)
             _.forEach(files, (fileObject, filename) => {
                 fileObject.path = filename;
             });
-            done();
+            done(null, files, metalsmith);
         });
 
     return metalsmith;
 }
 
-function setupProgramMetadata(metalsmith)
+function setupProgramMetadata(metalsmith : Metalsmith) : Metalsmith
 {
     const createCurrentEvents = require('./lib/create-current-events');
     const fylp = require('./lib/fylp');
@@ -99,7 +105,7 @@ function setupProgramMetadata(metalsmith)
     return metalsmith;
 }
 
-function processStylesheets(metalsmith)
+function processStylesheets(metalsmith : Metalsmith) : Metalsmith
 {
     const inplace = require('metalsmith-in-place');
 
@@ -117,7 +123,7 @@ function processStylesheets(metalsmith)
     return metalsmith;
 }
 
-function processHandlebars(metalsmith)
+function processHandlebars(metalsmith : Metalsmith) : Metalsmith
 {
     const inplace = require('metalsmith-in-place');
 
@@ -129,7 +135,7 @@ function processHandlebars(metalsmith)
     return metalsmith;
 }
 
-function applyPrefixes(metalsmith, basePath)
+function applyPrefixes(metalsmith : Metalsmith, basePath) : Metalsmith
 {
     const prefix = require('metalsmith-prefixoid');
 
@@ -147,7 +153,7 @@ function applyPrefixes(metalsmith, basePath)
     return metalsmith;
 }
 
-function tidyOutput(metalsmith)
+function tidyOutput(metalsmith : Metalsmith) : Metalsmith
 {
     const tidy = require('metalsmith-html-tidy');
 
@@ -167,7 +173,7 @@ function tidyOutput(metalsmith)
     return metalsmith;
 }
 
-function serveOutputLocally(metalsmith)
+function serveOutputLocally(metalsmith : Metalsmith) : Metalsmith
 {
     const browserSync = require('metalsmith-browser-sync');
 
@@ -180,7 +186,7 @@ function serveOutputLocally(metalsmith)
     return metalsmith;
 }
 
-function performBrokenLinkChecks(metalsmith, baseUrl)
+function performBrokenLinkChecks(metalsmith : Metalsmith, baseUrl) : Metalsmith
 {
     const blc = require('metalsmith-broken-link-checker');
 
@@ -201,11 +207,10 @@ function buildSite(options)
 {
     const applyPrefix = !options.serve;
 
-    const Metalsmith = require('metalsmith');
     const debug = require('metalsmith-debug-ui');
     const Handlebars = require('handlebars');
 
-    let metalsmith = Metalsmith(__dirname);
+    let metalsmith : Metalsmith = Metalsmith(__dirname);
     
     metalsmith = registerHelpers(metalsmith, Handlebars);
 
@@ -240,9 +245,6 @@ function buildSite(options)
             if (err) throw err;
         });
 }
-
-import * as program from 'commander';
-import * as metalsmith from 'metalsmith';
 
 program.version('0.1.0', '-v, --version')
     .option('--debug', 'Build debug-ui into the output')
