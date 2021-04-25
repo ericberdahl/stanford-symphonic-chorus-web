@@ -1,0 +1,18 @@
+@import 'base';
+
+.content {
+    h2 {
+        font-family: $font-family-serif;
+        font-size: 1.5em;
+        color: $color-red;
+        margin: 20px 0px 5px 0px;
+        letter-spacing: 2px;
+        line-height: 1.2em;
+        text-transform: none;
+    }
+
+    p {
+        font-family: $font-family-sanserif;
+        margin: 0 0 0.8em 0;
+    }
+}

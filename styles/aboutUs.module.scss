@@ -1,0 +1,33 @@
+@import 'base';
+
+.about_us {
+    h2 {
+		border-bottom: 6px solid $color-warmgray;
+		color: $color-warmgray90;
+		letter-spacing: 2px;
+
+        font-size: 0.833em;
+        font-family: $font-family-serif;
+        text-transform: uppercase;
+        padding-bottom: 3px;
+        letter-spacing: 2px;
+        font-weight: normal;
+    }
+
+    h3 {
+        font-size: 1.1667em;
+        font-family: $font-family-sanserif;
+        font-weight: normal;
+
+        margin-bottom: 5px;
+		padding: 3px 0 0 0;
+    }
+
+    p {
+        margin-top: 0.63em;
+		margin-bottom: 20px;
+		font-size: 1.1667em;
+		line-height: 1.3333em;
+	}
+
+}

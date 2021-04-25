@@ -1,0 +1,59 @@
+@import 'base';
+
+//
+// Layout
+//
+.footer {
+    width: 960px;
+    margin: 0 auto;
+    padding-top: 10px;
+    clear: both;
+
+    .nav {
+        margin: 0px;
+        padding: 0px;
+
+        li {
+            display: inline;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+    .copyright {
+        padding-top: 10px;
+    }
+}
+
+//
+// Appearance
+//
+.footer {
+    text-align: center;
+    border-top: 1px solid $color-warmgray10;
+
+    .nav {
+        li {
+            border-right: 1px solid $color-warmgray10;
+
+            &.last {
+                border: 0px;
+            }
+
+            a {
+                font-size: 1.1667em;
+                text-decoration: none;
+                color: $color-warmgray;
+                border: none;
+
+                &:hover {
+                    color: $color-red;
+                }
+            }
+        }
+    }
+
+    .copyright {
+        font-size: 1.0em;
+    }
+}

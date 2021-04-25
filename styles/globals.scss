@@ -1,0 +1,221 @@
+@import 'base';
+
+/*******************************************************
+Reset Stylesheet: resets margins, paddings, borders, lists, etc
+Credit: Eric Meyer, http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/
+*******************************************************/
+
+html, 
+body, 
+div, 
+span, 
+applet, 
+object, 
+iframe,
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+p, 
+blockquote, 
+pre,
+a, 
+abbr, 
+acronym, 
+address, 
+cite, 
+code,
+del, 
+dfn, 
+font, 
+img, 
+ins, 
+kbd, 
+q, 
+s, 
+samp,
+small, 
+strike, 
+tt, 
+var,
+dl, 
+dt, 
+dd, 
+ol, 
+ul, 
+li,
+fieldset, 
+form, 
+label, 
+legend,
+table, 
+caption, 
+tbody, 
+tfoot, 
+thead, 
+tr, 
+th, 
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+:focus {
+    outline: 0;
+}
+
+body {
+    line-height: 1;
+    color: black;
+    background: white;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+caption,
+th,
+td {
+    text-align: left;
+    font-weight: normal;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+}
+
+blockquote,
+q {
+    quotes: "" "";
+}
+
+/****************************************************************************************
+Layout Stylesheet: defines general widths, margins, floats, a classes, and other display attributes
+****************************************************************************************/
+body {
+  background-image: url("../public/images/body_bg.jpg");
+  background-repeat: repeat-x;
+}
+
+/********************************
+Global
+*********************************/
+body {
+  font-size: 68.75%;
+  font-family: $font-family-sanserif;
+}
+
+/*Removal of underline and addition of border-bottom for links */
+a {
+  text-decoration: none;
+  border-bottom: 1px dotted #81785a;
+  color: $color-warmgray90;
+
+  &:focus {
+    outline:1px $color-warmgray60 dotted;
+  }
+
+  &:hover {
+    color: $color-red;
+  }
+}
+
+hr {
+  background: $color-warmgray10;
+  border: 0;
+  clear: both;
+  height: 1px;
+}
+
+img {
+  border: none;
+}
+
+/**********************************
+Headers
+************************************/
+h1 {
+  font-size: 2.9167em;
+  font-family: $font-family-serif;
+  color: #565245;
+  font-weight: normal;
+}
+
+h2 { font-size: 0.833em;
+  font-family: $font-family-serif;
+  text-transform: uppercase;
+  color: $color-red;
+  padding-bottom: 3px;
+  letter-spacing: 2px;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 1.1667em;
+  font-family: $font-family-sanserif;
+  font-weight: normal;
+}
+
+h4 {
+  font-size: 1.1667em;
+  font-family: $font-family-sanserif;
+  font-weight: normal;
+}
+
+h5 {
+  font-size: 0.833em;
+  font-family: $font-family-sanserif;
+  font-weight: normal;
+}
+	
+/**********************************
+Block-level
+***********************************/
+p,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+table {
+  margin-bottom: 5px;
+}
+
+p {
+  color: $color-warmgray90;
+  line-height: 1.3333em;
+}
+
+ul li {
+  color: $color-warmgray90;
+  line-height: 1.3333em;
+}
+
+/* Print CSS - remove red banner body background */
+@media print {
+    body {
+        background-image: none;
+    }
+}
