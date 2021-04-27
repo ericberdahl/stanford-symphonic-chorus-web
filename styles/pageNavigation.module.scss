@@ -24,6 +24,7 @@
 		list-style-image: none;
 		border-bottom: 1px solid $color-warmgray10;
 		font-size: 0.8021rem;
+		font-family: $font-family-sanserif;
 
 		a {
 			color: $color-warmgray90;
@@ -34,10 +35,6 @@
 				color: $color-red;
 				border-bottom: 1px dotted $color-warmgray90;
 			}	
-		}
-	
-		li {
-			border-bottom: none;
 		}
 	}
 }
