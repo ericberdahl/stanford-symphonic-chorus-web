@@ -37,7 +37,7 @@ const roles = {
 export default function Person(props) {
     const person = roles[props.role];
     const message = Object.assign({}, person);
-    message.subject = "SSC Website Feedback"
+    message.subject = props.subject;
     const data = JSON.stringify(message);
 
     return (
