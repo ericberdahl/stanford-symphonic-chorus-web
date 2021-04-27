@@ -3,14 +3,14 @@
 .about_us {
     h2 {
 		border-bottom: 6px solid $color-warmgray;
-		color: $color-warmgray90;
 		letter-spacing: 2px;
+		color: $color-warmgray90;
 
         font-size: 0.833em;
         font-family: $font-family-serif;
+        
         text-transform: uppercase;
         padding-bottom: 3px;
-        letter-spacing: 2px;
         font-weight: normal;
     }
 
