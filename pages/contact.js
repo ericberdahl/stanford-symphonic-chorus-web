@@ -2,6 +2,7 @@ import AboutUs from '../components/aboutUs'
 import Layout from '../components/layout'
 import Lightbox from '../components/lightbox'
 import Person from '../components/person'
+import TitledSegment from '../components/titledSegment'
 
 export default function Contact() {
     const title = "Contact Information";
@@ -11,10 +12,9 @@ export default function Contact() {
     ];
 
     const introduction = (
-        <>
-            <div>Contact</div>
-            <div>For more information about the chorus or auditions, conatct <Person role="director" subject="Re: Information about SSC or auditions"/>.</div>
-        </>
+        <TitledSegment title="Contact">
+            For more information about the chorus or auditions, conatct <Person role="director" subject="Re: Information about SSC or auditions"/>.
+        </TitledSegment>
     );
 
     const sidebar = (
