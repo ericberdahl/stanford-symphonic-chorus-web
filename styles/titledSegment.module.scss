@@ -1,10 +1,13 @@
 @import 'base';
 
 .segment {
-	font-size: 0.8021rem;
-	font-family: $font-family-sanserif;
+	.content {
+		font-size: 0.8021rem;
+		font-family: $font-family-sanserif;
+		line-height: 1.3333rem;
+	}
 
-	h2 {
+	.title {
 		font-size: 0.5729rem;
 		font-family: $font-family-serif;
 
