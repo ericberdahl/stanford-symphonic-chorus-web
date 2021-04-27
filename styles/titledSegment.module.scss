@@ -1,0 +1,19 @@
+@import 'base';
+
+.segment {
+	font-size: 0.8021rem;
+	font-family: $font-family-sanserif;
+
+	h2 {
+		font-size: 0.5729rem;
+		font-family: $font-family-serif;
+
+		border-bottom: 6px solid $color-red;
+		letter-spacing: 2px;
+        color: $color-red;
+
+		text-transform: uppercase;
+		padding-bottom: 3px;
+		font-weight: normal;
+	}
+}
