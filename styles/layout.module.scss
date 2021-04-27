@@ -16,6 +16,7 @@
         "intro breadcrumbs sidebar"
         "intro content sidebar"
         "footer footer footer";
+    grid-template-rows: auto auto auto max-content auto auto;
 }
 
 .container_header {
