@@ -41,7 +41,6 @@ export default function About() {
     return (
         <Layout
             title={title}
-            variant="tertiary"
             introduction={introduction}
             sidebar={sidebar}
             breadcrumbs={breadcrumbPath}>
