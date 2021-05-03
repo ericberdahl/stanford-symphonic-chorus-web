@@ -1,0 +1,73 @@
+quarter: "Fall 2006"
+
+syllabus:
+# MISSING syllabus for Fall 2006
+
+repertoire:
+    other:
+    -   composer: "Dvorák"
+        title: "Mass in D Major"
+        catalog: "Op. 86"
+    main:
+    -   composer: "Handel"
+        title: "Messiah"
+        suffix: "(excerpts from Part 1: Christmas)"
+
+soloists:
+-   name: "Emily Ford Dirks"
+    part: "soprano"
+-   name: "Janet Campbell"
+    part: "mezzo-soprano"
+-   name: "Trey Costerisan"
+    part: "tenor"
+-   name: "Michael Morris"
+    part: "bass"
+
+collaborators:
+-   "PSO"
+
+poster:
+    pdf: "SSCFlyerFall06.pdf"
+    jpg:
+        file: "SSCFlyerFall06.jpg"
+        height: 642
+        width: 900
+        caption: "Dvorak, Mass in D Major, Fall 2006"
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: "$35"
+    
+limits:
+#    membership: 
+
+preregister:
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Fall 2006
+
+dresses:
+
+concerts:
+-   date: "2006-12-01"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2006-12-03"
+    start: "13:30"
+    call: "12:30"
+    location: "MemChu"
+
+events:
+
+
+
+

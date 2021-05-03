@@ -1,0 +1,130 @@
+quarter: "Fall 2015"
+
+syllabus: "F2015 Syllabus"
+
+repertoire:
+    other:
+    -   title: "Elegy for Orchestra"
+        composer: "John Corigliano"
+    -   composer: "Gabriel Fauré"
+        title: "Elegy for Cello and Orchestra"
+        catalog: "Op. 24"
+    -   composer: "Anton Bruckner"
+        title: "Psalm 150"
+        catalog: "WAB 38"
+        ref: "bruckner/psalm-150"
+    main:
+    -   composer: "Ralph Vaughan Williams"
+        composerFamilyName: "Vaughan Williams"
+        title: "Dona Nobis Pacem"
+
+
+soloists:
+-   name: "Amy Kyung Min Lee"
+    part: "soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+-   name: "Stephen Harrison"
+    part: "cello"
+
+collaborators:
+-   "PSO"
+
+poster:
+    pdf: "F2015 Poster.pdf"
+    jpg:
+        file: "F2015 Poster.jpg"
+        width: 525
+        height: 825
+        caption: "Vaughan Williams: Dona Nobis Pacem"
+
+directors:
+-   "Mitchell Sardou Klein"
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+    registration: "$60"
+    
+limits:
+#    membership: 220
+
+preregister:
+
+images:
+
+rehearsals:
+-   start: 2015-09-21 19:30:00 -07
+    end: 2015-09-21 22:00:00 -07
+    location: "CRH"
+    event: "Registration and Tutti rehearsal"
+    registration: 2015-09-26 18:30:00 -07
+-   start: 2015-09-28 19:30:00 -07
+    end: 2015-09-28 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2015-10-05 19:30:00 -07
+    end: 2015-10-05 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2015-10-12 19:30:00 -07
+    end: 2015-10-12 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2015-10-19 19:30:00 -07
+    end: 2015-10-19 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal with guest conductor, Craig Jessop"
+-   start: 2015-10-26 19:30:00 -07
+    end: 2015-10-26 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2015-11-16 19:30:00 -08
+    end: 2015-11-16 22:00:00 -08
+    location: "CRH"
+    event: "Tutti rehearsal with guest conductor, Craig Jessop"
+
+sectionals:
+-   start: 2015-09-30 17:30:00 -07
+    end: 2015-09-30 18:30:00 -07
+    location: "Braun 103"
+    event: "Women's sectional (optional, but warmly encouraged)"
+-   start: 2015-10-14 17:30:00 -07
+    end: 2015-10-14 18:30:00 -07
+    location: "Braun 103"
+    event: "Women's sectional (optional, but warmly encouraged)"
+-   start: 2015-10-07 17:30:00 -07
+    end: 2015-10-07 18:30:00 -07
+    location: "Braun 103"
+    event: "Men's sectional (optional, but warmly encouraged)"
+-   start: 2015-10-21 17:30:00 -07
+    end: 2015-10-21 18:30:00 -07
+    location: "Braun 103"
+    event: "Men's sectional (optional, but warmly encouraged)"
+
+dresses:
+-   start: 2015-11-17 19:00:00 -08
+    location: "Bing"
+-   start: 2015-11-19 19:00:00 -08
+    location: "Bing"
+
+concerts:
+-   date: "2015-11-20"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+-   date: "2015-11-22"
+    start: "14:30"
+    call: "13:30"
+    location: "Bing"
+
+events:
+
+
+
+
+

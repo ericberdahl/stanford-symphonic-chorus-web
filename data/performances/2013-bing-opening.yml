@@ -1,0 +1,94 @@
+quarter: "Opening Weekend – Bing Concert Hall"
+
+syllabus: "F2012syllabus"
+
+repertoire:
+    main:
+    -   composer: "Ralph Vaughan Williams"
+        composerFamilyName: "Vaughan Williams"
+        title: "Serenade to Music"
+    other:
+    -   composer: "Maurice Ravel"
+        title: "Daphnis et Chloé"
+        catalog: "Suite No. 2"
+
+soloists:
+
+collaborators:
+-   "SSO"
+# MISSING: other collaborators for 2013 Bing Opening
+
+poster:
+# MISSING: poster for Bing Opening
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+-   url: "http://binghall.stanford.edu/"
+    text: "Opening Weekend – Bing Concert Hall"
+-   url: "http://vimeo.com/56115622"
+    text: "Bing Concert Hall Fly Through"
+
+fees:
+#    registration: "$40"
+    
+limits:
+#    membership: 220
+
+preregister:
+
+images:
+-   file: binghall_banner.jpg
+    height: 380
+    width: 630
+    caption: "Rendering of the Bing Concert Hall. &copy; Polshek Partnership Architects"
+
+rehearsals:
+-   registration: 2013-09-24 18:30:00 -07
+    start: 2012-11-26 19:15:00 -08
+    end: 2012-11-26 21:45:00 -08
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2012-12-03 19:15:00 -08
+    end: 2012-12-03 21:45:00 -08
+    location: "Bing"
+    event: "Tutti logistics rehearsal"
+-   start: 2012-12-10 19:15:00 -08
+    end: 2012-12-10 21:45:00 -08
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2013-01-05 10:00:00 -08
+    end: 2013-01-05 13:00:00 -08
+    location: "Dink"
+    event: "Tutti Choral Union rehearsal"
+-   start: 2013-01-06 19:00:00 -08
+    end: 2013-01-06 22:00:00 -08
+    location: "Dink"
+    event: "Tutti Choral Union rehearsal with SSO"
+-   start: 2013-01-07 19:00:00 -08
+    end: 2013-01-07 22:00:00 -08
+    location: "Dink"
+    event: "Tutti Choral Union rehearsal with SSO"
+
+sectionals:
+
+dresses:
+-   start: 2013-01-08 19:00:00 -08
+    location: "Bing"
+
+concerts:
+-   date: "2013-01-13"
+    start: "19:00"
+    call: "17:30"
+    location: "Bing"
+
+events:
+
+
+
+
+

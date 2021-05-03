@@ -1,0 +1,53 @@
+quarter: "Spring 1996"
+
+syllabus:
+# MISSING: syllabus for Spring 1996
+
+repertoire:
+    main:
+    -   ref: "orff/carmina burana"
+        composer: "Carl Orff"
+        title: "Carmina Burana"
+
+soloists:
+
+collaborators:
+
+poster:
+# MISSING poster for Spring 1996
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Spring 1996
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "1996-05-21"
+    start: "20:00"
+    call: "19:00"
+    location: "Dink"
+-   date: "1996-06-01"
+    start: "20:00"
+    call: "19:00"
+    location: "Dink"
+
+events:

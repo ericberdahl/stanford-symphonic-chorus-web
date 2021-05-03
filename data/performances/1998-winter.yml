@@ -1,0 +1,60 @@
+quarter: "Winter 1998"
+
+syllabus:
+# MISSING: syllabus for Winter 1998
+
+repertoire:
+    main:
+    -   ref: "brahms/nanie-schicksalslied"
+        composer: "Johannes Brahms"
+        title:
+        -   "Nänie"
+        -   "Schicksalslied"
+    other:
+    -   composer: "Mahler"
+        title: "Lieder eines fahrenden Gesellen"
+
+soloists:
+
+collaborators:
+
+poster:
+# MISSING poster for Winter 1998
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Winter 1998
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "1998-02-27"
+    start: "20:00"
+    call: "19:00"
+    location: 
+-   date: "1998-02-28"
+    start: "20:00"
+    call: "19:00"
+    location: 
+# MISSING start times for concerts for Winter 1998
+# MISSING locations for concerts for Winter 1998
+
+events:

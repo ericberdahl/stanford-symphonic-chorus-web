@@ -1,0 +1,66 @@
+quarter: "Spring 1995"
+
+syllabus:
+# MISSING: syllabus for Spring 1995
+
+repertoire:
+    other:
+    -   composer: "Johannes Brahms"
+        title: "Akademische Festovertüre"
+        translation: "Academic Festival Overture"
+        catalog: "Op. 80"
+    main:
+    -   ref: "brahms/requiem"
+        composer: "Johannes Brahms"
+        title: "Ein Deutsches Requiem"
+        translation: "A German Requiem"
+        catalog: "Op. 45"
+
+soloists:
+-   name: "Mary Linduska"
+    part: "soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+
+poster:
+# MISSING poster for Spring 1995
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+-   url: "performances/S1995/text.html"
+    text: "Text"
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Spring 1995
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "1995-05-22"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "1995-05-23"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+events:

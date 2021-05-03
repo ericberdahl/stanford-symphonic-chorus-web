@@ -1,0 +1,63 @@
+quarter: "Winter 2003"
+
+syllabus:
+# MISSING: syllabus for Winter 2003
+
+repertoire:
+    other:
+    -   composer: "Ludwig von Beethoven"
+        title: "Piano Concerto No. 4"
+    -   composer: "Stravinsky"
+        title: "Symphony of Psalms"
+    main:
+    -   composer: "Ludwig von Beethoven"
+        title: "Choral Fantasy"
+
+soloists:
+-   name: "Thomas Schultz"
+    part: "piano"
+
+collaborators:
+
+poster:
+# MISSING poster for Winter 2003
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Winter 2003
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "2003-02-28"
+    start: "20:00"
+    call: "19:00"
+    location: "Dink"
+-   date: "2003-03-01"
+    start: "20:00"
+    call: "19:00"
+    location: "Dink"
+
+events:
+
+
+
+

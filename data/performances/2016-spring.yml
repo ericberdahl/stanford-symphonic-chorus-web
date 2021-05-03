@@ -1,0 +1,126 @@
+quarter: "Spring 2016"
+
+syllabus: "SSC Syllabus Spring 2016"
+
+repertoire:
+    main:
+    -   composer: "Mozart"
+        title: "Mass in C Minor"
+    other:
+    -   composer: "Mozart"
+        title: "Ein musikalischer Spaß"
+        translation: "A Musical Joke"
+        catalog: "K. 522"
+    -   title: "Simple Symphony"
+        composer: "Britten"
+
+soloists:
+-   name: "Tonia D'Amelio"
+    part: "soprano"
+-   name: "Danielle Sampson"
+    part: "soprano"
+-   name: "Corey Head"
+    part: "tenor"
+-   name: "Ben Kazez"
+    part: "bass"
+
+collaborators:
+
+poster:
+    pdf: "S2016-Poster.pdf"
+    jpg:
+        file: "S2016-Poster.jpg"
+        width: 492
+        height: 773
+        caption: "Mozart: Mass in C Minor"
+
+directors:
+
+instructors:
+
+links:
+
+fees:
+    registration: "$60"
+    
+limits:
+#    membership: 220
+
+preregister: 
+
+images:
+-   file: "MozartVeronadallaRosa.jpg"
+    width: 471
+    height: 580
+
+rehearsals:
+-   start: 2016-04-04 19:30:00 -07
+    end: 2016-04-04 22:00:00 -07
+    location: "CRH"
+    event: "Registration and Tutti rehearsal"
+    registration: 2016-03-27 18:30:00 -07
+-   start: 2016-04-11 19:30:00 -07
+    end: 2016-04-11 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2016-04-18 19:30:00 -07
+    end: 2016-04-18 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2016-04-23 10:00:00 -07
+    end: 2016-04-23 12:30:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2016-04-25 19:30:00 -07
+    end: 2016-04-25 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2016-05-02 19:30:00 -07
+    end: 2016-05-02 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2016-05-09 19:30:00 -07
+    end: 2016-05-09 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+
+sectionals:
+-   start: 2016-04-06 17:30:00 -07
+    end: 2016-04-06 18:30:00 -07
+    location: "Braun 103"
+    event: "Women's sectional (optional, but warmly encouraged)"
+-   start: 2016-04-27 17:30:00 -07
+    end: 2016-04-27 18:30:00 -07
+    location: "Braun 103"
+    event: "Women's sectional (optional, but warmly encouraged)"
+-   start: 2016-04-13 17:30:00 -07
+    end: 2016-04-13 18:30:00 -07
+    location: "Braun 103"
+    event: "Men's sectional (optional, but warmly encouraged)"
+-   start: 2016-05-04 17:30:00 -07
+    end: 2016-05-04 18:30:00 -07
+    location: "Braun 103"
+    event: "Men's sectional (optional, but warmly encouraged)"
+
+dresses:
+-   start: 2016-05-10 19:00:00 -07
+    location: "MemChu"
+-   start: 2016-05-12 19:00:00 -07
+    location: "MemChu"
+
+concerts:
+-   date: "2016-05-13"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2016-05-14"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+events:
+
+
+
+
+

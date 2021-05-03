@@ -1,0 +1,77 @@
+quarter: "Spring 2006"
+
+syllabus:
+# MISSING: syllabus for Spring 2006
+
+repertoire:
+    other:
+    -   composer: "Mozart"
+        title: "Concerto for Flute and Harp"
+    main:
+    -   composer: "Mozart"
+        title: "Requiem"
+        catalog: "KV 626"
+
+soloists:
+-   name: "Vivian Krich-Brinton"
+    part: "soprano"
+-   name: "Amy Schneider"
+    part: "mezzo-soprano"
+-   name: "Brian Thorsett"
+    part: "tenor"
+-   name: "Matthew Trevino"
+    part: "bass"
+-   name: "Kelly Swaim"
+    part: "flute"
+-   name: "Amanda Chiu"
+    part: "harp"
+
+collaborators:
+-   "SSO"
+-   "university singers"
+
+poster:
+    pdf: "Spring06_Poster.pdf"
+    jpg:
+        file: "Spring06_Poster.jpg"
+        height: 900
+        width: 582
+        caption: "Mozart, Requiem, Spring 2006"
+
+directors:
+-   "Robert Huw Morgan"
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Spring 2006
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "2006-05-19"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+events:
+
+
+
+

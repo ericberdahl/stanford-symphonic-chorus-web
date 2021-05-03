@@ -1,0 +1,271 @@
+# HOWTO: Set quarter to a single string that names the quarter and year. Use something like "Winter 1812",
+# "Spring 1812", or "Fall 1812"
+quarter: "Winter 2019"
+
+
+# HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
+# Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
+# be detected and used.
+syllabus: "SSC Syllabus Spring 2019"
+
+
+# HOWTO: Set repertoire to a list of items that compose the program.
+#
+# A simple piece looks like this:
+# -   composer: "Ludwig von Beethoven"
+#     title: "Magnificat"
+#
+# For more complex piece formulae, look at the reference "HOWTO Piece syntax"
+#
+# Repertoire is separated into main pieces and other pieces. Main and other each contain a list of pieces.
+# Main pieces are included in headlines describing the program. Other pieces are added when dispalying the
+# entire program of a performance.
+repertoire:
+    other:
+    -   title: "Fanfare from La Péri"
+        composer: "Paul Dukas"
+    -   title: "Wave"
+        composer: "Paul Phillips"
+        suffix: "(West Coast Premiere)"
+    -   title: "Flute Concerto"
+        composer: "Jacques Ibert"
+    main:
+    -   composer: "Ralph Vaughan Williams"
+        composerFamilyName: "Vaughan Williams"
+        title: "A Sea Symphony"
+
+
+# HOWTO: soloists is a list of individuals and the part in which they solo.
+# An individual soloist looks like this:
+# -   name: "Plácido Domingo"
+#     part: "tenor"
+soloists:
+-   name: "Nnamdi Odita-Honnah"
+    part: "flute"
+-   name: "Marnie Breckenridge"
+    part: "soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+
+# HOWTO: collaborators is a list of groups with whom we collaborate on this program.
+# Each entry in the list should be a single string that matches the key field of a record in
+# data/collaborators.yml
+collaborators:
+-   "SSO"
+
+
+# HOWTO:
+# A typical full poster record looks like this:
+# poster:
+#     pdf: "S2018-Poster.pdf"
+#     jpg:
+#         file: "S2018-Poster.jpg"
+#         width: 492
+#         height: 774
+#         caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
+# Where pdf is a string naming the pdf version of the poster in the quarter's asset directory.
+# Where jpg.file is a string naming the jpg version of the poster in the quarter's asset directory.
+# Where jpg.width and jpg.height are the pixel width and height, respectively, of the jpg image.
+# Where caption is a string to be used as hover text for the poster image when displayed on a web page.
+#
+# If either a pdf or jpg version of the poster is not available, omit that field completely from the poster
+# record.
+poster:
+    pdf: "W2019-Poster.pdf"
+    jpg:
+        file: "W2019-Poster.jpg"
+        width: 502
+        height: 789
+
+# HOWTO: directors is a list of strings that name the directors of this performance
+directors:
+-   "Paul Phillips"
+-   "Stephen M. Sano"
+
+
+# HOWTO: instructors is a list of strings that name the instructors for this quarter
+instructors:
+-   "Stephen M. Sano"
+
+
+links:
+
+
+# HOWTO: fees is a record where each field marks a specific fee for the quarter
+# Common fees include registration.
+fees:
+    registration: "$60"
+
+
+# HOWTO: limits is a record where each field lists the size of a specific limit
+# Common limits include membership
+limits:
+    membership: 220
+
+
+# HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
+# is expected to be sent out.
+preregister: "2018-12-01"
+
+
+# HOWTO: images is a list of image records associated with this quarter's program.
+# A typical images entry looks like this:
+# -   file: "Joseph_Haydn.jpg"
+#     height: 626
+#     width: 495
+#     caption: "By Thomas Hardy - Unknown, Public Domain"
+# Where file is a string naming the image file in the quarter's asset directory.
+# Where width and height are the pixel width and height, respectively, of the image.
+# Where caption is a string to be used as hover text for the image when displayed on a web page.
+#
+# If poster files are not present for a quarter, the first image in the image list will be used as a stand-in
+# for presentations where a graphic for the quarter is used. If no images and no posters are provided for a
+# quarter, the system will use a generic stand-in graphic.
+images:
+
+
+# HOWTO: rehearsals is a list of tutti rehearsals for the quarter
+# A rehearsal entry looks like this:
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     end: YYYY-MM-DD HH:MM:SS -TT
+#     location: "CRH"
+#     event: "Registration and Tutti rehearsal"
+# Where start and end are the start time and end time for the rehearsal, respectively. The time is
+# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
+# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
+# is the UTC offset for Pacific Daylight Time).
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+# Where event is a string describing the rehearsal. Typical values include "Tutti rehearsal" for most
+# rehearsals, and "Registration and Tutti rehearsal" for rehearsals that are preceded by registration
+# (typically only the first rehearsal)
+rehearsals:
+-   start: 2019-01-07 19:30:00 -08
+    end: 2019-01-07 22:00:00 -08
+    location: "CRH"
+    event: "Registration and Tutti rehearsal"
+    registration: 2019-01-07 18:30:00 -08
+-   start: 2019-01-14 19:30:00 -08
+    end: 2019-01-14 22:00:00 -08
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-01-21 19:30:00 -08
+    end: 2019-01-21 22:00:00 -08
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-01-28 19:30:00 -08
+    end: 2019-01-28 22:00:00 -08
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-02-04 19:30:00 -08
+    end: 2019-02-04 22:00:00 -08
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-02-11 19:30:00 -08
+    end: 2019-02-11 22:00:00 -08
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2019-02-18 19:30:00 -08
+    end: 2019-02-04 22:00:00 -08
+    location: "CRH"
+    event: "Tutti rehearsal"
+
+
+# HOWTO: sectionals is a list of sectional rehearsals for the quarter
+# A sectional entry looks like this:
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     end: YYYY-MM-DD HH:MM:SS -TT
+#     location: "Braun 103"
+#     event: "Women's Sectional (optional, but warmly encouraged)"
+# Where start and end are the start time and end time for the rehearsal, respectively. The time is
+# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
+# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
+# is the UTC offset for Pacific Daylight Time).
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+# Where event is a string describing the rehearsal. Typical values include "Men's Sectional (optional, but
+# warmly encouraged)" and "Women's Sectional (optional, but warmly encouraged)", as appropriate.
+sectionals:
+-   start: 2019-01-16 17:30:00 -08
+    end: 2019-01-16 18:30:00 -08
+    location: "Braun 103"
+    event: "Women's Sectional (optional, but warmly encouraged)"
+-   start: 2019-01-30 17:30:00 -08
+    end: 2019-01-30 18:30:00 -08
+    location: "Braun 103"
+    event: "Women's Sectional (optional, but warmly encouraged)"
+-   start: 2019-01-23 17:30:00 -08
+    end: 2019-01-23 18:30:00 -08
+    location: "Braun 103"
+    event: "Men's Sectional (optional, but warmly encouraged)"
+-   start: 2019-02-06 17:30:00 -08
+    end: 2019-02-06 18:30:00 -08
+    location: "Braun 103"
+    event: "Men's Sectional (optional, but warmly encouraged)"
+
+
+# HOWTO: dresses is a list of dress rehearsals
+# A dress rehearsal entry looks like this:
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     location: "Bing"
+# Where start is the starting time for the dress rehearsal. The time is specified in YYYY-MM-DD for the date,
+# HH:MM:SS for the local time, and TT is a two digit number that specifies the UTC offset for the time
+# zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07 is the UTC offset for Pacific Daylight
+# Time).
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the dress rehearsal will take place.
+dresses:
+-   start: 2019-02-25 19:00:00 -08
+    location: "Bing"
+-   start: 2019-02-28 19:00:00 -08
+    location: "Bing"
+
+
+# HOWTO: concerts is a list of concert dates
+# A concert entry looks like this:
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     call: YYYY-MM-DD HH:MM:SS -TT
+#     location: "Bing"
+# Where start and call are the curtain time and call time for the concert, respectively. The time is
+# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
+# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
+# is the UTC offset for Pacific Daylight Time).
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+#
+# IMPORTANT: Exactly one concert entry MUST be labelled with the &first-concert anchor. The concert so
+# labelled should be the first concert in this quarter's series.
+concerts:
+-   date: "2019-03-01"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+-   date: "2019-03-02"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+
+
+# HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
+# schedule.
+# An individual event looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     location: "MemChu"
+#     title: "Messiah Sing/Play Along"
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the event will take place.
+# Where title is a string that labels the event itself.
+# Where date is the date of the event, specified in YYYY-MM-DD format.
+# Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
+events:
+
+
+# HOWTO: description contains HTML that is included on pages which need a synopsis of
+# the concert. The home page is a typical location where such text is used.
+description: >
+    <p>
+        The Stanford Symphonic Chorus, in collaboration with the Stanford Symphony Orchestra, presents Ralph Vaughan Williams' <em>A Sea Symphony</em>.
+    </p>
+

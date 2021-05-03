@@ -1,0 +1,68 @@
+quarter: "Fall 2007"
+
+syllabus:
+# MISSING syllabus for Fall 2007
+
+repertoire:
+    other:
+    -   composer: "Ralph Vaughan Williams"
+        composerFamilyName: "Vaughan Williams"
+        title: "Fantasia on Greensleeves"
+    -   composer: "Maurice Ravel"
+        title: "Pavane pour une infante defunte"
+        translation: "Pavane for a Dead Princess"
+    -   composer: "Gustav Holst"
+        title: "Brook Green Suite"
+    -   composer: "Maurice Ravel"
+        title: "Ma Mere l'Oye"
+        translation: "Mother Goose Suite"
+    main:
+    -   composer: "Francis Poulenc"
+        title: "Gloria"
+
+soloists:
+
+collaborators:
+- "PSO"
+
+poster:
+# MISSING poster for Fall 2007
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: "$35"
+    
+limits:
+#    membership: 
+
+preregister:
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Fall 2000
+
+dresses:
+
+concerts:
+-   date: "2007-11-30"
+    start: "20:00"
+    call: "19:00"
+    location: 
+-   date: "2007-12-02"
+    start: "13:30"
+    call: "12:30"
+    location: 
+# MISSING concert locations for Fall 2007
+
+events:
+
+
+
+

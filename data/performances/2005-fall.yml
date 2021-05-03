@@ -1,0 +1,86 @@
+quarter: "Fall 2005"
+
+syllabus:
+# MISSING syllabus for Fall 2005
+
+repertoire:
+    main:
+    -   composer: "Johannes Brahms"
+        title: "Festé und Gedenksprüche"
+        catalog: "Op. 109"
+        suffix: "arr. for brass by Fred W. Teuber"
+    other:
+    -   composer: "Giancarlo Aquilanti"
+        title: "Prima Missa"
+    -   composer: "Arcangel Correli"
+        title: "Concerto Grosso in G minor, Fatto per la note de natale"
+        catalog: "Op. 6 No. 8"
+    -   composer: "Ralph Vaughan Williams"
+        composerFamilyName: "Vaughan Williams"
+        title: "Fantasia on Christmas Carols"
+    -   composer: "John Rutter"
+        title: "Star Carol"
+    -   composer: "John Rutter"
+        title: "The 12 Days of Christmas"
+
+
+soloists:
+-   name: "Mary Linduska"
+    part: "soprano"
+-   name: "Reed Criddle"
+    part: "tenor"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+-   "PSO"
+
+poster:
+    pdf: "SSC_E-FlyerFall2005.pdf"
+    jpg:
+        file: "SSC_E-FlyerFall2005.jpg"
+        height: 590
+        width: 900
+        caption: "Holiday celebration, Fall 2005"
+
+directors:
+-   "Geoffrey Gallegos"
+-   "Giancarlo Aquilanti"
+-   "Stephen M. Sano"
+-   "Mitchell Sardou Klein"
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: "$35"
+    
+limits:
+#    membership: 
+
+preregister:
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Fall 2005
+
+dresses:
+
+concerts:
+-   date: "2005-12-02"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2005-12-04"
+    start: "13:30"
+    call: "12:30"
+    location: "MemChu"
+
+events:
+
+
+
+

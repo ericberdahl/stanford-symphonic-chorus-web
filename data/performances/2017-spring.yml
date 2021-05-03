@@ -1,0 +1,116 @@
+quarter: "Spring 2017"
+
+syllabus: "SSC Syllabus Spring 2017"
+
+repertoire:
+    main:
+    -   ref: "finzi/magnificat"
+        composer: "Gerald Finzi" 
+        title: "Magnificat"
+    other:
+    -   composer: "Gerald Finzi"
+        title: "God is Gone Up"
+        ref: "finzi/god is gone up"
+    -   composer: "John Rutter"
+        title: "Magnificat"
+        ref: "rutter/magnificat"
+
+soloists:
+
+collaborators:
+
+poster:
+    pdf: "S2017-Poster.pdf"
+    jpg:
+        file: "S2017-Poster.jpg"
+        width: 634
+        height: 990
+        caption: "Magnificat!"
+
+directors:
+
+instructors:
+
+links:
+
+fees:
+    registration: "$60"
+    
+limits:
+#    membership: 220
+
+preregister: 
+
+images:
+
+rehearsals:
+-   start: 2017-03-27 19:30:00 -07
+    end: 2017-03-27 22:00:00 -07
+    location: "CRH"
+    event: "Registration and Tutti rehearsal"
+    registration: 2017-03-27 18:30:00 -07
+-   start: 2017-04-10 19:30:00 -07
+    end: 2017-04-10 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2017-04-17 19:30:00 -07
+    end: 2017-04-17 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2017-04-22 10:00:00 -07
+    end: 2017-04-22 12:30:00 -07
+    location: "Dink"
+    event: "Tutti rehearsal"
+-   start: 2017-04-24 19:30:00 -07
+    end: 2017-04-24 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2017-05-01 19:30:00 -07
+    end: 2017-05-01 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+-   start: 2017-05-08 19:30:00 -07
+    end: 2017-05-08 22:00:00 -07
+    location: "CRH"
+    event: "Tutti rehearsal"
+
+sectionals:
+-   start: 2017-04-12 17:30:00 -07
+    end: 2017-04-12 18:30:00 -07
+    location: "Braun 103"
+    event: "Women's sectional (optional, but warmly encouraged)"
+-   start: 2017-04-26 17:30:00 -07
+    end: 2017-04-26 18:30:00 -07
+    location: "Braun 103"
+    event: "Women's sectional (optional, but warmly encouraged)"
+-   start: 2017-04-19 17:30:00 -07
+    end: 2017-04-19 18:30:00 -07
+    location: "Braun 103"
+    event: "Men's sectional (optional, but warmly encouraged)"
+-   start: 2017-05-03 17:30:00 -07
+    end: 2017-05-03 18:30:00 -07
+    location: "Braun 103"
+    event: "Men's sectional (optional, but warmly encouraged)"
+
+dresses:
+-   start: 2017-05-09 19:00:00 -07
+    location: "MemChu"
+-   start: 2017-05-11 19:00:00 -07
+    location: "MemChu"
+
+concerts:
+-   date: "2017-05-12"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2017-05-13"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+events:
+
+
+
+
+

@@ -1,0 +1,70 @@
+quarter: "Spring 2010"
+
+syllabus:
+# MISSING: syllabus for Spring 2010
+
+repertoire:
+    main:
+    -   ref: "berlioz/requiem"
+        composer: "Hector Berlioz"
+        title: "Requiem"
+    other:
+    -   composer: "Mark Applebaum"
+        title: "Martian Anthropology 2"
+
+soloists:
+-   name: "Jimmy Kansau"
+    part: "tenor"
+
+collaborators:
+-   "SSO"
+-   "university singers"
+
+poster:
+    pdf: "SSC-E-FlyerSpring2010.pdf"
+    jpg:
+        file: "SSC-E-FlyerSpring2010.jpg"
+        height: 900
+        width: 666
+        caption: "Spring 2010, Hector Berlioz, Grand Messe des Mortes, Op.5 (Requiem); Mark Applebaum, Martian Anthropology 2; in memoriam J. Karla Lemon, 1954-2009"
+
+directors:
+-   "Jindong Cai"
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Spring 2010
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "2010-05-21"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2010-05-22"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+events:
+
+
+
+

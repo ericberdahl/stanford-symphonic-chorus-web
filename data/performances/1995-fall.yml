@@ -1,0 +1,62 @@
+quarter: "Fall 1995"
+
+syllabus:
+# MISSING syllabus for Fall 1995
+
+
+repertoire:
+    main:
+    -   composer: "Francis Poulenc"
+        title: "Gloria"
+    other:
+    -   composer: "Hector Berlioz"
+        title: "L'enfance du Christ"
+        prefix: "scenes from"
+
+soloists:
+-   name: "Nancy Wait Kromm"
+    part: "soprano"
+-   name: "Leroy Kromm"
+    part: "baritone"
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING posters for Fall 1995
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: "$35"
+    
+limits:
+#    membership: 
+
+preregister:
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Fall 1995
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "1995-12-02"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "1995-12-03"
+    start: "14:00"
+    call: "13:00"
+    location: "MemChu"
+
+events:

@@ -1,0 +1,71 @@
+quarter: "Spring 2002"
+
+syllabus:
+# MISSING: syllabus for Spring 2002
+
+repertoire:
+    other:
+    -   composer: "Schubert"
+        title: "Rosamunde Overture"
+    -   composer: "Johannes Brahms"
+        title: "Gesang der Parzen"
+    main:
+    -   composer: "Anton Bruckner"
+        title: "Te Deum"
+
+soloists:
+-   name: "Kristin Genis-Lund"
+    part: "soprano"
+-   name: "Claire Giovanetti"
+    part: "mezzo-soprano"
+-   name: "Jonathon Hodel"
+    part: "tenor"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+
+poster:
+# MISSING poster for Spring 2002
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+-   url: "performances/S2003/parzen.html"
+    text: "Text and translation of <em>Gesang der Parzen</em>"
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Spring 2002
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "2002-05-30"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2002-05-31"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+events:
+
+
+
+

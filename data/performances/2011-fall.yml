@@ -1,0 +1,79 @@
+quarter: "Fall 2011"
+
+syllabus:
+# MISSING: syllabus for Fall 2011
+
+repertoire:
+    main:
+    -   composer: "Brian Holmes"
+        prefix: "premier of"
+        title: "Come Christmas"
+    other:
+    -   composer: "Ralph Vaughan Williams"
+        composerFamilyName: "Vaughan Williams"
+        title: "Fantasia on Christmas Carols"
+    -   composer: "John Rutter"
+        title:
+        -   "Blow, Blow, Thou Winter Wind"
+        -   "Good Ale"
+        ref: "rutter/blow blow/good ale"
+    -   composer: "Philip Lane"
+        title: "Wassail Dances"
+
+soloists:
+-   name: "Jeffrey Fields"
+    part: "baritone"
+-   name: "Lydia Zodda"
+    part: "soprano"
+
+collaborators:
+-   "PSO"
+
+poster:
+    pdf: "SSCPosterF2011.pdf"
+    jpg:
+        file: "SSCPosterF2011.jpg"
+        height: 900
+        width: 600
+        caption: "Stanford Symphonic Chorus and Peninsula Symphony Orchestra Holiday Concert"
+
+directors:
+# MISSING: director for Fall 2011
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+    registration: "$40"
+    
+limits:
+#    membership: 220
+
+preregister:
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Fall 2011
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "2011-11-18"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2011-11-20"
+    start: "13:30"
+    call: "12:30"
+    location: "MemChu"
+
+events:
+
+
+
+

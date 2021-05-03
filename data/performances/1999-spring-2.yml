@@ -1,0 +1,67 @@
+quarter: "Spring 1999 (Program #2)"
+
+syllabus:
+# MISSING: syllabus for Spring 1999
+
+repertoire:
+    main:
+    -   composer: "Aaron Copland"
+        title: "Suite from Our Town"
+    other:
+    -   composer: "Alexander Glazunov"
+        title: "Violin Concerto"
+        catalog: Op. 82
+    -   composer: "Arvo Pärt"
+        title: "Credo"
+    -   title: "Works for taiko drum"
+    -   composer: "Alexander Borodin"
+        title: 'Polovtsian Dances'
+    -   composer: "Melissa Hui"
+        title: "Always"
+
+soloists:
+-   name: "Stephanie Chase"
+    part: "violin"
+
+collaborators:
+-   "PSO"
+-   "taiko"
+
+poster:
+# MISSING poster for Spring 1999
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+links:
+
+fees:
+#    registration: 
+    
+limits:
+#    membership: 
+
+preregister: 
+
+images:
+
+rehearsals:
+# MISSING: rehearsal schedule for Spring 1999-2
+
+sectionals:
+
+dresses:
+
+concerts:
+-   date: "1999-05-23"
+    start: "14:00"
+    call: "13:00"
+    location: "Dink"
+
+events:
+
+
+
+
