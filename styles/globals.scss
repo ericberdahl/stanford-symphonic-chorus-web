@@ -78,6 +78,7 @@ body {
     background: white;
 }
 
+/*
 ol,
 ul {
     list-style: none;
@@ -106,6 +107,7 @@ blockquote,
 q {
     quotes: "" "";
 }
+*/
 
 /****************************************************************************************
 Layout Stylesheet: defines general widths, margins, floats, a classes, and other display attributes
@@ -152,6 +154,7 @@ img {
 /**********************************
 Headers
 ************************************/
+/*
 h1 {
   font-size: 2.9167em;
   font-family: $font-family-serif;
@@ -185,10 +188,12 @@ h5 {
   font-family: $font-family-sanserif;
   font-weight: normal;
 }
+*/
 	
 /**********************************
 Block-level
 ***********************************/
+/*
 p,
 hr,
 h1,
@@ -212,6 +217,7 @@ ul li {
   color: $color-warmgray90;
   line-height: 1.3333em;
 }
+*/
 
 /* Print CSS - remove red banner body background */
 @media print {

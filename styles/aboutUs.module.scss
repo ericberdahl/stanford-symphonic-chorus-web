@@ -4,9 +4,9 @@
     h2 {
 		border-bottom: 6px solid $color-warmgray;
 		letter-spacing: 2px;
-		color: $color-warmgray90;
+		color: $color-warmgray;
 
-        font-size: 0.833em;
+        font-size: 0.5729rem;
         font-family: $font-family-serif;
         
         text-transform: uppercase;
@@ -15,9 +15,10 @@
     }
 
     h3 {
-        font-size: 1.1667em;
+        font-size: 0.8021rem;
         font-family: $font-family-sanserif;
         font-weight: normal;
+        color: $color-warmgray90;
 
         margin-bottom: 5px;
 		padding: 3px 0 0 0;
@@ -28,6 +29,7 @@
 		margin-bottom: 20px;
 		font-size: 1.1667em;
 		line-height: 1.3333em;
+        color: $color-warmgray90;
 	}
 
 }
