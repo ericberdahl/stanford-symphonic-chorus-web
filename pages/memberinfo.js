@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import AboutUs from '../components/aboutUs'
 import Layout from '../components/layout'
 import PageNavigation from '../components/pageNavigation'
@@ -14,7 +16,7 @@ function Introduction(props) {
             <PageNavigation items={props.navItems}/>
 
             <TitledSegment title="Member Tools">
-                <p><a href={props.scheduleURL}>Rehearsal Schedule</a></p>
+                <p><Link href={props.scheduleRoute}><a>Rehearsal Schedule</a></Link></p>
                 {props.syllabus &&
                     <p>
                         {props.quarter} Syllabus (TODO make file links to syllabus)
@@ -76,7 +78,7 @@ function Sidebar(props) {
                     <li><a href="http://www.mymusicfolders.com/index.html">mymusicfolders.com</a></li>
                 </ul>
             </TitledSegment>
-            <TitledSegment title={<a href={props.scheduleURL}>Rehearsal Schedule</a>}>
+            <TitledSegment title={<Link href={props.scheduleRoute}><a>Rehearsal Schedule</a></Link>}>
                 <p>
                     Listing of rehearsals, sectionals and performances for the current quarter.
                 </p>
@@ -164,11 +166,11 @@ export default function MemberInfo({ pageData }) {
                     (See <a href="#folders">Music Folders</a> on this page for resources.)
                 </p>
 
-                <h3><a href="/nofragrance.html">Fragrance-Free Policy</a></h3>
+                <h3><Link href="/nofragrance"><a>Fragrance-Free Policy</a></Link></h3>
                 <p>
                     Several people in the chorus are particularly sensitive to scented products such as perfume and hair spray; all of us have to sing in close quarters and benefit by having air to breathe which is as pure as possible.
                     On all rehearsal days, and especially on dress rehearsal and performance days, we request you do not use any such products.
-                    For further information, including information on obtaining scent-free alternatives, see <a href="/nofragrance.html">extensive guidelines.</a>
+                    For further information, including information on obtaining scent-free alternatives, see <Link href="/nofragrance"><a>extensive guidelines.</a></Link>
                 </p>
 
                 <h2 id="rehearsals">Rehearsals</h2>
@@ -214,7 +216,7 @@ export async function getStaticProps({ params }) {
         registrationFee: "$60",
         quarter: "Winter 2020",
         syllabus: "/syllabi/Winter 2020",
-        scheduleURL: ""
+        scheduleRoute: "/performances/2020-winter"
     }
 
     return {
