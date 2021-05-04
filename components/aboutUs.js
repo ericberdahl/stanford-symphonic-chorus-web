@@ -15,10 +15,10 @@ export default function AboutUs(props) {
                 caption="Rehearsal, Memorial Church, 25 February 2010. Photo by R. A. Wilson"
                 img_width={149}/>
 
-            <h3><Link href="/MemberPage#c1"><a>How to Join</a></Link></h3>
-            <p>See <em><Link href="/MemberPage#c1"><a>Joining the Chorus</a></Link></em> for information on auditions and basic member requirements.</p>
+            <h3><Link href="/memberinfo#joining"><a>How to Join</a></Link></h3>
+            <p>See <em><Link href="/memberinfo#joining"><a>Joining the Chorus</a></Link></em> for information on auditions and basic member requirements.</p>
 
-            <h3><Link href="/MemberPage"><a>Member Information</a></Link></h3>
+            <h3><Link href="/memberinfo"><a>Member Information</a></Link></h3>
             <p>See our member page for information about rehearsals, and information and member resources. </p>
 
             <h3><Link href="/performances"><a>Performances</a></Link></h3>
