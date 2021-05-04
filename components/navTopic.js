@@ -9,7 +9,7 @@ export default function NavTopic(props) {
         ['index', 'Symphonic Chorus Home'],
         ['about', 'About the Chorus'],
         ['performances', 'Performances'],
-        ['MemberPage', 'Member Information'],
+        ['memberinfo', 'Member Information'],
         ['contact', 'Contact'],
     ];
 
