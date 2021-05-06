@@ -36,6 +36,6 @@
     "metalsmith-prefixoid": "^1.0.3",
     "moment-timezone": "^0.5.31",
     "node-yaml": "^4.0.1",
-    "sanitize-html": "^1.27.4"
+    "sanitize-html": "^2.3.2"
   }
 }
