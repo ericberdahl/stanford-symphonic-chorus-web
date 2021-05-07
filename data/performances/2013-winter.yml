@@ -38,11 +38,11 @@ instructors:
 
 links:
 
-fees:
-#    registration: "$40"
+registrationFee:
+# MISSING: registrationFee for Winter 2013
     
-limits:
-#    membership: 220
+membershipLimit:
+# MISSING: membershipLimit for Winter 2013
 
 preregister: 
 

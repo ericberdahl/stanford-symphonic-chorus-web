@@ -41,11 +41,10 @@ links:
 -   url: "https://youtu.be/9A1yGkgmviE"
     text: "Performance on YouTube"
 
-fees:
-    registration: "$60"
+registrationFee: "$60"
     
-limits:
-#    membership: 220
+membershipLimit:
+# MISSING: membershipLimit for Winter 2016
 
 preregister:
 

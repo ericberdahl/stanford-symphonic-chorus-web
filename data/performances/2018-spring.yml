@@ -35,11 +35,11 @@ instructors:
 
 links:
 
-fees:
-#    registration: "$60"
+registrationFee:
+# MISSING: registrationFee for Spring 2018
     
-limits:
-#    membership: 220
+membershipLimit:
+# MISSING: membershipLimit for Spring 2019
 
 preregister: "2018-03-30"
 

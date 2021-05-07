@@ -25,11 +25,11 @@ instructors:
 
 links:
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Spring 2008-2
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Spring 2008-2
 
 preregister: 
 

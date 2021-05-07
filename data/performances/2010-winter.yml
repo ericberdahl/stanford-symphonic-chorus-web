@@ -47,11 +47,11 @@ links:
 -   url: "performances/W2010/gallery/album/gallery.html"
     text: "Photo gallery"
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Winter 2010
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Winter 2010
 
 preregister: 
 

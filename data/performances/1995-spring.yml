@@ -36,11 +36,11 @@ links:
 -   url: "performances/S1995/text.html"
     text: "Text"
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Spring 1995
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Spring 1995
 
 preregister: 
 

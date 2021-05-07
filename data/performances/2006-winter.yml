@@ -44,11 +44,11 @@ links:
 -   url: "performances/S1995/text.html"
     text: "Text to <em>Ein Deutsches Requiem</em>"
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Winter 2006
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Winter 2006
 
 preregister: 
 

@@ -22,11 +22,11 @@ directors:
 
 links:
 
-fees:
-#    registration: "$40"
+registrationFee:
+# MISSING: registrationFee for Spring 2013
     
-limits:
-#    membership: 220
+membershipLimit:
+# MISSING: membershipLimit for Spring 2013
 
 preregister: 
 

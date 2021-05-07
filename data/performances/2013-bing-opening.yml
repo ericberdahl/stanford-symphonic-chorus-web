@@ -33,11 +33,11 @@ links:
 -   url: "http://vimeo.com/56115622"
     text: "Bing Concert Hall Fly Through"
 
-fees:
-#    registration: "$40"
+registrationFee:
+# MISSING: registrationFee for Bing Opening 2008
     
-limits:
-#    membership: 220
+membershipLimit:
+# MISSING: membershipLimit for Bing Opening 2008
 
 preregister:
 

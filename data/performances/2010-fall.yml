@@ -44,11 +44,10 @@ instructors:
 
 links:
 
-fees:
-    registration: "$35"
+registrationFee: "$35"
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Fall 2010
 
 preregister:
 

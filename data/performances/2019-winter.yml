@@ -92,16 +92,14 @@ instructors:
 links:
 
 
-# HOWTO: fees is a record where each field marks a specific fee for the quarter
-# Common fees include registration.
-fees:
-    registration: "$60"
+# HOWTO: registrationFee is the participation fee for the quarter, typically waived
+# for students and faculty
+registrationFee: "$60"
 
 
-# HOWTO: limits is a record where each field lists the size of a specific limit
-# Common limits include membership
-limits:
-    membership: 220
+# HOWTO: membershipLimit is the maximum number of members allowed to register for
+# this quarter
+membershipLimit: 220
 
 
 # HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail

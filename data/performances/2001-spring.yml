@@ -23,11 +23,11 @@ instructors:
 
 links:
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Spring 2001
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Spring 2001
 
 preregister: 
 

@@ -39,11 +39,10 @@ instructors:
 
 links:
 
-fees:
-    registration: "$60"
+registrationFee: "$60"
     
-limits:
-#    membership: 220
+membershipLimit:
+# MISSING: membershipLimit for Winter 2018
 
 preregister: 2017-12-01
 

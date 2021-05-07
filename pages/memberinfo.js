@@ -6,6 +6,8 @@ import PageNavigation from '../components/pageNavigation'
 import Person from '../components/person'
 import TitledSegment from '../components/titledSegment'
 
+import Model from '../common/model'
+
 import styles from '../styles/memberinfo.module.scss'
 
 // TODO /assets/Choral Studies Liability Waiver Form.pdf
@@ -17,7 +19,7 @@ function Introduction(props) {
 
             <TitledSegment title="Member Tools">
                 <p><Link href={props.scheduleRoute}><a>Rehearsal Schedule</a></Link></p>
-                {props.syllabus &&
+                {props.syllabusRoute &&
                     <p>
                         {props.quarter} Syllabus (TODO make file links to syllabus)
                     </p>
@@ -210,13 +212,16 @@ export default function MemberInfo({ pageData }) {
 }
 
 export async function getStaticProps({ params }) {
+    const model = await Model.singleton;
+    const currentQuarter = model.currentQuarter;
+    
     // TODO read data from the Model
     const pageData = {
-        membershipLimit: 220,
-        registrationFee: "$60",
-        quarter: "Winter 2020",
-        syllabus: "/syllabi/Winter 2020",
-        scheduleRoute: "/performances/2020-winter"
+        membershipLimit: currentQuarter.membershipLimit,
+        registrationFee: currentQuarter.registrationFee,
+        quarter: currentQuarter.quarter,
+        syllabusRoute: currentQuarter.syllabusRoute,
+        scheduleRoute: currentQuarter.scheduleRoute
     }
 
     return {

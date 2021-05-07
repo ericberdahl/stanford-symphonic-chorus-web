@@ -24,11 +24,11 @@ instructors:
 
 links:
 
-fees:
-#    registration: "$35"
+registrationFee:
+# MISSING: registrationFee for Fall 2001
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Fall 2001
 
 preregister:
 

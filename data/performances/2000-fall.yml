@@ -27,11 +27,11 @@ links:
 -   url: "performances/S1995/text.html"
     text: "Text"
 
-fees:
-#    registration: "$35"
+registrationFee:
+# MISSING: registrationFee for Fall 2000
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Fall 2000
 
 preregister:
 

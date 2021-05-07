@@ -37,11 +37,11 @@ links:
 -   url: "performances/S2003/parzen.html"
     text: "Text and translation of <em>Gesang der Parzen</em>"
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Spring 2002
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Spring 2002
 
 preregister: 
 

@@ -41,11 +41,11 @@ instructors:
 
 links:
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Winter 2004
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Winter 2004
 
 preregister: 
 

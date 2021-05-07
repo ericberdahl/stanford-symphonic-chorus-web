@@ -51,11 +51,11 @@ instructors:
 
 links:
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Spring 2011
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Spring 2011
 
 preregister: 
 

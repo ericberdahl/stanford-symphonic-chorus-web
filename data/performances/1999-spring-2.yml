@@ -37,11 +37,11 @@ instructors:
 
 links:
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Spring 1999-2
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Spring 1999-2
 
 preregister: 
 

@@ -40,11 +40,11 @@ links:
 -   url: "performances/W2002/cminormass.html"
     text: "A Preface"
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Winter 2002
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Winter 2002
 
 preregister: 
 

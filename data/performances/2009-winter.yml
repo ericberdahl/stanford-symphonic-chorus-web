@@ -54,11 +54,11 @@ links:
 -   url: "performances/W2009/CosmicSolitude.m4v"
     text: "Cosmic Solitude sound with video of score, produced by Michael Good"
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Winter 2009
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Winter 2009
 
 preregister: 
 

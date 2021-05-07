@@ -44,11 +44,10 @@ instructors:
 
 links:
 
-fees:
-    registration: "$40"
+registrationFee: "$40"
     
-limits:
-#    membership: 220
+membershipLimit:
+# MISSING: membershipLimit for Spring 2015
 
 preregister: 
 

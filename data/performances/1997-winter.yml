@@ -36,11 +36,11 @@ instructors:
 
 links:
 
-fees:
-#    registration: 
+registrationFee:
+# MISSING: registrationFee for Winter 1997
     
-limits:
-#    membership: 
+membershipLimit:
+# MISSING: membershipLimit for Winter 1997
 
 preregister: 
 
