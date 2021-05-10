@@ -23,7 +23,7 @@
     "handlebars-layouts": "^3.1.4",
     "jstransformer-handlebars": "^1.1.0",
     "jstransformer-less": "^2.3.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "metalsmith": "^2.3.0",
     "metalsmith-broken-link-checker": "^1.0.2",
     "metalsmith-browser-sync": "git+https://github.com/ericberdahl/metalsmith-browser-sync.git",
