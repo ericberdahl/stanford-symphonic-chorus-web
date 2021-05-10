@@ -31,7 +31,7 @@ export default class Performance {
     get registrationFee() { return this.#registrationFee; }
     get membershipLimit() { return this.#membershipLimit; }
 
-    static deserialize(route, data) {
+    static deserialize(data, route, options) {
         const result = new Performance();
 
         result.#scheduleRoute = route;
@@ -40,6 +40,21 @@ export default class Performance {
         result.#syllabusRoute = data.syllabus;
         result.#registrationFee = data.registrationFee;
         result.#membershipLimit = data.membershipLimit;
+
+        // TODO deserialize repertoire and mainPieces
+        // TODO deserialize soloists
+        // TODO deserialize collaborators
+        // TODO deserialize posters
+        // TODO deserialize directors and instructors
+        // TODO deserialize links
+        // TODO deserialize preregistration date
+        // TODO deserialize images
+        // TODO deserialize rehearsals
+        // TODO deserialize sectionals
+        // TODO deserialize dress rehearsals
+        // TODO deserialize concerts
+        // TODO deserialize events
+        // TODO deserialize description
 
         return result;
     }

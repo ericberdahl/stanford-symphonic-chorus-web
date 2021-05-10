@@ -1,27 +1,15 @@
+import fs from 'fs/promises';
+import path from 'path';
 import process from 'process';
+
+import yaml from 'yaml';
 
 import Performance from './performance'
 
-async function createModel() {
-    const model = new Model();
-
-    const basePath = process.cwd();
-
-    const route = "/performances/2020-winter";
-    const data = {
-        membershipLimit: 220,
-        registrationFee: "$60",
-        quarter: "Winter 2020",
-        syllabus: "/syllabi/Winter 2020",
-    };
-
-    model.addPerformance(Performance.deserialize(route, data));
-
-    return model;
-}
-
+const CONFIG_FILENAME = path.join('data', 'main.yml');
 export default class Model {
-    #performances   = [];
+    #performances       = [];
+    #currentPerformance = null;
 
     constructor() {
     }
@@ -32,16 +20,48 @@ export default class Model {
     }
 
     get currentQuarter() {
-        // TODO depend on current quarter data
-        return this.#performances[0];
+        return this.#currentPerformance;
     }
 
     static #sSingleton = null;
     static get singleton() {
         if (!this.#sSingleton) {
-            this.#sSingleton = createModel();
+            this.#sSingleton = this.createModel();
         }
 
         return this.#sSingleton;
     }
+
+    static async createModel() {
+        const basePath = process.cwd();
+
+        const config = yaml.parse(await fs.readFile(path.join(basePath, CONFIG_FILENAME), 'utf8'));
+
+        const performanceOptions = {
+            timezone: config.timezone
+        }
+
+        const model = new Model();
+
+        const dirEntries = await fs.readdir(path.join(basePath, 'data', 'performances'), { withFileTypes: true });
+        const performancesEntries = dirEntries.filter((dirent) => { return dirent.isFile(); })
+                                        .map((dirent) => { return dirent.name; });
+        const performances = await Promise.all(performancesEntries.map(async (filename) => {
+            const slug = path.parse(filename).name;
+            const route = '/performances/' + slug;
+            
+            const filepath = path.join(basePath, 'data', 'performances', filename);
+            const contents = await fs.readFile(filepath, 'utf8');
+            const performance = Performance.deserialize(yaml.parse(contents), route, performanceOptions);
+
+            model.addPerformance(performance);
+            if (slug == config.currentQuarter) {
+                model.#currentPerformance = performance;
+            }
+
+            return performance;
+        }));
+    
+        return model;
+    }    
 }
