@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon';
+
 export default class Performance {
     #scheduleRoute      = "";
     #quarter            = "";
@@ -25,11 +27,12 @@ export default class Performance {
 
     }
 
-    get scheduleRoute() { return this.#scheduleRoute; }
-    get quarter() { return this.#quarter; }
-    get syllabusRoute() { return this.#syllabusRoute; }
-    get registrationFee() { return this.#registrationFee; }
     get membershipLimit() { return this.#membershipLimit; }
+    get preregisterDate() { return this.#preregisterDate; }
+    get quarter() { return this.#quarter; }
+    get registrationFee() { return this.#registrationFee; }
+    get scheduleRoute() { return this.#scheduleRoute; }
+    get syllabusRoute() { return this.#syllabusRoute; }
 
     static deserialize(data, route, options) {
         const result = new Performance();
@@ -40,6 +43,9 @@ export default class Performance {
         result.#syllabusRoute = data.syllabus;
         result.#registrationFee = data.registrationFee;
         result.#membershipLimit = data.membershipLimit;
+        if (data.preregister) {
+            result.#preregisterDate = DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: options.timezone });
+        }
 
         // TODO deserialize repertoire and mainPieces
         // TODO deserialize soloists
@@ -47,7 +53,6 @@ export default class Performance {
         // TODO deserialize posters
         // TODO deserialize directors and instructors
         // TODO deserialize links
-        // TODO deserialize preregistration date
         // TODO deserialize images
         // TODO deserialize rehearsals
         // TODO deserialize sectionals
