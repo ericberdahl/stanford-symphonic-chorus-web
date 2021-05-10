@@ -12,8 +12,6 @@ import { DateTime } from 'luxon'
 
 import styles from '../styles/memberinfo.module.scss'
 
-// TODO /assets/Choral Studies Liability Waiver Form.pdf
-
 function Introduction(props) {
     // If the member info page ever needs to be displayed for historical performances, this logic and content
     // need to be adjusted to accommodate the fact that we don't have preregister dates for all performances
