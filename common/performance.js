@@ -1,9 +1,39 @@
+import fs from 'fs';
+import path from 'path';
+import process from 'process';
+import util from 'util';
+
 import { DateTime } from 'luxon';
+
+function findFileVariants(baseRoute, variants)
+{
+    const publicDir = path.join(process.cwd(), 'public');
+
+    let result = [];
+    variants.forEach((variant) => {
+        const route = baseRoute + '.' + variant.toLowerCase();
+        const filePath = path.join(publicDir, route);
+        try {
+            fs.accessSync(filePath);
+            result.push({
+                route: route,
+                variant: variant
+            });
+        }
+        catch (e) {
+            // noop - access failed
+            // console.debug('no access for %s', filePath);
+        }
+
+    });
+
+    return result;
+}
 
 export default class Performance {
     #scheduleRoute      = "";
     #quarter            = "";
-    #syllabusRoute      = "";
+    #syllabusRoutes     = [];
     #repertoire         = [];
     #mainPieces         = [];
     #soloists           = [];
@@ -32,7 +62,7 @@ export default class Performance {
     get quarter() { return this.#quarter; }
     get registrationFee() { return this.#registrationFee; }
     get scheduleRoute() { return this.#scheduleRoute; }
-    get syllabusRoute() { return this.#syllabusRoute; }
+    get syllabusRoutes() { return this.#syllabusRoutes; }
 
     static deserialize(data, route, options) {
         const result = new Performance();
@@ -40,11 +70,19 @@ export default class Performance {
         result.#scheduleRoute = route;
 
         result.#quarter = data.quarter;
-        result.#syllabusRoute = data.syllabus;
         result.#registrationFee = data.registrationFee;
         result.#membershipLimit = data.membershipLimit;
+
         if (data.preregister) {
             result.#preregisterDate = DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: options.timezone });
+        }
+
+        if (data.syllabus) {
+            const baseRoute = '/assets/syllabi/' + data.syllabus;
+            result.#syllabusRoutes = findFileVariants(baseRoute, ['PDF', 'DOCX', 'DOC']);
+            if (0 == result.#syllabusRoutes.length) {
+                throw new Error(util.format('No syllabi variants found for "%s"', data.syllabus));
+            }
         }
 
         // TODO deserialize repertoire and mainPieces

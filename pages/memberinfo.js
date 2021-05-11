@@ -12,6 +12,23 @@ import { DateTime } from 'luxon'
 
 import styles from '../styles/memberinfo.module.scss'
 
+function FileLinks(props) {
+    const links = [];
+    props.files.forEach((f) => {
+        links.push(<a href={f.route}>{f.variant}</a>);
+        links.push(' | ');
+    });
+    if (0 < links.length) {
+        links.pop();
+    }
+
+    return (
+        <>
+            {links}
+        </>
+    );
+}
+
 function Introduction(props) {
     // If the member info page ever needs to be displayed for historical performances, this logic and content
     // need to be adjusted to accommodate the fact that we don't have preregister dates for all performances
@@ -24,9 +41,9 @@ function Introduction(props) {
 
             <TitledSegment title="Member Tools">
                 <p><Link href={props.scheduleRoute}><a>Rehearsal Schedule</a></Link></p>
-                {props.syllabusRoute &&
+                {props.syllabusRoutes &&
                     <p>
-                        {props.quarter} Syllabus (TODO make file links to syllabus)
+                        {props.quarter} Syllabus (<FileLinks files={props.syllabusRoutes}/>)
                     </p>
                 }
                 <p><a href="/assets/Choral Studies Liability Waiver Form.pdf">Choral Studies Liability Waiver</a></p>
@@ -226,7 +243,7 @@ export async function getStaticProps({ params }) {
         quarter: currentQuarter.quarter,
         registrationFee: currentQuarter.registrationFee,
         scheduleRoute: currentQuarter.scheduleRoute,
-        syllabusRoute: currentQuarter.syllabusRoute
+        syllabusRoutes: currentQuarter.syllabusRoutes
     }
 
     return {
