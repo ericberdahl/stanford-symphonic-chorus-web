@@ -54,11 +54,11 @@ concerts:
 -   date: "2007-11-30"
     start: "20:00"
     call: "19:00"
-    location: 
+    location: <unknown>
 -   date: "2007-12-02"
     start: "13:30"
     call: "12:30"
-    location: 
+    location: <unknown>
 # MISSING concert locations for Fall 2007
 
 events:

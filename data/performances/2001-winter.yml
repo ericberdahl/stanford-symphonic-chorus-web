@@ -53,11 +53,11 @@ concerts:
 -   date: "2001-03-17"
     start: "20:00"
     call: "19:00"
-    location: 
+    location: <unknown>
 -   date: "2001-03-18"
     start: "20:00"
     call: "19:00"
-    location: 
+    location: <unknown>
 # MISSING start times for concerts for Winter 2001
 # MISSING locations of concerts for Winter 2001
 # MISSING confirmation for dates of concerts for Winter 2001

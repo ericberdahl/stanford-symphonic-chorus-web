@@ -46,6 +46,10 @@ const list = {
         formal: 'Temple Emanu-El, San Francisco',
         link: 'https://www.emanuelsf.org'
     },
+
+    '<unknown>': {
+        casual: '',
+    }
 };
 
 export default function Location(props) {

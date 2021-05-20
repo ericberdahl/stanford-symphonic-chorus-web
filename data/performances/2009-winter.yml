@@ -79,11 +79,11 @@ concerts:
 -   date: "2009-02-27"
     start: "20:00"
     call: "19:00"
-    location: 
+    location: <unknown>
 -   date: "2009-02-28"
     start: "20:00"
     call: "19:00"
-    location: 
+    location: <unknown>
 # MISSING: concert locatoins for Winter 2009
 
 events:

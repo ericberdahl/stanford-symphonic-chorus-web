@@ -57,11 +57,11 @@ concerts:
 -   date: "1997-02-27"
     start: "20:00"
     call: "19:00"
-    location: 
+    location: <unknown>
 -   date: "1997-02-28"
     start: "20:00"
     call: "19:00"
-    location: 
+    location: <unknown>
 # MISSING locations for concerts for Winter 1997
 
 events:
