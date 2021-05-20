@@ -6,6 +6,8 @@ import PageNavigation from '../components/pageNavigation'
 import Person from '../components/person'
 import TitledSegment from '../components/titledSegment'
 
+import { Fragment } from 'react'
+
 import Model from '../common/model'
 
 import { DateTime } from 'luxon'
@@ -14,9 +16,9 @@ import styles from '../styles/memberinfo.module.scss'
 
 function FileLinks(props) {
     const links = [];
-    props.files.forEach((f) => {
-        links.push(<a href={f.route}>{f.variant}</a>);
-        links.push(' | ');
+    props.files.forEach((f, index) => {
+        links.push(<a key={f.variant} href={f.route}>{f.variant}</a>);
+        links.push(<Fragment key={'separator-' + index}>' | '</Fragment>);
     });
     if (0 < links.length) {
         links.pop();
