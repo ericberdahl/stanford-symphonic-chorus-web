@@ -15,12 +15,37 @@ export default class Model {
     }
 
     addPerformance(p) {
-        this.#performances.push(p);
-        // TODO sort the performances by date
+        const compare = (a, b) => {
+            a = a.firstConcert;
+            b = b.firstConcert;
+
+            return b.start.diff(a.start).toMillis();
+        }
+
+        // Find the insertion point for this performance that will maintain
+        // the array in order of first concert date (most recent first, least recent last)
+        let low = 0;
+        let high = this.#performances.length;
+        while (low < high) {
+            let mid = (low + high) >>> 1;
+            if (compare(this.#performances[mid], p) < 0) {
+                low = mid + 1;
+            }
+            else {
+                high = mid
+            }
+        };
+
+        // Insert the performance
+        this.#performances.splice(low, 0, p);
     }
 
     get currentQuarter() {
         return this.#currentPerformance;
+    }
+
+    get performances() {
+        return this.#performances;
     }
 
     static #sSingleton = null;
