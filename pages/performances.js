@@ -52,8 +52,8 @@ function Repertoire(props) {
         <>
             <p>Repertoire:</p>
             <ul>
-                {props.data.map((p) => {
-                    return (<li><PieceCitation data={p}/></li>);
+                {props.data.map((p, index) => {
+                    return (<li key={index}><PieceCitation data={p}/></li>);
                 })
                 }
             </ul>
@@ -82,7 +82,7 @@ function CollaboratorList({ data }) {
 
     return (
         <p>
-            Performed with <CommaSeparatedList>{data.map((c) => <Collaborator name={c}/>)}</CommaSeparatedList>
+            Performed with <CommaSeparatedList>{data.map((c) => <Collaborator key={c} name={c}/>)}</CommaSeparatedList>
         </p>
     );
 }

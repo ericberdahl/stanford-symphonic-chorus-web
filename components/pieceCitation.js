@@ -31,7 +31,7 @@ export default function PieceCitation({ tag, data }) {
         if (!Array.isArray(titles)) {
             titles = [titles];
         }
-        return (<CommaSeparatedList>{titles.map((t) => <Tag>{t}</Tag>)}</CommaSeparatedList>);
+        return (<CommaSeparatedList>{titles.map((t, index) => <Tag key={index}>{t}</Tag>)}</CommaSeparatedList>);
     }
 
     return (

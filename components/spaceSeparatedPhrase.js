@@ -1,4 +1,4 @@
-import { Children } from 'react';
+import { Children, Fragment } from 'react';
 
 export default function SpaceSeparatedPhrase({ children, separator }) {
     separator = separator || ' '
@@ -8,10 +8,10 @@ export default function SpaceSeparatedPhrase({ children, separator }) {
         <>
             {children.map((child, index) => {
                 return (
-                    <>
+                    <Fragment key={index}>
                         {0 < index && separator}
                         {child}
-                    </>
+                    </Fragment>
                 );
             })}
         </>
