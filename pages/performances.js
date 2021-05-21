@@ -9,6 +9,8 @@ import Model from '../common/model'
 
 import styles from '../styles/performances.module.scss'
 
+import slugify from 'slugify'
+
 function Introduction(props) {
     // TODO Finish introduction
     return (
@@ -112,7 +114,7 @@ function Performance(props) {
     // TODO add fylp links
     // TODO add misc links
     return (
-        <div className={styles.performance}>
+        <div id={slugify(props.data.quarter)} className={styles.performance}>
             <div className={styles.poster}>
                 <img src="/images/M@S-roundedges.gif" alt=""/>
             </div>
@@ -187,6 +189,7 @@ export async function getStaticProps({ params }) {
             }),
             soloists: p.soloists,
             quarter: p.quarter,
+            year: p.concerts[0].start.year,
         }
     });
     
