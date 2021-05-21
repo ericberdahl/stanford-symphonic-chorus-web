@@ -1,13 +1,11 @@
-import Link from 'next/link'
-
+import CommaSeparatedList from '../components/commaSeparatedList'
 import Collaborator from '../components/collaborator'
 import Layout from '../components/layout'
 import Location from '../components/location'
+import PieceCitation from '../components/pieceCitation'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
-
-import { DateTime } from 'luxon'
 
 import styles from '../styles/performances.module.scss'
 
@@ -46,93 +44,6 @@ function Sidebar(props) {
     );
 }
 
-function PieceCitation({ tag, data }) {
-    tag = (tag ? tag : 'em');
-
-    const EmTag = ({ children }) => {
-        return (<em>{children}</em>);
-    };
-    const NoTag = ({ children }) => {
-        return (<>{children}</>)
-    };
-    const Tag = ('em' == tag ? EmTag : NoTag);
-
-    let items = [];
-    if (data.composer) {
-        items.push(data.composer);
-        items.push(' ');
-    }
-    if (data.prefix) {
-        items.push(data.prefix);
-        items.push(' ')
-    }
-    if (data.movement) {
-        items.push(<Tag>{data.movement}</Tag>);
-        items.push(' from ')
-    }
-
-    const titles = [];
-    if (Array.isArray(data.title)) {
-        data.title.forEach((i) => {
-            titles.push(<Tag>{i}</Tag>);
-            titles.push(', ');
-        });
-
-        titles.pop();
-        if (3 == titles.length) {
-            titles[2] = ' and ';
-        }
-        else {
-            titles[titles.length - 2] = ', and ';
-        }
-    }
-    else {
-        titles.push(<Tag>{data.title}</Tag>);
-    }
-    items = items.concat(titles);
-    items.push(' ');
-
-    if (data.translation) {
-        items.push('(' + data.translation + ')');
-        items.push(' ');
-    }
-    if (data.commonTitle) {
-        items.push('"' + data.commonTitle + '"');
-        items.push(' ');
-    }
-    if (data.catalog) {
-        items.push(', ' + data.catalog);
-        items.push(' ');
-    }
-    if (data.arranger) {
-        items.push(', arranged by ' + data.arranger);
-        items.push(' ');
-    }
-    if (data.suffix) {
-        items.push(data.suffix);
-        items.push(' ')
-    }
-
-    // Remove the trailing space if one exists
-    if (' ' == items[items.length - 1]) {
-        items.pop();
-    }
-
-    return (
-        <span>
-            {items}
-        </span>
-    );
-    /*
-    <em>{movement}</em> from
-    <em>{title[0]}</em>, <em>{title[1]}</em>, ..., and <em>{title[N]}</em>
-    ({translation})
-    "{commonTitle}"
-    , {catalog}
-    , arranged by {arranger}   
-    */
-}
-
 function Repertoire(props) {
     // TODO add repertoire
     return (
@@ -164,48 +75,22 @@ function SoloistList(props) {
     );
 }
 
-function CollaboratorList(props) {
-    if (0 == props.data.length) return (<></>);
-
-    let collaborators = [];
-     props.data.forEach((c) => {
-        collaborators.push(<Collaborator name={c}/>);
-        collaborators.push(', ');
-    });
-    collaborators.pop();
-    if (3 == collaborators.length) {
-        collaborators[1] = ' and ';
-    }
-    else if (1 < collaborators.length) {
-        collaborators.splice(-1, 0, 'and ');
-    }
+function CollaboratorList({ data }) {
+    if (0 == data.length) return (<></>);
 
     return (
         <p>
-            Performed with {collaborators}.
+            Performed with <CommaSeparatedList>{data.map((c) => <Collaborator name={c}/>)}</CommaSeparatedList>
         </p>
     );
 }
 
-function DirectorList(props) {
-    if (0 == props.data.length) return (<></>);
-
-    let directors = [];
-     props.data.forEach((d) => {
-        directors.push(d);
-        directors.push(', ');
-    });
-    directors.pop();
-    if (3 == directors.length) {
-        directors[1] = ' and ';
-    }
-    else if (1 < directors.length) {
-        directors.splice(-1, 0, 'and ');
-    }
+function DirectorList({ data }) {
+    if (0 == data.length) return (<></>);
 
     return (
         <p>
-            Directed by {directors}.
+            Directed by <CommaSeparatedList>{data}</CommaSeparatedList>.
         </p>
     );
 }
@@ -213,8 +98,8 @@ function DirectorList(props) {
 function ConcertList(props) {
     return (
         <>
-            {props.data.map((c) => {
-                return (<p>{c.start}, <Location name={c.location}/></p>);
+            {props.data.map((c, index) => {
+                return (<p key={index}>{c.start}, <Location name={c.location}/></p>);
             })}
         </>
     );
