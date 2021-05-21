@@ -38,7 +38,7 @@ export default function PieceCitation({ tag, data }) {
         <span>
             <SpaceSeparatedPhrase>
                 {!isEmpty(data.composer) ? data.composer : null}
-                <CommaSeparatedList>
+                <SpaceSeparatedPhrase separator=', '>
                     <SpaceSeparatedPhrase>
                         {!isEmpty(data.prefix) ? data.prefix : null}
                         <Movement data={data}/>
@@ -48,7 +48,7 @@ export default function PieceCitation({ tag, data }) {
                     </SpaceSeparatedPhrase>
                     {!isEmpty(data.catalog) ? data.catalog : null}
                     {!isEmpty(data.arranger) ? 'arranged by ' + data.arranger : null}
-                </CommaSeparatedList>
+                </SpaceSeparatedPhrase>
                 {!isEmpty(data.suffix) ? data.suffix : null}
             </SpaceSeparatedPhrase>
         </span>

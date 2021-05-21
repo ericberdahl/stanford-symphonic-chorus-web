@@ -1,6 +1,7 @@
 import { Children } from 'react';
 
-export default function SpaceSeparatedPhrase({ children }) {
+export default function SpaceSeparatedPhrase({ children, separator }) {
+    separator = separator || ' '
     children = Children.toArray(children);
 
     return (
@@ -8,7 +9,7 @@ export default function SpaceSeparatedPhrase({ children }) {
             {children.map((child, index) => {
                 return (
                     <>
-                        {0 < index && ' '}
+                        {0 < index && separator}
                         {child}
                     </>
                 );
