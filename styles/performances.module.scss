@@ -36,12 +36,32 @@
 }
 
 .introduction {
-    & > div {
-        margin-bottom: 3em;
-    }
-
     p {
         padding-bottom: 10px;
+
+        color: $color-warmgray60;
+        font-family: $font-family-serif;
+        font-size: 0.8021rem;
+        font-style: italic;
+    }
+
+    h3 {
+        font-family: $font-family-sanserif;
+        font-size: 0.8021rem;
+        color: black;
+    }
+
+    ol {
+        list-style: none;
+
+        li {
+            margin-left: 15px;
+            padding-bottom: 5px;
+
+            list-style-image: url(../public/images/raquo.gif);
+            font-size: 0.8021rem;
+            line-height: 1.1667em;
+        }
     }
 }
 

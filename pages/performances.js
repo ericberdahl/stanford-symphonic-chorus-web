@@ -11,14 +11,28 @@ import styles from '../styles/performances.module.scss'
 
 import slugify from 'slugify'
 
-function Introduction(props) {
-    // TODO Finish introduction
+function Introduction(pageData) {
+    const PushPerformance = (p) => {
+        years.push({ year: p.year, quarter: p.quarter });
+    }
+
+    let years = [];
+    pageData.performances.forEach((p) => {
+        if (0 == years.length || years[years.length - 1].year != p.year) {
+            PushPerformance(p);
+        }
+    });
+
     return (
         <div className={styles.introduction}>
             <TitledSegment title="Performances">
                 <p>
                     Stanford Symphonic Chorus performs symphonic works three times a year - each academic quarter.
                 </p>
+                <h3>Years</h3>
+                <ol>
+                    {years.map((y) => <li key={y.year}><a href={'#' + slugify(y.quarter)}>{y.year}</a></li>)}
+                </ol>
             </TitledSegment>
         </div>
     );
