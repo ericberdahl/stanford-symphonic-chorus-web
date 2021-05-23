@@ -21,12 +21,8 @@ collaborators:
 -   "university singers"
 
 poster:
-    pdf: "SSC-E-FlyerSpring2010.pdf"
-    jpg:
-        file: "SSC-E-FlyerSpring2010.jpg"
-        height: 900
-        width: 666
-        caption: "Spring 2010, Hector Berlioz, Grand Messe des Mortes, Op.5 (Requiem); Mark Applebaum, Martian Anthropology 2; in memoriam J. Karla Lemon, 1954-2009"
+    basename: "SSC-E-FlyerSpring2010"
+    caption: "Spring 2010, Hector Berlioz, Grand Messe des Mortes, Op.5 (Requiem); Mark Applebaum, Martian Anthropology 2; in memoriam J. Karla Lemon, 1954-2009"
 
 directors:
 -   "Jindong Cai"

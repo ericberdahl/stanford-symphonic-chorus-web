@@ -27,12 +27,8 @@ soloists:
 collaborators:
 
 poster:
-    pdf: "S2016-Poster.pdf"
-    jpg:
-        file: "S2016-Poster.jpg"
-        width: 492
-        height: 773
-        caption: "Mozart: Mass in C Minor"
+    basename: "S2016-Poster"
+    caption: "Mozart: Mass in C Minor"
 
 directors:
 

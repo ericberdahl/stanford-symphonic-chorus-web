@@ -28,12 +28,8 @@ collaborators:
 -   "ragazzi boys"
 
 poster:
-    pdf: "S2014Poster.pdf"
-    jpg:
-        file: "S2014Poster.jpg"
-        width: 582
-        height: 900
-        caption: "Spring 2014, SSC with Stanford Chamber Chorale, Craig Jessop directing, Vaughan Williams and Holst"
+    basename: "S2014Poster"
+    caption: "Spring 2014, SSC with Stanford Chamber Chorale, Craig Jessop directing, Vaughan Williams and Holst"
 
 directors:
 -   "visiting conductor Dr. Craig Jessop"

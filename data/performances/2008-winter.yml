@@ -28,12 +28,8 @@ collaborators:
 -   "cantabile youth"
 
 poster:
-    pdf: "SSC-E-PosterW2008.pdf"
-    jpg:
-        file: "SSC-E-PosterW2008.jpg"
-        height: 583
-        width: 900
-        caption: "Carl Orff, Carmina Burana, Winter 2008"
+    basename: "SSC-E-PosterW2008"
+    caption: "Carl Orff, Carmina Burana, Winter 2008"
 
 directors:
 

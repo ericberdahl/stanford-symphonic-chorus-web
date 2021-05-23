@@ -25,12 +25,8 @@ collaborators:
 -   "SSO"
 
 poster:
-    pdf: "SSC_W2007_E-Flyer.pdf"
-    jpg:
-        file: "SSC_W2007_E-Flyer.jpg"
-        height: 689
-        width: 1080
-        caption: "Stanford Symphonic Chorus, Tippet, A Child of Our Time, Winter 2007"
+    basename: "SSC_W2007_E-Flyer"
+    caption: "Stanford Symphonic Chorus, Tippet, A Child of Our Time, Winter 2007"
 
 directors:
 -   "Jindong Cai"

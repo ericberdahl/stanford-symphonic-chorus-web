@@ -20,12 +20,8 @@ soloists:
 collaborators:
 
 poster:
-    pdf: "S2017-Poster.pdf"
-    jpg:
-        file: "S2017-Poster.jpg"
-        width: 634
-        height: 990
-        caption: "Magnificat!"
+    basename: "S2017-Poster"
+    caption: "Magnificat!"
 
 directors:
 

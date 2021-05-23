@@ -36,12 +36,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "SSC_E-FlyerFall2005.pdf"
-    jpg:
-        file: "SSC_E-FlyerFall2005.jpg"
-        height: 590
-        width: 900
-        caption: "Holiday celebration, Fall 2005"
+    basename: "SSC_E-FlyerFall2005"
+    caption: "Holiday celebration, Fall 2005"
 
 directors:
 -   "Geoffrey Gallegos"

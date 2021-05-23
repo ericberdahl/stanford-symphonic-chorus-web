@@ -22,12 +22,8 @@ collaborators:
 -   "mongolian opera soloists"
 
 poster:
-    pdf: "SSO-SSCVerdiPoster.pdf"
-    jpg:
-        file: "SSO-SSCVerdiPoster.jpg"
-        height: 900
-        width: 582
-        caption: "Giuseppe Verdi"
+    basename: "SSO-SSCVerdiPoster"
+    caption: "Giuseppe Verdi"
 
 directors:
 -   "Jindong Cai"

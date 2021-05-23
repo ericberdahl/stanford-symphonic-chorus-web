@@ -16,12 +16,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "F2013PosterSSC-PSO.pdf"
-    jpg:
-        file: "F2013PosterSSC-PSO.jpg"
-        height: 767
-        width: 488
-        caption: "Stanford Symphonic Chorus and Peninsula Symphony Orchestra Fall 2013 Concert Poster"
+    basename: "F2013PosterSSC-PSO"
+    caption: "Stanford Symphonic Chorus and Peninsula Symphony Orchestra Fall 2013 Concert Poster"
 
 directors:
 -   "Mitchell Sardou Klein"

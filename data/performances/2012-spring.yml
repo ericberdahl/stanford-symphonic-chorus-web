@@ -28,12 +28,8 @@ soloists:
 collaborators:
 
 poster:
-    pdf: "SSCPosterS2012.pdf"
-    jpg:
-        file: "SSCPosterS2012.jpg"
-        height: 900
-        width: 582
-        caption: "Stanford Symphonic Chorus Spring 2012 Concert"
+    basename: "SSCPosterS2012"
+    caption: "Stanford Symphonic Chorus Spring 2012 Concert"
 
 directors:
 -   "Stephen M. Sano"

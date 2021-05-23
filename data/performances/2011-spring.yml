@@ -36,12 +36,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "SSCPosterS2011.pdf"
-    jpg:
-        file: "SSCPosterS2011.jpg"
-        height: 900
-        width: 582
-        caption: "Stanford Symphonic Chorus Spring 2011 Concert"
+    basename: "SSCPosterS2011"
+    caption: "Stanford Symphonic Chorus Spring 2011 Concert"
 
 directors:
 -   "Mitchell Sardou Klein"

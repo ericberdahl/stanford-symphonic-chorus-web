@@ -30,12 +30,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "SSCPosterF2011.pdf"
-    jpg:
-        file: "SSCPosterF2011.jpg"
-        height: 900
-        width: 600
-        caption: "Stanford Symphonic Chorus and Peninsula Symphony Orchestra Holiday Concert"
+    basename: "SSCPosterF2011"
+    caption: "Stanford Symphonic Chorus and Peninsula Symphony Orchestra Holiday Concert"
 
 directors:
 # MISSING: director for Fall 2011

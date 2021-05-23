@@ -27,12 +27,8 @@ collaborators:
 -   "university singers"
 
 poster:
-    pdf: "SSC_PosterWinter2006.pdf"
-    jpg:
-        file: "SSC_PosterWinter2006.jpg"
-        height: 648
-        width: 419
-        caption: "Brahms, Ein Deutsches Requiem, Winter 2006"
+    basename: "SSC_PosterWinter2006"
+    caption: "Brahms, Ein Deutsches Requiem, Winter 2006"
 
 directors:
 -   "Stephen M. Sano"

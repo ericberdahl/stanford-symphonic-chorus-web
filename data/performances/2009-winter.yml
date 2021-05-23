@@ -33,12 +33,8 @@ collaborators:
 -   "SSO"
 
 poster:
-    pdf: "AsianFest.pdf"
-    jpg:
-        file: "AsianFest.jpg"
-        height: 900
-        width: 544
-        caption: "Stanford Pan-Asian Music Festival, Winter 2009"
+    basename: "AsianFest"
+    caption: "Stanford Pan-Asian Music Festival, Winter 2009"
 # MISSING: proper poster for Winter 2009
 
 directors:

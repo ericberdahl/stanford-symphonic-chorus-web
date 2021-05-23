@@ -22,12 +22,8 @@ collaborators:
 -   "SSO"
 
 poster:
-    pdf: "W2016 Poster.pdf"
-    jpg:
-        file: "W2016 Poster.jpg"
-        width: 458
-        height: 720
-        caption: "Poulenc: Gloria"
+    basename: "W2016 Poster"
+    caption: "Poulenc: Gloria"
 
 directors:
 -   "Anna Wittstruck"

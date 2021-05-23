@@ -24,12 +24,8 @@ collaborators:
 - "vivace"
 
 poster:
-    pdf: "SSC_PosterF2008.pdf"
-    jpg:
-        file: "SSC_PosterF2008.jpg"
-        height: 582
-        width: 900
-        caption: "Stanford Symphonic Chorus poster, Fall 2008"
+    basename: "SSC_PosterF2008"
+    caption: "Stanford Symphonic Chorus poster, Fall 2008"
 
 directors:
 

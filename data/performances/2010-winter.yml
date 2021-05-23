@@ -30,12 +30,8 @@ soloists:
 collaborators:
 
 poster:
-    pdf: "SSCPosterW2010.pdf"
-    jpg:
-        file: "SSCPosterW2010.jpg"
-        height: 900
-        width: 1390
-        caption: "Stanford Symphonic Chorus poster, Winter 2010"
+    basename: "SSCPosterW2010"
+    caption: "Stanford Symphonic Chorus poster, Winter 2010"
 
 directors:
 -   "Stephen M. Sano"

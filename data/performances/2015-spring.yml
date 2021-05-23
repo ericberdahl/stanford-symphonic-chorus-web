@@ -29,12 +29,8 @@ soloists:
 collaborators:
 
 poster:
-    pdf: "S2015-Poster.pdf"
-    jpg:
-        file: "S2015-Poster.jpg"
-        width: 526
-        height: 825
-        caption: "Haydn: Missa in Tempore Belli"
+    basename: "S2015-Poster"
+    caption: "Haydn: Missa in Tempore Belli"
 
 directors:
 -   "Stephen M. Sano"

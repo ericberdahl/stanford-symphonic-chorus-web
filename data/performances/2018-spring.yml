@@ -20,12 +20,8 @@ soloists:
 collaborators:
 
 poster:
-    pdf: "S2018-Poster.pdf"
-    jpg:
-        file: "S2018-Poster.jpg"
-        width: 492
-        height: 774
-        caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
+    basename: "S2018-Poster"
+    caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
 
 directors:
 -   "Stephen M. Sano"

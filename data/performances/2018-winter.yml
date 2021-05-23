@@ -23,12 +23,8 @@ collaborators:
 -   "university singers"
 
 poster:
-    pdf: "W2018-Poster.pdf"
-    jpg:
-        file: "W2018-Poster.jpg"
-        width: 495
-        height: 774
-        caption: "Walton: Belshazzar's Feast"
+    basename: "W2018-Poster"
+    caption: "Walton: Belshazzar's Feast"
 
 directors:
 -   "Paul Phillips"

@@ -27,12 +27,8 @@ collaborators:
 -   "SSO"
 
 poster:
-    pdf: "SSCPosterW2012.pdf"
-    jpg:
-        file: "SSCPosterW2012.jpg"
-        height: 774
-        width: 485
-        caption: "Stanford Symphonic Chorus and Stanford Symphony Orchestra Winter 2012 Concert"
+    basename: "SSCPosterW2012"
+    caption: "Stanford Symphonic Chorus and Stanford Symphony Orchestra Winter 2012 Concert"
 
 directors:
 -   "Jondong Cai"

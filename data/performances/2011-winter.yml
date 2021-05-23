@@ -19,12 +19,8 @@ collaborators:
 -   "SSO"
 
 poster:
-    pdf: "SSCPosterW2011.pdf"
-    jpg:
-        file: "SSCPosterW2011.jpg"
-        height: 792
-        width: 504
-        caption: "Stanford Symphonic Chorus and Symphony Orchestra All Brahms Program"
+    basename: "SSCPosterW2011"
+    caption: "Stanford Symphonic Chorus and Symphony Orchestra All Brahms Program"
 
 directors:
 -   "Martín Fraile"

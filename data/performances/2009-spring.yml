@@ -28,12 +28,8 @@ soloists:
 collaborators:
 
 poster:
-    pdf: "SSCPosterS2009.pdf"
-    jpg:
-        file: "SSCPosterS2009.jpg"
-        height: 900
-        width: 666
-        caption: "Stanford Symphonic Chorus poster, Spring 2009"
+    basename: "SSCPosterS2009"
+    caption: "Stanford Symphonic Chorus poster, Spring 2009"
 
 directors:
 

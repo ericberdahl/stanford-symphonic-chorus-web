@@ -1,11 +1,11 @@
+import Piece from './piece'
+
+import { DateTime } from 'luxon';
+
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
 import util from 'util';
-
-import { DateTime } from 'luxon';
-
-import Piece from './piece'
 
 function findFileVariants(baseRoute, variants)
 {
@@ -32,28 +32,74 @@ function findFileVariants(baseRoute, variants)
     return result;
 }
 
+class PosterRoutes {
+    #pdf        = null;
+    #jpg        = null;
+    #caption    = null;
+
+    constructor() {
+
+    }
+
+    get pdf() { return this.#pdf; }
+    get jpg() { return this.#jpg; }
+    get caption() { return this.#caption; }
+
+    static deserialize(data, options) {
+        const result = new PosterRoutes();
+
+        const baseRoute = '/assets/posters/' + data.basename;
+        
+        const routes = findFileVariants(baseRoute, ['pdf', 'jpg']);
+        if (0 == routes.length) {
+            throw new Error(util.format('No poster variants found for "%s"', data.basename));
+        }
+
+        const variantMap = {
+            'pdf': '#pdf',
+            'jpg': '#jpg',
+        }
+
+        routes.forEach((r) => {
+            if ('pdf' == r.variant) {
+                result.#pdf = r.route;
+            }
+            else if ('jpg == r.variant') {
+                result.#jpg = r.route;
+            }
+            else {
+                throw new Error(util.format('Unrecognized variant attempted "%s"', r.variant));
+            }
+        });
+
+        result.#caption = data.caption;
+
+        return result;
+    }
+}
+
 export default class Performance {
-    #scheduleRoute      = "";
-    #quarter            = "";
-    #syllabusRoutes     = [];
-    #repertoire         = [];
-    #mainPieces         = [];
-    #soloists           = [];
     #collaborators      = [];
-    #poster             = null;
+    #concerts           = [];
+    #description        = [];
     #directors          = [];
+    #dressRehearsals    = [];
+    #events             = [];
+    #images             = [];
     #instructors        = [];
     #links              = [];
-    #registrationFee    = null;
+    #mainPieces         = [];
     #membershipLimit    = 0;
+    #posterRoutes       = [];
     #preregisterDate    = null;
-    #images             = [];
+    #quarter            = "";
     #rehearsals         = [];
+    #registrationFee    = null;
+    #repertoire         = [];
+    #scheduleRoute      = "";
     #sectionals         = [];
-    #dressRehearsals    = [];
-    #concerts           = [];
-    #events             = [];
-    #description        = [];
+    #soloists           = [];
+    #syllabusRoutes     = [];
     
     constructor() {
 
@@ -64,6 +110,7 @@ export default class Performance {
     get directors() { return this.#directors; }
     get instructors() { return this.#instructors; }
     get membershipLimit() { return this.#membershipLimit; }
+    get posterRoutes() { return this.#posterRoutes; }
     get preregisterDate() { return this.#preregisterDate; }
     get quarter() { return this.#quarter; }
     get repertoire() { return this.#repertoire; }
@@ -119,7 +166,10 @@ export default class Performance {
             });
         }
 
-        // TODO deserialize posters
+        if (data.poster) {
+            result.#posterRoutes = PosterRoutes.deserialize(data.poster, options);
+        }
+
         // TODO deserialize links
         // TODO deserialize images
         // TODO deserialize rehearsals

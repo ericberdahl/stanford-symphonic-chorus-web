@@ -28,12 +28,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "F2016-Poster.pdf"
-    jpg:
-        file: "F2016-Poster.jpg"
-        width: 463
-        height: 720
-        caption: "Duruflé: Requiem"
+    basename: "F2016-Poster"
+    caption: "Duruflé: Requiem"
 
 directors:
 -   "Guest Conductor Dr. Craig Jessop"

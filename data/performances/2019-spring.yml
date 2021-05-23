@@ -56,25 +56,14 @@ collaborators:
 # HOWTO:
 # A typical full poster record looks like this:
 # poster:
-#     pdf: "S2018-Poster.pdf"
-#     jpg:
-#         file: "S2018-Poster.jpg"
-#         width: 492
-#         height: 774
-#         caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
-# Where pdf is a string naming the pdf version of the poster in the quarter's asset directory.
-# Where jpg.file is a string naming the jpg version of the poster in the quarter's asset directory.
-# Where jpg.width and jpg.height are the pixel width and height, respectively, of the jpg image.
+#     basename: "S2018-Poster"
+#     caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
+# Where basename is a root name of the poster in assets/posters directory.
+#       Use something like "S2020-Poster". Posters with extensions '.pdf', '.jpg', and '.png' will
+#       be detected and used.
 # Where caption is a string to be used as hover text for the poster image when displayed on a web page.
-#
-# If either a pdf or jpg version of the poster is not available, omit that field completely from the poster
-# record.
 poster:
-    pdf: "S2019-Poster.pdf"
-    jpg:
-        file: "S2019-Poster.jpg"
-        width: 550
-        height: 850
+    basename: "S2019-Poster"
 
 
 # HOWTO: directors is a list of strings that name the directors of this performance

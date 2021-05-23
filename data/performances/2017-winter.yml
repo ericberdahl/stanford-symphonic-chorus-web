@@ -20,12 +20,8 @@ collaborators:
 -   "SSO"
 
 poster:
-    pdf: "W2017-Poster.pdf"
-    jpg:
-        file: "W2017-Poster.jpg"
-        width: 493
-        height: 774
-        caption: "Orff: Carmina Burana"
+    basename: "W2017-Poster"
+    caption: "Orff: Carmina Burana"
 
 directors:
 

@@ -103,6 +103,10 @@
 
     .poster {
         grid-area: poster;
+
+        a {
+            border: none;
+        }
     }
 
     .content {

@@ -23,12 +23,8 @@ soloists:
 collaborators:
 
 poster:
-    pdf: "E-FlyerSpring2007.pdf"
-    jpg:
-        file: "E-FlyerSpring2007.jpg"
-        height: 900
-        width: 582
-        caption: "Stanford Symphonic Chorus, Rutter, Requiem, Spring 2007"
+    basename: "E-FlyerSpring2007"
+    caption: "Stanford Symphonic Chorus, Rutter, Requiem, Spring 2007"
 
 directors:
 -   "Stephen M. Sano"

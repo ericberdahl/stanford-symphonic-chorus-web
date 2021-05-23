@@ -28,12 +28,8 @@ collaborators:
 - "PSO"
 
 poster:
-    pdf: "SSCPosterF2009.pdf"
-    jpg:
-        file: "SSCPosterF2009.jpg"
-        height: 900
-        width: 582
-        caption: "Stanford Symphonic Chorus poster, Fall 2009"
+    basename: "SSCPosterF2009"
+    caption: "Stanford Symphonic Chorus poster, Fall 2009"
 
 directors:
 

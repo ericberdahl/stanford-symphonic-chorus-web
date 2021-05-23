@@ -25,12 +25,8 @@ collaborators:
 -   "SSO"
 
 poster:
-    pdf: "SSC_Poster_Winter_2004.pdf"
-    jpg:
-        file: "SSC_Poster_Winter_2004.jpg"
-        height: 641
-        width: 900
-        caption: "Ralph Vaughan Williams, Winter 2004"
+    basename: "SSC_Poster_Winter_2004"
+    caption: "Ralph Vaughan Williams, Winter 2004"
 
 directors:
 -   "Akiko Fujimoto"

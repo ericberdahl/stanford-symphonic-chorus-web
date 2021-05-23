@@ -9,7 +9,11 @@ import Model from '../common/model'
 
 import styles from '../styles/performances.module.scss'
 
+import imageSize from 'image-size'
 import slugify from 'slugify'
+
+import path from 'path'
+import Lightbox from '../components/lightbox'
 
 function Introduction(pageData) {
     const PushPerformance = (p) => {
@@ -57,6 +61,28 @@ function Sidebar(props) {
                 </p>
             </TitledSegment>
         </div>
+    );
+}
+
+function Poster({ data }) {
+    if (!data.posterRoutes.pdf) {
+        return (<img src="/images/M@S-roundedges.gif" alt=""/>);
+    };
+
+    const MAX_DIMENSION = 900;
+    const largestDimension = Math.max(data.posterRoutes.width, data.posterRoutes.width);
+    const reductionFactor = (largestDimension < MAX_DIMENSION ? 1.0 : largestDimension/MAX_DIMENSION);
+    const width = data.posterRoutes.width/reductionFactor;
+    const height = data.posterRoutes.height/reductionFactor;
+    
+    return (
+        <Lightbox
+            image={data.posterRoutes.pdf}
+            display={data.posterRoutes.jpg}
+            width={width}
+            height={height}
+            caption={data.posterRoutes.caption}
+            img_width={107}/>
     );
 }
 
@@ -130,7 +156,7 @@ function Performance(props) {
     return (
         <div id={slugify(props.data.quarter)} className={styles.performance}>
             <div className={styles.poster}>
-                <img src="/images/M@S-roundedges.gif" alt=""/>
+                <Poster data={props.data}/>
             </div>
             <div className={styles.content}>
                 <h3>{props.data.quarter}</h3>
@@ -175,37 +201,61 @@ export default function Performances({ pageData }) {
     );
 }
 
+function serializeConcert(concert) {
+    return {
+        start:      concert.start.toFormat('EEEE d MMMM yyyy, h:mma'),
+        location:   concert.location
+    };
+}
+
+function serializePiece(piece) {
+    return {
+        arranger:       piece.arranger,
+        catalog:        piece.catalog,
+        commonTitle:    piece.commonTitle,
+        composer:       piece.composer,
+        movement:       piece.movement,
+        prefix:         piece.prefix,
+        suffix:         piece.suffix,
+        title:          piece.title,
+        translation:    piece.translation,
+    };
+}
+
+function serializePosters(posters) {
+    const result = {
+        pdf: posters?.pdf || null,
+        jpg: posters?.jpg || null,
+        caption: posters?.caption || null,
+        width: 0,
+        height: 0
+    };
+
+    if (result.jpg) {
+        const imagePath = path.join(process.cwd(), 'public', result.jpg);
+        ({ width: result.width, height: result.height } = imageSize(imagePath));
+    }
+
+    return result;
+}
+
+function serializePerformance(performance) {
+    return {
+        collaborators:  performance.collaborators,
+        concerts:       performance.concerts.map(serializeConcert),
+        directors:      performance.directors,
+        instructors:    performance.instructors,
+        posterRoutes:   serializePosters(performance.posterRoutes),
+        repertoire:     performance.repertoire.map(serializePiece),
+        soloists:       performance.soloists,
+        quarter:        performance.quarter,
+        year:           performance.concerts[0].start.year,
+    };
+}
+
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
-    const performances = model.performances.map((p) => {
-        return {
-            collaborators: p.collaborators,
-            concerts: p.concerts.map((c) => {
-                return {
-                    start: c.start.toFormat('EEEE d MMMM yyyy, h:mma'),
-                    location: c.location
-                };
-            }),
-            directors: p.directors,
-            instructors: p.instructors,
-            repertoire: p.repertoire.map((piece) => {
-                return {
-                    arranger: piece.arranger,
-                    catalog: piece.catalog,
-                    commonTitle: piece.commonTitle,
-                    composer: piece.composer,
-                    movement: piece.movement,
-                    prefix: piece.prefix,
-                    suffix: piece.suffix,
-                    title: piece.title,
-                    translation: piece.translation,
-                }
-            }),
-            soloists: p.soloists,
-            quarter: p.quarter,
-            year: p.concerts[0].start.year,
-        }
-    });
+    const performances = model.performances.map(serializePerformance);
     
     const pageData = {
         performances: performances

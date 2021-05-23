@@ -27,12 +27,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "SSCFlyerFall06.pdf"
-    jpg:
-        file: "SSCFlyerFall06.jpg"
-        height: 642
-        width: 900
-        caption: "Dvorak, Mass in D Major, Fall 2006"
+    basename: "SSCFlyerFall06"
+    caption: "Dvorak, Mass in D Major, Fall 2006"
 
 directors:
 

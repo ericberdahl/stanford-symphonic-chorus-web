@@ -26,12 +26,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "SSCPosterF2012.pdf"
-    jpg:
-        file: "SSCPosterF2012.jpg"
-        height: 773
-        width: 493
-        caption: "Stanford Symphonic Chorus Fall 2012 Concert Poster"
+    basename: "SSCPosterF2012"
+    caption: "Stanford Symphonic Chorus Fall 2012 Concert Poster"
 
 directors:
 -   "Stephen M. Sano"

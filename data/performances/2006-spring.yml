@@ -31,12 +31,8 @@ collaborators:
 -   "university singers"
 
 poster:
-    pdf: "Spring06_Poster.pdf"
-    jpg:
-        file: "Spring06_Poster.jpg"
-        height: 900
-        width: 582
-        caption: "Mozart, Requiem, Spring 2006"
+    basename: "Spring06_Poster"
+    caption: "Mozart, Requiem, Spring 2006"
 
 directors:
 -   "Robert Huw Morgan"

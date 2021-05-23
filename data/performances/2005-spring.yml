@@ -31,12 +31,8 @@ soloists:
 collaborators:
 
 poster:
-    pdf: "SSC_Flyer_S2005.pdf"
-    jpg:
-        file: "SSC_Flyer_S2005.jpg"
-        height: 900
-        width: 720
-        caption: "Haydn, Harmonie Messe, Spring 2005"
+    basename: "SSC_Flyer_S2005"
+    caption: "Haydn, Harmonie Messe, Spring 2005"
 
 directors:
 -   "Stephen M. Sano"

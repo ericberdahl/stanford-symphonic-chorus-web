@@ -33,12 +33,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "SSC_Poster_Fall_2004.pdf"
-    jpg:
-        file: "SSC_Poster_Fall_2004.jpg"
-        height: 965
-        width: 1204
-        caption: "Kudo, Mendelssohn, Bloch, Bruckner, Zeisl, Fall 2004"
+    basename: "SSC_Poster_Fall_2004"
+    caption: "Kudo, Mendelssohn, Bloch, Bruckner, Zeisl, Fall 2004"
 
 directors:
 

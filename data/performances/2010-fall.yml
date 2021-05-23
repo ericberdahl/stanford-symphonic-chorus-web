@@ -28,12 +28,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "SSCPosterF2010.pdf"
-    jpg:
-        file: "SSCPosterF2010.jpg"
-        height: 900
-        width: 582
-        caption: "Fall 2010, Ralph Vaughan Williams, Hodie and The Lark Ascending"
+    basename: "SSCPosterF2010"
+    caption: "Fall 2010, Ralph Vaughan Williams, Hodie and The Lark Ascending"
 
 directors:
 -   "Mitchell Sardou Klein"

@@ -22,12 +22,8 @@ collaborators:
 -   "SSO"
 
 poster:
-    pdf: "Verdi_Poster.pdf"
-    jpg:
-        file: "Verdi_Poster.jpg"
-        height: 378
-        width: 504
-        caption: "Verdi, Requiem, Winter 2005"
+    basename: "Verdi_Poster"
+    caption: "Verdi, Requiem, Winter 2005"
 
 directors:
 -   "Jindong Cai"

@@ -31,12 +31,8 @@ collaborators:
 -   "PSO"
 
 poster:
-    pdf: "F2015 Poster.pdf"
-    jpg:
-        file: "F2015 Poster.jpg"
-        width: 525
-        height: 825
-        caption: "Vaughan Williams: Dona Nobis Pacem"
+    basename: "F2015 Poster"
+    caption: "Vaughan Williams: Dona Nobis Pacem"
 
 directors:
 -   "Mitchell Sardou Klein"
