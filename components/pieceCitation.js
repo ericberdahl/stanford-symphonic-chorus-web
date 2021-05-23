@@ -10,7 +10,7 @@ function NoTag ({ children }) {
 };
 
 function isEmpty(str) {
-    return (!str && 0 == str.length);
+    return (!str || 0 == str.length);
 }
 
 export default function PieceCitation({ tag, data }) {
