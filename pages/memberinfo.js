@@ -1,35 +1,16 @@
 import Link from 'next/link'
 
-import AboutUs from '../components/aboutUs'
+import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
 import PageNavigation from '../components/pageNavigation'
 import Person from '../components/person'
 import TitledSegment from '../components/titledSegment'
-
-import { Fragment } from 'react'
 
 import Model from '../common/model'
 
 import { DateTime } from 'luxon'
 
 import styles from '../styles/memberinfo.module.scss'
-
-function FileLinks(props) {
-    const links = [];
-    props.files.forEach((f, index) => {
-        links.push(<a key={f.variant} href={f.route}>{f.variant}</a>);
-        links.push(<Fragment key={'separator-' + index}>' | '</Fragment>);
-    });
-    if (0 < links.length) {
-        links.pop();
-    }
-
-    return (
-        <>
-            {links}
-        </>
-    );
-}
 
 function Introduction(props) {
     // If the member info page ever needs to be displayed for historical performances, this logic and content
