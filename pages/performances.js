@@ -43,7 +43,7 @@ function Introduction(pageData) {
 }
 
 function Sidebar(props) {
-    // TODO Finish sidebar
+    // TODO Complete China Music Tour information -- move into its own component?
     return (
         <div className={styles.sidebar}>
             <TitledSegment title="Coverage of the 2008 China Music Tour">
@@ -87,7 +87,6 @@ function Poster({ data }) {
 }
 
 function Repertoire(props) {
-    // TODO add repertoire
     return (
         <>
             <p>Repertoire:</p>
@@ -148,8 +147,6 @@ function ConcertList(props) {
 }
 
 function Performance(props) {
-    // TODO add poster
-
     // TODO add poster links
     // TODO add fylp links
     // TODO add misc links
@@ -185,7 +182,6 @@ export default function Performances({ pageData }) {
         ['', title]
     ];
 
-    // TODO Finish perforamnce content
     return (
         <Layout
             title={title}
