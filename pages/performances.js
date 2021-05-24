@@ -72,8 +72,8 @@ function Poster({ data }) {
     const MAX_DIMENSION = 900;
     const largestDimension = Math.max(data.posterRoutes.width, data.posterRoutes.width);
     const reductionFactor = (largestDimension < MAX_DIMENSION ? 1.0 : largestDimension/MAX_DIMENSION);
-    const width = data.posterRoutes.width/reductionFactor;
-    const height = data.posterRoutes.height/reductionFactor;
+    const width = Math.round(data.posterRoutes.width/reductionFactor);
+    const height = Math.round(data.posterRoutes.height/reductionFactor);
     
     return (
         <Lightbox
