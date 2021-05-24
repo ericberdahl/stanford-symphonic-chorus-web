@@ -1,5 +1,6 @@
 import CommaSeparatedList from '../components/commaSeparatedList'
 import Collaborator from '../components/collaborator'
+import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
 import Location from '../components/location'
 import PieceCitation from '../components/pieceCitation'
@@ -146,27 +147,34 @@ function ConcertList(props) {
     );
 }
 
-function Performance(props) {
-    // TODO add poster links
+function Performance({ data }) {
+    const posterRoutes = [];
+    if (data.posterRoutes?.pdf) {
+        posterRoutes.push({ variant: 'PDF', route: data.posterRoutes.pdf });
+    }
+    if (data.posterRoutes?.jpg) {
+        posterRoutes.push({ variant: 'JPG', route: data.posterRoutes.jpg });
+    }
+
     // TODO add fylp links
     // TODO add misc links
     return (
-        <div id={slugify(props.data.quarter)} className={styles.performance}>
+        <div id={slugify(data.quarter)} className={styles.performance}>
             <div className={styles.poster}>
-                <Poster data={props.data}/>
+                <Poster data={data}/>
             </div>
             <div className={styles.content}>
-                <h3>{props.data.quarter}</h3>
-                <Repertoire data={props.data.repertoire}/>
-                <SoloistList data={props.data.soloists}/>
-                <CollaboratorList data={props.data.collaborators}/>
-                <DirectorList data={props.data.directors}/>
+                <h3>{data.quarter}</h3>
+                <Repertoire data={data.repertoire}/>
+                <SoloistList data={data.soloists}/>
+                <CollaboratorList data={data.collaborators}/>
+                <DirectorList data={data.directors}/>
                 <h4>Concerts:</h4>
-                <ConcertList data={props.data.concerts}/>
+                <ConcertList data={data.concerts}/>
             </div>
             <div className={styles.extras}>
                 <ul className={styles.links}>
-                    <li>TODO Poster</li>
+                    {0 < posterRoutes.length && <li>Poster (<FileLinks files={posterRoutes}/>)</li>}
                     <li>TODO FYLP</li>
                     <li>TODO links</li>
                 </ul>
