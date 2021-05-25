@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import styles from '../styles/navTopic.module.scss'
 
@@ -13,17 +14,14 @@ export default function NavTopic(props) {
         ['contact', 'Contact'],
     ];
 
-    const listItems = topics.map((item) => {
-        const link = ( <a href={item[0] + '.html'}>{item[1]}</a> );
-        return (router.pathname == "/" + item[0] ? 
-                    (<li key={item[0]} className={styles.current}>{link}</li>) :
-                    (<li key={item[0]}>{link}</li>));
-    });
-    
     return (
         <div className={styles.navTopic}>
             <ul>
-                {listItems}
+                {topics.map((item) => {
+                    const link = ( <a href={item[0] + '.html'}>{item[1]}</a> );
+                    const className = (router.pathname == "/" + item[0] ? styles.current : '');
+                    return (<li key={item[0]} className={className}><Link href={item[0]} as={item[0] + '.html'}><a>{item[1]}</a></Link></li>);
+                })}
             </ul>
         </div>
     );
