@@ -1,8 +1,11 @@
+import Lightbox from '../components/lightbox'
+import PageLink from '../components/pageLink'
+
 import Link from 'next/link'
 
-import Lightbox from '../components/lightbox'
-
 import styles from '../styles/aboutUs.module.scss'
+
+// TODO replace Link uses with PageLink
 
 export default function AboutUs(props) {
     return (
@@ -18,10 +21,10 @@ export default function AboutUs(props) {
             <h3><Link href="/memberinfo#joining" as="/memberinfo.html#joining"><a>How to Join</a></Link></h3>
             <p>See <em><Link href="/memberinfo#joining" as="/memberinfo.html#joining"><a>Joining the Chorus</a></Link></em> for information on auditions and basic member requirements.</p>
 
-            <h3><Link href="/memberinfo" as="/memberinfo.html"><a>Member Information</a></Link></h3>
+            <h3><PageLink page="memberInfo">Member Information</PageLink></h3>
             <p>See our member page for information about rehearsals, and information and member resources. </p>
 
-            <h3><Link href="/performances" as="/performances.html"><a>Performances</a></Link></h3>
+            <h3><PageLink page="performanceList">Performances</PageLink></h3>
             <p>Information about upcoming and past performances, including posters and photos and ticket information.</p>
         </div>
     );

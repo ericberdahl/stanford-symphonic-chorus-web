@@ -12,8 +12,8 @@ export default function About() {
         ['#c2', 'About the Conductor']
     ];
     const breadcrumbPath = [
-        ['/', 'Symphonic Chorus Home'],
-        ['', title]
+        { page: 'home', label: 'Symphonic Chorus Home' },
+        { page: '', label: title }
     ];
 
     const introduction = (

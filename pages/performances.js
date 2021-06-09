@@ -186,8 +186,8 @@ function Performance({ data }) {
 export default function Performances({ pageData }) {
     const title = "Performances";
     const breadcrumbPath = [
-        ['/', 'Symphonic Chorus Home'],
-        ['', title]
+        { page: 'home', label: 'Symphonic Chorus Home' },
+        { page: '', label: title }
     ];
 
     return (

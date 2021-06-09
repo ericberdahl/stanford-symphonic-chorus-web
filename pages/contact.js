@@ -7,8 +7,8 @@ import TitledSegment from '../components/titledSegment'
 export default function Contact() {
     const title = "Contact Information";
     const breadcrumbPath = [
-        ['/', 'Symphonic Chorus Home'],
-        ['', 'Contact Information']
+        { page: 'home', label: 'Symphonic Chorus Home' },
+        { page: '', label: title }
     ];
 
     const introduction = (

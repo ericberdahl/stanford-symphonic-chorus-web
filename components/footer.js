@@ -1,6 +1,5 @@
-import Link from 'next/link'
-
 import Person from './person'
+import PageLink from './pageLink'
 
 import styles from '../styles/footer.module.scss'
 
@@ -13,7 +12,7 @@ export default function Footer(props) {
                 <li><a href="//www.stanford.edu" title="Stanford University">Stanford University</a></li>
                 <li><a href="//music.stanford.edu" title="Stanford Music Department">Stanford Music Department</a></li>
                 <li><a href="//music.stanford.edu/Ensembles/index.html">Stanford Music Ensembles</a></li>
-                <li className={styles.last}><Link href="/" as="/index.html"><a>Stanford Symphonic Chorus</a></Link></li>
+                <li className={styles.last}><PageLink page="home">Stanford Symphonic Chorus</PageLink></li>
             </ul>
             <div className={styles.copyright}>
                 <p>

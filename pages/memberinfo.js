@@ -18,6 +18,8 @@ function Introduction(props) {
     // in the historical record.
     const preregisterDate = DateTime.fromISO(props.preregisterDate).toFormat('MMMM yyyy');
 
+    // TODO replace Link uses with PageLink
+
     return (
         <div className={styles.introduction}>
             <PageNavigation items={props.navItems}/>
@@ -102,8 +104,8 @@ export default function MemberInfo({ pageData }) {
         ['#rehearsals', 'Rehearsals']
     ];
     const breadcrumbPath = [
-        ['/', 'Symphonic Chorus Home'],
-        ['', title]
+        { page: 'home', label: 'Symphonic Chorus Home' },
+        { page: '', label: title }
     ];
 
     return (
