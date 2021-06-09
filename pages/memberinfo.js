@@ -1,12 +1,13 @@
-import Link from 'next/link'
-
 import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
+import PageLink from '../components/pageLink'
 import PageNavigation from '../components/pageNavigation'
 import Person from '../components/person'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
+
+import Link from 'next/link'    // TODO replace Link uses with PageLink
 
 import { DateTime } from 'luxon'
 
@@ -17,8 +18,6 @@ function Introduction(props) {
     // need to be adjusted to accommodate the fact that we don't have preregister dates for all performances
     // in the historical record.
     const preregisterDate = DateTime.fromISO(props.preregisterDate).toFormat('MMMM yyyy');
-
-    // TODO replace Link uses with PageLink
 
     return (
         <div className={styles.introduction}>
@@ -175,11 +174,11 @@ export default function MemberInfo({ pageData }) {
                     (See <a href="#folders">Music Folders</a> on this page for resources.)
                 </p>
 
-                <h3><Link href="/nofragrance"><a>Fragrance-Free Policy</a></Link></h3>
+                <h3><PageLink page="noFragrance">Fragrance-Free Policy</PageLink></h3>
                 <p>
                     Several people in the chorus are particularly sensitive to scented products such as perfume and hair spray; all of us have to sing in close quarters and benefit by having air to breathe which is as pure as possible.
                     On all rehearsal days, and especially on dress rehearsal and performance days, we request you do not use any such products.
-                    For further information, including information on obtaining scent-free alternatives, see <Link href="/nofragrance"><a>extensive guidelines.</a></Link>
+                    For further information, including information on obtaining scent-free alternatives, see <PageLink page="noFragrance">extensive guidelines.</PageLink>
                 </p>
 
                 <h2 id="rehearsals">Rehearsals</h2>

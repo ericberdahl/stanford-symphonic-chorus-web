@@ -27,6 +27,7 @@ const siteMap = [
     new SiteEntry('home', '/'),
     new SiteEntry('contactUs', '/contact'),
     new SiteEntry('memberInfo', '/memberinfo'),
+    new SiteEntry('noFragrance', '/nofragrance'),
     new SiteEntry('performanceList', '/performances'),
 ];
 
