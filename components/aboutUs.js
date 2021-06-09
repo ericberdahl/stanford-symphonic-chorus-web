@@ -1,11 +1,7 @@
 import Lightbox from '../components/lightbox'
 import PageLink from '../components/pageLink'
 
-import Link from 'next/link'
-
 import styles from '../styles/aboutUs.module.scss'
-
-// TODO replace Link uses with PageLink
 
 export default function AboutUs(props) {
     return (
@@ -18,8 +14,8 @@ export default function AboutUs(props) {
                 caption="Rehearsal, Memorial Church, 25 February 2010. Photo by R. A. Wilson"
                 img_width={149}/>
 
-            <h3><Link href="/memberinfo#joining" as="/memberinfo.html#joining"><a>How to Join</a></Link></h3>
-            <p>See <em><Link href="/memberinfo#joining" as="/memberinfo.html#joining"><a>Joining the Chorus</a></Link></em> for information on auditions and basic member requirements.</p>
+            <h3><PageLink page="memberInfo" anchor="joining">How to Join</PageLink></h3>
+            <p>See <em><PageLink page="memberInfo" anchor="joining">Joining the Chorus</PageLink></em> for information on auditions and basic member requirements.</p>
 
             <h3><PageLink page="memberInfo">Member Information</PageLink></h3>
             <p>See our member page for information about rehearsals, and information and member resources. </p>
