@@ -3,12 +3,17 @@
 //
 // Layout
 //
-.container {
+@mixin container-base {
     width: 960px;
     min-width:960px;
     margin: 0 auto;
 
     display: grid;
+}
+
+.container {
+    @include container-base;
+
     grid-template-areas:
         "header header header"
         "nav nav nav"
@@ -17,7 +22,29 @@
         "intro content sidebar"
         "footer footer footer";
     grid-template-rows: auto auto auto max-content auto auto;
+
+    .spotlight {
+        display: none;
+    }
 }
+
+.homeContainer {
+    @include container-base;
+
+    grid-template-areas:
+        "header header header"
+        "nav nav nav"
+        ". . ."
+        "spotlight spotlight sidebar"
+        "intro content sidebar"
+        "footer footer footer";
+    grid-template-rows: auto auto 25px max-content auto auto;
+
+    .title, .breadcrumbs {
+        display: none;
+    }
+}
+
 
 .container_header {
     grid-area: header;
@@ -88,6 +115,7 @@
 }
 
 .spotlight {
+    grid-area: spotlight;
 	margin-bottom: 10px;
 
     /*

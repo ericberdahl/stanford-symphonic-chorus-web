@@ -1,0 +1,40 @@
+@import 'base';
+
+.hideForCovid19 {
+    display: none;
+}
+
+.main {
+    h3 {
+        font-family: $font-family-serif;
+        font-size: 0.8594rem;
+        color: black;
+    }
+
+    p {
+        font-family: $font-family-sanserif;
+        color: #333;
+        line-height: 1.3333em;
+        margin-bottom: 5px;
+    }
+}
+
+.hangingIndent {
+    float: left;
+    margin-right: 0.63em;
+}
+
+.sidebar {
+    ul {
+        margin: 0px 0px 15px 0px;
+        padding: 0px 0px 5px 0px;
+    }
+
+    li {
+        list-style-image: url(../public/images/raquo.gif);
+        line-height: 1.1667em;
+        font-size: 0.8021rem;
+        margin: 0px 0px 0px 15px;
+        padding: 0px 0px 5px 0px;
+    }    
+}

@@ -1,0 +1,16 @@
+@import 'base';
+
+.lightbox {
+    a {
+		border: none;
+        text-decoration: none;
+        border-bottom: none;
+        color: $color-beige;
+
+        &:hover {
+            text-decoration: none;
+            border-bottom: 1px dotted;
+            color: $color-red;
+        }
+    }
+}

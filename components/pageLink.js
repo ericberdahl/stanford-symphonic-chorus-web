@@ -26,6 +26,7 @@ const siteMap = [
     new SiteEntry('about', '/about'),
     new SiteEntry('home', '/'),
     new SiteEntry('contactUs', '/contact'),
+    new SiteEntry('fylpList', '/fylp'),
     new SiteEntry('memberInfo', '/memberinfo'),
     new SiteEntry('noFragrance', '/nofragrance'),
     new SiteEntry('performanceList', '/performances'),
@@ -40,7 +41,7 @@ export function isCurrentPage(page) {
     return (router.pathname == entry.route);
 }
 
-export default function PageLink({ page, anchor, children }) {
+export default function PageLink({ page, anchor, children, passHref }) {
     const entry = siteMap.find((value) => (value.name == page));
     if (!entry) throw new Error('Cannot find page named "' + page + '"');
 
@@ -48,6 +49,6 @@ export default function PageLink({ page, anchor, children }) {
     const externalLink = entry.externalRoute + (anchor && 0 < anchor.length ? '#' + anchor : '');
 
     return (
-        <Link href={internalLink} as={externalLink}>{children}</Link>
+        <Link href={internalLink} as={externalLink} passHref={passHref}>{children}</Link>
     );
 }

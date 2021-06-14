@@ -1,10 +1,12 @@
-import Head from 'next/head'
-
 import Breadcrumbs from './breadcrumbs'
 import ContainerSearch from './containerSearch'
 import Footer from './footer'
+import Lightbox from './lightbox'
 import NavTopic from './navTopic'
+import PageLink, { isCurrentPage } from './pageLink'
 import Seal from './seal'
+
+import Head from 'next/head'
 
 import styles from '../styles/layout.module.scss'
 
@@ -12,14 +14,31 @@ import styles from '../styles/layout.module.scss'
 // TODO style the content_container
 // TODO style the content_main
 
-function LogoHeader(props) {
-    return (props.logoHeader ? props.logoHeader : (
+function HomePageLogo() {
+    // TODO fix href to home page in banner
+    return (
+        <div className={styles.logo}>
+            <img
+                src="/images/logo_header/banner.gif"
+                alt="Stanford University - Stanford Symphonic Chorus Department of Music"
+                useMap="#HomePageLogoMap"/>
+            <map name="HomePageLogoMap">
+                <area shape="rect" coords="0,0,263,60" href="http://www.stanford.edu" alt="Stanford University"/>
+                <PageLink page="home" passHref><area shape="rect" coords="275,4,700,57" alt="Stanford Symphonic Chorus Department of Music"/></PageLink>
+            </map>
+        </div>
+    )
+}
+
+function CollageLogo() {
+    // TODO fix href to images in banner
+    return (
         <div className={styles.logo}>
             <img
                 src="/images/logo_header/SSCCollage.jpg"
                 alt="Stanford Symphonic Chorus"
-                useMap="#LogoMap"/>
-            <map name="LogoMap">
+                useMap="#CollageLogoMap"/>
+            <map name="CollageLogoMap">
                 <area shape="rect" coords="0,0,107,63" href="/images/logo_header/P1060915.jpg" alt="Chorus in rehearsal"/>
                 <area shape="rect" coords="108,0,190,63" href="/images/logo_header/Altos.jpg" alt="Altos in rehearsal"/>
                 <area shape="rect" coords="191,0,297,63" href="/images/logo_header/SoprCenter.jpg" alt="Sopranos in rehearsal"/>
@@ -29,61 +48,72 @@ function LogoHeader(props) {
                 <area shape="rect" coords="668,0,749,63" href="/images/logo_header/Tenors.jpg" alt="Tenors in rehearsal"/>
             </map>
         </div>
-    ));
+    );
 }
 
-function Spotlight(props) {
-    return (props.spotlight ? (<div className={styles.spotlight}>{props.spotlight}</div>) : (<></>));
-}
-
-function Introduction(props) {
-    return (props.introduction ? (<div className={styles.introduction}>{props.introduction}</div>) : (<></>));
-}
-
-function Sidebar(props) {
-    return (props.sidebar ? (<div className={styles.sidebar}>{props.sidebar}<Seal/></div>) : (<></>));
-}
-
-export default function Layout(props) {
+function Spotlight() {
     return (
-        <div className={styles[props.variant]}>
-            <div className={styles.container}>
-                <Head>
-                    <title>{props.title}</title>
-                </Head>
+        <div className={styles.spotlight}>
+            <Lightbox
+                image="/images/FullChorus27Feb2010.jpg"
+                display="/images/ChorusBanner.jpg"
+                width={800}
+                height={518}
+                caption="Performance of Beethoven Mass in C on 27 February 2010. Photo by R. A. Wilson."
+                img_width={754}
+                img_height={160}/>
+        </div>
+    );
+}
 
-                <div className={styles.container_header}>
-                    <div className={styles.header}>
-                        <LogoHeader {...props}/>
-                        <div className={styles.searchBox}>
-                            <ContainerSearch/>
-                        </div>
+function Introduction({ introduction }) {
+    return (introduction ? (<div className={styles.introduction}>{introduction}</div>) : (<></>));
+}
+
+function Sidebar({ sidebar }) {
+    return (sidebar ? (<div className={styles.sidebar}>{sidebar}<Seal/></div>) : (<></>));
+}
+
+export default function Layout({ breadcrumbs, children, introduction, sidebar, spotlight, title }) {
+    const isHome = isCurrentPage('home');
+
+    return (
+        <div className={isHome ? styles.homeContainer : styles.container}>
+            <Head>
+                <title>{title}</title>
+            </Head>
+
+            <div className={styles.container_header}>
+                <div className={styles.header}>
+                    {isHome ? <HomePageLogo/> : <CollageLogo/>}
+                    <div className={styles.searchBox}>
+                        <ContainerSearch/>
                     </div>
                 </div>
-                <div className={styles.navTopic}>
-                    <NavTopic/>
-                </div>
-                <div className={styles.title}>
-                    <h1>
-                        {props.title}
-                    </h1>
-                </div>
+            </div>
+            <div className={styles.navTopic}>
+                <NavTopic/>
+            </div>
+            <div className={styles.title}>
+                <h1>{title}</h1>
+            </div>
 
-                <Spotlight {...props}/>
-                <Introduction {...props}/>
+            {isHome && <Spotlight />}
+            <Introduction introduction={introduction}/>
 
+            {breadcrumbs && (
                 <div className={styles.breadcrumbs}>
-                    <Breadcrumbs path={props.breadcrumbs}/>
+                    <Breadcrumbs path={breadcrumbs}/>
                 </div>
+            )}
 
-                <div className={styles.content_main}>
-                    {props.children}
-                </div>
+            <div className={styles.content_main}>
+                {children}
+            </div>
 
-                <Sidebar {...props}/>
-                <div className={styles.footer}>
-                    <Footer/>
-                </div>
+            <Sidebar sidebar={sidebar}/>
+            <div className={styles.footer}>
+                <Footer/>
             </div>
         </div>
     );
