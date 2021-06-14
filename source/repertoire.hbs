@@ -3,7 +3,7 @@ title: "Repertoire"
 
 logo_include: "logo_ssc"
 
-body_class: "secondary"
+body_class: "repertoire"
 
 scripts:
 
@@ -39,13 +39,7 @@ scripts:
 			<div id="{{ _kebabCase . }}" class="repertoire_piece">
 				{{#_forEach (_get ../catalog.repertoire.byComposer .) }}
 					{{#if 0}} {{! EMB 2020-Sep-20 experiment with CSS Grid layout }}
-					<div class="piece" style="display: grid;
-											grid-template-columns: 1fr 1fr 1fr 1fr;
-											grid-template-rows: auto;
-											grid-template-areas:
-												\"title title title title\"
-												\"fylp fylp fylp fylp\"
-												\". . . .\";">
+					<div class="piece">
 						<h3 class="title" style="grid-area: title;">{{> piece_citation piece=piece }}</h3>
 						{{#if fylp}}
 							<div class="fylp" style="grid-area: fylp;">{{#> link_object href=fylp }}For Your Listening Pleasure{{/link_object}}</div>
