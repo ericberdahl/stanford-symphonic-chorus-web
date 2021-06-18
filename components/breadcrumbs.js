@@ -16,7 +16,7 @@ export default function Breadcrumbs({ path }) {
         <div className={styles.breadcrumb}>
             <p>
                 <SpaceSeparatedPhrase separator=" » ">
-                    {path.map((item) => <BreadcrumbItem item={item}/>)}
+                    {path.map((item) => <BreadcrumbItem key={item} item={item}/>)}
                 </SpaceSeparatedPhrase>
             </p>
         </div>
