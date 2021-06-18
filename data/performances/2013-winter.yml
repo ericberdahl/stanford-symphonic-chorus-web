@@ -46,12 +46,13 @@ membershipLimit:
 
 preregister: 
 
-images:
--   file: "Beethoven_pd.jpg"
-    height: 600
-    width: 499
+heraldImage:
+    basename: "Beethoven_pd"
     caption: "Beethoven"
--   file: "SSCPerf.jpg"
+
+# TODO: otherImages is not supported
+otherImages:
+-   file: "W2013 SSCPerf.jpg"
     height: 300
     width: 475
 

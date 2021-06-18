@@ -42,10 +42,8 @@ membershipLimit:
 
 preregister: 
 
-images:
--   file: "JohannesBrahms.jpg"
-    height: 399
-    width: 300
+heraldImage:
+    basename: "JohannesBrahms"
     caption: "Johannes Brahms"
 
 rehearsals:

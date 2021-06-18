@@ -47,10 +47,8 @@ membershipLimit: 220
 
 preregister: "2017-09-01"
 
-images:
--   file: "Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff.jpg"
-    width: 790
-    height: 874
+heraldImage:
+    basename: "Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff"
     caption: "Photo by DAVID ILIFF. License: CC-BY-SA 3.0"
 
 rehearsals:

@@ -30,10 +30,8 @@ membershipLimit:
 
 preregister: 
 
-images:
--   file: "Beethoven_pd.jpg"
-    height: 600
-    width: 499
+heraldImage:
+    basename: "Beethoven_pd"
 
 rehearsals:
 -   start: 2013-04-08 19:15:00 -07

@@ -42,10 +42,8 @@ membershipLimit:
 
 preregister: 2017-12-01
 
-images:
--   file: "Rembrandt-Belshazzars-Feast-WGA19123.jpg"
-    height: 800
-    width: 1037
+heraldImage:
+    basename: "Rembrandt-Belshazzars-Feast-WGA19123"
     caption: "Belshazzar's Feast by Rembrandt (WGA19123)"
 
 rehearsals:

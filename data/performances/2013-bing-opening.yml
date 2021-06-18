@@ -41,10 +41,8 @@ membershipLimit:
 
 preregister:
 
-images:
--   file: binghall_banner.jpg
-    height: 380
-    width: 630
+heraldImage:
+    basename: "binghall_banner"
     caption: "Rendering of the Bing Concert Hall. &copy; Polshek Partnership Architects"
 
 rehearsals:

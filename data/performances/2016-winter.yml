@@ -44,10 +44,8 @@ membershipLimit:
 
 preregister:
 
-images:
-    file: "W2016 Concert Photo"
-    width: 1280
-    height: 854
+heraldImage:
+    basename: "W2016 Concert Photo"
 
 rehearsals:
 -   start: 2016-01-04 19:30:00 -08

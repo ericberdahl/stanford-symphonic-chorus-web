@@ -46,10 +46,8 @@ membershipLimit:
 
 preregister:
 
-images:
--   file: "Claude_Monet_Rouen_Cathedral_Facade_and_Tour_dAlbaneI.jpg"
-    width: 545
-    height: 815
+heraldImage:
+    basename: "Claude_Monet_Rouen_Cathedral_Facade_and_Tour_dAlbaneI"
 
 rehearsals:
 -   start: 2016-09-26 19:30:00 -07

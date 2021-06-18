@@ -47,10 +47,11 @@ membershipLimit:
 
 preregister: 
 
-images:
--   file: "tinternabbey.jpg"
-    width: 423
-    height: 599
+heraldImage:
+    basename: "tinternabbey"
+
+# TODO: otherImages is not supported
+otherImages:
 -   file: "holycitymap.jpg"
     width: 546
     height: 720

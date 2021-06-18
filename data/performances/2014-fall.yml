@@ -41,10 +41,8 @@ membershipLimit:
 
 preregister:
 
-images:
--   file: "Farquharson.jpg"
-    width: 900
-    height: 608
+heraldImage:
+    basename: "Farquharson"
     caption: "The Shortening Winter's Day is Near a Close (1903), by Joseph Farquharson"
 
 rehearsals:
