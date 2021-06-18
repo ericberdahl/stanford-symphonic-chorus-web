@@ -32,7 +32,7 @@ function findFileVariants(baseRoute, variants)
     return result;
 }
 
-class PosterRoutes {
+class ImageRoutes {
     #pdf        = null;
     #jpg        = null;
     #caption    = null;
@@ -45,14 +45,14 @@ class PosterRoutes {
     get jpg() { return this.#jpg; }
     get caption() { return this.#caption; }
 
-    static deserialize(data, options) {
-        const result = new PosterRoutes();
+    static deserialize(data, directoryRoute, options) {
+        const result = new ImageRoutes();
 
-        const baseRoute = '/assets/posters/' + data.basename;
+        const baseRoute = directoryRoute + data.basename;
         
         const routes = findFileVariants(baseRoute, ['pdf', 'jpg']);
         if (0 == routes.length) {
-            throw new Error(util.format('No poster variants found for "%s"', data.basename));
+            throw new Error(util.format('No image variants found for "%s"', data.basename));
         }
 
         const variantMap = {
@@ -85,12 +85,12 @@ export default class Performance {
     #directors          = [];
     #dressRehearsals    = [];
     #events             = [];
-    #images             = [];
+    #heraldImageRoutes  = null;
     #instructors        = [];
     #links              = [];
     #mainPieces         = [];
     #membershipLimit    = 0;
-    #posterRoutes       = [];
+    #posterRoutes       = null;
     #preregisterDate    = null;
     #quarter            = "";
     #rehearsals         = [];
@@ -109,6 +109,7 @@ export default class Performance {
     get concerts() { return this.#concerts; }
     get description() { return this.#description; }
     get directors() { return this.#directors; }
+    get heraldImageRoutes() { return this.#heraldImageRoutes; }
     get instructors() { return this.#instructors; }
     get membershipLimit() { return this.#membershipLimit; }
     get posterRoutes() { return this.#posterRoutes; }
@@ -169,11 +170,15 @@ export default class Performance {
         }
 
         if (data.poster) {
-            result.#posterRoutes = PosterRoutes.deserialize(data.poster, options);
+            result.#posterRoutes = ImageRoutes.deserialize(data.poster, '/assets/posters/', options);
+        }
+
+        if (data.heraldImage) {
+            result.#heraldImageRoutes = ImageRoutes.deserialize(data.heraldImage, '/assets/heralds/', options);
+                    // TODO deserialize images
         }
 
         // TODO deserialize links
-        // TODO deserialize images
         // TODO deserialize rehearsals
         // TODO deserialize sectionals
         // TODO deserialize dress rehearsals

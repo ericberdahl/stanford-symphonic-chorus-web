@@ -33,8 +33,6 @@ collaborators:
 -   "SSO"
 
 poster:
-    basename: "AsianFest"
-    caption: "Stanford Pan-Asian Music Festival, Winter 2009"
 # MISSING: proper poster for Winter 2009
 
 directors:
@@ -58,10 +56,8 @@ membershipLimit:
 
 preregister: 
 
-images:
--   file: "AsianFest.jpg"
-    height: 4558
-    width: 2753
+heraldImage:
+    basename: "AsianFest"
     caption: "Stanford Pan-Asian Music Festival, Winter 2009"
 
 rehearsals:

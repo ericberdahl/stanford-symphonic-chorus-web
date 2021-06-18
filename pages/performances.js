@@ -65,24 +65,26 @@ function Sidebar(props) {
     );
 }
 
-function Poster({ data }) {
-    if (!data.posterRoutes.pdf) {
+function Poster({ posterRoutes }) {
+    const image = (posterRoutes?.pdf ? posterRoutes?.pdf : posterRoutes?.jpg);
+
+    if (!image) {
         return (<img src="/images/M@S-roundedges.gif" alt=""/>);
     };
 
     const MAX_DIMENSION = 900;
-    const largestDimension = Math.max(data.posterRoutes.width, data.posterRoutes.width);
+    const largestDimension = Math.max(posterRoutes.width, posterRoutes.width);
     const reductionFactor = (largestDimension < MAX_DIMENSION ? 1.0 : largestDimension/MAX_DIMENSION);
-    const width = Math.round(data.posterRoutes.width/reductionFactor);
-    const height = Math.round(data.posterRoutes.height/reductionFactor);
+    const width = Math.round(posterRoutes.width/reductionFactor);
+    const height = Math.round(posterRoutes.height/reductionFactor);
     
     return (
         <Lightbox
-            image={data.posterRoutes.pdf}
-            display={data.posterRoutes.jpg}
+            image={image}
+            display={posterRoutes.jpg}
             width={width}
             height={height}
-            caption={data.posterRoutes.caption}
+            caption={posterRoutes.caption}
             img_width={107}/>
     );
 }
@@ -161,7 +163,7 @@ function Performance({ data }) {
     return (
         <div id={slugify(data.quarter)} className={styles.performance}>
             <div className={styles.poster}>
-                <Poster data={data}/>
+                <Poster posterRoutes={data.posterRoutes ? data.posterRoutes : data.heraldImageRoutes}/>
             </div>
             <div className={styles.content}>
                 <h3>{data.quarter}</h3>
@@ -226,11 +228,15 @@ function serializePiece(piece) {
     };
 }
 
-function serializePosters(posters) {
+function serializeImageRoutes(imageRoutes) {
+    if (!imageRoutes) {
+        return null;
+    }
+
     const result = {
-        pdf: posters?.pdf || null,
-        jpg: posters?.jpg || null,
-        caption: posters?.caption || null,
+        pdf: imageRoutes?.pdf || null,
+        jpg: imageRoutes?.jpg || null,
+        caption: imageRoutes?.caption || null,
         width: 0,
         height: 0
     };
@@ -244,17 +250,20 @@ function serializePosters(posters) {
 }
 
 function serializePerformance(performance) {
-    return {
-        collaborators:  performance.collaborators,
-        concerts:       performance.concerts.map(serializeConcert),
-        directors:      performance.directors,
-        instructors:    performance.instructors,
-        posterRoutes:   serializePosters(performance.posterRoutes),
-        repertoire:     performance.repertoire.map(serializePiece),
-        soloists:       performance.soloists,
-        quarter:        performance.quarter,
-        year:           performance.concerts[0].start.year,
+    const result = {
+        collaborators:      performance.collaborators,
+        concerts:           performance.concerts.map(serializeConcert),
+        directors:          performance.directors,
+        heraldImageRoutes:  serializeImageRoutes(performance.heraldImageRoutes),
+        instructors:        performance.instructors,
+        posterRoutes:       serializeImageRoutes(performance.posterRoutes),
+        repertoire:         performance.repertoire.map(serializePiece),
+        soloists:           performance.soloists,
+        quarter:            performance.quarter,
+        year:               performance.concerts[0].start.year,
     };
+
+    return result;
 }
 
 export async function getStaticProps({ params }) {
