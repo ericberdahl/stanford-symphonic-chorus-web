@@ -4,6 +4,7 @@ import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
 import Location from '../components/location'
 import PieceCitation from '../components/pieceCitation'
+import PairedImage from '../components/pairedImage'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
@@ -14,7 +15,6 @@ import imageSize from 'image-size'
 import slugify from 'slugify'
 
 import path from 'path'
-import Lightbox from '../components/lightbox'
 
 function Introduction(pageData) {
     const PushPerformance = (p) => {
@@ -62,30 +62,6 @@ function Sidebar(props) {
                 </p>
             </TitledSegment>
         </div>
-    );
-}
-
-function Poster({ posterRoutes }) {
-    const image = (posterRoutes?.pdf ? posterRoutes?.pdf : posterRoutes?.jpg);
-
-    if (!image) {
-        return (<img src="/images/M@S-roundedges.gif" alt=""/>);
-    };
-
-    const MAX_DIMENSION = 900;
-    const largestDimension = Math.max(posterRoutes.width, posterRoutes.width);
-    const reductionFactor = (largestDimension < MAX_DIMENSION ? 1.0 : largestDimension/MAX_DIMENSION);
-    const width = Math.round(posterRoutes.width/reductionFactor);
-    const height = Math.round(posterRoutes.height/reductionFactor);
-    
-    return (
-        <Lightbox
-            image={image}
-            display={posterRoutes.jpg}
-            width={width}
-            height={height}
-            caption={posterRoutes.caption}
-            img_width={107}/>
     );
 }
 
@@ -163,7 +139,7 @@ function Performance({ data }) {
     return (
         <div id={slugify(data.quarter)} className={styles.performance}>
             <div className={styles.poster}>
-                <Poster posterRoutes={data.posterRoutes ? data.posterRoutes : data.heraldImageRoutes}/>
+                <PairedImage routes={data.posterRoutes ? data.posterRoutes : data.heraldImageRoutes}/>
             </div>
             <div className={styles.content}>
                 <h3>{data.quarter}</h3>
