@@ -107,6 +107,7 @@ export default class Performance {
 
     get collaborators() { return this.#collaborators; }
     get concerts() { return this.#concerts; }
+    get description() { return this.#description; }
     get directors() { return this.#directors; }
     get instructors() { return this.#instructors; }
     get membershipLimit() { return this.#membershipLimit; }
@@ -126,13 +127,14 @@ export default class Performance {
 
         result.#scheduleRoute = route;
 
-        result.#quarter = data.quarter;
-        result.#registrationFee = data.registrationFee;
-        result.#membershipLimit = data.membershipLimit;
-        result.#soloists = (data.soloists ? data.soloists : result.#soloists);;
         result.#collaborators = (data.collaborators ? data.collaborators : result.#collaborators);
+        result.#description = (data.description ? data.description : result.#description);
         result.#directors = (data.directors ? data.directors : result.#directors);
         result.#instructors = (data.instructors ? data.instructors : result.#instructors);
+        result.#membershipLimit = data.membershipLimit;
+        result.#quarter = data.quarter;
+        result.#registrationFee = data.registrationFee;
+        result.#soloists = (data.soloists ? data.soloists : result.#soloists);;
 
         if (data.preregister) {
             result.#preregisterDate = DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: options.timezone });
@@ -176,7 +178,6 @@ export default class Performance {
         // TODO deserialize sectionals
         // TODO deserialize dress rehearsals
         // TODO deserialize events
-        // TODO deserialize description
 
         return result;
     }
