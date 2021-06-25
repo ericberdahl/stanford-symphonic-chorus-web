@@ -1,12 +1,12 @@
 ---
 # HOWTO: Set quarter to a single string that names the quarter and year. Use something like "Winter 1812",
 # "Spring 1812", or "Fall 1812"
-quarter: "Fall 2020"
+quarter: "Fall 2021"
 
 
 # HOWTO: If this schedule is for the future (i.e. beyond the current quarter), set isFuture to true.
 # If this schedule is for the present or past (i.e. either the current quarter or a prior quarter), set isFuture to false.
-isFuture: true
+isFuture: false
 
 
 # HOWTO: Set syllabus to an list of syllabi documents. These documents will live in the assets folder.
@@ -25,8 +25,10 @@ syllabus:
 # IMPORTANT: Exactly one piece MUST be labelled with the &main-piece anchor.
 repertoire:
 -   &main-piece
-    composer: "Schubert"
-    title: "Mass in A♭"
+    composer: "Johannes Brahms"
+    title: "Ein Deutsches Requiem"
+    translation: "A German Requiem"
+    catalog: "Op. 45"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -64,6 +66,7 @@ poster:
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
+-   "Stephen M. Sano"
 
 
 # HOWTO: instructors is a list of strings that name the instructors for this quarter
@@ -88,7 +91,7 @@ limits:
 
 # HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
 # is expected to be sent out.
-preregister: "2020-09-01"
+preregister: "2021-09-01"
 
 
 # HOWTO: images is a list of image records associated with this quarter's program.
@@ -129,11 +132,11 @@ images:
 # fields.
 rehearsals:
 -   &first-rehearsal
-    start: 2020-09-21 19:30:00 -07
-    end: 2020-09-21 22:00:00 -07
+    start: 2021-09-20 19:30:00 -07
+    end: 2021-09-20 22:00:00 -07
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2020-09-21 18:30:00 -07
+    registration: 2021-09-20 18:30:00 -07
 
 
 # HOWTO: sectionals is a list of sectional rehearsals for the quarter
@@ -164,8 +167,8 @@ sectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the dress rehearsal will take place.
 dresses:
--   start: 2020-11-18 19:00:00 -08
-    location: "Bing"
+#-   start: 2020-11-18 19:00:00 -08
+#    location: "Bing"
 
 
 # HOWTO: concerts is a list of concert dates
