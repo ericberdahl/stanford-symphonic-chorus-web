@@ -1,6 +1,6 @@
 @import 'base';
 
-.hideForCovid19 {
+@mixin hideForCovid19 {
     display: none;
 }
 
@@ -37,4 +37,16 @@
         margin: 0px 0px 0px 15px;
         padding: 0px 0px 5px 0px;
     }    
+}
+
+.covid19Notice {
+
+}
+
+.performanceDescription {
+    //@include hideForCovid19();
+}
+
+.ticketLinks {
+    display: none;
 }

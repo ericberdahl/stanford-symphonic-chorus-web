@@ -4,7 +4,7 @@ import PageLink from '../components/pageLink'
 import Person from '../components/person'
 import TitledSegment from '../components/titledSegment'
 
-import Head from 'next/head'
+import Model from '../common/model'
 
 import styles from '../styles/Home.module.scss'
 
@@ -57,7 +57,7 @@ function Sidebar() {
     );
 }
 
-export default function Home() {
+export default function Home({ currentQuarter }) {
     return (
         <Layout
             title="Stanford Symphonic Chorus"
@@ -80,7 +80,7 @@ export default function Home() {
                             See our <PageLink page="performanceList"><a>Performances</a></PageLink> page for information about past performances.
                         </p>
                     </div>
-                    <div>
+                    <div className={styles.covid19Notice}>
                         <p>
                             Due to the current situation with the COVID-19 pandemic, the Stanford Symphonic Chorus remains on hiatus through at least the Spring quarter of 2021.
                             The return of the Symphonic Chorus to regular activity will depend on (i) the progression of the virus, (ii) progress
@@ -89,11 +89,54 @@ export default function Home() {
                             For additional information, please contact the Director, <Person role="director" subject="Symphonc Chorus Inquiry"/>.
                         </p>
                     </div>
-                    <div className={styles.hideForCovid19}>
-                        TODO all the real home page content
+                    <div className={styles.performanceDescription}>
+                        <h3><PageLink page="performanceList"><a>{currentQuarter.quarter} Concert</a></PageLink></h3>
+                        <p>TODO use first image</p>
+                        <div dangerouslySetInnerHTML={{ __html: currentQuarter.description }} />
+                        <p>
+                            TODO show list of concerts
+                        </p>
+                        <br/>
+                        <ul className={styles.ticketLinks}>
+                            <li><a href="//liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4634&z=182&pt=47,2,4,5,12,16">Tickets for Friday 15 March</a></li>
+                            <li><a href="//liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4635&z=182&pt=47,2,4,5,12,16">Tickets for Sunday 17 March</a></li>
+                        </ul>
                     </div>
                 </TitledSegment>
             </div>
         </Layout>
     );
+}
+
+function serializePerformance(performance) {
+    return {
+        /*
+        collaborators:  performance.collaborators,
+        concerts:       performance.concerts.map(serializeConcert),
+        */
+        description:    performance.description,
+        /*
+        directors:      performance.directors,
+        instructors:    performance.instructors,
+        posterRoutes:   serializePosters(performance.posterRoutes),
+        repertoire:     performance.repertoire.map(serializePiece),
+        soloists:       performance.soloists,
+        */
+        quarter:        performance.quarter,
+        /*
+        year:           performance.concerts[0].start.year,
+        */
+    };
+}
+
+export async function getStaticProps({ params }) {
+    const model = await Model.singleton;
+    
+    const props = {
+        currentQuarter: serializePerformance(model.currentQuarter)
+    }
+
+    return {
+        props: props
+    }
 }
