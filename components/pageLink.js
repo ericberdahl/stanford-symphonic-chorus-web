@@ -30,6 +30,7 @@ const siteMap = [
     new SiteEntry('memberInfo', '/memberinfo'),
     new SiteEntry('noFragrance', '/nofragrance'),
     new SiteEntry('performanceList', '/performances'),
+    new SiteEntry('repertoire', '/repertoire'),
 ];
 
 export function isCurrentPage(page) {
