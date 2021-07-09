@@ -1,14 +1,55 @@
+import Collaborator from '../components/collaborator'
+import CommaSeparatedList from '../components/commaSeparatedList'
 import Layout from '../components/layout'
 import Lightbox from '../components/lightbox'
+import Location from '../components/location'
 import PageLink from '../components/pageLink'
 import Person from '../components/person'
+import PieceCitation from '../components/pieceCitation'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
 
+import { DateTime } from 'luxon'
+
 import styles from '../styles/Home.module.scss'
 
-function Introduction() {
+function ConcertEvent({ currentQuarter, data }) {
+    return (
+        <>
+            <p>
+                Symphonic Chorus Performance: <span class="event_time">
+                    <CommaSeparatedList>
+                        {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
+                    </CommaSeparatedList>
+                    {currentQuarter.collaborators &&
+                        (<> with <CommaSeparatedList>{currentQuarter.collaborators.map((c) => <Collaborator key={c} name={c}/>)}</CommaSeparatedList></>)
+                    }
+                </span>
+            </p>
+            <p>
+                {DateTime.fromISO(data.start).toFormat('t')} <Location name={data.location}/>
+            </p>
+        </>
+    );
+}
+
+function Introduction({ currentQuarter }) {
+    var eventList = [];
+    
+    // add concerts to the event list
+    eventList = eventList.concat(currentQuarter.concerts.map((c) => ({
+        date: DateTime.fromISO(c.start),
+        data: c,
+        renderer: ConcertEvent
+    })));
+
+    // TODO : add first rehearsal
+    // TODO : add other events
+
+    // sort the event list into increasing date order
+    eventList.sort((a, b) => b.date.diff(a.date).toMillis());
+
     return (
         <div className={styles.events}>
             <TitledSegment title="Events">
@@ -17,7 +58,14 @@ function Introduction() {
                     height={852}
                     caption="Memorial Church, 22 February 2010. Photo by R. A. Wilson."
                     img_width={149}/>
-                TODO finish home page introduction bar
+                {eventList.map((e, index) => (
+                    <div class={styles.event}>
+                        <h3>
+                            <span class={styles.day}>{e.date.toFormat('d')}</span> <span class={styles.month}>{e.date.toFormat('MMM')}<br/>
+                            {e.date.toFormat('yyyy')}</span>
+                        </h3>
+                        <e.renderer key={index} currentQuarter={currentQuarter} data={e.data}/>
+                    </div>))}
             </TitledSegment>
         </div>
     );
@@ -61,7 +109,7 @@ export default function Home({ currentQuarter }) {
     return (
         <Layout
             title="Stanford Symphonic Chorus"
-            introduction={<Introduction/>}
+            introduction={<Introduction currentQuarter={currentQuarter}/>}
             sidebar={<Sidebar/>}>
             <div className={styles.main}>
                 <TitledSegment title="Welcome">
@@ -80,21 +128,12 @@ export default function Home({ currentQuarter }) {
                             See our <PageLink page="performanceList"><a>Performances</a></PageLink> page for information about past performances.
                         </p>
                     </div>
-                    <div className={styles.covid19Notice}>
-                        <p>
-                            Due to the current situation with the COVID-19 pandemic, the Stanford Symphonic Chorus remains on hiatus through at least the Spring quarter of 2021.
-                            The return of the Symphonic Chorus to regular activity will depend on (i) the progression of the virus, (ii) progress
-                            and availability of an effective vaccine, and (iii) when non-Stanford students/faculty/staff are allowed to physically return to the core academic area of campus.
-                            We anxiously look forward to the time that we can return to singing together again and celebrate the choral art!
-                            For additional information, please contact the Director, <Person role="director" subject="Symphonc Chorus Inquiry"/>.
-                        </p>
-                    </div>
                     <div className={styles.performanceDescription}>
                         <h3><PageLink page="performanceList"><a>{currentQuarter.quarter} Concert</a></PageLink></h3>
                         <p>TODO use first image</p>
                         <div dangerouslySetInnerHTML={{ __html: currentQuarter.description }} />
                         <p>
-                            TODO show list of concerts
+                            {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</>)}</CommaSeparatedList>
                         </p>
                         <br/>
                         <ul className={styles.ticketLinks}>
@@ -108,18 +147,40 @@ export default function Home({ currentQuarter }) {
     );
 }
 
+function serializeConcert(concert) {
+    return {
+        start:      concert.start.toISO(),
+        location:   concert.location
+    };
+}
+
+function serializePiece(piece) {
+    return {
+        arranger:       piece.arranger,
+        catalog:        piece.catalog,
+        commonTitle:    piece.commonTitle,
+        composer:       piece.composer,
+        movement:       piece.movement,
+        prefix:         piece.prefix,
+        suffix:         piece.suffix,
+        title:          piece.title,
+        translation:    piece.translation,
+    };
+}
+
 function serializePerformance(performance) {
     return {
-        /*
         collaborators:  performance.collaborators,
         concerts:       performance.concerts.map(serializeConcert),
-        */
         description:    performance.description,
         /*
         directors:      performance.directors,
         instructors:    performance.instructors,
         posterRoutes:   serializePosters(performance.posterRoutes),
+        */
+        mainPieces:     performance.mainPieces.map(serializePiece),
         repertoire:     performance.repertoire.map(serializePiece),
+        /*
         soloists:       performance.soloists,
         */
         quarter:        performance.quarter,

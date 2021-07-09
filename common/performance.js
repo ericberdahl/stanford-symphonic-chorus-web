@@ -111,6 +111,7 @@ export default class Performance {
     get directors() { return this.#directors; }
     get heraldImageRoutes() { return this.#heraldImageRoutes; }
     get instructors() { return this.#instructors; }
+    get mainPieces() { return this.#mainPieces; }
     get membershipLimit() { return this.#membershipLimit; }
     get posterRoutes() { return this.#posterRoutes; }
     get preregisterDate() { return this.#preregisterDate; }
@@ -161,7 +162,9 @@ export default class Performance {
         });
 
         data.repertoire.main.forEach((p) => {
-            result.#repertoire.push(Piece.deserialize(p, options));
+            const piece = Piece.deserialize(p, options);
+            result.#mainPieces.push(piece);
+            result.#repertoire.push(piece);
         });
         if (data.repertoire.other) {
             data.repertoire.other.forEach((p) => {
