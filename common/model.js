@@ -80,7 +80,7 @@ export default class Model {
             const performance = Performance.deserialize(yaml.parse(contents), route, performanceOptions);
 
             model.addPerformance(performance);
-            if (slug == config.currentQuarter) {
+            if (performance.quarter == config.currentQuarter) {
                 model.#currentPerformance = performance;
             }
 
