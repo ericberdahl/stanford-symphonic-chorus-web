@@ -221,21 +221,6 @@ concerts:
     call: "19:00"
     location: "MemChu"
 
-
-# HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
-# schedule.
-# An individual event looks like this:
-# -   date: "YYYY-MM-DD"
-#     start: "HH:MM"
-#     location: "MemChu"
-#     title: "Messiah Sing/Play Along"
-# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
-# venue in which the event will take place.
-# Where title is a string that labels the event itself.
-# Where date is the date of the event, specified in YYYY-MM-DD format.
-# Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
-events:
-
 # HOWTO: description contains HTML that is included on pages which need a synopsis of
 # the concert. The home page is a typical location where such text is used.
 description:
