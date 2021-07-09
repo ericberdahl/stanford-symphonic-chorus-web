@@ -44,8 +44,8 @@ function Introduction({ currentQuarter }) {
         renderer: ConcertEvent
     })));
 
-    // TODO : add first rehearsal
-    // TODO : add other events
+    // TODO: add first rehearsal
+    // TODO: add other events
 
     // sort the event list into increasing date order
     eventList.sort((a, b) => b.date.diff(a.date).toMillis());
@@ -84,7 +84,7 @@ function Sidebar() {
                     <li><PageLink page="performanceList"><a>SSC Performances</a></PageLink></li>
                     <li><PageLink page="fylpList"><a>For your listening pleasure</a></PageLink></li>
                     <li><PageLink page="memberInfo" anchor="auditions"><a>Joining the Chorus</a></PageLink></li>
-                    <li>TODO link to current rehearsal schedule</li>
+                    <li>TODO: link to current rehearsal schedule</li>
                 </ul>
             </TitledSegment>
             <TitledSegment title="Stanford Arts">
@@ -130,7 +130,7 @@ export default function Home({ currentQuarter }) {
                     </div>
                     <div className={styles.performanceDescription}>
                         <h3><PageLink page="performanceList"><a>{currentQuarter.quarter} Concert</a></PageLink></h3>
-                        <p>TODO use first image</p>
+                        <p>TODO: use first image</p>
                         <div dangerouslySetInnerHTML={{ __html: currentQuarter.description }} />
                         <p>
                             {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</>)}</CommaSeparatedList>

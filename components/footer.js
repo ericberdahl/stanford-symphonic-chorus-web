@@ -3,7 +3,7 @@ import PageLink from './pageLink'
 
 import styles from '../styles/footer.module.scss'
 
-// TODO extra-vcards block
+// TODO: extra-vcards block
 
 export default function Footer(props) {
     return (

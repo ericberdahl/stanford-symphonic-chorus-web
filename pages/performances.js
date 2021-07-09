@@ -44,7 +44,7 @@ function Introduction(pageData) {
 }
 
 function Sidebar(props) {
-    // TODO Complete China Music Tour information -- move into its own component?
+    // TODO: Complete China Music Tour information -- move into its own component?
     return (
         <div className={styles.sidebar}>
             <TitledSegment title="Coverage of the 2008 China Music Tour">
@@ -134,8 +134,8 @@ function Performance({ data }) {
         posterRoutes.push({ variant: 'JPG', route: data.posterRoutes.jpg });
     }
 
-    // TODO add fylp links
-    // TODO add misc links
+    // TODO: add fylp links
+    // TODO: add misc links
     return (
         <div id={slugify(data.quarter)} className={styles.performance}>
             <div className={styles.poster}>
@@ -153,8 +153,8 @@ function Performance({ data }) {
             <div className={styles.extras}>
                 <ul className={styles.links}>
                     {0 < posterRoutes.length && <li>Poster (<FileLinks files={posterRoutes}/>)</li>}
-                    <li>TODO FYLP</li>
-                    <li>TODO links</li>
+                    <li>TODO: FYLP</li>
+                    <li>TODO: links</li>
                 </ul>
             </div>
         </div>

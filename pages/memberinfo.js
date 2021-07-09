@@ -7,7 +7,7 @@ import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
 
-import Link from 'next/link'    // TODO replace Link uses with PageLink
+import Link from 'next/link'    // TODO: replace Link uses with PageLink
 
 import { DateTime } from 'luxon'
 

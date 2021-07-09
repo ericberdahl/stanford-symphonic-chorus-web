@@ -10,12 +10,12 @@ import Head from 'next/head'
 
 import styles from '../styles/layout.module.scss'
 
-// TODO style the header
-// TODO style the content_container
-// TODO style the content_main
+// TODO: style the header
+// TODO: style the content_container
+// TODO: style the content_main
 
 function HomePageLogo() {
-    // TODO fix href to home page in banner
+    // TODO: fix href to home page in banner
     return (
         <div className={styles.logo}>
             <img
@@ -31,7 +31,7 @@ function HomePageLogo() {
 }
 
 function CollageLogo() {
-    // TODO fix href to images in banner
+    // TODO: fix href to images in banner
     return (
         <div className={styles.logo}>
             <img

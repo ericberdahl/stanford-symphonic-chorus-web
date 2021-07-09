@@ -178,14 +178,14 @@ export default class Performance {
 
         if (data.heraldImage) {
             result.#heraldImageRoutes = ImageRoutes.deserialize(data.heraldImage, '/assets/heralds/', options);
-                    // TODO deserialize images
+                    // TODO: deserialize images
         }
 
-        // TODO deserialize links
-        // TODO deserialize rehearsals
-        // TODO deserialize sectionals
-        // TODO deserialize dress rehearsals
-        // TODO deserialize events
+        // TODO: deserialize links
+        // TODO: deserialize rehearsals
+        // TODO: deserialize sectionals
+        // TODO: deserialize dress rehearsals
+        // TODO: deserialize events
 
         return result;
     }
