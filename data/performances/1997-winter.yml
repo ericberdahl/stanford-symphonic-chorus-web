@@ -27,7 +27,7 @@ soloists:
 collaborators:
 
 poster:
-# MISSING poster for Winter 1997
+# MISSING: poster for Winter 1997
 
 directors:
 
@@ -58,4 +58,4 @@ concerts:
     start: "20:00"
     call: "19:00"
     location: <unknown>
-# MISSING locations for concerts for Winter 1997
+# MISSING: locations for concerts for Winter 1997

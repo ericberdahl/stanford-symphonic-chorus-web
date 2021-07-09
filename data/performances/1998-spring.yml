@@ -14,7 +14,7 @@ soloists:
 collaborators:
 
 poster:
-# MISSING poster for Spring 1998
+# MISSING: poster for Spring 1998
 
 directors:
 
@@ -45,4 +45,4 @@ concerts:
     start: 1998-05-22 20:00:00 -07
     call: 1998-05-22 19:00:00 -07
     location: "MemChu"
-# MISSING confirmation of start times for Spring 1998 concerts
+# MISSING: confirmation of start times for Spring 1998 concerts

@@ -23,7 +23,7 @@ soloists:
 collaborators:
 
 poster:
-# MISSING poster for Winter 2001
+# MISSING: poster for Winter 2001
 
 directors:
 
@@ -54,9 +54,9 @@ concerts:
     start: "20:00"
     call: "19:00"
     location: <unknown>
-# MISSING start times for concerts for Winter 2001
-# MISSING locations of concerts for Winter 2001
-# MISSING confirmation for dates of concerts for Winter 2001
+# MISSING: start times for concerts for Winter 2001
+# MISSING: locations of concerts for Winter 2001
+# MISSING: confirmation for dates of concerts for Winter 2001
 
 
 

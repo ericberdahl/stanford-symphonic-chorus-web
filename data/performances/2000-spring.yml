@@ -14,7 +14,7 @@ soloists:
 collaborators:
 
 poster:
-# MISSING poster for Spring 2000
+# MISSING: poster for Spring 2000
 
 directors:
 
@@ -45,5 +45,5 @@ concerts:
     start: "20:00"
     call: "19:00"
     location: <unknown>
-# MISSING location of concerts for Spring 2000
+# MISSING: location of concerts for Spring 2000
 

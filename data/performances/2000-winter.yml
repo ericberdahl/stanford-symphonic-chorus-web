@@ -28,7 +28,7 @@ soloists:
 collaborators:
 
 poster:
-# MISSING poster for Winter 2000
+# MISSING: poster for Winter 2000
 
 directors:
 
@@ -55,4 +55,4 @@ concerts:
     start: "20:00"
     call: "19:00"
     location: "MemChu"
-# MISSING start times for concerts for Winter 2000
+# MISSING: start times for concerts for Winter 2000
