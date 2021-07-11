@@ -99,17 +99,6 @@ membershipLimit: 220
 preregister: "2018-09-01"
 
 
-# HOWTO: heraldImage is an image associated with this quarter's program. It has the same schema as
-# a poster (see also)
-#
-# If poster files are not present for a quarter, the heraldImage will be used as a stand-in for
-# presentations where a graphic for the quarter is used. If heraldImage and poster are both absent,
-# the system will use a generic stand-in graphic.
-#
-# The heraldImage will also typically be used on the home page, when talking about a quarter.
-heraldImage:
-
-
 registrationDateTime:
     date: "2018-09-24"
     start: "18:30"
