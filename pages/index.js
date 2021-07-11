@@ -18,7 +18,7 @@ function ConcertEvent({ currentQuarter, data }) {
     return (
         <>
             <p>
-                Symphonic Chorus Performance: <span class="event_time">
+                Symphonic Chorus Performance: <span class={styles.time}>
                     <CommaSeparatedList>
                         {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
                     </CommaSeparatedList>
@@ -38,10 +38,10 @@ function FirstRehearsalEvent({ currentQuarter, data }) {
     // TODO: Registration for first rehearsal should be different from the start
     return (
         <>
-            <p>First rehearsal: <span class="event_time"><CommaSeparatedList>
+            <p>First rehearsal: <span><CommaSeparatedList>
                 {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
             </CommaSeparatedList></span></p>
-            <p>{DateTime.fromISO(data.start).toFormat('h:mma')} <Location name={data.location}/>; <em>registration starts at {DateTime.fromISO(data.start).toFormat('h:mma')}</em></p>
+            <p class={styles.time}>{DateTime.fromISO(data.start).toFormat('h:mma')} <Location name={data.location}/>; <em>registration starts at {DateTime.fromISO(data.start).toFormat('h:mma')}</em></p>
         </>
     );
 }
@@ -94,11 +94,13 @@ function Introduction({ currentQuarter }) {
                     img_width={149}/>
                 {eventList.map((e, index) => (
                     <div class={styles.event}>
-                        <h3>
+                        <h3 class={styles.date}>
                             <span class={styles.day}>{e.date.toFormat('d')}</span> <span class={styles.month}>{e.date.toFormat('MMM')}<br/>
                             {e.date.toFormat('yyyy')}</span>
                         </h3>
-                        <e.renderer key={index} currentQuarter={currentQuarter} data={e.data}/>
+                        <div class={styles.eventList}>
+                            <e.renderer key={index} currentQuarter={currentQuarter} data={e.data}/>
+                        </div>
                     </div>))}
             </TitledSegment>
         </div>

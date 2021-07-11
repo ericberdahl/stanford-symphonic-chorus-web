@@ -39,12 +39,46 @@
     }    
 }
 
-.covid19Notice {
+.events {
+    .date {
+        width: 22px;
+        padding: 0 10px 0 10px;
+        text-align: center;
+    }
 
+    .day {
+        font-family: $font-family-serif;
+        font-size: 1.5rem;
+        line-height: 1.125em;
+        color: $color-warmgray90;
+        display: block;
+    }
+
+    .month {
+        font-family: $font-family-serif;
+        font-size: 0.8750rem;
+        line-height: 1.125em;
+        color: $color-red;
+        display: block;
+    }
+
+    .eventList {
+        margin-left: 42px;
+        margin-top: -43px;
+        border-left: 1px solid $color-warmgray10;
+        padding-left: 10px;
+        font-size: 0.8021rem;
+        line-height: 0.8021rem;
+
+        p {
+            color: $color-warmgray90;
+            line-height: 1.25em;
+            margin-bottom: 7px;
+        }
+    }
 }
 
 .performanceDescription {
-    //@include hideForCovid19();
 }
 
 .ticketLinks {
