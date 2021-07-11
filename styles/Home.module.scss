@@ -1,9 +1,5 @@
 @import 'base';
 
-@mixin hideForCovid19 {
-    display: none;
-}
-
 .main {
     h3 {
         font-family: $font-family-serif;
@@ -16,6 +12,11 @@
         color: #333;
         line-height: 1.3333em;
         margin-bottom: 5px;
+    }
+
+    .heraldImage {
+        float: left;
+        margin-right: 0.63em;
     }
 }
 

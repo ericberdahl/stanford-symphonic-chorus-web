@@ -4,13 +4,16 @@ import Layout from '../components/layout'
 import Lightbox from '../components/lightbox'
 import Location from '../components/location'
 import PageLink from '../components/pageLink'
-import Person from '../components/person'
+import PairedImage from '../components/pairedImage'
 import PieceCitation from '../components/pieceCitation'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
 
+import imageSize from 'image-size'
 import { DateTime } from 'luxon'
+
+import path from 'path'
 
 import styles from '../styles/Home.module.scss'
 
@@ -166,7 +169,11 @@ export default function Home({ currentQuarter }) {
                     </div>
                     <div className={styles.performanceDescription}>
                         <h3><PageLink page="performanceList"><a>{currentQuarter.quarter} Concert</a></PageLink></h3>
-                        <p>TODO: use first image</p>
+                        {currentQuarter.heraldImageRoutes &&
+                            <div class={styles.heraldImage}>
+                                <PairedImage routes={currentQuarter.heraldImageRoutes}/>
+                            </div>
+                        }
                         <div dangerouslySetInnerHTML={{ __html: currentQuarter.description }} />
                         <p>
                             {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</>)}</CommaSeparatedList>
@@ -222,29 +229,38 @@ function serializeTuttiRehearsal(rehearsal) {
     }
 }
 
+function serializeImageRoutes(imageRoutes) {
+    if (!imageRoutes) {
+        return null;
+    }
+
+    const result = {
+        pdf: imageRoutes?.pdf || null,
+        jpg: imageRoutes?.jpg || null,
+        caption: imageRoutes?.caption || null,
+        width: 0,
+        height: 0
+    };
+
+    if (result.jpg) {
+        const imagePath = path.join(process.cwd(), 'public', result.jpg);
+        ({ width: result.width, height: result.height } = imageSize(imagePath));
+    }
+
+    return result;
+}
+
 function serializePerformance(performance) {
     return {
-        collaborators:  performance.collaborators,
-        concerts:       performance.concerts.map(serializeConcert),
-        description:    performance.description,
-        /*
-        directors:      performance.directors,
-        */
-        events:         performance.events.map(serializeEvent),
-        firstRehearsal: serializeTuttiRehearsal(performance.tuttiRehearsals[0]),
-        /*
-        instructors:    performance.instructors,
-        posterRoutes:   serializePosters(performance.posterRoutes),
-        */
-        mainPieces:     performance.mainPieces.map(serializePiece),
-        repertoire:     performance.repertoire.map(serializePiece),
-        /*
-        soloists:       performance.soloists,
-        */
-        quarter:        performance.quarter,
-        /*
-        year:           performance.concerts[0].start.year,
-        */
+        collaborators:      performance.collaborators,
+        concerts:           performance.concerts.map(serializeConcert),
+        description:        performance.description,
+        events:             performance.events.map(serializeEvent),
+        firstRehearsal:     serializeTuttiRehearsal(performance.tuttiRehearsals[0]),
+        heraldImageRoutes:  serializeImageRoutes(performance.heraldImageRoutes),
+        mainPieces:         performance.mainPieces.map(serializePiece),
+        repertoire:         performance.repertoire.map(serializePiece),
+        quarter:            performance.quarter,
     };
 }
 
