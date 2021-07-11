@@ -50,12 +50,16 @@ membershipLimit:
 
 preregister:
 
+registrationDateTime:
+    date: "2015-09-21"
+    start: "18:30"
+    location: "CRH"
+
 rehearsals:
 -   start: 2015-09-21 19:30:00 -07
     end: 2015-09-21 22:00:00 -07
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2015-09-26 18:30:00 -07
 -   start: 2015-09-28 19:30:00 -07
     end: 2015-09-28 22:00:00 -07
     location: "CRH"

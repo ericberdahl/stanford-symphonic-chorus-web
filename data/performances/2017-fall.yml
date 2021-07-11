@@ -51,12 +51,16 @@ heraldImage:
     basename: "Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff"
     caption: "Photo by DAVID ILIFF. License: CC-BY-SA 3.0"
 
+registrationDateTime:
+    date: "2017-09-25"
+    start: "18:30"
+    location: "CRH"
+
 rehearsals:
 -   start: 2017-09-25 19:30:00 -07
     end: 2017-09-25 22:00:00 -07
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2017-09-25 18:30:00 -07
 -   start: 2017-10-02 19:30:00 -07
     end: 2017-10-02 22:00:00 -07
     location: "CRH"

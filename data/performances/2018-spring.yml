@@ -43,12 +43,16 @@ heraldImage:
     basename: "Joseph_Haydn"
     caption: "By Thomas Hardy - Unknown, Public Domain, https://commons.wikimedia.org/w/index.php?curid=620261"
 
+registrationDateTime:
+    date: "2018-04-02"
+    start: "18:30"
+    location: "CRH"
+
 rehearsals:
 -   start: 2018-04-02 19:30:00 -07
     end: 2018-04-02 22:00:00 -07
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2018-04-02 18:30:00 -07
 -   start: 2018-04-09 19:30:00 -07
     end: 2018-04-09 22:00:00 -07
     location: "CRH"

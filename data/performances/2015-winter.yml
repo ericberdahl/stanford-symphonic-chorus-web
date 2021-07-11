@@ -46,12 +46,16 @@ heraldImage:
     basename: "JohannesBrahms"
     caption: "Johannes Brahms"
 
+registrationDateTime:
+    date: "2015-01-05"
+    start: "18:30"
+    location: "CRH"
+
 rehearsals:
 -   start: 2015-01-05 19:15:00 -08
     end: 2015-01-05 21:45:00 -08
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2015-01-05 18:30:00 -08
 -   start: 2015-01-12 19:15:00 -08
     end: 2015-01-12 21:45:00 -08
     location: "CRH"

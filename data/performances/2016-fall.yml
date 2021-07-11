@@ -49,12 +49,16 @@ preregister:
 heraldImage:
     basename: "Claude_Monet_Rouen_Cathedral_Facade_and_Tour_dAlbaneI"
 
+registrationDateTime:
+    date: "2016-09-26"
+    start: "18:30"
+    location: "CRH"
+
 rehearsals:
 -   start: 2016-09-26 19:30:00 -07
     end: 2016-09-26 22:00:00 -07
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2016-09-26 18:30:00 -07
 -   start: 2016-10-03 19:30:00 -07
     end: 2016-10-03 22:00:00 -07
     location: "CRH"

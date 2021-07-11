@@ -46,8 +46,7 @@ heraldImage:
     caption: "Rendering of the Bing Concert Hall. &copy; Polshek Partnership Architects"
 
 rehearsals:
--   registration: 2013-09-24 18:30:00 -07
-    start: 2012-11-26 19:15:00 -08
+-   start: 2012-11-26 19:15:00 -08
     end: 2012-11-26 21:45:00 -08
     location: "CRH"
     event: "Tutti rehearsal"

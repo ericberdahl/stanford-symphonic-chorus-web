@@ -56,12 +56,16 @@ otherImages:
     height: 300
     width: 475
 
+registrationDateTime:
+    date: "2013-01-14"
+    start: "18:30"
+    location: "CRH"
+
 rehearsals:
 -   start: 2013-01-14 19:15:00 -08
     end: 2013-01-14 21:45:00 -08
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2013-01-06 18:30:00 -08
 -   start: 2013-01-21 19:15:00 -08
     end: 2013-01-21 21:45:00 -08
     location: "CRH"

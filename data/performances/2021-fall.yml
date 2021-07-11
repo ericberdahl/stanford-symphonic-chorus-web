@@ -94,6 +94,11 @@ membershipLimit: 220
 preregister: "2021-09-01"
 
 
+registrationDateTime:
+    date: "2021-09-20"
+    start: "18:30"
+    location: "CRH"
+
 # HOWTO: rehearsals is a list of tutti rehearsals for the quarter
 # A rehearsal entry looks like this:
 # -   start: YYYY-MM-DD HH:MM:SS -TT
@@ -114,7 +119,6 @@ rehearsals:
     end: 2020-09-20 22:00:00 -07
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2020-09-20 18:30:00 -07
 
 
 # HOWTO: sectionals is a list of sectional rehearsals for the quarter

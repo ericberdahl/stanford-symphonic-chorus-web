@@ -39,10 +39,14 @@ membershipLimit:
 
 preregister: 
 
+registrationDateTime:
+    date: "2011-01-03"
+    start: "18:30"
+    location: "CRH"
+
 rehearsals:
 -   start: 2011-01-03 19:15:00 -08
     end: 2011-01-03 21:45:00 -08
-    registration: 2011-01-03 18:30:00 -08
     location: "CRH"
     event: "Registration and Tutti rehearsal"
 -   start: 2011-01-10 19:15:00 -08

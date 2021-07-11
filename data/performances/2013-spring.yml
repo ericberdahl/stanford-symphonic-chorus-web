@@ -33,12 +33,16 @@ preregister:
 heraldImage:
     basename: "Beethoven_pd"
 
+registrationDateTime:
+    date: "2013-04-08"
+    start: "18:30"
+    location: "CRH"
+
 rehearsals:
 -   start: 2013-04-08 19:15:00 -07
     end: 2013-04-08 21:45:00 -07
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2013-04-08 18:30:00 -07
 -   start: 2013-04-15 19:15:00 -07
     end: 2013-04-15 21:45:00 -07
     location: "CRH"

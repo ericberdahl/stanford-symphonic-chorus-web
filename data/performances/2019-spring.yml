@@ -104,6 +104,11 @@ preregister: "2019-04-01"
 heraldImage:
 
 
+registrationDateTime:
+    date: "2019-04-01"
+    start: "18:30"
+    location: "CRH"
+
 # HOWTO: rehearsals is a list of tutti rehearsals for the quarter
 # A rehearsal entry looks like this:
 # -   start: YYYY-MM-DD HH:MM:SS -TT
@@ -124,7 +129,6 @@ rehearsals:
     end: 2019-04-01 22:00:00 -07
     location: "CRH"
     event: "Registration and Tutti rehearsal"
-    registration: 2019-04-07 18:30:00 -07
 -   start: 2019-04-08 19:30:00 -07
     end: 2019-04-08 22:00:00 -07
     location: "CRH"
