@@ -61,35 +61,13 @@ registrationDateTime:
     start: "18:30"
     location: "CRH"
 
-rehearsals:
--   start: 2014-03-31 19:15:00 -07
-    end: 2014-03-31 21:45:00 -07
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2014-03-31"
+    endDate: "2014-05-12"
+    startTime: "19:15"
+    endTime: "21:45"
     location: "CRH"
-    event: "Registration and Tutti rehearsal"
--   start: 2014-04-07 19:15:00 -07
-    end: 2014-04-07 21:45:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2014-04-14 19:15:00 -07
-    end: 2014-04-14 21:45:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2014-04-21 19:15:00 -07
-    end: 2014-04-21 21:45:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2014-04-28 19:15:00 -07
-    end: 2014-04-28 21:45:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2014-05-05 19:15:00 -07
-    end: 2014-05-05 21:45:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2014-05-12 19:15:00 -07
-    end: 2014-05-12 21:45:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
 
 sectionals:
 -   start: 2014-04-09 17:30:00 -07

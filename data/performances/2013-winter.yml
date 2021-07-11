@@ -61,43 +61,30 @@ registrationDateTime:
     start: "18:30"
     location: "CRH"
 
-rehearsals:
--   start: 2013-01-14 19:15:00 -08
-    end: 2013-01-14 21:45:00 -08
+tuttiRehearsalNotes:
+-   date: "2013-02-18"
+    note: "Jindong Cai conducting"
+-   date: "2013-02-25"
+    note: "Jindong Cai conducting"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2013-01-14"
+    endDate: "2013-02-18"
+    startTime: "19:15"
+    endTime: "21:45"
     location: "CRH"
-    event: "Registration and Tutti rehearsal"
--   start: 2013-01-21 19:15:00 -08
-    end: 2013-01-21 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2013-01-28 19:15:00 -08
-    end: 2013-01-28 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2013-02-04 19:15:00 -08
-    end: 2013-02-04 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2013-02-11 19:15:00 -08
-    end: 2013-02-11 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2013-02-18 19:15:00 -08
-    end: 2013-02-18 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal with Jindong"
--   start: 2013-02-25 19:15:00 -08
-    end: 2013-02-25 21:45:00 -08
+-   frequency: "once"
+    startDate: "2013-02-25"
+    startTime: "19:15"
+    endTime: "21:45"
     location: "Bing"
-    event: "Tutti rehearsal with Jindong"
--   start: 2013-03-04 19:15:00 -08
-    end: 2013-03-04 21:45:00 -08
+-   frequency: "weekly"
+    startDate: "2013-03-04"
+    endDate: "2013-03-11"
+    startTime: "19:15"
+    endTime: "21:45"
     location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2013-03-11 19:15:00 -07
-    end: 2013-03-11 21:45:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
 
 sectionals:
 -   start: 2013-01-23 17:30:00 -08

@@ -7,6 +7,44 @@ import path from 'path';
 import process from 'process';
 import util from 'util';
 
+function createDateTime(date, timeOfDay, timeZone) {
+    return DateTime.fromFormat(date + ' ' + timeOfDay, 'yyyy-MM-dd HH:mm', { setZone: timeZone });
+}
+
+function createEventSequence(spec, timeZone) {
+    const frequency = (spec.frequency ? spec.frequency : 'once');
+
+    const computeDateShift = (f) => {
+        if ('once' == f) return { days: 1 };
+        if ('weekly' == f) return { days: 7 };
+        throw new Error(util.format('Unkonwn frequency "%s"', f));
+    }
+    const dateShift = computeDateShift(frequency);
+
+    if ('once' != frequency && !spec.endDate) {
+        throw new Error(util.format('Event sequences with "%s" frequency require an endDate', frequency));
+    }
+    const endDate = (spec.endDate ? spec.endDate : spec.startDate);
+    const finalStartDateTime = createDateTime(endDate, spec.startTime, timeZone);
+
+    var nextStartDateTime = createDateTime(spec.startDate, spec.startTime, timeZone);
+    var nextEndDateTime = createDateTime(spec.startDate, spec.endTime, timeZone);
+
+    var result = [];
+    do {
+        result.push({
+            start: nextStartDateTime,
+            end: nextEndDateTime,
+            location: spec.location,
+        });
+
+        nextStartDateTime = nextStartDateTime.plus(dateShift);
+        nextEndDateTime = nextEndDateTime.plus(dateShift);
+    } while(finalStartDateTime.diff(nextStartDateTime).toMillis() > 0);
+
+    return result;
+}
+
 function findFileVariants(baseRoute, variants)
 {
     const publicDir = path.join(process.cwd(), 'public');
@@ -93,13 +131,13 @@ export default class Performance {
     #posterRoutes       = null;
     #preregisterDate    = null;
     #quarter            = "";
-    #rehearsals         = [];
     #registrationFee    = null;
     #repertoire         = [];
     #scheduleRoute      = "";
     #sectionals         = [];
     #soloists           = [];
     #syllabusRoutes     = [];
+    #tuttiRehearsals    = [];
     
     constructor() {
 
@@ -109,6 +147,7 @@ export default class Performance {
     get concerts() { return this.#concerts; }
     get description() { return this.#description; }
     get directors() { return this.#directors; }
+    get events() { return this.#events; }
     get heraldImageRoutes() { return this.#heraldImageRoutes; }
     get instructors() { return this.#instructors; }
     get mainPieces() { return this.#mainPieces; }
@@ -121,6 +160,7 @@ export default class Performance {
     get scheduleRoute() { return this.#scheduleRoute; }
     get soloists() { return this.#soloists; }
     get syllabusRoutes() { return this.#syllabusRoutes; }
+    get tuttiRehearsals() { return this.#tuttiRehearsals; }
 
     get firstConcert() { return this.#concerts[0]; }
 
@@ -152,8 +192,8 @@ export default class Performance {
 
         data.concerts.forEach((c) => {
             result.#concerts.push({
-                start: DateTime.fromFormat(c.date + ' ' + c.start, 'yyyy-MM-dd HH:mm', { setZone: options.timezone }),
-                call: DateTime.fromFormat(c.date + ' ' + c.call, 'yyyy-MM-dd HH:mm', { setZone: options.timezone }),
+                start: createDateTime(c.date, c.start, options.timezone),
+                call: createDateTime(c.date, c.call, options.timezone),
                 location: c.location
             });
         });
@@ -181,11 +221,23 @@ export default class Performance {
                     // TODO: deserialize images
         }
 
+        if (data.events) {
+            result.#events = data.events.map((e) => ({
+                start: createDateTime(e.date, e.start, options.timezone),
+                location: e.location,
+                title: e.title
+            }));
+        }
+
+        if (data.tuttiRehearsals) {
+            result.#tuttiRehearsals = data.tuttiRehearsals.map(createEventSequence).reduce((a, b) => {
+                return a.concat(b);
+            }, []);
+        }
+
         // TODO: deserialize links
-        // TODO: deserialize rehearsals
         // TODO: deserialize sectionals
         // TODO: deserialize dress rehearsals
-        // TODO: deserialize events
 
         return result;
     }

@@ -124,43 +124,13 @@ registrationDateTime:
 # Where event is a string describing the rehearsal. Typical values include "Tutti rehearsal" for most
 # rehearsals, and "Registration and Tutti rehearsal" for rehearsals that are preceded by registration
 # (typically only the first rehearsal)
-rehearsals:
--   start: 2019-09-23 19:30:00 -07
-    end: 2019-09-23 22:00:00 -07
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2019-09-23"
+    endDate: "2019-11-18"
+    startTime: "19:30"
+    endTime: "22:00"
     location: "CRH"
-    event: "Registration and Tutti rehearsal"
--   start: 2019-09-30 19:30:00 -07
-    end: 2019-09-30 22:00:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2019-10-07 19:30:00 -07
-    end: 2019-10-07 22:00:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2019-10-14 19:30:00 -07
-    end: 2019-10-14 22:00:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2019-10-21 19:30:00 -07
-    end: 2019-10-21 22:00:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2019-10-28 19:30:00 -07
-    end: 2019-10-28 22:00:00 -07
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2019-11-04 19:30:00 -08
-    end: 2019-11-04 22:00:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2019-11-11 19:30:00 -08
-    end: 2019-11-11 22:00:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2019-11-18 19:30:00 -08
-    end: 2019-11-18 22:00:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
 
 
 # HOWTO: sectionals is a list of sectional rehearsals for the quarter

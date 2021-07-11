@@ -51,35 +51,19 @@ registrationDateTime:
     start: "18:30"
     location: "CRH"
 
-rehearsals:
--   start: 2012-01-09 19:15:00 -08
-    end: 2012-01-09 21:45:00 -08
+tuttiRehearsalNotes:
+-   date: "2012-02-13"
+    note: "Maestro Cai conducting"
+-   date: "2012-02-20"
+    note: "Maestro Cai conducting"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2012-01-09"
+    endDate: "2012-02-20"
+    startTime: "19:15"
+    endTime: "21:45"
     location: "CRH"
-    event: "Registration and Tutti rehearsal"
--   start: 2012-01-16 19:15:00 -08
-    end: 2012-01-16 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2012-01-23 19:15:00 -08
-    end: 2012-01-23 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2012-01-30 19:15:00 -08
-    end: 2012-01-30 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2012-02-06 19:15:00 -08
-    end: 2012-02-06 21:45:00 -08
-    location: "Bing"
-    event: "Tutti rehearsal"
--   start: 2012-02-13 19:15:00 -08
-    end: 2012-02-13 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal (Maestro Cai conducting)"
--   start: 2012-02-20 19:15:00 -08
-    end: 2012-02-20 21:45:00 -08
-    location: "CRH"
-    event: "Tutti rehearsal (Maestro Cai conducting)"
 
 sectionals:
 -   start: 2012-01-18 17:30:00 -08

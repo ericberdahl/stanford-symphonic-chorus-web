@@ -45,31 +45,47 @@ heraldImage:
     basename: "binghall_banner"
     caption: "Rendering of the Bing Concert Hall. &copy; Polshek Partnership Architects"
 
-rehearsals:
--   start: 2012-11-26 19:15:00 -08
-    end: 2012-11-26 21:45:00 -08
+tuttiRehearsalNotes:
+-   date: "2012-12-10"
+    note: "logistics"
+-   date: "2013-01-05"
+    note: "Choral union"
+-   date: "2013-01-05"
+    note: "Choral union with SSO"
+-   date: "2013-01-07"
+    note: "Choral union with SSO"
+
+tuttiRehearsals:
+-   frequency: "once"
+    startDate: "2012-11-26"
+    startTime: "19:15"
+    endTime: "21:45"
     location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2012-12-03 19:15:00 -08
-    end: 2012-12-03 21:45:00 -08
+-   frequency: "once"
+    startDate: "2012-12-03"
+    startTime: "19:15"
+    endTime: "21:45"
     location: "Bing"
-    event: "Tutti logistics rehearsal"
--   start: 2012-12-10 19:15:00 -08
-    end: 2012-12-10 21:45:00 -08
+-   frequency: "once"
+    startDate: "2012-12-10"
+    startTime: "19:15"
+    endTime: "21:45"
     location: "CRH"
-    event: "Tutti rehearsal"
--   start: 2013-01-05 10:00:00 -08
-    end: 2013-01-05 13:00:00 -08
+-   frequency: "once"
+    startDate: "2013-01-05"
+    startTime: "10:00"
+    endTime: "13:00"
     location: "Dink"
-    event: "Tutti Choral Union rehearsal"
--   start: 2013-01-06 19:00:00 -08
-    end: 2013-01-06 22:00:00 -08
+-   frequency: "once"
+    startDate: "2013-01-06"
+    startTime: "19:00"
+    endTime: "22:00"
     location: "Dink"
-    event: "Tutti Choral Union rehearsal with SSO"
--   start: 2013-01-07 19:00:00 -08
-    end: 2013-01-07 22:00:00 -08
+-   frequency: "once"
+    startDate: "2013-01-07"
+    startTime: "19:00"
+    endTime: "22:00"
     location: "Dink"
-    event: "Tutti Choral Union rehearsal with SSO"
 
 sectionals:
 

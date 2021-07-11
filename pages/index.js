@@ -34,6 +34,27 @@ function ConcertEvent({ currentQuarter, data }) {
     );
 }
 
+function FirstRehearsalEvent({ currentQuarter, data }) {
+    // TODO: Registration for first rehearsal should be different from the start
+    return (
+        <>
+            <p>First rehearsal: <span class="event_time"><CommaSeparatedList>
+                {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
+            </CommaSeparatedList></span></p>
+            <p>{DateTime.fromISO(data.start).toFormat('h:mma')} <Location name={data.location}/>; <em>registration starts at {DateTime.fromISO(data.start).toFormat('h:mma')}</em></p>
+        </>
+    );
+}
+
+function OtherEvent({ currentQuarter, data }) {
+    return (
+        <>
+            <p>{data.title}</p>
+            <p>{DateTime.fromISO(data.start).toFormat('h:mma')} <Location name={data.location}/></p>
+        </>
+    );
+}
+
 function Introduction({ currentQuarter }) {
     var eventList = [];
     
@@ -41,14 +62,27 @@ function Introduction({ currentQuarter }) {
     eventList = eventList.concat(currentQuarter.concerts.map((c) => ({
         date: DateTime.fromISO(c.start),
         data: c,
-        renderer: ConcertEvent
+        renderer: ConcertEvent,
     })));
 
-    // TODO: add first rehearsal
-    // TODO: add other events
+    // add first rehearsal
+    if (currentQuarter.firstRehearsal) {
+        eventList.push({
+            date: DateTime.fromISO(currentQuarter.firstRehearsal.start),
+            data: currentQuarter.firstRehearsal,
+            renderer: FirstRehearsalEvent,
+        });
+    }
+
+    // add current events to the list
+    eventList = eventList.concat(currentQuarter.events.map((e) => ({
+        date: DateTime.fromISO(e.start),
+        data: e,
+        renderer: OtherEvent,
+    })));
 
     // sort the event list into increasing date order
-    eventList.sort((a, b) => b.date.diff(a.date).toMillis());
+    eventList.sort((a, b) => -b.date.diff(a.date).toMillis());
 
     return (
         <div className={styles.events}>
@@ -168,6 +202,24 @@ function serializePiece(piece) {
     };
 }
 
+function serializeEvent(event) {
+    return {
+        start:      event.start.toISO(),
+        location:   event.location,
+        title:      event.title,
+    };
+}
+
+function serializeTuttiRehearsal(rehearsal) {
+    if (!rehearsal) return null;
+
+    return {
+        start: rehearsal.start.toISO(),
+        end: rehearsal.end.toISO(),
+        location: rehearsal.location,
+    }
+}
+
 function serializePerformance(performance) {
     return {
         collaborators:  performance.collaborators,
@@ -175,6 +227,10 @@ function serializePerformance(performance) {
         description:    performance.description,
         /*
         directors:      performance.directors,
+        */
+        events:         performance.events.map(serializeEvent),
+        firstRehearsal: serializeTuttiRehearsal(performance.tuttiRehearsals[0]),
+        /*
         instructors:    performance.instructors,
         posterRoutes:   serializePosters(performance.posterRoutes),
         */
