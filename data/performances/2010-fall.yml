@@ -47,10 +47,9 @@ membershipLimit:
 
 preregister:
 
-registrationDateTime:
-    date: "2012-09-20"
-    start: "18:30"
-    location: "CRH"
+tuttiRehearsalNotes:
+-   date: "2012-09-20"
+    note: "Registration starts at 6:30pm"
 
 tuttiRehearsals:
 -   frequency: "weekly"

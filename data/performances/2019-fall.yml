@@ -93,10 +93,9 @@ membershipLimit: 220
 preregister: "2019-09-01"
 
 
-registrationDateTime:
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
     date: "2019-09-23"
-    start: "18:30"
-    location: "CRH"
 
 # HOWTO: rehearsals is a list of tutti rehearsals for the quarter
 # A rehearsal entry looks like this:

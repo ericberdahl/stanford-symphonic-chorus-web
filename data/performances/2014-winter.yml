@@ -45,12 +45,9 @@ heraldImage:
     basename: "JohannesBrahms"
     caption: "Johannes Brahms"
 
-registrationDateTime:
-    date: "2014-01-06"
-    start: "18:30"
-    location: "CRH"
-
 tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2014-01-06"
 -   date: "2014-02-17"
     note: "Jindong Cai conducting"
 -   date: "2014-02-24"

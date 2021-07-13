@@ -47,10 +47,9 @@ preregister:
 heraldImage:
     basename: "W2016 Concert Photo"
 
-registrationDateTime:
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
     date: "2016-01-04"
-    start: "18:30"
-    location: "CRH"
 
 tuttiRehearsals:
 -   frequency: "weekly"

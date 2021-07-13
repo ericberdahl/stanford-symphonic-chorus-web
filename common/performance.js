@@ -7,11 +7,37 @@ import path from 'path';
 import process from 'process';
 import util from 'util';
 
-function createDateTime(date, timeOfDay, timeZone) {
-    return DateTime.fromFormat(date + ' ' + timeOfDay, 'yyyy-MM-dd HH:mm', { setZone: timeZone });
+class Rehearsal {
+    #start = DateTime.fromMillis(0);
+    #end = DateTime.fromMillis(0);
+    #location = "";
+    #notes = null;
+
+    constructor(start, end, location) {
+        this.#start = start;
+        this.#end = end;
+        this.#location = location;
+    }
+
+    get end() { return this.#end; }
+    get location() { return this.#location; }
+    get notes() { return (this.#notes ? [...this.#notes] : []); }
+    get start() { return this.#start; }
+
+    addNote(note) {
+        if (!this.#notes) {
+            this.#notes = [];
+        }
+
+        this.#notes.push(note);
+    }
 }
 
-function createEventSequence(spec, timeZone) {
+function createDateTime(date, timeOfDay, timezone) {
+    return DateTime.fromFormat(date + ' ' + timeOfDay, 'yyyy-MM-dd HH:mm', { setZone: timezone });
+}
+
+function createRehearsalSequence(spec, timezone) {
     const frequency = (spec.frequency ? spec.frequency : 'once');
 
     const computeDateShift = (f) => {
@@ -25,24 +51,28 @@ function createEventSequence(spec, timeZone) {
         throw new Error(util.format('Event sequences with "%s" frequency require an endDate', frequency));
     }
     const endDate = (spec.endDate ? spec.endDate : spec.startDate);
-    const finalStartDateTime = createDateTime(endDate, spec.startTime, timeZone);
+    const finalStartDateTime = createDateTime(endDate, spec.startTime, timezone);
 
-    var nextStartDateTime = createDateTime(spec.startDate, spec.startTime, timeZone);
-    var nextEndDateTime = createDateTime(spec.startDate, spec.endTime, timeZone);
+    var nextStartDateTime = createDateTime(spec.startDate, spec.startTime, timezone);
+    var nextEndDateTime = createDateTime(spec.startDate, spec.endTime, timezone);
 
     var result = [];
     do {
-        result.push({
-            start: nextStartDateTime,
-            end: nextEndDateTime,
-            location: spec.location,
-        });
+        result.push(new Rehearsal(nextStartDateTime, nextEndDateTime, spec.location));
 
         nextStartDateTime = nextStartDateTime.plus(dateShift);
         nextEndDateTime = nextEndDateTime.plus(dateShift);
-    } while(finalStartDateTime.diff(nextStartDateTime).toMillis() > 0);
+    } while(finalStartDateTime.diff(nextStartDateTime).toMillis() >= 0);
 
     return result;
+}
+
+function parseTuttiRehearsalNote(note, tuttiRehearsals, timezone) {
+    const noteDateTime = createDateTime(note.date, "00:00", timezone);
+    const rehearsal = tuttiRehearsals.find((e) => (e.start.year == noteDateTime.year && e.start.month == noteDateTime.month && e.start.day == noteDateTime.day));
+    if (!rehearsal) throw new Error(util.format('Cannot find tuttiRehearsal on date "%s" to attach a note', note.date));
+    
+    rehearsal.addNote(note.note);
 }
 
 function findFileVariants(baseRoute, variants)
@@ -230,10 +260,17 @@ export default class Performance {
         }
 
         if (data.tuttiRehearsals) {
-            result.#tuttiRehearsals = data.tuttiRehearsals.map(createEventSequence).reduce((a, b) => {
+            result.#tuttiRehearsals = data.tuttiRehearsals.map(createRehearsalSequence).reduce((a, b) => {
                 return a.concat(b);
             }, []);
+            result.#tuttiRehearsals.sort((a, b) => -b.start.diff(a.start).toMillis());
         }
+
+        if (data.tuttiRehearsalNotes) {
+            data.tuttiRehearsalNotes.forEach((note) => parseTuttiRehearsalNote(note, result.#tuttiRehearsals, options.timezone));
+        }
+
+        // TODO: parse tuttiRehearsalNotes
 
         // TODO: deserialize links
         // TODO: deserialize sectionals

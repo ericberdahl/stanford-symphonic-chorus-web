@@ -33,10 +33,9 @@ preregister:
 heraldImage:
     basename: "Beethoven_pd"
 
-registrationDateTime:
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
     date: "2013-04-08"
-    start: "18:30"
-    location: "CRH"
 
 tuttiRehearsals:
 -   frequency: "weekly"

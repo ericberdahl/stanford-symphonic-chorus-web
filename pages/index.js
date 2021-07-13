@@ -6,6 +6,7 @@ import Location from '../components/location'
 import PageLink from '../components/pageLink'
 import PairedImage from '../components/pairedImage'
 import PieceCitation from '../components/pieceCitation'
+import SpaceSeparatedPhrase from '../components/spaceSeparatedPhrase'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
@@ -38,13 +39,18 @@ function ConcertEvent({ currentQuarter, data }) {
 }
 
 function FirstRehearsalEvent({ currentQuarter, data }) {
-    // TODO: Registration for first rehearsal should be different from the start
     return (
         <>
             <p>First rehearsal: <span><CommaSeparatedList>
                 {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
             </CommaSeparatedList></span></p>
-            <p class={styles.time}>{DateTime.fromISO(data.start).toFormat('h:mma')} <Location name={data.location}/>; <em>registration starts at {DateTime.fromISO(data.start).toFormat('h:mma')}</em></p>
+            <p class={styles.time}>
+                {DateTime.fromISO(data.start).toFormat('t')} <Location name={data.location}/>
+                <SpaceSeparatedPhrase>
+                    .
+                    {data.notes.map((n) => n)}
+                </SpaceSeparatedPhrase>
+            </p>
         </>
     );
 }
@@ -53,7 +59,7 @@ function OtherEvent({ currentQuarter, data }) {
     return (
         <>
             <p>{data.title}</p>
-            <p>{DateTime.fromISO(data.start).toFormat('h:mma')} <Location name={data.location}/></p>
+            <p>{DateTime.fromISO(data.start).toFormat('t')} <Location name={data.location}/></p>
         </>
     );
 }
@@ -226,6 +232,7 @@ function serializeTuttiRehearsal(rehearsal) {
         start: rehearsal.start.toISO(),
         end: rehearsal.end.toISO(),
         location: rehearsal.location,
+        notes: rehearsal.notes,
     }
 }
 

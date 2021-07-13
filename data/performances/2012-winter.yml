@@ -46,12 +46,9 @@ membershipLimit:
 
 preregister: 
 
-registrationDateTime:
-    date: "2012-01-09"
-    start: "18:30"
-    location: "CRH"
-
 tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2012-01-09"
 -   date: "2012-02-13"
     note: "Maestro Cai conducting"
 -   date: "2012-02-20"

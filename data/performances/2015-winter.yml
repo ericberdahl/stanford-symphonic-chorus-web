@@ -46,10 +46,9 @@ heraldImage:
     basename: "JohannesBrahms"
     caption: "Johannes Brahms"
 
-registrationDateTime:
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
     date: "2015-01-05"
-    start: "18:30"
-    location: "CRH"
 
 tuttiRehearsals:
 -   frequency: "weekly"

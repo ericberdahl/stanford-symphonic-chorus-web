@@ -50,12 +50,9 @@ membershipLimit:
 
 preregister:
 
-registrationDateTime:
-    date: "2015-09-21"
-    start: "18:30"
-    location: "CRH"
-
 tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2015-09-21"
 -   date: "2015-10-19"
     note: "Craig Jessop conducting"
 -   date: "2015-11-16"

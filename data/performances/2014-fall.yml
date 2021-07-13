@@ -45,10 +45,9 @@ heraldImage:
     basename: "Farquharson"
     caption: "The Shortening Winter's Day is Near a Close (1903), by Joseph Farquharson"
 
-registrationDateTime:
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
     date: "2014-09-22"
-    start: "18:30"
-    location: "CRH"
 
 tuttiRehearsals:
 -   frequency: "weekly"

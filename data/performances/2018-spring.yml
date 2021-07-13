@@ -43,10 +43,9 @@ heraldImage:
     basename: "Joseph_Haydn"
     caption: "By Thomas Hardy - Unknown, Public Domain, https://commons.wikimedia.org/w/index.php?curid=620261"
 
-registrationDateTime:
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
     date: "2018-04-02"
-    start: "18:30"
-    location: "CRH"
 
 tuttiRehearsals:
 -   frequency: "weekly"

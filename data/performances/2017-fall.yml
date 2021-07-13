@@ -51,10 +51,9 @@ heraldImage:
     basename: "Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff"
     caption: "Photo by DAVID ILIFF. License: CC-BY-SA 3.0"
 
-registrationDateTime:
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
     date: "2017-09-25"
-    start: "18:30"
-    location: "CRH"
 
 tuttiRehearsals:
 -   frequency: "weekly"

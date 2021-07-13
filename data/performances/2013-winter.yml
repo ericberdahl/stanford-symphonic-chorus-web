@@ -56,12 +56,9 @@ otherImages:
     height: 300
     width: 475
 
-registrationDateTime:
-    date: "2013-01-14"
-    start: "18:30"
-    location: "CRH"
-
 tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2013-01-14"
 -   date: "2013-02-18"
     note: "Jindong Cai conducting"
 -   date: "2013-02-25"
