@@ -185,7 +185,7 @@ export default function Performances({ pageData }) {
 
 function serializeConcert(concert) {
     return {
-        start:      concert.start.toFormat('EEEE d MMMM yyyy, h:mma'),
+        start:      concert.start.toFormat('DDDD, t'),
         location:   concert.location
     };
 }
