@@ -1,5 +1,6 @@
 import Piece from './piece'
 
+import imageSize from 'image-size'
 import { DateTime } from 'luxon';
 
 import fs from 'fs';
@@ -104,6 +105,8 @@ class ImageRoutes {
     #pdf        = null;
     #jpg        = null;
     #caption    = null;
+    #width      = 0;
+    #height     = 0;
 
     constructor() {
 
@@ -112,6 +115,8 @@ class ImageRoutes {
     get pdf() { return this.#pdf; }
     get jpg() { return this.#jpg; }
     get caption() { return this.#caption; }
+    get width() { return this.#width; }
+    get height() { return this.#height; }
 
     static deserialize(data, directoryRoute, options) {
         const result = new ImageRoutes();
@@ -140,6 +145,11 @@ class ImageRoutes {
             }
         });
 
+        if (result.jpg) {
+            const imagePath = path.join(process.cwd(), 'public', result.jpg);
+            ({ width: result.#width, height: result.#height } = imageSize(imagePath));
+        }
+    
         result.#caption = data.caption;
 
         return result;

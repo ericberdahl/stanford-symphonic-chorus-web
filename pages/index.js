@@ -11,10 +11,7 @@ import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
 
-import imageSize from 'image-size'
 import { DateTime } from 'luxon'
-
-import path from 'path'
 
 import styles from '../styles/Home.module.scss'
 
@@ -245,14 +242,9 @@ function serializeImageRoutes(imageRoutes) {
         pdf: imageRoutes?.pdf || null,
         jpg: imageRoutes?.jpg || null,
         caption: imageRoutes?.caption || null,
-        width: 0,
-        height: 0
+        width: imageRoutes.width,
+        height: imageRoutes.height,
     };
-
-    if (result.jpg) {
-        const imagePath = path.join(process.cwd(), 'public', result.jpg);
-        ({ width: result.width, height: result.height } = imageSize(imagePath));
-    }
 
     return result;
 }

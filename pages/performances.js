@@ -11,10 +11,7 @@ import Model from '../common/model'
 
 import styles from '../styles/performances.module.scss'
 
-import imageSize from 'image-size'
 import slugify from 'slugify'
-
-import path from 'path'
 
 function Introduction(pageData) {
     const PushPerformance = (p) => {
@@ -213,14 +210,9 @@ function serializeImageRoutes(imageRoutes) {
         pdf: imageRoutes?.pdf || null,
         jpg: imageRoutes?.jpg || null,
         caption: imageRoutes?.caption || null,
-        width: 0,
-        height: 0
+        width: imageRoutes.width,
+        height: imageRoutes.height
     };
-
-    if (result.jpg) {
-        const imagePath = path.join(process.cwd(), 'public', result.jpg);
-        ({ width: result.width, height: result.height } = imageSize(imagePath));
-    }
 
     return result;
 }
