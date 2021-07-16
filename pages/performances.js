@@ -11,11 +11,9 @@ import Model from '../common/model'
 
 import styles from '../styles/performances.module.scss'
 
-import slugify from 'slugify'
-
 function Introduction(pageData) {
     const PushPerformance = (p) => {
-        years.push({ year: p.year, quarter: p.quarter });
+        years.push({ year: p.year, id: p.id });
     }
 
     let years = [];
@@ -33,7 +31,7 @@ function Introduction(pageData) {
                 </p>
                 <h3>Years</h3>
                 <ol>
-                    {years.map((y) => <li key={y.year}><a href={'#' + slugify(y.quarter)}>{y.year}</a></li>)}
+                    {years.map((y) => <li key={y.year}><a href={'#' + y.id}>{y.year}</a></li>)}
                 </ol>
             </TitledSegment>
         </div>
@@ -134,7 +132,7 @@ function Performance({ data }) {
     // TODO: add fylp links
     // TODO: add misc links
     return (
-        <div id={slugify(data.quarter)} className={styles.performance}>
+        <div id={data.id} className={styles.performance}>
             <div className={styles.poster}>
                 <PairedImage routes={data.posterRoutes ? data.posterRoutes : data.heraldImageRoutes}/>
             </div>
@@ -223,6 +221,7 @@ function serializePerformance(performance) {
         concerts:           performance.concerts.map(serializeConcert),
         directors:          performance.directors,
         heraldImageRoutes:  serializeImageRoutes(performance.heraldImageRoutes),
+        id:                 performance.id,
         instructors:        performance.instructors,
         posterRoutes:       serializeImageRoutes(performance.posterRoutes),
         repertoire:         performance.repertoire.map(serializePiece),

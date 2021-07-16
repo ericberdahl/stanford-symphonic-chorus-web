@@ -3,6 +3,8 @@ import Piece from './piece'
 import imageSize from 'image-size'
 import { DateTime } from 'luxon';
 
+import slugify from 'slugify'
+
 import fs from 'fs';
 import path from 'path';
 import process from 'process';
@@ -202,6 +204,7 @@ export default class Performance {
     get syllabusRoutes() { return this.#syllabusRoutes; }
     get tuttiRehearsals() { return this.#tuttiRehearsals; }
 
+    get id() { return slugify(this.quarter).toLowerCase(); }
     get firstConcert() { return this.#concerts[0]; }
 
     static deserialize(data, route, options) {
