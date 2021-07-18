@@ -87,8 +87,6 @@ tuttiRehearsals:
     endTime: "22:00"
     location: "Dink"
 
-sectionals:
-
 dresses:
 -   start: 2013-01-08 19:00:00 -08
     location: "Bing"
