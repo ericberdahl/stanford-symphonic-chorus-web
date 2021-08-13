@@ -4,6 +4,9 @@
   "description": "Web site for Stanford Symphonic Chorus",
   "main": "build.js",
   "scripts": {
+    "build": "./build.ts",
+    "serve": "./build.ts --serve",
+    "diff": "bbdiff _build/ _reference/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
