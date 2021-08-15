@@ -173,13 +173,14 @@ function tidyOutput(metalsmith : Metalsmith) : Metalsmith
     return metalsmith;
 }
 
-function serveOutputLocally(metalsmith : Metalsmith) : Metalsmith
+function serveOutputLocally(metalsmith : Metalsmith, port: Number) : Metalsmith
 {
     const browserSync = require('metalsmith-browser-sync');
 
     metalsmith = metalsmith.use(showProgress('# Starting local server'))
         .use(browserSync({
             server: buildDir,
+            port: port,
             files: [ "source/**/*", "partials/**/*", "data/**/*" ],
         }));
 
@@ -234,7 +235,8 @@ function buildSite(options)
     }
 
     if (options.serve) {
-        metalsmith = serveOutputLocally(metalsmith);
+        const port = (true === options.serve ? 3000 : options.serve);
+        metalsmith = serveOutputLocally(metalsmith, port);
     }
 
     if (false) {
@@ -249,7 +251,7 @@ function buildSite(options)
 program.version('0.1.0', '-v, --version')
     .option('--debug', 'Build debug-ui into the output')
     .option('--no-tidy', 'Do not tidy the html output')
-    .option('--serve', 'Build and launch as local server')
+    .option('--serve [port]', 'Build and launch as local server, listening on the specified port')
     .option('--basePath <path>', 'Specify base path from which the site will be served', '/group/SymCh')
     .parse(process.argv);
 
