@@ -19,7 +19,7 @@ function ConcertEvent({ currentQuarter, data }) {
     return (
         <>
             <p>
-                Symphonic Chorus Performance: <span class={styles.time}>
+                Symphonic Chorus Performance: <span className={styles.time}>
                     <CommaSeparatedList>
                         {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
                     </CommaSeparatedList>
@@ -41,7 +41,7 @@ function FirstRehearsalEvent({ currentQuarter, data }) {
             <p>First rehearsal: <span><CommaSeparatedList>
                 {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
             </CommaSeparatedList></span></p>
-            <p class={styles.time}>
+            <p className={styles.time}>
                 {DateTime.fromISO(data.start).toFormat('t')} <Location name={data.location}/>
                 <SpaceSeparatedPhrase>
                     .
@@ -99,12 +99,12 @@ function Introduction({ currentQuarter }) {
                     caption="Memorial Church, 22 February 2010. Photo by R. A. Wilson."
                     img_width={149}/>
                 {eventList.map((e, index) => (
-                    <div class={styles.event}>
-                        <h3 class={styles.date}>
-                            <span class={styles.day}>{e.date.toFormat('d')}</span> <span class={styles.month}>{e.date.toFormat('MMM')}<br/>
+                    <div className={styles.event}>
+                        <h3 className={styles.date}>
+                            <span className={styles.day}>{e.date.toFormat('d')}</span> <span className={styles.month}>{e.date.toFormat('MMM')}<br/>
                             {e.date.toFormat('yyyy')}</span>
                         </h3>
-                        <div class={styles.eventList}>
+                        <div className={styles.eventList}>
                             <e.renderer key={index} currentQuarter={currentQuarter} data={e.data}/>
                         </div>
                     </div>))}
@@ -173,7 +173,7 @@ export default function Home({ currentQuarter }) {
                     <div className={styles.performanceDescription}>
                         <h3><PageLink page="performanceList"><a>{currentQuarter.quarter} Concert</a></PageLink></h3>
                         {currentQuarter.heraldImageRoutes &&
-                            <div class={styles.heraldImage}>
+                            <div className={styles.heraldImage}>
                                 <PairedImage routes={currentQuarter.heraldImageRoutes}/>
                             </div>
                         }
