@@ -159,28 +159,28 @@ class ImageRoutes {
 }
 
 export default class Performance {
-    #collaborators      = [];
-    #concerts           = [];
-    #description        = [];
-    #directors          = [];
-    #dressRehearsals    = [];
-    #events             = [];
-    #heraldImageRoutes  = null;
-    #instructors        = [];
-    #links              = [];
-    #mainPieces         = [];
-    #membershipLimit    = 0;
-    #posterRoutes       = null;
-    #preregisterDate    = null;
-    #quarter            = "";
-    #registrationFee    = null;
-    #repertoire         = [];
-    #scheduleRoute      = "";
-    #soloists           = [];
-    #syllabusRoutes     = [];
-    #tuttiRehearsals    = [];
+    #collaborators          = [];
+    #concerts               = [];
+    #description            = [];
+    #directors              = [];
+    #dressRehearsals        = [];
+    #events                 = [];
+    #heraldImageRoutes      = null;
+    #instructors            = [];
+    #links                  = [];
+    #mainPieces             = [];
+    #membershipLimit        = 0;
+    #posterRoutes           = null;
+    #preregisterDate        = null;
+    #quarter                = "";
+    #registrationFee        = null;
+    #repertoire             = [];
+    #scheduleRoute          = "";
     #sectionalsSopranoAlto  = [];
     #sectionalsTenorBass    = [];
+    #soloists               = [];
+    #syllabusRoutes         = [];
+    #tuttiRehearsals        = [];
     
     constructor() {
 
