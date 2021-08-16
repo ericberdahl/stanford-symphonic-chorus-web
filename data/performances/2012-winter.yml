@@ -62,23 +62,29 @@ tuttiRehearsals:
     endTime: "21:45"
     location: "CRH"
 
-sectionals:
--   start: 2012-01-18 17:30:00 -08
-    end: 2012-01-18 18:30:00 -08
+womensSectionals:
+-   startDate: "2012-01-18"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Men's Sectional (optional)"
--   start: 2012-02-01 17:30:00 -08
-    end: 2012-02-01 18:30:00 -08
+    frequency: "once"
+-   startDate: "2012-02-01"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Men's Sectional (optional)"
--   start: 2012-01-25 17:30:00 -08
-    end: 2012-01-25 18:30:00 -08
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2012-01-25"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Men's Sectional (optional)"
--   start: 2012-02-08 17:30:00 -08
-    end: 2012-02-08 18:30:00 -08
+    frequency: "once"
+-   startDate: "2012-02-08"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Men's Sectional (optional)"
+    frequency: "once"
 
 dresses:
 -   start: 2012-02-21 19:00:00 -07

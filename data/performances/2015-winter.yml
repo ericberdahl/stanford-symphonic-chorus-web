@@ -63,23 +63,29 @@ tuttiRehearsals:
     endTime: "21:45"
     location: "CRH"
 
-sectionals:
--   start: 2015-01-14 17:30:00 -08
-    end: 2015-01-14 18:30:00 -08
+womensSectionals:
+-   startDate: "2015-01-14"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Women's sectional (optional, but warmly encouraged)"
--   start: 2015-01-28 17:30:00 -08
-    end: 2015-01-28 18:30:00 -08
+    frequency: "once"
+-   startDate: "2015-01-28"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Women's sectional (optional, but warmly encouraged)"
--   start: 2015-01-21 17:30:00 -08
-    end: 2015-01-21 18:30:00 -08
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2015-01-21"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Men's sectional (optional, but warmly encouraged)"
--   start: 2015-02-04 17:30:00 -08
-    end: 2015-02-04 18:30:00 -08
+    frequency: "once"
+-   startDate: "2015-02-04"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Men's sectional (optional, but warmly encouraged)"
+    frequency: "once"
 
 dresses:
 -   start: 2015-02-23 19:00:00 -08

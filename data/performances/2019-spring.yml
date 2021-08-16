@@ -120,38 +120,29 @@ tuttiRehearsals:
     endTime: "22:00"
     location: "CRH"
 
+womensSectionals:
+-   startDate: "2019-04-10"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2019-04-24"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
 
-# HOWTO: sectionals is a list of sectional rehearsals for the quarter
-# A sectional entry looks like this:
-# -   start: YYYY-MM-DD HH:MM:SS -TT
-#     end: YYYY-MM-DD HH:MM:SS -TT
-#     location: "Braun 103"
-#     event: "Women's Sectional (optional, but warmly encouraged)"
-# Where start and end are the start time and end time for the rehearsal, respectively. The time is
-# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
-# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
-# is the UTC offset for Pacific Daylight Time).
-# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
-# venue in which the concert will be performed.
-# Where event is a string describing the rehearsal. Typical values include "Men's Sectional (optional, but
-# warmly encouraged)" and "Women's Sectional (optional, but warmly encouraged)", as appropriate.
-sectionals:
--   start: 2019-04-10 17:30:00 -07
-    end: 2019-04-10 18:30:00 -07
+mensSectionals:
+-   startDate: "2019-04-17"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Women's Sectional (optional, but warmly encouraged)"
--   start: 2019-04-24 17:30:00 -07
-    end: 2019-04-24 18:30:00 -07
+    frequency: "once"
+-   startDate: "2019-05-01"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Women's Sectional (optional, but warmly encouraged)"
--   start: 2019-04-17 17:30:00 -07
-    end: 2019-04-17 18:30:00 -07
-    location: "CRH"
-    event: "Men's Sectional (optional, but warmly encouraged)"
--   start: 2019-05-01 17:30:00 -07
-    end: 2019-05-01 18:30:00 -07
-    location: "CRH"
-    event: "Men's Sectional (optional, but warmly encouraged)"
+    frequency: "once"
 
 
 # HOWTO: dresses is a list of dress rehearsals

@@ -51,23 +51,29 @@ tuttiRehearsals:
     endTime: "21:45"
     location: "CRH"
 
-sectionals:
--   start: 2003-10-01 17:30:00 -08
-    end: 2003-10-01 18:30:00 -08
+womensSectionals:
+-   frequency: "once"
+    startDate: "2003-10-01"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Women's sectional (optional)"
--   start: 2003-10-15 17:30:00 -08
-    end: 2003-10-15 18:30:00 -08
+-   frequency: "once"
+    startDate: "2003-10-15"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Women's sectional (optional)"
--   start: 2003-10-08 17:30:00 -08
-    end: 2003-10-08 18:30:00 -08
+
+mensSectionals:
+-   frequency: "once"
+    startDate: "2003-10-08"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Men's sectional (optional)"
--   start: 2003-10-29 17:30:00 -08
-    end: 2003-10-29 18:30:00 -08
+-   frequency: "once"
+    startDate: "2003-10-29"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "CRH"
-    event: "Men's sectional (optional)"
 
 dresses:
 -   start: 2003-11-18 18:30:00 -08

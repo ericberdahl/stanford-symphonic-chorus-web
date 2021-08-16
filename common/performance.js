@@ -176,10 +176,11 @@ export default class Performance {
     #registrationFee    = null;
     #repertoire         = [];
     #scheduleRoute      = "";
-    #sectionals         = [];
     #soloists           = [];
     #syllabusRoutes     = [];
     #tuttiRehearsals    = [];
+    #sectionalsSopranoAlto  = [];
+    #sectionalsTenorBass    = [];
     
     constructor() {
 
@@ -200,6 +201,8 @@ export default class Performance {
     get repertoire() { return this.#repertoire; }
     get registrationFee() { return this.#registrationFee; }
     get scheduleRoute() { return this.#scheduleRoute; }
+    get sectionalsSopranoAlto() { return this.#sectionalsSopranoAlto; }
+    get sectionalsTenorBass() { return this.#sectionalsTenorBass; }
     get soloists() { return this.#soloists; }
     get syllabusRoutes() { return this.#syllabusRoutes; }
     get tuttiRehearsals() { return this.#tuttiRehearsals; }
@@ -283,10 +286,23 @@ export default class Performance {
             data.tuttiRehearsalNotes.forEach((note) => parseTuttiRehearsalNote(note, result.#tuttiRehearsals, options.timezone));
         }
 
-        // TODO: parse tuttiRehearsalNotes
+        if (data.mensSectionals) {
+            // TODO: change yml schema from mensSectionals to sectionalsTenorBass
+            result.#sectionalsTenorBass = data.mensSectionals.map(createRehearsalSequence).reduce((a, b) => {
+                return a.concat(b);
+            }, []);
+            result.#sectionalsTenorBass.sort((a, b) => -b.start.diff(a.start).toMillis());
+        }
+
+        if (data.womensSectionals) {
+            // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
+            result.#sectionalsSopranoAlto = data.womensSectionals.map(createRehearsalSequence).reduce((a, b) => {
+                return a.concat(b);
+            }, []);
+            result.#sectionalsSopranoAlto.sort((a, b) => -b.start.diff(a.start).toMillis());
+        }
 
         // TODO: deserialize links
-        // TODO: deserialize sectionals
         // TODO: deserialize dress rehearsals
 
         return result;

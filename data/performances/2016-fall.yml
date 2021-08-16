@@ -65,23 +65,29 @@ tuttiRehearsals:
     endTime: "22:00"
     location: "CRH"
 
-sectionals:
--   start: 2016-10-05 17:30:00 -08
-    end: 2016-10-05 18:30:00 -08
+womensSectionals:
+-   startDate: "2016-10-05"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "Braun 103"
-    event: "Women's sectional (optional, but warmly encouraged)"
--   start: 2016-10-19 17:30:00 -08
-    end: 2016-10-19 18:30:00 -08
+    frequency: "once"
+-   startDate: "2016-10-19"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "Braun 103"
-    event: "Women's sectional (optional, but warmly encouraged)"
--   start: 2016-10-12 17:30:00 -08
-    end: 2016-10-12 18:30:00 -08
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2016-10-12"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "Braun 103"
-    event: "Men's sectional (optional, but warmly encouraged)"
--   start: 2016-10-26 17:30:00 -08
-    end: 2016-10-26 18:30:00 -08
+    frequency: "once"
+-   startDate: "2016-10-26"
+    startTime: "17:30"
+    endTime: "18:30"
     location: "Braun 103"
-    event: "Men's sectional (optional, but warmly encouraged)"
+    frequency: "once"
 
 dresses:
 -   start: 2016-11-14 19:00:00 -08
