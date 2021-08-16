@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "debug": "NODE_OPTIONS='--inspect' next dev",
-    "build": "next build && next export",
-    "start": "next start"
+    "build": "next build && next export"
   },
   "dependencies": {
     "image-size": "^1.0.0",
