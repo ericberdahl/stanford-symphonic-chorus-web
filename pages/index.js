@@ -12,6 +12,7 @@ import TitledSegment from '../components/titledSegment'
 import Model from '../common/model'
 
 import { DateTime } from 'luxon'
+import { Fragment } from 'react'
 
 import styles from '../styles/Home.module.scss'
 
@@ -99,7 +100,7 @@ function Introduction({ currentQuarter }) {
                     caption="Memorial Church, 22 February 2010. Photo by R. A. Wilson."
                     img_width={149}/>
                 {eventList.map((e, index) => (
-                    <div className={styles.event}>
+                    <div key={index} className={styles.event}>
                         <h3 className={styles.date}>
                             <span className={styles.day}>{e.date.toFormat('d')}</span> <span className={styles.month}>{e.date.toFormat('MMM')}<br/>
                             {e.date.toFormat('yyyy')}</span>
@@ -179,7 +180,7 @@ export default function Home({ currentQuarter }) {
                         }
                         <div dangerouslySetInnerHTML={{ __html: currentQuarter.description }} />
                         <p>
-                            {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</>)}</CommaSeparatedList>
+                            {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <Fragment key={index}>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</Fragment>)}</CommaSeparatedList>
                         </p>
                         <br/>
                         <ul className={styles.ticketLinks}>
