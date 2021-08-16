@@ -48,8 +48,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Fall 2006
 
-dresses:
-
 concerts:
 -   date: "2006-12-01"
     start: "20:00"

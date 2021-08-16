@@ -42,8 +42,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Fall 1996
 
-dresses:
-
 concerts:
 -   date: "1996-11-23"
     start: "20:00"

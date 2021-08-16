@@ -49,8 +49,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Spring 2009
 
-dresses:
-
 concerts:
 -   date: "2009-05-15"
     start: "20:00"

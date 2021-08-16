@@ -48,8 +48,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Winter 2004
 
-dresses:
-
 concerts:
 -   date: "2004-03-05"
     start: "20:00"

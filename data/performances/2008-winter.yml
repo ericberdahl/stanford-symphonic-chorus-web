@@ -49,8 +49,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Winter 2008
 
-dresses:
-
 concerts:
 -   date: "2008-02-08"
     start: "20:00"

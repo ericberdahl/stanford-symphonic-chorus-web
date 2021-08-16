@@ -43,8 +43,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Fall 1995
 
-dresses:
-
 concerts:
 -   date: "1995-12-02"
     start: "20:00"

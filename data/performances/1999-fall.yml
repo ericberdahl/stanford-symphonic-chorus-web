@@ -40,8 +40,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Fall 1999
 
-dresses:
-
 concerts:
 -   date: "1999-11-18"
     start: "20:00"

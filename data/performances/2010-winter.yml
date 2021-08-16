@@ -54,8 +54,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Winter 2010
 
-dresses:
-
 concerts:
 -   date: "2010-02-26"
     start: "20:00"

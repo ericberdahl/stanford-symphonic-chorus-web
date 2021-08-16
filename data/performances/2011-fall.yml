@@ -51,8 +51,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Fall 2011
 
-dresses:
-
 concerts:
 -   date: "2011-11-18"
     start: "20:00"

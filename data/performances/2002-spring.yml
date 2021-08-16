@@ -48,8 +48,6 @@ preregister:
 tuttiRehearsals:
 # MISSING: rehearsal schedule for Spring 2002
 
-dresses:
-
 concerts:
 -   date: "2002-05-30"
     start: "20:00"
