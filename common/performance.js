@@ -190,6 +190,7 @@ export default class Performance {
     get concerts() { return this.#concerts; }
     get description() { return this.#description; }
     get directors() { return this.#directors; }
+    get dressRehearsals() { return this.#dressRehearsals; }
     get events() { return this.#events; }
     get heraldImageRoutes() { return this.#heraldImageRoutes; }
     get instructors() { return this.#instructors; }
@@ -302,8 +303,19 @@ export default class Performance {
             result.#sectionalsSopranoAlto.sort((a, b) => -b.start.diff(a.start).toMillis());
         }
 
+        if (data.dressRehearsals) {
+            data.dressRehearsals.forEach((dr) => {
+                result.#dressRehearsals.push({
+                    start: createDateTime(dr.date, dr.start, options.timezone),
+                    location: dr.location
+                });
+            });
+            result.#dressRehearsals.sort((a, b) => {
+                return -b.start.diff(a.start).toMillis();
+            });
+        }
+
         // TODO: deserialize links
-        // TODO: deserialize dress rehearsals
 
         return result;
     }

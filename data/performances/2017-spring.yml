@@ -88,10 +88,12 @@ mensSectionals:
     location: "Braun 103"
     frequency: "once"
 
-dresses:
--   start: 2017-05-09 19:00:00 -07
+dressRehearsals:
+-   date: "2017-05-09"
+    start: "19:00"
     location: "MemChu"
--   start: 2017-05-11 19:00:00 -07
+-   date: "2017-05-11"
+    start: "19:00"
     location: "MemChu"
 
 concerts:

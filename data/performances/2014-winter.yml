@@ -66,10 +66,12 @@ tuttiRehearsals:
     endTime: "21:45"
     location: "Bing"
 
-dresses:
--   start: 2014-02-24 19:00:00 -08
+dressRehearsals:
+-   date: "2014-02-24"
+    start: "19:00"
     location: "MemChu"
--   start: 2014-02-25 19:00:00 -08
+-   date: "2014-02-25"
+    start: "19:00"
     location: "Bing"
 
 concerts:

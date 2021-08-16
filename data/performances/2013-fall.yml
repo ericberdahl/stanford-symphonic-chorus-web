@@ -71,10 +71,12 @@ mensSectionals:
     location: "CRH"
     frequency: "once"
 
-dresses:
--   start: 2013-11-19 18:00:00 -08
+dressRehearsals:
+-   date: "2013-11-19"
+    start: "18:00"
     location: "Bing"
--   start: 2013-11-21 19:00:00 -08
+-   date: "2013-11-21"
+    start: "19:00"
     location: "Bing"
 
 concerts:

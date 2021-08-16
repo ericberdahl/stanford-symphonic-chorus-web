@@ -92,10 +92,12 @@ mensSectionals:
     location: "CRH"
     frequency: "once"
 
-dresses:
--   start: 2014-05-13 19:00:00 -07
+dressRehearsals:
+-   date: "2014-05-13"
+    start: "19:00"
     location: "MemChu"
--   start: 2014-05-15 19:00:00 -07
+-   date: "2014-05-15"
+    start: "19:00"
     location: "MemChu"
 
 concerts:

@@ -87,10 +87,12 @@ mensSectionals:
     location: "CRH"
     frequency: "once"
 
-dresses:
--   start: 2015-02-23 19:00:00 -08
+dressRehearsals:
+-   date: "2015-02-23"
+    start: "19:00"
     location: "Bing"
--   start: 2015-02-26 19:00:00 -08
+-   date: "2015-02-26"
+    start: "19:00"
     location: "Bing"
 
 concerts:

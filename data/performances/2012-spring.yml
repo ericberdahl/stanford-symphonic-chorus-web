@@ -83,10 +83,12 @@ mensSectionals:
     location: "CRH"
     frequency: "once"
 
-dresses:
--   start: 2012-05-21 19:00:00 -07
+dressRehearsals:
+-   date: "2012-05-21"
+    start: "19:00"
     location: "MemChu"
--   start: 2012-05-22 19:00:00 -07
+-   date: "2012-05-22"
+    start: "19:00"
     location: "MemChu"
 
 concerts:

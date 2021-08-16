@@ -90,10 +90,12 @@ mensSectionals:
     location: "Braun 103"
     frequency: "once"
 
-dresses:
--   start: 2015-11-17 19:00:00 -08
+dressRehearsals:
+-   date: "2015-11-17"
+    start: "19:00"
     location: "Bing"
--   start: 2015-11-19 19:00:00 -08
+-   date: "2015-11-19"
+    start: "19:00"
     location: "Bing"
 
 concerts:

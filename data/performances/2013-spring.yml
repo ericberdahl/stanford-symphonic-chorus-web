@@ -45,10 +45,12 @@ tuttiRehearsals:
     endTime: "21:45"
     location: "CRH"
 
-dresses:
--   start: 2013-05-28 19:00:00 -07
+dressRehearsals:
+-   date: "2013-05-28"
+    start: "19:00"
     location: "Bing"
--   start: 2013-05-30 19:00:00 -07
+-   date: "2013-05-30"
+    start: "19:00"
     location: "Bing"
 
 concerts:

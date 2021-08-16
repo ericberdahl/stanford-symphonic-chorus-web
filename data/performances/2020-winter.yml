@@ -152,20 +152,12 @@ womensSectionals:
     frequency: "once"
 
 
-# HOWTO: dresses is a list of dress rehearsals
-# A dress rehearsal entry looks like this:
-# -   start: YYYY-MM-DD HH:MM:SS -TT
-#     location: "Bing"
-# Where start is the starting time for the dress rehearsal. The time is specified in YYYY-MM-DD for the date,
-# HH:MM:SS for the local time, and TT is a two digit number that specifies the UTC offset for the time
-# zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07 is the UTC offset for Pacific Daylight
-# Time).
-# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
-# venue in which the dress rehearsal will take place.
-dresses:
--   start: 2020-03-02 18:30:00 -08
+dressRehearsals:
+-   date: "2020-03-02"
+    start: "18:30"
     location: "Bing"
--   start: 2020-03-05 18:30:00 -08
+-   date: "2020-03-05"
+    start: "18:30"
     location: "Bing"
 
 

@@ -75,10 +75,12 @@ mensSectionals:
     endTime: "18:30"
     location: "CRH"
 
-dresses:
--   start: 2003-11-18 18:30:00 -08
+dressRehearsals:
+-   date: "2003-11-18"
+    start: "18:30"
     location: "MemChu"
--   start: 2003-11-19 19:00:00 -08
+-   date: "2003-11-19"
+    start: "19:00"
     location: "MemChu"
 
 concerts:

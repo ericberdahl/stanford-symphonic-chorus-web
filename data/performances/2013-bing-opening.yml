@@ -87,8 +87,9 @@ tuttiRehearsals:
     endTime: "22:00"
     location: "Dink"
 
-dresses:
--   start: 2013-01-08 19:00:00 -08
+dressRehearsals:
+-   date: "2013-01-08"
+    start: "19:00"
     location: "Bing"
 
 concerts:
