@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
+import util from 'util';
 
 import yaml from 'yaml';
 
@@ -14,38 +15,62 @@ export default class Model {
     constructor() {
     }
 
+    get currentQuarter() { return this.#currentPerformance; }
+    get performances() { return this.#performances; }
+
     addPerformance(p) {
-        const compare = (a, b) => {
-            a = a.firstConcert;
-            b = b.firstConcert;
+        if (false) {
+            const compare = (a, b) => {
+                a = a.firstConcert;
+                b = b.firstConcert;
 
-            return b.start.diff(a.start).toMillis();
+                return b.start.diff(a.start).toMillis();
+            }
+
+            // Find the insertion point for this performance that will maintain
+            // the array in order of first concert date (most recent first, least recent last)
+            let low = 0;
+            let high = this.#performances.length;
+            while (low < high) {
+                let mid = (low + high) >>> 1;
+                if (compare(this.#performances[mid], p) < 0) {
+                    low = mid + 1;
+                }
+                else {
+                    high = mid
+                }
+            };
+
+            // Insert the performance
+            this.#performances.splice(low, 0, p);
         }
+        else {
+            this.#performances.push(p);
+            this.#performances.sort((a, b) => {
+                a = a.firstConcert;
+                b = b.firstConcert;
 
-        // Find the insertion point for this performance that will maintain
-        // the array in order of first concert date (most recent first, least recent last)
-        let low = 0;
-        let high = this.#performances.length;
-        while (low < high) {
-            let mid = (low + high) >>> 1;
-            if (compare(this.#performances[mid], p) < 0) {
-                low = mid + 1;
-            }
-            else {
-                high = mid
-            }
-        };
-
-        // Insert the performance
-        this.#performances.splice(low, 0, p);
+                return b.start.diff(a.start).toMillis();
+            });
+        }
     }
 
-    get currentQuarter() {
-        return this.#currentPerformance;
+    getPerformanceById(id) {
+        const result = this.#performances.find((e) => (e.id == id));
+        if (!result) throw Error(util.format('Cannot find performanace with id=%s', id));
+        return result;
     }
 
-    get performances() {
-        return this.#performances;
+    getPerformancesAfterId(id, count) {
+        const index = this.#performances.findIndex((e) => (e.id == id));
+        if (-1 == index) throw Error(util.format('Cannot find performanace with id=%s', id));
+
+        if (0 == count) return [];
+        
+        const start = (count > 0 ? index - count : index + 1);
+        const end = (count > 0 ? start + count : start - count);
+
+        return this.#performances.slice(Math.max(start, 0), Math.min(end, this.#performances.length - 1));
     }
 
     static #sSingleton = null;
