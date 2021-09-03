@@ -27,7 +27,7 @@
     "@types/node": "^14.11.2",
     "commander": "^6.1.0",
     "debug": "^4.2.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "handlebars-layouts": "^3.1.4",
     "jstransformer-handlebars": "^1.1.0",
     "jstransformer-less": "^2.3.0",
