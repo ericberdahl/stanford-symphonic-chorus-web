@@ -60,8 +60,8 @@
         {{this.prefix}}
         {{#if _piece.movement}}{{{_openTag}}}{{_piece.movement}}{{{_closeTag}}} from {{/if}}
         {{~#x-sentence _piece.title~}}{{{../_openTag}}}{{.}}{{{../_closeTag}}}{{/x-sentence}}
-        {{~#if _piece.translation}} ({{_piece.translation}}){{/if}}
         {{~#if _piece.commonTitle}} &quot;{{_piece.commonTitle}}&quot;{{/if}}
+        {{~#if _piece.translation}} ({{_piece.translation}}){{/if}}
         {{~#if _piece.catalog}}, {{_piece.catalog}}{{/if}}
         {{~#if _piece.arranger}}, arranged by {{_piece.arranger}}{{/if}}
         {{this.suffix}}
