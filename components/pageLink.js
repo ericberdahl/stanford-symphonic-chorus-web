@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 
+import util from 'util';
+
 // TODO: create/route fylp content pages
 // fylp/mascagni-easter-hymn.html
 // fylp/vaughan-williams-sea-symphony.html
@@ -123,48 +125,118 @@ import { useRouter } from 'next/router'
 // performances/S2008-2/schedule.html
 
 class SiteEntry {
-    name    = ''
     route   = ''
 
-    constructor(name, route) {
-        this.name = name;
+    constructor(route) {
         this.route = route;
     }
 
     get internalRoute() {
-        const terminalChar = this.route.slice(-1);
-    
-        return ('/' == terminalChar ? this.route + 'index' : this.route);
+        return this.route;
     }
 
     get externalRoute() {
-        return this.internalRoute + '.html';
+        var internalRoute = this.internalRoute;
+
+        if ('/' == internalRoute.slice(-1)) {
+            internalRoute += 'index';
+        }
+
+        return internalRoute + '.html';
     }
 }
 
-const siteMap = [
-    new SiteEntry('about', '/about'),
-    new SiteEntry('home', '/'),
-    new SiteEntry('contactUs', '/contact'),
-    new SiteEntry('fylpList', '/fylp'),
-    new SiteEntry('memberInfo', '/memberinfo'),
-    new SiteEntry('noFragrance', '/nofragrance'),
-    new SiteEntry('performanceList', '/performances'),
-    new SiteEntry('repertoire', '/repertoire'),
+class Collection {
+    #name   = ''
+
+    constructor(name) {
+        this.#name = name;
+    }
+
+    get name() { return this.#name; }
+
+    getSiteEntry(page) {
+        const entry = this.findSiteEntryForId(this.getPageId(page));
+        if (!entry) throw new Error(util.format('Cannot find page named "%s" in collection "%s"', page, this.name));
+        return entry;
+    }
+
+    // interfaces subclasses must implement
+
+    findSiteEntryForId(page) {
+        throw new Error(util.format('Collection "%s" needs to implement findSiteEntryForId', this.name));
+    }
+
+    getPageId(page) {
+        throw new Error(util.format('Collection "%s" needs to implement getPageId', this.name));
+    }
+}
+class TopLevelCollection extends Collection {
+    siteMap = {
+        about:              new SiteEntry('/about'),
+        home:               new SiteEntry('/'),
+        contactUs:          new SiteEntry('/contact'),
+        fylpList:           new SiteEntry('/fylp'),
+        memberInfo:         new SiteEntry('/memberinfo'),
+        noFragrance:        new SiteEntry('/nofragrance'),
+        performanceList:    new SiteEntry('/performances'),
+        repertoire:         new SiteEntry('/repertoire'),
+    };
+    
+    constructor(name) {
+        super(name);
+    }
+
+    findSiteEntryForId(id) {
+        return this.siteMap[id];        
+    }
+
+    getPageId(page) {
+        return page;
+    }
+}
+
+class PerformanceCollection extends Collection {
+    constructor(name) {
+        super(name);
+    }
+
+    findSiteEntryForId(id) {
+        return new SiteEntry(util.format('/performances/%s',  id));
+    }
+
+    getPageId(page) {
+        return page.id;
+    }
+}
+
+const collections = [
+    new PerformanceCollection('performances'),
+    new TopLevelCollection('topLevel'),
 ];
 
-export function isCurrentPage(page) {
-    const router = useRouter();
+function getCollection(collection) {
+    collection = (collection ? collection : 'topLevel');
 
-    const entry = siteMap.find((value) => (value.name == page));
-    if (!entry) throw new Error('Cannot find page named "' + page + '"');
+    const result = collections.find((c) => (c.name == collection));
+    if (!result) throw new Error(util.format('Cannot find collection named "%s"', collection));
+
+    return result;
+}
+
+export function isCurrentPage(page, collection) {
+    const router = useRouter();
+    const entry = getCollection(collection).getSiteEntry(page);
 
     return (router.pathname == entry.route);
 }
 
-export default function PageLink({ page, anchor, children, passHref }) {
-    const entry = siteMap.find((value) => (value.name == page));
-    if (!entry) throw new Error('Cannot find page named "' + page + '"');
+export function getIdForCollection(page, collection) {
+    return getCollection(collection).getPageId(page);
+}
+
+export default function PageLink({ collection, page, anchor, children, passHref }) {
+    const entry = getCollection(collection).getSiteEntry(page);
 
     const internalLink = entry.internalRoute + (anchor && 0 < anchor.length ? '#' + anchor : '');
     const externalLink = entry.externalRoute + (anchor && 0 < anchor.length ? '#' + anchor : '');

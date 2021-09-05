@@ -11,6 +11,8 @@ import Model from "../../common/model";
 
 import { DateTime } from 'luxon';
 
+import styles from '../../styles/performances_id.module.scss';
+
 function Introduction({ navItems }) {
     return (
         <div>
@@ -241,13 +243,15 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
             introduction={<Introduction navItems={navItems}/>}
             sidebar={<Sidebar/>}
             breadcrumbs={breadcrumbPath}>
-            <div>
+            <div class={styles.rehearsalSchedule}>
                 <h2 id="overview">Overview</h2>
-                <table>
-                    <tbody>
-                        <Overview quarter={currentQuarter}/>
-                    </tbody>
-                </table>
+                <div class={styles.overview}>
+                    <table>
+                        <tbody>
+                            <Overview quarter={currentQuarter}/>
+                        </tbody>
+                    </table>
+                </div>
 
                 <h2 id='rehearsals'>Rehearsals</h2>
                 <div><Rehearsals quarter={currentQuarter}/></div>
@@ -264,7 +268,7 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
                         <table>
                             {nextQuarters.map((q, index) => (
                                 <tbody key={index}>
-                                    <tr><td  colspan="2">{q.quarter} TODO: link to quarter</td></tr>
+                                    <tr><td class={styles.subhead} colspan="2">{q.quarter} TODO: link to quarter</td></tr>
                                     <Overview quarter={q} shortForm="true"/>
                                 </tbody>
                             ))}
@@ -275,14 +279,16 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
                 {0 < previousQuarters.length && (
                     <>
                         <h2 id='looking-back'>Looking Back</h2>
-                        <table>
-                            {previousQuarters.map((q, index) => (
-                                <tbody key={index}>
-                                    <tr><td  colspan="2">{q.quarter} TODO: link to quarter</td></tr>
-                                    <Overview quarter={q} shortForm="true"/>
-                                </tbody>
-                            ))}
-                        </table>
+                        <div class={styles.overview}>
+                            <table>
+                                {previousQuarters.map((q, index) => (
+                                    <tbody key={index}>
+                                        <tr><td class={styles.subhead} colspan="2">{q.quarter} TODO: link to quarter</td></tr>
+                                        <Overview quarter={q} shortForm="true"/>
+                                    </tbody>
+                                ))}
+                            </table>
+                        </div>
                     </>
                 )}
             </div>

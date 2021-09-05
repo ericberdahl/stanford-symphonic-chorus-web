@@ -13,21 +13,21 @@ import { DateTime } from 'luxon'
 
 import styles from '../styles/memberinfo.module.scss'
 
-function Introduction(props) {
+function Introduction({ navItems, quarter }) {
     // If the member info page ever needs to be displayed for historical performances, this logic and content
     // need to be adjusted to accommodate the fact that we don't have preregister dates for all performances
     // in the historical record.
-    const preregisterDate = DateTime.fromISO(props.preregisterDate).toFormat('MMMM yyyy');
+    const preregisterDate = DateTime.fromISO(quarter.preregisterDate).toFormat('MMMM yyyy');
 
     return (
         <div className={styles.introduction}>
-            <PageNavigation items={props.navItems}/>
+            <PageNavigation items={navItems}/>
 
             <TitledSegment title="Member Tools">
-                <p><Link href={props.scheduleRoute}><a>Rehearsal Schedule</a></Link></p>
-                {props.syllabusRoutes &&
+                <p><Link href={quarter.scheduleRoute}><a>Rehearsal Schedule</a></Link></p>
+                {quarter.syllabusRoutes &&
                     <p>
-                        {props.quarter} Syllabus (<FileLinks files={props.syllabusRoutes}/>)
+                        {quarter.quarter} Syllabus (<FileLinks files={quarter.syllabusRoutes}/>)
                     </p>
                 }
                 <p><a href="/assets/Choral Studies Liability Waiver Form.pdf">Choral Studies Liability Waiver</a></p>
@@ -42,9 +42,9 @@ function Introduction(props) {
                     If you do not receive the confirmation right away, check your Junk folder to be sure it didn't get caught as spam.
                 </p>
 
-                {props.registrationFee &&
+                {quarter.registrationFee &&
                     <p>
-                        Registration fee is {props.registrationFee} (waived for students and faculty).
+                        Registration fee is {quarter.registrationFee} (waived for students and faculty).
                         The score for this quarter will be sold at the first three rehearsals.
                     </p>
                 }
@@ -58,7 +58,7 @@ function Introduction(props) {
     );
 }
 
-function Sidebar(props) {
+function Sidebar({ quarter }) {
     return (
         <div className={styles.sidebar}>
             <TitledSegment title="Music-Learning CD Sites">
@@ -86,7 +86,7 @@ function Sidebar(props) {
                     <li><a href="http://www.mymusicfolders.com/index.html">mymusicfolders.com</a></li>
                 </ul>
             </TitledSegment>
-            <TitledSegment title={<Link href={props.scheduleRoute}><a>Rehearsal Schedule</a></Link>}>
+            <TitledSegment title={<Link href={quarter.scheduleRoute}><a>Rehearsal Schedule</a></Link>}>
                 <p>
                     Listing of rehearsals, sectionals and performances for the current quarter.
                 </p>
@@ -95,7 +95,7 @@ function Sidebar(props) {
     );
 }
 
-export default function MemberInfo({ pageData }) {
+export default function MemberInfo({ currentQuarter }) {
     const title = "Member Information";
     const navItems = [
         ['#joining', 'Joining the Chorus'],
@@ -110,8 +110,8 @@ export default function MemberInfo({ pageData }) {
     return (
         <Layout
             title={title}
-            introduction={<Introduction navItems={navItems} {...pageData}/>}
-            sidebar={<Sidebar {...pageData}/>}
+            introduction={<Introduction navItems={navItems} quarter={currentQuarter}/>}
+            sidebar={<Sidebar quarter={currentQuarter}/>}
             breadcrumbs={breadcrumbPath}>
             <div className={styles.content}>
                 <h2 id="joining">Joining the Chorus</h2>
@@ -119,14 +119,14 @@ export default function MemberInfo({ pageData }) {
                     The Stanford Symphonic Chorus is open to all students, faculty, staff and any other residents of the community interested in singing wonderful music.
                 </p>
                 <p>
-                    Members who are not students or faculty pay a modest {pageData.registrationFee && <span>(currently {pageData.registrationFee})</span>} participation fee.
+                    Members who are not students or faculty pay a modest {currentQuarter.registrationFee && <span>(currently {currentQuarter.registrationFee})</span>} participation fee.
                     This money helps to offset expenses, the largest of which is hiring orchestras.
                 </p>
 
                 <h3>Auditions</h3>
                 <p>
                     New members are normally accepted by audition at the beginning of each academic quarter.
-                    If you are interested in auditioning for the chorus for the {pageData.quarter} quarter, please email <Person role="administrator" subject="Regarding auditions"/>.
+                    If you are interested in auditioning for the chorus for the {currentQuarter.quarter} quarter, please email <Person role="administrator" subject="Regarding auditions"/>.
                 </p>
 
                 <p>Auditions take about ten minutes, are very "user-friendly," and consist of:</p>
@@ -146,9 +146,9 @@ export default function MemberInfo({ pageData }) {
                         This can be anything that you enjoy singing: art song, aria, musical theatre number, jazz tune, hymn tune, children's song, or the ever popular choices of: first verse of <em>My country 'tis of thee</em>, <em>Amazing Grace</em>, <em>Edelweiss</em>, etc.
                     </li>
                 </ul>
-                {pageData.membershipLimit &&
+                {currentQuarter.membershipLimit &&
                     <p>
-                        NB: Due to facilities restrictions, the Symphonic Chorus is capped at a <em><strong>maximum of {pageData.membershipLimit} members</strong></em>.
+                        NB: Due to facilities restrictions, the Symphonic Chorus is capped at a <em><strong>maximum of {currentQuarter.membershipLimit} members</strong></em>.
                         For potential new members wishing to join the ensemble, please understand that members who have made the full year-long commitment in previous seasons have first priority.
                         New members will be accepted as space allows, with voice part and section balances taken into account.
                     </p>
@@ -217,20 +217,28 @@ export default function MemberInfo({ pageData }) {
     );
 }
 
+function serializePerformance(performance) {
+    const result = {
+        id:                     performance.id,
+        membershipLimit:        performance.membershipLimit,
+        preregisterDate:        performance.preregisterDate.toISO(),
+        quarter:                performance.quarter,
+        registrationFee:        performance.registrationFee,
+        scheduleRoute:          performance.scheduleRoute,
+        syllabusRoutes:         performance.syllabusRoutes,
+    };
+
+    return result;
+}
+
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
-    const currentQuarter = model.currentQuarter;
     
-    const pageData = {
-        membershipLimit: currentQuarter.membershipLimit,
-        preregisterDate: currentQuarter.preregisterDate.toISO(),
-        quarter: currentQuarter.quarter,
-        registrationFee: currentQuarter.registrationFee,
-        scheduleRoute: currentQuarter.scheduleRoute,
-        syllabusRoutes: currentQuarter.syllabusRoutes
+    const props = {
+        currentQuarter: serializePerformance(model.currentQuarter),
     }
 
     return {
-        props: { pageData }
+        props: props
     }
 }
