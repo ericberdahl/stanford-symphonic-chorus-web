@@ -1,7 +1,10 @@
+import getConfig from 'next/config'
 import Link from 'next/link';
 import { useRouter } from 'next/router'
 
 import util from 'util';
+
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
 // TODO: create/route fylp content pages
 // fylp/mascagni-easter-hymn.html
@@ -242,6 +245,6 @@ export default function PageLink({ collection, page, anchor, children, passHref 
     const externalLink = entry.externalRoute + (anchor && 0 < anchor.length ? '#' + anchor : '');
 
     return (
-        <Link href={internalLink} as={externalLink} passHref={passHref}>{children}</Link>
+        <Link href={serverRuntimeConfig.isExport ? externalLink : internalLink} passHref={passHref}>{children}</Link>
     );
 }

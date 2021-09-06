@@ -7,8 +7,6 @@ import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
 
-import Link from 'next/link'    // TODO: replace Link uses with PageLink
-
 import { DateTime } from 'luxon'
 
 import styles from '../styles/memberinfo.module.scss'
@@ -24,7 +22,7 @@ function Introduction({ navItems, quarter }) {
             <PageNavigation items={navItems}/>
 
             <TitledSegment title="Member Tools">
-                <p><Link href={quarter.scheduleRoute}><a>Rehearsal Schedule</a></Link></p>
+                <p><PageLink collection="performances" page={quarter}><a>Rehearsal Schedule</a></PageLink></p>
                 {quarter.syllabusRoutes &&
                     <p>
                         {quarter.quarter} Syllabus (<FileLinks files={quarter.syllabusRoutes}/>)
@@ -86,7 +84,7 @@ function Sidebar({ quarter }) {
                     <li><a href="http://www.mymusicfolders.com/index.html">mymusicfolders.com</a></li>
                 </ul>
             </TitledSegment>
-            <TitledSegment title={<Link href={quarter.scheduleRoute}><a>Rehearsal Schedule</a></Link>}>
+            <TitledSegment title={<PageLink collection="performances" page={quarter}><a>Rehearsal Schedule</a></PageLink>}>
                 <p>
                     Listing of rehearsals, sectionals and performances for the current quarter.
                 </p>

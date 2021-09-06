@@ -243,9 +243,9 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
             introduction={<Introduction navItems={navItems}/>}
             sidebar={<Sidebar/>}
             breadcrumbs={breadcrumbPath}>
-            <div class={styles.rehearsalSchedule}>
+            <div className={styles.rehearsalSchedule}>
                 <h2 id="overview">Overview</h2>
-                <div class={styles.overview}>
+                <div className={styles.overview}>
                     <table>
                         <tbody>
                             <Overview quarter={currentQuarter}/>
@@ -268,7 +268,7 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
                         <table>
                             {nextQuarters.map((q, index) => (
                                 <tbody key={index}>
-                                    <tr><td class={styles.subhead} colspan="2">{q.quarter} TODO: link to quarter</td></tr>
+                                    <tr><td className={styles.subhead} colSpan="2"><PageLink collection="performances" page={q}>{q.quarter}</PageLink></td></tr>
                                     <Overview quarter={q} shortForm="true"/>
                                 </tbody>
                             ))}
@@ -279,11 +279,11 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
                 {0 < previousQuarters.length && (
                     <>
                         <h2 id='looking-back'>Looking Back</h2>
-                        <div class={styles.overview}>
+                        <div className={styles.overview}>
                             <table>
                                 {previousQuarters.map((q, index) => (
                                     <tbody key={index}>
-                                        <tr><td class={styles.subhead} colspan="2">{q.quarter} TODO: link to quarter</td></tr>
+                                        <tr><td className={styles.subhead} colSpan="2"><PageLink collection="performances" page={q}>{q.quarter}</PageLink></td></tr>
                                         <Overview quarter={q} shortForm="true"/>
                                     </tbody>
                                 ))}
