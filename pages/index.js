@@ -114,7 +114,7 @@ function Introduction({ currentQuarter }) {
     );
 }
 
-function Sidebar() {
+function Sidebar({ quarter }) {
     return (
         <div className={styles.sidebar}>
             <TitledSegment title="Symphonic Chorus">
@@ -127,7 +127,7 @@ function Sidebar() {
                     <li><PageLink page="performanceList"><a>SSC Performances</a></PageLink></li>
                     <li><PageLink page="fylpList"><a>For your listening pleasure</a></PageLink></li>
                     <li><PageLink page="memberInfo" anchor="auditions"><a>Joining the Chorus</a></PageLink></li>
-                    <li>TODO: link to current rehearsal schedule</li>
+                    <li><PageLink collection="performances" page={quarter}><a>Rehearsal Schedule</a></PageLink></li>
                 </ul>
             </TitledSegment>
             <TitledSegment title="Stanford Arts">
@@ -153,7 +153,7 @@ export default function Home({ currentQuarter }) {
         <Layout
             title="Stanford Symphonic Chorus"
             introduction={<Introduction currentQuarter={currentQuarter}/>}
-            sidebar={<Sidebar/>}>
+            sidebar={<Sidebar quarter={currentQuarter}/>}>
             <div className={styles.main}>
                 <TitledSegment title="Welcome">
                     <div>
@@ -258,6 +258,7 @@ function serializePerformance(performance) {
         events:             performance.events.map(serializeEvent),
         firstRehearsal:     serializeTuttiRehearsal(performance.tuttiRehearsals[0]),
         heraldImageRoutes:  serializeImageRoutes(performance.heraldImageRoutes),
+        id:                 performance.id,
         mainPieces:         performance.mainPieces.map(serializePiece),
         repertoire:         performance.repertoire.map(serializePiece),
         quarter:            performance.quarter,
