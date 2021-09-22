@@ -13,6 +13,19 @@ interface IPiece {
 
 type ComposerDataField = string | Array<string>;
 
+type PieceDataField = {
+    title : string;
+    composer? : ComposerDataField;
+    movement? : string;
+    translation? : string;
+    commonTitle? : string;
+    catalog? : string;
+    arranger? : string;
+    prefix? : string;
+    suffix? : string;
+    performanceNote? : string;
+}
+
 interface IComposer {
     readonly name : string;
     readonly familyName : string;
@@ -77,7 +90,7 @@ export default class Piece implements IPiece {
     get composer() { return this._composer.name; }
     get composerFamilyName() { return this._composer.familyName; }
 
-    static deserialize(data, options) : IPiece {
+    static deserialize(data : PieceDataField, options) : IPiece {
         const piece = new Piece(data.title,
                                 data.composer,
                                 data.movement,
