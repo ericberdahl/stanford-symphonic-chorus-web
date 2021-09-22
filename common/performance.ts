@@ -10,56 +10,61 @@ import path from 'path';
 import process from 'process';
 import util from 'util';
 
-class Rehearsal {
-    #start = DateTime.fromMillis(0);
-    #end = DateTime.fromMillis(0);
-    #location = "";
-    #notes = null;
+enum FrequencyEnum {
+    weekly = 'weekly',
+    once = 'once'
+}
 
-    constructor(start, end, location) {
-        this.#start = start;
-        this.#end = end;
-        this.#location = location;
+type RehearsalSequenceDataField = {
+    frequency? : FrequencyEnum;
+    startDate : string;
+    endDate? : string;
+    startTime: string;
+    endTime: string;
+    location: string
+};
+
+class Rehearsal {
+    readonly start : DateTime;
+    readonly end : DateTime;
+    readonly location : string;
+    readonly notes : Array<string> = [];
+
+    constructor(start : DateTime, end : DateTime, location : string) {
+        this.start = start;
+        this.end = end;
+        this.location = (location || '');
     }
 
-    get end() { return this.#end; }
-    get location() { return this.#location; }
-    get notes() { return (this.#notes ? [...this.#notes] : []); }
-    get start() { return this.#start; }
-
-    addNote(note) {
-        if (!this.#notes) {
-            this.#notes = [];
-        }
-
-        this.#notes.push(note);
+    addNote(note : string) : void {
+        this.notes.push(note);
     }
 }
 
-function createDateTime(date, timeOfDay, timezone) {
+function createDateTime(date : string, timeOfDay : string, timezone : string) : DateTime {
     return DateTime.fromFormat(date + ' ' + timeOfDay, 'yyyy-MM-dd HH:mm', { setZone: timezone });
 }
 
-function createRehearsalSequence(spec, timezone) {
-    const frequency = (spec.frequency ? spec.frequency : 'once');
+function createRehearsalSequence(spec, timezone : string) : Array<Rehearsal> {
+    const frequency : FrequencyEnum = (spec.frequency ? spec.frequency : 'once');
 
-    const computeDateShift = (f) => {
-        if ('once' == f) return { days: 1 };
-        if ('weekly' == f) return { days: 7 };
+    const computeDateShift = (f : string) => {
+        if (FrequencyEnum.once == f) return { days: 1 };
+        if (FrequencyEnum.weekly == f) return { days: 7 };
         throw new Error(util.format('Unkonwn frequency "%s"', f));
     }
     const dateShift = computeDateShift(frequency);
 
-    if ('once' != frequency && !spec.endDate) {
+    if (FrequencyEnum.once != frequency && !spec.endDate) {
         throw new Error(util.format('Event sequences with "%s" frequency require an endDate', frequency));
     }
-    const endDate = (spec.endDate ? spec.endDate : spec.startDate);
-    const finalStartDateTime = createDateTime(endDate, spec.startTime, timezone);
+    const endDate : string = (spec.endDate ? spec.endDate : spec.startDate);
+    const finalStartDateTime : DateTime = createDateTime(endDate, spec.startTime, timezone);
 
-    var nextStartDateTime = createDateTime(spec.startDate, spec.startTime, timezone);
-    var nextEndDateTime = createDateTime(spec.startDate, spec.endTime, timezone);
+    var nextStartDateTime : DateTime = createDateTime(spec.startDate, spec.startTime, timezone);
+    var nextEndDateTime : DateTime = createDateTime(spec.startDate, spec.endTime, timezone);
 
-    var result = [];
+    var result : Array<Rehearsal> = [];
     do {
         result.push(new Rehearsal(nextStartDateTime, nextEndDateTime, spec.location));
 
@@ -70,8 +75,11 @@ function createRehearsalSequence(spec, timezone) {
     return result;
 }
 
+// TODO: Typescript-ify the remaining code in this file
+// TODO: Move performance yaml data parsing into its own module. Don't democratize the yaml-deserialization code
+
 function parseTuttiRehearsalNote(note, tuttiRehearsals, timezone) {
-    const noteDateTime = createDateTime(note.date, "00:00", timezone);
+    const noteDateTime : DateTime = createDateTime(note.date, "00:00", timezone);
     const rehearsal = tuttiRehearsals.find((e) => (e.start.year == noteDateTime.year && e.start.month == noteDateTime.month && e.start.day == noteDateTime.day));
     if (!rehearsal) throw new Error(util.format('Cannot find tuttiRehearsal on date "%s" to attach a note', note.date));
     
