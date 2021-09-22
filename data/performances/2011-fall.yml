@@ -6,8 +6,8 @@ syllabus:
 repertoire:
     main:
     -   composer: "Brian Holmes"
-        prefix: "premier of"
         title: "Come Christmas"
+        performanceNote: "(World Premiere)"
     other:
     -   composer: "Ralph Vaughan Williams"
         composerFamilyName: "Vaughan Williams"

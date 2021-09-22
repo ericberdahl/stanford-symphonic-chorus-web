@@ -26,7 +26,7 @@ repertoire:
         composer: "Paul Dukas"
     -   title: "Wave"
         composer: "Paul Phillips"
-        suffix: "(West Coast Premiere)"
+        performanceNote: "(West Coast Premiere)"
     -   title: "Flute Concerto"
         composer: "Jacques Ibert"
     main:

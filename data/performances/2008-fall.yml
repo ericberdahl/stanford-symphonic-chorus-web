@@ -7,7 +7,7 @@ repertoire:
     main:
     -   composer: "Brian Holmes"
         title: "Amherst Requiem"
-        prefix: "premiere of"
+        performanceNote: "(World Premiere)"
     other:
     -   composer: "Aaron Copland"
         title: "Quiet City"

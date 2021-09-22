@@ -29,12 +29,17 @@ export default class Piece {
     get translation() { return this.#translation; }
 
     static deserialize(data, options) {
-        const result = new Piece();
+        let result = new Piece();
 
         result.#title = data.title;
 
         if (data.composer) {
             result.#composer = data.composer;
+
+            // If the composer field is an array, the final element is the family name and
+            // the space-joined concatenation of the fields is the full name.
+            // If the composer field is a single string, the family name is the final word
+            // in the string.
             if (Array.isArray(result.#composer)) {
                 result.#composerFamilyName = result.#composer[result.#composerFamilyName.length - 1];
                 result.#composer = result.#composer.join(' ');
@@ -53,6 +58,36 @@ export default class Piece {
         result.#suffix = (data.suffix ? data.suffix : result.#suffix);
         result.#translation = (data.translation ? data.translation : result.#translation);
         
+        if (data.performanceNote) {
+            result = new NotedPerformance(result, data.performanceNote);
+        }
+
         return result;
+    }
+}
+
+class NotedPerformance {
+    #piece  = null;
+    #note   = '';
+
+    constructor(piece, note) {
+        this.#piece = piece;
+        this.#note = note;
+    }
+
+    get arranger() { return this.#piece.arranger; }
+    get catalog() { return this.#piece.catalog; }
+    get commonTitle() { return this.#piece.commonTitle; }
+    get composer() { return this.#piece.composer; }
+    get composerFamilyName() { return this.#piece.composerFamilyName; }
+    get movement() { return this.#piece.movement; }
+    get prefix() { return this.#piece.prefix; }
+    get title() { return this.#piece.title; }
+    get translation() { return this.#piece.translation; }
+
+    get suffix() {
+        const elements = [this.#piece.suffix, this.#note].filter((value) => value != '');
+
+        return elements.join(' ');
     }
 }
