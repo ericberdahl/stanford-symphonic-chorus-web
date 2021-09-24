@@ -1,4 +1,4 @@
-interface IPiece {
+export interface IPiece {
     readonly arranger : string;
     readonly catalog;
     readonly commonTitle;
@@ -13,7 +13,7 @@ interface IPiece {
 
 type ComposerDataField = string | Array<string>;
 
-type PieceDataField = {
+export type PieceDataField = {
     title : string;
     composer? : ComposerDataField;
     movement? : string;
@@ -51,7 +51,7 @@ function parseComposerDataField(composer: ComposerDataField) : IComposer {
                 new Composer(composer, composer.split(' ').slice(-1)[0]));
 }
 
-export default class Piece implements IPiece {
+export class Piece implements IPiece {
     readonly title : string | Array<string>
     readonly _composer : IComposer;
 

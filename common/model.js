@@ -96,13 +96,10 @@ export default class Model {
         const dirEntries = await fs.readdir(path.join(basePath, 'data', 'performances'), { withFileTypes: true });
         const performancesEntries = dirEntries.filter((dirent) => { return dirent.isFile(); })
                                         .map((dirent) => { return dirent.name; });
-        const performances = await Promise.all(performancesEntries.map(async (filename) => {
-            const slug = path.parse(filename).name;
-            const route = '/performances/' + slug;
-            
+        const performances = await Promise.all(performancesEntries.map(async (filename) => {            
             const filepath = path.join(basePath, 'data', 'performances', filename);
             const contents = await fs.readFile(filepath, 'utf8');
-            const performance = Performance.deserialize(yaml.parse(contents), route, performanceOptions);
+            const performance = Performance.deserialize(yaml.parse(contents), performanceOptions);
 
             model.addPerformance(performance);
             if (performance.quarter == config.currentQuarter) {

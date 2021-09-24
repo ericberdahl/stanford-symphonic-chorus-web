@@ -1,4 +1,4 @@
-import Piece from './piece'
+import { IPiece, Piece, PieceDataField } from './piece'
 
 import imageSize from 'image-size'
 import { DateTime } from 'luxon';
@@ -17,18 +17,18 @@ enum FrequencyEnum {
 
 type RehearsalSequenceDataField = {
     frequency? : FrequencyEnum;
-    startDate : string;
-    endDate? : string;
-    startTime: string;
-    endTime: string;
-    location: string
+    startDate : string; // 'YYYY-MM-DD' : date on which the first rehearsal will occur
+    endDate? : string;  // 'YYYY-MM-DD' : if present, date on which the last rehearsal will occur. Required unless frequence is 'once'
+    startTime: string;  // 'HH:MM' : 24-hour formatted time at which rehearsals start
+    endTime: string;    // 'HH:MM' : 24-hour formatted time at which rehearsals end
+    location: string    // nickname of the location at which rehearsals are held
 };
 
 class Rehearsal {
     readonly start : DateTime;
     readonly end : DateTime;
     readonly location : string;
-    readonly notes : Array<string> = [];
+    readonly notes : string[] = [];
 
     constructor(start : DateTime, end : DateTime, location : string) {
         this.start = start;
@@ -45,8 +45,8 @@ function createDateTime(date : string, timeOfDay : string, timezone : string) : 
     return DateTime.fromFormat(date + ' ' + timeOfDay, 'yyyy-MM-dd HH:mm', { setZone: timezone });
 }
 
-function createRehearsalSequence(spec, timezone : string) : Array<Rehearsal> {
-    const frequency : FrequencyEnum = (spec.frequency ? spec.frequency : 'once');
+function createRehearsalSequence(spec : RehearsalSequenceDataField, timezone : string) : Rehearsal[] {
+    const frequency : FrequencyEnum = (spec.frequency ? spec.frequency : FrequencyEnum.once);
 
     const computeDateShift = (f : string) => {
         if (FrequencyEnum.once == f) return { days: 1 };
@@ -64,7 +64,7 @@ function createRehearsalSequence(spec, timezone : string) : Array<Rehearsal> {
     var nextStartDateTime : DateTime = createDateTime(spec.startDate, spec.startTime, timezone);
     var nextEndDateTime : DateTime = createDateTime(spec.startDate, spec.endTime, timezone);
 
-    var result : Array<Rehearsal> = [];
+    var result : Rehearsal[] = [];
     do {
         result.push(new Rehearsal(nextStartDateTime, nextEndDateTime, spec.location));
 
@@ -75,252 +75,318 @@ function createRehearsalSequence(spec, timezone : string) : Array<Rehearsal> {
     return result;
 }
 
-// TODO: Typescript-ify the remaining code in this file
-// TODO: Move performance yaml data parsing into its own module. Don't democratize the yaml-deserialization code
-
-function parseTuttiRehearsalNote(note, tuttiRehearsals, timezone) {
-    const noteDateTime : DateTime = createDateTime(note.date, "00:00", timezone);
-    const rehearsal = tuttiRehearsals.find((e) => (e.start.year == noteDateTime.year && e.start.month == noteDateTime.month && e.start.day == noteDateTime.day));
+function parseTuttiRehearsalNote(note : RehearsalNoteDataField, tuttiRehearsals : Rehearsal[], timezone : string) {
+    const noteDateTime : DateTime = createDateTime(note.date, '00:00', timezone);
+    const rehearsal : Rehearsal = tuttiRehearsals.find((e) => (e.start.year == noteDateTime.year && e.start.month == noteDateTime.month && e.start.day == noteDateTime.day));
     if (!rehearsal) throw new Error(util.format('Cannot find tuttiRehearsal on date "%s" to attach a note', note.date));
     
     rehearsal.addNote(note.note);
 }
 
-function findFileVariants(baseRoute, variants)
-{
-    const publicDir = path.join(process.cwd(), 'public');
+function composeExistingRoute(directoryRoute : string, name : string, extension : string) {
+    const route = path.normalize(path.format({
+        dir: directoryRoute,
+        name: name,
+        ext: extension.toLowerCase()
+    }));
 
-    let result = [];
-    variants.forEach((variant) => {
-        const route = baseRoute + '.' + variant.toLowerCase();
-        const filePath = path.join(publicDir, route);
-        try {
-            fs.accessSync(filePath);
-            result.push({
-                route: route,
-                variant: variant
-            });
-        }
-        catch (e) {
-            // noop - access failed
-            // console.debug('no access for %s', filePath);
-        }
-
-    });
-
-    return result;
+    return (fs.existsSync(path.join(process.cwd(), 'public', route)) ? route : null);
 }
 
 class ImageRoutes {
-    #pdf        = null;
-    #jpg        = null;
-    #caption    = null;
-    #width      = 0;
-    #height     = 0;
+    readonly pdf : string;
+    readonly jpg : string;
+    readonly caption : string;
+    readonly width : number     = 0;
+    readonly height : number    = 0;
 
-    constructor() {
+    constructor(directoryRoute : string, name : string, caption : string) {
+        const publicDir = path.join(process.cwd(), 'public');
 
-    }
+        this.pdf = composeExistingRoute(directoryRoute, name, '.pdf');
+        this.jpg = composeExistingRoute(directoryRoute, name, '.jpg');
 
-    get pdf() { return this.#pdf; }
-    get jpg() { return this.#jpg; }
-    get caption() { return this.#caption; }
-    get width() { return this.#width; }
-    get height() { return this.#height; }
-
-    static deserialize(data, directoryRoute, options) {
-        const result = new ImageRoutes();
-
-        const baseRoute = directoryRoute + data.basename;
-        
-        const routes = findFileVariants(baseRoute, ['pdf', 'jpg']);
-        if (0 == routes.length) {
-            throw new Error(util.format('No image variants found for "%s"', data.basename));
+        if (!this.pdf && !this.jpg) {
+            throw new Error(util.format('No image variants found for "%s"', name));
         }
 
-        const variantMap = {
-            'pdf': '#pdf',
-            'jpg': '#jpg',
-        }
-
-        routes.forEach((r) => {
-            if ('pdf' == r.variant) {
-                result.#pdf = r.route;
-            }
-            else if ('jpg == r.variant') {
-                result.#jpg = r.route;
-            }
-            else {
-                throw new Error(util.format('Unrecognized variant attempted "%s"', r.variant));
-            }
-        });
-
-        if (result.jpg) {
-            const imagePath = path.join(process.cwd(), 'public', result.jpg);
-            ({ width: result.#width, height: result.#height } = imageSize(imagePath));
+        if (this.jpg) {
+            const imagePath = path.join(publicDir, this.jpg);
+            ({ width: this.width, height: this.height } = imageSize(imagePath));
         }
     
-        result.#caption = data.caption;
+        this.caption = caption;
+    }
 
-        return result;
+    static deserialize(data, directoryRoute, options) {
+        return new ImageRoutes(directoryRoute, data.basename, data.caption);
     }
 }
 
+// TODO: Move performance yaml data parsing into its own module. Don't democratize the yaml-deserialization code
+
+type BasicEvent = {
+    start : DateTime;
+    location : string;
+};
+
+type Concert = BasicEvent & {
+    call : DateTime;
+}
+
+type GenericEvent = BasicEvent & {
+    title : string;
+}
+
+type DressRehearsal = BasicEvent;
+
+type PosterDataField = {
+    basename : string;
+    caption? : string;
+}
+
+type SoloistDataField = {
+    name : string;
+    part : string;
+}
+
+interface ISoloist {
+    readonly name : string;
+    readonly part : string;
+}
+
+interface IPoster {
+    readonly basename : string;
+    readonly caption? : string;
+}
+
+type RehearsalNoteDataField = {
+    date : string;  // 'YYYY-MM-DD' : date of the rehearsal for which the note applies
+    note : string;
+}
+
+type BaseEventDataField = {
+    date : string;      // 'YYYY-MM-DD' : date of the event
+    start : string;     // 'HH:MM' : 24-hour formatted start time of the event
+    location : string;  // nickname of the location of the event
+}
+
+type EventDataField = BaseEventDataField & {
+    title : string;
+}
+
+type ConcertDataField = BaseEventDataField & {
+    call : string;  // 'HH:MM' : 24-hour formatted call time for the concert
+}
+
+type DressRehearsalDataField = BaseEventDataField;
+
+type PerformanceDataField = {
+    quarter : string;           // human-readable name of quarter
+    syllabus : string;          // basename of syllabus asset
+    directors : string[];       // list of names of the directors
+    instructors : string[];     // list of names of the instructors
+    collaborators : string[];   // list of nicknames of collaborators
+    soloists : SoloistDataField[];
+    poster : IPoster;
+    heraldImage : IPoster;
+    description : string;       // HTML to be displayed as a description of the performance being prepared, often on the home page
+    preregister : string;       // 'YYYY-MM-DD' : date the preregistration mail is expected to be sent
+    registrationFee : string;   // '$dd' : amount of the registration fee
+    membershipLimit : number;
+    concerts : ConcertDataField[];
+    repertoire : {
+        main: PieceDataField[];
+        other: PieceDataField[];
+    };
+    events : EventDataField[];
+    tuttiRehearsals : RehearsalSequenceDataField[];
+    tuttiRehearsalNotes : RehearsalNoteDataField[];
+    mensSectionals : RehearsalSequenceDataField[];
+    womensSectionals : RehearsalSequenceDataField[];
+    dressRehearsals : DressRehearsalDataField[];
+}
+
+
 export default class Performance {
-    #collaborators          = [];
-    #concerts               = [];
-    #description            = [];
-    #directors              = [];
-    #dressRehearsals        = [];
-    #events                 = [];
-    #heraldImageRoutes      = null;
-    #instructors            = [];
-    #links                  = [];
-    #mainPieces             = [];
-    #membershipLimit        = 0;
-    #posterRoutes           = null;
-    #preregisterDate        = null;
-    #quarter                = "";
-    #registrationFee        = null;
-    #repertoire             = [];
-    #scheduleRoute          = "";
-    #sectionalsSopranoAlto  = [];
-    #sectionalsTenorBass    = [];
-    #soloists               = [];
-    #syllabusRoutes         = [];
-    #tuttiRehearsals        = [];
+    readonly collaborators : string[]               = [];
+    readonly concerts : Concert[]                   = [];
+    readonly description : string;
+    readonly directors : string[]                   = [];
+    readonly dressRehearsals : DressRehearsal[]     = [];
+    readonly events : GenericEvent[]                = [];
+    readonly heraldImageRoutes : ImageRoutes;
+    readonly instructors : string[]                 = [];
+    readonly mainPieces : IPiece[]                  = [];
+    readonly membershipLimit : number;
+    readonly posterRoutes : ImageRoutes;
+    readonly preregisterDate : DateTime;
+    readonly quarter : string                       = '';
+    readonly registrationFee : string;
+    readonly repertoire : IPiece[]                  = [];
+    readonly sectionalsSopranoAlto : Rehearsal[]    = [];
+    readonly sectionalsTenorBass : Rehearsal[]      = [];
+    readonly soloists : ISoloist[]                  = [];
+    readonly syllabusRoutes : string[]              = [];
+    readonly tuttiRehearsals : Rehearsal[]          = [];
     
-    constructor() {
+    constructor(quarter : string,
+                syllabusName : string,
+                directors : string[],
+                instructors : string[],
+                collaborators : string[],
+                soloists : ISoloist[],
+                posterName : IPoster,
+                heraldImageName : IPoster,
+                description : string,
+                preregisterDate : DateTime,
+                registrationFee : string,
+                membershipLimit : number,
+                options // hack
+                ) {
+        this.quarter = quarter;
 
-    }
-
-    get collaborators() { return this.#collaborators; }
-    get concerts() { return this.#concerts; }
-    get description() { return this.#description; }
-    get directors() { return this.#directors; }
-    get dressRehearsals() { return this.#dressRehearsals; }
-    get events() { return this.#events; }
-    get heraldImageRoutes() { return this.#heraldImageRoutes; }
-    get instructors() { return this.#instructors; }
-    get mainPieces() { return this.#mainPieces; }
-    get membershipLimit() { return this.#membershipLimit; }
-    get posterRoutes() { return this.#posterRoutes; }
-    get preregisterDate() { return this.#preregisterDate; }
-    get quarter() { return this.#quarter; }
-    get repertoire() { return this.#repertoire; }
-    get registrationFee() { return this.#registrationFee; }
-    get scheduleRoute() { return this.#scheduleRoute; }
-    get sectionalsSopranoAlto() { return this.#sectionalsSopranoAlto; }
-    get sectionalsTenorBass() { return this.#sectionalsTenorBass; }
-    get soloists() { return this.#soloists; }
-    get syllabusRoutes() { return this.#syllabusRoutes; }
-    get tuttiRehearsals() { return this.#tuttiRehearsals; }
-
-    get id() { return slugify(this.quarter).toLowerCase(); }
-    get firstConcert() { return this.#concerts[0]; }
-
-    static deserialize(data, route, options) {
-        const result = new Performance();
-
-        result.#scheduleRoute = route;
-
-        result.#collaborators = (data.collaborators ? data.collaborators : result.#collaborators);
-        result.#description = (data.description ? data.description : result.#description);
-        result.#directors = (data.directors ? data.directors : result.#directors);
-        result.#instructors = (data.instructors ? data.instructors : result.#instructors);
-        result.#membershipLimit = data.membershipLimit;
-        result.#quarter = data.quarter;
-        result.#registrationFee = data.registrationFee;
-        result.#soloists = (data.soloists ? data.soloists : result.#soloists);;
-
-        if (data.preregister) {
-            result.#preregisterDate = DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: options.timezone });
-        }
-
-        if (data.syllabus) {
-            const baseRoute = '/assets/syllabi/' + data.syllabus;
-            result.#syllabusRoutes = findFileVariants(baseRoute, ['PDF', 'DOCX', 'DOC']);
-            if (0 == result.#syllabusRoutes.length) {
-                throw new Error(util.format('No syllabi variants found for "%s"', data.syllabus));
+        if (syllabusName) {
+            this.syllabusRoutes = ['.pdf', '.docx', '.doc'].map((ext) => composeExistingRoute('/assets/syllabi', syllabusName, ext))
+                                                            .filter((route) => (route != null));
+            if (0 == this.syllabusRoutes.length) {
+                throw new Error(util.format('No syllabi variants found for "%s"', syllabusName));
             }
         }
 
-        data.concerts.forEach((c) => {
-            result.#concerts.push({
-                start: createDateTime(c.date, c.start, options.timezone),
-                call: createDateTime(c.date, c.call, options.timezone),
-                location: c.location
-            });
+        if (directors) {
+            this.directors.push(...directors);
+        }
+        if (instructors) {
+            this.instructors.push(...instructors);
+        }
+        if (collaborators) {
+            this.collaborators.push(...collaborators);
+        }
+        if (soloists) {
+            this.soloists.push(...soloists);
+        }
+
+        if (posterName) {
+            this.posterRoutes = ImageRoutes.deserialize(posterName, '/assets/posters', options);
+        }
+
+        if (heraldImageName) {
+            this.heraldImageRoutes = ImageRoutes.deserialize(heraldImageName, '/assets/heralds', options);
+        }
+
+        this.description = (description || '');
+        this.preregisterDate = preregisterDate;
+        this.registrationFee = registrationFee;
+        this.membershipLimit = membershipLimit;
+    }
+
+    get id() { return slugify(this.quarter).toLowerCase(); }
+    get firstConcert() { return this.concerts[0]; }
+
+    addConcert(start : DateTime, call : DateTime, location : string) {
+        this.concerts.push({
+            start: start,
+            call: call,
+            location: location
         });
-        result.#concerts.sort((a, b) => {
+        this.concerts.sort((a, b) => {
             return -b.start.diff(a.start).toMillis();
         });
+    }
 
-        data.repertoire.main.forEach((p) => {
-            const piece = Piece.deserialize(p, options);
-            result.#mainPieces.push(piece);
-            result.#repertoire.push(piece);
+    addEvent(start : DateTime, location : string, title : string) {
+        this.events.push({
+            start: start,
+            location: location,
+            title: title
         });
+        this.events.sort((a, b) => {
+            return -b.start.diff(a.start).toMillis();
+        });
+    }
+
+    addRepertoire(piece : IPiece, isMain : boolean = false) {
+        this.repertoire.push(piece);
+    }
+
+    addTuttiRehearsals(rehearsals : Rehearsal[]) {
+        this.tuttiRehearsals.push(...rehearsals);
+        this.tuttiRehearsals.sort((a, b) => -b.start.diff(a.start).toMillis());
+    }
+
+    addTBSectionals(sectionals : Rehearsal[]) {
+        this.sectionalsTenorBass.push(...sectionals);
+        this.sectionalsTenorBass.sort((a, b) => -b.start.diff(a.start).toMillis());
+    }
+
+    addSASectionals(sectionals : Rehearsal[]) {
+        this.sectionalsSopranoAlto.push(...sectionals);
+        this.sectionalsSopranoAlto.sort((a, b) => -b.start.diff(a.start).toMillis());
+    }
+
+    addDressRehearsal(dress : DressRehearsal) {
+        this.dressRehearsals.push(dress);
+        this.dressRehearsals.sort((a, b) => -b.start.diff(a.start).toMillis());
+    }
+
+    static deserialize(data : PerformanceDataField, options) {
+        const result = new Performance(data.quarter,
+                                       data.syllabus,
+                                       data.directors,
+                                       data.instructors,
+                                       data.collaborators,
+                                       data.soloists,
+                                       data.poster,
+                                       data.heraldImage,
+                                       data.description,
+                                       (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: options.timezone }) : null),
+                                       data.registrationFee,
+                                       data.membershipLimit,
+                                       options);
+
+        data.concerts.forEach((c) => {
+            result.addConcert(createDateTime(c.date, c.start, options.timezone),
+                              createDateTime(c.date, c.call, options.timezone),
+                              c.location)
+        });
+
+        data.repertoire.main.forEach((p) => result.addRepertoire(Piece.deserialize(p, options), true));
         if (data.repertoire.other) {
-            data.repertoire.other.forEach((p) => {
-                result.#repertoire.push(Piece.deserialize(p, options));
-            });
-        }
-
-        if (data.poster) {
-            result.#posterRoutes = ImageRoutes.deserialize(data.poster, '/assets/posters/', options);
-        }
-
-        if (data.heraldImage) {
-            result.#heraldImageRoutes = ImageRoutes.deserialize(data.heraldImage, '/assets/heralds/', options);
-                    // TODO: deserialize images
+            data.repertoire.other.forEach((p) => result.addRepertoire(Piece.deserialize(p, options)));
         }
 
         if (data.events) {
-            result.#events = data.events.map((e) => ({
-                start: createDateTime(e.date, e.start, options.timezone),
-                location: e.location,
-                title: e.title
-            }));
+            data.events.forEach((e) => {
+                result.addEvent(createDateTime(e.date, e.start, options.timezone),
+                                e.location,
+                                e.title);
+            });
         }
 
         if (data.tuttiRehearsals) {
-            result.#tuttiRehearsals = data.tuttiRehearsals.map(createRehearsalSequence).reduce((a, b) => {
-                return a.concat(b);
-            }, []);
-            result.#tuttiRehearsals.sort((a, b) => -b.start.diff(a.start).toMillis());
+            data.tuttiRehearsals.forEach((s) => result.addTuttiRehearsals(createRehearsalSequence(s, options.timezone)));
         }
 
         if (data.tuttiRehearsalNotes) {
-            data.tuttiRehearsalNotes.forEach((note) => parseTuttiRehearsalNote(note, result.#tuttiRehearsals, options.timezone));
+            data.tuttiRehearsalNotes.forEach((note) => parseTuttiRehearsalNote(note, result.tuttiRehearsals, options.timezone));
         }
 
         if (data.mensSectionals) {
             // TODO: change yml schema from mensSectionals to sectionalsTenorBass
-            result.#sectionalsTenorBass = data.mensSectionals.map(createRehearsalSequence).reduce((a, b) => {
-                return a.concat(b);
-            }, []);
-            result.#sectionalsTenorBass.sort((a, b) => -b.start.diff(a.start).toMillis());
+            data.mensSectionals.forEach((s) => result.addTBSectionals(createRehearsalSequence(s, options.timezone)));
         }
 
         if (data.womensSectionals) {
             // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
-            result.#sectionalsSopranoAlto = data.womensSectionals.map(createRehearsalSequence).reduce((a, b) => {
-                return a.concat(b);
-            }, []);
-            result.#sectionalsSopranoAlto.sort((a, b) => -b.start.diff(a.start).toMillis());
+            data.womensSectionals.forEach((s) => result.addSASectionals(createRehearsalSequence(s, options.timeszone)));
         }
 
         if (data.dressRehearsals) {
-            data.dressRehearsals.forEach((dr) => {
-                result.#dressRehearsals.push({
-                    start: createDateTime(dr.date, dr.start, options.timezone),
-                    location: dr.location
-                });
-            });
-            result.#dressRehearsals.sort((a, b) => {
-                return -b.start.diff(a.start).toMillis();
-            });
+            data.dressRehearsals.forEach((dr) => result.addDressRehearsal({
+                start: createDateTime(dr.date, dr.start, options.timezone),
+                location: dr.location
+            }));
         }
 
         // TODO: deserialize links

@@ -222,7 +222,6 @@ function serializePerformance(performance) {
         preregisterDate:        performance.preregisterDate.toISO(),
         quarter:                performance.quarter,
         registrationFee:        performance.registrationFee,
-        scheduleRoute:          performance.scheduleRoute,
         syllabusRoutes:         performance.syllabusRoutes,
     };
 
