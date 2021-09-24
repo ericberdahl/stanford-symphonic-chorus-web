@@ -1,4 +1,4 @@
-import { IPiece, Piece, PieceDataField } from './piece'
+import { IPiece, Piece, NotedPerformance, IComposer, Composer } from './piece'
 
 import imageSize from 'image-size'
 import { DateTime } from 'luxon';
@@ -117,13 +117,24 @@ class ImageRoutes {
     
         this.caption = caption;
     }
-
-    static deserialize(data, directoryRoute, options) {
-        return new ImageRoutes(directoryRoute, data.basename, data.caption);
-    }
 }
 
 // TODO: Move performance yaml data parsing into its own module. Don't democratize the yaml-deserialization code
+
+type ComposerDataField = string | Array<string>;
+
+type PieceDataField = {
+    title : string;
+    composer? : ComposerDataField;
+    movement? : string;
+    translation? : string;
+    commonTitle? : string;
+    catalog? : string;
+    arranger? : string;
+    prefix? : string;
+    suffix? : string;
+    performanceNote? : string;
+}
 
 type BasicEvent = {
     start : DateTime;
@@ -155,11 +166,6 @@ interface ISoloist {
     readonly part : string;
 }
 
-interface IPoster {
-    readonly basename : string;
-    readonly caption? : string;
-}
-
 type RehearsalNoteDataField = {
     date : string;  // 'YYYY-MM-DD' : date of the rehearsal for which the note applies
     note : string;
@@ -188,8 +194,8 @@ type PerformanceDataField = {
     instructors : string[];     // list of names of the instructors
     collaborators : string[];   // list of nicknames of collaborators
     soloists : SoloistDataField[];
-    poster : IPoster;
-    heraldImage : IPoster;
+    poster? : PosterDataField;
+    heraldImage? : PosterDataField;
     description : string;       // HTML to be displayed as a description of the performance being prepared, often on the home page
     preregister : string;       // 'YYYY-MM-DD' : date the preregistration mail is expected to be sent
     registrationFee : string;   // '$dd' : amount of the registration fee
@@ -236,14 +242,12 @@ export default class Performance {
                 instructors : string[],
                 collaborators : string[],
                 soloists : ISoloist[],
-                posterName : IPoster,
-                heraldImageName : IPoster,
+                posterRoutes : ImageRoutes,
+                heraldImageRoutes : ImageRoutes,
                 description : string,
                 preregisterDate : DateTime,
                 registrationFee : string,
-                membershipLimit : number,
-                options // hack
-                ) {
+                membershipLimit : number) {
         this.quarter = quarter;
 
         if (syllabusName) {
@@ -267,14 +271,8 @@ export default class Performance {
             this.soloists.push(...soloists);
         }
 
-        if (posterName) {
-            this.posterRoutes = ImageRoutes.deserialize(posterName, '/assets/posters', options);
-        }
-
-        if (heraldImageName) {
-            this.heraldImageRoutes = ImageRoutes.deserialize(heraldImageName, '/assets/heralds', options);
-        }
-
+        this.posterRoutes = posterRoutes;
+        this.heraldImageRoutes = heraldImageRoutes;
         this.description = (description || '');
         this.preregisterDate = preregisterDate;
         this.registrationFee = registrationFee;
@@ -331,66 +329,97 @@ export default class Performance {
     }
 
     static deserialize(data : PerformanceDataField, options) {
-        const result = new Performance(data.quarter,
-                                       data.syllabus,
-                                       data.directors,
-                                       data.instructors,
-                                       data.collaborators,
-                                       data.soloists,
-                                       data.poster,
-                                       data.heraldImage,
-                                       data.description,
-                                       (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: options.timezone }) : null),
-                                       data.registrationFee,
-                                       data.membershipLimit,
-                                       options);
-
-        data.concerts.forEach((c) => {
-            result.addConcert(createDateTime(c.date, c.start, options.timezone),
-                              createDateTime(c.date, c.call, options.timezone),
-                              c.location)
-        });
-
-        data.repertoire.main.forEach((p) => result.addRepertoire(Piece.deserialize(p, options), true));
-        if (data.repertoire.other) {
-            data.repertoire.other.forEach((p) => result.addRepertoire(Piece.deserialize(p, options)));
-        }
-
-        if (data.events) {
-            data.events.forEach((e) => {
-                result.addEvent(createDateTime(e.date, e.start, options.timezone),
-                                e.location,
-                                e.title);
-            });
-        }
-
-        if (data.tuttiRehearsals) {
-            data.tuttiRehearsals.forEach((s) => result.addTuttiRehearsals(createRehearsalSequence(s, options.timezone)));
-        }
-
-        if (data.tuttiRehearsalNotes) {
-            data.tuttiRehearsalNotes.forEach((note) => parseTuttiRehearsalNote(note, result.tuttiRehearsals, options.timezone));
-        }
-
-        if (data.mensSectionals) {
-            // TODO: change yml schema from mensSectionals to sectionalsTenorBass
-            data.mensSectionals.forEach((s) => result.addTBSectionals(createRehearsalSequence(s, options.timezone)));
-        }
-
-        if (data.womensSectionals) {
-            // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
-            data.womensSectionals.forEach((s) => result.addSASectionals(createRehearsalSequence(s, options.timeszone)));
-        }
-
-        if (data.dressRehearsals) {
-            data.dressRehearsals.forEach((dr) => result.addDressRehearsal({
-                start: createDateTime(dr.date, dr.start, options.timezone),
-                location: dr.location
-            }));
-        }
-
-        // TODO: deserialize links
-
-        return result;
+        return deserializePerformance(data, options);
     }
+}
+
+function deserializePerformance(data : PerformanceDataField, options) : Performance {
+    const result = new Performance(data.quarter,
+                                   data.syllabus,
+                                   data.directors,
+                                   data.instructors,
+                                   data.collaborators,
+                                   data.soloists,
+                                   (data.poster ? new ImageRoutes('/assets/posters', data.poster.basename, data.poster.caption) : null),
+                                   (data.heraldImage ? new ImageRoutes('/assets/heralds', data.heraldImage.basename, data.heraldImage.caption) : null),
+                                   data.description,
+                                   (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: options.timezone }) : null),
+                                   data.registrationFee,
+                                   data.membershipLimit);
+
+    data.concerts.forEach((c) => {
+        result.addConcert(createDateTime(c.date, c.start, options.timezone),
+                          createDateTime(c.date, c.call, options.timezone),
+                          c.location)
+    });
+
+    data.repertoire.main.forEach((p) => result.addRepertoire(deserializePiece(p), true));
+    if (data.repertoire.other) {
+        data.repertoire.other.forEach((p) => result.addRepertoire(deserializePiece(p)));
+    }
+
+    if (data.events) {
+        data.events.forEach((e) => {
+            result.addEvent(createDateTime(e.date, e.start, options.timezone),
+                            e.location,
+                            e.title);
+        });
+    }
+
+    if (data.tuttiRehearsals) {
+        data.tuttiRehearsals.forEach((s) => result.addTuttiRehearsals(createRehearsalSequence(s, options.timezone)));
+    }
+
+    if (data.tuttiRehearsalNotes) {
+        data.tuttiRehearsalNotes.forEach((note) => parseTuttiRehearsalNote(note, result.tuttiRehearsals, options.timezone));
+    }
+
+    if (data.mensSectionals) {
+        // TODO: change yml schema from mensSectionals to sectionalsTenorBass
+        data.mensSectionals.forEach((s) => result.addTBSectionals(createRehearsalSequence(s, options.timezone)));
+    }
+
+    if (data.womensSectionals) {
+        // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
+        data.womensSectionals.forEach((s) => result.addSASectionals(createRehearsalSequence(s, options.timeszone)));
+    }
+
+    if (data.dressRehearsals) {
+        data.dressRehearsals.forEach((dr) => result.addDressRehearsal({
+            start: createDateTime(dr.date, dr.start, options.timezone),
+            location: dr.location
+        }));
+    }
+
+    // TODO: deserialize links
+
+    return result;
+}
+
+function deserializePiece(data : PieceDataField) : IPiece {
+    const piece = new Piece(data.title,
+                            deserializeComposer(data.composer),
+                            data.movement,
+                            data.translation,
+                            data.commonTitle,
+                            data.catalog,
+                            data.arranger,
+                            data.prefix,
+                            data.suffix);
+    
+    return (data.performanceNote ?
+                new NotedPerformance(piece, data.performanceNote) :
+                piece);
+}
+
+function deserializeComposer(composer: ComposerDataField) : IComposer {
+    if (!composer) return null;
+
+    // If the composer field is an array, the final element is the family name and
+    // the space-joined concatenation of the fields is the full name.
+    // If the composer field is a single string, the family name is the final word
+    // in the string.
+    return (Array.isArray(composer) ?
+                new Composer(composer.join(' '), composer[composer.length - 1]) :
+                new Composer(composer, composer.split(' ').slice(-1)[0]));
 }

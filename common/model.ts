@@ -19,7 +19,33 @@ export interface IModel {
     readonly performances : Performance[];
     readonly currentQuarter : Performance;
     readonly timezone : string;
+
+    addPerformance(p : Performance);
+    getPerformanceById(id : string) : Performance;
+    getPerformancesAfterId(id : string, count : number) : Performance[];
 }
+
+async function createModel() : Promise<IModel> {
+    const basePath = process.cwd();
+
+    const model = new Model(<Configuration>yaml.parse(await fs.readFile(path.join(basePath, CONFIG_FILENAME), 'utf8')));
+
+    const performanceDataDirFullPath = path.join(basePath, PERFORMANCE_DATA_DIR);
+    const dirEntries = await fs.readdir(performanceDataDirFullPath, { withFileTypes: true });
+    const performancesEntries = dirEntries.filter((dirent) => dirent.isFile())
+                                    .map((dirent) => dirent.name);
+    const performances = await Promise.all(performancesEntries.map(async (filename) => {            
+        const filepath = path.join(performanceDataDirFullPath, filename);
+        const contents = await fs.readFile(filepath, 'utf8');
+        const performance = Performance.deserialize(yaml.parse(contents), model);
+
+        model.addPerformance(performance);
+
+        return performance;
+    }));
+
+    return model;
+}    
 
 export default class Model implements IModel {
     readonly performances : Performance[]   = [];
@@ -40,7 +66,7 @@ export default class Model implements IModel {
         if (p.quarter == this.config.currentQuarter) {
             this._currentQuarter = p;
         }
-}
+    }
 
     getPerformanceById(id : string) : Performance {
         const result = this.performances.find((e) => (e.id == id));
@@ -63,31 +89,9 @@ export default class Model implements IModel {
     private static sSingleton  : Promise<IModel>;
     static get singleton() : Promise<IModel> {
         if (!this.sSingleton) {
-            this.sSingleton = this.createModel();
+            this.sSingleton = createModel();
         }
 
         return this.sSingleton;
     }
-
-    static async createModel() : Promise<IModel> {
-        const basePath = process.cwd();
-
-        const model = new Model(<Configuration>yaml.parse(await fs.readFile(path.join(basePath, CONFIG_FILENAME), 'utf8')));
-
-        const performanceDataDirFullPath = path.join(basePath, PERFORMANCE_DATA_DIR);
-        const dirEntries = await fs.readdir(performanceDataDirFullPath, { withFileTypes: true });
-        const performancesEntries = dirEntries.filter((dirent) => dirent.isFile())
-                                        .map((dirent) => dirent.name);
-        const performances = await Promise.all(performancesEntries.map(async (filename) => {            
-            const filepath = path.join(performanceDataDirFullPath, filename);
-            const contents = await fs.readFile(filepath, 'utf8');
-            const performance = Performance.deserialize(yaml.parse(contents), model);
-
-            model.addPerformance(performance);
-
-            return performance;
-        }));
-    
-        return model;
-    }    
 }

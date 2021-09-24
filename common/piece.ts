@@ -11,27 +11,12 @@ export interface IPiece {
     readonly translation;
 }
 
-type ComposerDataField = string | Array<string>;
-
-export type PieceDataField = {
-    title : string;
-    composer? : ComposerDataField;
-    movement? : string;
-    translation? : string;
-    commonTitle? : string;
-    catalog? : string;
-    arranger? : string;
-    prefix? : string;
-    suffix? : string;
-    performanceNote? : string;
-}
-
-interface IComposer {
+export interface IComposer {
     readonly name : string;
     readonly familyName : string;
 }
 
-class Composer implements IComposer {
+export class Composer implements IComposer {
     readonly name;
     readonly familyName;
 
@@ -41,18 +26,8 @@ class Composer implements IComposer {
     }
 }
 
-function parseComposerDataField(composer: ComposerDataField) : IComposer {
-    // If the composer field is an array, the final element is the family name and
-    // the space-joined concatenation of the fields is the full name.
-    // If the composer field is a single string, the family name is the final word
-    // in the string.
-    return (Array.isArray(composer) ?
-                new Composer(composer.join(' '), composer[composer.length - 1]) :
-                new Composer(composer, composer.split(' ').slice(-1)[0]));
-}
-
 export class Piece implements IPiece {
-    readonly title : string | Array<string>
+    readonly title : string | string[]
     readonly _composer : IComposer;
 
     readonly movement : string;
@@ -65,8 +40,8 @@ export class Piece implements IPiece {
     readonly suffix : string;
     
     constructor(
-            title : string | Array<string>,
-            composer : ComposerDataField,
+            title : string | string[],
+            composer : IComposer,
             movement : string,
             translation : string,
             commonTitle : string,
@@ -75,7 +50,7 @@ export class Piece implements IPiece {
             prefix : string,
             suffix : string) {
         this.title = (title || '');
-        this._composer = (composer ? parseComposerDataField(composer) : new Composer('', ''));
+        this._composer = (composer || new Composer('', ''));
 
         this.movement = (movement || '');
         this.commonTitle = (commonTitle || '');
@@ -89,25 +64,9 @@ export class Piece implements IPiece {
 
     get composer() { return this._composer.name; }
     get composerFamilyName() { return this._composer.familyName; }
-
-    static deserialize(data : PieceDataField, options) : IPiece {
-        const piece = new Piece(data.title,
-                                data.composer,
-                                data.movement,
-                                data.translation,
-                                data.commonTitle,
-                                data.catalog,
-                                data.arranger,
-                                data.prefix,
-                                data.suffix);
-        
-        return (data.performanceNote ?
-                    new NotedPerformance(piece, data.performanceNote) :
-                    piece);
-    }
 }
 
-class NotedPerformance implements IPiece {
+export class NotedPerformance implements IPiece {
     readonly piece : IPiece;
     readonly note : string;
 
