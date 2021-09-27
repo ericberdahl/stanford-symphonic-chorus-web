@@ -47,6 +47,14 @@ export class Repertoire {
             
             this.subRepertoires.sort((a, b) => a.composer.familyName.localeCompare(b.composer.familyName) || a.composer.fullName.localeCompare(b.composer.fullName))
         }
+        else {
+            if (subRep.composer.fullName != composer.fullName) {
+                console.warn(util.format('Composer fullName does not match "%s" != "%s"', subRep.composer.fullName, composer.fullName));
+            }
+            if (subRep.composer.familyName != composer.familyName) {
+                console.warn(util.format('Composer familyName does not match "%s" != "%s"', subRep.composer.familyName, composer.familyName));
+            }
+        }
 
         return subRep.composer;
     }
