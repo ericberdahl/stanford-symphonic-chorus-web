@@ -5,7 +5,8 @@ import util from 'util';
 
 import yaml from 'yaml';
 
-import Performance from './performance'
+import { Performance } from './performance'
+import { deserializePerformance } from './serializedPerformance'
 
 const CONFIG_FILENAME       = path.join('data', 'main.yml');
 const PERFORMANCE_DATA_DIR  = path.join('data', 'performances')
@@ -37,9 +38,7 @@ async function createModel() : Promise<IModel> {
     const performances = await Promise.all(performancesEntries.map(async (filename) => {            
         const filepath = path.join(performanceDataDirFullPath, filename);
         const contents = await fs.readFile(filepath, 'utf8');
-        const performance = Performance.deserialize(yaml.parse(contents), model);
-
-        model.addPerformance(performance);
+        const performance = deserializePerformance(yaml.parse(contents), model);
 
         return performance;
     }));
