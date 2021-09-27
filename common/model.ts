@@ -6,6 +6,7 @@ import util from 'util';
 import yaml from 'yaml';
 
 import { Performance } from './performance'
+import { Repertoire } from './repertoire';
 import { deserializePerformance } from './serializedPerformance'
 
 const CONFIG_FILENAME       = path.join('data', 'main.yml');
@@ -20,6 +21,7 @@ export interface IModel {
     readonly performances : Performance[];
     readonly currentQuarter : Performance;
     readonly timezone : string;
+    readonly repertoire : Repertoire;
 
     addPerformance(p : Performance);
     getPerformanceById(id : string) : Performance;
@@ -48,6 +50,7 @@ async function createModel() : Promise<IModel> {
 
 export default class Model implements IModel {
     readonly performances : Performance[]   = [];
+    readonly repertoire : Repertoire = new Repertoire();
     private _currentQuarter : Performance   = null;
     private config : Configuration;
 
@@ -60,7 +63,7 @@ export default class Model implements IModel {
 
     addPerformance(p : Performance) {
         this.performances.push(p);
-        this.performances.sort((a, b) => b.firstConcert.start.diff(a.firstConcert.start).toMillis());
+        this.performances.sort((a, b) => b.compare(a));
     
         if (p.quarter == this.config.currentQuarter) {
             this._currentQuarter = p;

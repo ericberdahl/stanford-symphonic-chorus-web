@@ -150,6 +150,10 @@ export class Performance {
     get posterRoutes() { return this._posterRoutes; }
     get heraldImageRoutes() { return this._heraldImageRoutes; }
 
+    compare(other : Performance) {
+        return this.firstConcert.start.diff(other.firstConcert.start).toMillis();
+    }
+
     addConcert(start : DateTime, call : DateTime, location : string) {
         this.concerts.push({
             start: start,

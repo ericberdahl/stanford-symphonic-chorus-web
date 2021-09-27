@@ -146,10 +146,10 @@ export function deserializePerformance(data : SerializedPerformance, model : IMo
     });
 
     if (data.repertoire.main) {
-        data.repertoire.main.forEach((p) => result.addRepertoire(deserializePiece(p), true));
+        data.repertoire.main.forEach((p) => result.addRepertoire(deserializePiece(p, model), true));
     }
     if (data.repertoire.other) {
-        data.repertoire.other.forEach((p) => result.addRepertoire(deserializePiece(p)));
+        data.repertoire.other.forEach((p) => result.addRepertoire(deserializePiece(p, model)));
     }
 
     if (data.poster) {
@@ -207,30 +207,34 @@ export function deserializePerformance(data : SerializedPerformance, model : IMo
     return result;
 }
 
-function deserializePiece(data : SerializedPiece) : IPiece {
-    const piece = new Piece(data.title,
-                            deserializeComposer(data.composer),
-                            data.movement,
-                            data.translation,
-                            data.commonTitle,
-                            data.catalog,
-                            data.arranger,
-                            data.prefix,
-                            data.suffix);
+function deserializePiece(data : SerializedPiece, model : IModel) : IPiece {
+    const composer = deserializeComposer(data.composer, model);
+
+    const piece = model.repertoire.addPiece(new Piece(data.title,
+                                                      composer,
+                                                      data.movement,
+                                                      data.translation,
+                                                      data.commonTitle,
+                                                      data.catalog,
+                                                      data.arranger,
+                                                      data.prefix,
+                                                      data.suffix));
     
     return (data.performanceNote ?
                 new NotedPerformance(piece, data.performanceNote) :
                 piece);
 }
 
-function deserializeComposer(composer: SerializedComposer) : IComposer {
-    if (!composer) return null;
+function deserializeComposer(composer: SerializedComposer, model : IModel) : IComposer {
 
     // If the composer field is an array, the final element is the family name and
     // the space-joined concatenation of the fields is the full name.
     // If the composer field is a single string, the family name is the final word
     // in the string.
-    return (Array.isArray(composer) ?
-                new Composer(composer.join(' '), composer[composer.length - 1]) :
-                new Composer(composer, composer.split(' ').slice(-1)[0]));
+
+    const result = (!composer ? new Composer('', '') :
+                   (Array.isArray(composer) ? new Composer(composer.join(' '), composer[composer.length - 1]) :
+                   (new Composer(composer, composer.split(' ').slice(-1)[0])) ));
+
+    return model.repertoire.validateComposer(result);
 }

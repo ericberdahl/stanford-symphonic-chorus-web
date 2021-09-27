@@ -185,12 +185,19 @@ function serializeConcert(concert) {
     };
 }
 
+function serializeComposer(composer) {
+    return {
+        fullName:   composer.fullName,
+        familyName: composer.familyName
+    }
+}
+
 function serializePiece(piece) {
     return {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
-        composer:       piece.composer,
+        composer:       serializeComposer(piece.composer),
         movement:       piece.movement,
         prefix:         piece.prefix,
         suffix:         piece.suffix,

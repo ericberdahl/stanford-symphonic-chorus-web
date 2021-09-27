@@ -1,34 +1,38 @@
-export interface IPiece {
-    readonly arranger : string;
-    readonly catalog;
-    readonly commonTitle;
-    readonly composer;
-    readonly composerFamilyName;
-    readonly movement;
-    readonly prefix;
-    readonly suffix;
-    readonly title;
-    readonly translation;
-}
+import { Performance } from "./performance";
 
 export interface IComposer {
-    readonly name : string;
+    readonly fullName : string;
     readonly familyName : string;
 }
 
+export interface IPiece {
+    readonly arranger? : string;
+    readonly catalog? : string;
+    readonly commonTitle? : string;
+    readonly composer : IComposer;
+    readonly movement? : string;
+    readonly prefix? : string;
+    readonly suffix? : string;
+    readonly title : string | string[];
+    readonly translation? : string;
+    readonly performances : Performance[];
+
+    addPerformance(performanace : Performance);
+}
+
 export class Composer implements IComposer {
-    readonly name;
+    readonly fullName;
     readonly familyName;
 
-    constructor(name : string, familyName : string) {
-        this.name = name;
+    constructor(fullName : string, familyName : string) {
+        this.fullName = fullName;
         this.familyName = familyName;
     }
 }
 
 export class Piece implements IPiece {
     readonly title : string | string[]
-    readonly _composer : IComposer;
+    readonly composer : IComposer;
 
     readonly movement : string;
     readonly commonTitle : string;
@@ -38,6 +42,8 @@ export class Piece implements IPiece {
 
     readonly prefix : string;
     readonly suffix : string;
+
+    readonly performances : Performance[]   = [];
     
     constructor(
             title : string | string[],
@@ -50,7 +56,7 @@ export class Piece implements IPiece {
             prefix : string,
             suffix : string) {
         this.title = (title || '');
-        this._composer = (composer || new Composer('', ''));
+        this.composer = composer;
 
         this.movement = (movement || '');
         this.commonTitle = (commonTitle || '');
@@ -62,8 +68,10 @@ export class Piece implements IPiece {
         this.suffix = (suffix || '');
     }
 
-    get composer() { return this._composer.name; }
-    get composerFamilyName() { return this._composer.familyName; }
+    addPerformance(performanace : Performance) {
+        this.performances.push(performanace);
+        this.performances.sort((a, b) => a.compare(b));
+    }
 }
 
 export class NotedPerformance implements IPiece {
@@ -78,15 +86,19 @@ export class NotedPerformance implements IPiece {
     get arranger() : string { return this.piece.arranger; }
     get catalog() : string { return this.piece.catalog; }
     get commonTitle() : string { return this.piece.commonTitle; }
-    get composer() : string { return this.piece.composer; }
-    get composerFamilyName() : string { return this.piece.composerFamilyName; }
+    get composer() : IComposer { return this.piece.composer; }
     get movement() : string { return this.piece.movement; }
+    get performances() : Performance[] { return this.piece.performances; }
     get prefix() : string { return this.piece.prefix; }
-    get title() : string { return this.piece.title; }
+    get title() : string | string[] { return this.piece.title; }
     get translation() : string { return this.piece.translation; }
 
     get suffix() : string {
         const elements = [this.piece.suffix, this.note].filter((value) => value != '');
         return elements.join(' ');
+    }
+
+    addPerformance(performanace : Performance) {
+        this.piece.addPerformance(performanace);
     }
 }

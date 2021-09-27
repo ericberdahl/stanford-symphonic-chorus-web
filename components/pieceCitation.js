@@ -37,7 +37,7 @@ export default function PieceCitation({ tag, data }) {
     return (
         <span>
             <SpaceSeparatedPhrase>
-                {!isEmpty(data.composer) ? data.composer : null}
+                {!isEmpty(data.composer.fullName) ? data.composer.fullName : null}
                 <SpaceSeparatedPhrase separator=', '>
                     <SpaceSeparatedPhrase>
                         {!isEmpty(data.prefix) ? data.prefix : null}
