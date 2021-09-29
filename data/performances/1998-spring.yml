@@ -5,8 +5,9 @@ syllabus:
 
 repertoire:
     main:
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "A Sea Symphony"
 
 soloists:

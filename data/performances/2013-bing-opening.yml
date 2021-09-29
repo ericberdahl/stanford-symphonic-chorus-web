@@ -4,8 +4,9 @@ syllabus: "F2012syllabus"
 
 repertoire:
     main:
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "Serenade to Music"
     other:
     -   composer: "Maurice Ravel"

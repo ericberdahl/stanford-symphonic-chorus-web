@@ -9,17 +9,19 @@ repertoire:
         title: "The Music Makers"
     other:
     -   title: "Why fum'th in fight"
-        composer: "Tallis"
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+        composer: "Thomas Tallis"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "Fantasia on a Theme of Thomas Tallis"
 #   -   composer: "Trad. English"
 #       title: "Ward the Pirate"
 #       arranger: "Ralph Vaughan Williams"
 # Note: Ward the Pirate was originally programmed, but dropped mid-quarter.
     -   title: "Norfolk Rhapsody No. 1"
-        composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+        composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
 
 soloists:
 -   name: "Wendy Hillhouse"

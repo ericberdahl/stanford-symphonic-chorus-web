@@ -4,15 +4,15 @@ syllabus: "SSC Syllabus Spring 2016"
 
 repertoire:
     main:
-    -   composer: "Mozart"
+    -   composer: "Wolfgang Amadeus Mozart"
         title: "Mass in C Minor"
     other:
-    -   composer: "Mozart"
+    -   composer: "Wolfgang Amadeus Mozart"
         title: "Ein musikalischer Spaß"
         translation: "A Musical Joke"
         catalog: "K. 522"
     -   title: "Simple Symphony"
-        composer: "Britten"
+        composer: "Benjamin Britten"
 
 soloists:
 -   name: "Tonia D'Amelio"

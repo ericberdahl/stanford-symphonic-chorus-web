@@ -1,3 +1,4 @@
+import ChinaTour from '../components/chinaTour'
 import CommaSeparatedList from '../components/commaSeparatedList'
 import Collaborator from '../components/collaborator'
 import FileLinks from '../components/fileLinks'
@@ -42,20 +43,7 @@ function Sidebar(props) {
     // TODO: Complete China Music Tour information -- move into its own component?
     return (
         <div className={styles.sidebar}>
-            <TitledSegment title="Coverage of the 2008 China Music Tour">
-                <p>
-                    Stanford Alumni Magazine
-                    The Alumni magazine featured a story.
-                </p>
-                <p>
-                    Stanford Chamber Chorale 2008 China Tour
-                    Photos by members of the Stanford Chamber Chorale.
-                </p>
-                <p>
-                    Flickr Photos
-                    Photos posted by tour participants
-                </p>
-            </TitledSegment>
+            <ChinaTour/>
         </div>
     );
 }

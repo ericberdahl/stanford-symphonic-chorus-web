@@ -21,7 +21,7 @@ export default function PieceCitation({ tag, data }) {
     const Movement = ({ data }) => {
         return (!isEmpty(data.movement) ? 
             <SpaceSeparatedPhrase>
-                <Tag>{data.moveemnt}</Tag>
+                <Tag>{data.movement}</Tag>
                 from
             </SpaceSeparatedPhrase>
             : null);

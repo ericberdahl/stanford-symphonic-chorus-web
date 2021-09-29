@@ -14,8 +14,9 @@ repertoire:
         catalog: "WAB 38"
         ref: "bruckner/psalm-150"
     main:
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "Dona Nobis Pacem"
 
 

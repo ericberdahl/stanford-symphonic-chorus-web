@@ -9,8 +9,9 @@ repertoire:
         title: "Come Christmas"
         performanceNote: "(World Premiere)"
     other:
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "Fantasia on Christmas Carols"
     -   composer: "John Rutter"
         title:

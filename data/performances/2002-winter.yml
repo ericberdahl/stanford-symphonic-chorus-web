@@ -5,12 +5,12 @@ syllabus:
 
 repertoire:
     other:
-    -   composer: "Gabrielli"
+    -   composer: "Giovanni Gabrieli"
         title: "Canzon Primi Toni, Sacrae Symphoniae"
-    -   composer: "Barber"
+    -   composer: "Samuel Barber"
         title: "Violin Concerto"
     main:
-    -   composer: "Mozart"
+    -   composer: "Wolfgang Amadeus Mozart"
         title: "Mass in C Minor"
 
 soloists:

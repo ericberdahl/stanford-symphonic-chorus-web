@@ -4,14 +4,16 @@ syllabus: "SSC Syllabus Fall 2010"
 
 repertoire:
     main:
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "Hodie"
     other:
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "The Lark Ascending"
-    -   composer: "Gabrieli"
+    -   composer: "Giovanni Gabrieli"
         title: "Music for Brass"
 
 soloists:

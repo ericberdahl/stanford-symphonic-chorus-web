@@ -9,8 +9,9 @@ repertoire:
         translation: "Hymn of Praise"
     other:
     -   title: "Fantasia on Greensleeves"
-        composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+        composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
     -   title: "The Nutcracker"
         prefix: "excerpts from"
         composer: "Pyotr Ilyich Tchaikovsky"

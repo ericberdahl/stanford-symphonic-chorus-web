@@ -4,7 +4,7 @@ syllabus: "SSCSyllabusSpring2011"
 
 repertoire:
     main:
-    -   composer: "Leoncavallo"
+    -   composer: "Ruggero Leoncavallo"
         title: "Pagliacci"
         movement: "Bell Chorus"
     -   composer: "Giuseppe Verdi"
@@ -13,16 +13,16 @@ repertoire:
     -   composer: "Giuseppe Verdi"
         title: "Aïda"
         movement: "Triumphal March"
-    -   composer: "Gounod"
+    -   composer: "Charles Gounod"
         title: "Faust"
         movement: "Kermesse"
-    -   composer: "Bizet"
+    -   composer: "Georges Bizet"
         title: "Carmen"
         movement: "Smugglers' Chorus"
-    -   composer: "Bizet"
+    -   composer: "Georges Bizet"
         title: "Carmen"
         movement: "March of the Toreadors"
-    -   composer: "Bizet"
+    -   composer: "Georges Bizet"
         title: "Carmen"
         movement: 'Toreador: "Votre Toast"'
 

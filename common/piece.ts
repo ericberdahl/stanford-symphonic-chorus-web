@@ -20,6 +20,41 @@ export interface IPiece {
     addPerformance(performanace : Performance);
 }
 
+export function comparePieces(a : IPiece, b : IPiece) : number {
+    let result = 0;
+
+    const makeString = (s) => (s || '');
+    const makeStringArray = (s) => (Array.isArray(s) ? s : [ makeString(s) ]);
+    
+    if (0 == result) {
+        result = a.composer.familyName.localeCompare(b.composer.familyName);
+    }
+    if (0 == result) {
+        result = a.composer.fullName.localeCompare(b.composer.fullName);
+    }
+    if (0 == result) {
+        const aTitle = makeStringArray(a.title);
+        const bTitle = makeStringArray(b.title);
+        const maxLength = Math.max(aTitle.length, bTitle.length);
+        
+        aTitle.push(...Array(maxLength - aTitle.length).fill(''));
+        bTitle.push(...Array(maxLength - bTitle.length).fill(''));
+
+        result = aTitle.reduce((prevResult, currentValue, currentIndex) => {
+            return (0 != prevResult ? prevResult :
+                currentValue.localeCompare(bTitle[currentIndex]));
+        }, 0);
+    }
+    if (0 == result) {
+        result = makeString(a.movement).localeCompare(makeString(b.movement));
+    }
+    if (0 == result) {
+        result = makeString(a.arranger).localeCompare(makeString(b.arranger));
+    }
+
+    return result;
+}
+
 export class Composer implements IComposer {
     readonly fullName;
     readonly familyName;

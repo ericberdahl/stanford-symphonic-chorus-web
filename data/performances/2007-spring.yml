@@ -7,8 +7,9 @@ repertoire:
     other:
     -   composer: "William Walton"
         title: "Crown Imperial"
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "Five Mystical Songs"
     main:
     -   composer: "John Rutter"

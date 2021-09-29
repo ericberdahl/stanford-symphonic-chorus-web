@@ -1,4 +1,4 @@
-import { Composer, IComposer, IPiece } from './piece';
+import { Composer, IComposer, IPiece, comparePieces } from './piece';
 
 import util from 'util';
 
@@ -15,7 +15,7 @@ class SubRepertoire {
             throw new Error(util.format('Piece with composer "%s" cannot be added to sub-repertoire for composer "%s"', piece.composer.fullName, this.composer.fullName));
         }
 
-        let result = this.pieces.find((p) => p.title == piece.title);
+        let result = this.pieces.find((p) => 0 == comparePieces(p, piece));
         if (!result) {
             result = piece;
             this.pieces.push(piece);

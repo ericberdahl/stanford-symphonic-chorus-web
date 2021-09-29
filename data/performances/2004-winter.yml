@@ -5,14 +5,16 @@ syllabus:
 
 repertoire:
     other:
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "Fantasia on a Theme of Thomas Tallis"
     -   composer: "Benjamin Britten"
         title: "Four Sea Interludes"
     main:
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "Dona Nobis Pacem"
 
 soloists:

@@ -5,8 +5,9 @@ syllabus:
 
 repertoire:
     other:
-    -   composer: "Ralph Vaughan Williams"
-        composerFamilyName: "Vaughan Williams"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
         title: "Fantasia on Greensleeves"
     -   composer: "Maurice Ravel"
         title: "Pavane pour une infante defunte"

@@ -23,15 +23,15 @@ syllabus: "SSC Syllabus Fall 2019"
 repertoire:
     main:
     -   ref: "stravinsky/symphony of psalms"
-        composer: "Stravinsky"
+        composer: "Igor Stravinsky"
         title: "Symphony of Psalms"
     -   ref: "bernstein/chichester"
         composer: "Leonard Bernstein"
         title: 'Chichester Psalms'
     other:
-    -   composer: "Actor"
+    -   composer: "Lee Actor"
         title: "Meditation for Violin & Orchestra"
-    -   composer: "Bruch"
+    -   composer: "Max Bruch"
         title: "Kol Nidrei"
 
 

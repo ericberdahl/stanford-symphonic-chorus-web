@@ -177,6 +177,7 @@ export class Performance {
     }
 
     addRepertoire(piece : IPiece, isMain : boolean = false) {
+        piece.addPerformance(this);
         if (isMain) {
             this.mainPieces.push(piece);
         }
