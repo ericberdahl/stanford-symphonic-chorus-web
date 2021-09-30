@@ -1,11 +1,9 @@
-import { Fragment } from 'react';
-
 import SpaceSeparatedPhrase from './spaceSeparatedPhrase';
 
-export default function FileLinks(props) {
+export default function FileLinks({ files }) {
     return (
         <SpaceSeparatedPhrase separator=' | '>
-            {props.files.map((f) => <a key={f.variant} href={f.route}>{f.variant}</a>)}
+            {files.map((f, index) => <a key={index} href={f.route}>{f.variant}</a>)}
         </SpaceSeparatedPhrase>
     );
 }

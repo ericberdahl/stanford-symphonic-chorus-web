@@ -215,6 +215,10 @@ export default function MemberInfo({ currentQuarter }) {
     );
 }
 
+function serializeFileRoutes(fileRoutes) {
+    return (fileRoutes ? fileRoutes.variants.map((v) => ({ variant: v.toUpperCase(), route: fileRoutes.getRoute(v) })) : null);
+}
+
 function serializePerformance(performance) {
     const result = {
         id:                     performance.id,
@@ -222,7 +226,7 @@ function serializePerformance(performance) {
         preregisterDate:        performance.preregisterDate.toISO(),
         quarter:                performance.quarter,
         registrationFee:        performance.registrationFee,
-        syllabusRoutes:         performance.syllabusRoutes,
+        syllabusRoutes:         serializeFileRoutes(performance.syllabusRoutes),
     };
 
     return result;

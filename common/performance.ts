@@ -27,7 +27,7 @@ export class Rehearsal {
     }
 }
 
-function composeExistingRoute(directoryRoute : string, name : string, extension : string) {
+function composeExistingRoute(directoryRoute : string, name : string, extension : string) : string {
     const route = path.normalize(path.format({
         dir: directoryRoute,
         name: name,
@@ -37,30 +37,47 @@ function composeExistingRoute(directoryRoute : string, name : string, extension 
     return (fs.existsSync(path.join(process.cwd(), 'public', route)) ? route : null);
 }
 
-class ImageRoutes {
-    readonly pdf : string;
-    readonly jpg : string;
+class FileRoutes {
+    readonly routes : string[];
+
+    constructor(directoryRoute : string, name : string, variants : string[]) {
+        const publicDir = path.join(process.cwd(), 'public');
+
+        this.routes = variants.map((v) => composeExistingRoute(directoryRoute, name, '.' + v)).filter((s) => s != null);
+    }
+
+    get variants() : string[] {
+        return this.routes.map((r) => path.extname(r).slice(1));
+    }
+
+    getRoute(variant : string) : string {
+        return this.routes.find((r) => variant == path.extname(r).slice(1));
+    }
+}
+
+class ImageRoutes extends FileRoutes {
     readonly caption : string;
     readonly width : number     = 0;
     readonly height : number    = 0;
 
     constructor(directoryRoute : string, name : string, caption : string) {
-        const publicDir = path.join(process.cwd(), 'public');
-
-        this.pdf = composeExistingRoute(directoryRoute, name, '.pdf');
-        this.jpg = composeExistingRoute(directoryRoute, name, '.jpg');
+        super(directoryRoute, name, ['pdf', 'jpg']);
 
         if (!this.pdf && !this.jpg) {
             throw new Error(util.format('No image variants found for "%s"', name));
         }
 
         if (this.jpg) {
+            const publicDir = path.join(process.cwd(), 'public');
             const imagePath = path.join(publicDir, this.jpg);
             ({ width: this.width, height: this.height } = imageSize(imagePath));
         }
     
         this.caption = caption;
     }
+
+    get pdf() : string { return this.getRoute('pdf'); }
+    get jpg() : string { return this.getRoute('jpg'); }
 }
 
 type BasicEvent = {
@@ -100,7 +117,7 @@ export class Performance {
     readonly sectionalsSopranoAlto : Rehearsal[]    = [];
     readonly sectionalsTenorBass : Rehearsal[]      = [];
     readonly soloists : ISoloist[]                  = [];
-    readonly syllabusRoutes : string[]              = [];
+    readonly syllabusRoutes : FileRoutes;
     readonly tuttiRehearsals : Rehearsal[]          = [];
 
     private _posterRoutes : ImageRoutes;
@@ -119,9 +136,8 @@ export class Performance {
         this.quarter = quarter;
 
         if (syllabusName) {
-            this.syllabusRoutes = ['.pdf', '.docx', '.doc'].map((ext) => composeExistingRoute('/assets/syllabi', syllabusName, ext))
-                                                            .filter((route) => (route != null));
-            if (0 == this.syllabusRoutes.length) {
+            this.syllabusRoutes = new FileRoutes('/assets/syllabi', syllabusName, ['pdf', 'docx', 'doc'])
+            if (0 == this.syllabusRoutes.routes.length) {
                 throw new Error(util.format('No syllabi variants found for "%s"', syllabusName));
             }
         }
