@@ -1,13 +1,12 @@
 # HOWTO: Set quarter to a single string that names the quarter and year. Use something like "Winter 1812",
 # "Spring 1812", or "Fall 1812"
-quarter: "Fall 2021"
+quarter: "Winter 2022"
 
 
-# HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
-# Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
-# be detected and used.
-syllabus: 
-# TODO: Need syllabus for Fall 2021
+# HOWTO: Set syllabus to an list of syllabi documents. These documents will live in the assets folder.
+# Use something like "SSC Syllabus Spring 1812.pdf" and "SSC Syllabus Spring 1812.docx"
+syllabus:
+# TODO: Need syllabus for Winter 2022
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -23,10 +22,10 @@ syllabus:
 # entire program of a performance.
 repertoire:
     main:
-    -   composer: "Johannes Brahms"
-        title: "Ein Deutsches Requiem"
-        translation: "A German Requiem"
-        catalog: "Op. 45"
+    -   composer: "Gustav Mahler"
+        title: "Symphony No. 2"
+        commonTitle: "Auferstehung"
+        translation: "Resurrection"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -40,7 +39,7 @@ soloists:
 # Each entry in the list should be a single string that matches the key field of a record in
 # data/collaborators.yml
 collaborators:
--   "PSO"
+-   "SSO"
 
 
 # HOWTO:
@@ -68,7 +67,7 @@ heraldImage:
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
--   "Stephen M. Sano"
+-   "Paul Phillips"
 
 
 # HOWTO: instructors is a list of strings that name the instructors for this quarter
@@ -91,20 +90,20 @@ membershipLimit: 220
 
 # HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
 # is expected to be sent out.
-preregister: "2021-09-01"
+preregister: "2021-12-01"
 
 
 tuttiRehearsalNotes:
 -   note: "Registration begins at 6:30 PM."
-    date: "2021-09-20"
+    date: "2022-01-10"
 
 tuttiRehearsals:
--   frequency: "once"
-    startDate: "2021-09-20"
+-   frequency: "weekly"
+    startDate: "2022-01-10"
+    endDate: "2022-02-21"
     startTime: "19:30"
     endTime: "22:00"
     location: "CRH"
-# TODO: need full rehearsal schedule!
 
 
 mensSectionals:
@@ -124,6 +123,12 @@ womensSectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 dressRehearsals:
+-   date: "2022-02-28"
+    start: "19:00"
+    location: "Bing"
+-   date: "2022-03-03"
+    start: "19:00"
+    location: "Bing"
 
 
 # HOWTO: concerts is a list of concert dates
@@ -139,11 +144,14 @@ dressRehearsals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 concerts:
--   date: "2021-11-21"
+-   date: "2022-03-04"
     start: "19:30"
     call: "18:30"
     location: "Bing"
-# TODO: Need real concert dates!
+-   date: "2022-03-05"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
 
 
 # HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
@@ -165,5 +173,5 @@ events:
 # the concert. The home page is a typical location where such text is used.
 description: >
     <p>
-        After a long hiatus, Stanford Symphonic Chorus is pleased to return with a performance of Brahms' timeless Ein Deuches Requiem, presented in collaboration with our long-time friends in the Peninsula Symphonic Orchestra.
+        After a long hiatus, Stanford Symphonic Chorus is pleased to return to the stage with a performance of Mahler's <em>Symphony No. 2 "Auferstehung"</em> ("Resurrection"), presented in collaboration with our friends in the Stanford Symphonic Orchestra.
     </p>
