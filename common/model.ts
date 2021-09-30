@@ -61,6 +61,11 @@ export default class Model implements IModel {
     get currentQuarter() { return this._currentQuarter; }
     get timezone() { return this.config.timezone; }
 
+    get performanceHistory() : Performance[] {
+        const index = this.performances.findIndex((e) => (e.id == this._currentQuarter.id));
+        return this.performances.slice(index);
+    }
+
     addPerformance(p : Performance) {
         this.performances.push(p);
         this.performances.sort((a, b) => b.compare(a));
