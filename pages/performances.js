@@ -230,7 +230,7 @@ function serializePerformance(performance) {
 
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
-    const performances = model.performances.map(serializePerformance);
+    const performances = model.performanceHistory.map(serializePerformance);
     
     const pageData = {
         performances: performances
