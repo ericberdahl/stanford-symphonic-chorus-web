@@ -168,6 +168,16 @@ events:
 
 # HOWTO: description contains Markdown that is included on pages which need a synopsis of
 # the concert. The home page is a typical location where such text is used.
-description: >
-    After a long hiatus, Stanford Symphonic Chorus is pleased to return to the stage with a performance of Mahler's _Symphony No. 2 "Auferstehung"_ ("Resurrection"),
-    presented in collaboration with our friends in the Stanford Symphonic Orchestra.
+description: |
+    Due to the upsurge in infection rates due to the Delta variant of the COVID-19 virus,
+    the Stanford Symphonic Chorus will begin its season in January of 2022. Repertoire for the year is:
+
+    Winter quarter: Mahler _Symphony No. 2, “Auferstehung”_ (“Resurrection”)  
+    Spring quarter: Giancarlo Aquilanti _Te Deum_ (World Premiere)
+
+    Auditions will take place in January 2022.
+
+
+#   After a long hiatus, Stanford Symphonic Chorus is pleased to return to the stage with a performance
+#   of Mahler's _Symphony No. 2 "Auferstehung"_ ("Resurrection"),
+#   presented in collaboration with our friends in the Stanford Symphonic Orchestra.
