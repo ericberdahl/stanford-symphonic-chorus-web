@@ -12,11 +12,11 @@ import TitledSegment from '../components/titledSegment'
 import Model from '../common/model'
 
 import { DateTime } from 'luxon'
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
+import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 import { Fragment } from 'react'
 
 import styles from '../styles/Home.module.scss'
+import Markdown from '../components/Markdown'
 
 function ConcertEvent({ currentQuarter, data }) {
     return (
@@ -180,7 +180,7 @@ export default function Home({ currentQuarter }) {
                                 <PairedImage routes={currentQuarter.heraldImageRoutes}/>
                             </div>
                         }
-                        <MDXRemote {...currentQuarter.descriptionMDX} />
+                        <Markdown mdx={currentQuarter.descriptionMDX} />
                         <p>
                             {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <Fragment key={index}>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</Fragment>)}</CommaSeparatedList>
                         </p>
@@ -263,7 +263,7 @@ async function serializePerformance(performance) {
     return {
         collaborators:      performance.collaborators,
         concerts:           performance.concerts.map(serializeConcert),
-        descriptionMDX:     await serialize(performance.description),
+        descriptionMDX:     await mdxSerializeMarkdown(performance.description),
         events:             performance.events.map(serializeEvent),
         firstRehearsal:     serializeTuttiRehearsal(performance.tuttiRehearsals[0]),
         heraldImageRoutes:  serializeImageRoutes(performance.heraldImageRoutes),
