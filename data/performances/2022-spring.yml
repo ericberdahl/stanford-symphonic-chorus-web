@@ -163,8 +163,3 @@ concerts:
 # Where date is the date of the event, specified in YYYY-MM-DD format.
 # Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
 events:
-
-
-# HOWTO: description contains HTML that is included on pages which need a synopsis of
-# the concert. The home page is a typical location where such text is used.
-description: 

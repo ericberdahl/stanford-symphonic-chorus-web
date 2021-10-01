@@ -170,8 +170,3 @@ concerts:
     start: "20:00"
     call: "19:00"
     location: "MemChu"
-
-# HOWTO: description contains HTML that is included on pages which need a synopsis of
-# the concert. The home page is a typical location where such text is used.
-description:
-
