@@ -1,0 +1,50 @@
+piece:
+    composer:
+    -   "Ralph"
+    -   "Vaughan Williams"
+    title: "Fantasia on Christmas Carols"
+
+description: >
+    <p>
+        Vaughan William's <em>Fantasia on Christmas Carols</em>
+        is well-served on a number of fine recordings.
+    </p>
+
+albums:
+-   director: David Willcock
+    label: DECCA 028944484823
+    shopping:
+    - http://www.cduniverse.com/productinfo.asp?pid=1170259&style=classical&cart=1254732741
+    - http://www.amazon.com/Noel-Christmas-Johann-Sebastian-Bach/dp/B00000427N
+    image:
+        file: david-willcock.jpg
+        width: 300
+        height: 300
+    description: >
+        <p>
+            David Willcocks' classic reading with the Choir of King's College,
+            Cambridge, and the soloist Harvey Allen is still available
+            on a budget priced Decca double-CD set titled
+            "Noël: Christmas at King's." 
+            This is the version with organ and strings rather than full orchestra,
+            but the singing is King's College Choir at its best
+            and the ~50-year-old recording still sounds fresh and atmospheric.
+        </p>
+
+-   director: John Rutter
+    label: Colleguium CSCD 512
+    image:
+        file: john-rutter.jpg
+        width: 300
+        height: 300
+    description: >
+        <p>
+            John Rutter's excellent version with the Cambridge Singers
+            and the City of London Sinfonia presents the version for full orchestra
+            (Colleguium CSCD 512).
+            Baritone soloist Stephen Varcoe is lighter than Allen,
+            and though the acoustic is rich and resonant,
+            it is less misty than the version at King's,
+            allowing the textures of the orchestration to be revealed
+            with compelling clarity.
+        </p>

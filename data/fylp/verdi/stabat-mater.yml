@@ -1,0 +1,31 @@
+piece:
+    composer: "Giuseppe Verdi"
+    title: "Stabat Mater"
+
+albums:
+-   director: "Ricardo Muti"
+    description: >
+        <p>
+            A colorful, romantic, almost over-wrought (but hey, can performances of this piece ever really be over-wrought?!) performance of Verdi’s <em>Stabat mater</em> can be found on <a href="https://www.youtube.com/watch?v=Qv1yQFQnsds&t=59s">YouTube</a>.
+            Conducted by Ricardo Muti, and featuring the Chorus and Orchestra of Teatro alla Scala, Milan, tempi are gloriously expansive and phrase-shaping is broadly-conceived and on a grand scale.
+            The playing and singing are equally rich in color — this is not a chorus in which pure, blended tone production is a goal in the same way it is in, say, the Anglican Cathedral tradition!
+            But what a compelling and inviting performance that’s full of drama, angst, and some of the most beautifully rich <em>dolce</em> singing among on-line performances.
+        </p>
+
+-   director: Claudio Abbado
+    description: >
+        <p>
+            The <em>Stabat mater</em> on the YouTube recording with <a href="https://www.youtube.com/watch?v=47tm6mSTOgg&t=6m12s">Claudio Abbado conducting the Vienna Philharmonic Orchestra</a>, and the Wiener Konzertvereinigung and soprano soloist Cheryl Studer is wonderful.
+            Note, however, that this video is of all four of the <em>Sacred Pieces</em>.
+            Colorful but also a more polished choral presentation than Rucardo Muti's.
+            As with Muti, Abbado's tempi are expansive — some might argue (not me!) almost to a fault, but the music-making is so convincing that there are never any lapses in direction, tension, and overwhelming musicality.
+        </p>
+
+-   director: John Eliot Gardiner
+    description: >
+        <p>
+            In a completely different direction is John Eliot Gardiner's performance of the <a href="https://www.youtube.com/watch?v=sRxIv6zlRTs">Te Deum</a> with the Orchestre Révolutionnaire et Romantique and the Monteverdi Choir.
+            The tempi are brisk — although closer to the tempo indications that Verdi himself preferred.
+            And, there is a verve and trajectory that is mightily convincing here. Choral singing and orchestral playing are superbly polished — probably more so than any other commercial recording available.
+            A very different experience than Ricardo Muti and Claudio Abbado, but definitely worth a listen!
+        </p>

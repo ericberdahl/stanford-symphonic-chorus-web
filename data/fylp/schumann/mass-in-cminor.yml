@@ -1,0 +1,79 @@
+piece:
+    composer: "Robert Schumann"
+    title: "Mass in C Minor"
+    catalog: "Op. 147"
+
+description: >
+    <p>
+        Schumann's <em>Mass in C minor,</em> Op. 147, certainly
+        doesn't suffer from over-exposure in the catalog of available
+        recordings.
+    </p>
+
+albums:
+-   director: Wolfgang Sawallisch
+    label: EMI CDC7 49763-2
+    image:
+        file: wolfgang-sawallisch-schumann-messe-op147.jpg
+        width: 500
+        height: 474
+    description: >
+        <p>
+            One of the strongest performances available is Wolfgang
+            Sawallisch’s live recording from 1987 with the Chor des
+            Stadtischen Musikverein zu Düsseldorf and the Berlin
+            Philharmoniker (EMI CDC7 49763-2). The romantic sweep of
+            Schumann’s writing is brought to the fore by Sawallisch:
+            dynamics are wide ranging, rubato is free, and the color of the
+            vocal production is rich and fruity. The soloists (Mitsuko Shirai,
+            soprano; Peter Seiffert, tenor; Jan-Hendrik Rootering, bass) are
+            strong both individually and as a team, and Shirai’s reading
+            of the Offertory (here with organ and solo <em>obbligato</em>
+            ‘cello), is eloquent, glowing, and appropriately intimate. In her
+            performance it serves much the same function at the apex of the
+            work’s musical trajectory as <em>Ihr hapt nun
+                Traurigkeit</em> does in Brahms’s <em>Ein deutsches Requiem.</em>
+            The only complaint regarding this recording is that the soloists
+            are rather closely-placed in the sound stage relative to all the
+            other forces. On this CD, the Mass is coupled with SchumannÆs
+            <em>Requiem,</em> another lovely and under-performed work.
+        </p>
+
+-   director: Michel Corboz
+    label: WEA Apex Classics ECD75542
+    image:
+        file: michel-corboz-schumann-requiem-messe.jpg
+        width: 500
+        height: 474
+    description: >
+        <p>
+            Michel Corboz’s 1988 release with the Choeur et Orchestre de
+            la foundation Gulbenkian de Lisbonne (WEA Apex Classics ECD75542)
+            is a strong contender recorded just after Sawallisch’s
+            recording. The studio recording seems to allow for a greater
+            control over balances, especially that of soloists vs. everyone
+            else. A slightly cleaner and leaner performance, Corboz
+            doesn’t have the weighty impact of Sawallisch, but textures
+            are more etched and well-defined. The choral singing is clean in
+            both tone and execution, with convincing drama in the Credo. The
+            pairing with Schumann’s <em>Requiem für Mignon</em>
+            makes for an attractive package.
+        </p>
+
+-   director: Peter Neumann
+    label: MDG Gold MDG3320598
+    image:
+        file: peter-neumann-brahms-kyrie-schumann-messe.jpg
+        width: 305
+        height: 305
+    description: >
+        <p>
+            Peter Neumann’s performance with the Kölner Kammerchor
+            and organ accompaniment by Christoph Anselm Noll instead of
+            orchestra (MDG Gold MDG3320598) has an appealing intimacy that
+            allows textures to emerge without forcing or overstatement. The
+            choral singing is top notch, as are the soloists. The pairing with
+            rarely heard works by Brahms (<em>Missa Canonica Sanctus</em> and <em>Agnus
+            Dei,</em> <em>Kyrie in G minor,</em> <em>Fugue for Organ in A-flat
+            major</em>) makes this something of a novelty as well.
+        </p>
