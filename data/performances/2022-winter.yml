@@ -166,9 +166,8 @@ concerts:
 events:
 
 
-# HOWTO: description contains HTML that is included on pages which need a synopsis of
+# HOWTO: description contains Markdown that is included on pages which need a synopsis of
 # the concert. The home page is a typical location where such text is used.
 description: >
-    <p>
-        After a long hiatus, Stanford Symphonic Chorus is pleased to return to the stage with a performance of Mahler's <em>Symphony No. 2 "Auferstehung"</em> ("Resurrection"), presented in collaboration with our friends in the Stanford Symphonic Orchestra.
-    </p>
+    After a long hiatus, Stanford Symphonic Chorus is pleased to return to the stage with a performance of Mahler's _Symphony No. 2 "Auferstehung"_ ("Resurrection"),
+    presented in collaboration with our friends in the Stanford Symphonic Orchestra.

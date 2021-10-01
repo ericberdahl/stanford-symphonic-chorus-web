@@ -12,6 +12,8 @@ import TitledSegment from '../components/titledSegment'
 import Model from '../common/model'
 
 import { DateTime } from 'luxon'
+import { MDXRemote } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
 import { Fragment } from 'react'
 
 import styles from '../styles/Home.module.scss'
@@ -178,7 +180,7 @@ export default function Home({ currentQuarter }) {
                                 <PairedImage routes={currentQuarter.heraldImageRoutes}/>
                             </div>
                         }
-                        <div dangerouslySetInnerHTML={{ __html: currentQuarter.description }} />
+                        <MDXRemote {...currentQuarter.descriptionMDX} />
                         <p>
                             {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <Fragment key={index}>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</Fragment>)}</CommaSeparatedList>
                         </p>
@@ -257,11 +259,11 @@ function serializeImageRoutes(imageRoutes) {
     return result;
 }
 
-function serializePerformance(performance) {
+async function serializePerformance(performance) {
     return {
         collaborators:      performance.collaborators,
         concerts:           performance.concerts.map(serializeConcert),
-        description:        performance.description,
+        descriptionMDX:     await serialize(performance.description),
         events:             performance.events.map(serializeEvent),
         firstRehearsal:     serializeTuttiRehearsal(performance.tuttiRehearsals[0]),
         heraldImageRoutes:  serializeImageRoutes(performance.heraldImageRoutes),
@@ -276,7 +278,7 @@ export async function getStaticProps({ params }) {
     const model = await Model.singleton;
     
     const props = {
-        currentQuarter: serializePerformance(model.currentQuarter)
+        currentQuarter: await serializePerformance(model.currentQuarter)
     }
 
     return {

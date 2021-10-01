@@ -75,7 +75,7 @@ type SerializedPerformance = {
     soloists? : SerializedSoloist[];
     poster? : SerializedPoster;
     heraldImage? : SerializedPoster;
-    description? : string;       // HTML to be displayed as a description of the performance being prepared, often on the home page
+    description? : string;       // Markdown to be displayed as a description of the performance being prepared, often on the home page
     preregister : string;       // 'YYYY-MM-DD' : date the preregistration mail is expected to be sent
     registrationFee? : string;   // '$dd' : amount of the registration fee
     membershipLimit? : number;
