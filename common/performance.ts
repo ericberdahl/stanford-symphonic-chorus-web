@@ -1,13 +1,10 @@
 import { IPiece } from './piece'
+import { FileRoutes, ImageRoutes } from './fileRoutes';
 
-import imageSize from 'image-size'
 import { DateTime } from 'luxon';
 
 import slugify from 'slugify'
 
-import fs from 'fs';
-import path from 'path';
-import process from 'process';
 import util from 'util';
 
 export class Rehearsal {
@@ -25,59 +22,6 @@ export class Rehearsal {
     addNote(note : string) : void {
         this.notes.push(note);
     }
-}
-
-function composeExistingRoute(directoryRoute : string, name : string, extension : string) : string {
-    const route = path.normalize(path.format({
-        dir: directoryRoute,
-        name: name,
-        ext: extension.toLowerCase()
-    }));
-
-    return (fs.existsSync(path.join(process.cwd(), 'public', route)) ? route : null);
-}
-
-class FileRoutes {
-    readonly routes : string[];
-
-    constructor(directoryRoute : string, name : string, variants : string[]) {
-        const publicDir = path.join(process.cwd(), 'public');
-
-        this.routes = variants.map((v) => composeExistingRoute(directoryRoute, name, '.' + v)).filter((s) => s != null);
-    }
-
-    get variants() : string[] {
-        return this.routes.map((r) => path.extname(r).slice(1));
-    }
-
-    getRoute(variant : string) : string {
-        return this.routes.find((r) => variant == path.extname(r).slice(1));
-    }
-}
-
-class ImageRoutes extends FileRoutes {
-    readonly caption : string;
-    readonly width : number     = 0;
-    readonly height : number    = 0;
-
-    constructor(directoryRoute : string, name : string, caption : string) {
-        super(directoryRoute, name, ['pdf', 'jpg']);
-
-        if (!this.pdf && !this.jpg) {
-            throw new Error(util.format('No image variants found for "%s"', name));
-        }
-
-        if (this.jpg) {
-            const publicDir = path.join(process.cwd(), 'public');
-            const imagePath = path.join(publicDir, this.jpg);
-            ({ width: this.width, height: this.height } = imageSize(imagePath));
-        }
-    
-        this.caption = caption;
-    }
-
-    get pdf() : string { return this.getRoute('pdf'); }
-    get jpg() : string { return this.getRoute('jpg'); }
 }
 
 type BasicEvent = {
