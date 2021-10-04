@@ -1,0 +1,62 @@
+@import 'base';
+
+.introduction {
+    .overview {
+        color: $color-warmgray60;
+        font-family: $font-family-serif;
+        font-style: italic;
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        color: black;
+        font-family: $font-family-sanserif;
+    }
+
+    li {
+        color: $color-warmgray90;
+        line-height: 1.6667em;
+        list-style-image: url(../public/images/raquo.gif);
+        margin-left: 15px;
+    }
+}
+
+.composerRepertoire {
+    border-top: 6px solid $color-red;
+    &:first-child {
+        border-top: none;
+    }
+
+    color: black;
+    font-family: $font-family-serif;
+    font-size: 0.8750rem;
+
+    li {
+        list-style: none;
+    }
+
+    .piece {
+        padding-top: 5px;
+        padding-bottom: 3px;
+    
+        div {
+            margin-bottom: 3px;
+        }
+        .citation {
+            color: black;
+            font-family: $font-family-serif;
+            font-size: 0.8750rem;
+        }
+
+        .fylp {
+            margin-left: 2em;
+        }
+
+        .performances {
+            margin-left: 2em;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            justify-items: left;
+        }
+    }
+}

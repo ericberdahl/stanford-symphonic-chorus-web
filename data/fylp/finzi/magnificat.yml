@@ -5,16 +5,11 @@ piece:
 albums:
 -   director: Richard Hickox
     label: Decca 468 807-2
-    image:
-        file: hickox-magnificat-finzi.jpg
-        width: 351
-        height: 349
-    description: >
-        <p>
-            For a version of Finzi's <em>Magnificat</em> with orchestra accompaniment, there is a fine 1978
-            performance with Richard Hickox conducting the City of London Sinfonia, and believe it or not, an
-            unidentified choir on Decca (468 807-2). The performance is part of a 2-CD set that includes
-            several of Finzi’s larger-scale works including his In terra pax, Dies natalis, For St Cecilia, Romance for
-            string orchestra, and the song cycles Earth and air and rain, and Let us garlands bring. Again, it’s out of
-            print, but there are 3rd party vendors that still have it available via amazon.com.
-        </p>
+    image: Decca-468-807-2
+    description: |
+        For a version of Finzi's _Magnificat_ with orchestra accompaniment, there is a fine 1978
+        performance with Richard Hickox conducting the City of London Sinfonia, and believe it or not, an
+        unidentified choir on Decca (468 807-2). The performance is part of a 2-CD set that includes
+        several of Finzi’s larger-scale works including his In terra pax, Dies natalis, For St Cecilia, Romance for
+        string orchestra, and the song cycles Earth and air and rain, and Let us garlands bring. Again, it’s out of
+        print, but there are 3rd party vendors that still have it available via amazon.com.

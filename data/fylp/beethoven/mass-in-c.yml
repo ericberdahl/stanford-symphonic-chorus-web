@@ -3,106 +3,77 @@ piece:
     title: 'Mass in C'
     catalog: "Op. 86"
 
-description: >
-    <p>
-        Beethoven's <em>Mass in C</em> Op. 86 has never received the same 
-        recorded attention as the <em>Missa solemnis</em>, but there are still 
-        several excellent recordings to choose from.
-    </p>
+description: |
+    Beethoven's _Mass in C_ Op. 86 has never received the same 
+    recorded attention as the _Missa solemnis_, but there are still 
+    several excellent recordings to choose from.
 
 albums:
 -   director: "John Eliot Gardiner"
     label: "Archiv 435 391-2"
-    image:
-        file: "john-eliot-gardiner-beethoven-mass-in-c.jpg"
-        width: 500
-        height: 474
-    description: >
-        <p>
-            John Eliot Gardiner's reading (Archiv 435 391-2) is an easy first 
-            choice.
-            Both the singing and the orchestral playing are top-notch.  The 
-            Monteverdi Choir sings with flawless choral blend, precision in diction 
-            and intonation, and convincing phrasing—a joy to listen to.  The 
-            Orchestre Revolutionaire et Romantique, utilizing period instruments, 
-            plays with equal precision, and a vast palette of tonal color.  No thin 
-            sounding strings or shrill winds here—just first-rank playing 
-            with an almost fiendish energy.  The soloists are well up to the 
-            standards set by the choir and orchestra.  The voices are a bit larger 
-            and more full-bodied than in many "period" instrument recordings, and 
-            the color suits the music perfectly.  Be advised that the orchestra 
-            tunes to A=415 rather than the contemporary standard of A=440 so you 
-            won't be able to play this recording and play your part along on your 
-            piano when you study.
-        </p>
+    image: "Archiv-435-391-2"
+    description: |
+        John Eliot Gardiner's reading (Archiv 435 391-2) is an easy first choice.
+        Both the singing and the orchestral playing are top-notch.
+        The Monteverdi Choir sings with flawless choral blend, precision in diction and intonation, and convincing phrasing—a joy to listen to.
+        The Orchestre Revolutionaire et Romantique, utilizing period instruments, plays with equal precision, and a vast palette of tonal color.
+        No thin sounding strings or shrill winds here—just first-rank playing with an almost fiendish energy.
+        The soloists are well up to the standards set by the choir and orchestra.
+        The voices are a bit larger and more full-bodied than in many "period" instrument recordings,
+        and the color suits the music perfectly.
+        Be advised that the orchestra tunes to A=415 rather than the contemporary standard of A=440 so
+        you won't be able to play this recording and play your part along on your piano when you study.
 
 -   director: Robert Shaw
     label: Telarc CD-80248
-    image:
-        file: robert-shaw-beethoven-mass-in-c.jpg
-        width: 305
-        height: 305
-    description: >
-        <p>
-            Robert Shaw's 1990 recording (Telarc CD-80248) is a "big-band" 
-            performance with precision and beauty of tone in both the singing and 
-            playing, and more expansive tempi than Gardiner. The deliberate tempo 
-            of the Gloria (it runs two-ahd-a-half minutes longer than Gardiner) is 
-            weighty and grand as opposed to light and exuberant. But, as always 
-            with Shaw, there is great beauty in the performance, including 
-            wonderful contributions by all the soloists.  The sound is typical 
-            Telarc, clean, round, no brittleness, but with the chorus set a little 
-            further back in a rather gauzy acoustic.
-        </p>
+    image: "Telarc-CD-80248"
+    description: |
+        Robert Shaw's 1990 recording (Telarc CD-80248) is a "big-band" 
+        performance with precision and beauty of tone in both the singing and 
+        playing, and more expansive tempi than Gardiner. The deliberate tempo 
+        of the Gloria (it runs two-ahd-a-half minutes longer than Gardiner) is 
+        weighty and grand as opposed to light and exuberant. But, as always 
+        with Shaw, there is great beauty in the performance, including 
+        wonderful contributions by all the soloists. The sound is typical 
+        Telarc, clean, round, no brittleness, but with the chorus set a little 
+        further back in a rather gauzy acoustic.
 
 -   director: Sir Thomas Beecham
     label: EMI 0724358650426
-    image:
-        file: sir-thomas-beecham-beethoven-mass-in-c.jpg
-        width: 400
-        height: 400
-    description: >
-        <p>
-            Sir Thomas Beecham's 1959 recording has long been a yardstick of 
-            measurement for performances of this work, and is available in a 
-            budget-priced 2-CD set coupled with Beethoven's 2nd and 7th Symphonies 
-            CD (EMI 0724358650426).  The Beecham Choral Society's singing is 
-            definitely '50's vintage.  Their performance is colorful and meaty, if 
-            somewhat lacking in the precision and perfect blend of Gardiner's 
-            forces.  The team of soloists is evenly matched, and more operatic 
-            sounding than Gardiner's quartet.  The performance has wonderful energy 
-            and pacing, with tempi almost as crisp as Gardiner's.  The sonics are 
-            good, if slightly edgy and brittle by contemporary standards.
-        </p>
+    image: "EMI-0724358650426"
+    description: |
+        Sir Thomas Beecham's 1959 recording has long been a yardstick of 
+        measurement for performances of this work, and is available in a 
+        budget-priced 2-CD set coupled with Beethoven's 2nd and 7th Symphonies 
+        CD (EMI 0724358650426). The Beecham Choral Society's singing is 
+        definitely '50's vintage. Their performance is colorful and meaty, if 
+        somewhat lacking in the precision and perfect blend of Gardiner's 
+        forces. The team of soloists is evenly matched, and more operatic 
+        sounding than Gardiner's quartet. The performance has wonderful energy 
+        and pacing, with tempi almost as crisp as Gardiner's. The sonics are 
+        good, if slightly edgy and brittle by contemporary standards.
 
 -   director: Colin Davis
     label: Philips 438 362-2
-    image:
-        file: colin-davis-beethoven-mass-in-c.jpg
-        width: 130
-        height: 130
-    description: >
-        <p>
-            Colin Davis' recording is available as part of a 2 CD set (Philips 438 362-2) 
-            with the <em>Missa solemnis</em> at a 2 for 1 price.  
-            Definitely a great way to expand your Beethoven choral music 
-            collection.  The performance is conservatively paced, but even the 
-            tempi that are slower than Shaw's have a forward momentum that give 
-            direction and dramatic presence to the music.
-            The London Symphony Chorus' performance is mostly first-rate, both 
-            technically and musically, with all sections well up to the task.  Only 
-            in the Crucifixus, does the blend get rough.  Warm, vintage Philips 
-            analog sound has been retained nicely on the CD.
-        </p>
+    image: Philips-438-362-2
+    description: |
+        Colin Davis' recording is available as part of a 2 CD set (Philips 438 362-2) 
+        with the _Missa solemnis_ at a 2 for 1 price.  
+        Definitely a great way to expand your Beethoven choral music 
+        collection. The performance is conservatively paced, but even the 
+        tempi that are slower than Shaw's have a forward momentum that give 
+        direction and dramatic presence to the music.
+        The London Symphony Chorus' performance is mostly first-rate, both 
+        technically and musically, with all sections well up to the task.  Only 
+        in the Crucifixus, does the blend get rough.  Warm, vintage Philips 
+        analog sound has been retained nicely on the CD.
 
 -   director: George Guest
     label: Decca ‎– 430 361-2
-    description: >
-        <p>
-            Lighter-weight, intimate, and currently out of print, is George 
-            Guest's performance with the St. John's College Choir, Cambridge 
-            (last in print as London 430 361-2). The pleasing clarity of the boys' 
-            voices allow for well-delineated textures, and though the grand 
-            moments are sometimes lost due to the intimacy of the forces, this is a 
-            lovely performance to own if you can find it.
-        </p>
+    description: |
+        Lighter-weight, intimate, and currently out of print, is George 
+        Guest's performance with the St. John's College Choir, Cambridge 
+        (last in print as London 430 361-2). The pleasing clarity of the boys' 
+        voices allow for well-delineated textures, and though the grand 
+        moments are sometimes lost due to the intimacy of the forces, this is a 
+        lovely performance to own if you can find it.

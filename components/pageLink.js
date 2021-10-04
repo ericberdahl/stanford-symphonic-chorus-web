@@ -1,3 +1,5 @@
+import { makeSlug } from '../common/slug';
+
 import getConfig from 'next/config'
 import Link from 'next/link';
 import { useRouter } from 'next/router'
@@ -5,33 +7,6 @@ import { useRouter } from 'next/router'
 import util from 'util';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
-
-// TODO: create/route fylp content pages
-// fylp/mascagni-easter-hymn.html
-// fylp/vaughan-williams-sea-symphony.html
-// fylp/brahms-requiem.html
-// fylp/john-rutter-blow-blow-good-ale.html
-// fylp/vaughan-williams-fantasia-on-christmas-carols.html
-// fylp/orff-carmina-burana.html
-// fylp/vaughan-williams-hodie.html
-// fylp/zeisl-requiem-ebraico.html
-// fylp/mendelssohn-psalm114.html
-// fylp/verdi-te-deum.html
-// fylp/aquilanti-sanctus.html
-// fylp/bruckner-mass-no3-fminor.html
-// fylp/brahms-nanie-schicksalslied.html
-// fylp/finzi-magnificat.html
-// fylp/berlioz-requiem.html
-// fylp/schumann-mass-in-cminor.html
-// fylp/verdi-stabat-mater.html
-// fylp/elgar-music-makers.html
-// fylp/finzi-god-is-gone-up.html
-// fylp/bernstein-chichester-psalms.html
-// fylp/stravinsky-symphony-of-psalms.html
-// fylp/bruckner-psalm150.html
-// fylp/john-rutter-magnificat.html
-// fylp/mendelssohn-lobgesang.html
-// fylp/beethoven-mass-in-c.html
 
 // TODO: create/route asset pages
 // performances/S2010/requiem_text.html
@@ -132,9 +107,24 @@ class PerformanceCollection extends Collection {
     }
 }
 
+class FYLPCollection extends Collection {
+    constructor(name) {
+        super(name);
+    }
+
+    findSiteEntryForId(id) {
+        return new SiteEntry(util.format('/fylp/%s',  id));
+    }
+
+    getPageId(page) {
+        return util.format('%s/%s', makeSlug(page.composer.fullName), makeSlug(page.title));
+    }
+}
+
 const collections = [
     new PerformanceCollection('performances'),
     new TopLevelCollection('topLevel'),
+    new FYLPCollection('fylp'),
 ];
 
 function getCollection(collection) {

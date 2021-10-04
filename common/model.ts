@@ -1,17 +1,20 @@
-import glob from 'glob-promise';
-import fs from 'fs/promises';
-import path from 'path';
-import process from 'process';
-import util from 'util';
-
-import yaml from 'yaml';
-
+import { IFYLP } from './fylp';
 import { Performance } from './performance'
 import { Repertoire } from './repertoire';
 import { deserializePerformance } from './serializedPerformance'
 
+import glob from 'glob-promise';
+import yaml from 'yaml';
+
+import fs from 'fs/promises';
+import path from 'path';
+import process from 'process';
+import util from 'util';
+import { deserializeFYLP } from './serializedFYLP';
+
 const CONFIG_FILENAME       = path.join('data', 'main.yml');
 const PERFORMANCE_DATA_DIR  = path.join('data', 'performances')
+const FYLP_DATA_DIR         = path.join('data', 'fylp')
 
 type Configuration = {
     timezone : string;          // name of timezone in which the ensemble rehearses and performs
@@ -23,6 +26,7 @@ export interface IModel {
     readonly currentQuarter : Performance;
     readonly timezone : string;
     readonly repertoire : Repertoire;
+    readonly fylp : Repertoire;
 
     addPerformance(p : Performance);
     getPerformanceById(id : string) : Performance;
@@ -39,12 +43,17 @@ async function createModel() : Promise<IModel> {
         return deserializePerformance(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
     }));
 
+    const fylpDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, FYLP_DATA_DIR), realpath: true });
+    const fylps = await Promise.all(fylpDatafiles.map(async (filepath) => {
+        return deserializeFYLP(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
+    }));
+
     return model;
 }    
 
 export default class Model implements IModel {
     readonly performances : Performance[]   = [];
-    readonly repertoire : Repertoire = new Repertoire();
+    readonly repertoire : Repertoire        = new Repertoire();
     private _currentQuarter : Performance   = null;
     private config : Configuration;
 
@@ -58,6 +67,12 @@ export default class Model implements IModel {
     get performanceHistory() : Performance[] {
         const index = this.performances.findIndex((e) => (e.id == this._currentQuarter.id));
         return this.performances.slice(index);
+    }
+
+    get fylp() : Repertoire {
+        const result = new Repertoire();
+        this.repertoire.pieces.filter((p) => p.fylp).forEach((p) => result.addPiece(p));
+        return result;
     }
 
     addPerformance(p : Performance) {

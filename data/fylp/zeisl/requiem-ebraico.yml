@@ -3,28 +3,23 @@ piece:
     title: "Requiem Ebraico"
     translation: "Psalm 92"
 
-description: >
-    <p>
-        There is only one recording of Erich Zeisl's Requiem Ebraico, and it can be
-        <a href="http://www.amazon.co.uk/exec/obidos/ASIN/B00000I0T7/qid=3D1095182206/sr=3D1-2/ref=3Dsr_1_8_2/202-7410296-8286230">
-        ordered from AmazonUK</a> although, be advised that it may take 4-6
-        weeks for delivery.
-    </p>
+description: |
+    There is only one recording of Erich Zeisl's Requiem Ebraico, and it can be
+    [ordered from AmazonUK](http://www.amazon.co.uk/exec/obidos/ASIN/B00000I0T7/qid=3D1095182206/sr=3D1-2/ref=3Dsr_1_8_2/202-7410296-8286230)
+    although, be advised that it may take 4-6 weeks for delivery.
 
 albums:
 -   director: Lawrence Foster
     label: Decca 460 211-2
     shopping:
     - http://www.amazon.co.uk/exec/obidos/ASIN/B00000I0T7/qid=3D1095182206/sr=3D1-2/ref=3Dsr_1_8_2/202-7410296-8286230
-    description: >
-        <p>
-            Lawrence Foster conducts the Rundfunk Sinfonieorchester und Chor Belin
-            (Decca 460 211-2) and the piece is coupled with Franz Waxman's haunting Das
-            Lied von Terezin. Though this setting of the 92nd Psalm was originally
-            composed in English, this recording is in Hebrew, as we will perform it.
-            Note also, that although the text in the score is transliterated in Hebrew
-            as it would have been spoken in pre-war, Eastern Europe, we will perform the
-            work in modern Hebrew - and this recording is also in modern Hebrew. The
-            sweep and emotion of the performance is gripping, and the soloists (baritone
-            Michael Kraus, in particular) are appropriately cantorial.
-        </p>
+    description: |
+        Lawrence Foster conducts the Rundfunk Sinfonieorchester und Chor Belin
+        (Decca 460 211-2) and the piece is coupled with Franz Waxman's haunting Das
+        Lied von Terezin. Though this setting of the 92nd Psalm was originally
+        composed in English, this recording is in Hebrew, as we will perform it.
+        Note also, that although the text in the score is transliterated in Hebrew
+        as it would have been spoken in pre-war, Eastern Europe, we will perform the
+        work in modern Hebrew - and this recording is also in modern Hebrew. The
+        sweep and emotion of the performance is gripping, and the soloists (baritone
+        Michael Kraus, in particular) are appropriately cantorial.

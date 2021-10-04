@@ -1,3 +1,4 @@
+import { IFYLP } from "./fylp";
 import { Performance } from "./performance";
 
 export interface IComposer {
@@ -16,6 +17,7 @@ export interface IPiece {
     readonly title : string | string[];
     readonly translation? : string;
     readonly performances : Performance[];
+    fylp : IFYLP;
 
     addPerformance(performanace : Performance);
 }
@@ -79,6 +81,7 @@ export class Piece implements IPiece {
     readonly suffix : string;
 
     readonly performances : Performance[]   = [];
+    fylp : IFYLP;
     
     constructor(
             title : string | string[],
@@ -122,6 +125,7 @@ export class NotedPerformance implements IPiece {
     get catalog() : string { return this.piece.catalog; }
     get commonTitle() : string { return this.piece.commonTitle; }
     get composer() : IComposer { return this.piece.composer; }
+    get fylp() : IFYLP { return this.piece.fylp; }
     get movement() : string { return this.piece.movement; }
     get performances() : Performance[] { return this.piece.performances; }
     get prefix() : string { return this.piece.prefix; }

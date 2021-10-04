@@ -5,35 +5,37 @@ piece:
 
 albums:
 -   director: Claudio Abbado
-    label: "Deutsche Gramophon 471 467-2"
-    image:
-        file: "claudio-abbado-mendelssohn-symphonies.jpg"
-        width: 500
-        height: 500
-    description: >
-        <p>
-            Claudio Abbado conducting the London Symphony Orchestra and Chorus with soloists Elizabeth Connell and Karita Mattila (sopranos) and Hans Peter Blochwitz (tenor). Expansive and grand in conception. Excellent choral singing—the intimacy and reverence of the a cappella chorale "Nun danket alle Gott" is stunning. It is part of a 4-CD box set of all 5 Mendelssohn symphonies plus 7 overtures. All available at mid-price on Deutsche Gramophon (471 467-2).
-            The entire set is terrific.
-        </p>
+    label: "Deutsche Grammophon 471 467-2"
+    image: "Deutsche-Grammophon-471-467-2"
+    description: |
+        Claudio Abbado conducting the London Symphony Orchestra and Chorus with
+        soloists Elizabeth Connell and Karita Mattila (sopranos) and Hans Peter Blochwitz (tenor).
+        Expansive and grand in conception.
+        Excellent choral singing—the intimacy and reverence of the a cappella chorale "Nun danket alle Gott" is stunning.
+        It is part of a 4-CD box set of all 5 Mendelssohn symphonies plus 7 overtures.
+        All available at mid-price on Deutsche Gramophon (471 467-2).
+        The entire set is terrific.
 
 -   director: "Christoph von Dohnányi"
     label: "London/Decca 289 460 236-2"
-    image:
-        file: "christoph-dohnanyi-mendelssohn-symphonies.jpg"
-        width: 301
-        height: 301
-    description: >
-        <p>
-            Christoph von Dohnányi conducting the Vienna Philharmonic with the Vienna Singverein. Sonia Ghazarian and Edita Gruberova, sopranos and Werner Krenn, tenor. More taut than Abbado's reading. The choral singing is in the typical Vienna Singverein style—dramatic, colorful, and rich in tone if not always as polished in ensemble and cohesion as the LSO Chorus (above). Part of a budget-priced 2-CD set that also includes the Mendelssohn's 1st Symphony and his cantata "Die erste Walpurgisnacht." London/Decca 289 460 236-2.
-        </p>
+    image: "London-Decca-289-460-236-2"
+    description: |
+        Christoph von Dohnányi conducting the Vienna Philharmonic with the Vienna Singverein.
+        Sonia Ghazarian and Edita Gruberova, sopranos and Werner Krenn, tenor.
+        More taut than Abbado's reading.
+        The choral singing is in the typical Vienna Singverein style—dramatic, colorful,
+        and rich in tone if not always as polished in ensemble and cohesion as the LSO Chorus (above).
+        Part of a budget-priced 2-CD set that also includes the Mendelssohn's 1st Symphony
+        and his cantata "Die erste Walpurgisnacht." London/Decca 289 460 236-2.
 
 -   director: "Riccardo Chailly"
     label: "Philips 456 071-2"
-    image:
-        file: "riccardo-chailly-mendelssohn-symphonies.jpg"
-        width: 300
-        height: 300
-    description: >
-        <p>
-            Riccardo Chailly conducting the London Philharmonic Orchestra and Choir. Margaret Price and Sally Burgess, sopranos. Siegfried Jerusalem, tenor. Refined, with no lack of strength when needed. In the a cappella passages, the choral tone suffers some from lack of unity. The organ is more present than in either of the above recordings. Part of a budget-priced 2-CD set that also includes Mendelssohn's 1st and 3rd symphonies as well as the Hebrides Overture. Philips 456 071-2.
-        </p>
+    image: "Philips-456-071-2"
+    description: |
+        Riccardo Chailly conducting the London Philharmonic Orchestra and Choir.
+        Margaret Price and Sally Burgess, sopranos. Siegfried Jerusalem, tenor.
+        Refined, with no lack of strength when needed.
+        In the a cappella passages, the choral tone suffers some from lack of unity.
+        The organ is more present than in either of the above recordings.
+        Part of a budget-priced 2-CD set that also includes Mendelssohn's 1st and 3rd symphonies as well as the Hebrides Overture.
+        Philips 456 071-2.

@@ -2,100 +2,80 @@ piece:
     composer: "Edward Elgar"
     title: "The Music Makers"
 
-description: >
-    <p>
-        Elgar’s <em>The Music Makers</em> is well represented in the current catalog
-        of recordings and online, despite the fact that it is very rarely performed
-        here in the U.S. There are three readily available recordings, and all can
-        be strongly recommended.
-    </p>
+description: |
+    Elgar’s _The Music Makers_ is well represented in the current catalog
+    of recordings and online, despite the fact that it is very rarely performed
+    here in the U.S. There are three readily available recordings, and all can
+    be strongly recommended.
 
 albums:
 -   director: "Adrian Boult"
     label: "EMI 7243 5 66540 2 0"
-    image:
-        file: "EMI-7243-5-66540-2-0.jpg"
-        height: 300
-        width: 296
-    description: >
-        <p>
-            Sir Adrian Boult’s famous 1966 recording is generously coupled with the
-            grandest of Elgar’s large-scale choral works, The Dream of Gerontius in a
-            2-CD set at mid-price (EMI 7243 5 66540 2 0), or
-            <a href="https://www.youtube.com/watch?v=lJGDOrZ-_6Y">online at YouTube</a>.
-            Dame Janet baker is the mezzo soprano soloist, and her obbligato over the
-            Nimrod material from Elgar’s earlier Enigma Variations is truly stunning—on
-            no other recording is this solo given such a profoundly musical and
-            emotional reading. While the London Philharmonic Chorus sings with energy,
-            there is some lack of tonal cohesiveness, especially in the tenors and
-            basses when singing forte above the staff. And though the chorus is perhaps
-            not as engaging as on other recordings, it is Boult’s complete and utterly
-            convincing command of shape and direction of phrase that makes this
-            recording an excellent choice. The London Philharmonic Orchestra plays with
-            a real connection to this music and the sound is vintage EMI analog—warm
-            with pleasing balances.
-        </p>
+    image: "EMI-7243-5-66540-2-0"
+    description: |
+        Sir Adrian Boult’s famous 1966 recording is generously coupled with the
+        grandest of Elgar’s large-scale choral works, The Dream of Gerontius in a
+        2-CD set at mid-price (EMI 7243 5 66540 2 0), or
+        [online at YouTube](https://www.youtube.com/watch?v=lJGDOrZ-_6Y).
+        Dame Janet baker is the mezzo soprano soloist, and her obbligato over the
+        Nimrod material from Elgar’s earlier Enigma Variations is truly stunning—on
+        no other recording is this solo given such a profoundly musical and
+        emotional reading. While the London Philharmonic Chorus sings with energy,
+        there is some lack of tonal cohesiveness, especially in the tenors and
+        basses when singing forte above the staff. And though the chorus is perhaps
+        not as engaging as on other recordings, it is Boult’s complete and utterly
+        convincing command of shape and direction of phrase that makes this
+        recording an excellent choice. The London Philharmonic Orchestra plays with
+        a real connection to this music and the sound is vintage EMI analog—warm
+        with pleasing balances.
 
 -   director: "Andrew Davis"
     label: "Teldec 92374"
-    image:
-        file: "Teldec-92374.jpg"
-        height: 351
-        width: 355
-    description: >
-        <p>
-            Perhaps the strongest performance in every aspect is Andrew Davis’ 1994
-            recording with the BBC Symphony Orchestra and Chorus and Jean Rigby, mezzo
-            soloist. This is also the most recent release of this work (Teldec 92374,
-            and <a href="https://www.youtube.com/watch?v=uSrGT0vNPdY">online at
-            YouTube</a>). There is more minute detail in shaping of phrase in this
-            performance than any of the other available versions—yet, this does not come
-            at the expense of a grand and sweeping grasp of large-scale architecture. 
-            The chorus sings with great precision, excellent diction, a colorful tonal
-            palette, and stunning control of dynamics. Jean Rigby combines a warmth or
-            timbre similar to Dame Janet Baker’s—with just enough edge where the text
-            requires it. This would be a strong first recommendation, except for the
-            fact that the entire piece is one long, 39’47” track—there are no track
-            divisions between sections! Very inconvenient. Of course, you could dub this
-            down to a duplicate CD or Mini Disc and add your own track divisions for
-            study purposes . . .
-        </p>
+    image: "Teldec-92374"
+    description: |
+        Perhaps the strongest performance in every aspect is Andrew Davis’ 1994
+        recording with the BBC Symphony Orchestra and Chorus and Jean Rigby, mezzo
+        soloist. This is also the most recent release of this work (Teldec 92374,
+        and [online at YouTube](https://www.youtube.com/watch?v=uSrGT0vNPdY)). There is more minute detail in shaping of phrase in this
+        performance than any of the other available versions—yet, this does not come
+        at the expense of a grand and sweeping grasp of large-scale architecture. 
+        The chorus sings with great precision, excellent diction, a colorful tonal
+        palette, and stunning control of dynamics. Jean Rigby combines a warmth or
+        timbre similar to Dame Janet Baker’s—with just enough edge where the text
+        requires it. This would be a strong first recommendation, except for the
+        fact that the entire piece is one long, 39’47” track—there are no track
+        divisions between sections! Very inconvenient. Of course, you could dub this
+        down to a duplicate CD or Mini Disc and add your own track divisions for
+        study purposes . . .
 
 -   director: "Bryden Thomson"
     label: "Chandos CHAN 9022"
-    image:
-        file: "Chandos-CHAN-9022.jpg"
-        height: 1059
-        width: 1071
-    description: >
-        <p>
-            The late Bryden Thomson recorded <em>The Music Makers</em> for the Chandos
-            label in 1992, and it is far and away the most sonically arresting recording
-            of the work (Chandos CHAN 9022). There is  tremendous detail and
-            wide-ranging timbral color coupled here with a sense of atmosphere and space
-            around the performers that is a bit lacking in the other two versions
-            currently available. Thomson’s tempi are well-judged and there is a sense of
-            energy and verve that is unique to this recording. However, though the
-            large-scale shapes work well, there is not the same kind of attention to
-            detail in intimate gestures as one hears in Davis’ reading—and Elgar’s score
-            is full of indications for such gestures. The London Philharmonic Chorus’
-            singing is polished and energetic, and the ensemble is cleaner and more
-            cohesive than in Boult’s version—though still not up to the standard of
-            Davis’. Linda Finnie’s mezzo lacks some of the sweetness of Dame Janet
-            Baker, but there is a creamy thickness to the voice that is very alluring in
-            the bigger sections.
-        </p>
+    image: "Chandos-CHAN-9022"
+    description: |
+        The late Bryden Thomson recorded _The Music Makers_ for the Chandos
+        label in 1992, and it is far and away the most sonically arresting recording
+        of the work (Chandos CHAN 9022). There is  tremendous detail and
+        wide-ranging timbral color coupled here with a sense of atmosphere and space
+        around the performers that is a bit lacking in the other two versions
+        currently available. Thomson’s tempi are well-judged and there is a sense of
+        energy and verve that is unique to this recording. However, though the
+        large-scale shapes work well, there is not the same kind of attention to
+        detail in intimate gestures as one hears in Davis’ reading—and Elgar’s score
+        is full of indications for such gestures. The London Philharmonic Chorus’
+        singing is polished and energetic, and the ensemble is cleaner and more
+        cohesive than in Boult’s version—though still not up to the standard of
+        Davis’. Linda Finnie’s mezzo lacks some of the sweetness of Dame Janet
+        Baker, but there is a creamy thickness to the voice that is very alluring in
+        the bigger sections.
 
 -   director: "Leonard Slatkin"
-    description: >
-        <p>
-            There is a fine performance
-            <a href="https://www.youtube.com/watch?v=EixX7n3QAjg">online at YouTube</a>
-            that was recorded live at The Proms, with the BBC Orchestra and Chorus
-            conducted by Leonard Slatkin, with mezzo-soprano soloist Lorraine Hunt
-            Lieberson. In addition to the excitement of being a live performance at The
-            Proms, there is wonderful cohesiveness in the romantic sweep — Slatkin
-            controls arc and shape of phrase with wonderfully engaging drama. The BBC
-            Chorus sings with polish and dynamism, and of course, Lorraine Hunt
-            Lieberson is a stunning soloist. Highly recommended!
-        </p>
+    description: |
+        There is a fine performance
+        [online at YouTube](https://www.youtube.com/watch?v=EixX7n3QAjg)
+        that was recorded live at The Proms, with the BBC Orchestra and Chorus
+        conducted by Leonard Slatkin, with mezzo-soprano soloist Lorraine Hunt
+        Lieberson. In addition to the excitement of being a live performance at The
+        Proms, there is wonderful cohesiveness in the romantic sweep — Slatkin
+        controls arc and shape of phrase with wonderfully engaging drama. The BBC
+        Chorus sings with polish and dynamism, and of course, Lorraine Hunt
+        Lieberson is a stunning soloist. Highly recommended!

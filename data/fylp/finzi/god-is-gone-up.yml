@@ -4,9 +4,7 @@ piece:
 
 albums:
 -   director: Stanford Chamber Chorale
-    description: >
-        <p>
-            To hear my tempi and phrasing for Finzi’s God is gone up, there is a performance by the Stanford
-            Chamber Chorale form winter term 2008 available on our <a href="https://www.youtube.com/watch?v=84mrFdSJZi0">YouTube channel</a>, though with organ
-            accompaniment rather than orchestra.
-        </p>
+    description: |
+        To hear my tempi and phrasing for Finzi’s God is gone up, there is a performance by the Stanford
+        Chamber Chorale form winter term 2008 available on our [YouTube channel(https://www.youtube.com/watch?v=84mrFdSJZi0),
+        though with organ accompaniment rather than orchestra.

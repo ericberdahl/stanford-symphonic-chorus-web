@@ -1,0 +1,63 @@
+@import 'base';
+
+.introduction {
+    .overview {
+        color: $color-warmgray60;
+        font-family: $font-family-serif;
+        font-style: italic;
+        padding-bottom: 10px;
+    }
+
+    h3 {
+        color: black;
+        font-family: $font-family-sanserif;
+    }
+
+    li {
+        color: $color-warmgray90;
+        line-height: 1.6667em;
+        list-style-image: url(../public/images/raquo.gif);
+        margin-left: 15px;
+    }
+}
+
+.fylp {
+    font-family: $font-family-sanserif;
+    font-size: 0.8021rem;
+    line-height: 1.3333em;
+
+    h2 {
+        color: $color-red;
+        font-family: $font-family-serif;
+        font-size: 1.2031rem;
+        letter-spacing: 2px;
+    }
+
+    .album {
+        clear: left;
+        margin-top: 1.56em;
+        margin-bottom: 0.63em;
+
+        h3 {
+            color: $color-warmgray90;
+            font-family: $font-family-serif;
+            font-size: 1.1230rem;
+            margin-bottom: 5px;
+        }
+
+        .image {
+            float: left;
+            padding-right: 0.63em;
+        }
+    }
+}
+
+.performances {
+    margin-top: 15px;
+    
+    li {
+        font-family: $font-family-sanserif;
+        font-size: 0.8021rem;
+        list-style: none;
+    }
+}
