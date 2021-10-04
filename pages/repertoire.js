@@ -2,11 +2,10 @@ import ChinaTour from '../components/chinaTour';
 import Layout from '../components/layout'
 import TitledSegment from '../components/titledSegment';
 
+import { makeSlug } from '../common/slug';
 import Model from '../common/model'
 import PieceCitation from '../components/pieceCitation';
 import PageLink from '../components/pageLink';
-
-import slugify from 'slugify'
 
 import styles from '../styles/repertoirePage.module.scss'
 
@@ -24,7 +23,7 @@ function Introduction({ repertoire }) {
                 <h3>Composers</h3>
                 <ol>
                     {repertoire.map((r, index) => (
-                        <li key={index}><a href={'#' + slugify(composerFullName(r.composer))}>{composerFullName(r.composer)}</a></li>
+                        <li key={index}><a href={'#' + makeSlug(composerFullName(r.composer))}>{composerFullName(r.composer)}</a></li>
                     ))}
                 </ol>
             </div>
@@ -42,7 +41,7 @@ function Sidebar() {
 
 function SubRepertoire({ composer, pieces }) {
     return (
-        <div id={slugify(composerFullName(composer))} className={styles.composerRepertoire}>
+        <div id={makeSlug(composerFullName(composer))} className={styles.composerRepertoire}>
             <ol>
                 {pieces.map((p, index) => (
                     <li key={index} className={styles.piece}>

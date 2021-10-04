@@ -1,9 +1,8 @@
 import { IPiece } from './piece'
+import { makeSlug } from './slug';
 import { FileRoutes, ImageRoutes } from './fileRoutes';
 
 import { DateTime } from 'luxon';
-
-import slugify from 'slugify'
 
 import util from 'util';
 
@@ -105,7 +104,7 @@ export class Performance {
         this.membershipLimit = membershipLimit;
     }
 
-    get id() { return slugify(this.quarter).toLowerCase(); }
+    get id() { return makeSlug(this.quarter); }
     get firstConcert() { return (0 < this.concerts.length ? this.concerts[0] : null); }
     get posterRoutes() { return this._posterRoutes; }
     get heraldImageRoutes() { return this._heraldImageRoutes; }
