@@ -39,7 +39,7 @@ function Sidebar({ piece }) {
             <div className={styles.performances}>
                 <TitledSegment title="Performances">
                     <ol>
-                        {piece.performances.map((p, index) => (
+                        {Array.from(piece.performances).reverse().map((p, index) => (
                             <li key={index}><PageLink page={p} collection="performances">{p.quarter}</PageLink></li>
                         ))}
                     </ol>
