@@ -59,12 +59,24 @@ export class Repertoire {
         return subRep.composer;
     }
 
+    get composers() : IComposer[] {
+        return this.subRepertoires.map((r) => r.composer);
+    }
+
+    get pieces() : IPiece[] {
+        return this.composers.map((c) => this.getPiecesByComposer(c)).reduce((previous, current) => {
+            previous.push(...current);
+            return previous;
+        }, []);
+    }
+
     addPiece(piece : IPiece) : IPiece {
+        this.validateComposer(piece.composer);
         return this.getSubRepertoire(piece.composer).addPiece(piece);
     }
 
     getAllComposers() : IComposer[] {
-        return this.subRepertoires.map((r) => r.composer);
+        return this.composers;
     }
 
     getPiecesByComposer(composer : IComposer) : IPiece[] {
