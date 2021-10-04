@@ -13,7 +13,7 @@ function isEmpty(str) {
     return (!str || 0 == str.length);
 }
 
-export default function PieceCitation({ tag, data }) {
+export default function PieceCitation({ tag, data, titleOnly }) {
     tag = (tag ? tag : 'em');
 
     const Tag = ('em' == tag ? EmTag : NoTag);
@@ -37,7 +37,7 @@ export default function PieceCitation({ tag, data }) {
     return (
         <span>
             <SpaceSeparatedPhrase>
-                {!isEmpty(data.composer.fullName) ? data.composer.fullName : null}
+                {!titleOnly && !isEmpty(data.composer.fullName) ? data.composer.fullName : null}
                 <SpaceSeparatedPhrase separator=', '>
                     <SpaceSeparatedPhrase>
                         {!isEmpty(data.prefix) ? data.prefix : null}
