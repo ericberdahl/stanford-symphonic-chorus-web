@@ -1,3 +1,4 @@
+import glob from 'glob-promise';
 import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
@@ -33,16 +34,9 @@ async function createModel() : Promise<IModel> {
 
     const model = new Model(<Configuration>yaml.parse(await fs.readFile(path.join(basePath, CONFIG_FILENAME), 'utf8')));
 
-    const performanceDataDirFullPath = path.join(basePath, PERFORMANCE_DATA_DIR);
-    const dirEntries = await fs.readdir(performanceDataDirFullPath, { withFileTypes: true });
-    const performancesEntries = dirEntries.filter((dirent) => dirent.isFile())
-                                    .map((dirent) => dirent.name);
-    const performances = await Promise.all(performancesEntries.map(async (filename) => {            
-        const filepath = path.join(performanceDataDirFullPath, filename);
-        const contents = await fs.readFile(filepath, 'utf8');
-        const performance = deserializePerformance(yaml.parse(contents), model);
-
-        return performance;
+    const performanceDatafiles = await glob('*.yml', { cwd: path.join(basePath, PERFORMANCE_DATA_DIR), realpath: true });
+    const performances = await Promise.all(performanceDatafiles.map(async (filepath) => {            
+        return deserializePerformance(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
     }));
 
     return model;
