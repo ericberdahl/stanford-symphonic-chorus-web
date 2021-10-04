@@ -11,6 +11,7 @@ import TitledSegment from '../components/titledSegment'
 import Model from '../common/model'
 
 import styles from '../styles/performances.module.scss'
+import PageLink from '../components/pageLink'
 
 function Introduction(pageData) {
     const PushPerformance = (p) => {
@@ -40,7 +41,6 @@ function Introduction(pageData) {
 }
 
 function Sidebar(props) {
-    // TODO: Complete China Music Tour information -- move into its own component?
     return (
         <div className={styles.sidebar}>
             <ChinaTour/>
@@ -136,7 +136,10 @@ function Performance({ data }) {
             <div className={styles.extras}>
                 <ul className={styles.links}>
                     {0 < posterRoutes.length && <li>Poster (<FileLinks files={posterRoutes}/>)</li>}
-                    <li>TODO: FYLP</li>
+                    {data.repertoire.map((p, index) => {
+                        return (p.fylp ? 
+                        (<li key={index}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure: <PieceCitation data={p.fylp}/></a></PageLink></li>) : <></>);
+                    })}
                     <li>TODO: links</li>
                 </ul>
             </div>
@@ -180,12 +183,22 @@ function serializeComposer(composer) {
     }
 }
 
+function serializeFYLPReference(fylp) {
+    if (!fylp) return null;
+
+    return {
+        composer:   serializeComposer(fylp.piece.composer),
+        title:      fylp.piece.title
+    }
+}
+
 function serializePiece(piece) {
     return {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
         composer:       serializeComposer(piece.composer),
+        fylp:           serializeFYLPReference(piece.fylp),
         movement:       piece.movement,
         prefix:         piece.prefix,
         suffix:         piece.suffix,
