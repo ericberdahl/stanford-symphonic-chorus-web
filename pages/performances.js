@@ -136,10 +136,9 @@ function Performance({ data }) {
             <div className={styles.extras}>
                 <ul className={styles.links}>
                     {0 < posterRoutes.length && <li>Poster (<FileLinks files={posterRoutes}/>)</li>}
-                    {data.repertoire.map((p, index) => {
-                        return (p.fylp ? 
-                        (<li key={index}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure: <PieceCitation data={p.fylp}/></a></PageLink></li>) : <></>);
-                    })}
+                    {data.repertoire.filter((p) => p.fylp).map((p, index) => (
+                        <li key={index}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure: <PieceCitation data={p.fylp}/></a></PageLink></li>
+                    ))}
                     <li>TODO: links</li>
                 </ul>
             </div>
