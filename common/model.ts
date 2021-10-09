@@ -1,7 +1,9 @@
 import { IFYLP } from './fylp';
 import { Performance } from './performance'
 import { Repertoire } from './repertoire';
+import { deserializeFYLP } from './serializedFYLP';
 import { deserializePerformance } from './serializedPerformance'
+import { deserializeSupplement } from './serializedSupplement';
 
 import glob from 'glob-promise';
 import yaml from 'yaml';
@@ -10,11 +12,12 @@ import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
 import util from 'util';
-import { deserializeFYLP } from './serializedFYLP';
+import { ISupplement } from './supplement';
 
 const CONFIG_FILENAME       = path.join('data', 'main.yml');
 const PERFORMANCE_DATA_DIR  = path.join('data', 'performances')
 const FYLP_DATA_DIR         = path.join('data', 'fylp')
+const SUPPLEMENT_DATA_DIR   = path.join('data', 'supplements')
 
 type Configuration = {
     timezone : string;          // name of timezone in which the ensemble rehearses and performs
@@ -27,6 +30,7 @@ export interface IModel {
     readonly timezone : string;
     readonly repertoire : Repertoire;
     readonly fylp : Repertoire;
+    readonly supplements : ISupplement[];
 
     addPerformance(p : Performance);
     getPerformanceById(id : string) : Performance;
@@ -48,6 +52,11 @@ async function createModel() : Promise<IModel> {
         return deserializeFYLP(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
     }));
 
+    const supplementDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, SUPPLEMENT_DATA_DIR), realpath: true });
+    const supplements = await Promise.all(supplementDatafiles.map(async (filepath) => {
+        return deserializeSupplement(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
+    }));
+
     return model;
 }    
 
@@ -56,6 +65,7 @@ export default class Model implements IModel {
     readonly repertoire : Repertoire        = new Repertoire();
     private _currentQuarter : Performance   = null;
     private config : Configuration;
+    readonly supplements : ISupplement[]    = [];
 
     constructor(config : Configuration) {
         this.config = config;
