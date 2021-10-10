@@ -17,7 +17,7 @@ type SerializedFYLP = {
 }
 
 export function deserializeFYLP(data : SerializedFYLP, model : IModel) : IFYLP {
-    const piece = deserializePiece(data.piece, model);
+    const piece = deserializePiece(data.piece, model.repertoire);
 
     const result : FYLP = new FYLP(piece, data.description);
     data.albums.forEach((a) => result.addAlbum(a.director, a.description, a.label, a.image, a.shopping));

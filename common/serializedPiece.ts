@@ -1,5 +1,5 @@
-import { IModel } from './model'
 import { IPiece, Piece, NotedPerformance, IComposer, Composer } from './piece'
+import { Repertoire } from './repertoire';
 
 type SerializedComposer = string | Array<string>;
 
@@ -16,25 +16,25 @@ export type SerializedPiece = {
     performanceNote? : string;
 }
 
-export function deserializePiece(data : SerializedPiece, model : IModel) : IPiece {
-    const composer = deserializeComposer(data.composer, model);
+export function deserializePiece(data : SerializedPiece, repertoire? : Repertoire) : IPiece {
+    const composer = deserializeComposer(data.composer, repertoire);
 
-    const piece = model.repertoire.addPiece(new Piece(data.title,
-                                                      composer,
-                                                      data.movement,
-                                                      data.translation,
-                                                      data.commonTitle,
-                                                      data.catalog,
-                                                      data.arranger,
-                                                      data.prefix,
-                                                      data.suffix));
+    const piece = repertoire.addPiece(new Piece(data.title,
+                                                composer,
+                                                data.movement,
+                                                data.translation,
+                                                data.commonTitle,
+                                                data.catalog,
+                                                data.arranger,
+                                                data.prefix,
+                                                data.suffix));
     
     return (data.performanceNote ?
                 new NotedPerformance(piece, data.performanceNote) :
                 piece);
 }
 
-function deserializeComposer(composer: SerializedComposer, model : IModel) : IComposer {
+function deserializeComposer(composer: SerializedComposer, repertoire? : Repertoire) : IComposer {
 
     // If the composer field is an array, the final element is the family name and
     // the space-joined concatenation of the fields is the full name.
@@ -45,5 +45,5 @@ function deserializeComposer(composer: SerializedComposer, model : IModel) : ICo
                    (Array.isArray(composer) ? new Composer(composer.join(' '), composer[composer.length - 1]) :
                    (new Composer(composer, composer.split(' ').slice(-1)[0])) ));
 
-    return model.repertoire.validateComposer(result);
+    return repertoire?.validateComposer(result) || result;
 }

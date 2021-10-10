@@ -131,10 +131,10 @@ export function deserializePerformance(data : SerializedPerformance, model : IMo
     });
 
     if (data.repertoire.main) {
-        data.repertoire.main.forEach((p) => result.addRepertoire(deserializePiece(p, model), true));
+        data.repertoire.main.forEach((p) => result.addRepertoire(deserializePiece(p, model.repertoire), true));
     }
     if (data.repertoire.other) {
-        data.repertoire.other.forEach((p) => result.addRepertoire(deserializePiece(p, model)));
+        data.repertoire.other.forEach((p) => result.addRepertoire(deserializePiece(p, model.repertoire)));
     }
 
     if (data.poster) {
