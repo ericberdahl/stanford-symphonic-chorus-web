@@ -1,6 +1,8 @@
 import { IFYLP } from "./fylp";
 import { Performance } from "./performance";
 
+import util from 'util';
+
 export interface IComposer {
     readonly fullName : string;
     readonly familyName : string;
@@ -22,6 +24,23 @@ export interface IPiece {
     addPerformance(performanace : Performance);
 }
 
+export function compareComposers(a : IComposer, b : IComposer) : number {
+    let result = 0;
+
+    if (0 == result) {
+        result = a.familyName.localeCompare(b.familyName);
+    }
+    if (0 == result) {
+        result = a.fullName.localeCompare(b.fullName);
+    }
+
+    if (a.fullName == b.fullName && a.familyName != b.familyName) {
+        console.warn(util.format('Found composer "%s" with two family names, "%s" and "%s"', a.fullName, a.familyName, b.familyName));
+    }
+
+    return result;
+}
+
 export function comparePieces(a : IPiece, b : IPiece) : number {
     let result = 0;
 
@@ -29,10 +48,7 @@ export function comparePieces(a : IPiece, b : IPiece) : number {
     const makeStringArray = (s) => (Array.isArray(s) ? s : [ makeString(s) ]);
     
     if (0 == result) {
-        result = a.composer.familyName.localeCompare(b.composer.familyName);
-    }
-    if (0 == result) {
-        result = a.composer.fullName.localeCompare(b.composer.fullName);
+        result = compareComposers(a.composer, b.composer);
     }
     if (0 == result) {
         const aTitle = makeStringArray(a.title);

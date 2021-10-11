@@ -1,4 +1,4 @@
-import { Composer, IComposer, IPiece, comparePieces } from './piece';
+import { IComposer, IPiece, comparePieces, compareComposers } from './piece';
 
 import util from 'util';
 
@@ -45,15 +45,7 @@ export class Repertoire {
             subRep = new SubRepertoire(composer);
             this.subRepertoires.push(subRep);
             
-            this.subRepertoires.sort((a, b) => a.composer.familyName.localeCompare(b.composer.familyName) || a.composer.fullName.localeCompare(b.composer.fullName))
-        }
-        else {
-            if (subRep.composer.fullName != composer.fullName) {
-                console.warn(util.format('Composer fullName does not match "%s" != "%s"', subRep.composer.fullName, composer.fullName));
-            }
-            if (subRep.composer.familyName != composer.familyName) {
-                console.warn(util.format('Composer familyName does not match "%s" != "%s"', subRep.composer.familyName, composer.familyName));
-            }
+            this.subRepertoires.sort((a, b) => compareComposers(a.composer, b.composer))
         }
 
         return subRep.composer;
@@ -84,7 +76,7 @@ export class Repertoire {
     }
 
     private findSubRepertoire(composer : IComposer) : SubRepertoire {
-        return this.subRepertoires.find((r) => r.composer.fullName == composer.fullName);
+        return this.subRepertoires.find((r) => 0 == compareComposers(r.composer, composer));
     }
 
     private getSubRepertoire(composer : IComposer) : SubRepertoire {
