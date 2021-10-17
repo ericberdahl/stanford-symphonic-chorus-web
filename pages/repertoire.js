@@ -46,7 +46,7 @@ function SubRepertoire({ composer, pieces }) {
                 {pieces.map((p, index) => (
                     <li key={index} className={styles.piece}>
                         <div className={styles.citation}><PieceCitation data={p}/></div>
-                        <div className={styles.fylp}>TODO: FYLP citation</div>
+                        {p.fylp && <div className={styles.fylp}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure</a></PageLink></div> }
                         <div className={styles.performances}>
                             {p.performances.map((pf, index) => (
                                 <div key={index}><PageLink page={pf} collection="performances">{pf.quarter}</PageLink></div>
@@ -97,12 +97,24 @@ function serializePerformanceReference(performance) {
     }
 }
 
+function serializeFYLPReference(fylp) {
+    if (!fylp) return null;
+
+    return {
+        piece: {
+            composer:   serializeComposer(fylp.piece.composer),
+            title:      fylp.piece.title
+        }
+    };
+}
+
 function serializePiece(piece) {
     return {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
         composer:       serializeComposer(piece.composer),
+        fylp:           serializeFYLPReference(piece.fylp),
         movement:       piece.movement,
         prefix:         piece.prefix,
         suffix:         piece.suffix,

@@ -113,11 +113,11 @@ class FYLPCollection extends Collection {
     }
 
     findSiteEntryForId(id) {
-        return new SiteEntry(util.format('/fylp/%s',  id));
+        return new SiteEntry(util.format('/fylp/%s', id));
     }
 
     getPageId(page) {
-        return util.format('%s/%s', makeSlug(page.composer.fullName), makeSlug(page.title));
+        return util.format('%s/%s', makeSlug(page.piece.composer.fullName), makeSlug(page.piece.title));
     }
 }
 
