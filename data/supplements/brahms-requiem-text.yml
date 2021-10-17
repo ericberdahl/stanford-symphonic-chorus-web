@@ -1,5 +1,11 @@
 title: "Text – Brahms _Ein Deutsches Requiem_"
 
+piece:
+    composer: "Johannes Brahms"
+    title: "Ein Deutsches Requiem"
+    translation: "A German Requiem"
+    catalog: "Op. 45"
+
 breadcrumb: "Brahms Requiem Text"
 
 content: |

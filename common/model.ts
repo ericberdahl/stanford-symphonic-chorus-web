@@ -57,8 +57,10 @@ async function createModel() : Promise<IModel> {
 
     const supplementDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, SUPPLEMENT_DATA_DIR), realpath: true });
     const supplements = await Promise.all(supplementDatafiles.map(async (filepath) => {
-        return deserializeSupplement(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
+        return deserializeSupplement(yaml.parse(await fs.readFile(filepath, 'utf8')));
     }));
+    model.supplements.push(...supplements);
+    // TODO : hook supplements into their pieces, not into the model
 
     return model;
 }    

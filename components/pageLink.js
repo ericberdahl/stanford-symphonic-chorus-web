@@ -121,10 +121,26 @@ class FYLPCollection extends Collection {
     }
 }
 
+class SupplementCollection extends Collection {
+    constructor(name) {
+        super(name);
+    }
+
+    findSiteEntryForId(id) {
+        return new SiteEntry(util.format('/fylp/%s', id));
+    }
+
+    getPageId(supplement) {
+        return util.format('%s', makeSlug(supplement.breadcrumb));
+    }
+}
+
+
 const collections = [
     new PerformanceCollection('performances'),
     new TopLevelCollection('topLevel'),
     new FYLPCollection('fylp'),
+    new SupplementCollection('supplement'),
 ];
 
 function getCollection(collection) {
