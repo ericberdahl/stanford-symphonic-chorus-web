@@ -1,5 +1,5 @@
 import { IFYLP, FYLP } from './fylp';
-import { IModel } from './model';
+import { Repertoire } from './repertoire';
 import { SerializedPiece, deserializePiece } from './serializedPiece';
 
 type SerializedAlbum = {
@@ -16,8 +16,8 @@ type SerializedFYLP = {
     albums : SerializedAlbum[];
 }
 
-export function deserializeFYLP(data : SerializedFYLP, model : IModel) : IFYLP {
-    const piece = deserializePiece(data.piece, model.repertoire);
+export function deserializeFYLP(data : SerializedFYLP, repertoire : Repertoire) : IFYLP {
+    const piece = repertoire.findPiece(deserializePiece(data.piece));
 
     const result : FYLP = new FYLP(piece, data.description);
     data.albums.forEach((a) => result.addAlbum(a.director, a.description, a.label, a.image, a.shopping));

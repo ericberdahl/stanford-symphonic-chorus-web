@@ -1,10 +1,12 @@
 import { IModel } from './model'
 import { Performance, Rehearsal } from './performance'
-import { deserializePiece, SerializedPiece } from './serializedPiece';
+import { deserializePiece, SerializedPerformancePiece } from './serializedPiece';
 
 import { DateTime } from 'luxon';
 
 import util from 'util';
+import { Repertoire } from './repertoire';
+import { NotedPerformance } from './piece';
 
 type SerializedSoloist = {
     name : string;
@@ -66,8 +68,8 @@ type SerializedPerformance = {
     membershipLimit? : number;
     concerts : SerializedConcert[];
     repertoire : {
-        main : SerializedPiece[];
-        other? : SerializedPiece[];
+        main : SerializedPerformancePiece[];
+        other? : SerializedPerformancePiece[];
     };
     events? : SerializedEvent[];
     tuttiRehearsals : SerializedRehearsalSequence[];
@@ -112,6 +114,15 @@ function deserializeRehearsalSequence(spec : SerializedRehearsalSequence, timezo
     return result;
 }
 
+function deserializePieceForPerformance(serializedPiece : SerializedPerformancePiece, performance : Performance, isMain : boolean, repertoire : Repertoire) {
+    const piece = repertoire.addPiece(deserializePiece(serializedPiece));
+
+    performance.addRepertoire(serializedPiece.performanceNote ?
+                                    new NotedPerformance(piece, serializedPiece.performanceNote) :
+                                    piece,
+                              isMain);
+}
+
 export function deserializePerformance(data : SerializedPerformance, model : IModel) : Performance {
     const result = new Performance(data.quarter,
                                    data.syllabus,
@@ -131,10 +142,10 @@ export function deserializePerformance(data : SerializedPerformance, model : IMo
     });
 
     if (data.repertoire.main) {
-        data.repertoire.main.forEach((p) => result.addRepertoire(deserializePiece(p, model.repertoire), true));
+        data.repertoire.main.forEach((p) => deserializePieceForPerformance(p, result, true, model.repertoire));
     }
     if (data.repertoire.other) {
-        data.repertoire.other.forEach((p) => result.addRepertoire(deserializePiece(p, model.repertoire)));
+        data.repertoire.other.forEach((p) => deserializePieceForPerformance(p, result, false, model.repertoire));
     }
 
     if (data.poster) {

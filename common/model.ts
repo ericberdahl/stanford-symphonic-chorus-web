@@ -49,7 +49,7 @@ async function createModel() : Promise<IModel> {
 
     const fylpDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, FYLP_DATA_DIR), realpath: true });
     const fylps = await Promise.all(fylpDatafiles.map(async (filepath) => {
-        return deserializeFYLP(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
+        return deserializeFYLP(yaml.parse(await fs.readFile(filepath, 'utf8')), model.repertoire);
     }));
 
     const supplementDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, SUPPLEMENT_DATA_DIR), realpath: true });

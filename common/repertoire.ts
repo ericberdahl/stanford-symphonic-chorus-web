@@ -15,19 +15,19 @@ class SubRepertoire {
             throw new Error(util.format('Piece with composer "%s" cannot be added to sub-repertoire for composer "%s"', piece.composer.fullName, this.composer.fullName));
         }
 
-        let result = this.pieces.find((p) => 0 == comparePieces(p, piece));
+        let result = this.findPiece(piece);
         if (!result) {
             result = piece;
             this.pieces.push(piece);
 
-            this.pieces.sort((a, b) => {
-                const aTitle = (Array.isArray(a.title) ? a.title[0] : <string>a.title);
-                const bTitle = (Array.isArray(b.title) ? b.title[0] : <string>b.title);
-                return aTitle.localeCompare(bTitle)
-            });
+            this.pieces.sort((a, b) => comparePieces(a, b));
         }
 
         return result;
+    }
+
+    findPiece(piece : IPiece) : IPiece {
+        return this.pieces.find((p) => 0 == comparePieces(p, piece));
     }
 }
 
@@ -67,7 +67,12 @@ export class Repertoire {
         return this.getSubRepertoire(piece.composer).addPiece(piece);
     }
 
+    findPiece(piece : IPiece) : IPiece {
+        return this.findSubRepertoire(piece.composer)?.findPiece(piece);;
+    }
+
     getAllComposers() : IComposer[] {
+        // TODO : deprecate getAllComposers
         return this.composers;
     }
 
