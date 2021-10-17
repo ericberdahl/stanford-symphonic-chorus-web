@@ -116,8 +116,8 @@ class FYLPCollection extends Collection {
         return new SiteEntry(util.format('/fylp/%s', id));
     }
 
-    getPageId(page) {
-        return util.format('%s/%s', makeSlug(page.piece.composer.fullName), makeSlug(page.piece.title));
+    getPageId(fylp) {
+        return util.format('%s/%s', makeSlug(fylp.piece.composer.fullName), makeSlug(fylp.piece.title));
     }
 }
 

@@ -1,5 +1,5 @@
 import { ImageRoutes } from "./fileRoutes";
-import { IPiece } from "./piece";
+import { comparePieces, IPiece } from "./piece";
 
 interface IAlbum {
     readonly director : string;
@@ -29,19 +29,32 @@ class Album implements IAlbum {
 }
 
 export interface IFYLP {
-    readonly piece : IPiece;
+    piece : IPiece;
     readonly description : string;
     readonly albums : IAlbum[];
 }
 
 export class FYLP implements IFYLP {
-    readonly piece : IPiece;
+    _piece : IPiece;
     readonly description : string;
     readonly albums : IAlbum[]  = [];
 
     constructor(piece : IPiece, description? : string) {
         this.piece = piece;
         this.description = (description || '');
+    }
+
+    get piece() : IPiece { return this._piece; }
+    set piece(p : IPiece) {
+        if (this._piece) {
+            this._piece.fylp = null;
+        }
+
+        this._piece = p;
+
+        if (this._piece) {
+            this._piece.fylp = this;
+        }
     }
 
     addAlbum(director : string, description : string, label? : string, image? : string, shopping? : string[]) {

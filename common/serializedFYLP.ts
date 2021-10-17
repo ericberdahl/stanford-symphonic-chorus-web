@@ -16,13 +16,9 @@ type SerializedFYLP = {
     albums : SerializedAlbum[];
 }
 
-export function deserializeFYLP(data : SerializedFYLP, repertoire : Repertoire) : IFYLP {
-    const piece = repertoire.findPiece(deserializePiece(data.piece));
-
-    const result : FYLP = new FYLP(piece, data.description);
+export function deserializeFYLP(data : SerializedFYLP) : IFYLP {
+    const result : FYLP = new FYLP(deserializePiece(data.piece), data.description);
     data.albums.forEach((a) => result.addAlbum(a.director, a.description, a.label, a.image, a.shopping));
-
-    piece.fylp = result;
 
     return result;
 }
