@@ -18,13 +18,13 @@ import { DateTime } from 'luxon'
 import styles from '../styles/performances.module.scss'
 import { concertStaticProps } from '../common/performanceStaticProps'
 
-function Introduction(pageData) {
+function Introduction({ performances }) {
     const PushPerformance = (p) => {
         years.push({ year: p.year, id: p.id });
     }
 
     let years = [];
-    pageData.performances.forEach((p) => {
+    performances.forEach((p) => {
         if (0 == years.length || years[years.length - 1].year != p.year) {
             PushPerformance(p);
         }
@@ -45,7 +45,7 @@ function Introduction(pageData) {
     );
 }
 
-function Sidebar(props) {
+function Sidebar() {
     return (
         <div className={styles.sidebar}>
             <ChinaTour/>
@@ -151,7 +151,7 @@ function Performance({ data }) {
     );
 }
 
-export default function Performances({ pageData }) {
+export default function Performances({ performances }) {
     const title = "Performances";
     const breadcrumbPath = [
         { page: 'home', label: 'Symphonic Chorus Home' },
@@ -161,11 +161,11 @@ export default function Performances({ pageData }) {
     return (
         <Layout
             title={title}
-            introduction={<Introduction {...pageData}/>}
-            sidebar={<Sidebar {...pageData}/>}
+            introduction={<Introduction performances={performances}/>}
+            sidebar={<Sidebar/>}
             breadcrumbs={breadcrumbPath}>
             <div>
-                {pageData.performances.map((p) => {
+                {performances.map((p) => {
                     return (<Performance key={p.quarter} data={p}/>);
                 })}
             </div>
@@ -193,15 +193,13 @@ function serializePerformance(performance) {
 
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
-    const performances = model.performanceHistory.map(serializePerformance);
     
-    // TODO : rename props to match semantics of this page
-    const pageData = {
-        performances: performances
+    const props = {
+        performances: model.performanceHistory.map(serializePerformance)
     }
 
     return {
-        props: { pageData }
+        props: props
     }
 }
 
