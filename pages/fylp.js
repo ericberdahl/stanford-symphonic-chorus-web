@@ -46,7 +46,7 @@ function SubRepertoire({ composer, pieces }) {
             <ol>
                 {pieces.map((p, index) => (
                     <li key={index} className={styles.piece}>
-                        <PageLink page={p} collection="fylp"><a><PieceCitation data={p} titleOnly/></a></PageLink>
+                        <PageLink page={p.fylp} collection="fylp"><a><PieceCitation data={p} titleOnly/></a></PageLink>
                     </li>
                 ))}
             </ol>
@@ -92,12 +92,23 @@ function serializePerformanceReference(performance) {
     }
 }
 
+function serializeFYLPReference(fylp) {
+    if (!fylp) return null;
+
+    return {
+        piece: {
+            composer:   serializeComposer(fylp.piece.composer),
+            title:      fylp.piece.title
+        }
+    };
+}
 function serializePiece(piece) {
     return {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
         composer:       serializeComposer(piece.composer),
+        fylp:           serializeFYLPReference(piece.fylp),
         movement:       piece.movement,
         prefix:         piece.prefix,
         suffix:         piece.suffix,

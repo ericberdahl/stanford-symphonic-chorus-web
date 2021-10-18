@@ -137,7 +137,7 @@ function Performance({ data }) {
                 <ul className={styles.links}>
                     {0 < posterRoutes.length && <li>Poster (<FileLinks files={posterRoutes}/>)</li>}
                     {data.repertoire.filter((p) => p.fylp).map((p, index) => (
-                        <li key={index}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure: <PieceCitation data={p.fylp}/></a></PageLink></li>
+                        <li key={index}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure: <PieceCitation data={p}/></a></PageLink></li>
                     ))}
                     <li>TODO: links</li>
                 </ul>
@@ -186,9 +186,11 @@ function serializeFYLPReference(fylp) {
     if (!fylp) return null;
 
     return {
-        composer:   serializeComposer(fylp.piece.composer),
-        title:      fylp.piece.title
-    }
+        piece: {
+            composer:   serializeComposer(fylp.piece.composer),
+            title:      fylp.piece.title
+        }
+    };
 }
 
 function serializePiece(piece) {
