@@ -5,7 +5,7 @@ import PieceCitation from '../components/pieceCitation';
 import TitledSegment from '../components/titledSegment';
 
 import Model from '../common/model'
-import { composerStaticProps, pieceStaticProps } from '../common/pieceStaticProps';
+import { repertoireStaticProps } from '../common/repertoireStaticProps';
 import { makeSlug } from '../common/slug';
 
 import styles from '../styles/repertoirePage.module.scss'
@@ -84,24 +84,11 @@ export default function Repertoire({ repertoire })
     );
 }
 
-function serializeRepertoire(repertoire) {
-    const composers = repertoire.getAllComposers();
-
-    const result = composers.map((c) => {
-        return {
-            composer:   composerStaticProps(c),
-            pieces:     repertoire.getPiecesByComposer(c).map(pieceStaticProps)
-        }
-    });
-
-    return result;
-}
-
 export async function getStaticProps() {
     const model = await Model.singleton;
     
     const props = {
-        repertoire: serializeRepertoire(model.repertoire)
+        repertoire: repertoireStaticProps(model.repertoire)
     }
 
     return {
