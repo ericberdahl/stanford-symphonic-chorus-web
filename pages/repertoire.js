@@ -4,9 +4,8 @@ import PageLink from '../components/pageLink';
 import PieceCitation from '../components/pieceCitation';
 import TitledSegment from '../components/titledSegment';
 
-import { fylpRefStaticProps } from '../common/fylpStaticProps';
 import Model from '../common/model'
-import { composerStaticProps } from '../common/pieceStaticProps';
+import { composerStaticProps, pieceStaticProps } from '../common/pieceStaticProps';
 import { makeSlug } from '../common/slug';
 
 import styles from '../styles/repertoirePage.module.scss'
@@ -85,36 +84,13 @@ export default function Repertoire({ repertoire })
     );
 }
 
-function serializePerformanceReference(performance) {
-    return {
-        id:         performance.id,
-        quarter:    performance.quarter
-    }
-}
-
-function serializePiece(piece) {
-    return {
-        arranger:       piece.arranger,
-        catalog:        piece.catalog,
-        commonTitle:    piece.commonTitle,
-        composer:       composerStaticProps(piece.composer),
-        fylp:           fylpRefStaticProps(piece.fylp),
-        movement:       piece.movement,
-        prefix:         piece.prefix,
-        suffix:         piece.suffix,
-        title:          piece.title,
-        translation:    piece.translation,
-        performances:   piece.performances.map(serializePerformanceReference)
-    };
-}
-
 function serializeRepertoire(repertoire) {
     const composers = repertoire.getAllComposers();
 
     const result = composers.map((c) => {
         return {
             composer:   composerStaticProps(c),
-            pieces:     repertoire.getPiecesByComposer(c).map((p => serializePiece(p)))
+            pieces:     repertoire.getPiecesByComposer(c).map(pieceStaticProps)
         }
     });
 

@@ -8,7 +8,7 @@ import PieceCitation from '../../components/pieceCitation';
 import SpaceSeparatedPhrase from '../../components/spaceSeparatedPhrase';
 
 import Model from "../../common/model";
-import { composerStaticProps } from '../../common/pieceStaticProps';
+import { pieceStaticProps } from '../../common/pieceStaticProps';
 
 import { DateTime } from 'luxon';
 
@@ -310,20 +310,6 @@ function serializeSimpleEvent(event) {
     return result;
 }
 
-function serializePiece(piece) {
-    return {
-        arranger:       piece.arranger,
-        catalog:        piece.catalog,
-        commonTitle:    piece.commonTitle,
-        composer:       composerStaticProps(piece.composer),
-        movement:       piece.movement,
-        prefix:         piece.prefix,
-        suffix:         piece.suffix,
-        title:          piece.title,
-        translation:    piece.translation,
-    };
-}
-
 function serializePerformance(performance) {
     const result = {
         collaborators:          performance.collaborators,
@@ -331,7 +317,7 @@ function serializePerformance(performance) {
         dressRehearsals:        performance.dressRehearsals.map(serializeSimpleEvent),
         id:                     performance.id,
         quarter:                performance.quarter,
-        repertoire:             performance.repertoire.map(serializePiece),
+        repertoire:             performance.repertoire.map(pieceStaticProps),
         sectionalsTenorBass:    performance.sectionalsTenorBass.map(serializeRehearsal),
         sectionalsSopranoAlto:  performance.sectionalsSopranoAlto.map(serializeRehearsal),
         soloists:               performance.soloists,

@@ -7,7 +7,8 @@ import PieceCitation from '../../../components/pieceCitation';
 import TitledSegment from '../../../components/titledSegment';
 
 import Model  from '../../../common/model';
-import {composerStaticProps } from '../../../common/pieceStaticProps';
+import { performanceRefStaticProps } from '../../../common/performanceStaticProps';
+import { composerStaticProps } from '../../../common/pieceStaticProps';
 import { makeSlug } from '../../../common/slug';
 
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
@@ -122,13 +123,6 @@ async function serializeFYLP(fylp) {
     };
 }
 
-function serializePerformanceReference(performance) {
-    return {
-        id:         performance.id,
-        quarter:    performance.quarter
-    }
-}
-
 async function serializePieceForFYLP(piece) {
     return {
         arranger:       piece.arranger,
@@ -141,7 +135,7 @@ async function serializePieceForFYLP(piece) {
         suffix:         piece.suffix,
         title:          piece.title,
         translation:    piece.translation,
-        performances:   piece.performances.map(serializePerformanceReference)
+        performances:   piece.performances.map(performanceRefStaticProps)
     };
 }
 

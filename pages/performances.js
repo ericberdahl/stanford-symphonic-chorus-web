@@ -8,10 +8,9 @@ import PieceCitation from '../components/pieceCitation'
 import PairedImage from '../components/pairedImage'
 import TitledSegment from '../components/titledSegment'
 
-import { fylpRefStaticProps } from '../common/fylpStaticProps'
 import Model from '../common/model'
 import PageLink from '../components/pageLink'
-import { composerStaticProps } from '../common/pieceStaticProps'
+import { pieceStaticProps } from '../common/pieceStaticProps'
 
 import styles from '../styles/performances.module.scss'
 
@@ -177,21 +176,6 @@ function serializeConcert(concert) {
     };
 }
 
-function serializePiece(piece) {
-    return {
-        arranger:       piece.arranger,
-        catalog:        piece.catalog,
-        commonTitle:    piece.commonTitle,
-        composer:       composerStaticProps(piece.composer),
-        fylp:           fylpRefStaticProps(piece.fylp),
-        movement:       piece.movement,
-        prefix:         piece.prefix,
-        suffix:         piece.suffix,
-        title:          piece.title,
-        translation:    piece.translation,
-    };
-}
-
 function serializeImageRoutes(imageRoutes) {
     if (!imageRoutes) {
         return null;
@@ -217,7 +201,7 @@ function serializePerformance(performance) {
         id:                 performance.id,
         instructors:        performance.instructors,
         posterRoutes:       serializeImageRoutes(performance.posterRoutes),
-        repertoire:         performance.repertoire.map(serializePiece),
+        repertoire:         performance.repertoire.map(pieceStaticProps),
         soloists:           performance.soloists,
         quarter:            performance.quarter,
         year:               performance.concerts[0].start.year,

@@ -3,6 +3,7 @@ import CommaSeparatedList from '../components/commaSeparatedList'
 import Layout from '../components/layout'
 import Lightbox from '../components/lightbox'
 import Location from '../components/location'
+import Markdown from '../components/Markdown'
 import PageLink from '../components/pageLink'
 import PairedImage from '../components/pairedImage'
 import PieceCitation from '../components/pieceCitation'
@@ -10,14 +11,13 @@ import SpaceSeparatedPhrase from '../components/spaceSeparatedPhrase'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
+import { pieceStaticProps } from '../common/pieceStaticProps'
 
 import { DateTime } from 'luxon'
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 import { Fragment } from 'react'
 
 import styles from '../styles/Home.module.scss'
-import Markdown from '../components/Markdown'
-import { composerStaticProps } from '../common/pieceStaticProps'
 
 function ConcertEvent({ currentQuarter, data }) {
     return (
@@ -204,20 +204,6 @@ function serializeConcert(concert) {
     };
 }
 
-function serializePiece(piece) {
-    return {
-        arranger:       piece.arranger,
-        catalog:        piece.catalog,
-        commonTitle:    piece.commonTitle,
-        composer:       composerStaticProps(piece.composer),
-        movement:       piece.movement,
-        prefix:         piece.prefix,
-        suffix:         piece.suffix,
-        title:          piece.title,
-        translation:    piece.translation,
-    };
-}
-
 function serializeEvent(event) {
     return {
         start:      event.start.toISO(),
@@ -262,8 +248,8 @@ async function serializePerformance(performance) {
         firstRehearsal:     serializeTuttiRehearsal(performance.tuttiRehearsals[0]),
         heraldImageRoutes:  serializeImageRoutes(performance.heraldImageRoutes),
         id:                 performance.id,
-        mainPieces:         performance.mainPieces.map(serializePiece),
-        repertoire:         performance.repertoire.map(serializePiece),
+        mainPieces:         performance.mainPieces.map(pieceStaticProps),
+        repertoire:         performance.repertoire.map(pieceStaticProps),
         quarter:            performance.quarter,
     };
 }

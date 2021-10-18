@@ -1,4 +1,5 @@
 import { fylpRefStaticProps, FYLPRefStaticProps } from "./fylpStaticProps";
+import { PerformanceRefStaticProps, performanceRefStaticProps } from "./performanceStaticProps";
 import { IComposer, IPiece } from "./piece";
 
 export type ComposerStaticProps = {
@@ -13,6 +14,7 @@ export type PieceStaticProps = {
     composer : ComposerStaticProps;
     fylp : FYLPRefStaticProps;
     movement : string;
+    performances : PerformanceRefStaticProps[];
     prefix : string;
     suffix : string;
     title : string | string[];
@@ -34,10 +36,10 @@ export function pieceStaticProps(piece : IPiece) : PieceStaticProps {
         composer:       composerStaticProps(piece.composer),
         fylp:           fylpRefStaticProps(piece.fylp),
         movement:       piece.movement,
+        performances:   piece.performances.map(performanceRefStaticProps),
         prefix:         piece.prefix,
         suffix:         piece.suffix,
         title:          piece.title,
         translation:    piece.translation,
-        // TODO : performances
     };
 }
