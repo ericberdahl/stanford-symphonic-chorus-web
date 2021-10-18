@@ -4,7 +4,7 @@ import Markdown from "../../components/Markdown";
 import Model from "../../common/model";
 import { makeSlug } from "../../common/slug";
 
-import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
+import { supplementStaticProps } from '../../common/supplementStaticProps'
 
 export default function SupplementPage({ supplement  }) {
     const breadcrumbPath = [
@@ -24,21 +24,13 @@ export default function SupplementPage({ supplement  }) {
     );
 }
 
-async function serializeSupplement(supplement) {
-    return {
-        title:      supplement.title,
-        breadcrumb: supplement.breadcrumb,
-        contentMDX: await mdxSerializeMarkdown(supplement.content),
-    }
-}
-
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
 
     const supplement = model.supplements.find((s) => makeSlug(s.breadcrumb) == params.id);
 
     const props = {
-        supplement: await serializeSupplement(supplement)
+        supplement: await supplementStaticProps(supplement)
     }
 
     return {
