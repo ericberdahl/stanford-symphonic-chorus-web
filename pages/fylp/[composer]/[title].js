@@ -7,20 +7,17 @@ import PieceCitation from '../../../components/pieceCitation';
 import TitledSegment from '../../../components/titledSegment';
 
 import Model  from '../../../common/model';
-import { performanceRefStaticProps } from '../../../common/performanceStaticProps';
-import { composerStaticProps } from '../../../common/pieceStaticProps';
 import { makeSlug } from '../../../common/slug';
 
-import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
-
 import styles from '../../../styles/fylpPiece.module.scss'
+import { fylpStaticProps } from '../../../common/fylpStaticProps';
 
-function Introduction({ piece }) {
+function Introduction({ fylp }) {
     return (
         <TitledSegment title="Contents">
             <div className={styles.introduction}>
                 <ol>
-                    {piece.fylp.albums.map((a, index) => (
+                    {fylp.albums.map((a, index) => (
                         <li key={index}><a href={'#' + makeSlug(a.director)}>{a.director}</a></li>
                     ))}
                 </ol>
@@ -29,7 +26,7 @@ function Introduction({ piece }) {
     );
 }
 
-function Sidebar({ piece }) {
+function Sidebar({ fylp }) {
     return (
         <div>
             <Lightbox
@@ -41,7 +38,7 @@ function Sidebar({ piece }) {
             <div className={styles.performances}>
                 <TitledSegment title="Performances">
                     <ol>
-                        {Array.from(piece.performances).reverse().map((p, index) => (
+                        {Array.from(fylp.piece.performances).reverse().map((p, index) => (
                             <li key={index}><PageLink page={p} collection="performances">{p.quarter}</PageLink></li>
                         ))}
                     </ol>
@@ -61,9 +58,9 @@ function Album({ album }) {
     );
 }
 
-export default function FYLP({ piece })
+export default function FYLP({ fylp })
 {
-    const pageBreadcrumb = (<PieceCitation data={piece}/>);
+    const pageBreadcrumb = (<PieceCitation data={fylp.piece}/>);
     const pageTitle = (<>For Your Listening Pleasure - {pageBreadcrumb}</>);
 
     const breadcrumbPath = [
@@ -75,68 +72,18 @@ export default function FYLP({ piece })
     return (
         <Layout
             title={pageTitle}
-            introduction={<Introduction piece={piece}/>}
-            sidebar={<Sidebar piece={piece}/>}
+            introduction={<Introduction fylp={fylp}/>}
+            sidebar={<Sidebar fylp={fylp}/>}
             breadcrumbs={breadcrumbPath}>
                 <div className={styles.fylp}>
-                    <h2><PieceCitation data={piece}/></h2>
-                    <div className={styles.overallDescription}><Markdown mdx={piece.fylp.descriptionMDX} /></div>
-                    {piece.fylp.albums.map((a, index) => (
+                    <h2><PieceCitation data={fylp.piece}/></h2>
+                    <div className={styles.overallDescription}><Markdown mdx={fylp.descriptionMDX} /></div>
+                    {fylp.albums.map((a, index) => (
                         <Album key={index} album={a} />
                     ))}
                 </div>
         </Layout>
     );
-}
-
-function serializeImageRoutes(imageRoutes) {
-    if (!imageRoutes) {
-        return null;
-    }
-
-    const result = {
-        pdf: imageRoutes?.pdf || null,
-        jpg: imageRoutes?.jpg || null,
-        caption: imageRoutes?.caption || null,
-        width: imageRoutes.width,
-        height: imageRoutes.height,
-    };
-
-    return result;
-}
-
-async function serializeAlbum(album) {
-    return {
-        director:       album.director,
-        descriptionMDX: await mdxSerializeMarkdown(album.description),
-        label:          album.label,
-        image:          serializeImageRoutes(album.image),
-        shopping:       album.shopping,
-
-    };
-}
-
-async function serializeFYLP(fylp) {
-    return {
-        descriptionMDX: await mdxSerializeMarkdown(fylp.description),
-        albums:         await Promise.all(fylp.albums.map(async (a) => serializeAlbum(a)))
-    };
-}
-
-async function serializePieceForFYLP(piece) {
-    return {
-        arranger:       piece.arranger,
-        catalog:        piece.catalog,
-        commonTitle:    piece.commonTitle,
-        composer:       composerStaticProps(piece.composer),
-        fylp:           await serializeFYLP(piece.fylp),
-        movement:       piece.movement,
-        prefix:         piece.prefix,
-        suffix:         piece.suffix,
-        title:          piece.title,
-        translation:    piece.translation,
-        performances:   piece.performances.map(performanceRefStaticProps)
-    };
 }
 
 export async function getStaticProps({ params }) {
@@ -145,7 +92,7 @@ export async function getStaticProps({ params }) {
     const piece = model.fylp.pieces.find((p) => (makeSlug(p.composer.fullName) == params.composer && makeSlug(p.title) == params.title));
 
     const props = {
-        piece: await serializePieceForFYLP(piece)
+        fylp:   await fylpStaticProps(piece.fylp)
     }
 
     return {
