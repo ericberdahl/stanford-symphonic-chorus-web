@@ -8,11 +8,12 @@ import PieceCitation from '../components/pieceCitation'
 import PairedImage from '../components/pairedImage'
 import TitledSegment from '../components/titledSegment'
 
+import { fylpRefStaticProps } from '../common/fylpStaticProps'
 import Model from '../common/model'
+import PageLink from '../components/pageLink'
 import { composerStaticProps } from '../common/pieceStaticProps'
 
 import styles from '../styles/performances.module.scss'
-import PageLink from '../components/pageLink'
 
 function Introduction(pageData) {
     const PushPerformance = (p) => {
@@ -176,24 +177,13 @@ function serializeConcert(concert) {
     };
 }
 
-function serializeFYLPReference(fylp) {
-    if (!fylp) return null;
-
-    return {
-        piece: {
-            composer:   composerStaticProps(fylp.piece.composer),
-            title:      fylp.piece.title
-        }
-    };
-}
-
 function serializePiece(piece) {
     return {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
         composer:       composerStaticProps(piece.composer),
-        fylp:           serializeFYLPReference(piece.fylp),
+        fylp:           fylpRefStaticProps(piece.fylp),
         movement:       piece.movement,
         prefix:         piece.prefix,
         suffix:         piece.suffix,

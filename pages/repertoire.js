@@ -4,6 +4,7 @@ import PageLink from '../components/pageLink';
 import PieceCitation from '../components/pieceCitation';
 import TitledSegment from '../components/titledSegment';
 
+import { fylpRefStaticProps } from '../common/fylpStaticProps';
 import Model from '../common/model'
 import { composerStaticProps } from '../common/pieceStaticProps';
 import { makeSlug } from '../common/slug';
@@ -91,24 +92,13 @@ function serializePerformanceReference(performance) {
     }
 }
 
-function serializeFYLPReference(fylp) {
-    if (!fylp) return null;
-
-    return {
-        piece: {
-            composer:   composerStaticProps(fylp.piece.composer),
-            title:      fylp.piece.title
-        }
-    };
-}
-
 function serializePiece(piece) {
     return {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
         composer:       composerStaticProps(piece.composer),
-        fylp:           serializeFYLPReference(piece.fylp),
+        fylp:           fylpRefStaticProps(piece.fylp),
         movement:       piece.movement,
         prefix:         piece.prefix,
         suffix:         piece.suffix,
