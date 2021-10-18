@@ -6,22 +6,30 @@ import { makeSlug } from "../../common/slug";
 
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 
-export default function SupplementPage({ title, breadcrumb, content }) {
+export default function SupplementPage({ supplement  }) {
     const breadcrumbPath = [
         { page: 'home', label: 'Symphonic Chorus Home' },
         { page: 'performanceList', label: 'Performances' },
-        { page: '', label: breadcrumb }
+        { page: '', label: supplement.breadcrumb }
     ];
 
     return (
         <Layout
-            title={title}
+            title={supplement.title}
             introduction={<></>}
             sidebar={<></>}
             breadcrumbs={breadcrumbPath}>
-            <Markdown mdx={content}/>
+            <Markdown mdx={supplement.contentMDX}/>
         </Layout>
     );
+}
+
+async function serializeSupplement(supplement) {
+    return {
+        title:      supplement.title,
+        breadcrumb: supplement.breadcrumb,
+        contentMDX: await mdxSerializeMarkdown(supplement.content),
+    }
 }
 
 export async function getStaticProps({ params }) {
@@ -30,9 +38,7 @@ export async function getStaticProps({ params }) {
     const supplement = model.supplements.find((s) => makeSlug(s.breadcrumb) == params.id);
 
     const props = {
-        title:      supplement.title,
-        breadcrumb: supplement.breadcrumb,
-        content:    await mdxSerializeMarkdown(supplement.content)
+        supplement: await serializeSupplement(supplement)
     }
 
     return {
