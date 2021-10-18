@@ -1,4 +1,4 @@
-import { ImageRoutes } from "./fileRoutes";
+import { FileRoutes, ImageRoutes } from "./fileRoutes";
 
 export type ImageRoutesStaticProps = {
     pdf : string;
@@ -6,6 +6,11 @@ export type ImageRoutesStaticProps = {
     caption : string;
     width : number;
     height : number;
+}
+
+export type FileRouteStaticProp = {
+    variant : string;
+    route : string;
 }
 
 export function imageRoutesStaticProps(imageRoutes : ImageRoutes) : ImageRoutesStaticProps {
@@ -22,4 +27,13 @@ export function imageRoutesStaticProps(imageRoutes : ImageRoutes) : ImageRoutesS
     };
 
     return result;
+}
+
+export function fileRoutesStaticProps(fileRoutes : FileRoutes) : FileRouteStaticProp[] {
+    if (!fileRoutes) return null;
+    
+    return fileRoutes.variants.map((v) => ({
+        variant: v.toUpperCase(),
+        route: fileRoutes.getRoute(v)
+    }));
 }

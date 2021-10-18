@@ -6,6 +6,7 @@ import Person from '../components/person'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
+import { fileRoutesStaticProps } from '../common/fileRoutesStatiicProps'
 
 import { DateTime } from 'luxon'
 
@@ -215,10 +216,6 @@ export default function MemberInfo({ currentQuarter }) {
     );
 }
 
-function serializeFileRoutes(fileRoutes) {
-    return (fileRoutes ? fileRoutes.variants.map((v) => ({ variant: v.toUpperCase(), route: fileRoutes.getRoute(v) })) : null);
-}
-
 function serializePerformance(performance) {
     const result = {
         id:                     performance.id,
@@ -226,7 +223,7 @@ function serializePerformance(performance) {
         preregisterDate:        performance.preregisterDate.toISO(),
         quarter:                performance.quarter,
         registrationFee:        performance.registrationFee,
-        syllabusRoutes:         serializeFileRoutes(performance.syllabusRoutes),
+        syllabusRoutes:         fileRoutesStaticProps(performance.syllabusRoutes),
     };
 
     return result;
