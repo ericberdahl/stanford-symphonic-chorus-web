@@ -13,6 +13,7 @@ import { pieceStaticProps } from '../../common/pieceStaticProps';
 import { DateTime } from 'luxon';
 
 import styles from '../../styles/performances_id.module.scss';
+import { concertStaticProps } from '../../common/performanceStaticProps';
 
 function Introduction({ navItems }) {
     return (
@@ -313,7 +314,7 @@ function serializeSimpleEvent(event) {
 function serializePerformance(performance) {
     const result = {
         collaborators:          performance.collaborators,
-        concerts:               performance.concerts.map(serializeSimpleEvent),
+        concerts:               performance.concerts.map(concertStaticProps),
         dressRehearsals:        performance.dressRehearsals.map(serializeSimpleEvent),
         id:                     performance.id,
         quarter:                performance.quarter,

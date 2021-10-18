@@ -8,12 +8,15 @@ import PieceCitation from '../components/pieceCitation'
 import PairedImage from '../components/pairedImage'
 import TitledSegment from '../components/titledSegment'
 
+import { imageRoutesStaticProps } from '../common/fileRoutesStatiicProps'
 import Model from '../common/model'
 import PageLink from '../components/pageLink'
 import { pieceStaticProps } from '../common/pieceStaticProps'
 
+import { DateTime } from 'luxon'
+
 import styles from '../styles/performances.module.scss'
-import { imageRoutesStaticProps } from '../common/fileRoutesStatiicProps'
+import { concertStaticProps } from '../common/performanceStaticProps'
 
 function Introduction(pageData) {
     const PushPerformance = (p) => {
@@ -104,7 +107,7 @@ function ConcertList(props) {
     return (
         <>
             {props.data.map((c, index) => {
-                return (<p key={index}>{c.start}, <Location name={c.location}/></p>);
+                return (<p key={index}>{DateTime.fromISO(c.start).toFormat('DDDD, t')}, <Location name={c.location}/></p>);
             })}
         </>
     );
@@ -170,17 +173,10 @@ export default function Performances({ pageData }) {
     );
 }
 
-function serializeConcert(concert) {
-    return {
-        start:      concert.start.toFormat('DDDD, t'),
-        location:   concert.location
-    };
-}
-
 function serializePerformance(performance) {
     const result = {
         collaborators:      performance.collaborators,
-        concerts:           performance.concerts.map(serializeConcert),
+        concerts:           performance.concerts.map(concertStaticProps),
         directors:          performance.directors,
         heraldImageRoutes:  imageRoutesStaticProps(performance.heraldImageRoutes),
         id:                 performance.id,

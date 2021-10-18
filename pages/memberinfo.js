@@ -11,6 +11,7 @@ import { fileRoutesStaticProps } from '../common/fileRoutesStatiicProps'
 import { DateTime } from 'luxon'
 
 import styles from '../styles/memberinfo.module.scss'
+import { concertStaticProps } from '../common/performanceStaticProps'
 
 function Introduction({ navItems, quarter }) {
     // If the member info page ever needs to be displayed for historical performances, this logic and content
@@ -218,12 +219,14 @@ export default function MemberInfo({ currentQuarter }) {
 
 function serializePerformance(performance) {
     const result = {
-        id:                     performance.id,
-        membershipLimit:        performance.membershipLimit,
-        preregisterDate:        performance.preregisterDate.toISO(),
-        quarter:                performance.quarter,
-        registrationFee:        performance.registrationFee,
-        syllabusRoutes:         fileRoutesStaticProps(performance.syllabusRoutes),
+        collaborators:      performance.collaborators,
+        concerts:           performance.concerts.map(concertStaticProps),
+        id:                 performance.id,
+        membershipLimit:    performance.membershipLimit,
+        preregisterDate:    performance.preregisterDate.toISO(),
+        quarter:            performance.quarter,
+        registrationFee:    performance.registrationFee,
+        syllabusRoutes:     fileRoutesStaticProps(performance.syllabusRoutes),
     };
 
     return result;

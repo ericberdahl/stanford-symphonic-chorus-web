@@ -19,6 +19,7 @@ import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 import { Fragment } from 'react'
 
 import styles from '../styles/Home.module.scss'
+import { concertStaticProps } from '../common/performanceStaticProps'
 
 function ConcertEvent({ currentQuarter, data }) {
     return (
@@ -198,13 +199,6 @@ export default function Home({ currentQuarter }) {
     );
 }
 
-function serializeConcert(concert) {
-    return {
-        start:      concert.start.toISO(),
-        location:   concert.location
-    };
-}
-
 function serializeEvent(event) {
     return {
         start:      event.start.toISO(),
@@ -227,7 +221,7 @@ function serializeTuttiRehearsal(rehearsal) {
 async function serializePerformance(performance) {
     return {
         collaborators:      performance.collaborators,
-        concerts:           performance.concerts.map(serializeConcert),
+        concerts:           performance.concerts.map(concertStaticProps),
         descriptionMDX:     await mdxSerializeMarkdown(performance.description),
         events:             performance.events.map(serializeEvent),
         firstRehearsal:     serializeTuttiRehearsal(performance.tuttiRehearsals[0]),

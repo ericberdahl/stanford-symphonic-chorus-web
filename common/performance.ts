@@ -23,12 +23,12 @@ export class Rehearsal {
     }
 }
 
-type BasicEvent = {
+export type BasicEvent = {
     start : DateTime;
     location : string;
 };
 
-type Concert = BasicEvent & {
+export type Concert = BasicEvent & {
     call : DateTime;
 }
 
