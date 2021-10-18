@@ -10,6 +10,7 @@ import PieceCitation from '../components/pieceCitation'
 import SpaceSeparatedPhrase from '../components/spaceSeparatedPhrase'
 import TitledSegment from '../components/titledSegment'
 
+import { imageRoutesStaticProps } from '../common/fileRoutesStatiicProps'
 import Model from '../common/model'
 import { pieceStaticProps } from '../common/pieceStaticProps'
 
@@ -223,22 +224,6 @@ function serializeTuttiRehearsal(rehearsal) {
     }
 }
 
-function serializeImageRoutes(imageRoutes) {
-    if (!imageRoutes) {
-        return null;
-    }
-
-    const result = {
-        pdf: imageRoutes?.pdf || null,
-        jpg: imageRoutes?.jpg || null,
-        caption: imageRoutes?.caption || null,
-        width: imageRoutes.width,
-        height: imageRoutes.height,
-    };
-
-    return result;
-}
-
 async function serializePerformance(performance) {
     return {
         collaborators:      performance.collaborators,
@@ -246,7 +231,7 @@ async function serializePerformance(performance) {
         descriptionMDX:     await mdxSerializeMarkdown(performance.description),
         events:             performance.events.map(serializeEvent),
         firstRehearsal:     serializeTuttiRehearsal(performance.tuttiRehearsals[0]),
-        heraldImageRoutes:  serializeImageRoutes(performance.heraldImageRoutes),
+        heraldImageRoutes:  imageRoutesStaticProps(performance.heraldImageRoutes),
         id:                 performance.id,
         mainPieces:         performance.mainPieces.map(pieceStaticProps),
         repertoire:         performance.repertoire.map(pieceStaticProps),

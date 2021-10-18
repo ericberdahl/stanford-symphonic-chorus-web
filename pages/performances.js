@@ -13,6 +13,7 @@ import PageLink from '../components/pageLink'
 import { pieceStaticProps } from '../common/pieceStaticProps'
 
 import styles from '../styles/performances.module.scss'
+import { imageRoutesStaticProps } from '../common/fileRoutesStatiicProps'
 
 function Introduction(pageData) {
     const PushPerformance = (p) => {
@@ -176,31 +177,15 @@ function serializeConcert(concert) {
     };
 }
 
-function serializeImageRoutes(imageRoutes) {
-    if (!imageRoutes) {
-        return null;
-    }
-
-    const result = {
-        pdf: imageRoutes?.pdf || null,
-        jpg: imageRoutes?.jpg || null,
-        caption: imageRoutes?.caption || null,
-        width: imageRoutes.width,
-        height: imageRoutes.height
-    };
-
-    return result;
-}
-
 function serializePerformance(performance) {
     const result = {
         collaborators:      performance.collaborators,
         concerts:           performance.concerts.map(serializeConcert),
         directors:          performance.directors,
-        heraldImageRoutes:  serializeImageRoutes(performance.heraldImageRoutes),
+        heraldImageRoutes:  imageRoutesStaticProps(performance.heraldImageRoutes),
         id:                 performance.id,
         instructors:        performance.instructors,
-        posterRoutes:       serializeImageRoutes(performance.posterRoutes),
+        posterRoutes:       imageRoutesStaticProps(performance.posterRoutes),
         repertoire:         performance.repertoire.map(pieceStaticProps),
         soloists:           performance.soloists,
         quarter:            performance.quarter,
@@ -214,6 +199,7 @@ export async function getStaticProps({ params }) {
     const model = await Model.singleton;
     const performances = model.performanceHistory.map(serializePerformance);
     
+    // TODO : rename props to match semantics of this page
     const pageData = {
         performances: performances
     }
