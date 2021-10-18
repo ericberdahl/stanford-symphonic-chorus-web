@@ -9,6 +9,7 @@ import PairedImage from '../components/pairedImage'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
+import { composerStaticProps } from '../common/pieceStaticProps'
 
 import styles from '../styles/performances.module.scss'
 import PageLink from '../components/pageLink'
@@ -175,19 +176,12 @@ function serializeConcert(concert) {
     };
 }
 
-function serializeComposer(composer) {
-    return {
-        fullName:   composer.fullName,
-        familyName: composer.familyName
-    }
-}
-
 function serializeFYLPReference(fylp) {
     if (!fylp) return null;
 
     return {
         piece: {
-            composer:   serializeComposer(fylp.piece.composer),
+            composer:   composerStaticProps(fylp.piece.composer),
             title:      fylp.piece.title
         }
     };
@@ -198,7 +192,7 @@ function serializePiece(piece) {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
-        composer:       serializeComposer(piece.composer),
+        composer:       composerStaticProps(piece.composer),
         fylp:           serializeFYLPReference(piece.fylp),
         movement:       piece.movement,
         prefix:         piece.prefix,

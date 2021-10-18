@@ -7,6 +7,7 @@ import PieceCitation from '../../../components/pieceCitation';
 import TitledSegment from '../../../components/titledSegment';
 
 import Model  from '../../../common/model';
+import {composerStaticProps } from '../../../common/pieceStaticProps';
 import { makeSlug } from '../../../common/slug';
 
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
@@ -121,13 +122,6 @@ async function serializeFYLP(fylp) {
     };
 }
 
-function serializeComposer(composer) {
-    return {
-        fullName:   composer.fullName,
-        familyName: composer.familyName
-    }
-}
-
 function serializePerformanceReference(performance) {
     return {
         id:         performance.id,
@@ -140,7 +134,7 @@ async function serializePieceForFYLP(piece) {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
-        composer:       serializeComposer(piece.composer),
+        composer:       composerStaticProps(piece.composer),
         fylp:           await serializeFYLP(piece.fylp),
         movement:       piece.movement,
         prefix:         piece.prefix,

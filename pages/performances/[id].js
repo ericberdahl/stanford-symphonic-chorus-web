@@ -8,6 +8,7 @@ import PieceCitation from '../../components/pieceCitation';
 import SpaceSeparatedPhrase from '../../components/spaceSeparatedPhrase';
 
 import Model from "../../common/model";
+import { composerStaticProps } from '../../common/pieceStaticProps';
 
 import { DateTime } from 'luxon';
 
@@ -309,19 +310,12 @@ function serializeSimpleEvent(event) {
     return result;
 }
 
-function serializeComposer(composer) {
-    return {
-        fullName:   composer.fullName,
-        familyName: composer.familyName
-    }
-}
-
 function serializePiece(piece) {
     return {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
-        composer:       serializeComposer(piece.composer),
+        composer:       composerStaticProps(piece.composer),
         movement:       piece.movement,
         prefix:         piece.prefix,
         suffix:         piece.suffix,

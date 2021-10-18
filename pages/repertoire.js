@@ -1,11 +1,12 @@
 import ChinaTour from '../components/chinaTour';
 import Layout from '../components/layout'
+import PageLink from '../components/pageLink';
+import PieceCitation from '../components/pieceCitation';
 import TitledSegment from '../components/titledSegment';
 
-import { makeSlug } from '../common/slug';
 import Model from '../common/model'
-import PieceCitation from '../components/pieceCitation';
-import PageLink from '../components/pageLink';
+import { composerStaticProps } from '../common/pieceStaticProps';
+import { makeSlug } from '../common/slug';
 
 import styles from '../styles/repertoirePage.module.scss'
 
@@ -83,13 +84,6 @@ export default function Repertoire({ repertoire })
     );
 }
 
-function serializeComposer(composer) {
-    return {
-        fullName:   composer.fullName,
-        familyName: composer.familyName
-    }
-}
-
 function serializePerformanceReference(performance) {
     return {
         id:         performance.id,
@@ -102,7 +96,7 @@ function serializeFYLPReference(fylp) {
 
     return {
         piece: {
-            composer:   serializeComposer(fylp.piece.composer),
+            composer:   composerStaticProps(fylp.piece.composer),
             title:      fylp.piece.title
         }
     };
@@ -113,7 +107,7 @@ function serializePiece(piece) {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
-        composer:       serializeComposer(piece.composer),
+        composer:       composerStaticProps(piece.composer),
         fylp:           serializeFYLPReference(piece.fylp),
         movement:       piece.movement,
         prefix:         piece.prefix,
@@ -129,7 +123,7 @@ function serializeRepertoire(repertoire) {
 
     const result = composers.map((c) => {
         return {
-            composer:   serializeComposer(c),
+            composer:   composerStaticProps(c),
             pieces:     repertoire.getPiecesByComposer(c).map((p => serializePiece(p)))
         }
     });

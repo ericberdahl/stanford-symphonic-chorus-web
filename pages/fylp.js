@@ -5,6 +5,7 @@ import PieceCitation from '../components/pieceCitation';
 import TitledSegment from '../components/titledSegment';
 
 import Model from '../common/model';
+import { composerStaticProps } from '../common/pieceStaticProps';
 import { makeSlug } from '../common/slug';
 
 import styles from '../styles/fylpIndex.module.scss'
@@ -78,13 +79,6 @@ export default function FYLP({ repertoire })
     );
 }
 
-function serializeComposer(composer) {
-    return {
-        fullName:   composer.fullName,
-        familyName: composer.familyName
-    }
-}
-
 function serializePerformanceReference(performance) {
     return {
         id:         performance.id,
@@ -97,7 +91,7 @@ function serializeFYLPReference(fylp) {
 
     return {
         piece: {
-            composer:   serializeComposer(fylp.piece.composer),
+            composer:   composerStaticProps(fylp.piece.composer),
             title:      fylp.piece.title
         }
     };
@@ -107,7 +101,7 @@ function serializePiece(piece) {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
-        composer:       serializeComposer(piece.composer),
+        composer:       composerStaticProps(piece.composer),
         fylp:           serializeFYLPReference(piece.fylp),
         movement:       piece.movement,
         prefix:         piece.prefix,
@@ -123,7 +117,7 @@ function serializeRepertoire(repertoire) {
 
     const result = composers.map((c) => {
         return {
-            composer:   serializeComposer(c),
+            composer:   composerStaticProps(c),
             pieces:     repertoire.getPiecesByComposer(c).map((p => serializePiece(p)))
         }
     });
