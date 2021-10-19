@@ -4,29 +4,24 @@ import Collaborator from '../components/collaborator'
 import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
 import Location from '../components/location'
-import PieceCitation from '../components/pieceCitation'
+import PageLink from '../components/pageLink'
 import PairedImage from '../components/pairedImage'
+import PieceCitation from '../components/pieceCitation'
 import TitledSegment from '../components/titledSegment'
 
-import { imageRoutesStaticProps } from '../common/fileRoutesStatiicProps'
 import Model from '../common/model'
-import PageLink from '../components/pageLink'
-import { pieceStaticProps } from '../common/pieceStaticProps'
+import { performanceStaticProps } from '../common/performanceStaticProps'
 
 import { DateTime } from 'luxon'
 
 import styles from '../styles/performances.module.scss'
-import { concertStaticProps } from '../common/performanceStaticProps'
 
 function Introduction({ performances }) {
-    const PushPerformance = (p) => {
-        years.push({ year: p.year, id: p.id });
-    }
-
     let years = [];
     performances.forEach((p) => {
-        if (0 == years.length || years[years.length - 1].year != p.year) {
-            PushPerformance(p);
+        const year = DateTime.fromISO(p.concerts[0].start).year;
+        if (0 == years.length || years[years.length - 1].year != year) {
+            years.push({ year: year, id: p.id });
         }
     });
 
@@ -173,29 +168,11 @@ export default function Performances({ performances }) {
     );
 }
 
-function serializePerformance(performance) {
-    const result = {
-        collaborators:      performance.collaborators,
-        concerts:           performance.concerts.map(concertStaticProps),
-        directors:          performance.directors,
-        heraldImageRoutes:  imageRoutesStaticProps(performance.heraldImageRoutes),
-        id:                 performance.id,
-        instructors:        performance.instructors,
-        posterRoutes:       imageRoutesStaticProps(performance.posterRoutes),
-        repertoire:         performance.repertoire.map(pieceStaticProps),
-        soloists:           performance.soloists,
-        quarter:            performance.quarter,
-        year:               performance.concerts[0].start.year,
-    };
-
-    return result;
-}
-
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
     
     const props = {
-        performances: model.performanceHistory.map(serializePerformance)
+        performances: await Promise.all(model.performanceHistory.map(performanceStaticProps))
     }
 
     return {

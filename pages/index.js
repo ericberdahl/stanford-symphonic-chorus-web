@@ -10,16 +10,13 @@ import PieceCitation from '../components/pieceCitation'
 import SpaceSeparatedPhrase from '../components/spaceSeparatedPhrase'
 import TitledSegment from '../components/titledSegment'
 
-import { imageRoutesStaticProps } from '../common/fileRoutesStatiicProps'
 import Model from '../common/model'
-import { pieceStaticProps } from '../common/pieceStaticProps'
+import { performanceStaticProps } from '../common/performanceStaticProps'
 
 import { DateTime } from 'luxon'
-import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 import { Fragment } from 'react'
 
 import styles from '../styles/Home.module.scss'
-import { concertStaticProps } from '../common/performanceStaticProps'
 
 function ConcertEvent({ currentQuarter, data }) {
     return (
@@ -78,10 +75,10 @@ function Introduction({ currentQuarter }) {
     })));
 
     // add first rehearsal
-    if (currentQuarter.firstRehearsal) {
+    if (0 < currentQuarter.tuttiRehearsals.length) {
         eventList.push({
-            date: DateTime.fromISO(currentQuarter.firstRehearsal.start),
-            data: currentQuarter.firstRehearsal,
+            date: DateTime.fromISO(currentQuarter.tuttiRehearsals[0].start),
+            data: currentQuarter.tuttiRehearsals[0],
             renderer: FirstRehearsalEvent,
         });
     }
@@ -199,45 +196,11 @@ export default function Home({ currentQuarter }) {
     );
 }
 
-function serializeEvent(event) {
-    return {
-        start:      event.start.toISO(),
-        location:   event.location,
-        title:      event.title,
-    };
-}
-
-function serializeTuttiRehearsal(rehearsal) {
-    if (!rehearsal) return null;
-
-    return {
-        start: rehearsal.start.toISO(),
-        end: rehearsal.end.toISO(),
-        location: rehearsal.location,
-        notes: rehearsal.notes,
-    }
-}
-
-async function serializePerformance(performance) {
-    return {
-        collaborators:      performance.collaborators,
-        concerts:           performance.concerts.map(concertStaticProps),
-        descriptionMDX:     await mdxSerializeMarkdown(performance.description),
-        events:             performance.events.map(serializeEvent),
-        firstRehearsal:     serializeTuttiRehearsal(performance.tuttiRehearsals[0]),
-        heraldImageRoutes:  imageRoutesStaticProps(performance.heraldImageRoutes),
-        id:                 performance.id,
-        mainPieces:         performance.mainPieces.map(pieceStaticProps),
-        repertoire:         performance.repertoire.map(pieceStaticProps),
-        quarter:            performance.quarter,
-    };
-}
-
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
     
     const props = {
-        currentQuarter: await serializePerformance(model.currentQuarter)
+        currentQuarter: await performanceStaticProps(model.currentQuarter)
     }
 
     return {

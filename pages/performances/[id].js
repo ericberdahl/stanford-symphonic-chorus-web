@@ -8,12 +8,11 @@ import PieceCitation from '../../components/pieceCitation';
 import SpaceSeparatedPhrase from '../../components/spaceSeparatedPhrase';
 
 import Model from "../../common/model";
-import { pieceStaticProps } from '../../common/pieceStaticProps';
+import { performanceStaticProps } from '../../common/performanceStaticProps';
 
 import { DateTime } from 'luxon';
 
 import styles from '../../styles/performances_id.module.scss';
-import { concertStaticProps } from '../../common/performanceStaticProps';
 
 function Introduction({ navItems }) {
     return (
@@ -298,52 +297,13 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
     );
 }
 
-function serializeSimpleEvent(event) {
-    const result = {
-        start:      event.start.toISO(),
-        location:   event.location,
-    };
-
-    if (event.call) {
-        result.call = event.call.toISO();
-    }
-
-    return result;
-}
-
-function serializePerformance(performance) {
-    const result = {
-        collaborators:          performance.collaborators,
-        concerts:               performance.concerts.map(concertStaticProps),
-        dressRehearsals:        performance.dressRehearsals.map(serializeSimpleEvent),
-        id:                     performance.id,
-        quarter:                performance.quarter,
-        repertoire:             performance.repertoire.map(pieceStaticProps),
-        sectionalsTenorBass:    performance.sectionalsTenorBass.map(serializeRehearsal),
-        sectionalsSopranoAlto:  performance.sectionalsSopranoAlto.map(serializeRehearsal),
-        soloists:               performance.soloists,
-        tuttiRehearsals:        performance.tuttiRehearsals.map(serializeRehearsal),
-    };
-
-    return result;
-}
-
-function serializeRehearsal(rehearsal) {
-    return {
-        start:      rehearsal.start.toISO(),
-        end:        rehearsal.end.toISO(),
-        location:   rehearsal.location,
-        notes:      rehearsal.notes,
-    }
-}
-
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
 
     const props = {
-        currentQuarter:     serializePerformance(model.getPerformanceById(params.id)),
-        previousQuarters:   model.getPerformancesAfterId(params.id, -3).map(serializePerformance),
-        nextQuarters:       model.getPerformancesAfterId(params.id, 3).map(serializePerformance).reverse(),
+        currentQuarter:     await performanceStaticProps(model.getPerformanceById(params.id)),
+        previousQuarters:   await Promise.all(model.getPerformancesAfterId(params.id, -3).map(performanceStaticProps)),
+        nextQuarters:       await Promise.all(model.getPerformancesAfterId(params.id, 3).map(performanceStaticProps).reverse()),
     }
 
     return {

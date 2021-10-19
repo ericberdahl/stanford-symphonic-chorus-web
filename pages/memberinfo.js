@@ -6,12 +6,11 @@ import Person from '../components/person'
 import TitledSegment from '../components/titledSegment'
 
 import Model from '../common/model'
-import { fileRoutesStaticProps } from '../common/fileRoutesStatiicProps'
+import { performanceStaticProps } from '../common/performanceStaticProps'
 
 import { DateTime } from 'luxon'
 
 import styles from '../styles/memberinfo.module.scss'
-import { concertStaticProps } from '../common/performanceStaticProps'
 
 function Introduction({ navItems, quarter }) {
     // If the member info page ever needs to be displayed for historical performances, this logic and content
@@ -217,26 +216,11 @@ export default function MemberInfo({ currentQuarter }) {
     );
 }
 
-function serializePerformance(performance) {
-    const result = {
-        collaborators:      performance.collaborators,
-        concerts:           performance.concerts.map(concertStaticProps),
-        id:                 performance.id,
-        membershipLimit:    performance.membershipLimit,
-        preregisterDate:    performance.preregisterDate.toISO(),
-        quarter:            performance.quarter,
-        registrationFee:    performance.registrationFee,
-        syllabusRoutes:     fileRoutesStaticProps(performance.syllabusRoutes),
-    };
-
-    return result;
-}
-
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
     
     const props = {
-        currentQuarter: serializePerformance(model.currentQuarter),
+        currentQuarter: await performanceStaticProps(model.currentQuarter),
     }
 
     return {

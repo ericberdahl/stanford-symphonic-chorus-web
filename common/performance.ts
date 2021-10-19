@@ -32,13 +32,13 @@ export type Concert = BasicEvent & {
     call : DateTime;
 }
 
-type GenericEvent = BasicEvent & {
+export type GenericEvent = BasicEvent & {
     title : string;
 }
 
-type DressRehearsal = BasicEvent;
+export type DressRehearsal = BasicEvent;
 
-interface ISoloist {
+export interface ISoloist {
     readonly name : string;
     readonly part : string;
 }
