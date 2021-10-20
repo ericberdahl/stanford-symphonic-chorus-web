@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Script from 'next/script'
 
 import styles from '../styles/lightbox.module.scss'
 
@@ -15,8 +16,8 @@ export default function Lightbox(props) {
         <div className={styles.lightbox}>
             <Head>
                 <link href="/css/slimbox.css"  type="text/css" rel="stylesheet" key="slimbox.css" />
-                <script src="/scripts/mediabox.js" type="text/javascript" key="mediabox.js"></script>
             </Head>
+            <Script src="/scripts/mediabox.js" strategy="beforeInteractive"/>
             <Link href={props.image} src={display}>
                 <a title={props.caption} rel={rel}>
                     <img

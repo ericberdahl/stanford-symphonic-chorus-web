@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Script from 'next/script'
 
 const roles = {
     webmaster: {
@@ -42,9 +43,7 @@ export default function Person(props) {
 
     return (
         <>
-            <Head>
-                <script src="/scripts/emus.js" type="text/javascript" key="emus.js"></script>
-            </Head>
+            <Script src="/scripts/emus.js"/>
             <a className="personal_citation" data={data}>{person.full_name}</a>
             <noscript>{person.full_name}: {person.email}/AT/{person.domain}/DOT/{person.obscure_tld}/</noscript>
         </>
