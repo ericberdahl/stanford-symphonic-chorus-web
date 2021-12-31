@@ -32,7 +32,7 @@ function PdfLightbox({ label, caption, image, thumb, thumb_width, thumb_height, 
                     height={thumb_height}
                     alt={caption} />
             </a>
-            <div style={{display: 'none '}}>
+            <div className={styles.customContent}>
                 <iframe
                     id={label}
                     src={image}
