@@ -49,8 +49,6 @@ export default function Lightbox(props) {
     const img_width = props.img_width;
     const img_height = ( props.img_height ? props.img_height : Math.round((props.height * img_width) / props.width) );
 
-    const rel = "mediabox[" + props.width + " " + props.height + "]";
-
     const galleryLabel = "" + lightboxCount++ + "-image";
 
     const imageIsPdf = props.image.toLowerCase().endsWith(".pdf");
