@@ -14,7 +14,8 @@ function ImgLightbox({ label, caption, image, thumb, thumb_width, thumb_height }
                 src={thumb}
                 width={thumb_width}
                 height={thumb_height}
-                alt={caption}/>
+                alt={caption}
+                loading="lazy"/>
         </a>
     );
 }
@@ -37,21 +38,19 @@ function PdfLightbox({ label, caption, image, thumb, thumb_width, thumb_height, 
                     id={label}
                     src={image}
                     width={image_width}
-                    height={image_height} />
+                    height={image_height}
+                    loading="lazy" />
             </div>
         </>
     );
 }
 
-export default function Lightbox(props) {
-    const display = (props.display ? props.display : props.image);
+export default function Lightbox({ gallery, display, image, img_width, img_height, width, height, caption }) {
+    gallery = gallery || ("" + lightboxCount++ + "-image");
+    display = display || image;
+    img_height = img_height || Math.round((height * img_width) / width);
 
-    const img_width = props.img_width;
-    const img_height = ( props.img_height ? props.img_height : Math.round((props.height * img_width) / props.width) );
-
-    const galleryLabel = "" + lightboxCount++ + "-image";
-
-    const imageIsPdf = props.image.toLowerCase().endsWith(".pdf");
+    const imageIsPdf = image.toLowerCase().endsWith(".pdf");
     const LightboxRenderer = (imageIsPdf ? PdfLightbox : ImgLightbox);
 
     // TODO: explore getting pro license for fslightbox, to allow captions and thumbs
@@ -63,18 +62,18 @@ export default function Lightbox(props) {
                     defer
                     src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js"
                     integrity="sha512-EqNNJuepkw5P9vxCml8eBk7C4Ld+4kAnvzOD/jG21rkxWPILGoQa5EvD62UieiJF0u3xoQrcVnce4i83VnYj/Q=="
-                    crossorigin="anonymous"
-                    referrerpolicy="no-referrer" />
+                    crossOrigin="anonymous"
+                    referrerPolicy="no-referrer" />
             </Head>
             <LightboxRenderer
-                label={galleryLabel}
-                caption={props.caption}
-                image={props.image}
+                label={gallery}
+                caption={caption}
+                image={image}
                 thumb={display}
                 thumb_width={img_width}
                 thumb_height={img_height}
-                image_width={props.width}
-                image_height={props.height} />
+                image_width={width}
+                image_height={height} />
         </div>
     );
 }

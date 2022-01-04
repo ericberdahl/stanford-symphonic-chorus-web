@@ -13,10 +13,13 @@ import path from 'path';
 import process from 'process';
 import util from 'util';
 import { ISupplement } from './supplement';
+import { Gallery } from './gallery';
 
 const CONFIG_FILENAME       = path.join('data', 'main.yml');
-const PERFORMANCE_DATA_DIR  = path.join('data', 'performances')
+
 const FYLP_DATA_DIR         = path.join('data', 'fylp')
+const GALLERY_DATA_DIR      = path.join('data', 'galleries')
+const PERFORMANCE_DATA_DIR  = path.join('data', 'performances')
 const SUPPLEMENT_DATA_DIR   = path.join('data', 'supplements')
 
 type Configuration = {
@@ -62,6 +65,12 @@ async function createModel() : Promise<IModel> {
     model.supplements.push(...supplements);
     // TODO : hook supplements into their pieces, not into the model
 
+    const galleryDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, GALLERY_DATA_DIR), realpath: true });
+    const galleries = await Promise.all(galleryDatafiles.map(async (filepath) => {
+        return Gallery.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
+    }));
+    model.galleries.push(...galleries);
+
     return model;
 }    
 
@@ -71,6 +80,7 @@ export default class Model implements IModel {
     private _currentQuarter : Performance   = null;
     private config : Configuration;
     readonly supplements : ISupplement[]    = [];
+    readonly galleries : Gallery[]          = [];
 
     constructor(config : Configuration) {
         this.config = config;
