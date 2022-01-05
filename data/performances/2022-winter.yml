@@ -92,12 +92,12 @@ preregister: "2021-12-01"
 
 tuttiRehearsalNotes:
 -   note: "Registration begins at 6:30 PM."
-    date: "2022-01-10"
+    date: "2022-02-07"
 
 tuttiRehearsals:
 -   frequency: "weekly"
-    startDate: "2022-01-10"
-    endDate: "2022-02-21"
+    startDate: "2022-02-07"
+    endDate: "2022-03-07"
     startTime: "19:30"
     endTime: "22:00"
     location: "CRH"
@@ -120,10 +120,10 @@ womensSectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 dressRehearsals:
--   date: "2022-02-28"
+-   date: "2022-05-09"
     start: "19:00"
     location: "Bing"
--   date: "2022-03-03"
+-   date: "2022-05-12"
     start: "19:00"
     location: "Bing"
 
@@ -141,11 +141,7 @@ dressRehearsals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 concerts:
--   date: "2022-03-04"
-    start: "19:30"
-    call: "18:30"
-    location: "Bing"
--   date: "2022-03-05"
+-   date: "2022-05-13"
     start: "19:30"
     call: "18:30"
     location: "Bing"
@@ -164,18 +160,44 @@ concerts:
 # Where date is the date of the event, specified in YYYY-MM-DD format.
 # Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
 events:
+#-   date: "2022-05-14"
+#    start: "19:30"
+#    call: "18:30"
+#    location: "Bing"
+#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
+#-   date: "2022-05-15"
+#    start: "14:30"
+#    call: "13:30"
+#    location: "Bing"
+#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
+#-   date: "2022-05-17"
+#    start: "19:00"
+#    location: "Bing"
+#    title: "Dress rehearsal for Aquilanti: Te Deum"
+#-   date: "2022-05-22"
+#    start: "10:30"
+#    location: "Bing"
+#    title: "Dress rehearsal for Aquilanti: Te Deum"
+#-   date: "2022-05-22"
+#    start: "14:30"
+#    call: "13:30"
+#    location: "Bing"
+#    title: "Concert #1 for Aquilanti: Te Deum"
+#-   date: "2022-05-24"
+#    start: "19:30"
+#    call: "18:30"
+#    location: "Bing"
+#    title: "Concert #2 for Aquilanti: Te Deum"
 
 
 # HOWTO: description contains Markdown that is included on pages which need a synopsis of
 # the concert. The home page is a typical location where such text is used.
 description: |
-    Due to the upsurge in infection rates due to the Delta variant of the COVID-19 virus,
-    the Stanford Symphonic Chorus will begin its season in January of 2022. Repertoire for the year is:
-
-    Winter quarter: Mahler _Symphony No. 2, “Auferstehung”_ (“Resurrection”)  
-    Spring quarter: Giancarlo Aquilanti _Te Deum_ (World Premiere)
-
-    Auditions will take place in January 2022.
+    Due to recently updated COVID-19 mitigation policies and their impact on the scheduling of in-person rehearsals
+    for the first portion of winter quarter 2022, rehearsals will begin on Monday, 7 February 2022.
+    The winter quarter concerts have been moved to spring quarter and these will take place in addition
+    to the previously-scheduled spring quarter concerts, resulting in two pairs of concerts being presented
+    in spring quarter.
 
 
 #   After a long hiatus, Stanford Symphonic Chorus is pleased to return to the stage with a performance

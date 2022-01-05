@@ -25,6 +25,9 @@ repertoire:
     -   composer: "Giancarlo Aquilanti"
         title: "Te Deum"
         performanceNote: "(World Premiere)"
+    other:
+    -   composer: "Aaron Copland"
+        title: "The Promise of Living"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -91,11 +94,12 @@ preregister: "2021-12-01"
 
 tuttiRehearsalNotes:
 -   note: "Registration begins at 6:30 PM."
-    date: "2022-01-10"
+    date: "2022-03-28"
 
 tuttiRehearsals:
--   frequency: "once"
-    startDate: "2022-01-10"
+-   frequency: "weekly"
+    startDate: "2022-03-28"
+    endDate: "2022-05-16"
     startTime: "19:30"
     endTime: "22:00"
     location: "CRH"
