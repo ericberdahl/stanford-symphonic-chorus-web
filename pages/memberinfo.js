@@ -50,7 +50,6 @@ function Introduction({ navItems, quarter }) {
                 
                 <p>
                     By participating in the Stanford Symphonic Chorus, you acknowledge that you have read the Assumption of Risk, Release of Claims, Indemnification and Hold Harmless Agreement (the "<a href="/assets/Choral Studies Liability Waiver Form.pdf">Choral Studies Liability Waiver</a>"), understand its meaning and effect, and agree to be bound by it.
-                    If you would like a hard copy of this agreement, please contact the Choral Studies Program Administrator, <Person role="administrator" subject="Re Choral Studies Liability Waiver"/>.
                 </p>
             </TitledSegment>
         </div>
