@@ -18,8 +18,8 @@ const roles = {
     },
 
     administrator: {
-        full_name: "Frances Molyneux",
-        email: "frances2",
+        full_name: "Stephen M. Sano",
+        email: "sano",
         domain: "stanford",
         long_tld: "educator",
         obscure_tld: "-e-d-u-",
