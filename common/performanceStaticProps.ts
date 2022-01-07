@@ -1,4 +1,5 @@
 import { fileRoutesStaticProps, FileRouteStaticProp, ImageRoutesStaticProps, imageRoutesStaticProps } from './fileRoutesStatiicProps';
+import { GalleryStaticProps } from './gallery';
 import { BasicEvent, Concert, GenericEvent, ISoloist, Performance, Rehearsal  } from './performance';
 import { PieceStaticProps, pieceStaticProps } from './pieceStaticProps';
 
@@ -42,6 +43,7 @@ export type PerformanceStaticProps = {
     directors : string[];
     dressRehearsals : BasicEventStaticProps[];
     events : GenericEventStaticProps[];
+    galleries: GalleryStaticProps[];
     heraldImageRoutes : ImageRoutesStaticProps;
     id : string;
     instructors : string[];
@@ -117,6 +119,7 @@ export async function performanceStaticProps(performance) : Promise<PerformanceS
         directors:          performance.directors,
         dressRehearsals:    performance.dressRehearsals.map(basicEventStaticProps),
         events:             performance.events.map(genericEventStaticProps),
+        galleries:          await Promise.all(performance.galleries.map(async (g) => await g.getStaticProps())),
         heraldImageRoutes:  imageRoutesStaticProps(performance.heraldImageRoutes),
         id:                 performance.id,
         instructors:        performance.instructors,
@@ -129,8 +132,8 @@ export async function performanceStaticProps(performance) : Promise<PerformanceS
         repertoire:         performance.repertoire.map(pieceStaticProps),
         sectionalsSopranoAlto:  performance.sectionalsSopranoAlto.map(rehearsalStaticProps),
         sectionalsTenorBass:    performance.sectionalsTenorBass.map(rehearsalStaticProps),
-        soloists:           performance.soloists.map(soloistStaticProps),
-        syllabusRoutes:     fileRoutesStaticProps(performance.syllabusRoutes),
-        tuttiRehearsals:    performance.tuttiRehearsals.map(rehearsalStaticProps),
+        soloists:               performance.soloists.map(soloistStaticProps),
+        syllabusRoutes:         fileRoutesStaticProps(performance.syllabusRoutes),
+        tuttiRehearsals:        performance.tuttiRehearsals.map(rehearsalStaticProps),
     };
 }

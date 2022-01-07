@@ -16,10 +16,11 @@ export type SerializedGalleryItem = {
 
 export type SerializedGallery = {
     readonly id : string;
-    readonly name : string;
-    readonly title: string;
     readonly description : string;
     readonly items : SerializedGalleryItem[];
+    readonly name : string;
+    readonly quarter : string;
+    readonly title: string;
 }
 
 export type GalleryItemStaticProps = {
@@ -76,21 +77,23 @@ export class GalleryItem {
 }
 
 export class Gallery {
-    id : string            = '';
-    name : string          = '';
-    title : string         = '';
-    description : string   = '';
-    items : GalleryItem[]  = [];
+    id : string             = '';
+    name : string           = '';
+    quarter : string        = '';
+    title : string          = '';
+    description : string    = '';
+    items : GalleryItem[]   = [];
 
-    constructor(id : string, name : string, title : string, description : string) {
+    constructor(id : string, name : string, title : string, description : string, quarter : string) {
         this.id = id;
         this.name = name;
+        this.quarter = quarter;
         this.title = title;
         this.description = description;
     }
 
     static async deserialize(data : SerializedGallery) : Promise<Gallery> {
-        const result = new Gallery(data.id, data.name, data.title, data.description);
+        const result = new Gallery(data.id, data.name, data.title, data.description, data.quarter);
 
         const galleryBasePath = path.join(GALLERY_URL_BASEPATH, data.id);
         result.items.push(... await Promise.all(data.items.map(async (i) => GalleryItem.deserialize(galleryBasePath, i))));

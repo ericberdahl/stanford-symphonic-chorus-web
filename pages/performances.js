@@ -139,6 +139,9 @@ function Performance({ data }) {
                     {data.repertoire.filter((p) => p.fylp).map((p, index) => (
                         <li key={index}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure: <PieceCitation data={p}/></a></PageLink></li>
                     ))}
+                    {data.galleries.map((g) => (
+                        <li key={g.id}><PageLink page={g} collection="gallery"><a>Photo Gallery: {g.name}</a></PageLink></li>
+                    ))}
                     <li>TODO: links</li>
                 </ul>
             </div>

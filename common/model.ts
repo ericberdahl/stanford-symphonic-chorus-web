@@ -68,6 +68,7 @@ async function createModel() : Promise<IModel> {
     const galleries = await Promise.all(galleryDatafiles.map(async (filepath) => {
         return Gallery.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
     }));
+    galleries.forEach((g) => { model.performances.find((p) => p.quarter == g.quarter).galleries.push(g); })
     model.galleries.push(...galleries);
 
     return model;

@@ -1,6 +1,7 @@
+import { FileRoutes, ImageRoutes } from './fileRoutes';
+import { Gallery } from './gallery'
 import { IPiece } from './piece'
 import { makeSlug } from './slug';
-import { FileRoutes, ImageRoutes } from './fileRoutes';
 
 import { DateTime } from 'luxon';
 
@@ -50,6 +51,7 @@ export class Performance {
     readonly directors : string[]                   = [];
     readonly dressRehearsals : DressRehearsal[]     = [];
     readonly events : GenericEvent[]                = [];
+    readonly galleries : Gallery[]                  = [];
     readonly instructors : string[]                 = [];
     readonly mainPieces : IPiece[]                  = [];
     readonly membershipLimit : number;
