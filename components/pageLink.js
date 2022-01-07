@@ -16,11 +16,6 @@ const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 // performances/F2008/Amherst-text/index.html
 // performances/S1995/text.html
 
-// TODO: create/route galleries
-// performances/W2010/gallery/album/res/info.html
-// performances/W2010/gallery/album/res/hello.html
-// performances/W2010/gallery/album/gallery.html
-
 class SiteEntry {
     route   = ''
 
@@ -127,7 +122,7 @@ class SupplementCollection extends Collection {
     }
 
     findSiteEntryForId(id) {
-        return new SiteEntry(util.format('/fylp/%s', id));
+        return new SiteEntry(util.format('/supplements/%s', id));
     }
 
     getPageId(supplement) {
@@ -135,12 +130,26 @@ class SupplementCollection extends Collection {
     }
 }
 
+class GalleryCollection extends Collection {
+    constructor(name) {
+        super(name);
+    }
+
+    findSiteEntryForId(id) {
+        return new SiteEntry(util.format('/galleries/%s', id));
+    }
+
+    getPageId(gallery) {
+        return util.format('%s', makeSlug(gallery.id));
+    }
+}
 
 const collections = [
     new PerformanceCollection('performances'),
     new TopLevelCollection('topLevel'),
     new FYLPCollection('fylp'),
     new SupplementCollection('supplement'),
+    new GalleryCollection('gallery'),
 ];
 
 function getCollection(collection) {
