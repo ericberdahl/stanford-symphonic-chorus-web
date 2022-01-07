@@ -119,7 +119,7 @@ export async function performanceStaticProps(performance) : Promise<PerformanceS
         directors:          performance.directors,
         dressRehearsals:    performance.dressRehearsals.map(basicEventStaticProps),
         events:             performance.events.map(genericEventStaticProps),
-        galleries:          await Promise.all(performance.galleries.map(async (g) => await g.getStaticProps())),
+        galleries:          await Promise.all(performance.galleries.map(async (g) => await g.getRefStaticProps())),
         heraldImageRoutes:  imageRoutesStaticProps(performance.heraldImageRoutes),
         id:                 performance.id,
         instructors:        performance.instructors,

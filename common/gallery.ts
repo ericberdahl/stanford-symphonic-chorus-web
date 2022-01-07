@@ -32,14 +32,15 @@ export type GalleryItemStaticProps = {
     readonly setting : string;
 }
 
-export type GalleryStaticProps = {
+export type GalleryRefStaticProps = {
     readonly id : string;
     readonly name : string;
+}
+export type GalleryStaticProps = GalleryRefStaticProps & {
     readonly title: string;
     readonly description : string;
     readonly items : GalleryItemStaticProps[];
 }
-
 export class GalleryItem {
     image : string;
     thumb : string;
@@ -107,7 +108,14 @@ export class Gallery {
             name : this.name,
             title: this.title,
             description : this.description,
-            items : await Promise.all(this.items.map((i) => i.getStaticProps()))
+            items : await Promise.all(this.items.map((i) => i.getStaticProps())),
+        }
+    }
+
+    async getRefStaticProps() : Promise<GalleryRefStaticProps> {
+        return {
+            id : this.id,
+            name : this.name,
         }
     }
 }
