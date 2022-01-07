@@ -8,8 +8,11 @@ import styles from '../../styles/gallery.module.scss';
 export default function Gallery({ gallery }) {
     const breadcrumbPath = [
         { page: 'home', label: 'Symphonic Chorus Home' },
+        { page: 'performanceList', label: 'Performances' },
         { page: '', label: gallery.name }
     ];
+
+    // TODO: look at sizing of content column in the gallery pages
 
     return (
         <Layout
