@@ -1,6 +1,7 @@
-import { IFYLP } from './fylp';
+import { Gallery } from './gallery';
 import { Performance } from './performance'
 import { Repertoire } from './repertoire';
+import { ISupplement } from './supplement';
 import { deserializeFYLP } from './serializedFYLP';
 import { deserializePerformance } from './serializedPerformance'
 import { deserializeSupplement } from './serializedSupplement';
@@ -12,8 +13,6 @@ import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
 import util from 'util';
-import { ISupplement } from './supplement';
-import { Gallery } from './gallery';
 
 const CONFIG_FILENAME       = path.join('data', 'main.yml');
 
