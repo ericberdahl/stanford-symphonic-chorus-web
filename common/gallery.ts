@@ -8,55 +8,55 @@ const GALLERY_URL_BASEPATH = '/galleries';
 const GALLERY_ASSET_BASEPATH = path.join(process.cwd(), 'public');
 
 export type SerializedGalleryItem = {
-    image : string;
-    thumb : string;
-    caption : string;
-    setting : string;
-}
-
-export type SerializedGallery = {
-    id : string;
-    name : string;
-    title: string;
-    description : string;
-    items : SerializedGalleryItem[];
-}
-
-export type GalleryItemStaticProps = {
-    image : string;
-    thumb : string;
-    thumb_width: number;
-    thumb_height: number;
-    caption : string;
-    setting : string;
-}
-
-export type GalleryStaticProps = {
-    id : string;
-    name : string;
-    title: string;
-    description : string;
-    items : GalleryItemStaticProps[];
-}
-
-export class GalleryItem {
     readonly image : string;
     readonly thumb : string;
     readonly caption : string;
     readonly setting : string;
+}
 
-    constructor(image : string, thumb : string, caption : string, setting : string) {
-        fs.accessSync(path.join(GALLERY_ASSET_BASEPATH, thumb), fs.constants.R_OK);
-        fs.accessSync(path.join(GALLERY_ASSET_BASEPATH, image), fs.constants.R_OK);
+export type SerializedGallery = {
+    readonly id : string;
+    readonly name : string;
+    readonly title: string;
+    readonly description : string;
+    readonly items : SerializedGalleryItem[];
+}
 
-        this.image = image;
-        this.thumb = thumb;
+export type GalleryItemStaticProps = {
+    readonly image : string;
+    readonly thumb : string;
+    readonly thumb_width: number;
+    readonly thumb_height: number;
+    readonly caption : string;
+    readonly setting : string;
+}
+
+export type GalleryStaticProps = {
+    readonly id : string;
+    readonly name : string;
+    readonly title: string;
+    readonly description : string;
+    readonly items : GalleryItemStaticProps[];
+}
+
+export class GalleryItem {
+    image : string;
+    thumb : string;
+    caption : string;
+    setting : string;
+
+    constructor(basepath : string, image : string, thumb : string, caption : string, setting : string) {
+        this.image = path.join(basepath, image);
+        this.thumb = path.join(basepath, thumb);
         this.caption = caption;
         this.setting = setting;
+
+        fs.accessSync(path.join(GALLERY_ASSET_BASEPATH, this.thumb), fs.constants.R_OK);
+        fs.accessSync(path.join(GALLERY_ASSET_BASEPATH, this.image), fs.constants.R_OK);
     }
 
-    static async deserialize(data : SerializedGalleryItem) : Promise<GalleryItem> {
-        return new GalleryItem(data.image, data.thumb, data.caption, data.setting);
+    static async deserialize(basepath : string, data : SerializedGalleryItem) : Promise<GalleryItem> {
+        return new GalleryItem(basepath, data.image, data.thumb, data.caption, data.setting);
     }
 
     async getStaticProps() : Promise<GalleryItemStaticProps> {
@@ -76,11 +76,11 @@ export class GalleryItem {
 }
 
 export class Gallery {
-    readonly id : string            = '';
-    readonly name : string          = '';
-    readonly title : string         = '';
-    readonly description : string   = '';
-    readonly items : GalleryItem[]  = [];
+    id : string            = '';
+    name : string          = '';
+    title : string         = '';
+    description : string   = '';
+    items : GalleryItem[]  = [];
 
     constructor(id : string, name : string, title : string, description : string) {
         this.id = id;
@@ -92,12 +92,8 @@ export class Gallery {
     static async deserialize(data : SerializedGallery) : Promise<Gallery> {
         const result = new Gallery(data.id, data.name, data.title, data.description);
 
-        result.items.push(... await Promise.all(data.items.map(async (i) => {
-            const item = i;
-            item.image = path.join(GALLERY_URL_BASEPATH, data.id, item.image);
-            item.thumb = path.join(GALLERY_URL_BASEPATH, data.id, item.thumb);
-            return GalleryItem.deserialize(i);
-        })));
+        const galleryBasePath = path.join(GALLERY_URL_BASEPATH, data.id);
+        result.items.push(... await Promise.all(data.items.map(async (i) => GalleryItem.deserialize(galleryBasePath, i))));
 
         return result;
     }
