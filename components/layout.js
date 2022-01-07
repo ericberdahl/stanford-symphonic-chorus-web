@@ -74,7 +74,7 @@ function Sidebar({ sidebar }) {
     return (sidebar ? (<div className={styles.sidebar}>{sidebar}<Seal/></div>) : (<></>));
 }
 
-export default function Layout({ breadcrumbs, children, introduction, sidebar, spotlight, title }) {
+export default function Layout({ breadcrumbs, children, introduction, sidebar, title }) {
     const isHome = isCurrentPage('home');
 
     return (
