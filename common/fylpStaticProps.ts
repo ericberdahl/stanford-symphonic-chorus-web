@@ -37,7 +37,7 @@ export async function fylpStaticProps(fylp) {
     return {
         descriptionMDX: await mdxSerializeMarkdown(fylp.description),
         albums:         await Promise.all(fylp.albums.map(albumStaticProps)),
-        piece:          pieceStaticProps(fylp.piece)
+        piece:          await pieceStaticProps(fylp.piece)
     };
 
 }

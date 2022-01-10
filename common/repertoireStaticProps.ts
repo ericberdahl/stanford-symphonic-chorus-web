@@ -9,15 +9,15 @@ type SubRepertoireStaticProps = {
 
 type RepertoireStaticProps = SubRepertoireStaticProps[];
 
-export function subRepertoireStaticProps(repertoire : Repertoire, composer : IComposer) : SubRepertoireStaticProps {
+export async function subRepertoireStaticProps(repertoire : Repertoire, composer : IComposer) : Promise<SubRepertoireStaticProps> {
     return {
         composer:   composerStaticProps(composer),
-        pieces:     repertoire.getPiecesByComposer(composer).map(pieceStaticProps)
+        pieces:     await Promise.all(repertoire.getPiecesByComposer(composer).map(pieceStaticProps))
     }
 }
 
-export function repertoireStaticProps(repertoire : Repertoire) : RepertoireStaticProps {
+export async function repertoireStaticProps(repertoire : Repertoire) : Promise<RepertoireStaticProps> {
     const composers = repertoire.getAllComposers();
 
-    return composers.map((c) => subRepertoireStaticProps(repertoire, c));
+    return await Promise.all(composers.map((c) => subRepertoireStaticProps(repertoire, c)));
 }

@@ -88,7 +88,7 @@ export async function getStaticProps() {
     const model = await Model.singleton;
     
     const props = {
-        repertoire: repertoireStaticProps(model.repertoire)
+        repertoire: await repertoireStaticProps(model.repertoire)
     }
 
     return {

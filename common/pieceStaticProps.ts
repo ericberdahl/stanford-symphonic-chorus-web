@@ -28,7 +28,7 @@ export function composerStaticProps(composer : IComposer) : ComposerStaticProps 
     };
 }
 
-export function pieceStaticProps(piece : IPiece) : PieceStaticProps {
+export async function pieceStaticProps(piece : IPiece) : Promise<PieceStaticProps> {
     return {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
