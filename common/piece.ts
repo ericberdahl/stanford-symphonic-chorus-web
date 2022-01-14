@@ -1,4 +1,5 @@
 import { IFYLP } from "./fylp";
+import { ISupplement } from "./supplement";
 import { Performance } from "./performance";
 
 import util from 'util';
@@ -16,6 +17,7 @@ export interface IPiece {
     readonly movement? : string;
     readonly prefix? : string;
     readonly suffix? : string;
+    readonly supplements : ISupplement[];
     readonly title : string | string[];
     readonly translation? : string;
     readonly performances : Performance[];
@@ -92,6 +94,7 @@ export class Piece implements IPiece {
     readonly translation : string;
     readonly catalog : string;
     readonly arranger : string;
+    readonly supplements : ISupplement[]    = [];
 
     readonly prefix : string;
     readonly suffix : string;
@@ -145,6 +148,7 @@ export class NotedPerformance implements IPiece {
     get movement() : string { return this.piece.movement; }
     get performances() : Performance[] { return this.piece.performances; }
     get prefix() : string { return this.piece.prefix; }
+    get supplements() : ISupplement[] { return this.piece.supplements; }
     get title() : string | string[] { return this.piece.title; }
     get translation() : string { return this.piece.translation; }
 

@@ -117,6 +117,11 @@ function Performance({ data }) {
         posterRoutes.push({ variant: 'JPG', route: data.posterRoutes.jpg });
     }
 
+    const supplements = [];
+    data.repertoire.forEach((piece) => {
+        supplements.push(...piece.supplements)
+    });
+
     // TODO: add fylp links
     // TODO: add misc links
     return (
@@ -141,6 +146,9 @@ function Performance({ data }) {
                     ))}
                     {data.galleries.map((g) => (
                         <li key={g.id}><PageLink page={g} collection="gallery"><a>Photo Gallery: {g.name}</a></PageLink></li>
+                    ))}
+                    {supplements.map((s, index) => (
+                        <li key={"supplemeent-" + index}><PageLink page={s} collection="supplement"><a>{s.breadcrumb}</a></PageLink></li>
                     ))}
                     <li>TODO: links</li>
                 </ul>

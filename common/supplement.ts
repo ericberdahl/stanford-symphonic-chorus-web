@@ -1,14 +1,15 @@
 import { IPiece } from "./piece";
 
 export interface ISupplement {
-    readonly piece : IPiece;
+    piece : IPiece;
     readonly title : string;
     readonly breadcrumb: string;
     readonly content : string;
 }
+// TODO: make ISupplement.piece readonly
 
 export class Supplement implements ISupplement {
-    readonly piece : IPiece;
+    piece : IPiece;
     readonly title : string;
     readonly breadcrumb : string;
     readonly content : string;

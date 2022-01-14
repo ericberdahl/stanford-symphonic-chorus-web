@@ -3,7 +3,7 @@ import { Supplement } from './supplement'
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
-type SupplementStaticProps = {
+export type SupplementStaticProps = {
     title : string;
     breadcrumb : string;
     contentMDX : MDXRemoteSerializeResult;

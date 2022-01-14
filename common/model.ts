@@ -62,7 +62,10 @@ async function createModel() : Promise<IModel> {
         return deserializeSupplement(yaml.parse(await fs.readFile(filepath, 'utf8')));
     }));
     model.supplements.push(...supplements);
-    // TODO : hook supplements into their pieces, not into the model
+    model.supplements.forEach((s) => {
+        s.piece = model.repertoire.findPiece(s.piece);
+        s.piece.supplements.push(s);
+    });
 
     const galleryDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, GALLERY_DATA_DIR), realpath: true });
     const galleries = await Promise.all(galleryDatafiles.map(async (filepath) => {
