@@ -4,8 +4,6 @@ import Markdown from "../../components/markdown";
 import Model from "../../common/model";
 import { makeSlug } from "../../common/slug";
 
-import { pieceSupplementStaticProps } from '../../common/pieceSupplementStaticProps'
-
 export default function SupplementPage({ supplement  }) {
     const breadcrumbPath = [
         { page: 'home', label: 'Symphonic Chorus Home' },
@@ -30,7 +28,7 @@ export async function getStaticProps({ params }) {
     const supplement = model.pieceSupplements.find((s) => makeSlug(s.breadcrumb) == params.id);
 
     const props = {
-        supplement: await pieceSupplementStaticProps(supplement)
+        supplement: await supplement.getStaticProps()
     }
 
     return {

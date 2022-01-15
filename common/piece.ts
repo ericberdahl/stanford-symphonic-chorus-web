@@ -2,8 +2,7 @@ import { Composer, ComposerStaticProps, SerializedComposer } from "./composer";
 import { FYLPRefStaticProps, FYLP } from "./fylp";
 import { Performance } from "./performance";
 import { PerformanceRefStaticProps, performanceRefStaticProps } from "./performanceStaticProps";
-import { IPieceSupplement } from "./pieceSupplement";
-import { PieceSupplementStaticProps, pieceSupplementStaticProps } from "./pieceSupplementStaticProps";
+import { PieceSupplementStaticProps, PieceSupplement } from "./pieceSupplement";
 
 import hash from 'object-hash';
 
@@ -48,12 +47,14 @@ export async function pieceStaticProps(piece : IPiece) : Promise<PieceStaticProp
         movement:       piece.movement,
         performances:   piece.performances.map(performanceRefStaticProps),
         prefix:         piece.prefix,
-        supplements:    await Promise.all(piece.supplements.map((s) => pieceSupplementStaticProps(s))),
+        supplements:    await Promise.all(piece.supplements.map((s) => s.getStaticProps())),
         suffix:         piece.suffix,
         title:          piece.title,
         translation:    piece.translation,
     };
 }
+
+// TODO : Remove IPiece
 export interface IPiece {
     readonly arranger? : string;
     readonly catalog? : string;
@@ -62,7 +63,7 @@ export interface IPiece {
     readonly movement? : string;
     readonly prefix? : string;
     readonly suffix? : string;
-    readonly supplements : IPieceSupplement[];
+    readonly supplements : PieceSupplement[];
     readonly title : string | string[];
     readonly translation? : string;
     readonly performances : Performance[];
@@ -128,7 +129,7 @@ export class Piece implements IPiece {
     readonly translation : string;
     readonly catalog : string;
     readonly arranger : string;
-    readonly supplements : IPieceSupplement[]    = [];
+    readonly supplements : PieceSupplement[]    = [];
 
     readonly prefix : string;
     readonly suffix : string;

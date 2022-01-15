@@ -3,7 +3,7 @@ import { FYLP } from "./fylp";
 import { IModel } from './model'
 import { Performance, Rehearsal } from './performance'
 import { IPiece, Piece, SerializedPiece } from './piece';
-import { IPieceSupplement } from "./pieceSupplement";
+import { PieceSupplement } from "./pieceSupplement";
 
 import { DateTime } from 'luxon';
 
@@ -103,7 +103,7 @@ export class NotedPerformance implements IPiece {
     get movement() : string { return this.piece.movement; }
     get performances() : Performance[] { return this.piece.performances; }
     get prefix() : string { return this.piece.prefix; }
-    get supplements() : IPieceSupplement[] { return this.piece.supplements; }
+    get supplements() : PieceSupplement[] { return this.piece.supplements; }
     get title() : string | string[] { return this.piece.title; }
     get translation() : string { return this.piece.translation; }
 

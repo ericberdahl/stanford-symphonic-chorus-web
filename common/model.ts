@@ -1,10 +1,9 @@
 import { FYLP } from './fylp';
 import { Gallery } from './gallery';
 import { Performance } from './performance'
-import { IPieceSupplement } from './pieceSupplement';
+import { PieceSupplement } from './pieceSupplement';
 import { Repertoire } from './repertoire';
 import { deserializePerformance } from './serializedPerformance'
-import { deserializeSupplement } from './serializedPieceSupplement';
 
 import glob from 'glob-promise';
 import yaml from 'yaml';
@@ -32,7 +31,7 @@ export interface IModel {
     readonly timezone : string;
     readonly repertoire : Repertoire;
     readonly fylp : Repertoire;
-    readonly pieceSupplements : IPieceSupplement[];
+    readonly pieceSupplements : PieceSupplement[];
 
     addPerformance(p : Performance);
     getPerformanceById(id : string) : Performance;
@@ -59,7 +58,7 @@ async function createModel() : Promise<IModel> {
 
     const supplementDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, SUPPLEMENT_DATA_DIR), realpath: true });
     const supplements = await Promise.all(supplementDatafiles.map(async (filepath) => {
-        return deserializeSupplement(yaml.parse(await fs.readFile(filepath, 'utf8')));
+        return PieceSupplement.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
     }));
     model.pieceSupplements.push(...supplements);
     model.pieceSupplements.forEach((s) => {
@@ -82,7 +81,7 @@ export default class Model implements IModel {
     readonly repertoire : Repertoire        = new Repertoire();
     private _currentQuarter : Performance   = null;
     private config : Configuration;
-    readonly pieceSupplements : IPieceSupplement[]    = [];
+    readonly pieceSupplements : PieceSupplement[]    = [];
     readonly galleries : Gallery[]          = [];
 
     constructor(config : Configuration) {
