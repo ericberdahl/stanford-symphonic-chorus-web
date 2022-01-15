@@ -56,10 +56,11 @@ type SerializedDressRehearsal = SerializedBaseEvent;
 type SerializedPerformance = {
     quarter : string;           // human-readable name of quarter
     syllabus : string;          // basename of syllabus asset
-    directors? : string[];       // list of names of the directors
-    instructors? : string[];     // list of names of the instructors
-    collaborators? : string[];   // list of nicknames of collaborators
+    directors? : string[];      // list of names of the directors
+    instructors? : string[];    // list of names of the instructors
+    collaborators? : string[];  // list of nicknames of collaborators
     soloists? : SerializedSoloist[];
+    supplements? : string[];    // list of markup supplements for the performance
     poster? : SerializedPoster;
     heraldImage? : SerializedPoster;
     description? : string;       // Markdown to be displayed as a description of the performance being prepared, often on the home page
@@ -196,7 +197,9 @@ export function deserializePerformance(data : SerializedPerformance, model : IMo
         }));
     }
 
-    // TODO: deserialize links
+    if (data.supplements) {
+        result.supplements.push(...data.supplements);
+    }
 
     model.addPerformance(result);
 

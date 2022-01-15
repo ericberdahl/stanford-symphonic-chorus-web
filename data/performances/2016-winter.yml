@@ -34,8 +34,9 @@ instructors:
 links:
 -   file: "W2016 Concert Photo.jpg"
     text: "Concert photo"
--   url: "https://youtu.be/9A1yGkgmviE"
-    text: "Performance on YouTube"
+
+supplements:
+-   "[Performance on YouTube](https://youtu.be/9A1yGkgmviE)"
 
 registrationFee: "$60"
     

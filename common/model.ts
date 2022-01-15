@@ -1,10 +1,10 @@
 import { Gallery } from './gallery';
 import { Performance } from './performance'
+import { IPieceSupplement } from './pieceSupplement';
 import { Repertoire } from './repertoire';
-import { ISupplement } from './supplement';
 import { deserializeFYLP } from './serializedFYLP';
 import { deserializePerformance } from './serializedPerformance'
-import { deserializeSupplement } from './serializedSupplement';
+import { deserializeSupplement } from './serializedPieceSupplement';
 
 import glob from 'glob-promise';
 import yaml from 'yaml';
@@ -19,7 +19,7 @@ const CONFIG_FILENAME       = path.join('data', 'main.yml');
 const FYLP_DATA_DIR         = path.join('data', 'fylp')
 const GALLERY_DATA_DIR      = path.join('data', 'galleries')
 const PERFORMANCE_DATA_DIR  = path.join('data', 'performances')
-const SUPPLEMENT_DATA_DIR   = path.join('data', 'supplements')
+const SUPPLEMENT_DATA_DIR   = path.join('data', 'pieceSupplements')
 
 type Configuration = {
     timezone : string;          // name of timezone in which the ensemble rehearses and performs
@@ -32,7 +32,7 @@ export interface IModel {
     readonly timezone : string;
     readonly repertoire : Repertoire;
     readonly fylp : Repertoire;
-    readonly supplements : ISupplement[];
+    readonly pieceSupplements : IPieceSupplement[];
 
     addPerformance(p : Performance);
     getPerformanceById(id : string) : Performance;
@@ -61,8 +61,8 @@ async function createModel() : Promise<IModel> {
     const supplements = await Promise.all(supplementDatafiles.map(async (filepath) => {
         return deserializeSupplement(yaml.parse(await fs.readFile(filepath, 'utf8')));
     }));
-    model.supplements.push(...supplements);
-    model.supplements.forEach((s) => {
+    model.pieceSupplements.push(...supplements);
+    model.pieceSupplements.forEach((s) => {
         s.piece = model.repertoire.findPiece(s.piece);
         s.piece.supplements.push(s);
     });
@@ -82,7 +82,7 @@ export default class Model implements IModel {
     readonly repertoire : Repertoire        = new Repertoire();
     private _currentQuarter : Performance   = null;
     private config : Configuration;
-    readonly supplements : ISupplement[]    = [];
+    readonly pieceSupplements : IPieceSupplement[]    = [];
     readonly galleries : Gallery[]          = [];
 
     constructor(config : Configuration) {

@@ -1,6 +1,6 @@
 import Layout from '../../../components/layout';
 import Lightbox from '../../../components/lightbox';
-import Markdown from '../../../components/Markdown';
+import Markdown from '../../../components/markdown';
 import PageLink from '../../../components/pageLink';
 import PairedImage from '../../../components/pairedImage';
 import PieceCitation from '../../../components/pieceCitation';

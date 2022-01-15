@@ -62,6 +62,7 @@ export class Performance {
     readonly sectionalsSopranoAlto : Rehearsal[]    = [];
     readonly sectionalsTenorBass : Rehearsal[]      = [];
     readonly soloists : ISoloist[]                  = [];
+    readonly supplements : string[]                 = [];
     readonly syllabusRoutes : FileRoutes;
     readonly tuttiRehearsals : Rehearsal[]          = [];
 

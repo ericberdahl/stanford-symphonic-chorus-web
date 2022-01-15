@@ -42,12 +42,6 @@ directors:
 instructors:
 -   "Stephen M. Sano"
 
-links:
--   url: "performances/W2009/Yuasa_CosmicSolitude.m4a"
-    text: "Cosmic Solitude sound"
--   url: "performances/W2009/CosmicSolitude.m4v"
-    text: "Cosmic Solitude sound with video of score, produced by Michael Good"
-
 registrationFee:
 # MISSING: registrationFee for Winter 2009
     

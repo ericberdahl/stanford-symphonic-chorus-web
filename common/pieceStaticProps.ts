@@ -1,7 +1,7 @@
 import { fylpRefStaticProps, FYLPRefStaticProps } from "./fylpStaticProps";
 import { PerformanceRefStaticProps, performanceRefStaticProps } from "./performanceStaticProps";
 import { IComposer, IPiece } from "./piece";
-import { SupplementStaticProps, supplementStaticProps } from "./supplementStaticProps";
+import { PieceSupplementStaticProps, pieceSupplementStaticProps } from "./pieceSupplementStaticProps";
 
 export type ComposerStaticProps = {
     fullName : string;
@@ -17,7 +17,7 @@ export type PieceStaticProps = {
     movement : string;
     performances : PerformanceRefStaticProps[];
     prefix : string;
-    supplements : SupplementStaticProps[];
+    supplements : PieceSupplementStaticProps[];
     suffix : string;
     title : string | string[];
     translation : string;
@@ -40,7 +40,7 @@ export async function pieceStaticProps(piece : IPiece) : Promise<PieceStaticProp
         movement:       piece.movement,
         performances:   piece.performances.map(performanceRefStaticProps),
         prefix:         piece.prefix,
-        supplements:    await Promise.all(piece.supplements.map((s) => supplementStaticProps(s))),
+        supplements:    await Promise.all(piece.supplements.map((s) => pieceSupplementStaticProps(s))),
         suffix:         piece.suffix,
         title:          piece.title,
         translation:    piece.translation,

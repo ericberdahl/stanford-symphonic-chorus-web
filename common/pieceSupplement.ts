@@ -1,6 +1,6 @@
 import { IPiece } from "./piece";
 
-export interface ISupplement {
+export interface IPieceSupplement {
     piece : IPiece;
     readonly title : string;
     readonly breadcrumb: string;
@@ -8,7 +8,7 @@ export interface ISupplement {
 }
 // TODO: make ISupplement.piece readonly
 
-export class Supplement implements ISupplement {
+export class PieceSupplement implements IPieceSupplement {
     piece : IPiece;
     readonly title : string;
     readonly breadcrumb : string;

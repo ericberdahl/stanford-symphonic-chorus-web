@@ -1,5 +1,5 @@
 import Layout from "../../components/layout";
-import Markdown from "../../components/Markdown";
+import Markdown from "../../components/markdown";
 
 import Model from "../../common/model";
 import { makeSlug } from "../../common/slug";
@@ -27,7 +27,7 @@ export default function SupplementPage({ supplement  }) {
 export async function getStaticProps({ params }) {
     const model = await Model.singleton;
 
-    const supplement = model.supplements.find((s) => makeSlug(s.breadcrumb) == params.id);
+    const supplement = model.pieceSupplements.find((s) => makeSlug(s.breadcrumb) == params.id);
 
     const props = {
         supplement: await supplementStaticProps(supplement)
@@ -42,7 +42,7 @@ export async function getStaticPaths() {
     const model = await Model.singleton;
 
     const result = {
-        paths: model.supplements.map((s) => ({ params: { id: makeSlug(s.breadcrumb) }}) ),
+        paths: model.pieceSupplements.map((s) => ({ params: { id: makeSlug(s.breadcrumb) }}) ),
         fallback: false
     };
 

@@ -57,6 +57,7 @@ export type PerformanceStaticProps = {
     sectionalsSopranoAlto : RehearsalStaticProps[];
     sectionalsTenorBass : RehearsalStaticProps[];
     soloists : SoloistStaticProps[];
+    supplementsMDX : MDXRemoteSerializeResult[];
     syllabusRoutes : FileRouteStaticProp[];
     tuttiRehearsals : RehearsalStaticProps[];
 }
@@ -133,6 +134,7 @@ export async function performanceStaticProps(performance) : Promise<PerformanceS
         sectionalsSopranoAlto:  performance.sectionalsSopranoAlto.map(rehearsalStaticProps),
         sectionalsTenorBass:    performance.sectionalsTenorBass.map(rehearsalStaticProps),
         soloists:               performance.soloists.map(soloistStaticProps),
+        supplementsMDX:         await Promise.all(performance.supplements.map((s) => mdxSerializeMarkdown(s))),
         syllabusRoutes:         fileRoutesStaticProps(performance.syllabusRoutes),
         tuttiRehearsals:        performance.tuttiRehearsals.map(rehearsalStaticProps),
     };

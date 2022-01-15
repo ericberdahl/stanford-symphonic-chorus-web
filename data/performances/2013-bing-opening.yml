@@ -28,11 +28,9 @@ directors:
 instructors:
 -   "Stephen M. Sano"
 
-links:
--   url: "http://binghall.stanford.edu/"
-    text: "Opening Weekend – Bing Concert Hall"
--   url: "http://vimeo.com/56115622"
-    text: "Bing Concert Hall Fly Through"
+supplements:
+-   "[Opening Weekend – Bing Concert Hall](http://binghall.stanford.edu/)"
+-   "[Bing Concert Hall Fly Through](http://vimeo.com/56115622)"
 
 registrationFee:
 # MISSING: registrationFee for Bing Opening 2008

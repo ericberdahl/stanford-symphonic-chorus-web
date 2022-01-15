@@ -8,14 +8,6 @@ import util from 'util';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
-// TODO: create/route asset pages
-// performances/S2010/requiem_text.html
-// performances/S2002/parzen.html
-// performances/W2002/cminormass.html
-// performances/F2008/Chichester-text/index.html
-// performances/F2008/Amherst-text/index.html
-// performances/S1995/text.html
-
 class SiteEntry {
     route   = ''
 
