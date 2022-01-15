@@ -1,4 +1,4 @@
-import { fileRoutesStaticProps, FileRouteStaticProp, ImageRoutesStaticProps, imageRoutesStaticProps } from './fileRoutesStatiicProps';
+import { fileRoutesStaticProps, FileRouteStaticProp, ImageRoutesStaticProps, imageRoutesStaticProps } from './fileRoutes';
 import { GalleryStaticProps } from './gallery';
 import { BasicEvent, Concert, GenericEvent, ISoloist, Performance, Rehearsal  } from './performance';
 import { PieceStaticProps, pieceStaticProps } from './piece';

@@ -1,4 +1,4 @@
-import { Piece, SerializedPiece } from "./piece";
+import { IPiece, Piece, SerializedPiece } from "./piece";
 
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
@@ -17,7 +17,7 @@ export type PieceSupplementStaticProps = {
 }
 
 export class PieceSupplement {
-    piece : Piece;
+    piece : IPiece;
     readonly title : string;
     readonly breadcrumb : string;
     readonly content : string;

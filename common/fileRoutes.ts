@@ -17,6 +17,44 @@ function composeExistingRoute(directoryRoute : string, name : string, extension 
     return (fs.existsSync(path.join(STATIC_ASSET_DIR, route)) ? route : null);
 }
 
+export type ImageRoutesStaticProps = {
+    pdf : string;
+    jpg : string;
+    caption : string;
+    width : number;
+    height : number;
+}
+
+export type FileRouteStaticProp = {
+    variant : string;
+    route : string;
+}
+
+export function imageRoutesStaticProps(imageRoutes : ImageRoutes) : ImageRoutesStaticProps {
+    if (!imageRoutes) {
+        return null;
+    }
+
+    const result = {
+        pdf: imageRoutes?.pdf || null,
+        jpg: imageRoutes?.jpg || null,
+        caption: imageRoutes?.caption || null,
+        width: imageRoutes.width,
+        height: imageRoutes.height,
+    };
+
+    return result;
+}
+
+export function fileRoutesStaticProps(fileRoutes : FileRoutes) : FileRouteStaticProp[] {
+    if (!fileRoutes) return null;
+    
+    return fileRoutes.variants.map((v) => ({
+        variant: v.toUpperCase(),
+        route: fileRoutes.getRoute(v)
+    }));
+}
+
 export class FileRoutes {
     readonly routes : string[];
 
