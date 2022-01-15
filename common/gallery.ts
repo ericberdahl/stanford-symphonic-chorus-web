@@ -10,13 +10,13 @@ const GALLERY_ASSET_BASEPATH = path.join(process.cwd(), 'public');
 export type SerializedGalleryItem = {
     readonly image : string;
     readonly thumb : string;
-    readonly caption : string;
-    readonly setting : string;
+    readonly caption? : string;
+    readonly setting? : string;
 }
 
 export type SerializedGallery = {
     readonly id : string;
-    readonly description : string;
+    readonly description? : string;
     readonly items : SerializedGalleryItem[];
     readonly name : string;
     readonly quarter : string;
@@ -50,8 +50,8 @@ export class GalleryItem {
     constructor(basepath : string, image : string, thumb : string, caption : string, setting : string) {
         this.image = path.join(basepath, image);
         this.thumb = path.join(basepath, thumb);
-        this.caption = caption;
-        this.setting = setting;
+        this.caption = caption || '';
+        this.setting = setting || '';
 
         fs.accessSync(path.join(GALLERY_ASSET_BASEPATH, this.thumb), fs.constants.R_OK);
         fs.accessSync(path.join(GALLERY_ASSET_BASEPATH, this.image), fs.constants.R_OK);
@@ -90,7 +90,7 @@ export class Gallery {
         this.name = name;
         this.quarter = quarter;
         this.title = title;
-        this.description = description;
+        this.description = description || '';
     }
 
     static async deserialize(data : SerializedGallery) : Promise<Gallery> {

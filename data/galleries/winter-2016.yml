@@ -1,0 +1,12 @@
+id: 2016-winter
+
+name: Winter 2016 Gallery
+
+quarter: Winter 2016
+
+title: Winter 2016 Concert Photo
+
+items:
+-   image: concert-photo.jpg
+    thumb: concert-photo-thumb.jpg
+    caption: Concert Photo
