@@ -1,5 +1,5 @@
 import { ImageRoutes } from "./fileRoutes";
-import { comparePieces, IPiece } from "./piece";
+import { IPiece } from "./piece";
 
 interface IAlbum {
     readonly director : string;

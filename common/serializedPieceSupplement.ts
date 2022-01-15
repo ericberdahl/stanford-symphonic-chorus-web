@@ -1,5 +1,5 @@
 import { IPieceSupplement, PieceSupplement } from './pieceSupplement';
-import { deserializePiece, SerializedPiece } from './serializedPiece';
+import { Piece, SerializedPiece } from './piece';
 
 export type SerializedPieceSupplement = {
     piece : SerializedPiece;
@@ -8,8 +8,8 @@ export type SerializedPieceSupplement = {
     content : string;
 }
 
-export function deserializeSupplement(data : SerializedPieceSupplement) : IPieceSupplement {
-    return new PieceSupplement(deserializePiece(data.piece),
+export async function deserializeSupplement(data : SerializedPieceSupplement) : Promise<IPieceSupplement> {
+    return new PieceSupplement(await Piece.deserialize(data.piece),
                                data.title,
                                data.breadcrumb,
                                data.content);

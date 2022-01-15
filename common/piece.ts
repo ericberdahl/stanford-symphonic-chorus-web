@@ -2,7 +2,23 @@ import { IFYLP } from "./fylp";
 import { Performance } from "./performance";
 import { IPieceSupplement } from "./pieceSupplement";
 
+import hash from 'object-hash';
+
 import util from 'util';
+
+type SerializedComposer = string | Array<string>;
+
+export type SerializedPiece = {
+    title : string;
+    composer? : SerializedComposer;
+    movement? : string;
+    translation? : string;
+    commonTitle? : string;
+    catalog? : string;
+    arranger? : string;
+    prefix? : string;
+    suffix? : string;
+}
 
 export interface IComposer {
     readonly fullName : string;
@@ -26,6 +42,15 @@ export interface IPiece {
     addPerformance(performanace : Performance);
 }
 
+function hashComposer(c : IComposer) {
+    const elements = {
+        familyName: c.familyName,
+        fullName:   c.fullName,
+    }
+
+    return hash(elements);
+}
+
 export function compareComposers(a : IComposer, b : IComposer) : number {
     let result = 0;
 
@@ -39,9 +64,24 @@ export function compareComposers(a : IComposer, b : IComposer) : number {
     if (a.fullName == b.fullName && a.familyName != b.familyName) {
         console.warn(util.format('Found composer "%s" with two family names, "%s" and "%s"', a.fullName, a.familyName, b.familyName));
     }
+    if (0 == result && hashComposer(a) != hashComposer(b)) {
+        console.warn(util.format('Found composer "%s" with hash mismatch', a.fullName));
+    }
 
     return result;
 }
+
+function hashPiece(p : IPiece) {
+    const elements = {
+        composer:   hashComposer(p.composer),
+        title:      p.title,
+        movement:   p.movement,
+        arranger:   p.arranger,
+    }
+
+    return hash(elements);
+}
+
 
 export function comparePieces(a : IPiece, b : IPiece) : number {
     let result = 0;
@@ -61,8 +101,9 @@ export function comparePieces(a : IPiece, b : IPiece) : number {
         bTitle.push(...Array(maxLength - bTitle.length).fill(''));
 
         result = aTitle.reduce((prevResult, currentValue, currentIndex) => {
-            return (0 != prevResult ? prevResult :
-                currentValue.localeCompare(bTitle[currentIndex]));
+            return (0 != prevResult ?
+                        prevResult :
+                        currentValue.localeCompare(bTitle[currentIndex]));
         }, 0);
     }
     if (0 == result) {
@@ -70,6 +111,9 @@ export function comparePieces(a : IPiece, b : IPiece) : number {
     }
     if (0 == result) {
         result = makeString(a.arranger).localeCompare(makeString(b.arranger));
+    }
+    if (0 == result && hashPiece(a) != hashPiece(b)) {
+        console.warn(util.format('Found piece "%s" with hash mismatch', a.title));
     }
 
     return result;
@@ -83,6 +127,23 @@ export class Composer implements IComposer {
         this.fullName = fullName;
         this.familyName = familyName;
     }
+
+    static async deserialize(composer: SerializedComposer) : Promise<Composer> {
+
+        // If the composer field is an array, the final element is the family name and
+        // the space-joined concatenation of the fields is the full name.
+        // If the composer field is a single string, the family name is the final word
+        // in the string.
+    
+        const result = (!composer ?
+                            new Composer('', '') :
+                            (Array.isArray(composer) ?
+                                new Composer(composer.join(' '), composer[composer.length - 1]) :
+                                (new Composer(composer, composer.split(' ').slice(-1)[0])) ));
+    
+        return result;
+    }
+    
 }
 
 export class Piece implements IPiece {
@@ -102,7 +163,9 @@ export class Piece implements IPiece {
     readonly performances : Performance[]   = [];
     fylp : IFYLP;
     
-    constructor(
+    private static sGrandRepertoire : Map<string, WeakRef<Piece>>   = new Map<string, WeakRef<Piece>>();
+
+    private constructor(
             title : string | string[],
             composer : IComposer,
             movement : string,
@@ -125,39 +188,34 @@ export class Piece implements IPiece {
         this.suffix = (suffix || '');
     }
 
+    compare(other : IPiece) : number {
+        return comparePieces(this, other);
+    }
+
     addPerformance(performanace : Performance) {
         this.performances.push(performanace);
         this.performances.sort((a, b) => a.compare(b));
     }
-}
 
-export class NotedPerformance implements IPiece {
-    readonly piece : IPiece;
-    readonly note : string;
+    static async deserialize(data : SerializedPiece) : Promise<Piece> {
+        let result : Piece = new Piece(data.title,
+                                        await Composer.deserialize(data.composer),
+                                        data.movement,
+                                        data.translation,
+                                        data.commonTitle,
+                                        data.catalog,
+                                        data.arranger,
+                                        data.prefix,
+                                        data.suffix);
+        const hashValue = hashPiece(result);
 
-    constructor(piece : IPiece, note : string) {
-        this.piece = piece;
-        this.note = note;
-    }
+        if (this.sGrandRepertoire.has(hashValue)) {
+            result = this.sGrandRepertoire.get(hashValue).deref();
+        }
+        else {
+            this.sGrandRepertoire.set(hashValue, new WeakRef<Piece>(result));
+        }
 
-    get arranger() : string { return this.piece.arranger; }
-    get catalog() : string { return this.piece.catalog; }
-    get commonTitle() : string { return this.piece.commonTitle; }
-    get composer() : IComposer { return this.piece.composer; }
-    get fylp() : IFYLP { return this.piece.fylp; }
-    get movement() : string { return this.piece.movement; }
-    get performances() : Performance[] { return this.piece.performances; }
-    get prefix() : string { return this.piece.prefix; }
-    get supplements() : IPieceSupplement[] { return this.piece.supplements; }
-    get title() : string | string[] { return this.piece.title; }
-    get translation() : string { return this.piece.translation; }
-
-    get suffix() : string {
-        const elements = [this.piece.suffix, this.note].filter((value) => value != '');
-        return elements.join(' ');
-    }
-
-    addPerformance(performanace : Performance) {
-        this.piece.addPerformance(performanace);
+        return result;                                        
     }
 }

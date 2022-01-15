@@ -1,12 +1,17 @@
+import { IFYLP } from "./fylp";
 import { IModel } from './model'
 import { Performance, Rehearsal } from './performance'
-import { deserializePiece, SerializedPerformancePiece } from './serializedPiece';
+import { IComposer, IPiece, Piece, SerializedPiece } from './piece';
+import { IPieceSupplement } from "./pieceSupplement";
 
 import { DateTime } from 'luxon';
 
 import util from 'util';
 import { Repertoire } from './repertoire';
-import { NotedPerformance } from './piece';
+
+type SerializedPerformancePiece = SerializedPiece & {
+    performanceNote? : string;
+}
 
 type SerializedSoloist = {
     name : string;
@@ -80,6 +85,37 @@ type SerializedPerformance = {
     dressRehearsals? : SerializedDressRehearsal[];
 }
 
+export class NotedPerformance implements IPiece {
+    readonly piece : IPiece;
+    readonly note : string;
+
+    constructor(piece : IPiece, note : string) {
+        this.piece = piece;
+        this.note = note;
+    }
+
+    get arranger() : string { return this.piece.arranger; }
+    get catalog() : string { return this.piece.catalog; }
+    get commonTitle() : string { return this.piece.commonTitle; }
+    get composer() : IComposer { return this.piece.composer; }
+    get fylp() : IFYLP { return this.piece.fylp; }
+    get movement() : string { return this.piece.movement; }
+    get performances() : Performance[] { return this.piece.performances; }
+    get prefix() : string { return this.piece.prefix; }
+    get supplements() : IPieceSupplement[] { return this.piece.supplements; }
+    get title() : string | string[] { return this.piece.title; }
+    get translation() : string { return this.piece.translation; }
+
+    get suffix() : string {
+        const elements = [this.piece.suffix, this.note].filter((value) => value != '');
+        return elements.join(' ');
+    }
+
+    addPerformance(performanace : Performance) {
+        this.piece.addPerformance(performanace);
+    }
+}
+
 function createDateTime(date : string, timeOfDay : string, timezone : string) : DateTime {
     return DateTime.fromFormat(date + ' ' + timeOfDay, 'yyyy-MM-dd HH:mm', { setZone: timezone });
 }
@@ -115,8 +151,8 @@ function deserializeRehearsalSequence(spec : SerializedRehearsalSequence, timezo
     return result;
 }
 
-function deserializePieceForPerformance(serializedPiece : SerializedPerformancePiece, performance : Performance, isMain : boolean, repertoire : Repertoire) {
-    const piece = repertoire.addPiece(deserializePiece(serializedPiece));
+async function deserializePieceForPerformance(serializedPiece : SerializedPerformancePiece, performance : Performance, isMain : boolean, repertoire : Repertoire) {
+    const piece = repertoire.addPiece(await Piece.deserialize(serializedPiece));
 
     performance.addRepertoire(serializedPiece.performanceNote ?
                                     new NotedPerformance(piece, serializedPiece.performanceNote) :

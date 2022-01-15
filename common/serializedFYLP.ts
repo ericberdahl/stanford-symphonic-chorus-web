@@ -1,6 +1,5 @@
 import { IFYLP, FYLP } from './fylp';
-import { Repertoire } from './repertoire';
-import { SerializedPiece, deserializePiece } from './serializedPiece';
+import { Piece, SerializedPiece } from './piece';
 
 type SerializedAlbum = {
     director : string;
@@ -16,8 +15,8 @@ type SerializedFYLP = {
     albums : SerializedAlbum[];
 }
 
-export function deserializeFYLP(data : SerializedFYLP) : IFYLP {
-    const result : FYLP = new FYLP(deserializePiece(data.piece), data.description);
+export async function deserializeFYLP(data : SerializedFYLP) : Promise<IFYLP> {
+    const result : FYLP = new FYLP(await Piece.deserialize(data.piece), data.description);
     data.albums.forEach((a) => result.addAlbum(a.director, a.description, a.label, a.image, a.shopping));
 
     return result;
