@@ -1,6 +1,5 @@
 import { Composer, ComposerStaticProps, SerializedComposer } from "./composer";
-import { IFYLP } from "./fylp";
-import { fylpRefStaticProps, FYLPRefStaticProps } from "./fylpStaticProps";
+import { FYLPRefStaticProps, FYLP } from "./fylp";
 import { Performance } from "./performance";
 import { PerformanceRefStaticProps, performanceRefStaticProps } from "./performanceStaticProps";
 import { IPieceSupplement } from "./pieceSupplement";
@@ -45,7 +44,7 @@ export async function pieceStaticProps(piece : IPiece) : Promise<PieceStaticProp
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
         composer:       await piece.composer.getStaticProps(),
-        fylp:           await fylpRefStaticProps(piece.fylp),
+        fylp:           (await piece.fylp?.getRefStaticProps()) || null,
         movement:       piece.movement,
         performances:   piece.performances.map(performanceRefStaticProps),
         prefix:         piece.prefix,
@@ -67,7 +66,7 @@ export interface IPiece {
     readonly title : string | string[];
     readonly translation? : string;
     readonly performances : Performance[];
-    fylp : IFYLP;
+    fylp : FYLP;
 
     addPerformance(performanace : Performance);
 }
@@ -135,7 +134,7 @@ export class Piece implements IPiece {
     readonly suffix : string;
 
     readonly performances : Performance[]   = [];
-    fylp : IFYLP;
+    fylp : FYLP;
     
     private static sGrandRepertoire : Map<string, WeakRef<Piece>>   = new Map<string, WeakRef<Piece>>();
 

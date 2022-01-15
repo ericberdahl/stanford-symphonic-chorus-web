@@ -10,7 +10,6 @@ import Model  from '../../../common/model';
 import { makeSlug } from '../../../common/slug';
 
 import styles from '../../../styles/fylpPiece.module.scss'
-import { fylpStaticProps } from '../../../common/fylpStaticProps';
 
 function Introduction({ fylp }) {
     return (
@@ -92,7 +91,7 @@ export async function getStaticProps({ params }) {
     const piece = model.fylp.pieces.find((p) => (makeSlug(p.composer.fullName) == params.composer && makeSlug(p.title) == params.title));
 
     const props = {
-        fylp:   await fylpStaticProps(piece.fylp)
+        fylp:   await piece.fylp.getStaticProps()
     }
 
     return {

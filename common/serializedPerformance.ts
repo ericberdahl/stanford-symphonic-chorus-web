@@ -1,7 +1,8 @@
-import { IFYLP } from "./fylp";
+import { Composer } from "./composer";
+import { FYLP } from "./fylp";
 import { IModel } from './model'
 import { Performance, Rehearsal } from './performance'
-import { Composer, IPiece, Piece, SerializedPiece } from './piece';
+import { IPiece, Piece, SerializedPiece } from './piece';
 import { IPieceSupplement } from "./pieceSupplement";
 
 import { DateTime } from 'luxon';
@@ -98,7 +99,7 @@ export class NotedPerformance implements IPiece {
     get catalog() : string { return this.piece.catalog; }
     get commonTitle() : string { return this.piece.commonTitle; }
     get composer() : Composer { return this.piece.composer; }
-    get fylp() : IFYLP { return this.piece.fylp; }
+    get fylp() : FYLP { return this.piece.fylp; }
     get movement() : string { return this.piece.movement; }
     get performances() : Performance[] { return this.piece.performances; }
     get prefix() : string { return this.piece.prefix; }

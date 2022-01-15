@@ -1,8 +1,8 @@
+import { FYLP } from './fylp';
 import { Gallery } from './gallery';
 import { Performance } from './performance'
 import { IPieceSupplement } from './pieceSupplement';
 import { Repertoire } from './repertoire';
-import { deserializeFYLP } from './serializedFYLP';
 import { deserializePerformance } from './serializedPerformance'
 import { deserializeSupplement } from './serializedPieceSupplement';
 
@@ -51,7 +51,7 @@ async function createModel() : Promise<IModel> {
 
     const fylpDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, FYLP_DATA_DIR), realpath: true });
     const fylps = await Promise.all(fylpDatafiles.map(async (filepath) => {
-        return deserializeFYLP(yaml.parse(await fs.readFile(filepath, 'utf8')));
+        return FYLP.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
     }));
     fylps.forEach((f) => {
         f.piece = model.repertoire.findPiece(f.piece);

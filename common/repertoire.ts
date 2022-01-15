@@ -1,4 +1,5 @@
-import { Composer, IPiece, comparePieces } from './piece';
+import { Composer } from './composer';
+import { IPiece, comparePieces } from './piece';
 
 import util from 'util';
 
