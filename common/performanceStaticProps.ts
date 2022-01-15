@@ -1,7 +1,7 @@
 import { fileRoutesStaticProps, FileRouteStaticProp, ImageRoutesStaticProps, imageRoutesStaticProps } from './fileRoutesStatiicProps';
 import { GalleryStaticProps } from './gallery';
 import { BasicEvent, Concert, GenericEvent, ISoloist, Performance, Rehearsal  } from './performance';
-import { PieceStaticProps, pieceStaticProps } from './pieceStaticProps';
+import { PieceStaticProps, pieceStaticProps } from './piece';
 
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';

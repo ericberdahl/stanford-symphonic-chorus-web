@@ -1,7 +1,7 @@
 import { ComposerStaticProps } from './composer';
 import { imageRoutesStaticProps } from './fileRoutesStatiicProps';
 import { IFYLP } from "./fylp";
-import { pieceStaticProps } from "./pieceStaticProps";
+import { pieceStaticProps } from "./piece";
 
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 

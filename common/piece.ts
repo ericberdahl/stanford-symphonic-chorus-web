@@ -1,7 +1,10 @@
-import { Composer, SerializedComposer } from "./composer";
+import { Composer, ComposerStaticProps, SerializedComposer } from "./composer";
 import { IFYLP } from "./fylp";
+import { fylpRefStaticProps, FYLPRefStaticProps } from "./fylpStaticProps";
 import { Performance } from "./performance";
+import { PerformanceRefStaticProps, performanceRefStaticProps } from "./performanceStaticProps";
 import { IPieceSupplement } from "./pieceSupplement";
+import { PieceSupplementStaticProps, pieceSupplementStaticProps } from "./pieceSupplementStaticProps";
 
 import hash from 'object-hash';
 
@@ -21,6 +24,37 @@ export type SerializedPiece = {
     suffix? : string;
 }
 
+export type PieceStaticProps = {
+    arranger : string;
+    catalog : string;
+    commonTitle : string;
+    composer : ComposerStaticProps;
+    fylp : FYLPRefStaticProps;
+    movement : string;
+    performances : PerformanceRefStaticProps[];
+    prefix : string;
+    supplements : PieceSupplementStaticProps[];
+    suffix : string;
+    title : string | string[];
+    translation : string;
+};
+
+export async function pieceStaticProps(piece : IPiece) : Promise<PieceStaticProps> {
+    return {
+        arranger:       piece.arranger,
+        catalog:        piece.catalog,
+        commonTitle:    piece.commonTitle,
+        composer:       await piece.composer.getStaticProps(),
+        fylp:           await fylpRefStaticProps(piece.fylp),
+        movement:       piece.movement,
+        performances:   piece.performances.map(performanceRefStaticProps),
+        prefix:         piece.prefix,
+        supplements:    await Promise.all(piece.supplements.map((s) => pieceSupplementStaticProps(s))),
+        suffix:         piece.suffix,
+        title:          piece.title,
+        translation:    piece.translation,
+    };
+}
 export interface IPiece {
     readonly arranger? : string;
     readonly catalog? : string;
@@ -38,7 +72,7 @@ export interface IPiece {
     addPerformance(performanace : Performance);
 }
 
-function hashPiece(p : IPiece) {
+function hashPiece(p : IPiece) : string {
     const elements = {
         composer:   p.composer.hashValue,
         title:      p.title,

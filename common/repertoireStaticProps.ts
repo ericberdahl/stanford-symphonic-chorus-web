@@ -1,5 +1,5 @@
 import { Composer, ComposerStaticProps } from "./composer";
-import { PieceStaticProps, pieceStaticProps } from "./pieceStaticProps";
+import { PieceStaticProps, pieceStaticProps } from "./piece";
 import { Repertoire } from "./repertoire";
 
 type SubRepertoireStaticProps = {
