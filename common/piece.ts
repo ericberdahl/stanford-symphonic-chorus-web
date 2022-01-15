@@ -6,6 +6,8 @@ import hash from 'object-hash';
 
 import util from 'util';
 
+// TODO : refactor Piece static props into Piece
+
 type SerializedComposer = string | Array<string>;
 
 export type SerializedPiece = {
@@ -20,16 +22,11 @@ export type SerializedPiece = {
     suffix? : string;
 }
 
-export interface IComposer {
-    readonly fullName : string;
-    readonly familyName : string;
-}
-
 export interface IPiece {
     readonly arranger? : string;
     readonly catalog? : string;
     readonly commonTitle? : string;
-    readonly composer : IComposer;
+    readonly composer : Composer;
     readonly movement? : string;
     readonly prefix? : string;
     readonly suffix? : string;
@@ -42,38 +39,9 @@ export interface IPiece {
     addPerformance(performanace : Performance);
 }
 
-function hashComposer(c : IComposer) {
-    const elements = {
-        familyName: c.familyName,
-        fullName:   c.fullName,
-    }
-
-    return hash(elements);
-}
-
-export function compareComposers(a : IComposer, b : IComposer) : number {
-    let result = 0;
-
-    if (0 == result) {
-        result = a.familyName.localeCompare(b.familyName);
-    }
-    if (0 == result) {
-        result = a.fullName.localeCompare(b.fullName);
-    }
-
-    if (a.fullName == b.fullName && a.familyName != b.familyName) {
-        console.warn(util.format('Found composer "%s" with two family names, "%s" and "%s"', a.fullName, a.familyName, b.familyName));
-    }
-    if (0 == result && hashComposer(a) != hashComposer(b)) {
-        console.warn(util.format('Found composer "%s" with hash mismatch', a.fullName));
-    }
-
-    return result;
-}
-
 function hashPiece(p : IPiece) {
     const elements = {
-        composer:   hashComposer(p.composer),
+        composer:   p.composer.hashValue,
         title:      p.title,
         movement:   p.movement,
         arranger:   p.arranger,
@@ -90,7 +58,7 @@ export function comparePieces(a : IPiece, b : IPiece) : number {
     const makeStringArray = (s) => (Array.isArray(s) ? s : [ makeString(s) ]);
     
     if (0 == result) {
-        result = compareComposers(a.composer, b.composer);
+        result = a.composer.compare(b.composer);
     }
     if (0 == result) {
         const aTitle = makeStringArray(a.title);
@@ -119,7 +87,7 @@ export function comparePieces(a : IPiece, b : IPiece) : number {
     return result;
 }
 
-export class Composer implements IComposer {
+export class Composer {
     readonly fullName;
     readonly familyName;
 
@@ -128,6 +96,35 @@ export class Composer implements IComposer {
         this.familyName = familyName;
     }
 
+    get hashValue() {
+        const elements = {
+            familyName: this.familyName,
+            fullName:   this.fullName,
+        }
+    
+        return hash(elements);
+    }
+
+    compare(other : Composer) : number {
+        let result = 0;
+    
+        if (0 == result) {
+            result = this.familyName.localeCompare(other.familyName);
+        }
+        if (0 == result) {
+            result = this.fullName.localeCompare(other.fullName);
+        }
+    
+        if (this.fullName == other.fullName && this.familyName != other.familyName) {
+            console.warn(util.format('Found composer "%s" with two family names, "%s" and "%s"', this.fullName, this.familyName, other.familyName));
+        }
+        if (0 == result && this.hashValue != other.hashValue) {
+            console.warn(util.format('Found composer "%s" with hash mismatch', this.fullName));
+        }
+    
+        return result;
+    }
+    
     static async deserialize(composer: SerializedComposer) : Promise<Composer> {
 
         // If the composer field is an array, the final element is the family name and
@@ -148,7 +145,7 @@ export class Composer implements IComposer {
 
 export class Piece implements IPiece {
     readonly title : string | string[]
-    readonly composer : IComposer;
+    readonly composer : Composer;
 
     readonly movement : string;
     readonly commonTitle : string;
@@ -167,7 +164,7 @@ export class Piece implements IPiece {
 
     private constructor(
             title : string | string[],
-            composer : IComposer,
+            composer : Composer,
             movement : string,
             translation : string,
             commonTitle : string,

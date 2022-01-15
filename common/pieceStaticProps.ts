@@ -1,6 +1,6 @@
 import { fylpRefStaticProps, FYLPRefStaticProps } from "./fylpStaticProps";
 import { PerformanceRefStaticProps, performanceRefStaticProps } from "./performanceStaticProps";
-import { IComposer, IPiece } from "./piece";
+import { Composer, IPiece } from "./piece";
 import { PieceSupplementStaticProps, pieceSupplementStaticProps } from "./pieceSupplementStaticProps";
 
 export type ComposerStaticProps = {
@@ -23,7 +23,7 @@ export type PieceStaticProps = {
     translation : string;
 };
 
-export function composerStaticProps(composer : IComposer) : ComposerStaticProps {
+export function composerStaticProps(composer : Composer) : ComposerStaticProps {
     return {
         fullName:   composer.fullName,
         familyName: composer.familyName

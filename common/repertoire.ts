@@ -1,12 +1,12 @@
-import { IComposer, IPiece, comparePieces, compareComposers } from './piece';
+import { Composer, IPiece, comparePieces } from './piece';
 
 import util from 'util';
 
 class SubRepertoire {
-    readonly composer : IComposer;
+    readonly composer : Composer;
     readonly pieces : IPiece[]  = [];
 
-    constructor(composer : IComposer) {
+    constructor(composer : Composer) {
         this.composer = composer;
     }
 
@@ -38,20 +38,20 @@ export class Repertoire {
 
     }
 
-    validateComposer(composer : IComposer) : IComposer {
+    validateComposer(composer : Composer) : Composer {
         let subRep = this.findSubRepertoire(composer);
 
         if (!subRep) {
             subRep = new SubRepertoire(composer);
             this.subRepertoires.push(subRep);
             
-            this.subRepertoires.sort((a, b) => compareComposers(a.composer, b.composer))
+            this.subRepertoires.sort((a, b) => a.composer.compare(b.composer))
         }
 
         return subRep.composer;
     }
 
-    get composers() : IComposer[] {
+    get composers() : Composer[] {
         return this.subRepertoires.map((r) => r.composer);
     }
 
@@ -71,20 +71,20 @@ export class Repertoire {
         return this.findSubRepertoire(piece.composer)?.findPiece(piece);;
     }
 
-    getAllComposers() : IComposer[] {
+    getAllComposers() : Composer[] {
         // TODO : deprecate getAllComposers
         return this.composers;
     }
 
-    getPiecesByComposer(composer : IComposer) : IPiece[] {
+    getPiecesByComposer(composer : Composer) : IPiece[] {
         return this.getSubRepertoire(composer).pieces;
     }
 
-    private findSubRepertoire(composer : IComposer) : SubRepertoire {
-        return this.subRepertoires.find((r) => 0 == compareComposers(r.composer, composer));
+    private findSubRepertoire(composer : Composer) : SubRepertoire {
+        return this.subRepertoires.find((r) => 0 == r.composer.compare(composer));
     }
 
-    private getSubRepertoire(composer : IComposer) : SubRepertoire {
+    private getSubRepertoire(composer : Composer) : SubRepertoire {
         const subRep = this.findSubRepertoire(composer);
         if (!subRep) throw new Error(util.format('Composer "%s" is not yet validated', composer.fullName));
         return subRep;

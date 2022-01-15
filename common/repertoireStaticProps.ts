@@ -1,4 +1,4 @@
-import { IComposer } from "./piece";
+import { Composer } from "./piece";
 import { ComposerStaticProps, composerStaticProps, PieceStaticProps, pieceStaticProps } from "./pieceStaticProps";
 import { Repertoire } from "./repertoire";
 
@@ -9,7 +9,7 @@ type SubRepertoireStaticProps = {
 
 type RepertoireStaticProps = SubRepertoireStaticProps[];
 
-export async function subRepertoireStaticProps(repertoire : Repertoire, composer : IComposer) : Promise<SubRepertoireStaticProps> {
+export async function subRepertoireStaticProps(repertoire : Repertoire, composer : Composer) : Promise<SubRepertoireStaticProps> {
     return {
         composer:   composerStaticProps(composer),
         pieces:     await Promise.all(repertoire.getPiecesByComposer(composer).map(pieceStaticProps))
