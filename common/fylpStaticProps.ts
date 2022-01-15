@@ -1,6 +1,7 @@
+import { ComposerStaticProps } from './composer';
 import { imageRoutesStaticProps } from './fileRoutesStatiicProps';
 import { IFYLP } from "./fylp";
-import { composerStaticProps, ComposerStaticProps, pieceStaticProps } from "./pieceStaticProps";
+import { pieceStaticProps } from "./pieceStaticProps";
 
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 
@@ -22,12 +23,12 @@ async function albumStaticProps(album) {
     };
 }
 
-export function fylpRefStaticProps(fylp : IFYLP) : FYLPRefStaticProps {
+export async function fylpRefStaticProps(fylp : IFYLP) : Promise<FYLPRefStaticProps> {
     if (!fylp) return null;
 
     return {
         piece: {
-            composer:   composerStaticProps(fylp.piece.composer),
+            composer:   await fylp.piece.composer.getStaticProps(),
             title:      fylp.piece.title
         }
     }

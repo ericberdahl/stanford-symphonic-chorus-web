@@ -8,6 +8,7 @@
     "build": "next build && next export"
   },
   "dependencies": {
+    "@types/object-hash": "^2.2.1",
     "glob-promise": "^4.2.0",
     "image-size": "^1.0.0",
     "luxon": "^1.26.0",

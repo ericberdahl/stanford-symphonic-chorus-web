@@ -1,12 +1,8 @@
+import { ComposerStaticProps } from "./composer";
 import { fylpRefStaticProps, FYLPRefStaticProps } from "./fylpStaticProps";
 import { PerformanceRefStaticProps, performanceRefStaticProps } from "./performanceStaticProps";
-import { Composer, IPiece } from "./piece";
+import { IPiece } from "./piece";
 import { PieceSupplementStaticProps, pieceSupplementStaticProps } from "./pieceSupplementStaticProps";
-
-export type ComposerStaticProps = {
-    fullName : string;
-    familyName : string;
-};
 
 export type PieceStaticProps = {
     arranger : string;
@@ -23,20 +19,13 @@ export type PieceStaticProps = {
     translation : string;
 };
 
-export function composerStaticProps(composer : Composer) : ComposerStaticProps {
-    return {
-        fullName:   composer.fullName,
-        familyName: composer.familyName
-    };
-}
-
 export async function pieceStaticProps(piece : IPiece) : Promise<PieceStaticProps> {
     return {
         arranger:       piece.arranger,
         catalog:        piece.catalog,
         commonTitle:    piece.commonTitle,
-        composer:       composerStaticProps(piece.composer),
-        fylp:           fylpRefStaticProps(piece.fylp),
+        composer:       await piece.composer.getStaticProps(),
+        fylp:           await fylpRefStaticProps(piece.fylp),
         movement:       piece.movement,
         performances:   piece.performances.map(performanceRefStaticProps),
         prefix:         piece.prefix,
