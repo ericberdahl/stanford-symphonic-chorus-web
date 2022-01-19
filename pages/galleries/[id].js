@@ -35,7 +35,7 @@ export default function Gallery({ gallery }) {
 }
 
 export async function getStaticProps({ params }) {
-    const model = await Model.singleton;
+    const model = await Model.getModel();
     
     const gallery = model.galleries.find((g) => (g.id == params.id));
 
@@ -49,7 +49,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const model = await Model.singleton;
+    const model = await Model.getModel();
 
     const result = {
         paths: model.galleries.map((g) => ({ params: {

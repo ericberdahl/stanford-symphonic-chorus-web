@@ -86,7 +86,7 @@ export default function FYLP({ fylp })
 }
 
 export async function getStaticProps({ params }) {
-    const model = await Model.singleton;
+    const model = await Model.getModel();
     
     const piece = model.fylp.pieces.find((p) => (makeSlug(p.composer.fullName) == params.composer && makeSlug(p.title) == params.title));
 
@@ -100,8 +100,8 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const model = await Model.singleton;
-
+    const model = await Model.getModel();
+    
     const result = {
         paths: model.fylp.pieces.map((p) => ({ params: {
             composer: makeSlug(p.composer.fullName),

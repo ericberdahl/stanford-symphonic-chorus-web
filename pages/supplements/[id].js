@@ -23,7 +23,7 @@ export default function SupplementPage({ supplement  }) {
 }
 
 export async function getStaticProps({ params }) {
-    const model = await Model.singleton;
+    const model = await Model.getModel();
 
     const supplement = model.pieceSupplements.find((s) => makeSlug(s.breadcrumb) == params.id);
 
@@ -37,7 +37,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const model = await Model.singleton;
+    const model = await Model.getModel();
 
     const result = {
         paths: model.pieceSupplements.map((s) => ({ params: { id: makeSlug(s.breadcrumb) }}) ),

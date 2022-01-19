@@ -298,7 +298,7 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
 }
 
 export async function getStaticProps({ params }) {
-    const model = await Model.singleton;
+    const model = await Model.getModel();
 
     const props = {
         currentQuarter:     await performanceStaticProps(model.getPerformanceById(params.id)),
@@ -312,7 +312,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const model = await Model.singleton;
+    const model = await Model.getModel();
 
     const result = {
         paths: model.performances.map((p) => ({ params: { id: p.id }})),

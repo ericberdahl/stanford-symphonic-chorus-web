@@ -25,45 +25,7 @@ const SUPPLEMENT_DATA_DIR   = path.join('data', 'pieceSupplements')
 type Configuration = {
     timezone : string;          // name of timezone in which the ensemble rehearses and performs
     currentQuarter : string;    // name of the current quarter being prepared by the ensemble
-}
-
-async function createModel() : Promise<Model> {
-    const basePath = process.cwd();
-
-    const model = new Model(<Configuration>yaml.parse(await fs.readFile(path.join(basePath, CONFIG_FILENAME), 'utf8')));
-
-    const performanceDatafiles = await glob('*.yml', { cwd: path.join(basePath, PERFORMANCE_DATA_DIR), realpath: true });
-    const performances = await Promise.all(performanceDatafiles.map(async (filepath) => {            
-        return deserializePerformance(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
-    }));
-
-    const fylpDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, FYLP_DATA_DIR), realpath: true });
-    const fylps = await Promise.all(fylpDatafiles.map(async (filepath) => {
-        return FYLP.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
-    }));
-    fylps.forEach((f) => {
-        f.piece = model.repertoire.findPiece(f.piece);
-    });
-
-    const supplementDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, SUPPLEMENT_DATA_DIR), realpath: true });
-    const supplements = await Promise.all(supplementDatafiles.map(async (filepath) => {
-        return PieceSupplement.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
-    }));
-    model.pieceSupplements.push(...supplements);
-    model.pieceSupplements.forEach((s) => {
-        s.piece = model.repertoire.findPiece(s.piece);
-        s.piece.supplements.push(s);
-    });
-
-    const galleryDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, GALLERY_DATA_DIR), realpath: true });
-    const galleries = await Promise.all(galleryDatafiles.map(async (filepath) => {
-        return Gallery.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
-    }));
-    galleries.forEach((g) => { model.performances.find((p) => p.quarter == g.quarter).galleries.push(g); })
-    model.galleries.push(...galleries);
-
-    return model;
-}    
+} 
 
 export class Model {
     readonly performances : Performance[]   = [];
@@ -73,7 +35,7 @@ export class Model {
     readonly pieceSupplements : PieceSupplement[]    = [];
     readonly galleries : Gallery[]          = [];
 
-    constructor(config : Configuration) {
+    private constructor(config : Configuration) {
         this.config = config;
     }
 
@@ -118,12 +80,46 @@ export class Model {
         return this.performances.slice(Math.max(start, 0), Math.min(end, this.performances.length - 1));
     }
 
-    private static sSingleton  : Promise<Model>;
-    static get singleton() : Promise<Model> {
-        if (!this.sSingleton) {
-            this.sSingleton = createModel();
-        }
-
+    private static sSingleton : Promise<Model> = Model.create();
+    static getModel() : Promise<Model> {
         return this.sSingleton;
+    }
+
+    private static async create() : Promise<Model> {
+        const basePath = process.cwd();
+    
+        const model = new Model(<Configuration>yaml.parse(await fs.readFile(path.join(basePath, CONFIG_FILENAME), 'utf8')));
+    
+        const performanceDatafiles = await glob('*.yml', { cwd: path.join(basePath, PERFORMANCE_DATA_DIR), realpath: true });
+        const performances = await Promise.all(performanceDatafiles.map(async (filepath) => {            
+            return deserializePerformance(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
+        }));
+    
+        const fylpDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, FYLP_DATA_DIR), realpath: true });
+        const fylps = await Promise.all(fylpDatafiles.map(async (filepath) => {
+            return FYLP.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
+        }));
+        fylps.forEach((f) => {
+            f.piece = model.repertoire.findPiece(f.piece);
+        });
+    
+        const supplementDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, SUPPLEMENT_DATA_DIR), realpath: true });
+        const supplements = await Promise.all(supplementDatafiles.map(async (filepath) => {
+            return PieceSupplement.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
+        }));
+        model.pieceSupplements.push(...supplements);
+        model.pieceSupplements.forEach((s) => {
+            s.piece = model.repertoire.findPiece(s.piece);
+            s.piece.supplements.push(s);
+        });
+    
+        const galleryDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, GALLERY_DATA_DIR), realpath: true });
+        const galleries = await Promise.all(galleryDatafiles.map(async (filepath) => {
+            return Gallery.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
+        }));
+        galleries.forEach((g) => { model.performances.find((p) => p.quarter == g.quarter).galleries.push(g); })
+        model.galleries.push(...galleries);
+    
+        return model;
     }
 }

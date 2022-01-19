@@ -182,7 +182,7 @@ export default function Performances({ performances }) {
 }
 
 export async function getStaticProps({ params }) {
-    const model = await Model.singleton;
+    const model = await Model.getModel();
     
     const props = {
         performances: await Promise.all(model.performanceHistory.map(performanceStaticProps))

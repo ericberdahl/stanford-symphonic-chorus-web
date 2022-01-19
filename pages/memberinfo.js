@@ -216,7 +216,7 @@ export default function MemberInfo({ currentQuarter }) {
 }
 
 export async function getStaticProps({ params }) {
-    const model = await Model.singleton;
+    const model = await Model.getModel();
     
     const props = {
         currentQuarter: await performanceStaticProps(model.currentQuarter),
