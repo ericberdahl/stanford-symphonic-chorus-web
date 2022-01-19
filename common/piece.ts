@@ -37,6 +37,7 @@ export type PieceStaticProps = {
     translation : string;
 };
 
+// TODO : move static prop generation to Piece.getStaticProps()
 export async function pieceStaticProps(piece : IPiece) : Promise<PieceStaticProps> {
     return {
         arranger:       piece.arranger,
@@ -137,6 +138,8 @@ export class Piece implements IPiece {
     readonly performances : Performance[]   = [];
     fylp : FYLP;
     
+    // TODO : expose GrandRepertoire publicly
+    // TODO : create CacheWeakly<K,V> class to implement object caching
     private static sGrandRepertoire : Map<string, WeakRef<Piece>>   = new Map<string, WeakRef<Piece>>();
 
     private constructor(
