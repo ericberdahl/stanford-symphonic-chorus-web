@@ -5,7 +5,7 @@ import PageNavigation from '../components/pageNavigation'
 import Person from '../components/person'
 import TitledSegment from '../components/titledSegment'
 
-import Model from '../common/model'
+import { Model } from '../common/model'
 import { performanceStaticProps } from '../common/performanceStaticProps'
 
 import { DateTime } from 'luxon'

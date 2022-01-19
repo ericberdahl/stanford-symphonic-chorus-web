@@ -4,7 +4,7 @@ import PageLink from '../components/pageLink';
 import PieceCitation from '../components/pieceCitation';
 import TitledSegment from '../components/titledSegment';
 
-import Model from '../common/model';
+import { Model } from '../common/model';
 import { repertoireStaticProps } from '../common/repertoireStaticProps'
 import { makeSlug } from '../common/slug';
 

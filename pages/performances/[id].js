@@ -7,7 +7,7 @@ import PageNavigation from '../../components/pageNavigation';
 import PieceCitation from '../../components/pieceCitation';
 import SpaceSeparatedPhrase from '../../components/spaceSeparatedPhrase';
 
-import Model from "../../common/model";
+import { Model } from "../../common/model";
 import { performanceStaticProps } from '../../common/performanceStaticProps';
 
 import { DateTime } from 'luxon';

@@ -10,7 +10,7 @@ import PieceCitation from '../components/pieceCitation'
 import SpaceSeparatedPhrase from '../components/spaceSeparatedPhrase'
 import TitledSegment from '../components/titledSegment'
 
-import Model from '../common/model'
+import { Model } from '../common/model'
 import { performanceStaticProps } from '../common/performanceStaticProps'
 
 import { DateTime } from 'luxon'

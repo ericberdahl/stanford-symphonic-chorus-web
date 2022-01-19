@@ -6,7 +6,7 @@ import PairedImage from '../../../components/pairedImage';
 import PieceCitation from '../../../components/pieceCitation';
 import TitledSegment from '../../../components/titledSegment';
 
-import Model  from '../../../common/model';
+import { Model }  from '../../../common/model';
 import { makeSlug } from '../../../common/slug';
 
 import styles from '../../../styles/fylpPiece.module.scss'

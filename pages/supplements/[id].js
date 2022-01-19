@@ -1,7 +1,7 @@
 import Layout from "../../components/layout";
 import Markdown from "../../components/markdown";
 
-import Model from "../../common/model";
+import { Model } from "../../common/model";
 import { makeSlug } from "../../common/slug";
 
 export default function SupplementPage({ supplement  }) {

@@ -1,7 +1,7 @@
 import Layout from "../../components/layout";
 import Lightbox from "../../components/lightbox";
 
-import Model from "../../common/model";
+import { Model } from "../../common/model";
 
 import styles from '../../styles/gallery.module.scss';
 

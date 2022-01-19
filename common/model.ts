@@ -13,6 +13,8 @@ import path from 'path';
 import process from 'process';
 import util from 'util';
 
+// TODO : collect important constants into a single common file of constants
+
 const CONFIG_FILENAME       = path.join('data', 'main.yml');
 
 const FYLP_DATA_DIR         = path.join('data', 'fylp')
@@ -25,20 +27,7 @@ type Configuration = {
     currentQuarter : string;    // name of the current quarter being prepared by the ensemble
 }
 
-export interface IModel {
-    readonly performances : Performance[];
-    readonly currentQuarter : Performance;
-    readonly timezone : string;
-    readonly repertoire : Repertoire;
-    readonly fylp : Repertoire;
-    readonly pieceSupplements : PieceSupplement[];
-
-    addPerformance(p : Performance);
-    getPerformanceById(id : string) : Performance;
-    getPerformancesAfterId(id : string, count : number) : Performance[];
-}
-
-async function createModel() : Promise<IModel> {
+async function createModel() : Promise<Model> {
     const basePath = process.cwd();
 
     const model = new Model(<Configuration>yaml.parse(await fs.readFile(path.join(basePath, CONFIG_FILENAME), 'utf8')));
@@ -76,7 +65,7 @@ async function createModel() : Promise<IModel> {
     return model;
 }    
 
-export default class Model implements IModel {
+export class Model {
     readonly performances : Performance[]   = [];
     readonly repertoire : Repertoire        = new Repertoire();
     private _currentQuarter : Performance   = null;
@@ -129,8 +118,8 @@ export default class Model implements IModel {
         return this.performances.slice(Math.max(start, 0), Math.min(end, this.performances.length - 1));
     }
 
-    private static sSingleton  : Promise<IModel>;
-    static get singleton() : Promise<IModel> {
+    private static sSingleton  : Promise<Model>;
+    static get singleton() : Promise<Model> {
         if (!this.sSingleton) {
             this.sSingleton = createModel();
         }

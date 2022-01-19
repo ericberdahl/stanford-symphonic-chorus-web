@@ -1,6 +1,6 @@
 import { Composer } from "./composer";
 import { FYLP } from "./fylp";
-import { IModel } from './model'
+import { Model } from './model'
 import { Performance, Rehearsal } from './performance'
 import { IPiece, Piece, SerializedPiece } from './piece';
 import { PieceSupplement } from "./pieceSupplement";
@@ -161,7 +161,7 @@ async function deserializePieceForPerformance(serializedPiece : SerializedPerfor
                               isMain);
 }
 
-export function deserializePerformance(data : SerializedPerformance, model : IModel) : Performance {
+export function deserializePerformance(data : SerializedPerformance, model : Model) : Performance {
     const result = new Performance(data.quarter,
                                    data.syllabus,
                                    data.directors,
