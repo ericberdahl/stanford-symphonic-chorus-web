@@ -1,6 +1,7 @@
 import Breadcrumbs from './breadcrumbs'
 import ContainerSearch from './containerSearch'
 import Footer from './footer'
+import { Img } from './htmlToolkit'
 import Lightbox from './lightbox'
 import NavTopic from './navTopic'
 import PageLink, { isCurrentPage } from './pageLink'
@@ -18,7 +19,7 @@ function HomePageLogo() {
     // TODO: fix href to home page in banner
     return (
         <div className={styles.logo}>
-            <img
+            <Img
                 src="/images/logo_header/banner.gif"
                 alt="Stanford University - Stanford Symphonic Chorus Department of Music"
                 useMap="#HomePageLogoMap"/>
@@ -34,7 +35,7 @@ function CollageLogo() {
     // TODO: fix href to images in banner
     return (
         <div className={styles.logo}>
-            <img
+            <Img
                 src="/images/logo_header/SSCCollage.jpg"
                 alt="Stanford Symphonic Chorus"
                 useMap="#CollageLogoMap"/>

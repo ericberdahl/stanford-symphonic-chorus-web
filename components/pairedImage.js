@@ -1,3 +1,4 @@
+import { Img } from '../components/htmlToolkit'
 import Lightbox from '../components/lightbox'
 
 export default function PairedImage({ routes, width }) {
@@ -6,7 +7,7 @@ export default function PairedImage({ routes, width }) {
     width = (width || 107);
 
     if (!image) {
-        return (<img src="/images/M@S-roundedges.gif" alt=""/>);
+        return (<Img src="/images/M@S-roundedges.gif" alt=""/>);
     };
 
     const MAX_DIMENSION = 900;

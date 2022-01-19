@@ -1,5 +1,7 @@
-import Head from 'next/head'
+import { Script } from './htmlToolkit';
 
+import Head from 'next/head'
+ 
 const roles = {
     webmaster: {
         full_name: "Eric Berdahl",
@@ -43,7 +45,7 @@ export default function Person(props) {
     return (
         <>
             <Head>
-                <script src="/scripts/emus.js" key="/scripts/emus.js"/>
+                <Script src="/scripts/emus.js" key="/scripts/emus.js"/>
             </Head>
             <a className="personal_citation" data={data}>{person.full_name}</a>
             <noscript>{person.full_name}: {person.email}/AT/{person.domain}/DOT/{person.obscure_tld}/</noscript>

@@ -1,4 +1,5 @@
 import AboutUs from '../components/aboutUs'
+import { Img } from '../components/htmlToolkit'
 import Layout from '../components/layout'
 import Lightbox from '../components/lightbox'
 import Person from '../components/person'
@@ -40,7 +41,7 @@ export default function Contact() {
             sidebar={sidebar}
             breadcrumbs={breadcrumbPath}>
             <div>
-			    <img src="/images/SteveSano2014.jpg" width="323" height="201" alt="Sano conducting rehearsal" />
+			    <Img src="/images/SteveSano2014.jpg" width="323" height="201" alt="Sano conducting rehearsal" />
             </div>
         </Layout>
     );
