@@ -1,6 +1,6 @@
 import { FileRoutes, fileRoutesStaticProps, FileRouteStaticProp, ImageRoutes, ImageRoutesStaticProps, imageRoutesStaticProps } from './fileRoutes';
 import { Gallery, GalleryRefStaticProps } from './gallery'
-import { Piece, PieceStaticProps, pieceStaticProps, SerializedPiece } from './piece'
+import { Piece, PieceStaticProps, SerializedPiece } from './piece'
 import { Model } from './model'
 import { Repertoire } from './repertoire';
 import { makeSlug } from './slug';
@@ -233,7 +233,7 @@ class PerformancePiece {
     }
 
     async getStaticProps() : Promise<PerformancePieceStaticProps> {
-        const base = await pieceStaticProps(this.piece);
+        const base = await this.piece.getStaticProps();
     
         return {
             arranger:       base.arranger,

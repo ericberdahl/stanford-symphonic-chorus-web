@@ -1,7 +1,7 @@
 import { ComposerStaticProps } from './composer';
 import { ImageRoutes } from "./fileRoutes";
 import { imageRoutesStaticProps } from './fileRoutes';
-import { IPiece, Piece, SerializedPiece, pieceStaticProps } from "./piece";
+import { Piece, SerializedPiece } from "./piece";
 
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 
@@ -58,17 +58,17 @@ class Album {
 }
 
 export class FYLP {
-    _piece : IPiece;
+    _piece : Piece;
     readonly description : string;
     readonly albums : Album[]  = [];
 
-    constructor(piece : IPiece, description? : string) {
+    constructor(piece : Piece, description? : string) {
         this.piece = piece;
         this.description = (description || '');
     }
 
-    get piece() : IPiece { return this._piece; }
-    set piece(p : IPiece) {
+    get piece() : Piece { return this._piece; }
+    set piece(p : Piece) {
         if (this._piece) {
             this._piece.fylp = null;
         }
@@ -89,7 +89,7 @@ export class FYLP {
         return {
             descriptionMDX: await mdxSerializeMarkdown(this.description),
             albums:         await Promise.all(this.albums.map((a) => a.getStaticProps())),
-            piece:          await pieceStaticProps(this.piece)
+            piece:          await this.piece.getStaticProps()
         };
     
     }

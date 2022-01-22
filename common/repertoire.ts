@@ -1,17 +1,17 @@
 import { Composer } from './composer';
-import { IPiece, comparePieces } from './piece';
+import { Piece } from './piece';
 
 import util from 'util';
 
 class SubRepertoire {
     readonly composer : Composer;
-    readonly pieces : IPiece[]  = [];
+    readonly pieces : Piece[]  = [];
 
     constructor(composer : Composer) {
         this.composer = composer;
     }
 
-    addPiece(piece : IPiece) : IPiece {
+    addPiece(piece : Piece) : Piece {
         if (piece.composer.fullName != this.composer.fullName) {
             throw new Error(util.format('Piece with composer "%s" cannot be added to sub-repertoire for composer "%s"', piece.composer.fullName, this.composer.fullName));
         }
@@ -21,14 +21,14 @@ class SubRepertoire {
             result = piece;
             this.pieces.push(piece);
 
-            this.pieces.sort((a, b) => comparePieces(a, b));
+            this.pieces.sort((a, b) => a.compare(b));
         }
 
         return result;
     }
 
-    findPiece(piece : IPiece) : IPiece {
-        return this.pieces.find((p) => 0 == comparePieces(p, piece));
+    findPiece(piece : Piece) : Piece {
+        return this.pieces.find((p) => 0 == p.compare(piece));
     }
 }
 
@@ -56,19 +56,19 @@ export class Repertoire {
         return this.subRepertoires.map((r) => r.composer);
     }
 
-    get pieces() : IPiece[] {
+    get pieces() : Piece[] {
         return this.composers.map((c) => this.getPiecesByComposer(c)).reduce((previous, current) => {
             previous.push(...current);
             return previous;
         }, []);
     }
 
-    addPiece(piece : IPiece) : IPiece {
+    addPiece(piece : Piece) : Piece {
         this.validateComposer(piece.composer);
         return this.getSubRepertoire(piece.composer).addPiece(piece);
     }
 
-    findPiece(piece : IPiece) : IPiece {
+    findPiece(piece : Piece) : Piece {
         return this.findSubRepertoire(piece.composer)?.findPiece(piece);;
     }
 
@@ -77,7 +77,7 @@ export class Repertoire {
         return this.composers;
     }
 
-    getPiecesByComposer(composer : Composer) : IPiece[] {
+    getPiecesByComposer(composer : Composer) : Piece[] {
         return this.getSubRepertoire(composer).pieces;
     }
 

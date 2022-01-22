@@ -7,8 +7,6 @@ import hash from 'object-hash';
 
 import util from 'util';
 
-// TODO : refactor Piece static props into Piece
-
 export type SerializedPiece = {
     title : string;
     composer? : SerializedComposer;
@@ -36,91 +34,7 @@ export type PieceStaticProps = {
     translation : string;
 };
 
-// TODO : move static prop generation to Piece.getStaticProps()
-export async function pieceStaticProps(piece : IPiece) : Promise<PieceStaticProps> {
-    return {
-        arranger:       piece.arranger,
-        catalog:        piece.catalog,
-        commonTitle:    piece.commonTitle,
-        composer:       await piece.composer.getStaticProps(),
-        fylp:           (await piece.fylp?.getRefStaticProps()) || null,
-        movement:       piece.movement,
-        performances:   await Promise.all(piece.performances.map(async (p) => p.getRefStaticProps())),
-        prefix:         piece.prefix,
-        supplements:    await Promise.all(piece.supplements.map((s) => s.getStaticProps())),
-        suffix:         piece.suffix,
-        title:          piece.title,
-        translation:    piece.translation,
-    };
-}
-
-// TODO : Remove IPiece
-export interface IPiece {
-    readonly arranger? : string;
-    readonly catalog? : string;
-    readonly commonTitle? : string;
-    readonly composer : Composer;
-    readonly movement? : string;
-    readonly prefix? : string;
-    readonly suffix? : string;
-    readonly supplements : PieceSupplement[];
-    readonly title : string | string[];
-    readonly translation? : string;
-    readonly performances : Performance[];
-    fylp : FYLP;
-
-    addPerformance(performanace : Performance);
-}
-
-function hashPiece(p : IPiece) : string {
-    const elements = {
-        composer:   p.composer.hashValue,
-        title:      p.title,
-        movement:   p.movement,
-        arranger:   p.arranger,
-    }
-
-    return hash(elements);
-}
-
-
-export function comparePieces(a : IPiece, b : IPiece) : number {
-    let result = 0;
-
-    const makeString = (s) => (s || '');
-    const makeStringArray = (s) => (Array.isArray(s) ? s : [ makeString(s) ]);
-    
-    if (0 == result) {
-        result = a.composer.compare(b.composer);
-    }
-    if (0 == result) {
-        const aTitle = makeStringArray(a.title);
-        const bTitle = makeStringArray(b.title);
-        const maxLength = Math.max(aTitle.length, bTitle.length);
-        
-        aTitle.push(...Array(maxLength - aTitle.length).fill(''));
-        bTitle.push(...Array(maxLength - bTitle.length).fill(''));
-
-        result = aTitle.reduce((prevResult, currentValue, currentIndex) => {
-            return (0 != prevResult ?
-                        prevResult :
-                        currentValue.localeCompare(bTitle[currentIndex]));
-        }, 0);
-    }
-    if (0 == result) {
-        result = makeString(a.movement).localeCompare(makeString(b.movement));
-    }
-    if (0 == result) {
-        result = makeString(a.arranger).localeCompare(makeString(b.arranger));
-    }
-    if (0 == result && hashPiece(a) != hashPiece(b)) {
-        console.warn(util.format('Found piece "%s" with hash mismatch', a.title));
-    }
-
-    return result;
-}
-
-export class Piece implements IPiece {
+export class Piece {
     readonly title : string | string[]
     readonly composer : Composer;
 
@@ -164,13 +78,73 @@ export class Piece implements IPiece {
         this.suffix = (suffix || '');
     }
 
-    compare(other : IPiece) : number {
-        return comparePieces(this, other);
-    }
-
     addPerformance(performanace : Performance) {
         this.performances.push(performanace);
         this.performances.sort((a, b) => a.compare(b));
+    }
+
+    compare(other : Piece) : number {
+        let result = 0;
+    
+        const makeString = (s) => (s || '');
+        const makeStringArray = (s) => (Array.isArray(s) ? s : [ makeString(s) ]);
+        
+        if (0 == result) {
+            result = this.composer.compare(other.composer);
+        }
+        if (0 == result) {
+            const thisTitle = makeStringArray(this.title);
+            const otherTitle = makeStringArray(other.title);
+            const maxLength = Math.max(thisTitle.length, otherTitle.length);
+            
+            thisTitle.push(...Array(maxLength - thisTitle.length).fill(''));
+            otherTitle.push(...Array(maxLength - otherTitle.length).fill(''));
+    
+            result = thisTitle.reduce((prevResult, currentValue, currentIndex) => {
+                return (0 != prevResult ?
+                            prevResult :
+                            currentValue.localeCompare(otherTitle[currentIndex]));
+            }, 0);
+        }
+        if (0 == result) {
+            result = makeString(this.movement).localeCompare(makeString(other.movement));
+        }
+        if (0 == result) {
+            result = makeString(this.arranger).localeCompare(makeString(other.arranger));
+        }
+        if (0 == result && this.hashValue != other.hashValue) {
+            console.warn(util.format('Found piece "%s" with hash mismatch', this.title));
+        }
+    
+        return result;
+    }
+
+    get hashValue() : string {
+        const elements = {
+            composer:   this.composer.hashValue,
+            title:      this.title,
+            movement:   this.movement,
+            arranger:   this.arranger,
+        }
+    
+        return hash(elements);
+    }
+
+    async getStaticProps() : Promise<PieceStaticProps> {
+        return {
+            arranger:       this.arranger,
+            catalog:        this.catalog,
+            commonTitle:    this.commonTitle,
+            composer:       await this.composer.getStaticProps(),
+            fylp:           (await this.fylp?.getRefStaticProps()) || null,
+            movement:       this.movement,
+            performances:   await Promise.all(this.performances.map(async (p) => p.getRefStaticProps())),
+            prefix:         this.prefix,
+            supplements:    await Promise.all(this.supplements.map((s) => s.getStaticProps())),
+            suffix:         this.suffix,
+            title:          this.title,
+            translation:    this.translation,
+        };
     }
 
     static async deserialize(data : SerializedPiece) : Promise<Piece> {
@@ -183,7 +157,7 @@ export class Piece implements IPiece {
                                         data.arranger,
                                         data.prefix,
                                         data.suffix);
-        const hashValue = hashPiece(result);
+        const hashValue = result.hashValue;
 
         if (this.sGrandRepertoire.has(hashValue)) {
             result = this.sGrandRepertoire.get(hashValue).deref();
