@@ -1,13 +1,44 @@
+import { Composer } from "./composer";
 import { FileRoutes, fileRoutesStaticProps, FileRouteStaticProp, ImageRoutes, ImageRoutesStaticProps, imageRoutesStaticProps } from './fileRoutes';
+import { FYLP } from "./fylp";
 import { Gallery, GalleryRefStaticProps } from './gallery'
-import { IPiece, PieceStaticProps, pieceStaticProps } from './piece'
+import { IPiece, Piece, PieceStaticProps, pieceStaticProps, SerializedPiece } from './piece'
+import { Model } from './model'
+import { PieceSupplement } from "./pieceSupplement";
+import { Repertoire } from './repertoire';
 import { makeSlug } from './slug';
 
 import { DateTime } from 'luxon';
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
+import getConfig from 'next/config'
+
 import util from 'util';
+
+const { serverRuntimeConfig } = getConfig()
+
+function createDateTime(date : string, timeOfDay : string) : DateTime {
+    return DateTime.fromFormat(date + ' ' + timeOfDay, 'yyyy-MM-dd HH:mm', { setZone: serverRuntimeConfig.timezone });
+}
+
+function compareDateTime(a : DateTime, b : DateTime) : number {
+    return b.diff(a).toMillis();
+}
+
+enum RehearsalFrequency {
+    weekly = 'weekly',
+    once = 'once'
+}
+
+export type SerializedRehearsalSequence = {
+    frequency? : RehearsalFrequency;
+    startDate : string; // 'YYYY-MM-DD' : date on which the first rehearsal will occur
+    endDate? : string;  // 'YYYY-MM-DD' : if present, date on which the last rehearsal will occur. Required unless frequence is 'once'
+    startTime: string;  // 'HH:MM' : 24-hour formatted time at which rehearsals start
+    endTime: string;    // 'HH:MM' : 24-hour formatted time at which rehearsals end
+    location: string    // nickname of the location at which rehearsals are held
+}
 
 export type RehearsalStaticProps = {
     start : string; // ISO date-time
@@ -36,6 +67,43 @@ export class Rehearsal {
             notes:      this.notes,
         }
     }    
+
+    // TODO : deserializeSequence should be an async function
+    static deserializeSequence(spec : SerializedRehearsalSequence) : Rehearsal[] {
+        const frequency : RehearsalFrequency = (spec.frequency ? spec.frequency : RehearsalFrequency.once);
+
+        const computeDateShift = (f : string) => {
+            if (RehearsalFrequency.once == f) return { days: 1 };
+            if (RehearsalFrequency.weekly == f) return { days: 7 };
+            throw new Error(util.format('Unkonwn frequency "%s"', f));
+        }
+        const dateShift = computeDateShift(frequency);
+
+        if (RehearsalFrequency.once != frequency && !spec.endDate) {
+            throw new Error(util.format('Event sequences with "%s" frequency require an endDate', frequency));
+        }
+        const endDate : string = (spec.endDate ? spec.endDate : spec.startDate);
+        const finalStartDateTime : DateTime = createDateTime(endDate, spec.startTime);
+
+        var nextStartDateTime : DateTime = createDateTime(spec.startDate, spec.startTime);
+        var nextEndDateTime : DateTime = createDateTime(spec.startDate, spec.endTime);
+
+        var result : Rehearsal[] = [];
+        do {
+            result.push(new Rehearsal(nextStartDateTime, nextEndDateTime, spec.location));
+
+            nextStartDateTime = nextStartDateTime.plus(dateShift);
+            nextEndDateTime = nextEndDateTime.plus(dateShift);
+        } while(compareDateTime(nextStartDateTime, finalStartDateTime) >= 0);
+
+        return result;
+    }
+}
+
+export type SerializedBasicEvent = {
+    date : string;      // 'YYYY-MM-DD' : date of the event
+    start : string;     // 'HH:MM' : 24-hour formatted start time of the event
+    location : string;  // nickname of the location of the event
 }
 
 export type BasicEventStaticProps = {
@@ -60,6 +128,10 @@ export class BasicEvent {
     }    
 };
 
+export type SerializedGenericEvent = SerializedBasicEvent & {
+    title : string;
+}
+
 export type GenericEventStaticProps = BasicEventStaticProps & {
     title : string;
 }
@@ -81,6 +153,10 @@ export class GenericEvent extends BasicEvent {
             title:      this.title || null,
         };
     }    
+}
+
+export type SerializedConcert = SerializedBasicEvent & {
+    call : string;  // 'HH:MM' : 24-hour formatted call time for the concert
 }
 
 export type ConcertStaticProps = BasicEventStaticProps & {
@@ -105,6 +181,8 @@ export class Concert extends BasicEvent {
         };
     }    
 }
+
+export type SerializedDressRehearsal = SerializedBasicEvent;
 
 export class DressRehearsal extends BasicEvent {
 
@@ -139,6 +217,87 @@ export class Soloist {
     static async deserialize(data : SerializedSoloist) : Promise<Soloist> {
         return new Soloist(data.name, data.part);
     }
+}
+
+type SerializedPerformancePiece = SerializedPiece & {
+    performanceNote? : string;
+}
+
+export class NotedPerformance implements IPiece {
+    readonly piece : IPiece;
+    readonly note : string;
+
+    constructor(piece : IPiece, note : string) {
+        this.piece = piece;
+        this.note = note;
+    }
+
+    get arranger() : string { return this.piece.arranger; }
+    get catalog() : string { return this.piece.catalog; }
+    get commonTitle() : string { return this.piece.commonTitle; }
+    get composer() : Composer { return this.piece.composer; }
+    get fylp() : FYLP { return this.piece.fylp; }
+    get movement() : string { return this.piece.movement; }
+    get performances() : Performance[] { return this.piece.performances; }
+    get prefix() : string { return this.piece.prefix; }
+    get supplements() : PieceSupplement[] { return this.piece.supplements; }
+    get title() : string | string[] { return this.piece.title; }
+    get translation() : string { return this.piece.translation; }
+
+    get suffix() : string {
+        const elements = [this.piece.suffix, this.note].filter((value) => value != '');
+        return elements.join(' ');
+    }
+
+    addPerformance(performanace : Performance) {
+        this.piece.addPerformance(performanace);
+    }
+
+    static async deserializePieceForPerformance(serializedPiece : SerializedPerformancePiece, performance : Performance, isMain : boolean, repertoire : Repertoire) {
+        const piece = repertoire.addPiece(await Piece.deserialize(serializedPiece));
+    
+        performance.addRepertoire(serializedPiece.performanceNote ?
+                                        new NotedPerformance(piece, serializedPiece.performanceNote) :
+                                        piece,
+                                  isMain);
+    }
+}
+
+type SerializedPoster = {
+    basename : string;
+    caption? : string;
+}
+
+type SerializedRehearsalNote = {
+    date : string;  // 'YYYY-MM-DD' : date of the rehearsal for which the note applies
+    note : string;
+}
+
+type SerializedPerformance = {
+    quarter : string;           // human-readable name of quarter
+    syllabus : string;          // basename of syllabus asset
+    directors? : string[];      // list of names of the directors
+    instructors? : string[];    // list of names of the instructors
+    collaborators? : string[];  // list of nicknames of collaborators
+    soloists? : SerializedSoloist[];
+    supplements? : string[];    // list of markup supplements for the performance
+    poster? : SerializedPoster;
+    heraldImage? : SerializedPoster;
+    description? : string;       // Markdown to be displayed as a description of the performance being prepared, often on the home page
+    preregister : string;       // 'YYYY-MM-DD' : date the preregistration mail is expected to be sent
+    registrationFee? : string;   // '$dd' : amount of the registration fee
+    membershipLimit? : number;
+    concerts : SerializedConcert[];
+    repertoire : {
+        main : SerializedPerformancePiece[];
+        other? : SerializedPerformancePiece[];
+    };
+    events? : SerializedGenericEvent[];
+    tuttiRehearsals : SerializedRehearsalSequence[];
+    tuttiRehearsalNotes? : SerializedRehearsalNote[];
+    mensSectionals? : SerializedRehearsalSequence[];
+    womensSectionals? : SerializedRehearsalSequence[];
+    dressRehearsals? : SerializedDressRehearsal[];
 }
 
 export type PerformanceRefStaticProps = {
@@ -237,21 +396,7 @@ export class Performance {
     get heraldImageRoutes() { return this._heraldImageRoutes; }
 
     compare(other : Performance) {
-        return this.firstConcert.start.diff(other.firstConcert.start).toMillis();
-    }
-
-    addConcert(start : DateTime, call : DateTime, location : string) {
-        this.concerts.push(new Concert(start, location, call));
-        this.concerts.sort((a, b) => {
-            return -b.start.diff(a.start).toMillis();
-        });
-    }
-
-    addEvent(start : DateTime, location : string, title : string) {
-        this.events.push(new GenericEvent(start, location, title));
-        this.events.sort((a, b) => {
-            return -b.start.diff(a.start).toMillis();
-        });
+        return compareDateTime(other.firstConcert.start, this.firstConcert.start);
     }
 
     addRepertoire(piece : IPiece, isMain : boolean = false) {
@@ -260,26 +405,6 @@ export class Performance {
             this.mainPieces.push(piece);
         }
         this.repertoire.push(piece);
-    }
-
-    addTuttiRehearsals(rehearsals : Rehearsal[]) {
-        this.tuttiRehearsals.push(...rehearsals);
-        this.tuttiRehearsals.sort((a, b) => -b.start.diff(a.start).toMillis());
-    }
-
-    addTBSectionals(sectionals : Rehearsal[]) {
-        this.sectionalsTenorBass.push(...sectionals);
-        this.sectionalsTenorBass.sort((a, b) => -b.start.diff(a.start).toMillis());
-    }
-
-    addSASectionals(sectionals : Rehearsal[]) {
-        this.sectionalsSopranoAlto.push(...sectionals);
-        this.sectionalsSopranoAlto.sort((a, b) => -b.start.diff(a.start).toMillis());
-    }
-
-    addDressRehearsal(dress : DressRehearsal) {
-        this.dressRehearsals.push(dress);
-        this.dressRehearsals.sort((a, b) => -b.start.diff(a.start).toMillis());
     }
 
     setPoster(name : string, caption : string) {
@@ -323,5 +448,89 @@ export class Performance {
             syllabusRoutes:         fileRoutesStaticProps(this.syllabusRoutes),
             tuttiRehearsals:        await Promise.all(this.tuttiRehearsals.map(async (r) => r.getStaticProps())),
         };
+    }
+
+    static async deserialize(data : SerializedPerformance, model : Model) : Promise<Performance> {
+        const addRehearsalSequences = (sequences : SerializedRehearsalSequence[], rehearsals : Rehearsal[]) => {
+            sequences.forEach((s) => rehearsals.push(...Rehearsal.deserializeSequence(s)));
+            rehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
+        }
+
+        const result = new Performance(data.quarter,
+                                       data.syllabus,
+                                       data.directors,
+                                       data.instructors,
+                                       data.collaborators,
+                                       data.description,
+                                       (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
+                                       data.registrationFee,
+                                       data.membershipLimit);
+    
+        if (data.soloists) {
+            result.soloists.push(...await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))));
+        }
+    
+        data.concerts.forEach((c) => {
+            result.concerts.push(...data.concerts.map((c) => new Concert(createDateTime(c.date, c.start), c.location, createDateTime(c.date, c.call))));
+            result.concerts.sort((a, b) => -compareDateTime(a.start, b.start));
+        });
+    
+        if (data.repertoire.main) {
+            data.repertoire.main.forEach((p) => NotedPerformance.deserializePieceForPerformance(p, result, true, model.repertoire));
+        }
+        if (data.repertoire.other) {
+            data.repertoire.other.forEach((p) => NotedPerformance.deserializePieceForPerformance(p, result, false, model.repertoire));
+        }
+    
+        if (data.poster) {
+            result.setPoster(data.poster.basename, data.poster.caption);
+        }
+        if (data.heraldImage) {
+            result.setHeraldImage(data.heraldImage.basename, data.heraldImage.caption);
+        }
+    
+        if (data.events) {
+            result.events.push(...data.events.map((e) => new GenericEvent(createDateTime(e.date, e.start), e.location, e.title)));
+            result.events.sort((a, b) => -compareDateTime(a.start, b.start));
+        }
+    
+        if (data.tuttiRehearsals) {
+            addRehearsalSequences(data.tuttiRehearsals, result.tuttiRehearsals);
+        }
+    
+        if (data.tuttiRehearsalNotes) {
+            data.tuttiRehearsalNotes.forEach((note) => {
+                const noteDateTime : DateTime = createDateTime(note.date, '00:00');
+                const rehearsal : Rehearsal = result.tuttiRehearsals.find((e) => (e.start.year == noteDateTime.year &&
+                                                                                  e.start.month == noteDateTime.month &&
+                                                                                  e.start.day == noteDateTime.day));
+                if (!rehearsal) throw new Error(util.format('Cannot find tuttiRehearsal on date "%s" to attach a note', note.date));
+                
+                rehearsal.notes.push(note.note);
+            });
+        }
+    
+        if (data.mensSectionals) {
+            // TODO: change yml schema from mensSectionals to sectionalsTenorBass
+            addRehearsalSequences(data.mensSectionals, result.sectionalsTenorBass);
+        }
+    
+        if (data.womensSectionals) {
+            // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
+            addRehearsalSequences(data.womensSectionals, result.sectionalsSopranoAlto);
+        }
+    
+        if (data.dressRehearsals) {
+            result.dressRehearsals.push(...data.dressRehearsals.map((dr) => new DressRehearsal(createDateTime(dr.date, dr.start), dr.location)));
+            result.dressRehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
+        }
+    
+        if (data.supplements) {
+            result.supplements.push(...data.supplements);
+        }
+    
+        model.addPerformance(result);
+    
+        return result;
     }
 }

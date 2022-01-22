@@ -4,7 +4,6 @@ import { Gallery } from './gallery';
 import { Performance } from './performance'
 import { PieceSupplement } from './pieceSupplement';
 import { Repertoire } from './repertoire';
-import { deserializePerformance } from './serializedPerformance'
 
 import glob from 'glob-promise';
 import yaml from 'yaml';
@@ -80,7 +79,7 @@ export class Model {
     
         const performanceDatafiles = await glob('*.yml', { cwd: path.join(basePath, PERFORMANCE_DATA_DIR), realpath: true });
         const performances = await Promise.all(performanceDatafiles.map(async (filepath) => {            
-            return deserializePerformance(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
+            return Performance.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
         }));
     
         const fylpDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, FYLP_DATA_DIR), realpath: true });
