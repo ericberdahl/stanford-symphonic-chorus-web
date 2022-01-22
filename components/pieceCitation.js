@@ -50,6 +50,7 @@ export default function PieceCitation({ tag, data, titleOnly }) {
                     {!isEmpty(data.arranger) ? 'arranged by ' + data.arranger : null}
                 </SpaceSeparatedPhrase>
                 {!isEmpty(data.suffix) ? data.suffix : null}
+                {!isEmpty(data.note) ? data.note : null}
             </SpaceSeparatedPhrase>
         </span>
     );

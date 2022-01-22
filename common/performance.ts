@@ -1,10 +1,7 @@
-import { Composer } from "./composer";
 import { FileRoutes, fileRoutesStaticProps, FileRouteStaticProp, ImageRoutes, ImageRoutesStaticProps, imageRoutesStaticProps } from './fileRoutes';
-import { FYLP } from "./fylp";
 import { Gallery, GalleryRefStaticProps } from './gallery'
-import { IPiece, Piece, PieceStaticProps, pieceStaticProps, SerializedPiece } from './piece'
+import { Piece, PieceStaticProps, pieceStaticProps, SerializedPiece } from './piece'
 import { Model } from './model'
-import { PieceSupplement } from "./pieceSupplement";
 import { Repertoire } from './repertoire';
 import { makeSlug } from './slug';
 
@@ -223,42 +220,43 @@ type SerializedPerformancePiece = SerializedPiece & {
     performanceNote? : string;
 }
 
-export class NotedPerformance implements IPiece {
-    readonly piece : IPiece;
+type PerformancePieceStaticProps = PieceStaticProps & {
+    note : string;
+}
+class PerformancePiece {
+    readonly piece : Piece;
     readonly note : string;
 
-    constructor(piece : IPiece, note : string) {
+    constructor(piece : Piece, note : string) {
         this.piece = piece;
         this.note = note;
     }
 
-    get arranger() : string { return this.piece.arranger; }
-    get catalog() : string { return this.piece.catalog; }
-    get commonTitle() : string { return this.piece.commonTitle; }
-    get composer() : Composer { return this.piece.composer; }
-    get fylp() : FYLP { return this.piece.fylp; }
-    get movement() : string { return this.piece.movement; }
-    get performances() : Performance[] { return this.piece.performances; }
-    get prefix() : string { return this.piece.prefix; }
-    get supplements() : PieceSupplement[] { return this.piece.supplements; }
-    get title() : string | string[] { return this.piece.title; }
-    get translation() : string { return this.piece.translation; }
+    async getStaticProps() : Promise<PerformancePieceStaticProps> {
+        const base = await pieceStaticProps(this.piece);
+    
+        return {
+            arranger:       base.arranger,
+            catalog:        base.catalog,
+            commonTitle:    base.commonTitle,
+            composer:       base.composer,
+            fylp:           base.fylp,
+            movement:       base.movement,
+            performances:   base.performances,
+            prefix:         base.prefix,
+            supplements:    base.supplements,
+            suffix:         base.suffix,
+            title:          base.title,
+            translation:    base.translation,
 
-    get suffix() : string {
-        const elements = [this.piece.suffix, this.note].filter((value) => value != '');
-        return elements.join(' ');
-    }
-
-    addPerformance(performanace : Performance) {
-        this.piece.addPerformance(performanace);
+            note:           this.note || null
+        };
     }
 
     static async deserializePieceForPerformance(serializedPiece : SerializedPerformancePiece, performance : Performance, isMain : boolean, repertoire : Repertoire) {
-        const piece = repertoire.addPiece(await Piece.deserialize(serializedPiece));
+        const piece = <Piece>repertoire.addPiece(await Piece.deserialize(serializedPiece)); // TODO : remove Repertoire
     
-        performance.addRepertoire(serializedPiece.performanceNote ?
-                                        new NotedPerformance(piece, serializedPiece.performanceNote) :
-                                        piece,
+        performance.addRepertoire(new PerformancePiece(piece, serializedPiece.performanceNote),
                                   isMain);
     }
 }
@@ -306,23 +304,23 @@ export type PerformanceRefStaticProps = {
 }
 
 export type PerformanceStaticProps = {
-    collaborators : string[];
-    concerts : ConcertStaticProps[];
-    descriptionMDX : MDXRemoteSerializeResult;
-    directors : string[];
-    dressRehearsals : BasicEventStaticProps[];
-    events : GenericEventStaticProps[];
-    galleries: GalleryRefStaticProps[];
+    collaborators :     string[];
+    concerts :          ConcertStaticProps[];
+    descriptionMDX :    MDXRemoteSerializeResult;
+    directors :         string[];
+    dressRehearsals :   BasicEventStaticProps[];
+    events :            GenericEventStaticProps[];
+    galleries :         GalleryRefStaticProps[];
     heraldImageRoutes : ImageRoutesStaticProps;
-    id : string;
-    instructors : string[];
-    mainPieces : PieceStaticProps[];
-    membershipLimit : number;
-    posterRoutes : ImageRoutesStaticProps;
-    preregisterDate : string;   // ISO date-time
-    quarter : string;
-    registrationFee : string;
-    repertoire : PieceStaticProps[];
+    id :                string;
+    instructors :       string[];
+    mainPieces :        PerformancePieceStaticProps[];
+    membershipLimit :   number;
+    posterRoutes :      ImageRoutesStaticProps;
+    preregisterDate :   string;   // ISO date-time
+    quarter :           string;
+    registrationFee :   string;
+    repertoire :        PerformancePieceStaticProps[];
     sectionalsSopranoAlto : RehearsalStaticProps[];
     sectionalsTenorBass : RehearsalStaticProps[];
     soloists : SoloistStaticProps[];
@@ -340,12 +338,12 @@ export class Performance {
     readonly events : GenericEvent[]                = [];
     readonly galleries : Gallery[]                  = [];
     readonly instructors : string[]                 = [];
-    readonly mainPieces : IPiece[]                  = [];
+    readonly mainPieces :   PerformancePiece[]      = [];
     readonly membershipLimit : number;
     readonly preregisterDate : DateTime;
     readonly quarter : string                       = '';
     readonly registrationFee : string;
-    readonly repertoire : IPiece[]                  = [];   // TODO : construct a repertoire on command using Piece.getGrandRepertoire()
+    readonly repertoire :   PerformancePiece[]      = [];
     readonly sectionalsSopranoAlto : Rehearsal[]    = [];
     readonly sectionalsTenorBass : Rehearsal[]      = [];
     readonly soloists : Soloist[]                   = [];
@@ -399,8 +397,8 @@ export class Performance {
         return compareDateTime(other.firstConcert.start, this.firstConcert.start);
     }
 
-    addRepertoire(piece : IPiece, isMain : boolean = false) {
-        piece.addPerformance(this);
+    addRepertoire(piece : PerformancePiece, isMain : boolean = false) {
+        piece.piece.addPerformance(this);
         if (isMain) {
             this.mainPieces.push(piece);
         }
@@ -424,23 +422,23 @@ export class Performance {
 
     async getStaticProps() : Promise<PerformanceStaticProps> {
         return {
-            collaborators:      this.collaborators,
-            concerts:           await Promise.all(this.concerts.map(async (c) => c.getStaticProps())),
-            descriptionMDX:     await mdxSerializeMarkdown(this.description),
-            directors:          this.directors,
-            dressRehearsals:    await Promise.all(this.dressRehearsals.map(async (dr) => dr.getStaticProps())),
-            events:             await Promise.all(this.events.map(async (e) => e.getStaticProps())),
-            galleries:          await Promise.all(this.galleries.map(async (g) => await g.getRefStaticProps())),
-            heraldImageRoutes:  imageRoutesStaticProps(this.heraldImageRoutes),
-            id:                 this.id,
-            instructors:        this.instructors,
-            mainPieces:         await Promise.all(this.mainPieces.map(pieceStaticProps)),
-            membershipLimit:    this.membershipLimit,
-            posterRoutes:       imageRoutesStaticProps(this.posterRoutes),
-            preregisterDate:    this.preregisterDate?.toISO() || null,
-            quarter:            this.quarter,
-            registrationFee:    this.registrationFee,
-            repertoire:         await Promise.all(this.repertoire.map(pieceStaticProps)),
+            collaborators:          this.collaborators,
+            concerts:               await Promise.all(this.concerts.map(async (c) => c.getStaticProps())),
+            descriptionMDX:         await mdxSerializeMarkdown(this.description),
+            directors:              this.directors,
+            dressRehearsals:        await Promise.all(this.dressRehearsals.map(async (dr) => dr.getStaticProps())),
+            events:                 await Promise.all(this.events.map(async (e) => e.getStaticProps())),
+            galleries:              await Promise.all(this.galleries.map(async (g) => await g.getRefStaticProps())),
+            heraldImageRoutes:      imageRoutesStaticProps(this.heraldImageRoutes),
+            id:                     this.id,
+            instructors:            this.instructors,
+            mainPieces:             await Promise.all(this.mainPieces.map(async (p) => p.getStaticProps())),
+            membershipLimit:        this.membershipLimit,
+            posterRoutes:           imageRoutesStaticProps(this.posterRoutes),
+            preregisterDate:        this.preregisterDate?.toISO() || null,
+            quarter:                this.quarter,
+            registrationFee:        this.registrationFee,
+            repertoire:             await Promise.all(this.repertoire.map(async (p) => p.getStaticProps())),
             sectionalsSopranoAlto:  await Promise.all(this.sectionalsSopranoAlto.map(async (r) => r.getStaticProps())),
             sectionalsTenorBass:    await Promise.all(this.sectionalsTenorBass.map(async (r) => r.getStaticProps())),
             soloists:               await Promise.all(this.soloists.map(async (s) => s.getStaticProps())),
@@ -476,10 +474,10 @@ export class Performance {
         });
     
         if (data.repertoire.main) {
-            data.repertoire.main.forEach((p) => NotedPerformance.deserializePieceForPerformance(p, result, true, model.repertoire));
+            data.repertoire.main.forEach((p) => PerformancePiece.deserializePieceForPerformance(p, result, true, model.repertoire));
         }
         if (data.repertoire.other) {
-            data.repertoire.other.forEach((p) => NotedPerformance.deserializePieceForPerformance(p, result, false, model.repertoire));
+            data.repertoire.other.forEach((p) => PerformancePiece.deserializePieceForPerformance(p, result, false, model.repertoire));
         }
     
         if (data.poster) {
