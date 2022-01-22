@@ -19,8 +19,7 @@ const components = {
 }
 
 export default function Markdown({ mdx }) {
-    // TODO : expose components as components available to MDX markdown content (e.g. components={components})
     return (
-        <MDXRemote {...mdx} />
+        <MDXRemote {...mdx} components={components} />
     );
 }
