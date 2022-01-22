@@ -1,11 +1,9 @@
+import { GALLERY_ASSET_BASEPATH, GALLERY_URL_BASEPATH } from './constants'
+
 import imageSize from 'image-size'
 
 import fs from 'fs';
 import path from 'path';
-import process from 'process';
-
-const GALLERY_URL_BASEPATH = '/galleries';
-const GALLERY_ASSET_BASEPATH = path.join(process.cwd(), 'public');
 
 export type SerializedGalleryItem = {
     readonly image : string;

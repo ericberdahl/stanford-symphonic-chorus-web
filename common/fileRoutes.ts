@@ -1,11 +1,10 @@
+import { STATIC_ASSET_DIR } from './constants';
+
 import imageSize from 'image-size'
 
 import fs from 'fs';
 import path from 'path';
-import process from 'process';
 import util from 'util';
-
-const STATIC_ASSET_DIR : string = path.join(process.cwd(), 'public');
 
 function composeExistingRoute(directoryRoute : string, name : string, extension : string) : string {
     const route = path.normalize(path.format({

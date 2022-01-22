@@ -1,3 +1,4 @@
+import { CONFIG_FILENAME, FYLP_DATA_DIR, GALLERY_DATA_DIR, PERFORMANCE_DATA_DIR, SUPPLEMENT_DATA_DIR } from './constants';
 import { FYLP } from './fylp';
 import { Gallery } from './gallery';
 import { Performance } from './performance'
@@ -12,15 +13,6 @@ import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
 import util from 'util';
-
-// TODO : collect important constants into a single common file of constants
-
-const CONFIG_FILENAME       = path.join('data', 'main.yml');
-
-const FYLP_DATA_DIR         = path.join('data', 'fylp')
-const GALLERY_DATA_DIR      = path.join('data', 'galleries')
-const PERFORMANCE_DATA_DIR  = path.join('data', 'performances')
-const SUPPLEMENT_DATA_DIR   = path.join('data', 'pieceSupplements')
 
 type Configuration = {
     timezone : string;          // name of timezone in which the ensemble rehearses and performs
