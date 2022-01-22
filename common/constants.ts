@@ -19,9 +19,6 @@ export const GALLERY_ASSET_BASEPATH = STATIC_ASSET_DIR;
 
 export const DATA_DIR              = 'data';
 
-// TODO: CONFIG_FILENAME => CONFIG_FILEPATH
-export const CONFIG_FILENAME       = path.join(DATA_DIR, 'main.yml');
-
 export const FYLP_DATA_DIR         = path.join(DATA_DIR, 'fylp')
 export const GALLERY_DATA_DIR      = path.join(DATA_DIR, 'galleries')
 export const PERFORMANCE_DATA_DIR  = path.join(DATA_DIR, 'performances')

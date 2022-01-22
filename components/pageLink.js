@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 import util from 'util';
 
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
+const { serverRuntimeConfig } = getConfig()
 
 class SiteEntry {
     route   = ''

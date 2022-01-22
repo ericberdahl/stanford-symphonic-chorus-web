@@ -4,11 +4,15 @@ import { Model } from './model'
 import { Performance, Rehearsal } from './performance'
 import { IPiece, Piece, SerializedPiece } from './piece';
 import { PieceSupplement } from "./pieceSupplement";
+import { Repertoire } from './repertoire';
 
 import { DateTime } from 'luxon';
 
+import getConfig from 'next/config'
+
 import util from 'util';
-import { Repertoire } from './repertoire';
+
+const { serverRuntimeConfig } = getConfig()
 
 type SerializedPerformancePiece = SerializedPiece & {
     performanceNote? : string;
@@ -117,12 +121,12 @@ export class NotedPerformance implements IPiece {
     }
 }
 
-function createDateTime(date : string, timeOfDay : string, timezone : string) : DateTime {
-    return DateTime.fromFormat(date + ' ' + timeOfDay, 'yyyy-MM-dd HH:mm', { setZone: timezone });
+function createDateTime(date : string, timeOfDay : string) : DateTime {
+    return DateTime.fromFormat(date + ' ' + timeOfDay, 'yyyy-MM-dd HH:mm', { setZone: serverRuntimeConfig.timezone });
 }
 
 // TODO: Don't generate the Rehearsal objects. Instead, callback to add the rehearsal to the Performance
-function deserializeRehearsalSequence(spec : SerializedRehearsalSequence, timezone : string) : Rehearsal[] {
+function deserializeRehearsalSequence(spec : SerializedRehearsalSequence) : Rehearsal[] {
     const frequency : RehearsalFrequency = (spec.frequency ? spec.frequency : RehearsalFrequency.once);
 
     const computeDateShift = (f : string) => {
@@ -136,10 +140,10 @@ function deserializeRehearsalSequence(spec : SerializedRehearsalSequence, timezo
         throw new Error(util.format('Event sequences with "%s" frequency require an endDate', frequency));
     }
     const endDate : string = (spec.endDate ? spec.endDate : spec.startDate);
-    const finalStartDateTime : DateTime = createDateTime(endDate, spec.startTime, timezone);
+    const finalStartDateTime : DateTime = createDateTime(endDate, spec.startTime);
 
-    var nextStartDateTime : DateTime = createDateTime(spec.startDate, spec.startTime, timezone);
-    var nextEndDateTime : DateTime = createDateTime(spec.startDate, spec.endTime, timezone);
+    var nextStartDateTime : DateTime = createDateTime(spec.startDate, spec.startTime);
+    var nextEndDateTime : DateTime = createDateTime(spec.startDate, spec.endTime);
 
     var result : Rehearsal[] = [];
     do {
@@ -169,13 +173,13 @@ export function deserializePerformance(data : SerializedPerformance, model : Mod
                                    data.collaborators,
                                    data.soloists,
                                    data.description,
-                                   (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: model.timezone }) : null),
+                                   (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
                                    data.registrationFee,
                                    data.membershipLimit);
 
     data.concerts.forEach((c) => {
-        result.addConcert(createDateTime(c.date, c.start, model.timezone),
-                        createDateTime(c.date, c.call, model.timezone),
+        result.addConcert(createDateTime(c.date, c.start),
+                        createDateTime(c.date, c.call),
                         c.location)
     });
 
@@ -195,19 +199,19 @@ export function deserializePerformance(data : SerializedPerformance, model : Mod
 
     if (data.events) {
         data.events.forEach((e) => {
-            result.addEvent(createDateTime(e.date, e.start, model.timezone),
+            result.addEvent(createDateTime(e.date, e.start),
                             e.location,
                             e.title);
         });
     }
 
     if (data.tuttiRehearsals) {
-        data.tuttiRehearsals.forEach((s) => result.addTuttiRehearsals(deserializeRehearsalSequence(s, model.timezone)));
+        data.tuttiRehearsals.forEach((s) => result.addTuttiRehearsals(deserializeRehearsalSequence(s)));
     }
 
     if (data.tuttiRehearsalNotes) {
         data.tuttiRehearsalNotes.forEach((note) => {
-            const noteDateTime : DateTime = createDateTime(note.date, '00:00', model.timezone);
+            const noteDateTime : DateTime = createDateTime(note.date, '00:00');
             const rehearsal : Rehearsal = result.tuttiRehearsals.find((e) => (e.start.year == noteDateTime.year &&
                                                                               e.start.month == noteDateTime.month &&
                                                                               e.start.day == noteDateTime.day));
@@ -219,17 +223,17 @@ export function deserializePerformance(data : SerializedPerformance, model : Mod
 
     if (data.mensSectionals) {
         // TODO: change yml schema from mensSectionals to sectionalsTenorBass
-        data.mensSectionals.forEach((s) => result.addTBSectionals(deserializeRehearsalSequence(s, model.timezone)));
+        data.mensSectionals.forEach((s) => result.addTBSectionals(deserializeRehearsalSequence(s)));
     }
 
     if (data.womensSectionals) {
         // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
-        data.womensSectionals.forEach((s) => result.addSASectionals(deserializeRehearsalSequence(s, model.timezone)));
+        data.womensSectionals.forEach((s) => result.addSASectionals(deserializeRehearsalSequence(s)));
     }
 
     if (data.dressRehearsals) {
         data.dressRehearsals.forEach((dr) => result.addDressRehearsal({
-            start: createDateTime(dr.date, dr.start, model.timezone),
+            start: createDateTime(dr.date, dr.start),
             location: dr.location
         }));
     }

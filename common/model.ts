@@ -1,4 +1,4 @@
-import { CONFIG_FILENAME, FYLP_DATA_DIR, GALLERY_DATA_DIR, PERFORMANCE_DATA_DIR, SUPPLEMENT_DATA_DIR } from './constants';
+import { FYLP_DATA_DIR, GALLERY_DATA_DIR, PERFORMANCE_DATA_DIR, SUPPLEMENT_DATA_DIR } from './constants';
 import { FYLP } from './fylp';
 import { Gallery } from './gallery';
 import { Performance } from './performance'
@@ -9,30 +9,26 @@ import { deserializePerformance } from './serializedPerformance'
 import glob from 'glob-promise';
 import yaml from 'yaml';
 
+import getConfig from 'next/config'
+
 import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
 import util from 'util';
 
-type Configuration = {
-    timezone : string;          // name of timezone in which the ensemble rehearses and performs
-    currentQuarter : string;    // name of the current quarter being prepared by the ensemble
-} 
+const { serverRuntimeConfig } = getConfig()
 
 export class Model {
     readonly performances : Performance[]   = [];
     readonly repertoire : Repertoire        = new Repertoire();
     private _currentQuarter : Performance   = null;
-    private config : Configuration;
     readonly pieceSupplements : PieceSupplement[]    = [];
     readonly galleries : Gallery[]          = [];
 
-    private constructor(config : Configuration) {
-        this.config = config;
+    private constructor() {
     }
 
     get currentQuarter() { return this._currentQuarter; }
-    get timezone() { return this.config.timezone; }
 
     get performanceHistory() : Performance[] {
         const index = this.performances.findIndex((e) => (e.id == this._currentQuarter.id));
@@ -49,7 +45,7 @@ export class Model {
         this.performances.push(p);
         this.performances.sort((a, b) => b.compare(a));
     
-        if (p.quarter == this.config.currentQuarter) {
+        if (p.quarter == serverRuntimeConfig.currentQuarterName) {
             this._currentQuarter = p;
         }
     }
@@ -80,7 +76,7 @@ export class Model {
     private static async create() : Promise<Model> {
         const basePath = process.cwd();
     
-        const model = new Model(<Configuration>yaml.parse(await fs.readFile(path.join(basePath, CONFIG_FILENAME), 'utf8')));
+        const model = new Model();
     
         const performanceDatafiles = await glob('*.yml', { cwd: path.join(basePath, PERFORMANCE_DATA_DIR), realpath: true });
         const performances = await Promise.all(performanceDatafiles.map(async (filepath) => {            
