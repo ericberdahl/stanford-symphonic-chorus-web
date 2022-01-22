@@ -11,7 +11,6 @@ import SpaceSeparatedPhrase from '../components/spaceSeparatedPhrase'
 import TitledSegment from '../components/titledSegment'
 
 import { Model } from '../common/model'
-import { performanceStaticProps } from '../common/performanceStaticProps'
 
 import { DateTime } from 'luxon'
 import { Fragment } from 'react'
@@ -200,7 +199,7 @@ export async function getStaticProps({ params }) {
     const model = await Model.getModel();
     
     const props = {
-        currentQuarter: await performanceStaticProps(model.currentQuarter)
+        currentQuarter: await model.currentQuarter.getStaticProps()
     }
 
     return {

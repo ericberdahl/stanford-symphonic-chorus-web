@@ -1,7 +1,7 @@
 import { Composer } from "./composer";
 import { FYLP } from "./fylp";
 import { Model } from './model'
-import { Performance, Rehearsal } from './performance'
+import { DressRehearsal, Performance, Rehearsal, Soloist, SerializedSoloist } from './performance'
 import { IPiece, Piece, SerializedPiece } from './piece';
 import { PieceSupplement } from "./pieceSupplement";
 import { Repertoire } from './repertoire';
@@ -16,11 +16,6 @@ const { serverRuntimeConfig } = getConfig()
 
 type SerializedPerformancePiece = SerializedPiece & {
     performanceNote? : string;
-}
-
-type SerializedSoloist = {
-    name : string;
-    part : string;
 }
 
 type SerializedPoster = {
@@ -165,17 +160,20 @@ async function deserializePieceForPerformance(serializedPiece : SerializedPerfor
                               isMain);
 }
 
-export function deserializePerformance(data : SerializedPerformance, model : Model) : Performance {
+export async function deserializePerformance(data : SerializedPerformance, model : Model) : Promise<Performance> {
     const result = new Performance(data.quarter,
                                    data.syllabus,
                                    data.directors,
                                    data.instructors,
                                    data.collaborators,
-                                   data.soloists,
                                    data.description,
                                    (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
                                    data.registrationFee,
                                    data.membershipLimit);
+
+    if (data.soloists) {
+        result.soloists.push(... await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))));
+    }
 
     data.concerts.forEach((c) => {
         result.addConcert(createDateTime(c.date, c.start),
@@ -217,7 +215,7 @@ export function deserializePerformance(data : SerializedPerformance, model : Mod
                                                                               e.start.day == noteDateTime.day));
             if (!rehearsal) throw new Error(util.format('Cannot find tuttiRehearsal on date "%s" to attach a note', note.date));
             
-            rehearsal.addNote(note.note);
+            rehearsal.notes.push(note.note);
         });
     }
 
@@ -232,10 +230,7 @@ export function deserializePerformance(data : SerializedPerformance, model : Mod
     }
 
     if (data.dressRehearsals) {
-        data.dressRehearsals.forEach((dr) => result.addDressRehearsal({
-            start: createDateTime(dr.date, dr.start),
-            location: dr.location
-        }));
+        data.dressRehearsals.forEach((dr) => result.addDressRehearsal(new DressRehearsal(createDateTime(dr.date, dr.start), dr.location)));
     }
 
     if (data.supplements) {

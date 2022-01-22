@@ -11,7 +11,6 @@ import PieceCitation from '../components/pieceCitation'
 import TitledSegment from '../components/titledSegment'
 
 import { Model } from '../common/model'
-import { performanceStaticProps } from '../common/performanceStaticProps'
 
 import { DateTime } from 'luxon'
 
@@ -185,7 +184,7 @@ export async function getStaticProps({ params }) {
     const model = await Model.getModel();
     
     const props = {
-        performances: await Promise.all(model.performanceHistory.map(performanceStaticProps))
+        performances: await Promise.all(model.performanceHistory.map(async (p) => p.getStaticProps()))
     }
 
     return {

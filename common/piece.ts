@@ -1,7 +1,6 @@
 import { Composer, ComposerStaticProps, SerializedComposer } from "./composer";
 import { FYLPRefStaticProps, FYLP } from "./fylp";
-import { Performance } from "./performance";
-import { PerformanceRefStaticProps, performanceRefStaticProps } from "./performanceStaticProps";
+import { Performance, PerformanceRefStaticProps } from "./performance";
 import { PieceSupplementStaticProps, PieceSupplement } from "./pieceSupplement";
 
 import hash from 'object-hash';
@@ -46,7 +45,7 @@ export async function pieceStaticProps(piece : IPiece) : Promise<PieceStaticProp
         composer:       await piece.composer.getStaticProps(),
         fylp:           (await piece.fylp?.getRefStaticProps()) || null,
         movement:       piece.movement,
-        performances:   piece.performances.map(performanceRefStaticProps),
+        performances:   await Promise.all(piece.performances.map(async (p) => p.getRefStaticProps())),
         prefix:         piece.prefix,
         supplements:    await Promise.all(piece.supplements.map((s) => s.getStaticProps())),
         suffix:         piece.suffix,

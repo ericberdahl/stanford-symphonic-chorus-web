@@ -8,7 +8,6 @@ import PieceCitation from '../../components/pieceCitation';
 import SpaceSeparatedPhrase from '../../components/spaceSeparatedPhrase';
 
 import { Model } from "../../common/model";
-import { performanceStaticProps } from '../../common/performanceStaticProps';
 
 import { DateTime } from 'luxon';
 
@@ -301,9 +300,9 @@ export async function getStaticProps({ params }) {
     const model = await Model.getModel();
 
     const props = {
-        currentQuarter:     await performanceStaticProps(model.getPerformanceById(params.id)),
-        previousQuarters:   await Promise.all(model.getPerformancesAfterId(params.id, -3).map(performanceStaticProps)),
-        nextQuarters:       await Promise.all(model.getPerformancesAfterId(params.id, 3).map(performanceStaticProps).reverse()),
+        currentQuarter:     await model.getPerformanceById(params.id).getStaticProps(),
+        previousQuarters:   await Promise.all(model.getPerformancesAfterId(params.id, -3).map(async (p) => p.getStaticProps())),
+        nextQuarters:       await Promise.all(model.getPerformancesAfterId(params.id, 3).map(async (p) => p.getStaticProps()).reverse()),
     }
 
     return {
