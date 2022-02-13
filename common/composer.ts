@@ -1,6 +1,8 @@
+import { WeakRegistry } from "./weakRegistry";
+
 import hash from 'object-hash';
 
-import util from 'util';
+import { strict as assert } from 'assert';
 
 export type SerializedComposer = string | Array<string>;
 
@@ -37,13 +39,10 @@ export class Composer {
             result = this.fullName.localeCompare(other.fullName);
         }
     
-        if (this.fullName == other.fullName && this.familyName != other.familyName) {
-            console.warn(util.format('Found composer "%s" with two family names, "%s" and "%s"', this.fullName, this.familyName, other.familyName));
-        }
-        if (0 == result && this.hashValue != other.hashValue) {
-            console.warn(util.format('Found composer "%s" with hash mismatch', this.fullName));
-        }
-    
+        assert.ok(this.fullName != other.fullName || this.familyName == other.familyName, `Found composer "${this.fullName}" with two family names, "${this.familyName}" and "${other.familyName}"`);
+        assert.ok(0 != result || this.hashValue == other.hashValue, `Found composer "${this.fullName}" with hash mismatch`);
+        assert.ok(0 != result || this === other, `Found composer "${this.fullName}" which compares equal to another but is a different object`);
+
         return result;
     }
     
@@ -54,7 +53,7 @@ export class Composer {
         };
     }
 
-    private static sAllComposers : Map<string, WeakRef<Composer>>   = new Map<string, WeakRef<Composer>>();
+    private static sAllComposers : WeakRegistry<string, Composer>   = new WeakRegistry<string, Composer>();
 
     static async deserialize(composer: SerializedComposer) : Promise<Composer> {
 
@@ -68,16 +67,7 @@ export class Composer {
                             (Array.isArray(composer) ?
                                 new Composer(composer.join(' '), composer[composer.length - 1]) :
                                 (new Composer(composer, composer.split(' ').slice(-1)[0])) ));
-    
-        const hashValue = result.hashValue;
-
-        if (this.sAllComposers.has(hashValue)) {
-            result = this.sAllComposers.get(hashValue).deref();
-        }
-        else {
-            this.sAllComposers.set(hashValue, new WeakRef<Composer>(result));
-        }
-                        
-        return result;
+                            
+        return this.sAllComposers.lookup(result.hashValue, result);;
     }
 }

@@ -2,10 +2,11 @@ import { Composer, ComposerStaticProps, SerializedComposer } from "./composer";
 import { FYLPRefStaticProps, FYLP } from "./fylp";
 import { Performance, PerformanceRefStaticProps } from "./performance";
 import { PieceSupplementStaticProps, PieceSupplement } from "./pieceSupplement";
+import { WeakRegistry } from "./weakRegistry";
 
 import hash from 'object-hash';
 
-import util from 'util';
+import { strict as assert } from 'assert';
 
 export type SerializedPiece = {
     title : string;
@@ -53,7 +54,7 @@ export class Piece {
     
     // TODO : expose GrandRepertoire publicly
     // TODO : create CacheWeakly<K,V> class to implement object caching
-    private static sGrandRepertoire : Map<string, WeakRef<Piece>>   = new Map<string, WeakRef<Piece>>();
+    private static sGrandRepertoire : WeakRegistry<string, Piece>   = new WeakRegistry<string, Piece>();
 
     private constructor(
             title : string | string[],
@@ -112,9 +113,9 @@ export class Piece {
         if (0 == result) {
             result = makeString(this.arranger).localeCompare(makeString(other.arranger));
         }
-        if (0 == result && this.hashValue != other.hashValue) {
-            console.warn(util.format('Found piece "%s" with hash mismatch', this.title));
-        }
+
+        assert.ok(0 != result || this.hashValue == other.hashValue, `Found piece "${this.title}" with hash mismatch`);
+        assert.ok(0 != result || this === other, `Found piece "${this.title}" which compares equal to another but is a different object`);
     
         return result;
     }
@@ -157,15 +158,7 @@ export class Piece {
                                         data.arranger,
                                         data.prefix,
                                         data.suffix);
-        const hashValue = result.hashValue;
 
-        if (this.sGrandRepertoire.has(hashValue)) {
-            result = this.sGrandRepertoire.get(hashValue).deref();
-        }
-        else {
-            this.sGrandRepertoire.set(hashValue, new WeakRef<Piece>(result));
-        }
-
-        return result;                                        
+        return this.sGrandRepertoire.lookup(result.hashValue, result);                                        
     }
 }
