@@ -101,6 +101,20 @@
 			{{/each}}
 		</table>
 
+		{{#if this.supplements}}
+			<div id="practiceFiles">
+				{{#each this.supplements}}
+				<h2>{{title}}</h2>
+				<ol>
+					{{#each contents}}
+					<li>{{title}} (<a href="{{asset}}">{{linkName}}</a>)</li>
+					{{/each}}
+				</ol>
+				{{/each}}
+			</div>
+
+		{{/if}}
+
 		{{#if this.events }}
 			<h2 id="events">Events</h2>
 			<table>
