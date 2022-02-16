@@ -3,10 +3,10 @@
 quarter: "Winter 2022"
 
 
-# HOWTO: Set syllabus to an list of syllabi documents. These documents will live in the assets folder.
-# Use something like "SSC Syllabus Spring 1812.pdf" and "SSC Syllabus Spring 1812.docx"
-syllabus:
-# TODO: Need syllabus for Winter 2022
+# HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
+# Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
+# be detected and used.
+syllabus: "SSC Syllabus Winter 2022"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
