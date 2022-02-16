@@ -76,7 +76,7 @@
 					<td class="right">{{ x-formatDate "DD MMMM YYYY" this.start }}</td>
 					<td>{{> loc_citation loc=this.location }}</td>
 					<td>{{ x-formatDate "h:mma" this.start }}</td>
-					<td>Dress rehearsal</td>
+					<td>Dress rehearsal{{#if this.note}} {{this.note}}{{/if}}</td>
 				</tr>
 			{{/each}}
 		</table>
@@ -96,7 +96,7 @@
 					<td class="right">{{ x-formatDate "DD MMMM YYYY" this.start }}</td>
 					<td>{{> loc_citation loc=this.location }}</td>
 					<td>{{#if this.call}}{{ x-formatDate "h:mma" this.call }}{{/if}}</td>
-					<td>{{#if this.call}}Concert call for {{/if}}{{ x-formatDate "h:mma" this.start }} concert</td>
+					<td>{{#if this.call}}Concert call for {{/if}}{{ x-formatDate "h:mma" this.start }} concert{{#if this.note}} {{this.note}}{{/if}}</td>
 				</tr>
 			{{/each}}
 		</table>
