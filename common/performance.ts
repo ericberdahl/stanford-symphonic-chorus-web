@@ -253,11 +253,8 @@ class PerformancePiece {
         };
     }
 
-    static async deserializePieceForPerformance(serializedPiece : SerializedPerformancePiece, performance : Performance, isMain : boolean, repertoire : Repertoire) {
-        const piece = <Piece>repertoire.addPiece(await Piece.deserialize(serializedPiece)); // TODO : remove Repertoire
-    
-        performance.addRepertoire(new PerformancePiece(piece, serializedPiece.performanceNote),
-                                  isMain);
+    static async deserialize(serializedPiece : SerializedPerformancePiece) : Promise<PerformancePiece> {    
+        return new PerformancePiece(await Piece.deserialize(serializedPiece), serializedPiece.performanceNote);
     }
 }
 
@@ -397,14 +394,6 @@ export class Performance {
         return compareDateTime(other.firstConcert.start, this.firstConcert.start);
     }
 
-    addRepertoire(piece : PerformancePiece, isMain : boolean = false) {
-        piece.piece.addPerformance(this);
-        if (isMain) {
-            this.mainPieces.push(piece);
-        }
-        this.repertoire.push(piece);
-    }
-
     setPoster(name : string, caption : string) {
         this._posterRoutes = new ImageRoutes('/assets/posters', name, caption);
     }
@@ -472,10 +461,21 @@ export class Performance {
         result.concerts.sort((a, b) => -compareDateTime(a.start, b.start));
     
         if (data.repertoire.main) {
-            data.repertoire.main.forEach((p) => PerformancePiece.deserializePieceForPerformance(p, result, true, model.repertoire));
+            const pieces = await Promise.all(data.repertoire.main.map(async (p) => PerformancePiece.deserialize(p)));
+            pieces.forEach((p) => {
+                assert.ok(p.piece === model.repertoire.addPiece(p.piece), `model.repertoire detected a piece collision`); // TODO : remove Repertoire
+                p.piece.addPerformance(result)
+            });
+            result.mainPieces.push(...pieces);
+            result.repertoire.push(...pieces);
         }
         if (data.repertoire.other) {
-            data.repertoire.other.forEach((p) => PerformancePiece.deserializePieceForPerformance(p, result, false, model.repertoire));
+            const pieces = await Promise.all(data.repertoire.other.map(async (p) => PerformancePiece.deserialize(p)));
+            pieces.forEach((p) => {
+                assert.ok(p.piece === model.repertoire.addPiece(p.piece), `model.repertoire detected a piece collision`); // TODO : remove Repertoire
+                p.piece.addPerformance(result)
+            });
+            result.repertoire.push(...pieces);
         }
     
         if (data.poster) {
