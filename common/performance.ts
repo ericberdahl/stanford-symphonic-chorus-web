@@ -468,10 +468,8 @@ export class Performance {
             result.soloists.push(...await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))));
         }
     
-        data.concerts.forEach((c) => {
-            result.concerts.push(...data.concerts.map((c) => new Concert(createDateTime(c.date, c.start), c.location, createDateTime(c.date, c.call))));
-            result.concerts.sort((a, b) => -compareDateTime(a.start, b.start));
-        });
+        result.concerts.push(...data.concerts.map((c) => new Concert(createDateTime(c.date, c.start), c.location, createDateTime(c.date, c.call))));
+        result.concerts.sort((a, b) => -compareDateTime(a.start, b.start));
     
         if (data.repertoire.main) {
             data.repertoire.main.forEach((p) => PerformancePiece.deserializePieceForPerformance(p, result, true, model.repertoire));
