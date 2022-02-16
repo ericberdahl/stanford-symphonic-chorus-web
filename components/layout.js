@@ -102,13 +102,10 @@ export default function Layout({ breadcrumbs, children, introduction, sidebar, t
             {isHome && <Spotlight />}
             <Introduction introduction={introduction}/>
 
-            {breadcrumbs && (
-                <div className={styles.breadcrumbs}>
-                    <Breadcrumbs path={breadcrumbs}/>
-                </div>
-            )}
-
             <div className={styles.content_main}>
+                {breadcrumbs && (
+                    <Breadcrumbs path={breadcrumbs}/>
+                )}
                 {children}
             </div>
 

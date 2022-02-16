@@ -18,10 +18,9 @@
         "header header header"
         "nav nav nav"
         "title title title"
-        "intro breadcrumbs sidebar"
         "intro content sidebar"
         "footer footer footer";
-    grid-template-rows: auto auto auto max-content auto auto;
+    grid-template-rows: auto auto auto auto auto;
 
     .spotlight {
         display: none;
