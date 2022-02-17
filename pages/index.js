@@ -1,5 +1,6 @@
 import Collaborator from '../components/collaborator'
 import CommaSeparatedList from '../components/commaSeparatedList'
+import Covid19MitigationPolicy from '../components/covid19MitigationPolicy'
 import Layout from '../components/layout'
 import Lightbox from '../components/lightbox'
 import Location from '../components/location'
@@ -188,6 +189,9 @@ export default function Home({ currentQuarter }) {
                             <li><a href="//liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4634&z=182&pt=47,2,4,5,12,16">Tickets for Friday 15 March</a></li>
                             <li><a href="//liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4635&z=182&pt=47,2,4,5,12,16">Tickets for Sunday 17 March</a></li>
                         </ul>
+                    </div>
+                    <div>
+                        <Covid19MitigationPolicy/>
                     </div>
                 </TitledSegment>
             </div>

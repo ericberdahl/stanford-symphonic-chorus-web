@@ -1,3 +1,4 @@
+import Covid19MitigationPolicy from '../components/covid19MitigationPolicy'
 import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
 import PageLink from '../components/pageLink'
@@ -117,7 +118,7 @@ export default function MemberInfo({ currentQuarter }) {
                 </p>
                 <p>
                     Members who are not students or faculty pay a modest {currentQuarter.registrationFee && <span>(currently {currentQuarter.registrationFee})</span>} participation fee.
-                    This money helps to offset expenses, the largest of which is hiring orchestras.
+                    This money helps to offset expenses, the largest of which is contracting soloists and orchestras.
                 </p>
 
                 <h3>Auditions</h3>
@@ -160,8 +161,7 @@ export default function MemberInfo({ currentQuarter }) {
                 </p>
                 <h3>Concert Dress</h3>
                 <p>
-                    Men wear tuxedos or a tuxedo-like suits (i.e., black; not grey, brown or blue), white shirt, black bow tie, black shoes and socks.
-                    Women wear all black: long dress, or long black skirt or slacks with long-sleeved (preferably) or short-sleeved black blouse, and black shoes. Please <strong>no sleeveless tops</strong> and <strong>no flashy jewelry.</strong>
+                    All black: shirt/slacks, blouse/skirt, dress. Black socks/hose, black shoes.
                 </p>
                 
                 <h3>Covering Your Music</h3>
@@ -178,9 +178,11 @@ export default function MemberInfo({ currentQuarter }) {
                     For further information, including information on obtaining scent-free alternatives, see <PageLink page="noFragrance">extensive guidelines.</PageLink>
                 </p>
 
+                <Covid19MitigationPolicy/>
+
                 <h2 id="rehearsals">Rehearsals</h2>
                 <p>
-                    Rehearsals are held Monday evenings from 7:30 to 10:00 in Campbell Recital Hall in the Braun Music Building, but please be <em>early</em> for the first rehearsal, since it will take extra time to get everyone signed up and to distribute the music, which will be available at the rehearsal.
+                    Rehearsals are held Monday evenings from 7:30 to 10:00 (7:30 to 9:00 during the Winter 2022 quarter) in Campbell Recital Hall in the Braun Music Building, but please be <em>early</em> for the first rehearsal, since it will take extra time to get everyone signed up and to distribute the music, which will be available at the rehearsal.
                     Sign ups start at <strong>6:30 p.m.</strong>
                 </p>
 

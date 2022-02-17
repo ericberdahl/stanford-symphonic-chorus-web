@@ -20,8 +20,9 @@ const roles = {
     },
 
     administrator: {
-        full_name: "Stephen M. Sano",
-        email: "sano",
+        full_name: "Kelsi Kobara",
+        title: "Choral Studies Program Administrator",
+        email: "kobara",
         domain: "stanford",
         long_tld: "educator",
         obscure_tld: "-e-d-u-",
@@ -49,6 +50,7 @@ export default function Person(props) {
             </Head>
             <a className="personal_citation" data={data}>{person.full_name}</a>
             <noscript>{person.full_name}: {person.email}/AT/{person.domain}/DOT/{person.obscure_tld}/</noscript>
+            {person.title && (" " + person.title)}
         </>
     );
 }

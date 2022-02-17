@@ -14,7 +14,7 @@ export default function Contact() {
 
     const introduction = (
         <TitledSegment title="Contact">
-            For more information about the chorus or auditions, conatct <Person role="director" subject="Re: Information about SSC or auditions"/>.
+            For more information about the chorus or auditions, conatct <Person role="administrator" subject="Re: Information about SSC or auditions"/>.
         </TitledSegment>
     );
 
