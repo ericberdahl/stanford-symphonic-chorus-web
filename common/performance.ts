@@ -294,7 +294,16 @@ export class Performance {
     get heraldImageRoutes() { return this._heraldImageRoutes; }
 
     compare(other : Performance) {
-        return compareDateTime(other.firstConcert.start, this.firstConcert.start);
+        let result = 0;
+
+        if (0 == result) {
+            result = compareDateTime(other.firstConcert.start, this.firstConcert.start);
+        }
+        if (0 == result) {
+            result = compareDateTime(other.tuttiRehearsals[0].start, this.tuttiRehearsals[0].start);
+        }
+
+        return result;
     }
 
     setPoster(name : string, caption : string) {
