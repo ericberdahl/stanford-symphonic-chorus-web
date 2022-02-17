@@ -95,6 +95,7 @@ scripts:
 			{{/each}}
 
 			{{#each currentEvents}}
+				{{#unless this.memberOnly}}
 				<div class="event">
 					<h3>
 						<span class="event_day">{{ x-formatDate 'D' start }}</span>
@@ -104,6 +105,7 @@ scripts:
 						{{> (_get . '_eventPartial') .. event=.}}
 					</div>
 				</div>
+				{{/unless}}
 			{{/each}}
 		</div>
 		<hr class="clearer">
@@ -162,6 +164,15 @@ scripts:
 						<li><a href="//liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4634&z=182&pt=47,2,4,5,12,16">Tickets for Friday 15 March</a></li>
 						<li><a href="//liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4635&z=182&pt=47,2,4,5,12,16">Tickets for Sunday 17 March</a></li>
 					</ul>
+				</div>
+			</div>
+			<div>
+				<h3>COVID-19 Mitigation Policy</h3>
+				<div>
+					<p>
+						Membership in the Stanford Symphonic Chorus requires proof of full vaccination and masking at all times for rehearsals and performances.
+						These requirements may change over time with the always-shifting nature of health and safety requirements as set forth by the university.
+					</p>
 				</div>
 			</div>
 			<div class="covidAdvisory">

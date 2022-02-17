@@ -3,4 +3,5 @@
     unScramble("{{ this.email }}", "{{ this.domain }}.{{ this.long_tld }}", "{{ this.full_name }}", "{{ ../subject }}");
 </script>
 <noscript>{{ this.full_name}}: {{ this.email }}/AT/{{ this.domain }}/DOT/{{ this.obscure_tld}}/</noscript>
+{{~#if this.title}}, {{this.title}}{{/if~}}
 {{/with}}

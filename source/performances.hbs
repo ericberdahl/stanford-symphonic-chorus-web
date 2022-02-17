@@ -70,7 +70,9 @@ scripts:
 								<p>Repertoire:</p>
 								<ul class="artists">
 							{{/if}}
+							{{#unless this.memberOnly}}
 									<li>{{> piece_citation piece=. style="em-tagged" }}</li>
+							{{/unless}}
 							{{#if @last}}
 								</ul>
 							{{/if}}
@@ -97,7 +99,9 @@ scripts:
 						
 						<h4>Concerts:</h4>
 						{{#each concerts}}
-							<p>{{ x-formatDate 'dddd D MMMM YYYY, h:mma' start }}, {{> loc_citation loc=location }}</p>
+							{{#unless this.memberOnly}}
+								<p>{{ x-formatDate 'dddd D MMMM YYYY, h:mma' start }}, {{> loc_citation loc=location }}</p>
+							{{/unless}}
 						{{/each}}
 					</div>
 					<ul class="links">
