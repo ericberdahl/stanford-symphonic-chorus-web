@@ -22,10 +22,19 @@ syllabus: "SSC Syllabus Winter 2022"
 # entire program of a performance.
 repertoire:
     main:
-    -   composer: "Gustav Mahler"
+    -   &mahler
+        composer: "Gustav Mahler"
         title: "Symphony No. 2"
         commonTitle: "Auferstehung"
         translation: "Resurrection"
+    -   &aquilanti
+        composer: "Giancarlo Aquilanti"
+        title: "Te Deum"
+        performanceNote: "(World Premiere)"
+    other:
+    -   &copland
+        composer: "Aaron Copland"
+        title: "The Promise of Living"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -123,9 +132,25 @@ dressRehearsals:
 -   date: "2022-05-09"
     start: "19:00"
     location: "Bing"
+    repertoire:
+    -   *mahler
 -   date: "2022-05-12"
     start: "19:00"
     location: "Bing"
+    repertoire:
+    -   *mahler
+-   date: "2022-05-17"
+    start: "19:00"
+    location: "Bing"
+    repertoire:
+    -   *copland
+    -   *aquilanti
+-   date: "2022-05-22"
+    start: "10:00"
+    location: "Bing"
+    repertoire:
+    -   *copland
+    -   *aquilanti
 
 
 # HOWTO: concerts is a list of concert dates
@@ -145,10 +170,28 @@ concerts:
     start: "19:30"
     call: "18:30"
     location: "Bing"
+    repertoire:
+    -   *mahler
 -   date: "2022-05-15"
     start: "14:30"
     call: "13:30"
     location: "Bing"
+    repertoire:
+    -   *mahler
+-   date: "2022-05-22"
+    start: "14:30"
+    call: "13:30"
+    location: "Bing"
+    repertoire:
+    -   *copland
+    -   *aquilanti
+-   date: "2022-05-24"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+    repertoire:
+    -   *copland
+    -   *aquilanti
 
 
 # HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal

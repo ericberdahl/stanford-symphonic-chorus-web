@@ -1,6 +1,7 @@
 import ChinaTour from '../components/chinaTour'
 import CommaSeparatedList from '../components/commaSeparatedList'
 import Collaborator from '../components/collaborator'
+import { DayAndDate, TimeOfDay, yearFromISODate } from '../components/dateTime'
 import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
 import Location from '../components/location'
@@ -12,14 +13,14 @@ import TitledSegment from '../components/titledSegment'
 
 import { Model } from '../common/model'
 
-import { DateTime } from 'luxon'
+import { Fragment } from 'react'
 
 import styles from '../styles/performances.module.scss'
 
 function Introduction({ performances }) {
     let years = [];
     performances.forEach((p) => {
-        const year = DateTime.fromISO(p.concerts[0].start).year;
+        const year = yearFromISODate(p.concerts[0].start);
         if (0 == years.length || years[years.length - 1].year != year) {
             years.push({ year: year, id: p.id });
         }
@@ -48,16 +49,22 @@ function Sidebar() {
     );
 }
 
-function Repertoire(props) {
+function RepertoireList({ repertoire }) {
+    return (
+        <ul>
+            {repertoire.map((p, index) => {
+                return (<li key={index}><PieceCitation data={p}/></li>);
+            })
+            }
+        </ul>
+    )
+}
+
+function Repertoire({ data }) {
     return (
         <>
             <p>Repertoire:</p>
-            <ul>
-                {props.data.map((p, index) => {
-                    return (<li key={index}><PieceCitation data={p}/></li>);
-                })
-                }
-            </ul>
+            <RepertoireList repertoire={data}/>
         </>
     );
 }
@@ -102,7 +109,12 @@ function ConcertList(props) {
     return (
         <>
             {props.data.map((c, index) => {
-                return (<p key={index}>{DateTime.fromISO(c.start).toFormat('DDDD, t')}, <Location name={c.location}/></p>);
+                return (
+                    <Fragment key={index}>
+                        <p><DayAndDate iso={c.start}/>, <TimeOfDay iso={c.start}/>, <Location name={c.location}/></p>
+                        {c.repertoire && <RepertoireList repertoire={c.repertoire}/>}
+                    </Fragment>
+                );
             })}
         </>
     );

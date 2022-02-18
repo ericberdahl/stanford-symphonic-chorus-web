@@ -1,6 +1,7 @@
 import Collaborator from '../components/collaborator'
 import CommaSeparatedList from '../components/commaSeparatedList'
 import Covid19MitigationPolicy from '../components/covid19MitigationPolicy'
+import { compareISODate, DayOfMonth, Month, TimeOfDay, Year } from '../components/dateTime'
 import Layout from '../components/layout'
 import Lightbox from '../components/lightbox'
 import Location from '../components/location'
@@ -18,13 +19,17 @@ import { Fragment } from 'react'
 
 import styles from '../styles/Home.module.scss'
 
+// TODO : replace DateTime.toFormat uses with DateTime.toLocaleString
+
 function ConcertEvent({ currentQuarter, data }) {
+    const repertoire = (data.repertoire || currentQuarter.mainPieces);
+
     return (
         <>
             <p>
                 Symphonic Chorus Performance: <span className={styles.time}>
                     <CommaSeparatedList>
-                        {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
+                        {repertoire.map((p, index) => <PieceCitation key={index} data={p}/>)}
                     </CommaSeparatedList>
                     {currentQuarter.collaborators &&
                         (<> with <CommaSeparatedList>{currentQuarter.collaborators.map((c) => <Collaborator key={c} name={c}/>)}</CommaSeparatedList></>)
@@ -32,7 +37,7 @@ function ConcertEvent({ currentQuarter, data }) {
                 </span>
             </p>
             <p>
-                {DateTime.fromISO(data.start).toFormat('t')} <Location name={data.location}/>
+                <TimeOfDay iso={data.start}/> <Location name={data.location}/>
             </p>
         </>
     );
@@ -45,7 +50,7 @@ function FirstRehearsalEvent({ currentQuarter, data }) {
                 {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
             </CommaSeparatedList></span></p>
             <p className={styles.time}>
-                {DateTime.fromISO(data.start).toFormat('t')} <Location name={data.location}/>
+                <TimeOfDay iso={data.start}/> <Location name={data.location}/>
                 <SpaceSeparatedPhrase>
                     .
                     {data.notes.map((n) => n)}
@@ -59,7 +64,7 @@ function OtherEvent({ currentQuarter, data }) {
     return (
         <>
             <p>{data.title}</p>
-            <p>{DateTime.fromISO(data.start).toFormat('t')} <Location name={data.location}/></p>
+            <p><TimeOfDay iso={data.start}/> <Location name={data.location}/></p>
         </>
     );
 }
@@ -69,29 +74,26 @@ function Introduction({ currentQuarter }) {
     
     // add concerts to the event list
     eventList = eventList.concat(currentQuarter.concerts.map((c) => ({
-        date: DateTime.fromISO(c.start),
-        data: c,
-        renderer: ConcertEvent,
+        date: c.start,
+        content: (<ConcertEvent currentQuarter={currentQuarter} data={c}/>),
     })));
 
     // add first rehearsal
     if (0 < currentQuarter.tuttiRehearsals.length) {
         eventList.push({
-            date: DateTime.fromISO(currentQuarter.tuttiRehearsals[0].start),
-            data: currentQuarter.tuttiRehearsals[0],
-            renderer: FirstRehearsalEvent,
+            date: currentQuarter.tuttiRehearsals[0].start,
+            content: (<FirstRehearsalEvent currentQuarter={currentQuarter} data={currentQuarter.tuttiRehearsals[0]}/>),
         });
     }
 
     // add current events to the list
     eventList = eventList.concat(currentQuarter.events.map((e) => ({
-        date: DateTime.fromISO(e.start),
-        data: e,
-        renderer: OtherEvent,
+        date: e.start,
+        content: (<OtherEvent currentQuarter={currentQuarter} data={e}/>),
     })));
 
     // sort the event list into increasing date order
-    eventList.sort((a, b) => -b.date.diff(a.date).toMillis());
+    eventList.sort((a, b) => compareISODate(a.date, b.date));
 
     return (
         <div className={styles.events}>
@@ -104,11 +106,11 @@ function Introduction({ currentQuarter }) {
                 {eventList.map((e, index) => (
                     <div key={index} className={styles.event}>
                         <h3 className={styles.date}>
-                            <span className={styles.day}>{e.date.toFormat('d')}</span> <span className={styles.month}>{e.date.toFormat('MMM')}<br/>
-                            {e.date.toFormat('yyyy')}</span>
+                            <span className={styles.day}><DayOfMonth iso={e.date}/></span> <span className={styles.month}><Month iso={e.date}/><br/>
+                            <Year iso={e.date}/></span>
                         </h3>
                         <div className={styles.eventList}>
-                            <e.renderer key={index} currentQuarter={currentQuarter} data={e.data}/>
+                            {e.content}
                         </div>
                     </div>))}
             </TitledSegment>

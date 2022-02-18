@@ -1,5 +1,6 @@
 import AboutUs from '../../components/aboutUs'
 import Collaborator from '../../components/collaborator';
+import { compareISODate, DayAndDate, FullDate, TimeOfDay, Weekday } from '../../components/dateTime';
 import Layout from "../../components/layout";
 import Location from '../../components/location';
 import PageLink from '../../components/pageLink';
@@ -8,8 +9,6 @@ import PieceCitation from '../../components/pieceCitation';
 import SpaceSeparatedPhrase from '../../components/spaceSeparatedPhrase';
 
 import { Model } from "../../common/model";
-
-import { DateTime } from 'luxon';
 
 import styles from '../../styles/performances_id.module.scss';
 
@@ -44,11 +43,11 @@ function EventList({ events }) {
             <tbody>
                 {events.map((e, index) => (
                     <tr key={index}>
-                        <td>{e.start.toFormat('EEEE')}</td>
-                        <td>{e.start.toFormat('DDD')}</td>
+                        <td><Weekday iso={e.start}/></td>
+                        <td><FullDate iso={e.start}/></td>
                         <td><Location name={e.location}/></td>
-                        {e.end && <td>{e.start.toFormat('h:mma')} - {e.end.toFormat('h:mma')}</td>}
-                        {!e.end && <td>{e.start.toFormat('h:mma')}</td>}
+                        {e.end && <td><TimeOfDay iso={e.start}/> - <TimeOfDay iso={e.end}/></td>}
+                        {!e.end && <td><TimeOfDay iso={e.start}/></td>}
                         <td>
                             {e.description}
                             {e.notes && 0 < e.notes.length &&
@@ -70,8 +69,8 @@ function Rehearsals({ quarter }) {
 
     eventList = eventList.concat(quarter.tuttiRehearsals.map((r) => (
         {
-            start:          DateTime.fromISO(r.start),
-            end:            DateTime.fromISO(r.end),
+            start:          r.start,
+            end:            r.end,
             location:       r.location,
             description:    'Tutti rehearsal',
             notes:          r.notes,
@@ -80,8 +79,8 @@ function Rehearsals({ quarter }) {
 
     eventList = eventList.concat(quarter.sectionalsTenorBass.map((r) => (
         {
-            start:          DateTime.fromISO(r.start),
-            end:            DateTime.fromISO(r.end),
+            start:          r.start,
+            end:            r.end,
             location:       r.location,
             description:    'T/B Sectional (optional, but warmly encouraged)',
             notes:          r.notes
@@ -90,25 +89,34 @@ function Rehearsals({ quarter }) {
 
     eventList = eventList.concat(quarter.sectionalsSopranoAlto.map((r) => (
         {
-            start:          DateTime.fromISO(r.start),
-            end:            DateTime.fromISO(r.end),
+            start:          r.start,
+            end:            r.end,
             location:       r.location,
             description:    'S/A Sectional (optional, but warmly encouraged)',
             notes:          r.notes
         }
     )));
 
-    eventList.sort((a, b) => -b.start.diff(a.start).toMillis());
+    eventList.sort((a, b) => compareISODate(a.start, b.start));
 
     return (<EventList events={eventList}/>);
 }
 
 function DressRehearsals({ quarter }) {
+    const Description = ({ rehearsal }) => {
+        return (
+            <>
+                <span>Dress rehearsal</span>
+                {rehearsal.repertoire && (<RepertoireList repertoire={rehearsal.repertoire}/>)}
+            </>
+        )
+    }
+
     const eventList = quarter.dressRehearsals.map((dr) => (
         {
-            start:          DateTime.fromISO(dr.start),
+            start:          dr.start,
             location:       dr.location,
-            description:    'Dress rehearsal',
+            description:    (<Description rehearsal={dr}/>),
         }
     ));
 
@@ -116,15 +124,32 @@ function DressRehearsals({ quarter }) {
 }
 
 function Concerts({ quarter }) {
+    const Description = ({ concert }) => {
+        return (
+            <>
+                <span>Concert call for <TimeOfDay iso={concert.start}/> concert</span>
+                {concert.repertoire && (<RepertoireList repertoire={concert.repertoire}/>)}
+            </>
+        )
+    }
+
     const eventList = quarter.concerts.map((c) => (
         {
-            start:          DateTime.fromISO(c.call),
+            start:          c.call,
             location:       c.location,
-            description:    'Concert call for ' + DateTime.fromISO(c.start).toFormat('h:mma') + ' concert',
+            description:    (<Description concert={c}/>),
         }
     ));
 
     return (<EventList events={eventList}/>);
+}
+
+function RepertoireList({ repertoire }) {
+    return (
+        <ul>
+            {repertoire.map((p, index) => (<li key={index}><PieceCitation data={p}/></li>))}
+        </ul>
+    )
 }
 
 function Overview({ quarter, shortForm }) {
@@ -134,11 +159,7 @@ function Overview({ quarter, shortForm }) {
         <>
             <tr>
                 <td>Repertoire:</td>
-                <td>
-                    <ul>
-                        {quarter.repertoire.map((p, index) => (<li key={index}><PieceCitation data={p}/></li>))}
-                    </ul>
-                </td>
+                <td><RepertoireList repertoire={quarter.repertoire}/></td>
             </tr>
 
             {0 < quarter.soloists.length &&
@@ -170,7 +191,7 @@ function Overview({ quarter, shortForm }) {
                         <li>
                             {firstRehearsal && (
                                 <>
-                                    {DateTime.fromISO(firstRehearsal.start).toFormat('EEEE, MMMM d, yyyy')} at {DateTime.fromISO(firstRehearsal.start).toFormat('h:mma')}, <Location name={firstRehearsal.location}/>. {0 < firstRehearsal.notes.length &&
+                                    <DayAndDate iso={firstRehearsal.start}/> at <TimeOfDay iso={firstRehearsal.start}/>, <Location name={firstRehearsal.location}/>. {0 < firstRehearsal.notes.length &&
                                         <SpaceSeparatedPhrase>
                                             {firstRehearsal.notes.map((n, index) => n)}
                                         </SpaceSeparatedPhrase>
@@ -199,7 +220,7 @@ function Overview({ quarter, shortForm }) {
                     <ul>
                         {quarter.dressRehearsals.map((dr, index) => (
                             <li key={index}>
-                                {DateTime.fromISO(dr.start).toFormat('h:mma, EEEE, MMMM d, yyyy')}, <Location name={dr.location}/>
+                                <DayAndDate iso={dr.start}/>, <TimeOfDay iso={dr.start}/>, <Location name={dr.location}/>
                             </li>
                         ))}
                     </ul>
@@ -210,7 +231,7 @@ function Overview({ quarter, shortForm }) {
                 <td>Concerts:</td>
                 <td>
                     <ul>
-                        {quarter.concerts.map((c, index) => (<li key={index}>{DateTime.fromISO(c.start).toFormat('DDDD, t')} in <Location name={c.location}/> ({DateTime.fromISO(c.call).toFormat('t')} call)</li>))}
+                        {quarter.concerts.map((c, index) => (<li key={index}><DayAndDate iso={c.start}/>, <TimeOfDay iso={c.start}/> in <Location name={c.location}/> (<TimeOfDay iso={c.call}/> call)</li>))}
                     </ul>
                 </td>
             </tr>

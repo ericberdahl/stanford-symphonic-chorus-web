@@ -74,84 +74,68 @@ export class GenericEvent extends BasicEvent {
 }
 
 export type SerializedConcert = SerializedBasicEvent & {
-    call : string;  // 'HH:MM' : 24-hour formatted call time for the concert
+    call :          string;  // 'HH:MM' : 24-hour formatted call time for the concert
+    repertoire? :   SerializedPerformancePiece[];
 }
 
 export type ConcertStaticProps = BasicEventStaticProps & {
-    call : string;  // ISO time
+    call :          string;  // ISO time
+    repertoire :    PerformancePieceStaticProps[];
 }
 
 export class Concert extends BasicEvent {
-    readonly call : DateTime;
+    readonly call :         DateTime;
+    readonly repertoire :   PerformancePiece[];
 
-    constructor(start : DateTime, location : string, call : DateTime) {
+    private constructor(start : DateTime, location : string, call : DateTime, repertoire : PerformancePiece[]) {
         super(start, location);
         this.call = call;
+        this.repertoire = repertoire;
     }
 
-    async getStaticProps() : Promise<ConcertStaticProps> {
-        const base = await super.getStaticProps();
-    
+    async getStaticProps() : Promise<ConcertStaticProps> {    
         return {
-            start:      base.start,
-            location:   base.location,
+            ...await super.getStaticProps(),
+
             call:       this.call.toISO(),
+            repertoire: this.repertoire ? await Promise.all(this.repertoire.map((r) => r.getStaticProps())) : null,
         };
-    }    
+    }
+
+    static async deserialize(data : SerializedConcert) : Promise<Concert> {
+        return new Concert(createDateTime(data.date, data.start), data.location,
+                           createDateTime(data.date, data.call),
+                           data.repertoire ? await Promise.all(data.repertoire.map((r) => PerformancePiece.deserialize(r))) : null);
+    }
 }
 
-export type SerializedDressRehearsal = SerializedBasicEvent;
+export type SerializedDressRehearsal = SerializedBasicEvent & {
+    repertoire? :   SerializedPerformancePiece[];
+}
+
+export type DressRehearsalStaticProps = BasicEventStaticProps & {
+    repertoire :    PerformancePieceStaticProps[];
+}
 
 export class DressRehearsal extends BasicEvent {
+    readonly repertoire :   PerformancePiece[];
 
-}
-
-export type SerializedFutureWork = {
-    concerts? :         SerializedConcert[];
-    dressRehearsals? :  SerializedDressRehearsal[];
-    repertoire :        SerializedPerformancePiece[];
-}
-
-export type FutureWorkStaticProps = {
-    concerts :          ConcertStaticProps[];
-    dressRehearsals :   BasicEventStaticProps[];
-    repertoire :        PerformancePieceStaticProps[];
-}
-
-export class FutureWork {
-    readonly concerts :         Concert[]           = [];
-    readonly dressRehearsals :  DressRehearsal[]    = [];
-    readonly repertoire :       PerformancePiece[]  = [];
-
-    private constructor() {
-
+    private constructor(start : DateTime, location : string, repertoire : PerformancePiece[]) {
+        super(start, location);
+        this.repertoire = repertoire;
     }
 
-    async getStaticProps() : Promise<FutureWorkStaticProps> {
+    async getStaticProps() : Promise<DressRehearsalStaticProps> {    
         return {
-            concerts:           await Promise.all(this.concerts.map(async (c) => c.getStaticProps())),
-            dressRehearsals:    await Promise.all(this.dressRehearsals.map(async (dr) => dr.getStaticProps())),
-            repertoire:         await Promise.all(this.repertoire.map(async (p) => p.getStaticProps())),
+            ...await super.getStaticProps(),
+
+            repertoire: this.repertoire ? await Promise.all(this.repertoire.map((r) => r.getStaticProps())) : null,
         };
     }
 
-    static async deserialize(data : SerializedFutureWork) : Promise<FutureWork> {
-        const result = new FutureWork();
-    
-        if (data.concerts) {
-            result.concerts.push(...data.concerts.map((c) => new Concert(createDateTime(c.date, c.start), c.location, createDateTime(c.date, c.call))));
-            result.concerts.sort((a, b) => -compareDateTime(a.start, b.start));
-        }
-    
-        const pieces = await Promise.all(data.repertoire.map(async (p) => PerformancePiece.deserialize(p)));
-        result.repertoire.push(...pieces);
-    
-        if (data.dressRehearsals) {
-            result.dressRehearsals.push(...data.dressRehearsals.map((dr) => new DressRehearsal(createDateTime(dr.date, dr.start), dr.location)));
-            result.dressRehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
-        }
-
-        return result;
+    static async deserialize(data : SerializedDressRehearsal) : Promise<DressRehearsal> {
+        return new DressRehearsal(createDateTime(data.date, data.start), data.location,
+                                  data.repertoire ? await Promise.all(data.repertoire.map((r) => PerformancePiece.deserialize(r))) : null);
     }
 }
 
@@ -166,7 +150,6 @@ type SerializedRehearsalNote = {
 }
 
 type SerializedPerformance = {
-    futureWork: SerializedFutureWork;
     quarter : string;           // human-readable name of quarter
     syllabus : string;          // basename of syllabus asset
     directors? : string[];      // list of names of the directors
@@ -203,9 +186,8 @@ export type PerformanceStaticProps = {
     concerts :              ConcertStaticProps[];
     descriptionMDX :        MDXRemoteSerializeResult;
     directors :             string[];
-    dressRehearsals :       BasicEventStaticProps[];
+    dressRehearsals :       DressRehearsalStaticProps[];
     events :                GenericEventStaticProps[];
-    futureWork :            FutureWorkStaticProps;
     galleries :             GalleryRefStaticProps[];
     heraldImageRoutes :     ImageRoutesStaticProps;
     id :                    string;
@@ -232,7 +214,6 @@ export class Performance {
     readonly directors : string[]                   = [];
     readonly dressRehearsals : DressRehearsal[]     = [];
     readonly events : GenericEvent[]                = [];
-    readonly futureWork : FutureWork;
     readonly galleries : Gallery[]                  = [];
     readonly instructors : string[]                 = [];
     readonly mainPieces : PerformancePiece[]        = [];
@@ -260,8 +241,7 @@ export class Performance {
                         description : string,
                         preregisterDate : DateTime,
                         registrationFee : string,
-                        membershipLimit : number,
-                        futureWork : FutureWork) {
+                        membershipLimit : number) {
         this.quarter = quarter;
 
         if (syllabusName) {
@@ -282,7 +262,6 @@ export class Performance {
         }
 
         this.description = (description || '');
-        this.futureWork = futureWork;
         this.preregisterDate = preregisterDate;
         this.registrationFee = registrationFee;
         this.membershipLimit = membershipLimit;
@@ -327,9 +306,8 @@ export class Performance {
             concerts:               await Promise.all(this.concerts.map(async (c) => c.getStaticProps())),
             descriptionMDX:         await mdxSerializeMarkdown(this.description),
             directors:              this.directors,
-            dressRehearsals:        await Promise.all(this.dressRehearsals.map(async (dr) => dr.getStaticProps())),
+            dressRehearsals:        await Promise.all(this.dressRehearsals.map((dr) => dr.getStaticProps())),
             events:                 await Promise.all(this.events.map(async (e) => e.getStaticProps())),
-            futureWork:             (this.futureWork ? await this.futureWork.getStaticProps() : null),
             galleries:              await Promise.all(this.galleries.map(async (g) => await g.getRefStaticProps())),
             heraldImageRoutes:      imageRoutesStaticProps(this.heraldImageRoutes),
             id:                     this.id,
@@ -364,14 +342,13 @@ export class Performance {
                                        data.description,
                                        (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
                                        data.registrationFee,
-                                       data.membershipLimit,
-                                       data.futureWork ? await FutureWork.deserialize(data.futureWork) : null);
+                                       data.membershipLimit);
     
         if (data.soloists) {
             result.soloists.push(...await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))));
         }
     
-        result.concerts.push(...data.concerts.map((c) => new Concert(createDateTime(c.date, c.start), c.location, createDateTime(c.date, c.call))));
+        result.concerts.push(...await Promise.all(data.concerts.map(async (c) => Concert.deserialize(c))));
         result.concerts.sort((a, b) => -compareDateTime(a.start, b.start));
     
         if (data.repertoire.main) {
@@ -431,7 +408,7 @@ export class Performance {
         }
     
         if (data.dressRehearsals) {
-            result.dressRehearsals.push(...data.dressRehearsals.map((dr) => new DressRehearsal(createDateTime(dr.date, dr.start), dr.location)));
+            result.dressRehearsals.push(...await Promise.all(data.dressRehearsals.map((dr) => DressRehearsal.deserialize(dr))));
             result.dressRehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
         }
     
