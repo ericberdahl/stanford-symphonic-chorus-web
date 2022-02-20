@@ -21,46 +21,46 @@ import styles from '../styles/Home.module.scss'
 
 // TODO : replace DateTime.toFormat uses with DateTime.toLocaleString
 
-function ConcertEvent({ currentQuarter, data }) {
-    const repertoire = (data.repertoire || currentQuarter.mainPieces);
+function ConcertEvent({ quarter, concert }) {
+    const repertoire = (concert.repertoire || quarter.repertoire);
 
     return (
         <>
             <p>
                 Symphonic Chorus Performance: <span className={styles.time}>
                     <CommaSeparatedList>
-                        {repertoire.map((p, index) => <PieceCitation key={index} data={p}/>)}
+                        {repertoire.main.map((p, index) => <PieceCitation key={index} data={p}/>)}
                     </CommaSeparatedList>
-                    {currentQuarter.collaborators &&
-                        (<> with <CommaSeparatedList>{currentQuarter.collaborators.map((c) => <Collaborator key={c} name={c}/>)}</CommaSeparatedList></>)
+                    {quarter.collaborators &&
+                        (<> with <CommaSeparatedList>{quarter.collaborators.map((c) => <Collaborator key={c} name={c}/>)}</CommaSeparatedList></>)
                     }
                 </span>
             </p>
             <p>
-                <TimeOfDay iso={data.start}/> <Location name={data.location}/>
+                <TimeOfDay iso={concert.start}/> <Location name={concert.location}/>
             </p>
         </>
     );
 }
 
-function FirstRehearsalEvent({ currentQuarter, data }) {
+function FirstRehearsalEvent({ quarter, rehearsal }) {
     return (
         <>
             <p>First rehearsal: <span><CommaSeparatedList>
-                {currentQuarter.mainPieces.map((p, index) => <PieceCitation key={index} data={p}/>)}
+                {quarter.repertoire.main.map((p, index) => <PieceCitation key={index} data={p}/>)}
             </CommaSeparatedList></span></p>
             <p className={styles.time}>
-                <TimeOfDay iso={data.start}/> <Location name={data.location}/>
+                <TimeOfDay iso={rehearsal.start}/> <Location name={rehearsal.location}/>
                 <SpaceSeparatedPhrase>
                     .
-                    {data.notes.map((n) => n)}
+                    {rehearsal.notes.map((n) => n)}
                 </SpaceSeparatedPhrase>
             </p>
         </>
     );
 }
 
-function OtherEvent({ currentQuarter, data }) {
+function OtherEvent({ quarter, data }) {
     return (
         <>
             <p>{data.title}</p>
@@ -75,21 +75,21 @@ function Introduction({ currentQuarter }) {
     // add concerts to the event list
     eventList = eventList.concat(currentQuarter.concerts.map((c) => ({
         date: c.start,
-        content: (<ConcertEvent currentQuarter={currentQuarter} data={c}/>),
+        content: (<ConcertEvent quarter={currentQuarter} concert={c}/>),
     })));
 
     // add first rehearsal
     if (0 < currentQuarter.tuttiRehearsals.length) {
         eventList.push({
             date: currentQuarter.tuttiRehearsals[0].start,
-            content: (<FirstRehearsalEvent currentQuarter={currentQuarter} data={currentQuarter.tuttiRehearsals[0]}/>),
+            content: (<FirstRehearsalEvent quarter={currentQuarter} rehearsal={currentQuarter.tuttiRehearsals[0]}/>),
         });
     }
 
     // add current events to the list
     eventList = eventList.concat(currentQuarter.events.map((e) => ({
         date: e.start,
-        content: (<OtherEvent currentQuarter={currentQuarter} data={e}/>),
+        content: (<OtherEvent quarter={currentQuarter} data={e}/>),
     })));
 
     // sort the event list into increasing date order

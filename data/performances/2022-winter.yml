@@ -171,27 +171,33 @@ concerts:
     call: "18:30"
     location: "Bing"
     repertoire:
-    -   *mahler
+        main:
+        -   *mahler
 -   date: "2022-05-15"
     start: "14:30"
     call: "13:30"
     location: "Bing"
     repertoire:
-    -   *mahler
+        main:
+        -   *mahler
 -   date: "2022-05-22"
     start: "14:30"
     call: "13:30"
     location: "Bing"
     repertoire:
-    -   *copland
-    -   *aquilanti
+        main:
+        -   *aquilanti
+        other:
+        -   *copland
 -   date: "2022-05-24"
     start: "19:30"
     call: "18:30"
     location: "Bing"
     repertoire:
-    -   *copland
-    -   *aquilanti
+        main:
+        -   *aquilanti
+        other:
+        -   *copland
 
 
 # HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal

@@ -159,7 +159,7 @@ function Overview({ quarter, shortForm }) {
         <>
             <tr>
                 <td>Repertoire:</td>
-                <td><RepertoireList repertoire={quarter.repertoire}/></td>
+                <td><RepertoireList repertoire={quarter.repertoire.all}/></td>
             </tr>
 
             {0 < quarter.soloists.length &&

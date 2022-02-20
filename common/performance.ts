@@ -14,9 +14,50 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import getConfig from 'next/config'
 
 import { strict as assert } from 'assert';
-import util from 'util';
 
 const { serverRuntimeConfig } = getConfig()
+
+export type SerializedPerformanceRepertoire = {
+    main :      SerializedPerformancePiece[];
+    other? :    SerializedPerformancePiece[];
+}
+
+export type PerformanceRepertoireStaticProps = {
+    main :  PerformancePieceStaticProps[];
+    full :  PerformancePieceStaticProps[];
+}
+
+export class PerformanceRepertoire {
+    readonly main : PerformancePiece[]  = []
+    readonly full : PerformancePiece[]  = []
+
+    private constructor(main : PerformancePiece[], other? : PerformancePiece[]) {
+        this.main.push(...main);
+        this.full.push(...main);
+
+        if (other) {
+            this.full.push(...other);
+        }
+    }
+
+    async getStaticProps() : Promise<PerformanceRepertoireStaticProps> {
+        return {
+            main:   await Promise.all(this.main.map((p) => p.getStaticProps())),
+            full:   await Promise.all(this.full.map((p) => p.getStaticProps())),
+        }
+    }
+
+    static async deserialize(data : SerializedPerformanceRepertoire) : Promise<PerformanceRepertoire> {
+        const main = await Promise.all(data.main.map((p) => PerformancePiece.deserialize(p)));
+        
+        const other = [];
+        if (data.other) {
+            other.push(...await Promise.all(data.other.map((p) => PerformancePiece.deserialize(p))));
+        }
+
+        return new PerformanceRepertoire(main, other);
+    }
+}
 
 export type SerializedBasicEvent = {
     date : string;      // 'YYYY-MM-DD' : date of the event
@@ -75,19 +116,19 @@ export class GenericEvent extends BasicEvent {
 
 export type SerializedConcert = SerializedBasicEvent & {
     call :          string;  // 'HH:MM' : 24-hour formatted call time for the concert
-    repertoire? :   SerializedPerformancePiece[];
+    repertoire? :   SerializedPerformanceRepertoire;
 }
 
 export type ConcertStaticProps = BasicEventStaticProps & {
     call :          string;  // ISO time
-    repertoire :    PerformancePieceStaticProps[];
+    repertoire :    PerformanceRepertoireStaticProps;
 }
 
 export class Concert extends BasicEvent {
     readonly call :         DateTime;
-    readonly repertoire :   PerformancePiece[];
+    readonly repertoire :   PerformanceRepertoire;
 
-    private constructor(start : DateTime, location : string, call : DateTime, repertoire : PerformancePiece[]) {
+    private constructor(start : DateTime, location : string, call : DateTime, repertoire : PerformanceRepertoire) {
         super(start, location);
         this.call = call;
         this.repertoire = repertoire;
@@ -98,14 +139,14 @@ export class Concert extends BasicEvent {
             ...await super.getStaticProps(),
 
             call:       this.call.toISO(),
-            repertoire: this.repertoire ? await Promise.all(this.repertoire.map((r) => r.getStaticProps())) : null,
+            repertoire: this.repertoire ? await this.repertoire.getStaticProps() : null,
         };
     }
 
     static async deserialize(data : SerializedConcert) : Promise<Concert> {
         return new Concert(createDateTime(data.date, data.start), data.location,
                            createDateTime(data.date, data.call),
-                           data.repertoire ? await Promise.all(data.repertoire.map((r) => PerformancePiece.deserialize(r))) : null);
+                           data.repertoire ? await PerformanceRepertoire.deserialize(data.repertoire) : null);
     }
 }
 
@@ -164,10 +205,7 @@ type SerializedPerformance = {
     registrationFee? : string;   // '$dd' : amount of the registration fee
     membershipLimit? : number;
     concerts : SerializedConcert[];
-    repertoire : {
-        main : SerializedPerformancePiece[];
-        other? : SerializedPerformancePiece[];
-    };
+    repertoire : SerializedPerformanceRepertoire;
     events? : SerializedGenericEvent[];
     tuttiRehearsals : SerializedRehearsalSequence[];
     tuttiRehearsalNotes? : SerializedRehearsalNote[];
@@ -192,13 +230,12 @@ export type PerformanceStaticProps = {
     heraldImageRoutes :     ImageRoutesStaticProps;
     id :                    string;
     instructors :           string[];
-    mainPieces :            PerformancePieceStaticProps[];
     membershipLimit :       number;
     posterRoutes :          ImageRoutesStaticProps;
     preregisterDate :       string;   // ISO date-time
     quarter :               string;
     registrationFee :       string;
-    repertoire :            PerformancePieceStaticProps[];
+    repertoire :            PerformanceRepertoireStaticProps;
     sectionalsSopranoAlto : RehearsalStaticProps[];
     sectionalsTenorBass :   RehearsalStaticProps[];
     soloists :              SoloistStaticProps[];
@@ -216,13 +253,12 @@ export class Performance {
     readonly events : GenericEvent[]                = [];
     readonly galleries : Gallery[]                  = [];
     readonly instructors : string[]                 = [];
-    readonly mainPieces : PerformancePiece[]        = [];
     readonly membershipLimit : number;
     readonly preregisterDate : DateTime;
     readonly quarter : string                       = '';
     readonly registrationFee : string;
     readonly rehearsalPieces : PerformancePiece[]   = [];
-    readonly repertoire : PerformancePiece[]        = [];
+    readonly repertoire : PerformanceRepertoire;
     readonly sectionalsSopranoAlto : Rehearsal[]    = [];
     readonly sectionalsTenorBass : Rehearsal[]      = [];
     readonly soloists : Soloist[]                   = [];
@@ -241,13 +277,15 @@ export class Performance {
                         description : string,
                         preregisterDate : DateTime,
                         registrationFee : string,
-                        membershipLimit : number) {
+                        membershipLimit : number,
+                        repertoire : PerformanceRepertoire) {
         this.quarter = quarter;
 
         if (syllabusName) {
+            // TODO : '/assets/syllabi' should not be a literal constant
             this.syllabusRoutes = new FileRoutes('/assets/syllabi', syllabusName, ['pdf', 'docx', 'doc'])
             if (0 == this.syllabusRoutes.routes.length) {
-                throw new Error(util.format('No syllabi variants found for "%s"', syllabusName));
+                throw new Error(`No syllabi variants found for "${syllabusName}"`);
             }
         }
 
@@ -265,6 +303,7 @@ export class Performance {
         this.preregisterDate = preregisterDate;
         this.registrationFee = registrationFee;
         this.membershipLimit = membershipLimit;
+        this.repertoire = repertoire;
     }
 
     get id() { return makeSlug(this.quarter); }
@@ -312,13 +351,12 @@ export class Performance {
             heraldImageRoutes:      imageRoutesStaticProps(this.heraldImageRoutes),
             id:                     this.id,
             instructors:            this.instructors,
-            mainPieces:             await Promise.all(this.mainPieces.map(async (p) => p.getStaticProps())),
             membershipLimit:        this.membershipLimit,
             posterRoutes:           imageRoutesStaticProps(this.posterRoutes),
             preregisterDate:        this.preregisterDate?.toISO() || null,
             quarter:                this.quarter,
             registrationFee:        this.registrationFee,
-            repertoire:             await Promise.all(this.repertoire.map(async (p) => p.getStaticProps())),
+            repertoire:             await this.repertoire.getStaticProps(),
             sectionalsSopranoAlto:  await Promise.all(this.sectionalsSopranoAlto.map(async (r) => r.getStaticProps())),
             sectionalsTenorBass:    await Promise.all(this.sectionalsTenorBass.map(async (r) => r.getStaticProps())),
             soloists:               await Promise.all(this.soloists.map(async (s) => s.getStaticProps())),
@@ -334,6 +372,8 @@ export class Performance {
             rehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
         }
 
+        const repertoire = await PerformanceRepertoire.deserialize(data.repertoire);
+
         const result = new Performance(data.quarter,
                                        data.syllabus,
                                        data.directors,
@@ -342,7 +382,8 @@ export class Performance {
                                        data.description,
                                        (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
                                        data.registrationFee,
-                                       data.membershipLimit);
+                                       data.membershipLimit,
+                                       repertoire);
     
         if (data.soloists) {
             result.soloists.push(...await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))));
@@ -351,23 +392,11 @@ export class Performance {
         result.concerts.push(...await Promise.all(data.concerts.map(async (c) => Concert.deserialize(c))));
         result.concerts.sort((a, b) => -compareDateTime(a.start, b.start));
     
-        if (data.repertoire.main) {
-            const pieces = await Promise.all(data.repertoire.main.map(async (p) => PerformancePiece.deserialize(p)));
-            pieces.forEach((p) => {
-                assert.ok(p.piece === model.repertoire.addPiece(p.piece), `model.repertoire detected a piece collision`); // TODO : remove Repertoire
-                p.piece.addPerformance(result)
-            });
-            result.mainPieces.push(...pieces);
-            result.repertoire.push(...pieces);
-        }
-        if (data.repertoire.other) {
-            const pieces = await Promise.all(data.repertoire.other.map(async (p) => PerformancePiece.deserialize(p)));
-            pieces.forEach((p) => {
-                assert.ok(p.piece === model.repertoire.addPiece(p.piece), `model.repertoire detected a piece collision`); // TODO : remove Repertoire
-                p.piece.addPerformance(result)
-            });
-            result.repertoire.push(...pieces);
-        }
+        repertoire.full.forEach((p) => {
+            assert.ok(p.piece === model.repertoire.addPiece(p.piece), `model.repertoire detected a piece collision`); // TODO : remove Repertoire
+            p.piece.addPerformance(result);
+        });
+                            
 
         if (data.poster) {
             result.setPoster(data.poster.basename, data.poster.caption);
@@ -391,7 +420,7 @@ export class Performance {
                 const rehearsal : Rehearsal = result.tuttiRehearsals.find((e) => (e.start.year == noteDateTime.year &&
                                                                                   e.start.month == noteDateTime.month &&
                                                                                   e.start.day == noteDateTime.day));
-                if (!rehearsal) throw new Error(util.format('Cannot find tuttiRehearsal on date "%s" to attach a note', note.date));
+                if (!rehearsal) throw new Error(`Cannot find tuttiRehearsal on date "${note.date}" to attach a note`);
                 
                 rehearsal.notes.push(note.note);
             });

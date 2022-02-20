@@ -112,7 +112,7 @@ function ConcertList(props) {
                 return (
                     <Fragment key={index}>
                         <p><DayAndDate iso={c.start}/>, <TimeOfDay iso={c.start}/>, <Location name={c.location}/></p>
-                        {c.repertoire && <RepertoireList repertoire={c.repertoire}/>}
+                        {c.repertoire && <RepertoireList repertoire={c.repertoire.full}/>}
                     </Fragment>
                 );
             })}
@@ -130,7 +130,7 @@ function Performance({ data }) {
     }
 
     const pieceSupplements = [];
-    data.repertoire.forEach((piece) => {
+    data.repertoire.full.forEach((piece) => {
         pieceSupplements.push(...piece.supplements)
     });
 
@@ -142,7 +142,7 @@ function Performance({ data }) {
             </div>
             <div className={styles.content}>
                 <h3>{data.quarter}</h3>
-                <Repertoire data={data.repertoire}/>
+                <Repertoire data={data.repertoire.full}/>
                 <SoloistList data={data.soloists}/>
                 <CollaboratorList data={data.collaborators}/>
                 <DirectorList data={data.directors}/>
@@ -152,7 +152,7 @@ function Performance({ data }) {
             <div className={styles.extras}>
                 <ul className={styles.links}>
                     {0 < posterRoutes.length && <li>Poster (<FileLinks files={posterRoutes}/>)</li>}
-                    {data.repertoire.filter((p) => p.fylp).map((p, index) => (
+                    {data.repertoire.full.filter((p) => p.fylp).map((p, index) => (
                         <li key={index}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure: <PieceCitation data={p}/></a></PageLink></li>
                     ))}
                     {data.galleries.map((g) => (
