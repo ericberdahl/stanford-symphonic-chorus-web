@@ -1,0 +1,53 @@
+quarter: "Spring 2003"
+
+syllabus:
+# MISSING: syllabus for Spring 2003
+
+repertoire:
+    main:
+    -   ref: "orff/carmina burana"
+        composer: "Carl Orff"
+        title: "Carmina Burana"
+
+soloists:
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING: poster for Spring 2003
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 2003
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2003
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Spring 2003
+
+concerts:
+-   date: "2003-05-23"
+    start: "20:00"
+    call: "19:00"
+    location: "SMPAC"
+-   date: "2003-05-24"
+    start: "20:00"
+    call: "19:00"
+    location: "Flint"
+-   date: "2003-05-25"
+    start: "14:30"
+    call: "13:30"
+    location: "Dink"
+
+
+
+
+

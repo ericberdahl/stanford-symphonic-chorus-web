@@ -1,0 +1,50 @@
+quarter: "Spring 2008 (Program #2)"
+
+syllabus:
+# MISSING: syllabus for Spring 2008.2
+
+repertoire:
+    main:
+    -   composer: "Zhou Long"
+        title: "Cosmic Flames"
+
+soloists:
+
+collaborators:
+-   "SSO"
+-   "taiko"
+
+poster:
+# MISSING: poster for Spring 2008.2
+
+directors:
+# MISSING: director for Spring 2008.2
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 2008-2
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2008-2
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Spring 2008-2
+
+concerts:
+-   date: "2008-05-30"
+    start: "20:00"
+    call: "19:00"
+    location: "Dink"
+-   date: "2008-05-31"
+    start: "20:00"
+    call: "19:00"
+    location: "Dink"
+# MISSING: confirmation of location for S2008.2 concerts
+
+
+
+

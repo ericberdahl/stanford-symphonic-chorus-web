@@ -1,0 +1,104 @@
+quarter: "Spring 2018"
+
+syllabus: "SSC Syllabus Spring 2018"
+
+repertoire:
+    main:
+    -   composer: "Franz Joseph Haydn"
+        title: "Missa Sancti Bernardi von Offida"
+        commonTitle: "Heiligmesse"
+    other:
+    -   composer: "Franz Joseph Haydn"
+        title: "Violin Concerto in G Major"
+    -   composer: "Felix Mendelssohn"
+        title: "Sinfonia No. 10 in B Minor, Op. 36"
+
+soloists:
+-   name: "Joo-Mee Lee"
+    part: "violin"
+
+collaborators:
+
+poster:
+    basename: "S2018-Poster"
+    caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 2018
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2019
+
+preregister: "2018-03-30"
+
+heraldImage:
+    basename: "Joseph_Haydn"
+    caption: "By Thomas Hardy - Unknown, Public Domain, https://commons.wikimedia.org/w/index.php?curid=620261"
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2018-04-02"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2018-04-02"
+    endDate: "2018-05-14"
+    startTime: "19:30"
+    endTime: "22:00"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2018-04-11"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+-   startDate: "2018-04-25"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2018-04-18"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+-   startDate: "2018-05-02"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2018-05-15"
+    start: "19:00"
+    location: "MemChu"
+-   date: "2018-05-17"
+    start: "19:00"
+    location: "MemChu"
+
+concerts:
+-   date: "2018-05-18"
+    start: "20:00"
+    location: "MemChu"
+    call: "19:00"
+-   date: "2018-05-19"
+    start: "20:00"
+    location: "MemChu"
+    call: "19:00"
+
+description: |
+    The Stanford Symphonic Chorus presents Haydn's _Heiligmesse_.
+
+
+
+
+

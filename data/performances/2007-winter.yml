@@ -1,0 +1,60 @@
+quarter: "Winter 2007"
+
+syllabus:
+# MISSING: syllabus for Winter 2007
+
+repertoire:
+    main:
+    -   composer: "Sir Michael Tippett"
+        title: "A Child of Our Time"
+    other:
+    -   composer: "Gustav Mahler"
+        title: "Adagietto from Symphony No. 5"
+
+soloists:
+-   name: "Juyeon Song"
+    part: "soprano"
+-   name: "Kendall Gladen"
+    part: "mezzo-soprano"
+-   name: "Noah Stewart"
+    part: "tenor"
+-   name: "Jeremy Galyon"
+    part: "bass"
+
+collaborators:
+-   "SSO"
+
+poster:
+    basename: "SSC_W2007_E-Flyer"
+    caption: "Stanford Symphonic Chorus, Tippet, A Child of Our Time, Winter 2007"
+
+directors:
+-   "Jindong Cai"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2007
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2007
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2007
+
+concerts:
+-   date: "2007-03-09"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2007-03-10"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+

@@ -1,0 +1,109 @@
+quarter: "Winter 2015"
+
+syllabus: "W2015 Syllabus"
+
+repertoire:
+    other:
+    -   composer: "Johannes Brahms"
+        title: "Akademische Festovertüre"
+        translation: "Academic Festival Overture"
+        catalog: "Op. 80"
+    main:
+    -   ref: "brahms/requiem"
+        composer: "Johannes Brahms"
+        title: "Ein Deutsches Requiem"
+        translation: "A German Requiem"
+        catalog: "Op. 45"
+
+soloists:
+-   name: "Nancy Wait Kromm"
+    part: "soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+-   "SSO"
+
+poster:
+# MISSING: poster for Winter 2015
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee: "$40"
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2015
+
+preregister: 
+
+heraldImage:
+    basename: "JohannesBrahms"
+    caption: "Johannes Brahms"
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2015-01-05"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2015-01-05"
+    endDate: "2015-02-09"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+-   frequency: "once"
+    startDate: "2015-02-18"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2015-01-14"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2015-01-28"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2015-01-21"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2015-02-04"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2015-02-23"
+    start: "19:00"
+    location: "Bing"
+-   date: "2015-02-26"
+    start: "19:00"
+    location: "Bing"
+
+concerts:
+-   date: "2015-02-27"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+-   date: "2015-02-28"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+
+
+
+
+

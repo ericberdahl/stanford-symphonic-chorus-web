@@ -1,0 +1,58 @@
+quarter: "Fall 2008"
+
+syllabus:
+# MISSING: syllabus for Fall 2008
+
+repertoire:
+    main:
+    -   composer: "Brian Holmes"
+        title: "Amherst Requiem"
+        performanceNote: "(World Premiere)"
+    other:
+    -   composer: "Aaron Copland"
+        title: "Quiet City"
+    -   composer: "Leonard Bernstein"
+        title: 'Chichester Psalms'
+        ref: "bernstein/chichester"
+
+soloists:
+-   name: "Heidi Melton"
+    part: "soprano"
+
+collaborators:
+- "PSO"
+- "vivace"
+
+poster:
+    basename: "SSC_PosterF2008"
+    caption: "Stanford Symphonic Chorus poster, Fall 2008"
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 2008
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 2008
+
+preregister:
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Fall 2008
+
+concerts:
+-   date: "2008-11-21"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2008-11-23"
+    start: "13:30"
+    call: "12:30"
+    location: "MemChu"
+
+
+
+

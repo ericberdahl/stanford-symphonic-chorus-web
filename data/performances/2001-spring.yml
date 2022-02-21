@@ -1,0 +1,48 @@
+quarter: "Spring 2001"
+
+syllabus:
+# MISSING: syllabus for Spring 2001
+
+repertoire:
+    main:
+    -   composer: "Kirke Mechem"
+        title: "The Songs of the Slave"
+
+soloists:
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING: poster for Spring 2001
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 2001
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2001
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Spring 2001
+
+concerts:
+-   date: "2001-05-23"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2001-05-25"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+# MISSING: confirmation of times for concerts for Spring 2001
+
+
+
+

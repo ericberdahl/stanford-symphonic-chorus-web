@@ -1,0 +1,46 @@
+quarter: "Fall 1998"
+
+syllabus:
+# MISSING: syllabus for Fall 1998
+
+repertoire:
+    main:
+    -   composer: "Hector Berlioz"
+        title: "Te Deum"
+
+soloists:
+-   name: "Gregory Wait"
+    part: "tenor"
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING: posters for Fall 1998
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 1998
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 1998
+
+preregister:
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Fall 1998
+
+concerts:
+-   date: "1998-11-21"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "1998-11-22"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+# MISSING: confirmation of times for concerts for Fall 1998

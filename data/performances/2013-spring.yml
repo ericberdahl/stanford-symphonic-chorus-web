@@ -1,0 +1,71 @@
+quarter: "Spring 2013"
+
+syllabus: "S2013syllabus"
+
+repertoire:
+    main:
+    -   composer: "Ludwig von Beethoven"
+        title: 'Symphony No. 9 in D minor'
+        catalog: "Op. 125"
+
+soloists:
+# MISSING: soloists for Spring 2013
+
+collaborators:
+-   "SSO"
+
+poster:
+# MISSING: poster for Spring 2013
+
+directors:
+-   "Jindong Cai"
+
+registrationFee:
+# MISSING: registrationFee for Spring 2013
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2013
+
+preregister: 
+
+heraldImage:
+    basename: "Beethoven_pd"
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2013-04-08"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2013-04-08"
+    endDate: "2013-05-20"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+dressRehearsals:
+-   date: "2013-05-28"
+    start: "19:00"
+    location: "Bing"
+-   date: "2013-05-30"
+    start: "19:00"
+    location: "Bing"
+
+concerts:
+-   date: "2013-05-31"
+    start: "20:00"
+    call: "18:15"
+    location: "Bing"
+-   date: "2013-06-01"
+    start: "20:00"
+    call: "19:00"
+    location: "Bing"
+-   date: "2013-06-02"
+    start: "19:00"
+    call: "18:00"
+    location: "Bing"
+
+
+
+
+

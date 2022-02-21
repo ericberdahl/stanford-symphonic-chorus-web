@@ -1,0 +1,62 @@
+quarter: "Fall 2009"
+
+syllabus:
+# MISSING: syllabus for Fall 2009
+
+repertoire:
+    main:
+    -   composer: "Anton Reicha"
+        title: "Missa pro defunctis"
+        translation: "Requiem"
+    other:
+    -   composer: "Johann Sebastian Bach"
+        title: "Weihnachts-Oratorium"
+        translation: "Christmas Oratorio"
+        prefix: "excerpts from"
+
+soloists:
+-   name: "Christine Abraham"
+    part: "soprano"
+-   name: "Wendy Hillhouse"
+    part: "mezzo-soprano"
+-   name: "Chester Pidduck"
+    part: "tenor"
+-   name: "Jeff Fileds"
+    part: "baritone"
+
+collaborators:
+- "PSO"
+
+poster:
+    basename: "SSCPosterF2009"
+    caption: "Stanford Symphonic Chorus poster, Fall 2009"
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 2009
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 2009
+
+preregister:
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Fall 2009
+
+concerts:
+-   date: "2009-11-20"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2009-11-22"
+    start: "13:30"
+    call: "12:30"
+    location: "MemChu"
+
+
+
+

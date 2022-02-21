@@ -1,0 +1,176 @@
+@import 'base';
+
+.foo_content {
+    h2 {
+        font-family: $font-family-serif;
+        font-size: 1.2031rem;
+        color: $color-red;
+        margin: 20px 0px 5px 0px;
+        letter-spacing: 2px;
+        line-height: 1.2em;
+        text-transform: none;
+    }
+
+    h3 {
+        font-family: $font-family-serif;
+        font-size: 1.1230rem;
+		color: #565245;
+        margin: 20px 0px 5px 0px;
+    }
+
+    p {
+        font-family: $font-family-sanserif;
+        margin: 0 0 0.8em 0;
+        color: #333;
+        line-height: 1.3333em;
+    }
+
+    ul {
+        list-style: square;
+        margin: 0.63em 0 0.63em 40px;
+    }
+
+    li {
+        line-height: 1.3333em;
+    }
+}
+
+.introduction {
+    p {
+        padding-bottom: 10px;
+
+        color: $color-warmgray60;
+        font-family: $font-family-serif;
+        font-size: 0.8021rem;
+        font-style: italic;
+    }
+
+    h3 {
+        font-family: $font-family-sanserif;
+        font-size: 0.8021rem;
+        color: black;
+    }
+
+    ol {
+        list-style: none;
+
+        li {
+            margin-left: 15px;
+            padding-bottom: 5px;
+
+            list-style-image: url(../public/images/raquo.gif);
+            font-size: 0.8021rem;
+            line-height: 1.1667em;
+        }
+    }
+}
+
+.sidebar {
+    ul {
+        margin: 0px 0px 15px 0px;
+        padding: 0px 0px 5px 0px;
+    }
+
+    li {
+        list-style-image: url(../public/images/raquo.gif);
+        line-height: 1.1667em;
+        font-size: 0.8021rem;
+        margin: 0px 0px 0px 15px;
+        padding: 0px 0px 5px 0px;
+    }
+}
+
+.performance {
+    display: grid;
+    grid-template-areas:
+        "poster repertoire extras";
+    grid-template-columns:
+        120px 267px 176px;
+
+    border-top: 6px solid $color-red;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    &:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
+
+    .poster {
+        grid-area: poster;
+
+        a {
+            border: none;
+        }
+    }
+
+    .content {
+        grid-area: repertoire;
+        margin-left: 7px;
+        margin-right: 10px;
+
+        background-color: #f8f3e5;
+        color: $color-warmgray90;
+
+        h3 {
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+
+            color: black;
+            font-size: 0.8594rem;
+            font-family: $font-family-serif;
+        }
+
+        h4 {
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+
+            color: black;
+            font-size: 0.8021rem;
+            font-family: $font-family-sanserif;
+        }
+
+        p {
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+
+            font-family: $font-family-sanserif;
+            font-size: 0.6875rem;
+            line-height: 1.3333em;
+        }
+
+        ul {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 2em;
+
+            list-style: none;
+            font-family: $font-family-sanserif;
+            font-size: 0.6875rem;
+            line-height: 1.3333em;
+        }
+    }
+
+    .extras {
+        grid-area: extras;
+
+        border-left: 1px solid $color-warmgray10;
+
+        ul {
+            padding-top: 10px;
+            padding-left: 20px;
+            
+            li {
+                list-style-image: url(../public/images/raquo.gif);
+
+                font-family: $font-family-sanserif;
+                font-size: 0.6875rem;
+                line-height: 1.6667em;
+                color: $color-warmgray90;
+            }
+        }
+    }
+}

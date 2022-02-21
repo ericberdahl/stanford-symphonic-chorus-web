@@ -1,0 +1,196 @@
+# HOWTO: Set quarter to a single string that names the quarter and year. Use something like "Winter 1812",
+# "Spring 1812", or "Fall 1812"
+quarter: "Fall 2019"
+
+
+# HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
+# Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
+# be detected and used.
+syllabus: "SSC Syllabus Fall 2019"
+
+
+# HOWTO: Set repertoire to a list of items that compose the program.
+#
+# A simple piece looks like this:
+# -   composer: "Ludwig von Beethoven"
+#     title: "Magnificat"
+#
+# For more complex piece formulae, look at the reference "HOWTO Piece syntax"
+#
+# Repertoire is separated into main pieces and other pieces. Main and other each contain a list of pieces.
+# Main pieces are included in headlines describing the program. Other pieces are added when dispalying the
+# entire program of a performance.
+repertoire:
+    main:
+    -   ref: "stravinsky/symphony of psalms"
+        composer: "Igor Stravinsky"
+        title: "Symphony of Psalms"
+    -   ref: "bernstein/chichester"
+        composer: "Leonard Bernstein"
+        title: 'Chichester Psalms'
+    other:
+    -   composer: "Lee Actor"
+        title: "Meditation for Violin & Orchestra"
+    -   composer: "Max Bruch"
+        title: "Kol Nidrei"
+
+
+# HOWTO: soloists is a list of individuals and the part in which they solo.
+# An individual soloist looks like this:
+# -   name: "Plácido Domingo"
+#     part: "tenor"
+soloists:
+-   name: "Debra Fong"
+    part: "violin"
+-   name: "Chris Costanza"
+    part: "cello"
+
+
+# HOWTO: collaborators is a list of groups with whom we collaborate on this program.
+# Each entry in the list should be a single string that matches the key field of a record in
+# data/collaborators.yml
+collaborators:
+-   "PSO"
+
+
+# HOWTO:
+# A typical full poster record looks like this:
+# poster:
+#     basename: "S2018-Poster"
+#     caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
+# Where basename is a root name of the poster in assets/posters directory.
+#       Use something like "S2020-Poster". Posters with extensions '.pdf', '.jpg', and '.png' will
+#       be detected and used.
+# Where caption is a string to be used as hover text for the poster image when displayed on a web page.
+poster:
+    basename: "F2019-Poster"
+
+
+# HOWTO: directors is a list of strings that name the directors of this performance
+directors:
+
+
+# HOWTO: instructors is a list of strings that name the instructors for this quarter
+instructors:
+-   "Stephen M. Sano"
+
+
+# HOWTO: registrationFee is the participation fee for the quarter, typically waived
+# for students and faculty
+registrationFee: "$60"
+
+
+# HOWTO: membershipLimit is the maximum number of members allowed to register for
+# this quarter
+membershipLimit: 220
+
+
+# HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
+# is expected to be sent out.
+preregister: "2019-09-01"
+
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2019-09-23"
+
+# HOWTO: rehearsals is a list of tutti rehearsals for the quarter
+# A rehearsal entry looks like this:
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     end: YYYY-MM-DD HH:MM:SS -TT
+#     location: "CRH"
+#     event: "Registration and Tutti rehearsal"
+# Where start and end are the start time and end time for the rehearsal, respectively. The time is
+# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
+# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
+# is the UTC offset for Pacific Daylight Time).
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+# Where event is a string describing the rehearsal. Typical values include "Tutti rehearsal" for most
+# rehearsals, and "Registration and Tutti rehearsal" for rehearsals that are preceded by registration
+# (typically only the first rehearsal)
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2019-09-23"
+    endDate: "2019-11-18"
+    startTime: "19:30"
+    endTime: "22:00"
+    location: "CRH"
+
+
+womensSectionals:
+-   startDate: "2019-10-02"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2019-10-16"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2019-10-09"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2019-10-23"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+
+dressRehearsals:
+-   date: "2019-11-19"
+    start: "19:00"
+    location: "Bing"
+-   date: "2019-11-21"
+    start: "19:00"
+    location: "Bing"
+
+
+# HOWTO: concerts is a list of concert dates
+# A concert entry looks like this:
+# -   start: YYYY-MM-DD HH:MM:SS -TT
+#     call: YYYY-MM-DD HH:MM:SS -TT
+#     location: "Bing"
+# Where start and call are the curtain time and call time for the concert, respectively. The time is
+# specified in YYYY-MM-DD for the date, HH:MM:SS for the local time, and TT is a two digit number that
+# specifies the UTC offset for the time zone (N.B. 08 is the UTC offset for Pacific Standard Time and 07
+# is the UTC offset for Pacific Daylight Time).
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+#
+# IMPORTANT: Exactly one concert entry MUST be labelled with the &first-concert anchor. The concert so
+# labelled should be the first concert in this quarter's series.
+concerts:
+-   date: "2019-11-22"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+-   date: "2019-11-24"
+    start: "14:30"
+    call: "13:30"
+    location: "Bing"
+
+
+# HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
+# schedule.
+# An individual event looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     location: "MemChu"
+#     title: "Messiah Sing/Play Along"
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the event will take place.
+# Where title is a string that labels the event itself.
+# Where date is the date of the event, specified in YYYY-MM-DD format.
+# Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
+events:
+-   date: "2019-12-13"
+    start: "19:00"
+    location: "MemChu"
+    title: "Messiah Sing/Play Along"

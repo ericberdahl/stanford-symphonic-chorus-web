@@ -1,0 +1,123 @@
+quarter: "Fall 2017"
+
+syllabus: "SSC Syllabus Fall 2017"
+
+repertoire:
+    main:
+    -   ref: "elgar/music makers"
+        composer: "Edward Elgar"
+        title: "The Music Makers"
+    other:
+    -   title: "Why fum'th in fight"
+        composer: "Thomas Tallis"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
+        title: "Fantasia on a Theme of Thomas Tallis"
+#   -   composer: "Trad. English"
+#       title: "Ward the Pirate"
+#       arranger: "Ralph Vaughan Williams"
+# Note: Ward the Pirate was originally programmed, but dropped mid-quarter.
+    -   title: "Norfolk Rhapsody No. 1"
+        composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
+
+soloists:
+-   name: "Wendy Hillhouse"
+    part: "mezzo-soprano"
+
+collaborators:
+-   "PSO"
+
+poster:
+    basename: "F2017-Poster"
+    caption: "Elgar: The Music Makers"
+
+directors:
+-   "Stephen M. Sano"
+-   "Mitchell Sardou Klein"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee: "$60"
+    
+membershipLimit: 220
+
+preregister: "2017-09-01"
+
+heraldImage:
+    basename: "Gloucester_Cathedral_Cloister,_Gloucestershire,_UK_-_Diliff"
+    caption: "Photo by DAVID ILIFF. License: CC-BY-SA 3.0"
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2017-09-25"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2017-09-25"
+    endDate: "2017-11-13"
+    startTime: "19:30"
+    endTime: "22:00"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2017-10-04"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+-   startDate: "2017-10-18"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2017-10-11"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+-   startDate: "2017-10-25"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2017-11-14"
+    start: "19:00"
+    location: "Bing"
+-   date: "2017-11-16"
+    start: "19:00"
+    location: "Bing"
+
+concerts:
+-   date: "2017-11-17"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+-   date: "2017-11-19"
+    start: "14:30"
+    call: "13:30"
+    location: "Bing"
+
+events:
+-   date: "2017-12-15"
+    start: "19:30"
+    location: "MemChu"
+    title: "Messiah Sing/Play Along"
+
+description: |
+    The Stanford Symphonic Chorus presents Edward Elgar's _The Music Makers_
+    in collaboration with the Peninsula Symphony and mezzo-soprano Wendy Hillhouse.
+    The program also features Ralph Vaughan Williams's beloved _Fantasia on a Theme of Thomas Tallis_
+    and _Norfolk Rhapsody No. 1_, alongside the English hymn and folk melodies that inspired both works.
+
+
+
+
+

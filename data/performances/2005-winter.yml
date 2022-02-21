@@ -1,0 +1,57 @@
+quarter: "Winter 2005"
+
+syllabus:
+# MISSING: syllabus for Winter 2005
+
+repertoire:
+    main:
+    -   composer: "Giuseppe Verdi"
+        title: "Messa da Requiem"
+
+soloists:
+-   name: "Guiping Deng"
+    part: "soprano"
+-   name: "Wendy Hillhouse"
+    part: "mezzo-soprano"
+-   name: "Jingma Fan"
+    part: "tenor"
+-   name: "Matthew Trevino"
+    part: "bass"
+
+collaborators:
+-   "SSO"
+
+poster:
+    basename: "Verdi_Poster"
+    caption: "Verdi, Requiem, Winter 2005"
+
+directors:
+-   "Jindong Cai"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2005
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2005
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2005
+
+concerts:
+-   date: "2005-03-04"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2005-03-06"
+    start: "13:30"
+    call: "12:30"
+    location: "MemChu"
+
+
+
+

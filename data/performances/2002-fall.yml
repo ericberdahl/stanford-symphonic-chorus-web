@@ -1,0 +1,60 @@
+quarter: "Fall 2002"
+
+syllabus:
+# MISSING: syllabus for Fall 2002
+
+repertoire:
+    other:
+    -   composer: "Gerald Finzi"
+        title: "In Terra Pax"
+    -   composer: "Edward Elgar"
+        title: "Serenade for Strings"
+    -   composer: "Percy Grainger"
+        title: "Lincolnshire Posy"
+        suffix: "for wind ensemble"
+    main:
+    -   composer: "Ludwig von Beethoven"
+        title: "Magnificat"
+
+soloists:
+-   name: "Elyse Nakajima"
+    part: "soprano"
+-   name: "Scott Bearden"
+    part: "baritone"
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING: posters for Fall 2002
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 2002
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 2002
+
+preregister:
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Fall 2002
+
+concerts:
+-   date: "2002-11-22"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2002-11-24"
+    start: "14:00"
+    call: "13:00"
+    location: "MemChu"
+:
+
+
+
+

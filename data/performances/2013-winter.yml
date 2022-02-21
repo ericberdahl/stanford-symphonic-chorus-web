@@ -1,0 +1,129 @@
+quarter: "Winter 2013"
+
+syllabus: "W2013syllabus"
+
+repertoire:
+    main:
+    -   ref: "beethoven/mass in c"
+        composer: "Ludwig von Beethoven"
+        title: 'Mass in C'
+        catalog: "Op. 86"
+    other:
+    -   composer: "Ludwig von Beethoven"
+        title: "Symphony No. 6 in F Major"
+        commonTitle: "Pastorale"
+        catalog: "Op. 68"
+
+soloists:
+-   name: "Clare Kelm"
+    part: "soprano"
+-   name: "Wendy Hillhouse"
+    part: "mezzo-soprano"
+-   name: "Chester Pidduck"
+    part: "tenor"
+-   name: "Steven Goodman"
+    part: "baritone"
+
+collaborators:
+-   "stanford philharmonia"
+
+poster:
+# MISSING: poster for Winter 2013
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2013
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2013
+
+preregister: 
+
+heraldImage:
+    basename: "Beethoven_pd"
+    caption: "Beethoven"
+
+# TODO: otherImages is not supported
+otherImages:
+-   file: "W2013 SSCPerf.jpg"
+    height: 300
+    width: 475
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2013-01-14"
+-   date: "2013-02-18"
+    note: "Jindong Cai conducting"
+-   date: "2013-02-25"
+    note: "Jindong Cai conducting"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2013-01-14"
+    endDate: "2013-02-18"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+-   frequency: "once"
+    startDate: "2013-02-25"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "Bing"
+-   frequency: "weekly"
+    startDate: "2013-03-04"
+    endDate: "2013-03-11"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2013-01-23"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Bing"
+    frequency: "once"
+-   startDate: "2013-01-30"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Bing"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2013-02-06"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Bing"
+    frequency: "once"
+-   startDate: "2013-02-13"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Bing"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2013-03-12"
+    start: "19:00"
+    location: "Bing"
+-   date: "2013-03-14"
+    start: "19:00"
+    location: "Bing"
+
+concerts:
+-   date: "2013-03-15"
+    start: "20:00"
+    call: "19:00"
+    location: "Bing"
+-   date: "2013-03-17"
+    start: "14:30"
+    call: "13:30"
+    location: "Bing"
+
+
+
+
+

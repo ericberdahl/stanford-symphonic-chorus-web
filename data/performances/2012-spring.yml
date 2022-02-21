@@ -1,0 +1,101 @@
+quarter: "Spring 2012"
+
+syllabus: "S2012syllabus"
+
+repertoire:
+    main:
+    -   ref: "schumann/mass in c minor"
+        composer: "Robert Schumann"
+        title: "Mass in C Minor"
+        catalog: "Op. 147"
+    other:
+    -   composer: "Felix Mendelssohn"
+        title: "Hebrides Overture"
+    -   composer: "Franz Joseph Haydn"
+        title: "Cello Concerto in D Major"
+        catalog: "Hob.VIIb/2"
+
+soloists:
+-   name: "Lydia Zodda"
+    part: "soprano"
+-   name: "Norman De Vol"
+    part: "tenor"
+-   name: "Michael Morris"
+    part: "bass"
+-   name: "Jennifer Miyahira Townsend"
+    part: "cello"
+
+collaborators:
+
+poster:
+    basename: "SSCPosterS2012"
+    caption: "Stanford Symphonic Chorus Spring 2012 Concert"
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+# MISSING: instructors for Spring 2012
+
+registrationFee:
+# MISSING: registrationFee for Spring 2012
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2012
+
+preregister: 
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2012-04-02"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2012-04-02"
+    endDate: "2012-05-14"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2017-04-18"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2017-05-02"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2017-04-25"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2017-05-09"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2012-05-21"
+    start: "19:00"
+    location: "MemChu"
+-   date: "2012-05-22"
+    start: "19:00"
+    location: "MemChu"
+
+concerts:
+-   date: "2012-05-23"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+
+

@@ -1,0 +1,108 @@
+quarter: "Winter 2012"
+
+syllabus: "W2012syllabus"
+
+repertoire:
+    main:
+    -   ref: "bruckner/mass-#3-f-minor"
+        composer: "Anton Bruckner"
+        title: "Mass No. 3 in F Minor"
+    other:
+    -   composer: "Johann Sebastian Bach"
+        title: "Fantasia & Fugue in C Minor"
+        catalog: "BWV 537"
+        arranger: "Edward Elgar"
+
+soloists:
+-   name: "Christine Abraham"
+    part: "soprano"
+-   name: "Malin Fritz"
+    part: "alto"
+-   name: "Brian Thorsett"
+    part: "tenor"
+-   name: "Paul Murray"
+    part: "bass"
+
+collaborators:
+-   "SSO"
+
+poster:
+    basename: "SSCPosterW2012"
+    caption: "Stanford Symphonic Chorus and Stanford Symphony Orchestra Winter 2012 Concert"
+
+directors:
+-   "Jondong Cai"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2012
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2012
+
+preregister: 
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2012-01-09"
+-   date: "2012-02-13"
+    note: "Maestro Cai conducting"
+-   date: "2012-02-20"
+    note: "Maestro Cai conducting"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2012-01-09"
+    endDate: "2012-02-20"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2012-01-18"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2012-02-01"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2012-01-25"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2012-02-08"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2012-02-21"
+    start: "19:00"
+    location: "MemChu"
+-   date: "2012-02-23"
+    start: "19:00"
+    location: "MemChu"
+
+concerts:
+-   date: "2012-02-24"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2012-02-25"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+
+

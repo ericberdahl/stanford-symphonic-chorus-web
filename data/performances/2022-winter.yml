@@ -1,0 +1,375 @@
+# HOWTO: Set quarter to a single string that names the quarter and year. Use something like "Winter 1812",
+# "Spring 1812", or "Fall 1812"
+quarter: "Winter 2022"
+
+
+# HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
+# Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
+# be detected and used.
+syllabus: "SSC Syllabus Winter 2022"
+
+
+# HOWTO: Set repertoire to a list of items that compose the program.
+#
+# A simple piece looks like this:
+# -   composer: "Ludwig von Beethoven"
+#     title: "Magnificat"
+#
+# For more complex piece formulae, look at the reference "HOWTO Piece syntax"
+#
+# Repertoire is separated into main pieces and other pieces. Main and other each contain a list of pieces.
+# Main pieces are included in headlines describing the program. Other pieces are added when dispalying the
+# entire program of a performance.
+repertoire:
+    main:
+    -   &mahler
+        composer: "Gustav Mahler"
+        title: "Symphony No. 2"
+        commonTitle: "Auferstehung"
+        translation: "Resurrection"
+    -   &aquilanti
+        composer: "Giancarlo Aquilanti"
+        title: "Te Deum"
+        performanceNote: "(World Premiere)"
+    other:
+    -   &copland
+        composer: "Aaron Copland"
+        title: "The Promise of Living"
+
+
+# HOWTO: soloists is a list of individuals and the part in which they solo.
+# An individual soloist looks like this:
+# -   name: "Plácido Domingo"
+#     part: "tenor"
+soloists:
+
+
+# HOWTO: collaborators is a list of groups with whom we collaborate on this program.
+# Each entry in the list should be a single string that matches the key field of a record in
+# data/collaborators.yml
+collaborators:
+-   "SSO"
+
+
+# HOWTO:
+# A typical full poster record looks like this:
+# poster:
+#     basename: "S2018-Poster"
+#     caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
+# Where basename is a root name of the poster in assets/posters directory.
+#       Use something like "S2020-Poster". Posters with extensions '.pdf', '.jpg', and '.png' will
+#       be detected and used.
+# Where caption is a string to be used as hover text for the poster image when displayed on a web page.
+poster:
+
+
+# HOWTO: heraldImage is an image associated with this quarter's program. It has the same schema as
+# a poster (see also)
+#
+# If poster files are not present for a quarter, the heraldImage will be used as a stand-in for
+# presentations where a graphic for the quarter is used. If heraldImage and poster are both absent,
+# the system will use a generic stand-in graphic.
+#
+# The heraldImage will also typically be used on the home page, when talking about a quarter.
+heraldImage:
+
+
+# HOWTO: directors is a list of strings that name the directors of this performance
+directors:
+-   "Paul Phillips"
+
+
+# HOWTO: instructors is a list of strings that name the instructors for this quarter
+instructors:
+-   "Stephen M. Sano"
+
+
+# HOWTO: registrationFee is the participation fee for the quarter, typically waived
+# for students and faculty
+registrationFee: "$65"
+
+
+# HOWTO: membershipLimit is the maximum number of members allowed to register for
+# this quarter
+membershipLimit: 220
+
+
+# HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
+# is expected to be sent out.
+preregister: "2021-12-01"
+
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2022-02-07"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2022-02-07"
+    endDate: "2022-03-07"
+    startTime: "19:30"
+    endTime: "21:00"
+    location: "CRH"
+
+
+mensSectionals:
+
+womensSectionals:
+
+
+# HOWTO: dresses is a list of dress rehearsals
+# A dress rehearsal entry looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     location: "Bing"
+# Where date is date of the event, specified as YYYY-MM-DD (four digit year, two digit month, two digit day
+# of month).
+# Where start and call are the curtain time and call time for the rehearsal specified as HH:MM in local time
+# (two digit hour, two digit minute of the hour, specified in 24-hour format)
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+dressRehearsals:
+-   date: "2022-05-09"
+    start: "19:00"
+    location: "Bing"
+    repertoire:
+        main:
+        -   *mahler
+-   date: "2022-05-12"
+    start: "19:00"
+    location: "Bing"
+    repertoire:
+        main:
+        -   *mahler
+-   date: "2022-05-17"
+    start: "19:00"
+    location: "Bing"
+    repertoire:
+        main:
+        -   *aquilanti
+        other:
+        -   *copland
+-   date: "2022-05-22"
+    start: "10:00"
+    location: "Bing"
+    repertoire:
+        main:
+        -   *aquilanti
+        other:
+        -   *copland
+
+
+# HOWTO: concerts is a list of concert dates
+# A concert entry looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     call: "HH:MM"
+#     location: "Bing"
+# Where date is date of the event, specified as YYYY-MM-DD (four digit year, two digit month, two digit day
+# of month).
+# Where start and call are the curtain time and call time for the concert specified as HH:MM in local time
+# (two digit hour, two digit minute of the hour, specified in 24-hour format)
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+concerts:
+-   date: "2022-05-13"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+    repertoire:
+        main:
+        -   *mahler
+-   date: "2022-05-15"
+    start: "14:30"
+    call: "13:30"
+    location: "Bing"
+    repertoire:
+        main:
+        -   *mahler
+-   date: "2022-05-22"
+    start: "14:30"
+    call: "13:30"
+    location: "Bing"
+    repertoire:
+        main:
+        -   *aquilanti
+        other:
+        -   *copland
+-   date: "2022-05-24"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+    repertoire:
+        main:
+        -   *aquilanti
+        other:
+        -   *copland
+
+practiceFiles:
+-   title: "Practice files for Aquilanti's Te Deum"
+    files:
+    -   title: "Soprano - Section 1"
+        asset: "w2022/aquilanti/soprano/Te Deum 1_Soprano.mp3"
+    -   title: "Soprano - Section 2"
+        asset: "w2022/aquilanti/soprano/Te Deum 2_Soprano.mp3"
+    -   title: "Soprano - Section 3"
+        asset: "w2022/aquilanti/soprano/Te Deum 3_Soprano.mp3"
+    -   title: "Alto - Section 1"
+        asset: "w2022/aquilanti/alto/Te Deum 1_Alto.mp3"
+    -   title: "Alto - Section 2"
+        asset: "w2022/aquilanti/alto/Te Deum 2_Alto.mp3"
+    -   title: "Alto - Section 3"
+        asset: "w2022/aquilanti/alto/Te Deum 3_Alto.mp3"
+    -   title: "Tenor - Section 1"
+        asset: "w2022/aquilanti/tenor/Te Deum 1_Tenor.mp3"
+    -   title: "Tenor - Section 2"
+        asset: "w2022/aquilanti/tenor/Te Deum 2_Tenor.mp3"
+    -   title: "Tenor - Section 3"
+        asset: "w2022/aquilanti/tenor/Te Deum 3_Tenor.mp3"
+    -   title: "Bass - Section 1"
+        asset: "w2022/aquilanti/bass/Te Deum 1_Bass.mp3"
+    -   title: "Bass - Section 2"
+        asset: "w2022/aquilanti/bass/Te Deum 2_Bass.mp3"
+    -   title: "Bass - Section 3"
+        asset: "w2022/aquilanti/bass/Te Deum 3_Bass.mp3"
+-   title: "Practice files for Copland's The Promise of Living"
+    files:
+    -   title: "Instructions - All Sections"
+        asset: "w2022/copland/Instructions-Copland-The PromiseOfLiving.pdf"
+    -   title: "Soprano - Track 1"
+        asset: "w2022/copland/soprano/01 Track 1.mp3"
+    -   title: "Soprano - Track 2"
+        asset: "w2022/copland/soprano/02 Track 2.mp3"
+    -   title: "Soprano - Closing Announcement"
+        asset: "w2022/copland/soprano/03-ClosingAnnouncement.mp3"
+    -   title: "Alto - Track 1"
+        asset: "w2022/copland/alto/01 Track 1.mp3"
+    -   title: "Alto - Track 2"
+        asset: "w2022/copland/alto/02 Track 2.mp3"
+    -   title: "Alto - Closing Announcement"
+        asset: "w2022/copland/alto/03-ClosingAnnouncement.mp3"
+    -   title: "Tenor - Track 1"
+        asset: "w2022/copland/tenor/01 Track 1.mp3"
+    -   title: "Tenor - Track 2"
+        asset: "w2022/copland/tenor/02 Track 2.mp3"
+    -   title: "Tenor - Closing Announcement"
+        asset: "w2022/copland/tenor/03-ClosingAnnouncement.mp3"
+    -   title: "Bass - Track 1"
+        asset: "w2022/copland/bass/01 Track 1.mp3"
+    -   title: "Bass - Track 2"
+        asset: "w2022/copland/bass/02 Track 2.mp3"
+    -   title: "Bass - Track 3"
+        asset: "w2022/copland/bass/03 Track 3.mp3"
+    -   title: "Bass - Track 4"
+        asset: "w2022/copland/bass/04 Track 4.mp3"
+    -   title: "Bass - Closing Announcement"
+        asset: "w2022/copland/bass/05-ClosingAnnouncement.mp3"
+-   title: "Practice files for Mahler's Symphony No. 2"
+    files:
+    -   title: "Instructions - All Sections"
+        asset: "w2022/mahler/Instructions-Mahler-Symphony2.pdf"
+    -   title: "Soprano - Track 1"
+        asset: "w2022/mahler/soprano/01 Track 1.mp3"
+    -   title: "Soprano - Track 2"
+        asset: "w2022/mahler/soprano/02 Track 2.mp3"
+    -   title: "Soprano - Track 3"
+        asset: "w2022/mahler/soprano/03 Track 3.mp3"
+    -   title: "Soprano - Track 4"
+        asset: "w2022/mahler/soprano/04 Track 4.mp3"
+    -   title: "Alto - Track 1"
+        asset: "w2022/mahler/alto/01 Track 1.mp3"
+    -   title: "Alto - Track 2"
+        asset: "w2022/mahler/alto/02 Track 2.mp3"
+    -   title: "Alto - Track 3"
+        asset: "w2022/mahler/alto/03 Track 3.mp3"
+    -   title: "Alto - Track 4"
+        asset: "w2022/mahler/alto/04 Track 4.mp3"
+    -   title: "Tenor - Track 1"
+        asset: "w2022/mahler/tenor/01 Track 1.mp3"
+    -   title: "Tenor - Track 2"
+        asset: "w2022/mahler/tenor/02 Track 2.mp3"
+    -   title: "Tenor - Track 3"
+        asset: "w2022/mahler/tenor/03 Track 3.mp3"
+    -   title: "Tenor - Track 4"
+        asset: "w2022/mahler/tenor/04 Track 4.mp3"
+    -   title: "Tenor - Track 5"
+        asset: "w2022/mahler/tenor/05 Track 5.mp3"
+    -   title: "Tenor - Track 6"
+        asset: "w2022/mahler/tenor/06 Track 6.mp3"
+    -   title: "Tenor - Track 7"
+        asset: "w2022/mahler/tenor/07 Track 7.mp3"
+    -   title: "Tenor - Track 8"
+        asset: "w2022/mahler/tenor/08 Track 8.mp3"
+    -   title: "Bass - Track 1"
+        asset: "w2022/mahler/bass/01 Track 1.mp3"
+    -   title: "Bass - Track 2"
+        asset: "w2022/mahler/bass/02 Track 2.mp3"
+    -   title: "Bass - Track 3"
+        asset: "w2022/mahler/bass/03 Track 3.mp3"
+    -   title: "Bass - Track 4"
+        asset: "w2022/mahler/bass/04 Track 4.mp3"
+    -   title: "Bass - Track 5"
+        asset: "w2022/mahler/bass/05 Track 5.mp3"
+    -   title: "Bass - Track 6"
+        asset: "w2022/mahler/bass/06 Track 6.mp3"
+    -   title: "Bass - Track 7"
+        asset: "w2022/mahler/bass/07 Track 7.mp3"
+    -   title: "Bass - Track 8"
+        asset: "w2022/mahler/bass/08 Track 8.mp3"
+
+# HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
+# schedule.
+# An individual event looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     location: "MemChu"
+#     title: "Messiah Sing/Play Along"
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the event will take place.
+# Where title is a string that labels the event itself.
+# Where date is the date of the event, specified in YYYY-MM-DD format.
+# Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
+events:
+#-   date: "2022-05-14"
+#    start: "19:30"
+#    call: "18:30"
+#    location: "Bing"
+#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
+#-   date: "2022-05-15"
+#    start: "14:30"
+#    call: "13:30"
+#    location: "Bing"
+#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
+#-   date: "2022-05-17"
+#    start: "19:00"
+#    location: "Bing"
+#    title: "Dress rehearsal for Aquilanti: Te Deum"
+#-   date: "2022-05-22"
+#    start: "10:30"
+#    location: "Bing"
+#    title: "Dress rehearsal for Aquilanti: Te Deum"
+#-   date: "2022-05-22"
+#    start: "14:30"
+#    call: "13:30"
+#    location: "Bing"
+#    title: "Concert #1 for Aquilanti: Te Deum"
+#-   date: "2022-05-24"
+#    start: "19:30"
+#    call: "18:30"
+#    location: "Bing"
+#    title: "Concert #2 for Aquilanti: Te Deum"
+
+
+# HOWTO: description contains Markdown that is included on pages which need a synopsis of
+# the concert. The home page is a typical location where such text is used.
+description: |
+    Due to recently updated COVID-19 mitigation policies and their impact on the scheduling of in-person rehearsals
+    for the first portion of winter quarter 2022, rehearsals will begin on Monday, 7 February 2022.
+    The winter quarter concerts have been moved to spring quarter and these will take place in addition
+    to the previously-scheduled spring quarter concerts, resulting in two pairs of concerts being presented
+    in spring quarter.
+
+
+#   After a long hiatus, Stanford Symphonic Chorus is pleased to return to the stage with a performance
+#   of Mahler's _Symphony No. 2 "Auferstehung"_ ("Resurrection"),
+#   presented in collaboration with our friends in the Stanford Symphonic Orchestra.

@@ -1,0 +1,41 @@
+piece:
+    composer:
+    -   "Ralph"
+    -   "Vaughan Williams"
+    title: "Hodie"
+
+albums:
+-   director: David Willcock
+    label: EMI 0724356742727
+    shopping:
+    - http://www.cduniverse.com/productinfo.asp?pid=1170259&style=classical&cart=1254732741
+    - http://www.amazon.com/Noel-Christmas-Johann-Sebastian-Bach/dp/B00000427N
+    image: EMI-0724356742727
+    description: |
+        David Willcock's famous 1966 version with the Bach Choir,
+        the Guildford Cathedral Choir, and the London Symphony Orchestra
+        (EMI 0724356742727, also downloadable from amazon.com)
+        is still the version to have.
+        The team of soloists (Janet Baker, mezzo; Richard Lewis, tenor;
+        and John Shirley-Quirk, bass) is stunning.
+        Though the part Baker sings was written for a soprano,
+        she sings with a winning radiance and innocence that is incomparable.
+        The orchestra and chorus are both stunning and the recording is vintage,
+        warm EMI from the 60's—a strong argument for the attractiveness
+        of fine analog recordings.
+
+-   director: Richard Hickox
+    label: EMI 5099996893425
+    shopping:
+    - http://www.cduniverse.com/productinfo.asp?pid=1170259&style=classical&cart=1254732741
+    - http://www.amazon.com/Noel-Christmas-Johann-Sebastian-Bach/dp/B00000427N
+    image: EMI-5099996893425
+    description: |
+        Richard Hickox's dramatic account (EMI 5099996893425,
+        also downloadable from amazon.com) features the London Symphony Chorus
+        and Orchestra, the Choristers of St. Paul Cathedral, 
+        and soloists Elizabeth Gale, Robert Tear, and Stephen Roberts.
+        Hickox's tempi are lively, and the chorus sings with tremendous vigor
+        and a wonderful range of color and emotion.
+        Ensemble is mostly excellent, though there are occasional lapses
+        at phrase endings—particularly in softer passages.

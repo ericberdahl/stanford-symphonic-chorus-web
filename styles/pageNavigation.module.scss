@@ -1,0 +1,41 @@
+@import 'base';
+
+//
+// Layout
+//
+.page_navigation {
+	ul {
+		margin: 10px 0px 0px 0px;
+		padding: 0px;
+	}
+
+	li {
+		padding: 10px 0px;
+		margin: 0px;
+	}
+}
+
+//
+// Appearance
+//
+.page_navigation {
+	li {
+		list-style: none;
+		list-style-image: none;
+		border-bottom: 1px solid $color-warmgray10;
+		font-size: 0.8021rem;
+		font-family: $font-family-sanserif;
+		line-height: 1.1667em;
+
+		a {
+			color: $color-warmgray90;
+			border-bottom: none;
+			text-decoration: none;
+
+			&:hover {
+				color: $color-red;
+				border-bottom: 1px dotted $color-warmgray90;
+			}	
+		}
+	}
+}

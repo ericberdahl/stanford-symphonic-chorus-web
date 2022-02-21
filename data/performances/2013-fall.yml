@@ -1,0 +1,88 @@
+quarter: "Fall 2013"
+
+syllabus: "SSCSyllabusFall2013"
+
+repertoire:
+    main:
+    -   composer: "Ernest Bloch"
+        title: 'Sacred Service'
+        translation: "Avodath Hakodesh"
+
+soloists:
+-   name: "Stephen Saxon"
+    part: "cantor"
+
+collaborators:
+-   "PSO"
+
+poster:
+    basename: "F2013PosterSSC-PSO"
+    caption: "Stanford Symphonic Chorus and Peninsula Symphony Orchestra Fall 2013 Concert Poster"
+
+directors:
+-   "Mitchell Sardou Klein"
+
+instructors:
+-   "Jameson Marvin"
+
+registrationFee:
+# MISSING: registrationFee for Fall 2013
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 2013
+
+preregister:
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2013-09-23"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2013-09-23"
+    endDate: "2013-11-18"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2013-10-01"
+    startTime: "18:15"
+    endTime: "19:15"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2013-10-15"
+    startTime: "18:15"
+    endTime: "19:15"
+    location: "CRH"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2013-10-08"
+    startTime: "18:15"
+    endTime: "19:15"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2013-10-22"
+    startTime: "18:15"
+    endTime: "19:15"
+    location: "CRH"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2013-11-19"
+    start: "18:00"
+    location: "Bing"
+-   date: "2013-11-21"
+    start: "19:00"
+    location: "Bing"
+
+concerts:
+-   date: "2013-11-22"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+-   date: "2013-11-24"
+    start: "14:30"
+    call: "13:30"
+    location: "Bing"

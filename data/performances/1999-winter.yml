@@ -1,0 +1,51 @@
+quarter: "Winter 1999"
+
+syllabus:
+# MISSING: syllabus for Winter 1999
+
+repertoire:
+    main:
+    -   composer: "Felix Mendelssohn"
+        title: "Elijah"
+
+soloists:
+-   name: "Mary Linduska"
+    part: "soprano"
+-   name: "Wendy Hillhouse"
+    part: "mezzo-soprano"
+-   name: "Gregory Wait"
+    part: "tenor"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+
+poster:
+# MISSING: poster for Winter 1999
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 1999
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 1999
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 1999
+
+concerts:
+-   date: "1999-03-12"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+# MISSING: start times for concerts for Winter 1999
+
+
+
+

@@ -1,0 +1,65 @@
+quarter: "Winter 2010"
+
+syllabus:
+# MISSING: syllabus for Winter 2010
+
+repertoire:
+    main:
+    -   composer: "Ludwig von Beethoven"
+        title: "The Creatures of Prometheus Overture"
+    other:
+    -   composer: "Wolfgang Amadeus Mozart"
+        title: "Violin Concerto No. 3 in G Major"
+    -   composer: "Ludwig von Beethoven"
+        title: 'Mass in C'
+        catalog: "Op. 86"
+        ref: "beethoven/mass in c"
+
+soloists:
+-   name: "Nova Jiménez"
+    part: "soprano"
+-   name: "Megan Stetson"
+    part: "mezzo-soprano"
+-   name: "Brian Thorsett"
+    part: "tenor"
+-   name: "Michael Morris"
+    part: "baritone"
+-   name: "Robin Sharp"
+    part: "violin"
+
+collaborators:
+
+poster:
+    basename: "SSCPosterW2010"
+    caption: "Stanford Symphonic Chorus poster, Winter 2010"
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2010
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2010
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2010
+
+concerts:
+-   date: "2010-02-26"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2010-02-27"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+

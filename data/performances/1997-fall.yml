@@ -1,0 +1,52 @@
+quarter: "Fall 1997"
+
+syllabus:
+# MISSING: syllabus for Fall 1997
+
+repertoire:
+    main:
+    -   composer: "Giuseppe Verdi"
+        title: "Manzoni Requiem"
+
+soloists:
+-   name: "Margo Sherelle Alexander"
+    part: "soprano"
+-   name: "Jennifer Lane"
+    part: "mezzo-soprano"
+-   name: "Stephen Guggenheim"
+    part: "tenor"
+-   name: "Douglas Lawrence"
+    part: "baritone"
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING: posters for Fall 1997
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 1997
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 1997
+
+preregister:
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Fall 1997
+
+concerts:
+-   date: "1997-11-20"
+    start: "20:00"
+    call: "19:00"
+    location: <unknown>
+-   date: "1997-11-23"
+    start: "14:00"
+    call: "13:00"
+    location: <unknown>
+# MISSING: locations for concerts for Fall 1997

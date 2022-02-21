@@ -1,0 +1,52 @@
+quarter: "Fall 1996"
+
+syllabus:
+# MISSING: syllabus for Fall 1996
+
+repertoire:
+    main:
+    -   composer: "Ernest Bloch"
+        title: 'Sacred Service'
+        translation: "Avodath Hakodesh"
+    other:
+    -   composer: "Antonín Dvořák"
+        title: "Te Deum"
+
+soloists:
+-   name: "Boris Kazansky"
+-   name: "Susan Gundunas"
+-   name: "Douglas Nagel"
+# MISSING: voice parts for soloists for Fall 1996
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING: posters for Fall 1996
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 1996
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 1996
+
+preregister:
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Fall 1996
+
+concerts:
+-   date: "1996-11-23"
+    start: "20:00"
+    call: "19:00"
+    location: <unknown>
+-   date: "1996-11-24"
+    start: "14:00"
+    call: "13:00"
+    location: <unknown>
+# MISSING: locations for concerts for Fall 1996, assuming MemChu

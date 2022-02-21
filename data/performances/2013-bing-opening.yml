@@ -1,0 +1,103 @@
+quarter: "Opening Weekend – Bing Concert Hall"
+
+syllabus: "F2012syllabus"
+
+repertoire:
+    main:
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
+        title: "Serenade to Music"
+    other:
+    -   composer: "Maurice Ravel"
+        title: "Daphnis et Chloé"
+        catalog: "Suite No. 2"
+
+soloists:
+
+collaborators:
+-   "SSO"
+# MISSING: other collaborators for 2013 Bing Opening
+
+poster:
+# MISSING: poster for Bing Opening
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+supplements:
+-   "[Opening Weekend – Bing Concert Hall](http://binghall.stanford.edu/)"
+-   "[Bing Concert Hall Fly Through](http://vimeo.com/56115622)"
+
+registrationFee:
+# MISSING: registrationFee for Bing Opening 2008
+    
+membershipLimit:
+# MISSING: membershipLimit for Bing Opening 2008
+
+preregister:
+
+heraldImage:
+    basename: "binghall_banner"
+    caption: "Rendering of the Bing Concert Hall. &copy; Polshek Partnership Architects"
+
+tuttiRehearsalNotes:
+-   date: "2012-12-10"
+    note: "logistics"
+-   date: "2013-01-05"
+    note: "Choral union"
+-   date: "2013-01-05"
+    note: "Choral union with SSO"
+-   date: "2013-01-07"
+    note: "Choral union with SSO"
+
+tuttiRehearsals:
+-   frequency: "once"
+    startDate: "2012-11-26"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+-   frequency: "once"
+    startDate: "2012-12-03"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "Bing"
+-   frequency: "once"
+    startDate: "2012-12-10"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+-   frequency: "once"
+    startDate: "2013-01-05"
+    startTime: "10:00"
+    endTime: "13:00"
+    location: "Dink"
+-   frequency: "once"
+    startDate: "2013-01-06"
+    startTime: "19:00"
+    endTime: "22:00"
+    location: "Dink"
+-   frequency: "once"
+    startDate: "2013-01-07"
+    startTime: "19:00"
+    endTime: "22:00"
+    location: "Dink"
+
+dressRehearsals:
+-   date: "2013-01-08"
+    start: "19:00"
+    location: "Bing"
+
+concerts:
+-   date: "2013-01-13"
+    start: "19:00"
+    call: "17:30"
+    location: "Bing"
+
+
+
+
+

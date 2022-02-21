@@ -1,0 +1,113 @@
+quarter: "Spring 2011"
+
+syllabus: "SSCSyllabusSpring2011"
+
+repertoire:
+    main:
+    -   composer: "Ruggero Leoncavallo"
+        title: "Pagliacci"
+        movement: "Bell Chorus"
+    -   composer: "Giuseppe Verdi"
+        title: "Il Trovatore"
+        movement: "Anvil Chorus"
+    -   composer: "Giuseppe Verdi"
+        title: "Aïda"
+        movement: "Triumphal March"
+    -   composer: "Charles Gounod"
+        title: "Faust"
+        movement: "Kermesse"
+    -   composer: "Georges Bizet"
+        title: "Carmen"
+        movement: "Smugglers' Chorus"
+    -   composer: "Georges Bizet"
+        title: "Carmen"
+        movement: "March of the Toreadors"
+    -   composer: "Georges Bizet"
+        title: "Carmen"
+        movement: 'Toreador: "Votre Toast"'
+
+soloists:
+-   name: "Heidi Moss"
+    part: "soprano"
+-   name: "Eugene Brancoveanu"
+    part: "baritone"
+
+collaborators:
+-   "PSO"
+
+poster:
+    basename: "SSCPosterS2011"
+    caption: "Stanford Symphonic Chorus Spring 2011 Concert"
+
+directors:
+-   "Mitchell Sardou Klein"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 2011
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2011
+
+preregister: 
+
+tuttiRehearsalNotes:
+-   date: "2011-03-28"
+    note: "Registration starts at 6:30pm"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2011-03-28"
+    endDate: "2011-05-09"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2017-04-06"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2017-04-20"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2017-04-13"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2017-04-27"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2011-05-10"
+    start: "19:00"
+    location: "SMPAC"
+-   date: "2011-05-12"
+    start: "19:00"
+    location: "SMPAC"
+
+concerts:
+-   date: "2011-05-13"
+    start: "20:00"
+    call: "19:00"
+    location: "SMPAC"
+-   date: "2011-05-14"
+    start: "20:00"
+    call: "19:00"
+    location: "Flint"
+
+
+
+
+

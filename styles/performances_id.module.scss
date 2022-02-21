@@ -1,0 +1,65 @@
+@import 'base';
+
+.introduction {
+
+}
+
+.sidebar {
+}
+
+.rehearsalSchedule {
+    h2 {
+        font-family: $font-family-serif;
+        font-size: 1.5em;
+        margin: 20px 0px 5px 0px;
+        letter-spacing: 2px;
+        line-height: 1.2em;
+        text-transform: none;
+        color: $color-red;
+    }
+
+    table {
+        width: 90%;
+        margin-top: 0.5em;
+        margin-left: 4em;
+        border-collapse: collapse;
+        padding: 0.5em;
+    }
+
+    th, td.subhead {
+        font-weight: bold;
+    }
+
+    th, td {
+        vertical-align: text-top;
+        padding: 0.63em 0.5em 0.5em 0.63em;
+        border-width: 0.05em;
+        border-color: black;
+        border-style: solid none none none;
+
+        color: #333;
+    }
+
+    td {
+        ul {
+            padding: 0 0 0 0.8em;
+            margin: 0 0 0 0.8em;
+
+            li {
+                line-height: 1.1230rem;
+            }
+        }
+    }
+/*
+    td:first-child {
+        padding-left: 3.63em;
+    }
+    */
+}
+
+.practiceFiles {
+    ol {
+        list-style: none;
+        margin-left: 3em;
+    }
+}

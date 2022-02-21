@@ -1,0 +1,62 @@
+quarter: "Winter 2006"
+
+syllabus:
+# MISSING: syllabus for Winter 2006
+
+repertoire:
+    other:
+    -   composer: "Johannes Brahms"
+        title: "Akademische Festovertüre"
+        translation: "Academic Festival Overture"
+        catalog: "Op. 80"
+    main:
+    -   ref: "brahms/requiem"
+        composer: "Johannes Brahms"
+        title: "Ein Deutsches Requiem"
+        translation: "A German Requiem"
+        catalog: "Op. 45"
+
+soloists:
+-   name: "Kathryn Gresham"
+    part: "soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+-   "SSO"
+-   "university singers"
+
+poster:
+    basename: "SSC_PosterWinter2006"
+    caption: "Brahms, Ein Deutsches Requiem, Winter 2006"
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2006
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2006
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2006
+
+concerts:
+-   date: "2006-03-03"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2006-03-04"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+

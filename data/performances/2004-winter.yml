@@ -1,0 +1,63 @@
+quarter: "Winter 2004"
+
+syllabus:
+# MISSING: syllabus for Winter 2004
+
+repertoire:
+    other:
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
+        title: "Fantasia on a Theme of Thomas Tallis"
+    -   composer: "Benjamin Britten"
+        title: "Four Sea Interludes"
+    main:
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
+        title: "Dona Nobis Pacem"
+
+soloists:
+-   name: "Kenneth Goodson"
+    part: "baritone"
+-   name: "Gina Silverman"
+    part: "soprano"
+
+collaborators:
+-   "SSO"
+
+poster:
+    basename: "SSC_Poster_Winter_2004"
+    caption: "Ralph Vaughan Williams, Winter 2004"
+
+directors:
+-   "Akiko Fujimoto"
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2004
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2004
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2004
+
+concerts:
+-   date: "2004-03-05"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2004-03-06"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+

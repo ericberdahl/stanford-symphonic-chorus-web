@@ -1,0 +1,43 @@
+@import 'base';
+
+//
+// Layout
+//
+
+.breadcrumb {
+    padding: 0px 0px 2px 0px;
+	margin-bottom: 10px;
+
+    p {
+        margin: 0;
+        padding: 0;
+        color: $color-warmgray90;
+    }
+}
+
+//
+// Appearance
+//
+
+.breadcrumb {
+	border-bottom: 6px solid $color-red;
+
+    p {
+		font-size: 0.833em/*thomas*/;
+        line-height: 1.2500em;
+        color: $color-warmgray90;
+    }
+
+    a {
+		border: 0px;
+        text-decoration: none;
+        border-bottom: none;
+        color: $color-beige;
+
+        &:hover {
+            text-decoration: none;
+            border-bottom: 1px dotted;
+            color: $color-red;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+piece:
+    composer: "Leonard Bernstein"
+    title: 'Chichester Psalms'
+
+description: |
+    There are two videos on YouTube of Bernstein’s Chichester Psalms with the composer conducting.
+
+albums:
+-   director: "Israel Philharmonic Orchestra"
+    description: |
+        The most famous is with the Israel Philharmonic Orchestra, and the Wiener
+        Jeunesse-Chor, and can be found at (the video portion is just a photograph of Bernstein
+        conducting) <YouTube video="1axCTkIfP9Q" />.
+
+-   director: "Poznan Philharmonic Orchestra"
+    description: |
+        There is also a video with the Poznan Philharmonic Orchestra with the Poznan Philharmonic
+        Boys and Men’s Choir: <YouTube video="7Yhnml4DW9g" />.
+
+        The video quality is poor and very low resolution, but it’s always wonderful to watch Lenny conduct!

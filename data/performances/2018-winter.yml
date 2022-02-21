@@ -1,0 +1,112 @@
+quarter: "Winter 2018"
+
+syllabus: "SSC Syllabus Winter 2018"
+
+repertoire:
+    main:
+    -   composer: "William Walton"
+        title: "Belshazzar's Feast"
+    other:
+    -   composer: "Leonard Bernstein"
+        title: "On the Waterfront Suite"
+    -   composer: "Danny Elfman"
+        title: "Concerto for Violin and Orchestra"
+
+soloists:
+-   name: "Jeremy Huw Williams"
+    part: "baritone"
+-   name: "Sandy Cameron"
+    part: "violin"
+
+collaborators:
+-   "SSO"
+-   "university singers"
+
+poster:
+    basename: "W2018-Poster"
+    caption: "Walton: Belshazzar's Feast"
+
+directors:
+-   "Paul Phillips"
+-   "John Mauceri"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee: "$60"
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2018
+
+preregister: 2017-12-01
+
+heraldImage:
+    basename: "Rembrandt-Belshazzars-Feast-WGA19123"
+    caption: "Belshazzar's Feast by Rembrandt (WGA19123)"
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2018-01-08"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2018-01-08"
+    endDate: "2018-02-26"
+    startTime: "19:30"
+    endTime: "22:00"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2018-01-17"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+-   startDate: "2018-01-31"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+-   startDate: "2018-02-14"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2018-01-24"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+-   startDate: "2018-02-07"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+-   startDate: "2018-02-21"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2018-03-05"
+    start: "19:00"
+    location: "Bing"
+-   date: "2018-03-08"
+    start: "19:00"
+    location: "Bing"
+
+concerts:
+-   date: "2018-03-10"
+    start: "19:30"
+    location: "Bing"
+    call: "18:30"
+-   date: "2018-03-11"
+    start: "14:30"
+    location: "Bing"
+    call: "13:30"
+
+description: |
+    The Stanford Symphonic Chorus presents Walton's _Belshazzar's Feast_ in collaboration with the Stanford Symphony Orchestra and baritone Jeremy Huw Williams.

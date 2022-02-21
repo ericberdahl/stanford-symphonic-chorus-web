@@ -1,0 +1,62 @@
+quarter: "Spring 2005"
+
+syllabus:
+# MISSING: syllabus for Spring 2005
+
+repertoire:
+    main:
+    -   composer: "Franz Joseph Haydn"
+        title: "Harmonie Messe"
+    other:
+    -   composer: "Franz Joseph Haydn"
+        title: "Overture to Armida"
+        catalog: "Hob. XXVIII:12"
+    -   composer: "Wolfgang Amadeus Mozart"
+        title: "Sinfonia Concertante"
+
+soloists:
+-   name: "Elyse Nakajima"
+    part: "soprano"
+-   name: "Amy Schneider"
+    part: "mezzo-soprano"
+-   name: "Brian Thorsett"
+    part: "tenor"
+-   name: "Stan Neff"
+    part: "baritone"
+-   name: "Iris Otani"
+    part: "violin"
+-   name: "Barry Shiffman"
+    part: "viola"
+
+collaborators:
+
+poster:
+    basename: "SSC_Flyer_S2005"
+    caption: "Haydn, Harmonie Messe, Spring 2005"
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 2005
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2005
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Spring 2005
+
+concerts:
+-   date: "2005-05-20"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+

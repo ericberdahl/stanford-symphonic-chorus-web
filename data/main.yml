@@ -1,0 +1,10 @@
+# Name of the current quarter being prepared by the ensemble
+currentQuarterName: "Winter 2022"
+
+# Name of the timezone in which the ensemble rehearses and performs
+timezone: "America/Los Angeles"
+
+# Base path of the site when deployed to production servers. All internal
+# reference URLs will be pre-pended with this path when the site is built for
+# export.
+basePath: "/group/SymCh"

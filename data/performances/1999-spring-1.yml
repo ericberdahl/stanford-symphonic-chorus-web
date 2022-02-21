@@ -1,0 +1,59 @@
+quarter: "Spring 1999 (Program #1)"
+
+syllabus:
+# MISSING: syllabus for Spring 1999
+
+repertoire:
+    main:
+    -   composer: "Aaron Copland"
+        title: "Suite from Our Town"
+    other:
+    -   composer: "Alexander Glazunov"
+        title: "Violin Concerto"
+        catalog: Op. 82
+    -   composer: "Maurice Ravel"
+        title: "Tzigane"
+    -   composer: "Alexander Borodin"
+        title: 'Polovtsian Dances'
+    -   composer: "Melissa Hui"
+        title: "Always"
+
+soloists:
+-   name: "Stephanie Chase"
+    part: "violin"
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING: poster for Spring 1999
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 1999-1
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 1999-1
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Spring 1999-1
+
+concerts:
+-   date: "1999-05-21"
+    start: "20:00"
+    call: "19:00"
+    location: "Flint"
+-   date: "1999-05-22"
+    start: "20:00"
+    call: "19:00"
+    location: "SMPAC"
+
+
+
+

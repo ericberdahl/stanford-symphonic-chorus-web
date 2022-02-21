@@ -1,0 +1,62 @@
+quarter: "Winter 2002"
+
+syllabus:
+# MISSING: syllabus for Winter 2002
+
+repertoire:
+    other:
+    -   composer: "Giovanni Gabrieli"
+        title: "Canzon Primi Toni, Sacrae Symphoniae"
+    -   composer: "Samuel Barber"
+        title: "Violin Concerto"
+    main:
+    -   composer: "Wolfgang Amadeus Mozart"
+        title: "Mass in C Minor"
+
+soloists:
+-   name: "Suzanne Ramo"
+    part: "soprano"
+-   name: "Twyla Robinson"
+    part: "soprano"
+-   name: "Brian Anderson"
+    part: "tenor"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+-   name: "Caroline Campbell"
+    part: "violin"
+    
+collaborators:
+-   "SSO"
+
+poster:
+# MISSING: poster for Winter 2002
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2002
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2002
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2002
+
+concerts:
+-   date: "2002-03-01"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2002-03-02"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+

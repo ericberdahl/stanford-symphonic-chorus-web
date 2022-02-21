@@ -1,0 +1,98 @@
+quarter: "Fall 2003"
+
+syllabus: "SSC_Syllabus_Fall_2003"
+
+repertoire:
+    other:
+    -   composer: "Giacomo Puccini"
+        title: "Messa di Gloria"
+    main:
+    -   composer: "Gabriel Fauré"
+        title: "Requiem"
+        catalog: "Op. 48"
+
+soloists:
+
+collaborators:
+
+poster:
+# MISSING: posters for Fall 2003
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 2003
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 2003
+
+preregister:
+
+tuttiRehearsalNotes:
+-   date: "2003-09-22"
+    note: "Registration starts at 6:30pm"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2003-09-22"
+    endDate: "2003-10-27"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+-   frequency: "weekly"
+    startDate: "2003-11-10"
+    endDate: "2003-11-17"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+womensSectionals:
+-   frequency: "once"
+    startDate: "2003-10-01"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+-   frequency: "once"
+    startDate: "2003-10-15"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+
+mensSectionals:
+-   frequency: "once"
+    startDate: "2003-10-08"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+-   frequency: "once"
+    startDate: "2003-10-29"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+
+dressRehearsals:
+-   date: "2003-11-18"
+    start: "18:30"
+    location: "MemChu"
+-   date: "2003-11-19"
+    start: "19:00"
+    location: "MemChu"
+
+concerts:
+-   date: "2003-11-21"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2003-11-23"
+    start: "13:30"
+    call: "12:30"
+    location: "MemChu"
+
+events:
+-   date: "2003-12-12"
+    start: "19:45"
+    location: "MemChu"
+    title: "Messiah Sing/Play Along"

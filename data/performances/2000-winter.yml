@@ -1,0 +1,54 @@
+quarter: "Winter 2000"
+
+syllabus:
+# MISSING: syllabus for Winter 2000
+
+repertoire:
+    other:
+    -   composer: "Wolfgang Amadeus Mozart"
+        title: "Ein musikalischer Spaß"
+        translation: "A Musical Joke"
+        catalog: "K. 522"
+    -   composer: "Wolfgang Amadeus Mozart"
+        title: "Exsultate, jubilate"
+    main:
+    -   composer: "Franz Joseph Haydn"
+        title: "Lord Nelson Mass"
+
+soloists:
+-   name: "Suzanne Beane"
+    part: "soprano"
+-   name: "Claire Giovanetti"
+    part: "mezzo-soprano"
+-   name: "Gregory Wait"
+    part: "tenor"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+
+poster:
+# MISSING: poster for Winter 2000
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2000
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2000
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2000
+
+concerts:
+-   date: "2000-03-03"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+# MISSING: start times for concerts for Winter 2000

@@ -1,0 +1,73 @@
+quarter: "Winter 2009"
+
+syllabus:
+# MISSING: syllabus for Winter 2009
+
+repertoire:
+    main:
+    -   composer: "Tan Dun"
+        title: "Water Concerto for Water Percussion and Orchestra"
+    other:
+    -   composer: "Joji Yuasa"
+        title: "Cosmic Solitude"
+    -   composer: "Zoltán Kodály"
+        title: "Missa Brevis"
+
+soloists:
+-   name: "Haruka Fuji"
+    part: "water percussion"
+-   name: "Kimberly Johnson"
+    part: "soprano"
+-   name: "Lydia Zodda"
+    part: "soprano"
+-   name: "Alejandra Martinez"
+    part: "soprano"
+-   name: "Claire Giovannetti"
+    part: "mezzo-soprano"
+-   name: "Norman DeVol"
+    part: "tenor"
+-   name: "Michael Morris"
+    part: "baritone"
+
+collaborators:
+-   "SSO"
+
+poster:
+# MISSING: proper poster for Winter 2009
+
+directors:
+-   "Jindong Cai"
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2009
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2009
+
+preregister: 
+
+heraldImage:
+    basename: "AsianFest"
+    caption: "Stanford Pan-Asian Music Festival, Winter 2009"
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2009
+
+concerts:
+-   date: "2009-02-27"
+    start: "20:00"
+    call: "19:00"
+    location: <unknown>
+-   date: "2009-02-28"
+    start: "20:00"
+    call: "19:00"
+    location: <unknown>
+# MISSING: concert locatoins for Winter 2009
+
+
+
+

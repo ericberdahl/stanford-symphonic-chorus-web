@@ -1,0 +1,53 @@
+A piece data contains at least a title field, and may contain additional fields. The simplest piece
+looks like this:
+
+    title: "Symphony No. 9"
+
+The title field can also be an array of strings when a given piece is performed as a set or medley.
+The composite piece is rendered with each segment decorated as its own piece (e.g. italicized)
+with each segement joined as a proper English list (e.g. A, B, and C)
+
+    title:
+    -   "Nänie"
+    -   "Schicksalslied"
+
+Pieces may include a field containing the name of the composer
+
+    composer: "Beethoven"
+
+The family name of the composer is inferred (e.g. for sorting purposes) from the last word of the
+composer's name. If that is not desired, the composer's name can be specified as an array of name segments.
+When done in this way, the composer's name will be displayed by joining each segment with spaces, and
+the last element of the array will be used as the composer's family name.
+
+    composer: ["Ralph", "Vaughan Williams"]
+
+Pieces may include a field with the name of the movement from a major piece (when performing only
+one movement)
+
+    movement: "Ode to Joy"
+
+When pieces are named in a foreign language, citations might include a translation of the name
+    
+    translaton: "Requiem"
+
+Some pieces will have a commonly known name in addition to their formal name
+
+    commonTitle: "Pastorale"
+
+Some pieces will be commonly cited with a catalog reference
+
+    catalog: "Op. 65"
+
+Some pieces will be an arrangement for which the arranger should be cited
+
+    arranger: "Elgar"
+
+Given such data, the piece will be cited like this general formula:
+
+    <em>{movement}</em> from
+    <em>{title[0]}</em>, <em>{title[1]}</em>, ..., and <em>{title[N]}</em>
+    ({translation})
+    "{commonTitle}"
+    , {catalog}
+    , arranged by {arranger}

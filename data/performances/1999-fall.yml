@@ -1,0 +1,54 @@
+quarter: "Fall 1999"
+
+syllabus:
+# MISSING: syllabus for Fall 1999
+
+repertoire:
+    main:
+    -   ref: "bernstein/chichester"
+        composer: "Leonard Bernstein"
+        title: 'Chichester Psalms'
+    other:
+    -   composer: "Brian Holmes"
+        title: "Now is the Time"
+
+soloists:
+-   name: "Douglas Lawrence"
+    part: "baritone"
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING: posters for Fall 1999
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 1999
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 1999
+
+preregister:
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Fall 1999
+
+concerts:
+-   date: "1999-11-18"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "1999-11-21"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+# MISSING: confirmation of times for concerts for Fall 1999
+
+
+
+

@@ -1,0 +1,59 @@
+quarter: "Winter 2001"
+
+syllabus:
+# MISSING: syllabus for Winter 2001
+
+repertoire:
+    other:
+    -   composer: "George Frideric Handel"
+        title: "Zadok the priest (Coronation Anthems)"
+    -   composer: "Gerald Finzi" 
+        title: "Let us garlands bring"
+    main:
+    -   ref: "elgar/music makers"
+        composer: "Edward Elgar"
+        title: "The Music Makers"
+
+soloists:
+-   name: "Jennifer Lane"
+    part: "mezzo-soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+
+poster:
+# MISSING: poster for Winter 2001
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2001
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2001
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2001
+
+concerts:
+-   date: "2001-03-17"
+    start: "20:00"
+    call: "19:00"
+    location: <unknown>
+-   date: "2001-03-18"
+    start: "20:00"
+    call: "19:00"
+    location: <unknown>
+# MISSING: start times for concerts for Winter 2001
+# MISSING: locations of concerts for Winter 2001
+# MISSING: confirmation for dates of concerts for Winter 2001
+
+
+
+

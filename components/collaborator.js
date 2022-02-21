@@ -1,0 +1,71 @@
+const list = {
+    'PSO': {
+        name: 'Peninsula Symphony Orchestra',
+        link: 'https://peninsulasymphony.org'
+    },
+
+    'SSO': {
+        name: 'Stanford Symphony Orchestra',
+        link: 'https://web.stanford.edu/group/sso'
+    },
+
+    'scc': {
+        name: 'Stanford Chamber Chorale',
+        link: 'https://chorale.stanford.edu'
+    },
+
+    'sws': {
+        name: 'Stanford Wind Symphony',
+    },
+
+    'ragazzi boys': {
+        name: 'Ragazzi Boys Chorus',
+        link: 'https://ragazzi.org'
+    },
+
+    'stanford philharmonia': {
+        name: 'Stanford Philharmonia Orchestra',
+        link: 'https://web.stanford.edu/group/sso/cgi-bin/wordpress/about/stanford-philharmonia-orchestra/'
+    },
+
+    'university singers': {
+        name: 'Stanford University Singers',
+        link: 'https://usingers.stanford.edu/'
+    },
+
+    'taiko': {
+        name: 'Stanford Taiko',
+        link: 'https://taiko.stanford.edu'
+    },
+
+    'vivace': {
+        name: 'Vivace Youth Chorus',
+        link: 'https://www.vivaceyouthchorus.org/'
+    },
+
+    'jinxing dance': {
+        name: 'Jin Xing Dance Company',
+        link: 'http://www.jinxing-dance-theatre.com/'
+    },
+
+    'cantabile youth': {
+        name: 'Cantabile Youth Singers',
+        link: 'http://cantabile.org/'
+    },
+
+    'mongolian opera soloists': {
+        name: 'Mongolian National Opera soloists'
+    }
+};
+
+export default function Collaborator(props) {
+    const entry = list[props.name];
+    if (!entry) {
+        throw new Error('Unknown Collaborator name "' + props.name + '"');
+    }
+
+    return (entry.link ? 
+            <a href={entry.link}>{entry.name}</a> :
+            <span>{entry.name}</span>
+    );
+}

@@ -1,0 +1,104 @@
+quarter: "Fall 2014"
+
+syllabus: "F2014Syllabus"
+
+repertoire:
+    main:
+    -   composer: "Felix Mendelssohn"
+        title: 'Symphony No. 2 "Lobgesang"'
+        translation: "Hymn of Praise"
+    other:
+    -   title: "Fantasia on Greensleeves"
+        composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
+    -   title: "The Nutcracker"
+        prefix: "excerpts from"
+        composer: "Pyotr Ilyich Tchaikovsky"
+    -   title: "Christmas Day"
+        composer: "Gustav Holst"
+
+soloists:
+
+collaborators:
+-   "PSO"
+
+poster:
+# MISSING: poster for Fall 2014
+
+directors:
+-   "Mitchell Sardou Klein"
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee: "$40"
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 2014
+
+preregister:
+
+heraldImage:
+    basename: "Farquharson"
+    caption: "The Shortening Winter's Day is Near a Close (1903), by Joseph Farquharson"
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2014-09-22"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2003-09-22"
+    endDate: "2014-11-17"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2014-10-01"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2014-10-15"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2014-10-08"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2014-10-22"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2014-11-18"
+    start: "19:00"
+    location: "MemChu"
+-   date: "2014-11-20"
+    start: "19:00"
+    location: "MemChu"
+
+concerts:
+-   date: "2014-11-21"
+    start: "19:30"
+    call: "18:30"
+    location: "MemChu"
+-   date: "2014-11-23"
+    start: "13:30"
+    call: "12:30"
+    location: "MemChu"
+
+
+
+
+

@@ -1,0 +1,45 @@
+quarter: "Spring 1998"
+
+syllabus:
+# MISSING: syllabus for Spring 1998
+
+repertoire:
+    main:
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
+        title: "A Sea Symphony"
+
+soloists:
+
+collaborators:
+
+poster:
+# MISSING: poster for Spring 1998
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 1998
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 1998
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Spring 1998
+
+concerts:
+-   date: "1998-05-21"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: 
+    start: 1998-05-22 20:00:00 -07
+    call: 1998-05-22 19:00:00 -07
+    location: "MemChu"
+# MISSING: confirmation of start times for Spring 1998 concerts

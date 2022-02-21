@@ -1,0 +1,71 @@
+quarter: "Fall 2004"
+
+syllabus:
+# MISSING: syllabus for Fall 2004
+
+repertoire:
+    other:
+    -   composer: "Takeo Kudo"
+        title: "Interlude"
+    -   composer: "Felix Mendelssohn"
+        title: "Psalm 114"
+    -   composer: "Ernest Bloch"
+        title: "Psalm 114"
+    -   composer: "Anton Bruckner"
+        title: "Psalm 150"
+        catalog: "WAB 38"
+        ref: "bruckner/psalm-150"
+    main:
+    -   ref: "zeisl/requiem ebraico"
+        composer: "Erich Zeisl"
+        title: "Requiem Ebraico"
+        translation: "Psalm 92"
+
+soloists:
+-   name: "Roslyn Barak"
+    part: "soprano"
+-   name: "Kay Greenwald"
+    part: "mezzo-soprano"
+-   name: "Michael Sokol"
+    part: "baritone"
+
+collaborators:
+-   "PSO"
+
+poster:
+    basename: "SSC_Poster_Fall_2004"
+    caption: "Kudo, Mendelssohn, Bloch, Bruckner, Zeisl, Fall 2004"
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 2004
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 2004
+
+preregister:
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Fall 2004
+
+concerts:
+-   date: "2004-11-18"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2004-11-21"
+    start: "13:30"
+    call: "12:30"
+    location: "MemChu"
+-   date: "2004-11-22"
+    start: "19:30"
+    call: "18:30"
+    location: "emanuelsf"
+
+
+
+

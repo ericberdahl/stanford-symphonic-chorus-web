@@ -1,0 +1,55 @@
+quarter: "Spring 2007"
+
+syllabus:
+# MISSING: syllabus for Spring 2007
+
+repertoire:
+    other:
+    -   composer: "William Walton"
+        title: "Crown Imperial"
+    -   composer:
+        -   "Ralph"
+        -   "Vaughan Williams"
+        title: "Five Mystical Songs"
+    main:
+    -   composer: "John Rutter"
+        title: "Requiem"
+
+soloists:
+-   name: "Georgia Duan"
+    part: "soprano"
+-   name: "Kenneth Goodson"
+    part: "baritone"
+
+collaborators:
+
+poster:
+    basename: "E-FlyerSpring2007"
+    caption: "Stanford Symphonic Chorus, Rutter, Requiem, Spring 2007"
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 2007
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2007
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Spring 2007
+
+concerts:
+-   date: "2007-05-18"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+

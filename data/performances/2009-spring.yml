@@ -1,0 +1,58 @@
+quarter: "Spring 2009"
+
+syllabus:
+# MISSING: syllabus for Spring 2009
+
+repertoire:
+    main:
+    -   composer: "Wolfgang Amadeus Mozart"
+        title: "Krönungsmesse"
+        translation: "Coronation Mass"
+    other:
+    -   composer: "Franz Joseph Haydn"
+        title: "Te Deum"
+    -   composer: "Franz Joseph Haydn"
+        title: "Overture to Armida"
+        catalog: "Hob. XXVIII:12"
+
+soloists:
+-   name: "Elyse Nakajima"
+    part: "soprano"
+-   name: "Amy Schneider"
+    part: "mezzo-soprano"
+-   name: "Mark Mueller"
+    part: "tenor"
+-   name: "Stephen Walsh"
+    part: "baritone"
+
+collaborators:
+
+poster:
+    basename: "SSCPosterS2009"
+    caption: "Stanford Symphonic Chorus poster, Spring 2009"
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Spring 2009
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2009
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Spring 2009
+
+concerts:
+-   date: "2009-05-15"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+

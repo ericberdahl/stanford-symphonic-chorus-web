@@ -1,0 +1,24 @@
+@import 'base';
+
+.segment {
+	.content {
+		font-size: 0.8021rem;
+		font-family: $font-family-sanserif;
+		line-height: 1.3333em;
+		color: $color-warmgray90;
+	}
+
+	.title {
+		font-size: 0.5729rem;
+		font-family: $font-family-serif;
+
+		border-bottom: 6px solid $color-red;
+		letter-spacing: 2px;
+        color: $color-red;
+
+		text-transform: uppercase;
+		padding-bottom: 3px;
+		margin-bottom: 5px;
+		font-weight: normal;
+	}
+}

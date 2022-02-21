@@ -1,0 +1,50 @@
+quarter: "Fall 2000"
+
+syllabus:
+# MISSING: syllabus for Fall 2000
+
+repertoire:
+    main:
+    -   ref: "brahms/requiem"
+        composer: "Johannes Brahms"
+        title: "Ein Deutsches Requiem"
+        translation: "A German Requiem"
+        catalog: "Op. 45"
+
+soloists:
+
+collaborators:
+
+poster:
+# MISSING: posters for Fall 2000
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Fall 2000
+    
+membershipLimit:
+# MISSING: membershipLimit for Fall 2000
+
+preregister:
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Fall 2000
+
+concerts:
+-   date: "2000-11-17"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2000-11-19"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+# MISSING: confirmation of times for concerts for Fall 2000
+
+
+
+

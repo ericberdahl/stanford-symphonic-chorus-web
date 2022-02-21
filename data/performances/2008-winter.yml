@@ -1,0 +1,62 @@
+quarter: "Winter 2008"
+
+syllabus:
+# MISSING: syllabus for Winter 2008
+
+repertoire:
+    main:
+    -   ref: "orff/carmina burana"
+        composer: "Carl Orff"
+        title: "Carmina Burana"
+    other:
+    -   composer: "Henri Vieuxtemps"
+        title: "Violin Cncerto"
+
+soloists:
+-   name: "Diane Squires"
+    part: "soprano"
+-   name: "Brian Staufenbiel"
+    part: "tenor"
+-   name: "Jeffrey Fields"
+    part: "bass"
+-   name: "Christina Ho"
+    part: "violin"
+
+collaborators:
+-   "SSO"
+-   "university singers"
+-   "cantabile youth"
+
+poster:
+    basename: "SSC-E-PosterW2008"
+    caption: "Carl Orff, Carmina Burana, Winter 2008"
+
+directors:
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee:
+# MISSING: registrationFee for Winter 2008
+    
+membershipLimit:
+# MISSING: membershipLimit for Winter 2008
+
+preregister: 
+
+tuttiRehearsals:
+# MISSING: rehearsal schedule for Winter 2008
+
+concerts:
+-   date: "2008-02-08"
+    start: "20:00"
+    call: "19:00"
+    location: "Dink"
+-   date: "2008-02-10"
+    start: "14:30"
+    call: "13:30"
+    location: "Dink"
+
+
+
+

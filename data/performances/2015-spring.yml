@@ -1,0 +1,105 @@
+quarter: "Spring 2015"
+
+syllabus: "S2015 Syllabus"
+
+repertoire:
+    main:
+    -   composer: "Franz Joseph Haydn"
+        title: "Missa in tempore belli"
+        commonTitle: "Paukenmesse"
+        catalog: "Hob. XXII:9"
+    other:
+    -   composer: "Franz Joseph Haydn"
+        title: "Overture to Armida"
+        catalog: "Hob. XXVIII:12"
+    -   composer: "Franz Joseph Haydn"
+        title: "Cello Concerto in C Major"
+        catalog: "Hob. VIIb:1"
+
+soloists:
+-   name: "Maya Kherani"
+    part: "soprano"
+-   name: "Claire Giovanetti"
+    part: "mezzo-soprano"
+-   name: "Corey Head"
+    part: "tenor"
+-   name: "Nik Nackley"
+    part: "baritone"
+
+collaborators:
+
+poster:
+    basename: "S2015-Poster"
+    caption: "Haydn: Missa in Tempore Belli"
+
+directors:
+-   "Stephen M. Sano"
+
+instructors:
+-   "Stephen M. Sano"
+
+registrationFee: "$40"
+    
+membershipLimit:
+# MISSING: membershipLimit for Spring 2015
+
+preregister: 
+
+tuttiRehearsalNotes:
+-   note: "Registration begins at 6:30 PM."
+    date: "2015-03-30"
+
+tuttiRehearsals:
+-   frequency: "weekly"
+    startDate: "2015-03-30"
+    endDate: "2015-05-11"
+    startTime: "19:15"
+    endTime: "21:45"
+    location: "CRH"
+
+womensSectionals:
+-   startDate: "2015-04-08"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2015-04-22"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+mensSectionals:
+-   startDate: "2015-04-15"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+-   startDate: "2015-04-29"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "CRH"
+    frequency: "once"
+
+dressRehearsals:
+-   date: "2015-05-12"
+    start: "19:00"
+    location: "MemChu"
+-   date: "2015-05-13"
+    start: "19:00"
+    location: "MemChu"
+
+concerts:
+-   date: "2015-05-15"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+-   date: "2015-05-16"
+    start: "20:00"
+    call: "19:00"
+    location: "MemChu"
+
+
+
+
+
