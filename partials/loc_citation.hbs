@@ -1,7 +1,0 @@
-{{#x-let . style=(_defaultTo style "casual") }}
-    {{#with (ssc-findLocation this.loc) }}
-        {{#if this.link}}<a href="{{ this.link }}">{{/if}}
-            {{_get this ../style}}
-        {{~#if this.link}}</a>{{/if~}}
-    {{/with}}
-{{/x-let}}

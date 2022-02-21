@@ -1,5 +1,0 @@
-{{#x-let . _style=(ssc-findLightboxStyle (_defaultTo this.style 'default')) }}
-    <a class="{{ this._style.anchorClass }}" href="{{ this.image }}" title="{{{ this.caption }}}" rel="mediabox[{{ this.width }} {{ this.height }}]">
-        <img class="{{ this._style.displayClass }}" src="{{ _defaultTo this.display this.image }}" width="{{ this.img_width }}" height="{{ _defaultTo this.img_height (_round (_divide (_multiply this.height this.img_width) this.width)) }}" alt="{{{ this.caption }}}">
-    </a>
-{{/x-let}}
