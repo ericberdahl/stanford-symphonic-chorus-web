@@ -107,7 +107,7 @@ function DressRehearsals({ quarter }) {
         return (
             <>
                 <span>Dress rehearsal</span>
-                {rehearsal.repertoire && (<RepertoireList repertoire={rehearsal.repertoire}/>)}
+                {rehearsal.repertoire && (<RepertoireList repertoire={rehearsal.repertoire.full}/>)}
             </>
         )
     }
@@ -128,7 +128,7 @@ function Concerts({ quarter }) {
         return (
             <>
                 <span>Concert call for <TimeOfDay iso={concert.start}/> concert</span>
-                {concert.repertoire && (<RepertoireList repertoire={concert.repertoire}/>)}
+                {concert.repertoire && (<RepertoireList repertoire={concert.repertoire.full}/>)}
             </>
         )
     }
@@ -159,7 +159,7 @@ function Overview({ quarter, shortForm }) {
         <>
             <tr>
                 <td>Repertoire:</td>
-                <td><RepertoireList repertoire={quarter.repertoire.all}/></td>
+                <td><RepertoireList repertoire={quarter.repertoire.full}/></td>
             </tr>
 
             {0 < quarter.soloists.length &&

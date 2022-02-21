@@ -151,17 +151,17 @@ export class Concert extends BasicEvent {
 }
 
 export type SerializedDressRehearsal = SerializedBasicEvent & {
-    repertoire? :   SerializedPerformancePiece[];
+    repertoire? :   SerializedPerformanceRepertoire;
 }
 
 export type DressRehearsalStaticProps = BasicEventStaticProps & {
-    repertoire :    PerformancePieceStaticProps[];
+    repertoire :    PerformanceRepertoireStaticProps;
 }
 
 export class DressRehearsal extends BasicEvent {
-    readonly repertoire :   PerformancePiece[];
+    readonly repertoire :   PerformanceRepertoire;
 
-    private constructor(start : DateTime, location : string, repertoire : PerformancePiece[]) {
+    private constructor(start : DateTime, location : string, repertoire : PerformanceRepertoire) {
         super(start, location);
         this.repertoire = repertoire;
     }
@@ -170,13 +170,13 @@ export class DressRehearsal extends BasicEvent {
         return {
             ...await super.getStaticProps(),
 
-            repertoire: this.repertoire ? await Promise.all(this.repertoire.map((r) => r.getStaticProps())) : null,
+            repertoire: this.repertoire ? await this.repertoire.getStaticProps() : null,
         };
     }
 
     static async deserialize(data : SerializedDressRehearsal) : Promise<DressRehearsal> {
         return new DressRehearsal(createDateTime(data.date, data.start), data.location,
-                                  data.repertoire ? await Promise.all(data.repertoire.map((r) => PerformancePiece.deserialize(r))) : null);
+                                  data.repertoire ? await PerformanceRepertoire.deserialize(data.repertoire) : null);
     }
 }
 
