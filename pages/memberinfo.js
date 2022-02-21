@@ -1,4 +1,5 @@
 import Covid19MitigationPolicy from '../components/covid19MitigationPolicy'
+import { MonthAndYear } from '../components/dateTime'
 import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
 import PageLink from '../components/pageLink'
@@ -8,15 +9,13 @@ import TitledSegment from '../components/titledSegment'
 
 import { Model } from '../common/model'
 
-import { DateTime } from 'luxon'
-
 import styles from '../styles/memberinfo.module.scss'
 
 function Introduction({ navItems, quarter }) {
-    // If the member info page ever needs to be displayed for historical performances, this logic and content
-    // need to be adjusted to accommodate the fact that we don't have preregister dates for all performances
-    // in the historical record.
-    const preregisterDate = DateTime.fromISO(quarter.preregisterDate).toFormat('MMMM yyyy');
+    // TRICKY:
+    // If the member info page ever needs to be displayed for historical performances, the MonthAndYear logic
+    // below needs to be adjusted to accommodate the fact that we don't have preregister dates for all
+    // performances in the historical record.
 
     return (
         <div className={styles.introduction}>
@@ -32,7 +31,7 @@ function Introduction({ navItems, quarter }) {
                 <p><a href="/assets/Choral Studies Liability Waiver Form.pdf">Choral Studies Liability Waiver</a></p>
 
                 <p>
-                    Singers must register online using the webform which will be emailed to last quarter's members in {preregisterDate}.
+                    Singers must register online using the webform which will be emailed to last quarter's members in <MonthAndYear iso={quarter.preregisterDate}/>.
                     New members please contact <Person role="administrator" subject="Re SSC Registration Link"/> to receive the registration link.
                 </p>
                 <p>

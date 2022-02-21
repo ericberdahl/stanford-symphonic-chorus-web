@@ -41,6 +41,12 @@ export function Month({ dateTime, iso }) {
     );
 }
 
+export function MonthAndYear({ dateTime, iso }) {
+    return (
+        getDateTime(dateTime, iso).toLocaleString({ month: "long", year: "numeric" })
+    );
+}
+
 export function TimeOfDay({ dateTime, iso }) {
     return (
         getDateTime(dateTime, iso).toLocaleString(DateTime.TIME_SIMPLE)
