@@ -10,7 +10,22 @@ import SpaceSeparatedPhrase from '../../components/spaceSeparatedPhrase';
 
 import { Model } from "../../common/model";
 
+import Link from 'next/link';
+
 import styles from '../../styles/performances_id.module.scss';
+
+function PracticeFileSection({ section }) {
+    return (
+        <>
+            <h2>{section.title}</h2>
+            <ol>
+                {section.files.map((f, index) => (
+                    <li key={index}>{f.title} <Link href={f.assetPath}>{'(' + f.assetLabel + ')'}</Link></li>
+                ))}
+            </ol>
+        </>
+    );
+}
 
 function Introduction({ navItems }) {
     return (
@@ -282,6 +297,16 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
 
                 <h2 id='concerts'>Concerts</h2>
                 <div><Concerts quarter={currentQuarter}/></div>
+
+                {0 < currentQuarter.practiceFiles.length && (
+                    <>
+                        <div class={styles.practiceFiles}>
+                            {currentQuarter.practiceFiles.map((p, index) => (
+                                <div><PracticeFileSection section={p} key={index}/></div>
+                            ))}
+                        </div>
+                    </>
+                )}
 
                 {0 < nextQuarters.length && (
                     <>

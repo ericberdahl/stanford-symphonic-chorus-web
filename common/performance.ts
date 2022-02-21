@@ -3,6 +3,7 @@ import { FileRoutes, fileRoutesStaticProps, FileRouteStaticProp, ImageRoutes, Im
 import { Gallery, GalleryRefStaticProps } from './gallery'
 import { Model } from './model'
 import { PerformancePiece, PerformancePieceStaticProps, SerializedPerformancePiece } from './performancePiece'
+import { PracticeFileSection, PracticeFileSectionStaticProps, SerializedPracticeFileSection  } from './practiceFiles';
 import { Rehearsal, RehearsalStaticProps, SerializedRehearsalSequence } from './rehearsal'
 import { Soloist, SoloistStaticProps, SerializedSoloist } from './soloist'
 import { makeSlug } from './slug';
@@ -191,6 +192,7 @@ type SerializedRehearsalNote = {
 }
 
 type SerializedPerformance = {
+    practiceFiles? : SerializedPracticeFileSection[];
     quarter : string;           // human-readable name of quarter
     syllabus : string;          // basename of syllabus asset
     directors? : string[];      // list of names of the directors
@@ -232,6 +234,7 @@ export type PerformanceStaticProps = {
     instructors :           string[];
     membershipLimit :       number;
     posterRoutes :          ImageRoutesStaticProps;
+    practiceFiles :         PracticeFileSectionStaticProps[];
     preregisterDate :       string;   // ISO date-time
     quarter :               string;
     registrationFee :       string;
@@ -255,6 +258,7 @@ export class Performance {
     readonly instructors : string[]                 = [];
     readonly membershipLimit : number;
     readonly preregisterDate : DateTime;
+    readonly practiceFiles : PracticeFileSection[]  = [];
     readonly quarter : string                       = '';
     readonly registrationFee : string;
     readonly rehearsalPieces : PerformancePiece[]   = [];
@@ -353,6 +357,7 @@ export class Performance {
             instructors:            this.instructors,
             membershipLimit:        this.membershipLimit,
             posterRoutes:           imageRoutesStaticProps(this.posterRoutes),
+            practiceFiles:          await Promise.all(this.practiceFiles.map((p) => p.getStaticProps())),
             preregisterDate:        this.preregisterDate?.toISO() || null,
             quarter:                this.quarter,
             registrationFee:        this.registrationFee,
@@ -367,6 +372,8 @@ export class Performance {
     }
 
     static async deserialize(data : SerializedPerformance, model : Model) : Promise<Performance> {
+        // TODO : deserialize practiceFiles
+
         const addRehearsalSequences = (sequences : SerializedRehearsalSequence[], rehearsals : Rehearsal[]) => {
             sequences.forEach((s) => rehearsals.push(...Rehearsal.deserializeSequence(s)));
             rehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
@@ -441,6 +448,10 @@ export class Performance {
             result.dressRehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
         }
     
+        if (data.practiceFiles) {
+            result.practiceFiles.push(...await Promise.all(data.practiceFiles.map((p) => PracticeFileSection.deserialize(p))));
+        }
+
         if (data.supplements) {
             result.supplements.push(...data.supplements);
         }
