@@ -10,6 +10,7 @@ import yaml from 'yaml';
 
 import getConfig from 'next/config'
 
+import { strict as assert } from 'assert';
 import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
@@ -38,15 +39,6 @@ export class Model {
         const result = new Repertoire();
         this.repertoire.pieces.filter((p) => p.fylp).forEach((p) => result.addPiece(p));
         return result;
-    }
-
-    addPerformance(p : Performance) {
-        this.performances.push(p);
-        this.performances.sort((a, b) => b.compare(a));
-    
-        if (p.quarter == serverRuntimeConfig.currentQuarterName) {
-            this._currentQuarter = p;
-        }
     }
 
     getPerformanceById(id : string) : Performance {
@@ -79,14 +71,23 @@ export class Model {
     
         const performanceDatafiles = await glob('*.yml', { cwd: path.join(basePath, PERFORMANCE_DATA_DIR), realpath: true });
         const performances = await Promise.all(performanceDatafiles.map(async (filepath) => {            
-            return Performance.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')), model);
+            return Performance.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
         }));
-    
+        performances.forEach((perf) => {
+            perf.repertoire.full.forEach((piece) => {
+                assert.ok(piece.piece === model.repertoire.addPiece(piece.piece), `model.repertoire detected a piece collision`);
+            });
+        });
+        model.performances.push(...performances);
+        model.performances.sort((a, b) => b.compare(a));
+        model._currentQuarter = model.performances.find((p) => p.quarter == serverRuntimeConfig.currentQuarterName);
+
         const fylpDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, FYLP_DATA_DIR), realpath: true });
         const fylps = await Promise.all(fylpDatafiles.map(async (filepath) => {
             return FYLP.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
         }));
         fylps.forEach((f) => {
+            assert.ok(f.piece === model.repertoire.findPiece(f.piece), `model.repertoire detected a piece collision from an fylp`);
             f.piece = model.repertoire.findPiece(f.piece);
         });
     

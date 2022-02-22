@@ -1,7 +1,6 @@
 import { createDateTime, compareDateTime } from './dateTimeUtils';
 import { FileRoutes, fileRoutesStaticProps, FileRouteStaticProp, ImageRoutes, ImageRoutesStaticProps, imageRoutesStaticProps } from './fileRoutes';
 import { Gallery, GalleryRefStaticProps } from './gallery'
-import { Model } from './model'
 import { PerformancePiece, PerformancePieceStaticProps, SerializedPerformancePiece } from './performancePiece'
 import { PracticeFileSection, PracticeFileSectionStaticProps, SerializedPracticeFileSection  } from './practiceFiles';
 import { Rehearsal, RehearsalStaticProps, SerializedRehearsalSequence } from './rehearsal'
@@ -13,8 +12,6 @@ import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import getConfig from 'next/config'
-
-import { strict as assert } from 'assert';
 
 const { serverRuntimeConfig } = getConfig()
 
@@ -371,7 +368,7 @@ export class Performance {
         };
     }
 
-    static async deserialize(data : SerializedPerformance, model : Model) : Promise<Performance> {
+    static async deserialize(data : SerializedPerformance) : Promise<Performance> {
         const addRehearsalSequences = (sequences : SerializedRehearsalSequence[], rehearsals : Rehearsal[]) => {
             sequences.forEach((s) => rehearsals.push(...Rehearsal.deserializeSequence(s)));
             rehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
@@ -398,7 +395,6 @@ export class Performance {
         result.concerts.sort((a, b) => -compareDateTime(a.start, b.start));
     
         repertoire.full.forEach((p) => {
-            assert.ok(p.piece === model.repertoire.addPiece(p.piece), `model.repertoire detected a piece collision`); // TODO : remove Repertoire
             p.piece.addPerformance(result);
         });
                             
@@ -453,9 +449,7 @@ export class Performance {
         if (data.supplements) {
             result.supplements.push(...data.supplements);
         }
-    
-        model.addPerformance(result);
-    
+        
         return result;
     }
 }
