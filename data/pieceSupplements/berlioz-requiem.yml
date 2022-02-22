@@ -1,10 +1,10 @@
-title: "Text – Berlioz _Requiem_"
+title: "Text - Berlioz' Requiem"
 
 piece:
     composer: "Hector Berlioz"
     title: "Requiem"
 
-breadcrumb: "Berlioz _Requiem_ Text"
+breadcrumb: "Berlioz' Requiem Text"
 
 content: |
     Hector Berlioz
@@ -13,7 +13,11 @@ content: |
     <table>
         <tbody>
             <tr>
-                <td colspan="2">I. Requiem et Kyrie</td>
+                <td colSpan="2">
+                    <hr/>
+                    I. Requiem et Kyrie
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -40,7 +44,11 @@ content: |
                 </td>
             </tr>
             <tr>
-                <td colspan="2">II. Dies irae</td>
+                <td colSpan="2">
+                    <hr/>
+                    II. Dies irae
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -87,7 +95,11 @@ content: |
                 </td>
             </tr>
             <tr>
-                <td colspan="2">III. Quid sum miser</td>
+                <td colSpan="2">
+                    <hr/>
+                    III. Quid sum miser
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -114,7 +126,11 @@ content: |
                 </td>
             </tr>
             <tr>
-                <td colspan="2">IV. Rex tremendae</td>
+                <td colSpan="2">
+                    <hr/>
+                    IV. Rex tremendae
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -149,7 +165,11 @@ content: |
                 </td>
             </tr>
             <tr>
-                <td colspan="2">V. Quaerens me</td>
+                <td colSpan="2">
+                    <hr/>
+                    V. Quaerens me
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -192,7 +212,11 @@ content: |
                 </td>
             </tr>
             <tr>
-                <td colspan="2">VI. Lacrymosa</td>
+                <td colSpan="2">
+                    <hr/>
+                    VI. Lacrymosa
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -211,7 +235,11 @@ content: |
                 </td>
             </tr>
             <tr>
-                <td colspan="2">VII. Offertorium</td>
+                <td colSpan="2">
+                    <hr/>
+                    VII. Offertorium
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -238,7 +266,11 @@ content: |
                 </td>
             </tr>
             <tr>
-                <td colspan="2">VIII. Hostias</td>
+                <td colSpan="2">
+                    <hr/>
+                    VIII. Hostias
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -255,7 +287,11 @@ content: |
                 </td>
             </tr>
             <tr>
-                <td colspan="2">IX. Sanctus</td>
+                <td colSpan="2">
+                    <hr/>
+                    IX. Sanctus
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -270,7 +306,11 @@ content: |
                 </td>
             </tr>
             <tr>
-                <td colspan="2">X. Agnus Dei</td>
+                <td colSpan="2">
+                    <hr/>
+                    X. Agnus Dei
+                    <hr/>
+                </td>
             </tr>
             <tr>
                 <td>

@@ -11,28 +11,138 @@ breadcrumb: "Brahms Requiem Text"
 content: |
     The German text below was selected by Brahms from the Lutheran Bible. The English is from the King James Bible.
 
-    |        | German | English |
-    | :----- | :----- | :------ |
-    | I  |||
-    | Matthew 5:4 | Selig sind, die da Leid tragen, denn sie sollen getröstet werden. | Blessed are they that mourn; for they shall be comforted. |
-    | Psalm 126:5,6 | Die mit Tränen säen, werden mit Freuden ernten.<br/>Sie gehen hin und weinen und tragen edlen Samen, und kommen mit Freuden und bringen ihre Garben. | They that sow in tears shall reap in joy.<br/>He that goeth forth and weepeth, bearing precious seed, shall doubtless come again with rejoicing, bringing his sheaves with him. |
-    | II  |||
-    | 1 Peter 1:24 | Denn alles Fleisch ist wie Gras und alle Herrlichkeit des Menschen wie des Grases Blumen. Das Gras ist verdorret und die Blume abgefallen. | For all flesh is as grass, and all the glory of man as the flower of grass. The grass withereth, and the flower thereof falleth away. |
-    | James 5:7 | So seid nun geduldig, lieben Brüder, bis auf die Zukunft des Herrn. Siehe, ein Ackermann wartet auf die köstliche Frucht der Erde und is geduldig darüber, bis er empfahe den Morgenregen und Abendregen. | Be patient therefore, brethren, unto the coming of the Lord. Behold, the husbandmen waiteh for the precious fruit of the earth, and hath long patience for it, until he receive the early and latter rain. |
-    | 1 Peter 1:25 | Aber des Herrn Wort bleibet in Ewigkeit. | But the word of the Lord endureth for ever. |
-    | Isaiah 35:10 | Die Erlöseten des Herrn werden wieder kommen, und gen Zion kommen mit Jauchzen; ewige Freude wird über ihrem Haupte sein; Freude und Wonne werden sie ergreifen und Schmerz und Seufzen wird weg müssen. | And the ransomed of the Lord shall return, and come to Zion with songs and everlasting joy upon their heads: they shall obtain joy and gladness, and sorrow and sighing shall flee away. |
-    | III  |||
-    | Psalm 39:4-7 | Herr, lehre doch mich, daß ein Ende mit mir haben muß, und mein Leben ein Ziel hat, und ich davon muß. Siehe, meine Tage sind einer Hand breit vor dir, und mein Leben ist wie nichts vor dir. Ach, wie gar nichts sind alle Menschen, die doch so sicher leben. Sie gehen daher wie ein Schemen, und machen ihnen viel vergebliche Unruhe; sie sammeln und wissen nicht wer es kriegen vird. Nun Herr, wess soll ich mich trösten? Ich hoffe auf dich. | Lord, make me to know mine end, and the measure of my days, what it is: that I may know how frail I am. | Behold, thou hast made my days as an handbreadth; and mine age is as nothing before thee. Surely every man walketh in a vain shew: surely they are disquieted in vain: he heapeth up riches, and knoweth not who shall gather them. And now, Lord, what wait I for? my hope is in thee. |
-    | Wisdom of Solomon 3:1 | Der Gerechten Seelen sind in Gottes Hand und keine Qual rühret sie an. | But the souls of the righteous are in the hand of God, and there shall no torment touch them. |
-    | IV  |||
-    | Psalm 84:1,2,4 | Wie lieblich sind deine Wohnungen, Herr Zebaoth! Meine seele verlanget und sehnet sich nach den Vorhöfen des Herrn; mein Leib und Seele freuen sich in dem lebendigen Gott. Wohl denen, die in deinem Hause wohnen, die loben dich immerdar. | How amiable are they tabernacles, O Lord of hosts! My soul longeth, yea, even fainteth for the courts of the Lord: my heart and my flesh crieth out for the living God. Blessed are they that dwell in thy house: they will be still praising thee. |
-    | V  |||
-    | John 16:22 | Ihr habt nun Traurigkeit; aber ich will euch wieder sehen und euer Herz soll sich freuen und eure Freude soll neimand von euch nehmen. | And ye now therefore have sorrow; but I will see you again, and your heart shall rejoice, and your joy no man taketh from you. |
-    | Ecclesiasticus 51:27 | Sehet mich an: Ich habe eine kleine Zeit Mühe und Arbeit gehabt und habe großen Trost funden. | Ye see how for a little while I labor and toil, yet have I found much rest. |
-    | Isaiah 66:13 | Ich will euch trösten, wie Einen seine Mutter tröstet. | As one whom his mother comforteth, so will I comfort you. |
-    | VI  ||| 
-    | Hebrews 13:14 | Denn wir haben hie keine bleibende Statt, sondern die zukünftige suchen wir. | For here have we no continuing city, but we seek one to come. |
-    | 1 Corinthians 15:51,52,54,55 | Siehe, ich sage euch ein Geheimnis: Wir werden nicht alle entschlafen, wir werden aber alle verwandelt werden; und dasselbige plötzlich, in einem Augenblick, zu der Zeit der letzten Posaune. Denn es wird die Posaune schallen, und die Toten wervandelt werden. Dann wird erfüllet werden das Wort, das geschrieben steht: Der Tod is verschlungen in den Sieg. Tod, wo ist dein Stachel? Hölle, wo ist dein Sieg? | Behold, I shew you a mystery; We shall not all sleep, but we shall all be changed. In a moment, in the twinkling of an eye, at the last trump: for the trumpet shall sound, and the dead shall be raised incorruptible, and we shall be changed. …then shall be brought to pass the saying that is written, Death is swallowed up in victory. O death, where is they sting? O grave, where is they victory? |
-    | Revelation 4:11 | Herr, du bist Würdig zu nehmen Preis und Ehre und Kraft, denn du hast alle Dinge geschaffen, und durch deinen Willen haben, sie das Wesen und sind geschaffen. | Thou art worthy, O Lord, to receive glory and honour and power: for thou hast created all things, and for thy pleasure they are and were created. |
-    | VII  |||
-    | Revelation 14:13 | Selig sind die Toten, die in dem Herrn sterben, von nun an. Ja, der Geist spricht, daß sie ruhen von ihrer Arbeit; denn ihre Werke folgen ihnen nach. | Blessed are the dead which die in the Lord from henceforth: Yea, saith the Spirit, that they may rest from their labours; and their works do follow them. |
+    <table>
+        <tbody>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td></td>
+                <td>German</td>
+                <td>English</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td colSpan="3">I</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Matthew 5:4</td>
+                <td>Selig sind, die da Leid tragen, denn sie sollen getröstet werden.</td>
+                <td>Blessed are they that mourn; for they shall be comforted.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Psalm 126:5,6</td>
+                <td>Die mit Tränen säen, werden mit Freuden ernten.<br/>Sie gehen hin und weinen und tragen edlen Samen, und kommen mit Freuden und bringen ihre Garben.</td>
+                <td>They that sow in tears shall reap in joy.<br/>He that goeth forth and weepeth, bearing precious seed, shall doubtless come again with rejoicing, bringing his sheaves with him.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td colSpan="3">II</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>1 Peter 1:24</td>
+                <td>Denn alles Fleisch ist wie Gras und alle Herrlichkeit des Menschen wie des Grases Blumen. Das Gras ist verdorret und die Blume abgefallen.</td>
+                <td>For all flesh is as grass, and all the glory of man as the flower of grass. The grass withereth, and the flower thereof falleth away.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>James 5:7</td>
+                <td>So seid nun geduldig, lieben Brüder, bis auf die Zukunft des Herrn. Siehe, ein Ackermann wartet auf die köstliche Frucht der Erde und is geduldig darüber, bis er empfahe den Morgenregen und Abendregen.</td>
+                <td>Be patient therefore, brethren, unto the coming of the Lord. Behold, the husbandmen waiteh for the precious fruit of the earth, and hath long patience for it, until he receive the early and latter rain.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>1 Peter 1:25</td>
+                <td>Aber des Herrn Wort bleibet in Ewigkeit.</td>
+                <td>But the word of the Lord endureth for ever.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Isaiah 35:10</td>
+                <td>Die Erlöseten des Herrn werden wieder kommen, und gen Zion kommen mit Jauchzen; ewige Freude wird über ihrem Haupte sein; Freude und Wonne werden sie ergreifen und Schmerz und Seufzen wird weg müssen.</td>
+                <td>And the ransomed of the Lord shall return, and come to Zion with songs and everlasting joy upon their heads: they shall obtain joy and gladness, and sorrow and sighing shall flee away.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td colSpan="3">III</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Psalm 39:4-7</td>
+                <td>Herr, lehre doch mich, daß ein Ende mit mir haben muß, und mein Leben ein Ziel hat, und ich davon muß. Siehe, meine Tage sind einer Hand breit vor dir, und mein Leben ist wie nichts vor dir. Ach, wie gar nichts sind alle Menschen, die doch so sicher leben. Sie gehen daher wie ein Schemen, und machen ihnen viel vergebliche Unruhe; sie sammeln und wissen nicht wer es kriegen vird. Nun Herr, wess soll ich mich trösten? Ich hoffe auf dich.</td>
+                <td>Lord, make me to know mine end, and the measure of my days, what it is: that I may know how frail I am. Behold, thou hast made my days as an handbreadth; and mine age is as nothing before thee. Surely every man walketh in a vain shew: surely they are disquieted in vain: he heapeth up riches, and knoweth not who shall gather them. And now, Lord, what wait I for? my hope is in thee.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Wisdom of Solomon 3:1</td>
+                <td>Der Gerechten Seelen sind in Gottes Hand und keine Qual rühret sie an.</td>
+                <td>But the souls of the righteous are in the hand of God, and there shall no torment touch them.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td colSpan="3">IV</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Psalm 84:1,2,4</td>
+                <td>Wie lieblich sind deine Wohnungen, Herr Zebaoth! Meine seele verlanget und sehnet sich nach den Vorhöfen des Herrn; mein Leib und Seele freuen sich in dem lebendigen Gott. Wohl denen, die in deinem Hause wohnen, die loben dich immerdar.</td>
+                <td>How amiable are they tabernacles, O Lord of hosts! My soul longeth, yea, even fainteth for the courts of the Lord: my heart and my flesh crieth out for the living God. Blessed are they that dwell in thy house: they will be still praising thee.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td colSpan="3">V</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>John 16:22</td>
+                <td>Ihr habt nun Traurigkeit; aber ich will euch wieder sehen und euer Herz soll sich freuen und eure Freude soll neimand von euch nehmen.</td>
+                <td>And ye now therefore have sorrow; but I will see you again, and your heart shall rejoice, and your joy no man taketh from you.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Ecclesiasticus 51:27</td>
+                <td>Sehet mich an: Ich habe eine kleine Zeit Mühe und Arbeit gehabt und habe großen Trost funden.</td>
+                <td>Ye see how for a little while I labor and toil, yet have I found much rest.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Isaiah 66:13</td>
+                <td>Ich will euch trösten, wie Einen seine Mutter tröstet.</td>
+                <td>As one whom his mother comforteth, so will I comfort you.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td colSpan="3">VI</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Hebrews 13:14</td>
+                <td>Denn wir haben hie keine bleibende Statt, sondern die zukünftige suchen wir.</td>
+                <td>For here have we no continuing city, but we seek one to come.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>1 Corinthians 15:51,52,54,55</td>
+                <td>Siehe, ich sage euch ein Geheimnis: Wir werden nicht alle entschlafen, wir werden aber alle verwandelt werden; und dasselbige plötzlich, in einem Augenblick, zu der Zeit der letzten Posaune. Denn es wird die Posaune schallen, und die Toten wervandelt werden. Dann wird erfüllet werden das Wort, das geschrieben steht: Der Tod is verschlungen in den Sieg. Tod, wo ist dein Stachel? Hölle, wo ist dein Sieg?</td>
+                <td>Behold, I shew you a mystery; We shall not all sleep, but we shall all be changed. In a moment, in the twinkling of an eye, at the last trump: for the trumpet shall sound, and the dead shall be raised incorruptible, and we shall be changed. …then shall be brought to pass the saying that is written, Death is swallowed up in victory. O death, where is they sting? O grave, where is they victory?</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Revelation 4:11</td>
+                <td>Herr, du bist Würdig zu nehmen Preis und Ehre und Kraft, denn du hast alle Dinge geschaffen, und durch deinen Willen haben, sie das Wesen und sind geschaffen.</td>
+                <td>Thou art worthy, O Lord, to receive glory and honour and power: for thou hast created all things, and for thy pleasure they are and were created.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td colSpan="3">VII</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+            <tr>
+                <td>Revelation 14:13</td>
+                <td>Selig sind die Toten, die in dem Herrn sterben, von nun an. Ja, der Geist spricht, daß sie ruhen von ihrer Arbeit; denn ihre Werke folgen ihnen nach.</td>
+                <td>Blessed are the dead which die in the Lord from henceforth: Yea, saith the Spirit, that they may rest from their labours; and their works do follow them.</td>
+            </tr>
+            <tr><td colSpan="3"><hr/></td></tr>
+        </tbody>
+    </table>
