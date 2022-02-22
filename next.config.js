@@ -12,9 +12,6 @@ const COLLABORATORS_FILENAME   = path.join(process.cwd(), 'data', 'collaborators
 const LOCATIONS_FILENAME       = path.join(process.cwd(), 'data', 'locations.yml');
 const PEOPLE_FILENAME          = path.join(process.cwd(), 'data', 'people.yml');
 
-// TODO : move roles data from components/person.js into serverRuntimeConfig
-// TODO : move location data from components/location.js into serverRuntimeConfig
-
 module.exports = (phase, { defaultConfig }) => {
 
     const nextConfig = {

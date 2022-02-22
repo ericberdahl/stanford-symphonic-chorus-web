@@ -372,8 +372,6 @@ export class Performance {
     }
 
     static async deserialize(data : SerializedPerformance, model : Model) : Promise<Performance> {
-        // TODO : deserialize practiceFiles
-
         const addRehearsalSequences = (sequences : SerializedRehearsalSequence[], rehearsals : Rehearsal[]) => {
             sequences.forEach((s) => rehearsals.push(...Rehearsal.deserializeSequence(s)));
             rehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
