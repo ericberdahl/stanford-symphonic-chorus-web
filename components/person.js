@@ -1,46 +1,14 @@
 import { Script } from './htmlToolkit';
 
+import getConfig from 'next/config'
 import Head from 'next/head'
- 
-const roles = {
-    webmaster: {
-        full_name: "Eric Berdahl",
-        email: "berdahl",
-        domain: "serendipity",
-        long_tld: "organize",
-        obscure_tld: "-o-r-g-"
-    },
 
-    director: {
-        full_name: "Stephen M. Sano",
-        email: "sano",
-        domain: "stanford",
-        long_tld: "educator",
-        obscure_tld: "-e-d-u-",
-    },
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
-    administrator: {
-        full_name: "Kelsi Kobara",
-        title: "Choral Studies Program Administrator",
-        email: "kobara",
-        domain: "stanford",
-        long_tld: "educator",
-        obscure_tld: "-e-d-u-",
-    },
-
-    w2010_photographer: {
-        full_name: "R. A. Wilson",
-        email: "R.A.Wilson",
-        domain: "gmail",
-        long_tld: "commuter",
-        obscure_tld: "-c-o-m-"
-    }
-};
-
-export default function Person(props) {
-    const person = roles[props.role];
+export default function Person({ role, subject }) {
+    const person = publicRuntimeConfig.people[role];
     const message = Object.assign({}, person);
-    message.subject = props.subject;
+    message.subject = subject;
     const data = JSON.stringify(message);
 
     return (

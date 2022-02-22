@@ -6,16 +6,24 @@ const fs        = require('fs');
 const path      = require('path');
 const process   = require('process');
 
-const CONFIG_FILENAME   = path.join(process.cwd(), 'data', 'main.yml');
+const SERVERCONFIG_FILENAME   = path.join(process.cwd(), 'data', 'main.yml');
+
+const COLLABORATORS_FILENAME   = path.join(process.cwd(), 'data', 'collaborators.yml');
+const LOCATIONS_FILENAME       = path.join(process.cwd(), 'data', 'locations.yml');
+const PEOPLE_FILENAME          = path.join(process.cwd(), 'data', 'people.yml');
 
 // TODO : move roles data from components/person.js into serverRuntimeConfig
 // TODO : move location data from components/location.js into serverRuntimeConfig
 
 module.exports = (phase, { defaultConfig }) => {
-    const siteConfig = yaml.parse(fs.readFileSync(CONFIG_FILENAME, 'utf8'));
 
     const nextConfig = {
-        serverRuntimeConfig: siteConfig,
+        serverRuntimeConfig: yaml.parse(fs.readFileSync(SERVERCONFIG_FILENAME, 'utf8')),
+        publicRuntimeConfig: {
+            collaborators:  yaml.parse(fs.readFileSync(COLLABORATORS_FILENAME, 'utf8')),
+            locations:      yaml.parse(fs.readFileSync(LOCATIONS_FILENAME, 'utf8')),
+            people:         yaml.parse(fs.readFileSync(PEOPLE_FILENAME, 'utf8')),
+        }
     };
 
     nextConfig.serverRuntimeConfig.isExport = (PHASE_PRODUCTION_BUILD == phase);

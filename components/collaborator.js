@@ -1,67 +1,11 @@
-const list = {
-    'PSO': {
-        name: 'Peninsula Symphony Orchestra',
-        link: 'https://peninsulasymphony.org'
-    },
+import getConfig from 'next/config'
 
-    'SSO': {
-        name: 'Stanford Symphony Orchestra',
-        link: 'https://web.stanford.edu/group/sso'
-    },
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
-    'scc': {
-        name: 'Stanford Chamber Chorale',
-        link: 'https://chorale.stanford.edu'
-    },
-
-    'sws': {
-        name: 'Stanford Wind Symphony',
-    },
-
-    'ragazzi boys': {
-        name: 'Ragazzi Boys Chorus',
-        link: 'https://ragazzi.org'
-    },
-
-    'stanford philharmonia': {
-        name: 'Stanford Philharmonia Orchestra',
-        link: 'https://web.stanford.edu/group/sso/cgi-bin/wordpress/about/stanford-philharmonia-orchestra/'
-    },
-
-    'university singers': {
-        name: 'Stanford University Singers',
-        link: 'https://usingers.stanford.edu/'
-    },
-
-    'taiko': {
-        name: 'Stanford Taiko',
-        link: 'https://taiko.stanford.edu'
-    },
-
-    'vivace': {
-        name: 'Vivace Youth Chorus',
-        link: 'https://www.vivaceyouthchorus.org/'
-    },
-
-    'jinxing dance': {
-        name: 'Jin Xing Dance Company',
-        link: 'http://www.jinxing-dance-theatre.com/'
-    },
-
-    'cantabile youth': {
-        name: 'Cantabile Youth Singers',
-        link: 'http://cantabile.org/'
-    },
-
-    'mongolian opera soloists': {
-        name: 'Mongolian National Opera soloists'
-    }
-};
-
-export default function Collaborator(props) {
-    const entry = list[props.name];
+export default function Collaborator({ name }) {
+    const entry = publicRuntimeConfig.collaborators[name];
     if (!entry) {
-        throw new Error('Unknown Collaborator name "' + props.name + '"');
+        throw new Error(`Unknown Collaborator name "${name}"`);
     }
 
     return (entry.link ? 

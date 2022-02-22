@@ -1,61 +1,11 @@
-const list = {
-    'Bing': {
-        casual: 'Bing Concert Hall',
-        formal: 'Stanford University\'s Bing Concert Hall',
-        link: 'https://music.stanford.edu/venues/bing-concert-hall'
-    },
+import getConfig from 'next/config'
 
-    'MemChu': {
-        casual: 'Memorial Church',
-        formal: 'Stanford Memorial Church',
-        link: 'https://music.stanford.edu/venues/memorial-church'
-    },
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
-    'CRH': {
-        casual: 'Campbell Recital Hall',
-        formal: 'Campbell Recital Hall',
-        link: 'https://music.stanford.edu/venues/campbell'
-    },
-
-    'Braun 103': {
-        casual: 'Braun 103',
-        formal: 'Braun Music Center, Room 103',
-        link: 'https://music.stanford.edu/venues/braun-music-center'
-    },
-
-    'Dink': {
-        casual: 'Dinkelspiel Auditorium',
-        formal: 'Dinkelspiel Auditorium',
-        link: 'https://music.stanford.edu/venues/dinkelspiel'
-    },
-
-    'SMPAC': {
-        casual: 'San Mateo Performing Arts Center',
-        formal: 'San Mateo Performing Arts Center',
-        link: 'http://smuhsd.theater/smpac/'
-    },
-
-    'Flint': {
-        casual: 'Flint Center',
-        formal: 'Flint Center for the Performing Arts',
-        link: 'http://www.flintcenter.com/'
-    },
-
-    'emanuelsf': {
-        casual: 'Temple Emanu-El, San Francisco',
-        formal: 'Temple Emanu-El, San Francisco',
-        link: 'https://www.emanuelsf.org'
-    },
-
-    '<unknown>': {
-        casual: '',
-    }
-};
-
-export default function Location(props) {
-    const entry = list[props.name];
+export default function Location({ name }) {
+    const entry = publicRuntimeConfig.locations[name];
     if (!entry) {
-        console.warn('Unknown Location name "%s"', props.name);
+        console.warn(`Unknown Location name "${name}"`);
         return (<></>);
     }
 
