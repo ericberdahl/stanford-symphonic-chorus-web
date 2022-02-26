@@ -5,7 +5,6 @@ import PieceCitation from '../components/pieceCitation';
 import TitledSegment from '../components/titledSegment';
 
 import { Model } from '../common/model';
-import { repertoireStaticProps } from '../common/repertoireStaticProps'
 import { makeSlug } from '../common/slug';
 
 import styles from '../styles/fylpIndex.module.scss'
@@ -83,7 +82,7 @@ export async function getStaticProps() {
     const model = await Model.getModel();
     
     const props = {
-        repertoire: await repertoireStaticProps(model.fylp)
+        repertoire: await model.fylp.getStaticProps(),
     }
 
     return {

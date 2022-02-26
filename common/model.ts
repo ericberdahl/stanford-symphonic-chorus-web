@@ -1,16 +1,15 @@
 import { FYLP_DATA_DIR, GALLERY_DATA_DIR, PERFORMANCE_DATA_DIR, SUPPLEMENT_DATA_DIR } from './constants';
 import { FYLP } from './fylp';
 import { Gallery } from './gallery';
+import { GrandRepertoire } from './grandRepertoire';
 import { Performance } from './performance'
 import { PieceSupplement } from './pieceSupplement';
-import { Repertoire } from './repertoire';
 
 import glob from 'glob-promise';
 import yaml from 'yaml';
 
 import getConfig from 'next/config'
 
-import { strict as assert } from 'assert';
 import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
@@ -19,11 +18,11 @@ import util from 'util';
 const { serverRuntimeConfig } = getConfig()
 
 export class Model {
-    readonly performances : Performance[]   = [];
-    readonly repertoire : Repertoire        = new Repertoire();
-    private _currentQuarter : Performance   = null;
-    readonly pieceSupplements : PieceSupplement[]    = [];
-    readonly galleries : Gallery[]          = [];
+    readonly performances : Performance[]           = [];
+    readonly grandRepertoire : GrandRepertoire      = new GrandRepertoire();
+    private _currentQuarter : Performance           = null;
+    readonly pieceSupplements : PieceSupplement[]   = [];
+    readonly galleries : Gallery[]                  = [];
 
     private constructor() {
     }
@@ -35,9 +34,9 @@ export class Model {
         return this.performances.slice(index);
     }
 
-    get fylp() : Repertoire {
-        const result = new Repertoire();
-        this.repertoire.pieces.filter((p) => p.fylp).forEach((p) => result.addPiece(p));
+    get fylp() : GrandRepertoire {
+        const result = new GrandRepertoire();
+        this.grandRepertoire.pieces.filter((p) => p.fylp).forEach((p) => result.addPiece(p));
         return result;
     }
 
@@ -75,7 +74,7 @@ export class Model {
         }));
         performances.forEach((perf) => {
             perf.repertoire.full.forEach((piece) => {
-                assert.ok(piece.piece === model.repertoire.addPiece(piece.piece), `model.repertoire detected a piece collision`);
+                model.grandRepertoire.addPiece(piece.piece);
             });
         });
         model.performances.push(...performances);
@@ -86,10 +85,6 @@ export class Model {
         const fylps = await Promise.all(fylpDatafiles.map(async (filepath) => {
             return FYLP.deserialize(yaml.parse(await fs.readFile(filepath, 'utf8')));
         }));
-        fylps.forEach((f) => {
-            assert.ok(f.piece === model.repertoire.findPiece(f.piece), `model.repertoire detected a piece collision from an fylp`);
-            f.piece = model.repertoire.findPiece(f.piece);
-        });
     
         const supplementDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, SUPPLEMENT_DATA_DIR), realpath: true });
         const supplements = await Promise.all(supplementDatafiles.map(async (filepath) => {
@@ -97,7 +92,6 @@ export class Model {
         }));
         model.pieceSupplements.push(...supplements);
         model.pieceSupplements.forEach((s) => {
-            s.piece = model.repertoire.findPiece(s.piece);
             s.piece.supplements.push(s);
         });
     
