@@ -26,7 +26,7 @@ module.exports = (phase, { defaultConfig }) => {
     nextConfig.serverRuntimeConfig.isExport = (PHASE_PRODUCTION_BUILD == phase);
 
     if (nextConfig.serverRuntimeConfig.isExport) {
-        nextConfig.basePath = siteConfig.basePath;
+        nextConfig.basePath = nextConfig.serverRuntimeConfig.basePath;
     }
 
     return nextConfig;
