@@ -29,22 +29,6 @@ export type FileRouteStaticProp = {
     route : string;
 }
 
-export function imageRoutesStaticProps(imageRoutes : ImageRoutes) : ImageRoutesStaticProps {
-    if (!imageRoutes) {
-        return null;
-    }
-
-    const result = {
-        pdf: imageRoutes?.pdf || null,
-        jpg: imageRoutes?.jpg || null,
-        caption: imageRoutes?.caption || null,
-        width: imageRoutes.width,
-        height: imageRoutes.height,
-    };
-
-    return result;
-}
-
 export function fileRoutesStaticProps(fileRoutes : FileRoutes) : FileRouteStaticProp[] {
     if (!fileRoutes) return null;
     
@@ -92,4 +76,15 @@ export class ImageRoutes extends FileRoutes {
 
     get pdf() : string { return this.getRoute('pdf'); }
     get jpg() : string { return this.getRoute('jpg'); }
+
+    async getStaticProps() : Promise<ImageRoutesStaticProps> {    
+        return {
+            pdf:        this.pdf || null,
+            jpg:        this.jpg || null,
+            caption:    this.caption || null,
+            width:      this.width,
+            height:     this.height,
+        };
+    }
+    
 }

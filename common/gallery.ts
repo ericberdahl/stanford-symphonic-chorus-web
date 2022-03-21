@@ -83,21 +83,25 @@ export class Gallery {
     description : string    = '';
     items : GalleryItem[]   = [];
 
-    constructor(id : string, name : string, title : string, description : string, quarter : string) {
+    constructor(id : string, name : string, title : string, description : string, quarter : string, items : GalleryItem[]) {
         this.id = id;
         this.name = name;
         this.quarter = quarter;
         this.title = title;
         this.description = description || '';
+        
+        this.items.push(...items);
     }
 
     static async deserialize(data : SerializedGallery) : Promise<Gallery> {
-        const result = new Gallery(data.id, data.name, data.title, data.description, data.quarter);
-
         const galleryBasePath = path.join(GALLERY_URL_BASEPATH, data.id);
-        result.items.push(... await Promise.all(data.items.map(async (i) => GalleryItem.deserialize(galleryBasePath, i))));
 
-        return result;
+        return new Gallery(data.id,
+                           data.name,
+                           data.title,
+                           data.description,
+                           data.quarter,
+                           await Promise.all(data.items.map((i) => GalleryItem.deserialize(galleryBasePath, i))));
     }
 
     async getStaticProps() : Promise<GalleryStaticProps> {

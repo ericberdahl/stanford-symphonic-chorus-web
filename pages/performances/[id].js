@@ -300,9 +300,9 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
 
                 {0 < currentQuarter.practiceFiles.length && (
                     <>
-                        <div class={styles.practiceFiles}>
+                        <div className={styles.practiceFiles}>
                             {currentQuarter.practiceFiles.map((p, index) => (
-                                <div><PracticeFileSection section={p} key={index}/></div>
+                                <PracticeFileSection section={p} key={index}/>
                             ))}
                         </div>
                     </>

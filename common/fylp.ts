@@ -1,9 +1,10 @@
 import { ComposerStaticProps } from './composer';
 import { ImageRoutes } from "./fileRoutes";
-import { imageRoutesStaticProps } from './fileRoutes';
 import { Piece, SerializedPiece } from "./piece";
 
 import { serialize as mdxSerializeMarkdown } from 'next-mdx-remote/serialize'
+
+import { strict as assert } from 'assert';
 
 type SerializedAlbum = {
     director : string;
@@ -40,6 +41,7 @@ class Album {
         this.shopping.push(...(shopping || []));
 
         if (image) {
+            // TODO : move the '/assets/albums/' string literal into constants.ts
             this.image = new ImageRoutes('/assets/albums/', image, '');
         }
     }
@@ -50,38 +52,29 @@ class Album {
             director:       this.director,
             descriptionMDX: await mdxSerializeMarkdown(this.description),
             label:          this.label,
-            image:          imageRoutesStaticProps(this.image),
+            image:          this.image ? await this.image.getStaticProps() : null,
             shopping:       this.shopping,
     
         };
     }
+
+    static async deserialize(data : SerializedAlbum) : Promise<Album> {
+        return new Album(data.director, data.description, data.label, data.image, data.shopping);
+    }
 }
 
 export class FYLP {
-    _piece : Piece;
+    readonly piece : Piece;
     readonly description : string;
     readonly albums : Album[]  = [];
 
-    constructor(piece : Piece, description? : string) {
+    constructor(piece : Piece, description : string, albums : Album[]) {
         this.piece = piece;
         this.description = (description || '');
-    }
+        this.albums.push(...albums);
 
-    get piece() : Piece { return this._piece; }
-    set piece(p : Piece) {
-        if (this._piece) {
-            this._piece.fylp = null;
-        }
-
-        this._piece = p;
-
-        if (this._piece) {
-            this._piece.fylp = this;
-        }
-    }
-
-    addAlbum(director : string, description : string, label? : string, image? : string, shopping? : string[]) {
-        this.albums.push(new Album(director, description, label, image, shopping));
+        assert.ok(!piece.fylp, `Piece already has an FYLP ${piece.composer.fullName}'s "${piece.title}"`)
+        this.piece.fylp = this;
     }
 
     // TODO : create type for FYLPStaticProps
@@ -104,8 +97,9 @@ export class FYLP {
     }
     
     static async deserialize(data : SerializedFYLP) : Promise<FYLP> {
-        const result : FYLP = new FYLP(await Piece.deserialize(data.piece), data.description);
-        data.albums.forEach((a) => result.addAlbum(a.director, a.description, a.label, a.image, a.shopping));
+        const result : FYLP = new FYLP(await Piece.deserialize(data.piece),
+                                       data.description,
+                                       await Promise.all(data.albums.map((a) => Album.deserialize(a))));
     
         return result;
     }    

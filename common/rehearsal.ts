@@ -1,6 +1,7 @@
 import { createDateTime, compareDateTime } from './dateTimeUtils';
 
 import { DateTime } from 'luxon';
+import { BasicEvent } from './event';
 
 export enum RehearsalFrequency {
     weekly = 'weekly',
@@ -23,30 +24,25 @@ export type RehearsalStaticProps = {
     notes : string[];
 }
 
-// TODO : Why is this not a BasicEvent?
-export class Rehearsal {
-    readonly start : DateTime;
+export class Rehearsal extends BasicEvent {
     readonly end : DateTime;
-    readonly location : string;
     readonly notes : string[] = [];
 
     constructor(start : DateTime, end : DateTime, location : string) {
-        this.start = start;
+        super(start, location);
         this.end = end;
-        this.location = (location || '');
     }
 
     async getStaticProps() : Promise<RehearsalStaticProps> {
         return {
-            start:      this.start.toISO(),
+            ...await super.getStaticProps(),
+
             end:        this.end.toISO(),
-            location:   this.location,
             notes:      this.notes,
         }
     }    
 
-    // TODO : deserializeSequence should be an async function
-    static deserializeSequence(spec : SerializedRehearsalSequence) : Rehearsal[] {
+    static async deserializeSequence(spec : SerializedRehearsalSequence) : Promise<Rehearsal[]> {
         const frequency : RehearsalFrequency = (spec.frequency ? spec.frequency : RehearsalFrequency.once);
 
         const computeDateShift = (f : string) => {

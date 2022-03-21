@@ -1,7 +1,11 @@
+import { ConcertEvent, ConcertEventStaticProps, SerializedConcertEvent } from './concertEvent';
 import { createDateTime, compareDateTime } from './dateTimeUtils';
-import { FileRoutes, fileRoutesStaticProps, FileRouteStaticProp, ImageRoutes, ImageRoutesStaticProps, imageRoutesStaticProps } from './fileRoutes';
+import { DressRehearsalEvent, DressRehearsalEventStaticProps, SerializedDressRehearsalEvent } from './dressRehearsalEvent';
+import { BasicEvent, GenericEvent, GenericEventStaticProps, SerializedGenericEvent } from './event';
+import { FileRoutes, fileRoutesStaticProps, FileRouteStaticProp, ImageRoutes, ImageRoutesStaticProps } from './fileRoutes';
 import { Gallery, GalleryRefStaticProps } from './gallery'
-import { PerformancePiece, PerformancePieceStaticProps, SerializedPerformancePiece } from './performancePiece'
+import { PerformancePiece } from './performancePiece'
+import { PerformanceRepertoire, PerformanceRepertoireStaticProps, SerializedPerformanceRepertoire } from './performanceRepertoire';
 import { PracticeFileSection, PracticeFileSectionStaticProps, SerializedPracticeFileSection  } from './practiceFiles';
 import { Rehearsal, RehearsalStaticProps, SerializedRehearsalSequence } from './rehearsal'
 import { Soloist, SoloistStaticProps, SerializedSoloist } from './soloist'
@@ -13,170 +17,9 @@ import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 import getConfig from 'next/config'
 
+import { strict as assert } from 'assert';
+
 const { serverRuntimeConfig } = getConfig()
-
-export type SerializedPerformanceRepertoire = {
-    main :      SerializedPerformancePiece[];
-    other? :    SerializedPerformancePiece[];
-}
-
-export type PerformanceRepertoireStaticProps = {
-    main :  PerformancePieceStaticProps[];
-    full :  PerformancePieceStaticProps[];
-}
-
-export class PerformanceRepertoire {
-    readonly main : PerformancePiece[]  = []
-    readonly full : PerformancePiece[]  = []
-
-    private constructor(main : PerformancePiece[], other? : PerformancePiece[]) {
-        this.main.push(...main);
-        this.full.push(...main);
-
-        if (other) {
-            this.full.push(...other);
-        }
-    }
-
-    async getStaticProps() : Promise<PerformanceRepertoireStaticProps> {
-        return {
-            main:   await Promise.all(this.main.map((p) => p.getStaticProps())),
-            full:   await Promise.all(this.full.map((p) => p.getStaticProps())),
-        }
-    }
-
-    static async deserialize(data : SerializedPerformanceRepertoire) : Promise<PerformanceRepertoire> {
-        const main = await Promise.all(data.main.map((p) => PerformancePiece.deserialize(p)));
-        
-        const other = [];
-        if (data.other) {
-            other.push(...await Promise.all(data.other.map((p) => PerformancePiece.deserialize(p))));
-        }
-
-        return new PerformanceRepertoire(main, other);
-    }
-}
-
-export type SerializedBasicEvent = {
-    date : string;      // 'YYYY-MM-DD' : date of the event
-    start : string;     // 'HH:MM' : 24-hour formatted start time of the event
-    location : string;  // nickname of the location of the event
-}
-
-export type BasicEventStaticProps = {
-    start : string; // ISO time
-    location : string;
-}
-
-export class BasicEvent {
-    readonly location : string;
-    readonly start : DateTime;
-
-    constructor(start : DateTime, location : string) {
-        this.start = start;
-        this.location = location;
-    }
-
-    async getStaticProps() : Promise<BasicEventStaticProps> {
-        return {
-            start:      this.start.toISO(),
-            location:   this.location,
-        };
-    }    
-};
-
-export type SerializedGenericEvent = SerializedBasicEvent & {
-    title : string;
-}
-
-export type GenericEventStaticProps = BasicEventStaticProps & {
-    title : string;
-}
-
-export class GenericEvent extends BasicEvent {
-    readonly title : string;
-
-    constructor(start : DateTime, location : string, title : string) {
-        super(start, location);
-        this.title = title;
-    }
-
-    async getStaticProps() : Promise<GenericEventStaticProps> {
-        const base = await super.getStaticProps();
-    
-        return {
-            start:      base.start,
-            location:   base.location,
-            title:      this.title || null,
-        };
-    }    
-}
-
-export type SerializedConcert = SerializedBasicEvent & {
-    call :          string;  // 'HH:MM' : 24-hour formatted call time for the concert
-    repertoire? :   SerializedPerformanceRepertoire;
-}
-
-export type ConcertStaticProps = BasicEventStaticProps & {
-    call :          string;  // ISO time
-    repertoire :    PerformanceRepertoireStaticProps;
-}
-
-export class Concert extends BasicEvent {
-    readonly call :         DateTime;
-    readonly repertoire :   PerformanceRepertoire;
-
-    private constructor(start : DateTime, location : string, call : DateTime, repertoire : PerformanceRepertoire) {
-        super(start, location);
-        this.call = call;
-        this.repertoire = repertoire;
-    }
-
-    async getStaticProps() : Promise<ConcertStaticProps> {    
-        return {
-            ...await super.getStaticProps(),
-
-            call:       this.call.toISO(),
-            repertoire: this.repertoire ? await this.repertoire.getStaticProps() : null,
-        };
-    }
-
-    static async deserialize(data : SerializedConcert) : Promise<Concert> {
-        return new Concert(createDateTime(data.date, data.start), data.location,
-                           createDateTime(data.date, data.call),
-                           data.repertoire ? await PerformanceRepertoire.deserialize(data.repertoire) : null);
-    }
-}
-
-export type SerializedDressRehearsal = SerializedBasicEvent & {
-    repertoire? :   SerializedPerformanceRepertoire;
-}
-
-export type DressRehearsalStaticProps = BasicEventStaticProps & {
-    repertoire :    PerformanceRepertoireStaticProps;
-}
-
-export class DressRehearsal extends BasicEvent {
-    readonly repertoire :   PerformanceRepertoire;
-
-    private constructor(start : DateTime, location : string, repertoire : PerformanceRepertoire) {
-        super(start, location);
-        this.repertoire = repertoire;
-    }
-
-    async getStaticProps() : Promise<DressRehearsalStaticProps> {    
-        return {
-            ...await super.getStaticProps(),
-
-            repertoire: this.repertoire ? await this.repertoire.getStaticProps() : null,
-        };
-    }
-
-    static async deserialize(data : SerializedDressRehearsal) : Promise<DressRehearsal> {
-        return new DressRehearsal(createDateTime(data.date, data.start), data.location,
-                                  data.repertoire ? await PerformanceRepertoire.deserialize(data.repertoire) : null);
-    }
-}
 
 type SerializedPoster = {
     basename : string;
@@ -187,6 +30,8 @@ type SerializedRehearsalNote = {
     date : string;  // 'YYYY-MM-DD' : date of the rehearsal for which the note applies
     note : string;
 }
+
+type RehearsalNote = SerializedRehearsalNote;
 
 type SerializedPerformance = {
     practiceFiles? : SerializedPracticeFileSection[];
@@ -203,14 +48,14 @@ type SerializedPerformance = {
     preregister : string;       // 'YYYY-MM-DD' : date the preregistration mail is expected to be sent
     registrationFee? : string;   // '$dd' : amount of the registration fee
     membershipLimit? : number;
-    concerts : SerializedConcert[];
+    concerts : SerializedConcertEvent[];
     repertoire : SerializedPerformanceRepertoire;
     events? : SerializedGenericEvent[];
     tuttiRehearsals : SerializedRehearsalSequence[];
     tuttiRehearsalNotes? : SerializedRehearsalNote[];
     mensSectionals? : SerializedRehearsalSequence[];
     womensSectionals? : SerializedRehearsalSequence[];
-    dressRehearsals? : SerializedDressRehearsal[];
+    dressRehearsals? : SerializedDressRehearsalEvent[];
 }
 
 export type PerformanceRefStaticProps = {
@@ -220,10 +65,10 @@ export type PerformanceRefStaticProps = {
 
 export type PerformanceStaticProps = {
     collaborators :         string[];
-    concerts :              ConcertStaticProps[];
+    concerts :              ConcertEventStaticProps[];
     descriptionMDX :        MDXRemoteSerializeResult;
     directors :             string[];
-    dressRehearsals :       DressRehearsalStaticProps[];
+    dressRehearsals :       DressRehearsalEventStaticProps[];
     events :                GenericEventStaticProps[];
     galleries :             GalleryRefStaticProps[];
     heraldImageRoutes :     ImageRoutesStaticProps;
@@ -244,31 +89,36 @@ export type PerformanceStaticProps = {
     tuttiRehearsals :       RehearsalStaticProps[];
 }
 
-export class Performance {
-    readonly collaborators : string[]               = [];
-    readonly concerts : Concert[]                   = [];
-    readonly description : string;
-    readonly directors : string[]                   = [];
-    readonly dressRehearsals : DressRehearsal[]     = [];
-    readonly events : GenericEvent[]                = [];
-    readonly galleries : Gallery[]                  = [];
-    readonly instructors : string[]                 = [];
-    readonly membershipLimit : number;
-    readonly preregisterDate : DateTime;
-    readonly practiceFiles : PracticeFileSection[]  = [];
-    readonly quarter : string                       = '';
-    readonly registrationFee : string;
-    readonly rehearsalPieces : PerformancePiece[]   = [];
-    readonly repertoire : PerformanceRepertoire;
-    readonly sectionalsSopranoAlto : Rehearsal[]    = [];
-    readonly sectionalsTenorBass : Rehearsal[]      = [];
-    readonly soloists : Soloist[]                   = [];
-    readonly supplements : string[]                 = [];
-    readonly syllabusRoutes : FileRoutes;
-    readonly tuttiRehearsals : Rehearsal[]          = [];
+function appendEvents<T extends BasicEvent>(original : readonly T[], addend : T[]) : T[] {
+    return original.concat(addend)
+                   .sort((a, b) => -compareDateTime(a.start, b.start));
+}
 
-    private _posterRoutes : ImageRoutes;
-    private _heraldImageRoutes : ImageRoutes;
+export class Performance {
+    readonly collaborators          : readonly string[]                 = [];
+    readonly concerts               : readonly ConcertEvent[]           = [];
+    readonly description            : string;
+    readonly directors              : readonly string[]                 = [];
+    readonly dressRehearsals        : readonly DressRehearsalEvent[]    = [];
+    readonly events                 : readonly GenericEvent[]           = [];
+    readonly galleries              : Gallery[]                         = [];
+    readonly instructors            : readonly string[]                 = [];
+    readonly membershipLimit        : number;
+    readonly preregisterDate        : DateTime;
+    readonly practiceFiles          : readonly PracticeFileSection[]    = [];
+    readonly quarter                : string                            = '';
+    readonly registrationFee        : string;
+    readonly rehearsalPieces        : PerformancePiece[]                = [];
+    readonly repertoire             : PerformanceRepertoire;
+    readonly sectionalsSopranoAlto  : readonly Rehearsal[]              = [];
+    readonly sectionalsTenorBass    : readonly Rehearsal[]              = [];
+    readonly soloists               : readonly Soloist[]                = [];
+    readonly supplements            : string[]                          = [];
+    readonly syllabusRoutes         : FileRoutes;
+    readonly tuttiRehearsals        : readonly Rehearsal[]              = [];
+
+    private _posterRoutes           : ImageRoutes;
+    private _heraldImageRoutes      : ImageRoutes;
 
     private constructor(quarter : string,
                         syllabusName : string,
@@ -279,9 +129,16 @@ export class Performance {
                         preregisterDate : DateTime,
                         registrationFee : string,
                         membershipLimit : number,
-                        repertoire : PerformanceRepertoire) {
-        this.quarter = quarter;
-
+                        repertoire : PerformanceRepertoire,
+                        soloists : Soloist[],
+                        concerts : ConcertEvent[],
+                        tuttiRehearsals : Rehearsal[],
+                        sectionalsSopranoAlto : Rehearsal[],
+                        sectionalsTenorBass : Rehearsal[],
+                        dressRehearsals : DressRehearsalEvent[],
+                        tuttiRehearsalNotes : RehearsalNote[],
+                        practiceFiles : PracticeFileSection[],
+                        events : GenericEvent[]) {
         if (syllabusName) {
             // TODO : '/assets/syllabi' should not be a literal constant
             this.syllabusRoutes = new FileRoutes('/assets/syllabi', syllabusName, ['pdf', 'docx', 'doc'])
@@ -290,21 +147,37 @@ export class Performance {
             }
         }
 
-        if (directors) {
-            this.directors.push(...directors);
-        }
-        if (instructors) {
-            this.instructors.push(...instructors);
-        }
-        if (collaborators) {
-            this.collaborators.push(...collaborators);
-        }
+        this.concerts = appendEvents(this.concerts, concerts);
+        this.dressRehearsals = appendEvents(this.dressRehearsals, dressRehearsals);
+        this.events = appendEvents(this.events, events);
+        this.sectionalsSopranoAlto = appendEvents(this.sectionalsSopranoAlto, sectionalsSopranoAlto);
+        this.sectionalsTenorBass = appendEvents(this.sectionalsTenorBass, sectionalsTenorBass);
+        this.tuttiRehearsals = appendEvents(this.tuttiRehearsals, tuttiRehearsals);
 
+        this.collaborators = this.collaborators.concat(collaborators);
         this.description = (description || '');
-        this.preregisterDate = preregisterDate;
-        this.registrationFee = registrationFee;
+        this.directors = this.directors.concat(directors);
+        this.instructors = this.instructors.concat(instructors);
         this.membershipLimit = membershipLimit;
+        this.practiceFiles = this.practiceFiles.concat(practiceFiles);
+        this.preregisterDate = preregisterDate;
+        this.quarter = quarter;
+        this.registrationFee = registrationFee;
         this.repertoire = repertoire;
+        this.soloists = this.soloists.concat(soloists);
+
+        this.repertoire.full.forEach((p) => p.piece.addPerformance(this));
+    
+        tuttiRehearsalNotes.forEach((note) => {
+            const noteDateTime : DateTime = createDateTime(note.date, '00:00');
+            const rehearsal : Rehearsal = this.tuttiRehearsals.find((e) => (e.start.year == noteDateTime.year &&
+                                                                            e.start.month == noteDateTime.month &&
+                                                                            e.start.day == noteDateTime.day));
+            assert.ok(rehearsal, `Cannot find tuttiRehearsal on date "${note.date}" to attach a note`);
+            
+            rehearsal.notes.push(note.note);
+        });
+
     }
 
     get id() { return makeSlug(this.quarter); }
@@ -342,18 +215,18 @@ export class Performance {
 
     async getStaticProps() : Promise<PerformanceStaticProps> {
         return {
-            collaborators:          this.collaborators,
+            collaborators:          this.collaborators.concat([]),
             concerts:               await Promise.all(this.concerts.map(async (c) => c.getStaticProps())),
             descriptionMDX:         await mdxSerializeMarkdown(this.description),
-            directors:              this.directors,
+            directors:              this.directors.concat([]),
             dressRehearsals:        await Promise.all(this.dressRehearsals.map((dr) => dr.getStaticProps())),
             events:                 await Promise.all(this.events.map(async (e) => e.getStaticProps())),
             galleries:              await Promise.all(this.galleries.map(async (g) => await g.getRefStaticProps())),
-            heraldImageRoutes:      imageRoutesStaticProps(this.heraldImageRoutes),
+            heraldImageRoutes:      this._heraldImageRoutes ? await this._heraldImageRoutes.getStaticProps() : null,
             id:                     this.id,
-            instructors:            this.instructors,
+            instructors:            this.instructors.concat([]),
             membershipLimit:        this.membershipLimit,
-            posterRoutes:           imageRoutesStaticProps(this.posterRoutes),
+            posterRoutes:           this._posterRoutes ? await this._posterRoutes.getStaticProps() : null,
             practiceFiles:          await Promise.all(this.practiceFiles.map((p) => p.getStaticProps())),
             preregisterDate:        this.preregisterDate?.toISO() || null,
             quarter:                this.quarter,
@@ -369,35 +242,27 @@ export class Performance {
     }
 
     static async deserialize(data : SerializedPerformance) : Promise<Performance> {
-        const addRehearsalSequences = (sequences : SerializedRehearsalSequence[], rehearsals : Rehearsal[]) => {
-            sequences.forEach((s) => rehearsals.push(...Rehearsal.deserializeSequence(s)));
-            rehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
-        }
-
-        const repertoire = await PerformanceRepertoire.deserialize(data.repertoire);
-
         const result = new Performance(data.quarter,
                                        data.syllabus,
-                                       data.directors,
-                                       data.instructors,
-                                       data.collaborators,
+                                       data.directors || [],
+                                       data.instructors || [],
+                                       data.collaborators || [],
                                        data.description,
                                        (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
                                        data.registrationFee,
                                        data.membershipLimit,
-                                       repertoire);
-    
-        if (data.soloists) {
-            result.soloists.push(...await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))));
-        }
-    
-        result.concerts.push(...await Promise.all(data.concerts.map(async (c) => Concert.deserialize(c))));
-        result.concerts.sort((a, b) => -compareDateTime(a.start, b.start));
-    
-        repertoire.full.forEach((p) => {
-            p.piece.addPerformance(result);
-        });
-                            
+                                       await PerformanceRepertoire.deserialize(data.repertoire),
+                                       data.soloists ? await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))) : [],
+                                       await Promise.all(data.concerts.map(async (c) => ConcertEvent.deserialize(c))),
+                                       data.tuttiRehearsals ? (await Promise.all(data.tuttiRehearsals.map((s) => Rehearsal.deserializeSequence(s)))).flat() : [],
+                                       // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
+                                       data.womensSectionals ? (await Promise.all(data.womensSectionals.map((s) => Rehearsal.deserializeSequence(s)))).flat() : [],
+                                       // TODO: change yml schema from mensSectionals to sectionalsTenorBass
+                                       data.mensSectionals ? (await Promise.all(data.mensSectionals.map((s) => Rehearsal.deserializeSequence(s)))).flat() : [],
+                                       data.dressRehearsals ? await Promise.all(data.dressRehearsals.map((dr) => DressRehearsalEvent.deserialize(dr))) : [],
+                                       data.tuttiRehearsalNotes || [],
+                                       data.practiceFiles ? await Promise.all(data.practiceFiles.map((p) => PracticeFileSection.deserialize(p))) : [],
+                                       data.events ? await Promise.all(data.events.map((e) => GenericEvent.deserialize(e))) : []);
 
         if (data.poster) {
             result.setPoster(data.poster.basename, data.poster.caption);
@@ -406,46 +271,6 @@ export class Performance {
             result.setHeraldImage(data.heraldImage.basename, data.heraldImage.caption);
         }
     
-        if (data.events) {
-            result.events.push(...data.events.map((e) => new GenericEvent(createDateTime(e.date, e.start), e.location, e.title)));
-            result.events.sort((a, b) => -compareDateTime(a.start, b.start));
-        }
-    
-        if (data.tuttiRehearsals) {
-            addRehearsalSequences(data.tuttiRehearsals, result.tuttiRehearsals);
-        }
-    
-        if (data.tuttiRehearsalNotes) {
-            data.tuttiRehearsalNotes.forEach((note) => {
-                const noteDateTime : DateTime = createDateTime(note.date, '00:00');
-                const rehearsal : Rehearsal = result.tuttiRehearsals.find((e) => (e.start.year == noteDateTime.year &&
-                                                                                  e.start.month == noteDateTime.month &&
-                                                                                  e.start.day == noteDateTime.day));
-                if (!rehearsal) throw new Error(`Cannot find tuttiRehearsal on date "${note.date}" to attach a note`);
-                
-                rehearsal.notes.push(note.note);
-            });
-        }
-    
-        if (data.mensSectionals) {
-            // TODO: change yml schema from mensSectionals to sectionalsTenorBass
-            addRehearsalSequences(data.mensSectionals, result.sectionalsTenorBass);
-        }
-    
-        if (data.womensSectionals) {
-            // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
-            addRehearsalSequences(data.womensSectionals, result.sectionalsSopranoAlto);
-        }
-    
-        if (data.dressRehearsals) {
-            result.dressRehearsals.push(...await Promise.all(data.dressRehearsals.map((dr) => DressRehearsal.deserialize(dr))));
-            result.dressRehearsals.sort((a, b) => -compareDateTime(a.start, b.start));
-        }
-    
-        if (data.practiceFiles) {
-            result.practiceFiles.push(...await Promise.all(data.practiceFiles.map((p) => PracticeFileSection.deserialize(p))));
-        }
-
         if (data.supplements) {
             result.supplements.push(...data.supplements);
         }
