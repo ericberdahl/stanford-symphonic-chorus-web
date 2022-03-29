@@ -1,6 +1,7 @@
 import { IFrame, Img, Script } from './htmlToolkit'
 
 import Head from 'next/head'
+import Link from 'next/link'
 
 import styles from '../styles/lightbox.module.scss'
 
@@ -8,17 +9,18 @@ let lightboxCount = 0;
 
 function ImgLightbox({ label, caption, image, thumb, thumb_width, thumb_height }) {
     return (
-        <a
-            data-fslightbox={label}
-            data-caption={caption}
-            href={image}>
-            <Img
-                src={thumb}
-                width={thumb_width}
-                height={thumb_height}
-                alt={caption}
-                loading="lazy"/>
-        </a>
+        <Link href={image}>
+            <a
+                data-fslightbox={label}
+                data-caption={caption}>
+                <Img
+                    src={thumb}
+                    width={thumb_width}
+                    height={thumb_height}
+                    alt={caption}
+                    loading="lazy"/>
+            </a>
+        </Link>
     );
 }
 

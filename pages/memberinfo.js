@@ -9,6 +9,8 @@ import TitledSegment from '../components/titledSegment'
 
 import { Model } from '../common/model'
 
+import Link from 'next/link'
+
 import styles from '../styles/memberinfo.module.scss'
 
 function Introduction({ navItems, quarter }) {
@@ -28,7 +30,7 @@ function Introduction({ navItems, quarter }) {
                         {quarter.quarter} Syllabus (<FileLinks files={quarter.syllabusRoutes}/>)
                     </p>
                 }
-                <p><a href="/assets/Choral Studies Liability Waiver Form.pdf">Choral Studies Liability Waiver</a></p>
+                <p><Link href="/assets/Choral Studies Liability Waiver Form.pdf"><a>Choral Studies Liability Waiver</a></Link></p>
 
                 <p>
                     Singers must register online using the webform which will be emailed to last quarter's members in <MonthAndYear iso={quarter.preregisterDate}/>.
