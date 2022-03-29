@@ -113,6 +113,7 @@ function ConcertList(props) {
                     <Fragment key={index}>
                         <p><DayAndDate iso={c.start}/>, <TimeOfDay iso={c.start}/>, <Location name={c.location}/></p>
                         {c.repertoire && <RepertoireList repertoire={c.repertoire.full}/>}
+                        {c.collaborators && <CollaboratorList data={c.collaborators}/>}
                     </Fragment>
                 );
             })}

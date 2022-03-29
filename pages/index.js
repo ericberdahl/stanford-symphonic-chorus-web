@@ -23,6 +23,7 @@ import styles from '../styles/Home.module.scss'
 
 function ConcertEvent({ quarter, concert }) {
     const repertoire = (concert.repertoire || quarter.repertoire);
+    const collaborators = (concert.collaborators || quarter.collaborators);
 
     return (
         <>
@@ -31,8 +32,8 @@ function ConcertEvent({ quarter, concert }) {
                     <CommaSeparatedList>
                         {repertoire.main.map((p, index) => <PieceCitation key={index} data={p}/>)}
                     </CommaSeparatedList>
-                    {quarter.collaborators &&
-                        (<> with <CommaSeparatedList>{quarter.collaborators.map((c) => <Collaborator key={c} name={c}/>)}</CommaSeparatedList></>)
+                    {collaborators &&
+                        (<> with <CommaSeparatedList>{collaborators.map((c) => <Collaborator key={c} name={c}/>)}</CommaSeparatedList></>)
                     }
                 </span>
             </p>
