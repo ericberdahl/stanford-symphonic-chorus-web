@@ -38,6 +38,16 @@ export function fileRoutesStaticProps(fileRoutes : FileRoutes) : FileRouteStatic
     }));
 }
 
+export class StaticAsset {
+    // Given:
+    //    an asset route
+    //    a basename
+    //    a set of variants to seek
+    // Find:
+    //    which variants exist
+    //    if any variants are images, get data on width and height
+}
+
 export class FileRoutes {
     readonly routes : string[];
 
