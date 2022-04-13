@@ -232,6 +232,12 @@ practiceFiles:
         asset: "w2022/aquilanti/bass/Te Deum 2_Bass.mp3"
     -   title: "Bass - Section 3"
         asset: "w2022/aquilanti/bass/Te Deum 3_Bass.mp3"
+    -   title: "Tutti Chorus - Section 1"
+        asset: "w2022/aquilanti/coro/Te Deum 1_Coro.mp3"
+    -   title: "Tutti Chorus - Section 2"
+        asset: "w2022/aquilanti/coro/Te Deum 2_Coro.mp3"
+    -   title: "Tutti Chorus - Section 3"
+        asset: "w2022/aquilanti/coro/Te Deum 3_Coro.mp3"
 -   title: "Practice files for Copland's The Promise of Living"
     files:
     -   title: "Instructions - All Sections"
