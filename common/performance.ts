@@ -1,3 +1,4 @@
+import { AuditionInfo, AuditionInfoStaticProps } from './auditionInfo';
 import { ConcertEvent, ConcertEventStaticProps, SerializedConcertEvent } from './concertEvent';
 import { createDateTime, compareDateTime } from './dateTimeUtils';
 import { DressRehearsalEvent, DressRehearsalEventStaticProps, SerializedDressRehearsalEvent } from './dressRehearsalEvent';
@@ -34,6 +35,7 @@ type SerializedRehearsalNote = {
 type RehearsalNote = SerializedRehearsalNote;
 
 type SerializedPerformance = {
+    auditionInfo? : AuditionInfo;
     practiceFiles? : SerializedPracticeFileSection[];
     quarter : string;           // human-readable name of quarter
     syllabus : string;          // basename of syllabus asset
@@ -64,6 +66,7 @@ export type PerformanceRefStaticProps = {
 }
 
 export type PerformanceStaticProps = {
+    auditionInfo :          AuditionInfoStaticProps;
     collaborators :         string[];
     concerts :              ConcertEventStaticProps[];
     descriptionMDX :        MDXRemoteSerializeResult;
@@ -95,6 +98,7 @@ function appendEvents<T extends BasicEvent>(original : readonly T[], addend : T[
 }
 
 export class Performance {
+    readonly auditionInfo           : AuditionInfo;
     readonly collaborators          : readonly string[]                 = [];
     readonly concerts               : readonly ConcertEvent[]           = [];
     readonly description            : string;
@@ -138,7 +142,8 @@ export class Performance {
                         dressRehearsals : DressRehearsalEvent[],
                         tuttiRehearsalNotes : RehearsalNote[],
                         practiceFiles : PracticeFileSection[],
-                        events : GenericEvent[]) {
+                        events : GenericEvent[],
+                        auditionInfo : AuditionInfo) {
         if (syllabusName) {
             // TODO : '/assets/syllabi' should not be a literal constant
             this.syllabusRoutes = new FileRoutes('/assets/syllabi', syllabusName, ['pdf', 'docx', 'doc'])
@@ -154,6 +159,7 @@ export class Performance {
         this.sectionalsTenorBass = appendEvents(this.sectionalsTenorBass, sectionalsTenorBass);
         this.tuttiRehearsals = appendEvents(this.tuttiRehearsals, tuttiRehearsals);
 
+        this.auditionInfo = auditionInfo;
         this.collaborators = this.collaborators.concat(collaborators);
         this.description = (description || '');
         this.directors = this.directors.concat(directors);
@@ -215,6 +221,7 @@ export class Performance {
 
     async getStaticProps() : Promise<PerformanceStaticProps> {
         return {
+            auditionInfo:           this.auditionInfo ? await this.auditionInfo.getStaticProps() : null,
             collaborators:          this.collaborators.concat([]),
             concerts:               await Promise.all(this.concerts.map(async (c) => c.getStaticProps())),
             descriptionMDX:         await mdxSerializeMarkdown(this.description),
@@ -262,7 +269,8 @@ export class Performance {
                                        data.dressRehearsals ? await Promise.all(data.dressRehearsals.map((dr) => DressRehearsalEvent.deserialize(dr))) : [],
                                        data.tuttiRehearsalNotes || [],
                                        data.practiceFiles ? await Promise.all(data.practiceFiles.map((p) => PracticeFileSection.deserialize(p))) : [],
-                                       data.events ? await Promise.all(data.events.map((e) => GenericEvent.deserialize(e))) : []);
+                                       data.events ? await Promise.all(data.events.map((e) => GenericEvent.deserialize(e))) : [],
+                                       data.auditionInfo ? await AuditionInfo.deserialize(data.auditionInfo) : null);
 
         if (data.poster) {
             result.setPoster(data.poster.basename, data.poster.caption);

@@ -1,10 +1,11 @@
 import Covid19MitigationPolicy from '../components/covid19MitigationPolicy'
-import { MonthAndYear } from '../components/dateTime'
+import { DayAndDate, MonthAndYear } from '../components/dateTime'
 import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
 import PageLink from '../components/pageLink'
 import PageNavigation from '../components/pageNavigation'
 import Person from '../components/person'
+import SpaceSeparatedPhrase from '../components/spaceSeparatedPhrase'
 import TitledSegment from '../components/titledSegment'
 
 import { Model } from '../common/model'
@@ -94,6 +95,32 @@ function Sidebar({ quarter }) {
     );
 }
 
+function BasicAudition({ currentQuarter }) {
+    return (<>
+                If you are interested in auditioning for the chorus for the {currentQuarter.quarter} quarter, please email <Person role="administrator" subject="Regarding auditions"/>.
+            </>)
+}
+
+function ComplexAudition({ auditionInfo }) {
+    const auditionDate = (auditionInfo.date ?
+                            <>Auditions will be held on <DayAndDate iso={auditionInfo.date}/>.</>
+                            : null);
+
+    const auditionSignups = (auditionInfo.signupPostDate && auditionInfo.signupPostLink ?
+                                <>Auditions will go live on <DayAndDate iso={auditionInfo.signupPostDate}/> at <a href={"//" + auditionInfo.signupPostLink}>{auditionInfo.signupPostLink}</a>.</>
+                                : null)
+
+    return (<SpaceSeparatedPhrase>
+                {auditionDate}
+                {auditionSignups}
+            </SpaceSeparatedPhrase>)
+}
+
+function AuditionInfo({ currentQuarter })
+{
+    return (currentQuarter.auditionInfo ? <ComplexAudition auditionInfo={currentQuarter.auditionInfo}/> : <BasicAudition currentQuarter={currentQuarter}/>);
+}
+
 export default function MemberInfo({ currentQuarter }) {
     const title = "Member Information";
     const navItems = [
@@ -124,8 +151,7 @@ export default function MemberInfo({ currentQuarter }) {
 
                 <h3>Auditions</h3>
                 <p>
-                    New members are normally accepted by audition at the beginning of each academic quarter.
-                    If you are interested in auditioning for the chorus for the {currentQuarter.quarter} quarter, please email <Person role="administrator" subject="Regarding auditions"/>.
+                    New members are normally accepted by audition at the beginning of each academic quarter. <AuditionInfo currentQuarter={currentQuarter}/>
                 </p>
 
                 <p>Auditions take about ten minutes, are very "user-friendly," and consist of:</p>

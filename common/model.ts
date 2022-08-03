@@ -10,6 +10,8 @@ import yaml from 'yaml';
 
 import getConfig from 'next/config'
 
+import { strict as assert } from 'assert';
+
 import fs from 'fs/promises';
 import path from 'path';
 import process from 'process';
@@ -80,6 +82,7 @@ export class Model {
         model.performances.push(...performances);
         model.performances.sort((a, b) => b.compare(a));
         model._currentQuarter = model.performances.find((p) => p.quarter == serverRuntimeConfig.currentQuarterName);
+        assert.ok(model._currentQuarter, `Cannot find quarter named "${serverRuntimeConfig.currentQuarterName}"`);
 
         const fylpDatafiles = await glob('**/*.yml', { cwd: path.join(basePath, FYLP_DATA_DIR), realpath: true });
         const fylps = await Promise.all(fylpDatafiles.map(async (filepath) => {
