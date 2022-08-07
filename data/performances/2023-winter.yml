@@ -1,0 +1,203 @@
+# HOWTO: Set quarter to a single string that names the quarter and year. Use something like "Winter 1812",
+# "Spring 1812", or "Fall 1812"
+quarter: "Winter 2023"
+
+
+# HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
+# Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
+# be detected and used.
+syllabus:
+# "SSC Syllabus Winter 2023"
+
+
+# HOWTO: Set repertoire to a list of items that compose the program.
+#
+# A simple piece looks like this:
+# -   composer: "Ludwig von Beethoven"
+#     title: "Magnificat"
+#
+# For more complex piece formulae, look at the reference "HOWTO Piece syntax"
+#
+# Repertoire is separated into main pieces and other pieces. Main and other each contain a list of pieces.
+# Main pieces are included in headlines describing the program. Other pieces are added when dispalying the
+# entire program of a performance.
+repertoire:
+    main:
+    -   composer: "Hailstork"
+        title: "A Knee on the Neck"
+
+
+# HOWTO: soloists is a list of individuals and the part in which they solo.
+# An individual soloist looks like this:
+# -   name: "Plácido Domingo"
+#     part: "tenor"
+soloists:
+
+
+# HOWTO: collaborators is a list of groups with whom we collaborate on this program.
+# Each entry in the list should be a single string that matches the key field of a record in
+# data/collaborators.yml
+collaborators:
+
+
+# HOWTO:
+# A typical full poster record looks like this:
+# poster:
+#     basename: "S2018-Poster"
+#     caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
+# Where basename is a root name of the poster in assets/posters directory.
+#       Use something like "S2020-Poster". Posters with extensions '.pdf', '.jpg', and '.png' will
+#       be detected and used.
+# Where caption is a string to be used as hover text for the poster image when displayed on a web page.
+poster:
+
+
+# HOWTO: heraldImage is an image associated with this quarter's program. It has the same schema as
+# a poster (see also)
+#
+# If poster files are not present for a quarter, the heraldImage will be used as a stand-in for
+# presentations where a graphic for the quarter is used. If heraldImage and poster are both absent,
+# the system will use a generic stand-in graphic.
+#
+# The heraldImage will also typically be used on the home page, when talking about a quarter.
+heraldImage:
+
+
+# HOWTO: directors is a list of strings that name the directors of this performance
+directors:
+
+
+# HOWTO: instructors is a list of strings that name the instructors for this quarter
+instructors:
+-   "Stephen M. Sano"
+
+
+# HOWTO: registrationFee is the participation fee for the quarter, typically waived
+# for students and faculty
+registrationFee: "$65"
+
+
+# HOWTO: membershipLimit is the maximum number of members allowed to register for
+# this quarter
+membershipLimit: 220
+
+
+# HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
+# is expected to be sent out.
+preregister: "2022-12-01"
+
+
+tuttiRehearsalNotes:
+# -   note: "Registration begins at 6:30 PM."
+#     date: "2023-02-07"
+
+tuttiRehearsals:
+# -   frequency: "weekly"
+#     startDate: "2022-02-07"
+#     endDate: "2022-03-07"
+#     startTime: "19:30"
+#     endTime: "21:00"
+#     location: "CRH"
+
+
+mensSectionals:
+
+womensSectionals:
+
+
+# HOWTO: dresses is a list of dress rehearsals
+# A dress rehearsal entry looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     location: "Bing"
+# Where date is date of the event, specified as YYYY-MM-DD (four digit year, two digit month, two digit day
+# of month).
+# Where start and call are the curtain time and call time for the rehearsal specified as HH:MM in local time
+# (two digit hour, two digit minute of the hour, specified in 24-hour format)
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+dressRehearsals:
+# -   date: "2022-05-09"
+#     start: "19:00"
+#     location: "Bing"
+
+
+
+# HOWTO: concerts is a list of concert dates
+# A concert entry looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     call: "HH:MM"
+#     location: "Bing"
+# Where date is date of the event, specified as YYYY-MM-DD (four digit year, two digit month, two digit day
+# of month).
+# Where start and call are the curtain time and call time for the concert specified as HH:MM in local time
+# (two digit hour, two digit minute of the hour, specified in 24-hour format)
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+concerts:
+-   date: "2023-03-10"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+-   date: "2023-03-11"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+
+
+practiceFiles:
+
+
+# HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
+# schedule.
+# An individual event looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     location: "MemChu"
+#     title: "Messiah Sing/Play Along"
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the event will take place.
+# Where title is a string that labels the event itself.
+# Where date is the date of the event, specified in YYYY-MM-DD format.
+# Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
+events:
+#-   date: "2022-05-14"
+#    start: "19:30"
+#    call: "18:30"
+#    location: "Bing"
+#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
+#-   date: "2022-05-15"
+#    start: "14:30"
+#    call: "13:30"
+#    location: "Bing"
+#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
+#-   date: "2022-05-17"
+#    start: "19:00"
+#    location: "Bing"
+#    title: "Dress rehearsal for Aquilanti: Te Deum"
+#-   date: "2022-05-22"
+#    start: "10:30"
+#    location: "Bing"
+#    title: "Dress rehearsal for Aquilanti: Te Deum"
+#-   date: "2022-05-22"
+#    start: "14:30"
+#    call: "13:30"
+#    location: "Bing"
+#    title: "Concert #1 for Aquilanti: Te Deum"
+#-   date: "2022-05-24"
+#    start: "19:30"
+#    call: "18:30"
+#    location: "Bing"
+#    title: "Concert #2 for Aquilanti: Te Deum"
+
+
+# HOWTO: description contains Markdown that is included on pages which need a synopsis of
+# the concert. The home page is a typical location where such text is used.
+description: |
+
+
+
+#   After a long hiatus, Stanford Symphonic Chorus is pleased to return to the stage with a performance
+#   of Mahler's _Symphony No. 2 "Auferstehung"_ ("Resurrection"),
+#   presented in collaboration with our friends in the Stanford Symphonic Orchestra.
