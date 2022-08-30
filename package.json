@@ -41,7 +41,7 @@
     "metalsmith-in-place": "^4.4.1",
     "metalsmith-plugin-kit": "^1.1.4",
     "metalsmith-prefixoid": "^1.0.3",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "node-yaml": "^4.0.1",
     "sanitize-html": "^1.27.4",
     "ts-node": "^9.0.0",
