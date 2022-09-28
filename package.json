@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "debug": "NODE_OPTIONS='--inspect' next dev",
-    "build": "next build && next export"
+    "export": "next build && next export",
+    "postexport": "scripts/postExport.py"
   },
   "dependencies": {
     "@types/object-hash": "^2.2.1",
