@@ -6,8 +6,7 @@ quarter: "Fall 2022"
 # HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
 # be detected and used.
-syllabus:
-# "SSC Syllabus Fall 2022"
+syllabus: "SSC Syllabus Fall 2022"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -27,6 +26,11 @@ repertoire:
         title: "Ein Deutsches Requiem"
         translation: "A German Requiem"
         catalog: "Op. 45"
+    -   composer: "Johannes Brahms"
+        title: "Akademische Festovertüre"
+        translation: "Academic Festival Overture"
+        catalog: "Op. 80"
+        
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -40,6 +44,7 @@ soloists:
 # Each entry in the list should be a single string that matches the key field of a record in
 # data/collaborators.yml
 collaborators:
+-   "PSO"
 
 
 # HOWTO:
@@ -67,6 +72,8 @@ heraldImage:
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
+-   "Stephen M. Sano"
+-   "Mitchell Sardou Klein"
 
 
 # HOWTO: instructors is a list of strings that name the instructors for this quarter
@@ -100,17 +107,37 @@ tuttiRehearsalNotes:
 #     date: "2022-02-07"
 
 tuttiRehearsals:
-# -   frequency: "weekly"
-#     startDate: "2022-02-07"
-#     endDate: "2022-03-07"
-#     startTime: "19:30"
-#     endTime: "21:00"
-#     location: "CRH"
+-   frequency: "weekly"
+    startDate: "2022-10-03"
+    endDate: "2022-11-14"
+    startTime: "19:30"
+    endTime: "21:00"
+    location: "CRH"
 
 
 mensSectionals:
+-   frequency: "once"
+    startDate: "2022-10-19"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2022-11-02"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 womensSectionals:
+-   frequency: "once"
+    startDate: "2022-10-12"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2022-10-26"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 
 # HOWTO: dresses is a list of dress rehearsals
@@ -125,7 +152,12 @@ womensSectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 dressRehearsals:
-
+-   date: "2022-11-15"
+    start: "19:00"
+    location: "Bing"
+-   date: "2022-11-17"
+    start: "19:00"
+    location: "Bing"
 
 
 # HOWTO: concerts is a list of concert dates
@@ -165,34 +197,10 @@ practiceFiles:
 # Where date is the date of the event, specified in YYYY-MM-DD format.
 # Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
 events:
-#-   date: "2022-05-14"
-#    start: "19:30"
-#    call: "18:30"
-#    location: "Bing"
-#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
-#-   date: "2022-05-15"
-#    start: "14:30"
-#    call: "13:30"
-#    location: "Bing"
-#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
-#-   date: "2022-05-17"
-#    start: "19:00"
-#    location: "Bing"
-#    title: "Dress rehearsal for Aquilanti: Te Deum"
-#-   date: "2022-05-22"
-#    start: "10:30"
-#    location: "Bing"
-#    title: "Dress rehearsal for Aquilanti: Te Deum"
-#-   date: "2022-05-22"
-#    start: "14:30"
-#    call: "13:30"
-#    location: "Bing"
-#    title: "Concert #1 for Aquilanti: Te Deum"
-#-   date: "2022-05-24"
-#    start: "19:30"
-#    call: "18:30"
-#    location: "Bing"
-#    title: "Concert #2 for Aquilanti: Te Deum"
+-   date: "2022-12-16"
+    start: "19:00"
+    location: "MemChu"
+    title: "Messiah Sing/Play Along"
 
 
 # HOWTO: description contains Markdown that is included on pages which need a synopsis of
