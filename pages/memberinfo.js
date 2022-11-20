@@ -77,15 +77,17 @@ function Sidebar({ quarter }) {
                     <li><a href="http://www1.cpdl.org/wiki/index.php/Main_Page">Choral Public Domain Library</a></li>
                 </ul>
             </TitledSegment>
-            <TitledSegment title="Music Folders">
-                <p>
-                    Black music folders are available at these sites.
-                </p>
-                <ul>
-                    <li><a href="http://musicfolder.com/">MusicFolder.Com</a></li>
-                    <li><a href="http://www.mymusicfolders.com/index.html">mymusicfolders.com</a></li>
-                </ul>
-            </TitledSegment>
+            <div id="folders">
+                <TitledSegment title="Music Folders">
+                        <p>
+                            Black music folders are available at these sites.
+                        </p>
+                        <ul>
+                            <li><a href="http://musicfolder.com/">MusicFolder.Com</a></li>
+                            <li><a href="http://www.mymusicfolders.com/index.html">mymusicfolders.com</a></li>
+                        </ul>
+                </TitledSegment>
+            </div>
             <TitledSegment title={<PageLink collection="performances" page={quarter}><a>Rehearsal Schedule</a></PageLink>}>
                 <p>
                     Listing of rehearsals, sectionals and performances for the current quarter.
