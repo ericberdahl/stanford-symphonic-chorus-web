@@ -6,8 +6,7 @@ quarter: "Winter 2023"
 # HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
 # be detected and used.
-syllabus:
-# "SSC Syllabus Winter 2023"
+syllabus: "SSC Syllabus Winter 2023"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -24,7 +23,7 @@ syllabus:
 repertoire:
     main:
     -   composer: "Hailstork"
-        title: "A Knee on the Neck"
+        title: "A Knee on the Neck: A Small Requiem for Black Men & Women"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -38,6 +37,7 @@ soloists:
 # Each entry in the list should be a single string that matches the key field of a record in
 # data/collaborators.yml
 collaborators:
+-   "SSO"
 
 
 # HOWTO:
@@ -65,6 +65,7 @@ heraldImage:
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
+-   "Stephen M. Sano"
 
 
 # HOWTO: instructors is a list of strings that name the instructors for this quarter
@@ -88,21 +89,41 @@ preregister: "2022-12-01"
 
 
 tuttiRehearsalNotes:
-# -   note: "Registration begins at 6:30 PM."
-#     date: "2023-02-07"
+-   note: "Registration begins at 6:30 PM."
+    date: "2023-01-09"
 
 tuttiRehearsals:
-# -   frequency: "weekly"
-#     startDate: "2022-02-07"
-#     endDate: "2022-03-07"
-#     startTime: "19:30"
-#     endTime: "21:00"
-#     location: "CRH"
+-   frequency: "weekly"
+    startDate: "2023-01-09"
+    endDate: "2023-02-27"
+    startTime: "19:30"
+    endTime: "21:00"
+    location: "CRH"
 
 
 mensSectionals:
+-   frequency: "once"
+    startDate: "2023-01-25"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2023-02-08"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 womensSectionals:
+-   frequency: "once"
+    startDate: "2023-01-18"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2023-02-01"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 
 # HOWTO: dresses is a list of dress rehearsals
@@ -117,9 +138,12 @@ womensSectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 dressRehearsals:
-# -   date: "2022-05-09"
-#     start: "19:00"
-#     location: "Bing"
+-   date: "2023-03-06"
+    start: "19:00"
+    location: "Bing"
+-   date: "2023-03-09"
+    start: "19:00"
+    location: "Bing"
 
 
 
@@ -140,13 +164,15 @@ concerts:
     start: "19:30"
     call: "18:30"
     location: "Bing"
--   date: "2023-03-11"
-    start: "19:30"
-    call: "18:30"
+-   date: "2023-03-12"
+    start: "14:30"
+    call: "13:30"
     location: "Bing"
 
 
 practiceFiles:
+-   title: "Practice files for Hailstork's A Knee on the Neck"
+    externalFolder: "https://drive.google.com/drive/folders/18Bc7lan0rrgQ61Dn2jPjozWuFELDXXAu"
 
 
 # HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal

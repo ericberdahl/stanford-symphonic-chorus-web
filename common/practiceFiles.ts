@@ -1,5 +1,6 @@
 import { PRACTICEFILES_URL_BASEPATH } from "./constants";
 
+import { strict as assert } from 'assert';
 import path from 'path';
 
 export type SerializedPracticeFile = {
@@ -14,13 +15,15 @@ export type PracticeFileStaticProps = {
 }
 
 export type SerializedPracticeFileSection = {
-    title : string;
-    files : SerializedPracticeFile[];
+    title :             string;
+    files :             SerializedPracticeFile[];
+    externalFolder :    string;
 }
 
 export type PracticeFileSectionStaticProps = {
-    files : PracticeFileStaticProps[];
-    title : string;
+    externalFolder :    string;
+    files :             PracticeFileStaticProps[];
+    title :             string;
 }
 
 function getExtension(p: string) : string {
@@ -55,26 +58,34 @@ export class PracticeFile {
 }
 
 export class PracticeFileSection {
-    readonly files :    PracticeFile[]  = [];
-    readonly title :    string          = '';
+    readonly externalFolder :   string;
+    readonly files :            PracticeFile[]  = [];
+    readonly title :            string          = '';
 
-    private constructor(title: string, files: PracticeFile[]) {
+    private constructor(title: string, files: PracticeFile[], externalFolder) {
         if (files) {
             this.files.push(...files);
         }
 
+        this.externalFolder = externalFolder;
         this.title = title;
+
+        assert.ok(this.externalFolder || this.files.length > 0, "PracticeFiles section must either contain files or an reference to an external folder")
     }
 
     async getStaticProps() : Promise<PracticeFileSectionStaticProps> {
         return {
-            files:  await Promise.all(this.files.map((f) => f.getStaticProps())),
-            title:  this.title,
+            externalFolder: (this.externalFolder || null),
+            files:          await Promise.all(this.files.map((f) => f.getStaticProps())),
+            title:          this.title,
         }
     }
 
     static async deserialize(data: SerializedPracticeFileSection) : Promise<PracticeFileSection> {
+        const fileList = (data.files || []);
+
         return new PracticeFileSection(data.title,
-                                       await Promise.all(data.files.map((f) => PracticeFile.deserialize(f))));
+                                       await Promise.all(fileList.map((f) => PracticeFile.deserialize(f))),
+                                       data.externalFolder);
     }
 }

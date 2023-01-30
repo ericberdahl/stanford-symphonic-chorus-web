@@ -18,11 +18,14 @@ function PracticeFileSection({ section }) {
     return (
         <>
             <h2>{section.title}</h2>
-            <ol>
+            {section.files.length > 0 && <ol>
                 {section.files.map((f, index) => (
                     <li key={index}>{f.title} <Link href={f.assetPath}>{'(' + f.assetLabel + ')'}</Link></li>
                 ))}
-            </ol>
+            </ol>}
+            {section.externalFolder && <ol>
+                <li key={1}><a href={section.externalFolder} target="_blank">External Folder containing Practice Files</a></li>
+            </ol>}
         </>
     );
 }
