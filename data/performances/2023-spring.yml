@@ -88,16 +88,16 @@ preregister: "2023-03-01"
 
 
 tuttiRehearsalNotes:
-# -   note: "Registration begins at 6:30 PM."
-#     date: "2023-03-28"
+-   note: "Registration begins at 6:30 PM."
+    date: "2023-04-03"
 
 tuttiRehearsals:
-# -   frequency: "weekly"
-#     startDate: "2022-03-28"
-#     endDate: "2022-05-02"
-#     startTime: "19:30"
-#     endTime: "22:00"
-#     location: "CRH"
+-   frequency: "weekly"
+    startDate: "2023-04-03"
+    endDate: "2023-04-03"
+    startTime: "19:30"
+    endTime: "22:00"
+    location: "CRH"
 
 
 mensSectionals:
@@ -145,9 +145,9 @@ dressRehearsals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 concerts:
--   date: "2023-05-25"
-    start: "19:30"
-    call: "18:30"
+-   date: "2023-05-21"
+    start: "14:30"
+    call: "13:30"
     location: "Bing"
 
 
