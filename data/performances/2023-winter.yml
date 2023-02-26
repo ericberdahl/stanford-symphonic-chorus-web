@@ -153,21 +153,26 @@ dressRehearsals:
 #     start: "HH:MM"
 #     call: "HH:MM"
 #     location: "Bing"
+#     ticketLink: "https://url-to-purchase-ticket"
 # Where date is date of the event, specified as YYYY-MM-DD (four digit year, two digit month, two digit day
 # of month).
 # Where start and call are the curtain time and call time for the concert specified as HH:MM in local time
 # (two digit hour, two digit minute of the hour, specified in 24-hour format)
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
+# Where ticketLink is an optional field. If present, the field should a string with the URL people can
+# follow to puchase tickets for the event
 concerts:
 -   date: "2023-03-10"
     start: "19:30"
     call: "18:30"
     location: "Bing"
+    ticketLink: "https://sto.stanfordtickets.org/dom22-23/stanford-symphony-orchestra-winter-concert-950244"
 -   date: "2023-03-12"
     start: "14:30"
     call: "13:30"
     location: "Bing"
+    ticketLink: "https://sto.stanfordtickets.org/dom22-23/stanford-symphony-orchestra-winter-concert-737391"
 
 
 practiceFiles:
