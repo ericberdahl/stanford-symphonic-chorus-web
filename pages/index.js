@@ -17,6 +17,8 @@ import { Model } from '../common/model'
 import { DateTime } from 'luxon'
 import { Fragment } from 'react'
 
+import Link from 'next/link';
+
 import styles from '../styles/Home.module.scss'
 
 // TODO : replace DateTime.toFormat uses with DateTime.toLocaleString
@@ -40,6 +42,11 @@ function ConcertEvent({ quarter, concert }) {
             <p>
                 <TimeOfDay iso={concert.start}/> <Location name={concert.location}/>
             </p>
+            {concert.ticketLink &&
+                <p>
+                    <Link href={concert.ticketLink}>Purchase tickets here</Link>
+                </p>
+            }
         </>
     );
 }

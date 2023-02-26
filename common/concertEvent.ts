@@ -6,26 +6,35 @@ import { DateTime } from 'luxon';
 
 export type SerializedConcertEvent = SerializedBasicEvent & {
     call :              string;  // 'HH:MM' : 24-hour formatted call time for the concert
-    repertoire? :       SerializedPerformanceRepertoire;
     collaborators? :    string[];
+    repertoire? :       SerializedPerformanceRepertoire;
+    ticketLink? :       string;
 }
 
 export type ConcertEventStaticProps = BasicEventStaticProps & {
     call :          string;  // ISO time
-    repertoire :    PerformanceRepertoireStaticProps;
     collaborators : string[];
+    repertoire :    PerformanceRepertoireStaticProps;
+    ticketLink :    string;
 }
 
 export class ConcertEvent extends BasicEvent {
     readonly call :             DateTime;
-    readonly repertoire :       PerformanceRepertoire;
     readonly collaborators :    string[];
+    readonly repertoire :       PerformanceRepertoire;
+    readonly ticketLink :       string;
 
-    private constructor(start : DateTime, location : string, call : DateTime, repertoire : PerformanceRepertoire, collaborators : string[]) {
+    private constructor(start : DateTime,
+                        location : string,
+                        call : DateTime,
+                        repertoire : PerformanceRepertoire,
+                        collaborators : string[],
+                        ticketLink : string) {
         super(start, location);
         this.call = call;
-        this.repertoire = repertoire;
         this.collaborators = collaborators;
+        this.repertoire = repertoire;
+        this.ticketLink = ticketLink;
     }
 
     async getStaticProps() : Promise<ConcertEventStaticProps> {    
@@ -33,8 +42,9 @@ export class ConcertEvent extends BasicEvent {
             ...await super.getStaticProps(),
 
             call:           this.call.toISO(),
-            repertoire:     this.repertoire ? await this.repertoire.getStaticProps() : null,
             collaborators:  this.collaborators || null,
+            repertoire:     this.repertoire ? await this.repertoire.getStaticProps() : null,
+            ticketLink:     this.ticketLink || null,
         };
     }
 
@@ -42,6 +52,7 @@ export class ConcertEvent extends BasicEvent {
         return new ConcertEvent(createDateTime(data.date, data.start), data.location,
                                 createDateTime(data.date, data.call),
                                 data.repertoire ? await PerformanceRepertoire.deserialize(data.repertoire) : null,
-                                data.collaborators || null);
+                                data.collaborators || null,
+                                data.ticketLink || null);
     }
 }
