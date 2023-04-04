@@ -5,8 +5,7 @@ quarter: "Spring 2023"
 
 # HOWTO: Set syllabus to an list of syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 1812.pdf" and "SSC Syllabus Spring 1812.docx"
-syllabus:
-# "SSC Syllabus Spring 2023"
+syllabus: "SSC Syllabus Spring 2023"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -25,6 +24,14 @@ repertoire:
     -   composer: "Franz Joseph Haydn"
         title: "Schöpfungsmesse"
         translation: "Creation Mass"
+        catalog: "Hob. XXII:13"
+    other:
+    -   composer: "Franz Joseph Haydn"
+        title: "Overture to La Vera Costanza"
+        catalog: "Hob. XXVIII:8"
+    -   composer: "Franz Joseph Haydn"
+        title: "Organ Concerto in C"
+        catalog: "Hob. XVIII:1"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -32,6 +39,16 @@ repertoire:
 # -   name: "Plácido Domingo"
 #     part: "tenor"
 soloists:
+-   name: "Esther Rayo"
+    part: "soprano"
+-   name: "Celeste Winant"
+    part: "alto"
+-   name: "Benjamin Liupaogo"
+    part: "tenor"
+-   name: "Steven Goodman"
+    part: "bass"
+-   name: "Robert Huw Morgan"
+    part: "organ"
 
 
 # HOWTO: collaborators is a list of groups with whom we collaborate on this program.
@@ -65,6 +82,7 @@ heraldImage:
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
+-   "Stephen M. Sano"
 
 
 # HOWTO: instructors is a list of strings that name the instructors for this quarter
@@ -74,7 +92,7 @@ instructors:
 
 # HOWTO: registrationFee is the participation fee for the quarter, typically waived
 # for students and faculty
-registrationFee: "$60"
+registrationFee: "$65"
 
 
 # HOWTO: membershipLimit is the maximum number of members allowed to register for
@@ -94,25 +112,35 @@ tuttiRehearsalNotes:
 tuttiRehearsals:
 -   frequency: "weekly"
     startDate: "2023-04-03"
-    endDate: "2023-04-03"
+    endDate: "2023-05-15"
     startTime: "19:30"
     endTime: "22:00"
     location: "CRH"
 
 
 mensSectionals:
-# -   frequency: "once"
-#     startDate: "2022-04-13"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2023-04-19"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2023-05-03"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 womensSectionals:
-# -   frequency: "once"
-#     startDate: "2022-04-06"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2023-04-12"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2023-04-26"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 
 # HOWTO: dresses is a list of dress rehearsals
@@ -127,9 +155,12 @@ womensSectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 dressRehearsals:
-# -   date: "2022-05-09"
-#     start: "19:00"
-#     location: "Bing"
+-   date: "2023-05-17"
+    start: "19:00"
+    location: "Bing"
+-   date: "2023-05-20"
+    start: "10:00"
+    location: "Bing"
 
 
 # HOWTO: concerts is a list of concert dates
