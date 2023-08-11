@@ -15,6 +15,7 @@ def removeDirsExcept(dirPath, subDirsToKeep):
     subDirsToKeep = list(map(lambda s: pathlib.Path(s), subDirsToKeep))
     for child in dirPath.iterdir():
         if (child.relative_to(dirPath) not in subDirsToKeep):
+            print(f'removing child dir {child}')
             shutil.rmtree(child)
 
 def main():
