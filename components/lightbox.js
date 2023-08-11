@@ -9,7 +9,7 @@ let lightboxCount = 0;
 
 function ImgLightbox({ label, caption, image, thumb, thumb_width, thumb_height }) {
     return (
-        <Link href={image}>
+        <Link href={image} legacyBehavior>
             <a
                 data-fslightbox={label}
                 data-caption={caption}>
