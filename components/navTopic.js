@@ -3,7 +3,7 @@ import PageLink, { isCurrentPage } from './pageLink'
 import styles from '../styles/navTopic.module.scss'
 
 function NavItem({ page, children }) {
-    return (<li className={isCurrentPage(page) ? styles.current : ''}><PageLink page={page}><a>{children}</a></PageLink></li>);
+    return (<li className={isCurrentPage(page) ? styles.current : ''}><PageLink page={page}>{children}</PageLink></li>);
 }
 
 export default function NavTopic(props) {

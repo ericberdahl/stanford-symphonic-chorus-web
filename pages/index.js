@@ -136,10 +136,10 @@ function Sidebar({ quarter }) {
                     caption="Alto section in rehearsal, 25 February 2010. Photo by R. A. Wilson."
                     img_width={149}/>
                 <ul>
-                    <li><PageLink page="performanceList"><a>SSC Performances</a></PageLink></li>
-                    <li><PageLink page="fylpList"><a>For your listening pleasure</a></PageLink></li>
-                    <li><PageLink page="memberInfo" anchor="auditions"><a>Joining the Chorus</a></PageLink></li>
-                    <li><PageLink collection="performances" page={quarter}><a>Rehearsal Schedule</a></PageLink></li>
+                    <li><PageLink page="performanceList">SSC Performances</PageLink></li>
+                    <li><PageLink page="fylpList">For your listening pleasure</PageLink></li>
+                    <li><PageLink page="memberInfo" anchor="auditions">Joining the Chorus</PageLink></li>
+                    <li><PageLink collection="performances" page={quarter}>Rehearsal Schedule</PageLink></li>
                 </ul>
             </TitledSegment>
             <TitledSegment title="Stanford Arts">
@@ -180,11 +180,11 @@ export default function Home({ currentQuarter }) {
                             The Stanford Symphonic Chorus is a group of approximately 180 students, faculty, staff, and members of the community led by Director of Music and Conductor Stephen Sano.
                             The Chorus generally performs three works a year, one each academic quarter.
                             Each performance typically features a large choral work, and includes other choral or instrumental pieces.
-                            See our <PageLink page="performanceList"><a>Performances</a></PageLink> page for information about past performances.
+                            See our <PageLink page="performanceList">Performances</PageLink> page for information about past performances.
                         </p>
                     </div>
                     <div className={styles.performanceDescription}>
-                        <h3><PageLink page="performanceList"><a>{currentQuarter.quarter} Concert</a></PageLink></h3>
+                        <h3><PageLink page="performanceList" legacyBehavior><a>{currentQuarter.quarter} Concert</a></PageLink></h3>
                         {currentQuarter.heraldImageRoutes &&
                             <div className={styles.heraldImage}>
                                 <PairedImage routes={currentQuarter.heraldImageRoutes}/>

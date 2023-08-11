@@ -46,7 +46,7 @@ function SubRepertoire({ composer, pieces }) {
                 {pieces.map((p, index) => (
                     <li key={index} className={styles.piece}>
                         <div className={styles.citation}><PieceCitation data={p}/></div>
-                        {p.fylp && <div className={styles.fylp}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure</a></PageLink></div> }
+                        {p.fylp && <div className={styles.fylp}><PageLink page={p.fylp} collection="fylp">For Your Listening Pleasure</PageLink></div> }
                         <div className={styles.performances}>
                             {p.performances.map((pf, index) => (
                                 <div key={index}><PageLink page={pf} collection="performances">{pf.quarter}</PageLink></div>

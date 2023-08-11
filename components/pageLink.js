@@ -164,13 +164,17 @@ export function getIdForCollection(page, collection) {
     return getCollection(collection).getPageId(page);
 }
 
-export default function PageLink({ collection, page, anchor, children, passHref }) {
+export function getHrefForPage(page, collection, anchor) {
     const entry = getCollection(collection).getSiteEntry(page);
 
     const internalLink = entry.internalRoute + (anchor && 0 < anchor.length ? '#' + anchor : '');
     const externalLink = entry.externalRoute + (anchor && 0 < anchor.length ? '#' + anchor : '');
 
+    return (serverRuntimeConfig.isExport ? externalLink : internalLink);
+}
+
+export default function PageLink({ collection, page, anchor, children, passHref, legacyBehavior }) {
     return (
-        <Link href={serverRuntimeConfig.isExport ? externalLink : internalLink} passHref={passHref}>{children}</Link>
+        <Link href={getHrefForPage(page, collection, anchor)} passHref={passHref} legacyBehavior={legacyBehavior}>{children}</Link>
     );
 }

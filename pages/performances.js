@@ -154,16 +154,16 @@ function Performance({ data }) {
                 <ul className={styles.links}>
                     {0 < posterRoutes.length && <li>Poster (<FileLinks files={posterRoutes}/>)</li>}
                     {data.repertoire.full.filter((p) => p.fylp).map((p, index) => (
-                        <li key={index}><PageLink page={p.fylp} collection="fylp"><a>For Your Listening Pleasure: <PieceCitation data={p}/></a></PageLink></li>
+                        <li key={index}><PageLink page={p.fylp} collection="fylp" legacyBehavior><a>For Your Listening Pleasure: <PieceCitation data={p}/></a></PageLink></li>
                     ))}
                     {data.galleries.map((g) => (
-                        <li key={g.id}><PageLink page={g} collection="gallery"><a>Photo Gallery: {g.name}</a></PageLink></li>
+                        <li key={g.id}><PageLink page={g} collection="gallery" legacyBehavior><a>Photo Gallery: {g.name}</a></PageLink></li>
                     ))}
                     {data.supplementsMDX.map((s, index) => (
                         <li key={"performanceSupplemeent-" + index}><Markdown mdx={s}/></li>
                     ))}
                     {pieceSupplements.map((s, index) => (
-                        <li key={"pieceSupplemeent-" + index}><PageLink page={s} collection="supplement"><a>{s.breadcrumb}</a></PageLink></li>
+                        <li key={"pieceSupplemeent-" + index}><PageLink page={s} collection="supplement">{s.breadcrumb}</PageLink></li>
                     ))}
                 </ul>
             </div>

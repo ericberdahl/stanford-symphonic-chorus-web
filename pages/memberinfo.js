@@ -25,13 +25,13 @@ function Introduction({ navItems, quarter }) {
             <PageNavigation items={navItems}/>
 
             <TitledSegment title="Member Tools">
-                <p><PageLink collection="performances" page={quarter}><a>Rehearsal Schedule</a></PageLink></p>
+                <p><PageLink collection="performances" page={quarter}>Rehearsal Schedule</PageLink></p>
                 {quarter.syllabusRoutes &&
                     <p>
                         {quarter.quarter} Syllabus (<FileLinks files={quarter.syllabusRoutes}/>)
                     </p>
                 }
-                <p><Link href="/assets/Choral Studies Liability Waiver Form.pdf"><a>Choral Studies Liability Waiver</a></Link></p>
+                <p><Link href="/assets/Choral Studies Liability Waiver Form.pdf">Choral Studies Liability Waiver</Link></p>
 
                 <p>
                     Singers must register online using the webform which will be emailed to last quarter's members in <MonthAndYear iso={quarter.preregisterDate}/>.
@@ -88,7 +88,7 @@ function Sidebar({ quarter }) {
                         </ul>
                 </TitledSegment>
             </div>
-            <TitledSegment title={<PageLink collection="performances" page={quarter}><a>Rehearsal Schedule</a></PageLink>}>
+            <TitledSegment title={<PageLink collection="performances" page={quarter}>Rehearsal Schedule</PageLink>}>
                 <p>
                     Listing of rehearsals, sectionals and performances for the current quarter.
                 </p>

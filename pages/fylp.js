@@ -46,7 +46,7 @@ function SubRepertoire({ composer, pieces }) {
             <ol>
                 {pieces.map((p, index) => (
                     <li key={index} className={styles.piece}>
-                        <PageLink page={p.fylp} collection="fylp"><a><PieceCitation data={p} titleOnly/></a></PageLink>
+                        <PageLink page={p.fylp} collection="fylp" legacyBehavior><a><PieceCitation data={p} titleOnly/></a></PageLink>
                     </li>
                 ))}
             </ol>

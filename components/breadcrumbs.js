@@ -8,7 +8,7 @@ import styles from '../styles/breadcrumbs.module.scss'
 function BreadcrumbItem({ item }) {
     return ('' == item.page ? 
         item.label :
-        <PageLink page={item.page}><a>{item.label}</a></PageLink>);
+        <PageLink page={item.page}>{item.label}</PageLink>);
 }
 
 export default function Breadcrumbs({ path }) {
