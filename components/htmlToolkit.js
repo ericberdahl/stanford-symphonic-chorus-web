@@ -10,7 +10,7 @@ export function Area({ href, ...rest}) {
     }
     
     return (
-        <Link href={href} passHref>
+        <Link href={href} passHref legacyBehavior>
             <Implementation {...rest}/>
         </Link>
     )
@@ -26,7 +26,7 @@ export function IFrame({ src, ...rest}) {
     }
     
     return (
-        <Link href={src} passHref>
+        <Link href={src} passHref legacyBehavior>
             <Implementation {...rest}/>
         </Link>
     )
@@ -42,7 +42,7 @@ export function Img({ src, ...rest}) {
     }
     
     return (
-        <Link href={src} passHref>
+        <Link href={src} passHref legacyBehavior>
             <Implementation {...rest}/>
         </Link>
     )
@@ -58,7 +58,7 @@ export function Script({ src, ...rest}) {
     }
     
     return (
-        <Link href={src} passHref>
+        <Link href={src} passHref legacyBehavior>
             <Implementation {...rest}/>
         </Link>
     )

@@ -24,7 +24,7 @@ function HomePageLogo() {
                 useMap="#HomePageLogoMap"/>
             <map name="HomePageLogoMap">
                 <Area shape="rect" coords="0,0,263,60" href="http://www.stanford.edu" alt="Stanford University"/>
-                <PageLink page="home" passHref><area shape="rect" coords="275,4,700,57" alt="Stanford Symphonic Chorus Department of Music"/></PageLink>
+                <PageLink page="home" passHref legacyBehavior><area shape="rect" coords="275,4,700,57" alt="Stanford Symphonic Chorus Department of Music"/></PageLink>
             </map>
         </div>
     )
