@@ -92,11 +92,24 @@ export type PerformanceStaticProps = {
     tuttiRehearsals :       RehearsalStaticProps[];
 }
 
-function appendEvents<T extends BasicEvent>(original : readonly T[], addend : T[]) : T[] {
-    return original.concat(addend)
-                   .sort((a, b) => -compareDateTime(a.start, b.start));
+function appendEvents<T extends BasicEvent>(original : readonly T[], addend : T[], annotation : string) : T[] {
+    try {
+        return original.concat(addend)
+                    .sort((a, b) => -compareDateTime(a.start, b.start));
+    } catch(e) {
+        e.message = `${e.message}; appending "${annotation}" events`
+        throw e;
+    }
 }
 
+async function deserializeRehearsalSequence(sequence : SerializedRehearsalSequence[], annotation : string) : Promise<Rehearsal[]> {
+    try {
+        return (sequence ? (await Promise.all(sequence.map((s) => Rehearsal.deserializeSequence(s)))).flat() : [])
+    } catch (e) {
+        e.message = `${e.message}; ${annotation}`;
+        throw e;
+    }
+}
 export class Performance {
     readonly auditionInfo           : AuditionInfo;
     readonly collaborators          : readonly string[]                 = [];
@@ -152,12 +165,12 @@ export class Performance {
             }
         }
 
-        this.concerts = appendEvents(this.concerts, concerts);
-        this.dressRehearsals = appendEvents(this.dressRehearsals, dressRehearsals);
-        this.events = appendEvents(this.events, events);
-        this.sectionalsSopranoAlto = appendEvents(this.sectionalsSopranoAlto, sectionalsSopranoAlto);
-        this.sectionalsTenorBass = appendEvents(this.sectionalsTenorBass, sectionalsTenorBass);
-        this.tuttiRehearsals = appendEvents(this.tuttiRehearsals, tuttiRehearsals);
+        this.concerts = appendEvents(this.concerts, concerts, 'concerts');
+        this.dressRehearsals = appendEvents(this.dressRehearsals, dressRehearsals, 'dress rehearsals');
+        this.events = appendEvents(this.events, events, 'events');
+        this.sectionalsSopranoAlto = appendEvents(this.sectionalsSopranoAlto, sectionalsSopranoAlto, 'soprano-alto sectionals');
+        this.sectionalsTenorBass = appendEvents(this.sectionalsTenorBass, sectionalsTenorBass, 'tenor-bass sectionals');
+        this.tuttiRehearsals = appendEvents(this.tuttiRehearsals, tuttiRehearsals, 'tutti rehearsals');
 
         this.auditionInfo = auditionInfo;
         this.collaborators = this.collaborators.concat(collaborators);
@@ -249,40 +262,45 @@ export class Performance {
     }
 
     static async deserialize(data : SerializedPerformance) : Promise<Performance> {
-        const result = new Performance(data.quarter,
-                                       data.syllabus,
-                                       data.directors || [],
-                                       data.instructors || [],
-                                       data.collaborators || [],
-                                       data.description,
-                                       (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
-                                       data.registrationFee,
-                                       data.membershipLimit,
-                                       await PerformanceRepertoire.deserialize(data.repertoire),
-                                       data.soloists ? await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))) : [],
-                                       await Promise.all(data.concerts.map(async (c) => ConcertEvent.deserialize(c))),
-                                       data.tuttiRehearsals ? (await Promise.all(data.tuttiRehearsals.map((s) => Rehearsal.deserializeSequence(s)))).flat() : [],
-                                       // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
-                                       data.womensSectionals ? (await Promise.all(data.womensSectionals.map((s) => Rehearsal.deserializeSequence(s)))).flat() : [],
-                                       // TODO: change yml schema from mensSectionals to sectionalsTenorBass
-                                       data.mensSectionals ? (await Promise.all(data.mensSectionals.map((s) => Rehearsal.deserializeSequence(s)))).flat() : [],
-                                       data.dressRehearsals ? await Promise.all(data.dressRehearsals.map((dr) => DressRehearsalEvent.deserialize(dr))) : [],
-                                       data.tuttiRehearsalNotes || [],
-                                       data.practiceFiles ? await Promise.all(data.practiceFiles.map((p) => PracticeFileSection.deserialize(p))) : [],
-                                       data.events ? await Promise.all(data.events.map((e) => GenericEvent.deserialize(e))) : [],
-                                       data.auditionInfo ? await AuditionInfo.deserialize(data.auditionInfo) : null);
+        try {
+            const result = new Performance(data.quarter,
+                                        data.syllabus,
+                                        data.directors || [],
+                                        data.instructors || [],
+                                        data.collaborators || [],
+                                        data.description,
+                                        (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
+                                        data.registrationFee,
+                                        data.membershipLimit,
+                                        await PerformanceRepertoire.deserialize(data.repertoire),
+                                        data.soloists ? await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))) : [],
+                                        await Promise.all(data.concerts.map(async (c) => ConcertEvent.deserialize(c))),
+                                        await deserializeRehearsalSequence(data.tuttiRehearsals, 'tutti rehearsals'),
+                                        // TODO: change yml schema from womensSectionals to sectionalsSopranoAlto
+                                        await deserializeRehearsalSequence(data.womensSectionals, 'womens sectionals'),
+                                        // TODO: change yml schema from mensSectionals to sectionalsTenorBass
+                                        await deserializeRehearsalSequence(data.mensSectionals, 'mens sectionals'),
+                                        data.dressRehearsals ? await Promise.all(data.dressRehearsals.map((dr) => DressRehearsalEvent.deserialize(dr))) : [],
+                                        data.tuttiRehearsalNotes || [],
+                                        data.practiceFiles ? await Promise.all(data.practiceFiles.map((p) => PracticeFileSection.deserialize(p))) : [],
+                                        data.events ? await Promise.all(data.events.map((e) => GenericEvent.deserialize(e))) : [],
+                                        data.auditionInfo ? await AuditionInfo.deserialize(data.auditionInfo) : null);
 
-        if (data.poster) {
-            result.setPoster(data.poster.basename, data.poster.caption);
-        }
-        if (data.heraldImage) {
-            result.setHeraldImage(data.heraldImage.basename, data.heraldImage.caption);
-        }
-    
-        if (data.supplements) {
-            result.supplements.push(...data.supplements);
-        }
+            if (data.poster) {
+                result.setPoster(data.poster.basename, data.poster.caption);
+            }
+            if (data.heraldImage) {
+                result.setHeraldImage(data.heraldImage.basename, data.heraldImage.caption);
+            }
         
-        return result;
+            if (data.supplements) {
+                result.supplements.push(...data.supplements);
+            }
+            
+            return result;
+        } catch (err) {
+            err.message = `${err.message}; deserializing performance "${data.quarter}"`;
+            throw err;
+        }
     }
 }
