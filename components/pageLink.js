@@ -173,8 +173,8 @@ export function getHrefForPage(page, collection, anchor) {
     return (serverRuntimeConfig.isExport ? externalLink : internalLink);
 }
 
-export default function PageLink({ collection, page, anchor, children, passHref, legacyBehavior }) {
+export default function PageLink({ collection, page, anchor, children, ...rest }) {
     return (
-        <Link href={getHrefForPage(page, collection, anchor)} passHref={passHref} legacyBehavior={legacyBehavior}>{children}</Link>
+        <Link href={getHrefForPage(page, collection, anchor)} {...rest}>{children}</Link>
     );
 }
