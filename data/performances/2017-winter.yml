@@ -78,7 +78,7 @@ mensSectionals:
     endTime: "18:30"
     location: "Braun 103"
     frequency: "once"
--   start: "2017-02-08"
+-   startDate: "2017-02-08"
     startTime: "17:30"
     endTime: "18:30"
     location: "Braun 103"
