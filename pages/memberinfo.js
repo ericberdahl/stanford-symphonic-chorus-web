@@ -20,6 +20,10 @@ function Introduction({ navItems, quarter }) {
     // below needs to be adjusted to accommodate the fact that we don't have preregister dates for all
     // performances in the historical record.
 
+    const scoreAdvisory = (quarter.scorePrice ?
+        (<>costs {quarter.scorePrice}</>) :
+        (<>will be sold at the first three rehearsals</>));
+
     return (
         <div className={styles.introduction}>
             <PageNavigation items={navItems}/>
@@ -46,7 +50,7 @@ function Introduction({ navItems, quarter }) {
                 {quarter.registrationFee &&
                     <p>
                         Registration fee is {quarter.registrationFee} (waived for students and faculty).
-                        The score for this quarter will be sold at the first three rehearsals.
+                        The score for this quarter {scoreAdvisory}.
                     </p>
                 }
                 
@@ -211,7 +215,7 @@ export default function MemberInfo({ currentQuarter }) {
 
                 <h2 id="rehearsals">Rehearsals</h2>
                 <p>
-                    Rehearsals are held Monday evenings from 7:30 to 10:00 (7:30 to 9:00 during the Winter 2022 quarter) in Campbell Recital Hall in the Braun Music Building, but please be <em>early</em> for the first rehearsal, since it will take extra time to get everyone signed up and to distribute the music, which will be available at the rehearsal.
+                    Rehearsals are held Monday evenings from 7:30 to 10:00 in Campbell Recital Hall in the Braun Music Building, but please be <em>early</em> for the first rehearsal, since it will take extra time to get everyone signed up and to distribute the music, which will be available at the rehearsal.
                     Sign ups start at <strong>6:30 p.m.</strong>
                 </p>
 

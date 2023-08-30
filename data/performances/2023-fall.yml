@@ -1,12 +1,12 @@
 # HOWTO: Set quarter to a single string that names the quarter and year. Use something like "Winter 1812",
 # "Spring 1812", or "Fall 1812"
-quarter: "Winter 2023"
+quarter: "Fall 2023"
 
 
 # HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
 # be detected and used.
-syllabus: "SSC Syllabus Winter 2023"
+syllabus: "SSC Syllabus Fall 2023"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -22,8 +22,14 @@ syllabus: "SSC Syllabus Winter 2023"
 # entire program of a performance.
 repertoire:
     main:
-    -   composer: "Hailstork"
-        title: "A Knee on the Neck: A Small Requiem for Black Men & Women"
+    -   composer: "Ludwig von Beethoven"
+        title: 'Mass in C'
+        catalog: "Op. 86"
+    other:
+    -   composer: "Ludwig von Beethoven"
+        title: 'Symphony No. 7'
+        catalog: "Op. 92"
+        
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -37,7 +43,7 @@ soloists:
 # Each entry in the list should be a single string that matches the key field of a record in
 # data/collaborators.yml
 collaborators:
--   "SSO"
+-   "PSO"
 
 
 # HOWTO:
@@ -65,7 +71,8 @@ heraldImage:
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
--   "Paul Phillips"
+-   "Stephen M. Sano"
+-   "Mitchell Sardou Klein"
 
 
 # HOWTO: instructors is a list of strings that name the instructors for this quarter
@@ -78,6 +85,10 @@ instructors:
 registrationFee: "$65"
 
 
+# HOWTO: scorePrice, when provided, is the price at which the score(s) for the quarter are sold.
+scorePrice: "$19"
+
+
 # HOWTO: membershipLimit is the maximum number of members allowed to register for
 # this quarter
 membershipLimit: 220
@@ -85,17 +96,17 @@ membershipLimit: 220
 
 # HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
 # is expected to be sent out.
-preregister: "2022-12-01"
+preregister: "2023-09-01"
 
 
 tuttiRehearsalNotes:
 -   note: "Registration begins at 6:30 PM."
-    date: "2023-01-09"
+    date: "2023-10-02"
 
 tuttiRehearsals:
 -   frequency: "weekly"
-    startDate: "2023-01-09"
-    endDate: "2023-02-27"
+    startDate: "2023-10-02"
+    endDate: "2023-11-13"
     startTime: "19:30"
     endTime: "21:00"
     location: "CRH"
@@ -103,24 +114,24 @@ tuttiRehearsals:
 
 mensSectionals:
 -   frequency: "once"
-    startDate: "2023-01-25"
+    startDate: "2023-10-18"
     startTime: "17:30"
     endTime: "18:30"
     location: "Braun 103"
 -   frequency: "once"
-    startDate: "2023-02-08"
+    startDate: "2023-11-01"
     startTime: "17:30"
     endTime: "18:30"
     location: "Braun 103"
 
 womensSectionals:
 -   frequency: "once"
-    startDate: "2023-01-18"
+    startDate: "2023-10-11"
     startTime: "17:30"
     endTime: "18:30"
     location: "Braun 103"
 -   frequency: "once"
-    startDate: "2023-02-01"
+    startDate: "2023-10-25"
     startTime: "17:30"
     endTime: "18:30"
     location: "Braun 103"
@@ -138,13 +149,12 @@ womensSectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 dressRehearsals:
--   date: "2023-03-06"
+-   date: "2023-11-14"
     start: "19:00"
     location: "Bing"
--   date: "2023-03-09"
+-   date: "2023-11-16"
     start: "19:00"
     location: "Bing"
-
 
 
 # HOWTO: concerts is a list of concert dates
@@ -153,32 +163,23 @@ dressRehearsals:
 #     start: "HH:MM"
 #     call: "HH:MM"
 #     location: "Bing"
-#     ticketLink: "https://url-to-purchase-ticket"
 # Where date is date of the event, specified as YYYY-MM-DD (four digit year, two digit month, two digit day
 # of month).
 # Where start and call are the curtain time and call time for the concert specified as HH:MM in local time
 # (two digit hour, two digit minute of the hour, specified in 24-hour format)
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
-# Where ticketLink is an optional field. If present, the field should a string with the URL people can
-# follow to puchase tickets for the event
 concerts:
--   date: "2023-03-10"
+-   date: "2023-11-17"
     start: "19:30"
     call: "18:30"
     location: "Bing"
-    ticketLink: "https://sto.stanfordtickets.org/dom22-23/stanford-symphony-orchestra-winter-concert-950244"
--   date: "2023-03-12"
-    start: "14:30"
-    call: "13:30"
+-   date: "2023-11-18"
+    start: "19:30"
+    call: "18:30"
     location: "Bing"
-    ticketLink: "https://sto.stanfordtickets.org/dom22-23/stanford-symphony-orchestra-winter-concert-737391"
-
 
 practiceFiles:
--   title: "Practice files for Hailstork's A Knee on the Neck"
-    externalFolder: "https://drive.google.com/drive/folders/18Bc7lan0rrgQ61Dn2jPjozWuFELDXXAu"
-
 
 # HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
 # schedule.
@@ -193,40 +194,18 @@ practiceFiles:
 # Where date is the date of the event, specified in YYYY-MM-DD format.
 # Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
 events:
-#-   date: "2022-05-14"
-#    start: "19:30"
-#    call: "18:30"
-#    location: "Bing"
-#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
-#-   date: "2022-05-15"
-#    start: "14:30"
-#    call: "13:30"
-#    location: "Bing"
-#    title: "Concert #2 for Mahler: Symphony No. 2 (not yet confirmed)"
-#-   date: "2022-05-17"
-#    start: "19:00"
-#    location: "Bing"
-#    title: "Dress rehearsal for Aquilanti: Te Deum"
-#-   date: "2022-05-22"
-#    start: "10:30"
-#    location: "Bing"
-#    title: "Dress rehearsal for Aquilanti: Te Deum"
-#-   date: "2022-05-22"
-#    start: "14:30"
-#    call: "13:30"
-#    location: "Bing"
-#    title: "Concert #1 for Aquilanti: Te Deum"
-#-   date: "2022-05-24"
-#    start: "19:30"
-#    call: "18:30"
-#    location: "Bing"
-#    title: "Concert #2 for Aquilanti: Te Deum"
+-   date: "2023-12-15"
+    start: "19:00"
+    location: "MemChu"
+    title: "Messiah Sing/Play Along"
 
 
 # HOWTO: description contains Markdown that is included on pages which need a synopsis of
 # the concert. The home page is a typical location where such text is used.
 description: |
-
+    Stanford Symphonic Chorus is pleased to open its 2023-24 season performing Beethoven's
+    _Mass in C_ in collaboration with long-time friends, the Peninsula Symphony. The performance
+    also features an orchestral performance of Beethoven's _Symphony No 7_.
 
 
 #   After a long hiatus, Stanford Symphonic Chorus is pleased to return to the stage with a performance

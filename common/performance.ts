@@ -46,9 +46,10 @@ type SerializedPerformance = {
     supplements? : string[];    // list of markup supplements for the performance
     poster? : SerializedPoster;
     heraldImage? : SerializedPoster;
-    description? : string;       // Markdown to be displayed as a description of the performance being prepared, often on the home page
+    description? : string;      // Markdown to be displayed as a description of the performance being prepared, often on the home page
     preregister : string;       // 'YYYY-MM-DD' : date the preregistration mail is expected to be sent
-    registrationFee? : string;   // '$dd' : amount of the registration fee
+    registrationFee? : string;  // '$dd' : amount of the registration fee
+    scorePrice? : string;       // '$dd' : price at which the score will be sold
     membershipLimit? : number;
     concerts : SerializedConcertEvent[];
     repertoire : SerializedPerformanceRepertoire;
@@ -83,6 +84,7 @@ export type PerformanceStaticProps = {
     preregisterDate :       string;   // ISO date-time
     quarter :               string;
     registrationFee :       string;
+    scorePrice :            string;
     repertoire :            PerformanceRepertoireStaticProps;
     sectionalsSopranoAlto : RehearsalStaticProps[];
     sectionalsTenorBass :   RehearsalStaticProps[];
@@ -125,6 +127,7 @@ export class Performance {
     readonly practiceFiles          : readonly PracticeFileSection[]    = [];
     readonly quarter                : string                            = '';
     readonly registrationFee        : string;
+    readonly scorePrice             : string;
     readonly rehearsalPieces        : PerformancePiece[]                = [];
     readonly repertoire             : PerformanceRepertoire;
     readonly sectionalsSopranoAlto  : readonly Rehearsal[]              = [];
@@ -145,6 +148,7 @@ export class Performance {
                         description : string,
                         preregisterDate : DateTime,
                         registrationFee : string,
+                        scorePrice : string,
                         membershipLimit : number,
                         repertoire : PerformanceRepertoire,
                         soloists : Soloist[],
@@ -182,6 +186,7 @@ export class Performance {
         this.preregisterDate = preregisterDate;
         this.quarter = quarter;
         this.registrationFee = registrationFee;
+        this.scorePrice = scorePrice;
         this.repertoire = repertoire;
         this.soloists = this.soloists.concat(soloists);
 
@@ -250,7 +255,8 @@ export class Performance {
             practiceFiles:          await Promise.all(this.practiceFiles.map((p) => p.getStaticProps())),
             preregisterDate:        this.preregisterDate?.toISO() || null,
             quarter:                this.quarter,
-            registrationFee:        this.registrationFee,
+            registrationFee:        this.registrationFee || null,
+            scorePrice:             this.scorePrice || null,
             repertoire:             await this.repertoire.getStaticProps(),
             sectionalsSopranoAlto:  await Promise.all(this.sectionalsSopranoAlto.map(async (r) => r.getStaticProps())),
             sectionalsTenorBass:    await Promise.all(this.sectionalsTenorBass.map(async (r) => r.getStaticProps())),
@@ -271,6 +277,7 @@ export class Performance {
                                         data.description,
                                         (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
                                         data.registrationFee,
+                                        data.scorePrice,
                                         data.membershipLimit,
                                         await PerformanceRepertoire.deserialize(data.repertoire),
                                         data.soloists ? await Promise.all(data.soloists.map(async (s) => Soloist.deserialize(s))) : [],

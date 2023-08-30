@@ -4,10 +4,14 @@ export default function Covid19MitigationPolicy() {
             <h3>COVID-19 Mitigation Policy</h3>
             <div>
                 <p>
-                    Membership in the Stanford Symphonic Chorus requires proof of full vaccination for participation.
-                    Masking is highly recommended but not required.
-                    Those who prefer to mask are most welcome to do so.
-                    These requirements may change over time with the always-shifting nature of health and safety requirements as set forth by the university.
+                    Since the Symphonic Chorus is also offered as a class to Stanford students, all members,
+                    irrespective of whether or not they have an official affiliation with the university,
+                    must meet Stanford's COVID-19 mitigation policy that states: the university no longer requires
+                    - but continues to strongly recommend - COVID vaccinations and boosters.
+                </p>
+                <p>
+                    <b>In a change from past practice, masks are highly recommended, but no longer required.</b> Of
+                    course, participants are always welcome to remain masked if desired.
                 </p>
             </div>
         </>
