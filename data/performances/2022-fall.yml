@@ -91,15 +91,16 @@ registrationFee: "$65"
 membershipLimit: 220
 
 
-# HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
-# is expected to be sent out.
-preregister: "2022-09-01"
-
 # HOWTO:
-auditionInfo:
-    date: "2022-09-26"
-    signupPostDate: "2022-09-01"
-    signupPostLink: "music.stanford.edu"
+# - preregister (optional) is a date in "YYYY-MM-DD" format by which the preregistration mail
+#   is expected to be sent out.
+# - registrationLink (optional) is a link (without http:// prefix) of an online form at which
+#   members should preregister
+# - auditionLink (optional) is a link (without http:// prefix) of an online form at which
+#   new members should sign up for auditions
+auditionLink:
+    preregisterDate: "2022-09-01"
+    auditionLink: "music.stanford.edu"
 
 
 tuttiRehearsalNotes:

@@ -1,4 +1,4 @@
-import { AuditionInfo, AuditionInfoStaticProps } from './auditionInfo';
+import { RegistrationInfo, RegistrationInfoStaticProps, SerializedRegistrationInfo } from './registrationInfo';
 import { ConcertEvent, ConcertEventStaticProps, SerializedConcertEvent } from './concertEvent';
 import { createDateTime, compareDateTime } from './dateTimeUtils';
 import { DressRehearsalEvent, DressRehearsalEventStaticProps, SerializedDressRehearsalEvent } from './dressRehearsalEvent';
@@ -35,30 +35,30 @@ type SerializedRehearsalNote = {
 type RehearsalNote = SerializedRehearsalNote;
 
 type SerializedPerformance = {
-    auditionInfo? : AuditionInfo;
-    practiceFiles? : SerializedPracticeFileSection[];
-    quarter : string;           // human-readable name of quarter
-    syllabus : string;          // basename of syllabus asset
-    directors? : string[];      // list of names of the directors
-    instructors? : string[];    // list of names of the instructors
-    collaborators? : string[];  // list of nicknames of collaborators
-    soloists? : SerializedSoloist[];
-    supplements? : string[];    // list of markup supplements for the performance
-    poster? : SerializedPoster;
-    heraldImage? : SerializedPoster;
-    description? : string;      // Markdown to be displayed as a description of the performance being prepared, often on the home page
-    preregister : string;       // 'YYYY-MM-DD' : date the preregistration mail is expected to be sent
-    registrationFee? : string;  // '$dd' : amount of the registration fee
-    scorePrice? : string;       // '$dd' : price at which the score will be sold
-    membershipLimit? : number;
-    concerts : SerializedConcertEvent[];
-    repertoire : SerializedPerformanceRepertoire;
-    events? : SerializedGenericEvent[];
-    tuttiRehearsals : SerializedRehearsalSequence[];
-    tuttiRehearsalNotes? : SerializedRehearsalNote[];
-    mensSectionals? : SerializedRehearsalSequence[];
-    womensSectionals? : SerializedRehearsalSequence[];
-    dressRehearsals? : SerializedDressRehearsalEvent[];
+    registrationInfo?       : SerializedRegistrationInfo;
+    practiceFiles?          : SerializedPracticeFileSection[];
+    quarter                 : string;   // human-readable name of quarter
+    syllabus                : string;   // basename of syllabus asset
+    directors?              : string[]; // list of names of the directors
+    instructors?            : string[]; // list of names of the instructors
+    collaborators?          : string[]; // list of nicknames of collaborators
+    soloists?               : SerializedSoloist[];
+    supplements?            : string[]; // list of markup supplements for the performance
+    poster?                 : SerializedPoster;
+    heraldImage?            : SerializedPoster;
+    description?            : string;   // Markdown to be displayed as a description of the performance being prepared, often on the home page
+    preregister             : string;   // 'YYYY-MM-DD' : date the preregistration mail is expected to be sent
+    registrationFee?        : string;   // '$dd' : amount of the registration fee
+    scorePrice?             : string;   // '$dd' : price at which the score will be sold
+    membershipLimit?        : number;
+    concerts                : SerializedConcertEvent[];
+    repertoire              : SerializedPerformanceRepertoire;
+    events?                 : SerializedGenericEvent[];
+    tuttiRehearsals         : SerializedRehearsalSequence[];
+    tuttiRehearsalNotes?    : SerializedRehearsalNote[];
+    mensSectionals?         : SerializedRehearsalSequence[];
+    womensSectionals?       : SerializedRehearsalSequence[];
+    dressRehearsals?        : SerializedDressRehearsalEvent[];
 }
 
 export type PerformanceRefStaticProps = {
@@ -67,7 +67,6 @@ export type PerformanceRefStaticProps = {
 }
 
 export type PerformanceStaticProps = {
-    auditionInfo :          AuditionInfoStaticProps;
     collaborators :         string[];
     concerts :              ConcertEventStaticProps[];
     descriptionMDX :        MDXRemoteSerializeResult;
@@ -81,9 +80,9 @@ export type PerformanceStaticProps = {
     membershipLimit :       number;
     posterRoutes :          ImageRoutesStaticProps;
     practiceFiles :         PracticeFileSectionStaticProps[];
-    preregisterDate :       string;   // ISO date-time
     quarter :               string;
     registrationFee :       string;
+    registrationInfo :      RegistrationInfoStaticProps;
     scorePrice :            string;
     repertoire :            PerformanceRepertoireStaticProps;
     sectionalsSopranoAlto : RehearsalStaticProps[];
@@ -113,7 +112,6 @@ async function deserializeRehearsalSequence(sequence : SerializedRehearsalSequen
     }
 }
 export class Performance {
-    readonly auditionInfo           : AuditionInfo;
     readonly collaborators          : readonly string[]                 = [];
     readonly concerts               : readonly ConcertEvent[]           = [];
     readonly description            : string;
@@ -123,10 +121,10 @@ export class Performance {
     readonly galleries              : Gallery[]                         = [];
     readonly instructors            : readonly string[]                 = [];
     readonly membershipLimit        : number;
-    readonly preregisterDate        : DateTime;
     readonly practiceFiles          : readonly PracticeFileSection[]    = [];
     readonly quarter                : string                            = '';
     readonly registrationFee        : string;
+    readonly registrationInfo       : RegistrationInfo;
     readonly scorePrice             : string;
     readonly rehearsalPieces        : PerformancePiece[]                = [];
     readonly repertoire             : PerformanceRepertoire;
@@ -146,7 +144,6 @@ export class Performance {
                         instructors : string[],
                         collaborators : string[],
                         description : string,
-                        preregisterDate : DateTime,
                         registrationFee : string,
                         scorePrice : string,
                         membershipLimit : number,
@@ -160,7 +157,7 @@ export class Performance {
                         tuttiRehearsalNotes : RehearsalNote[],
                         practiceFiles : PracticeFileSection[],
                         events : GenericEvent[],
-                        auditionInfo : AuditionInfo) {
+                        registrationInfo : RegistrationInfo) {
         if (syllabusName) {
             // TODO : '/assets/syllabi' should not be a literal constant
             this.syllabusRoutes = new FileRoutes('/assets/syllabi', syllabusName, ['pdf', 'docx', 'doc'])
@@ -176,16 +173,15 @@ export class Performance {
         this.sectionalsTenorBass = appendEvents(this.sectionalsTenorBass, sectionalsTenorBass, 'tenor-bass sectionals');
         this.tuttiRehearsals = appendEvents(this.tuttiRehearsals, tuttiRehearsals, 'tutti rehearsals');
 
-        this.auditionInfo = auditionInfo;
         this.collaborators = this.collaborators.concat(collaborators);
         this.description = (description || '');
         this.directors = this.directors.concat(directors);
         this.instructors = this.instructors.concat(instructors);
         this.membershipLimit = membershipLimit;
         this.practiceFiles = this.practiceFiles.concat(practiceFiles);
-        this.preregisterDate = preregisterDate;
         this.quarter = quarter;
         this.registrationFee = registrationFee;
+        this.registrationInfo = registrationInfo;
         this.scorePrice = scorePrice;
         this.repertoire = repertoire;
         this.soloists = this.soloists.concat(soloists);
@@ -239,7 +235,6 @@ export class Performance {
 
     async getStaticProps() : Promise<PerformanceStaticProps> {
         return {
-            auditionInfo:           this.auditionInfo ? await this.auditionInfo.getStaticProps() : null,
             collaborators:          this.collaborators.concat([]),
             concerts:               await Promise.all(this.concerts.map(async (c) => c.getStaticProps())),
             descriptionMDX:         await mdxSerializeMarkdown(this.description),
@@ -253,9 +248,9 @@ export class Performance {
             membershipLimit:        this.membershipLimit,
             posterRoutes:           this._posterRoutes ? await this._posterRoutes.getStaticProps() : null,
             practiceFiles:          await Promise.all(this.practiceFiles.map((p) => p.getStaticProps())),
-            preregisterDate:        this.preregisterDate?.toISO() || null,
             quarter:                this.quarter,
             registrationFee:        this.registrationFee || null,
+            registrationInfo:       this.registrationInfo ? await this.registrationInfo.getStaticProps() : null,
             scorePrice:             this.scorePrice || null,
             repertoire:             await this.repertoire.getStaticProps(),
             sectionalsSopranoAlto:  await Promise.all(this.sectionalsSopranoAlto.map(async (r) => r.getStaticProps())),
@@ -269,13 +264,20 @@ export class Performance {
 
     static async deserialize(data : SerializedPerformance) : Promise<Performance> {
         try {
+            // Until we update all historical YAML files to use registrationInfo directly,
+            // update registrationInfo to include the preregister data into the registrationInfo
+            // where necessary.
+            if (data.preregister) {
+                data.registrationInfo = data.registrationInfo || {};
+                data.registrationInfo.preregisterDate = data.preregister;
+            }
+
             const result = new Performance(data.quarter,
                                         data.syllabus,
                                         data.directors || [],
                                         data.instructors || [],
                                         data.collaborators || [],
                                         data.description,
-                                        (data.preregister ? DateTime.fromFormat(data.preregister, 'yyyy-MM-dd', { setZone: serverRuntimeConfig.timezone }) : null),
                                         data.registrationFee,
                                         data.scorePrice,
                                         data.membershipLimit,
@@ -291,7 +293,7 @@ export class Performance {
                                         data.tuttiRehearsalNotes || [],
                                         data.practiceFiles ? await Promise.all(data.practiceFiles.map((p) => PracticeFileSection.deserialize(p))) : [],
                                         data.events ? await Promise.all(data.events.map((e) => GenericEvent.deserialize(e))) : [],
-                                        data.auditionInfo ? await AuditionInfo.deserialize(data.auditionInfo) : null);
+                                        data.registrationInfo ? await RegistrationInfo.deserialize(data.registrationInfo) : null);
 
             if (data.poster) {
                 result.setPoster(data.poster.basename, data.poster.caption);

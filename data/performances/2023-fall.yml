@@ -86,17 +86,23 @@ registrationFee: "$65"
 
 
 # HOWTO: scorePrice, when provided, is the price at which the score(s) for the quarter are sold.
-scorePrice: "$19"
+scorePrice: 
 
 
 # HOWTO: membershipLimit is the maximum number of members allowed to register for
 # this quarter
 membershipLimit: 220
 
-
-# HOWTO: preregister is a date in "YYYY-MM-DD" format by which the preregistration mail
-# is expected to be sent out.
-preregister: "2023-09-01"
+# HOWTO:
+# - preregister (optional) is a date in "YYYY-MM-DD" format by which the preregistration mail
+#   is expected to be sent out.
+# - registrationLink (optional) is a link (without http:// prefix) of an online form at which
+#   members should preregister
+# - auditionLink (optional) is a link (without http:// prefix) of an online form at which
+#   new members should sign up for auditions
+registrationInfo:
+    registrationLink: "forms.gle/zuhAaeYDdpYYmNUNA"
+    auditionLink: "docs.google.com/spreadsheets/d/1l1OF58B4rxwG6p_LWkw1g8BJ4utCg9MKocGrQAbnKKU/edit?usp=sharing"
 
 
 tuttiRehearsalNotes:
