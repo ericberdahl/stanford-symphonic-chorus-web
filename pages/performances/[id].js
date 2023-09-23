@@ -26,6 +26,9 @@ function PracticeFileSection({ section }) {
             {section.externalFolder && <ol>
                 <li key={1}><a href={section.externalFolder} target="_blank">External Folder containing Practice Files</a></li>
             </ol>}
+            {section.externalLink && <ol>
+                <li key={1}><a href={section.externalLink} target="_blank">{section.externalLink}</a></li>
+            </ol>}
         </>
     );
 }

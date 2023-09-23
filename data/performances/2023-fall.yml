@@ -186,6 +186,8 @@ concerts:
     location: "Bing"
 
 practiceFiles:
+-   title: "Practice files for Beethoven's Mass in C"
+    externalLink: "https://www.choralia.net/bt07mp3/bt07mp3en.htm"
 
 # HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
 # schedule.

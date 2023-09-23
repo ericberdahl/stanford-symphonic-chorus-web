@@ -15,15 +15,17 @@ export type PracticeFileStaticProps = {
 }
 
 export type SerializedPracticeFileSection = {
-    title :             string;
-    files :             SerializedPracticeFile[];
-    externalFolder :    string;
+    title           : string;
+    files?          : SerializedPracticeFile[];
+    externalFolder? : string;
+    externalLink?   : string;
 }
 
 export type PracticeFileSectionStaticProps = {
-    externalFolder :    string;
-    files :             PracticeFileStaticProps[];
-    title :             string;
+    externalFolder  : string;
+    externalLink    : string;
+    files           : PracticeFileStaticProps[];
+    title           : string;
 }
 
 function getExtension(p: string) : string {
@@ -58,26 +60,29 @@ export class PracticeFile {
 }
 
 export class PracticeFileSection {
-    readonly externalFolder :   string;
-    readonly files :            PracticeFile[]  = [];
-    readonly title :            string          = '';
+    readonly externalFolder : string;
+    readonly externalLink   : string;
+    readonly files          : PracticeFile[]  = [];
+    readonly title          : string          = '';
 
-    private constructor(title: string, files: PracticeFile[], externalFolder) {
+    private constructor(title: string, files: PracticeFile[], externalFolder, externalLink) {
         if (files) {
             this.files.push(...files);
         }
 
         this.externalFolder = externalFolder;
+        this.externalLink   = externalLink;
         this.title = title;
 
-        assert.ok(this.externalFolder || this.files.length > 0, "PracticeFiles section must either contain files or an reference to an external folder")
+        assert.ok(this.externalFolder || this.externalLink || this.files.length > 0, "PracticeFiles section does not contain files, external folder reference, or external link")
     }
 
     async getStaticProps() : Promise<PracticeFileSectionStaticProps> {
         return {
-            externalFolder: (this.externalFolder || null),
-            files:          await Promise.all(this.files.map((f) => f.getStaticProps())),
-            title:          this.title,
+            externalFolder  : (this.externalFolder || null),
+            externalLink    : (this.externalLink || null),
+            files           : await Promise.all(this.files.map((f) => f.getStaticProps())),
+            title           : this.title,
         }
     }
 
@@ -86,6 +91,7 @@ export class PracticeFileSection {
 
         return new PracticeFileSection(data.title,
                                        await Promise.all(fileList.map((f) => PracticeFile.deserialize(f))),
-                                       data.externalFolder);
+                                       data.externalFolder,
+                                       data.externalLink);
     }
 }
