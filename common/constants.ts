@@ -10,7 +10,7 @@ export const PROCESS_WORKING_DIR   = process.cwd();
 
 export const STATIC_ASSET_DIR : string = path.join(PROCESS_WORKING_DIR, 'public');
 
-export const GALLERY_URL_BASEPATH       = '/galleries';
+export const GALLERY_URL_BASEPATH       = '/assets/galleries';
 export const PRACTICEFILES_URL_BASEPATH = '/assets/practiceFiles';
 
 // TODO: Convert GALLERY_ASSET_BASEPATH into GALLERY_ASSET_DIR (inluding /galleries segment)
