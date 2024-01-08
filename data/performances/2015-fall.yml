@@ -17,7 +17,7 @@ repertoire:
     -   composer:
         -   "Ralph"
         -   "Vaughan Williams"
-        title: "Dona Nobis Pacem"
+        title: "Dona nobis pacem"
 
 
 soloists:
@@ -33,7 +33,7 @@ collaborators:
 
 poster:
     basename: "F2015 Poster"
-    caption: "Vaughan Williams: Dona Nobis Pacem"
+    caption: "Vaughan Williams: Dona nobis pacem"
 
 directors:
 -   "Mitchell Sardou Klein"

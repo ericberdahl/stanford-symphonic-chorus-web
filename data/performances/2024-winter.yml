@@ -28,7 +28,7 @@ repertoire:
     -   composer:
         -   "Ralph"
         -   "Vaughan Williams"
-        title: "Dona Nobis Pacem"
+        title: "Dona nobis pacem"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -84,7 +84,7 @@ instructors:
 
 # HOWTO: registrationFee is the participation fee for the quarter, typically waived
 # for students and faculty
-registrationFee: "$60"
+registrationFee: "$65"
 
 
 # HOWTO: scorePrice, when provided, is the price at which the score(s) for the quarter are sold.
@@ -194,7 +194,7 @@ concerts:
 # - externalFolder (optional) is a link to a directory on a different web site that contains a selection
 #   of practice files which members can download
 practiceFiles:
--   title: "Practice files for Vaughan Williams' Dona Nobis Pacem"
+-   title: "Practice files for Vaughan Williams' Dona nobis pacem"
     externalLink: "https://www.choralia.net/vw03mp3/vw03mp3en.htm"
 
 
