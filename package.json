@@ -9,21 +9,21 @@
     "postexport": "scripts/postExport.py"
   },
   "dependencies": {
-    "@types/object-hash": "^3.0.3",
-    "glob-promise": "^6.0.3",
-    "image-size": "^1.0.0",
-    "luxon": "^3.4.0",
-    "next": "^13.4.13",
+    "@types/object-hash": "^3.0.6",
+    "glob-promise": "^6.0.5",
+    "image-size": "^1.1.1",
+    "luxon": "^3.4.4",
+    "next": "^14.0.4",
     "next-mdx-remote": "^4.4.1",
     "object-hash": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.65.1",
+    "sass": "^1.69.7",
     "slugify": "^1.6.6",
-    "yaml": "^2.2.1"
+    "yaml": "^2.3.4"
   },
   "devDependencies": {
-    "@types/react": "^18.2.20",
-    "typescript": "^5.1.6"
+    "@types/react": "^18.2.47",
+    "typescript": "^5.3.3"
   }
 }
