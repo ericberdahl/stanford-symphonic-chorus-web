@@ -10,8 +10,7 @@ export default function Covid19MitigationPolicy() {
                     - but continues to strongly recommend - COVID vaccinations and boosters.
                 </p>
                 <p>
-                    <b>In a change from past practice, masks are highly recommended, but no longer required.</b> Of
-                    course, participants are always welcome to remain masked if desired.
+                    Masking is no longer required, but participants are always welcome to remain masked if desired.
                 </p>
             </div>
         </>
