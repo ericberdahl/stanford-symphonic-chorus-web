@@ -182,8 +182,8 @@ concerts:
     call: "18:30"
     location: "Bing"
 -   date: "2024-03-09"
-    start: "14:30"
-    call: "13:30"
+    start: "19:30"
+    call: "18:30"
     location: "Bing"
 
 # HOWTO: practiceFiles is a list of locations where members can find recordings and other supplemental
