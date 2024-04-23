@@ -153,7 +153,6 @@ function Sidebar({ quarter }) {
                     <li><a href="//music.stanford.edu/Ensembles/index.html">Stanford Ensembles</a></li>
                     <li><a href="//live.stanford.edu/">Stanford Live</a></li>
                     <li><a href="//arts.stanford.edu/">Stanford Arts</a></li>
-                    <li><a href="//www.stanford.edu/group/tickets/index.html">Stanford Ticket Office</a></li>
                 </ul>
             </TitledSegment>
         </div>
@@ -192,7 +191,7 @@ export default function Home({ currentQuarter }) {
                         }
                         <Markdown mdx={currentQuarter.descriptionMDX} />
                         <p>
-                            {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <Fragment key={index}>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</Fragment>)}</CommaSeparatedList>
+                            {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <Fragment key={index}>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</Fragment>)}</CommaSeparatedList>.
                         </p>
                         <br/>
                         <ul className={styles.ticketLinks}>
