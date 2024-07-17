@@ -21,6 +21,12 @@ syllabus: # "SSC Syllabus Fall 2024"
 # Main pieces are included in headlines describing the program. Other pieces are added when dispalying the
 # entire program of a performance.
 repertoire:
+    other:
+    -   composer: "Howard Hanson"
+        title: "Mosaics"
+    -   composer: "Jessie Montgomery"
+        title: "Hymn for Everyone"
+
     main:
     -   composer: "Howard Hanson"
         title: "Symphony No. 7 (A Sea Symphony)"
@@ -67,6 +73,7 @@ heraldImage:
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
 -   "Stephen M. Sano"
+-   "Mitchell Sardou Klein"
 
 
 # HOWTO: instructors is a list of strings that name the instructors for this quarter
