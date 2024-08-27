@@ -170,11 +170,11 @@ dressRehearsals:
 # Where ticketLink is an optional field. If present, the field should a string with the URL people can
 # follow to puchase tickets for the event
 concerts:
--   date: "2025-03-01"
+-   date: "2025-03-07"
     start: "19:30"
     call: "18:30"
     location: "Bing"
--   date: "2025-03-02"
+-   date: "2025-03-08"
     start: "14:30"
     call: "13:30"
     location: "Bing"
