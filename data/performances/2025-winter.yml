@@ -6,7 +6,7 @@ quarter: "Winter 2025"
 # HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
 # be detected and used.
-syllabus: # "SSC Syllabus Winter 2025"
+syllabus: "SSC Syllabus Winter 2025"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -18,12 +18,18 @@ syllabus: # "SSC Syllabus Winter 2025"
 # For more complex piece formulae, look at the reference "HOWTO Piece syntax"
 #
 # Repertoire is separated into main pieces and other pieces. Main and other each contain a list of pieces.
-# Main pieces are included in headlines describing the program. Other pieces are added when dispalying the
+# Main pieces are included in headlines describing the program. Other pieces are added when displaying the
 # entire program of a performance.
 repertoire:
     main:
     -   composer: "Francis Poulenc"
         title: "Stabat mater"
+    other:
+    -   composer: "Maurice Ravel"
+        title: "Daphnis et Chloé"
+        catalog: "Suite No. 1"
+    -   composer: "Paul Phillips"
+        title: "Battle-Pieces"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -31,12 +37,15 @@ repertoire:
 # -   name: "Plácido Domingo"
 #     part: "tenor"
 soloists:
+-   name: "Mikayla Sager"
+    part: "soprano"
 
 
 # HOWTO: collaborators is a list of groups with whom we collaborate on this program.
 # Each entry in the list should be a single string that matches the key field of a record in
 # data/collaborators.yml
 collaborators:
+-   "SSO"
 
 
 # HOWTO:
@@ -105,33 +114,33 @@ tuttiRehearsals:
     startDate: "2025-01-06"
     endDate: "2025-02-24"
     startTime: "19:30"
-    endTime: "21:00"
+    endTime: "22:00"
     location: "CRH"
 
 
 mensSectionals:
-# -   frequency: "once"
-#     startDate: "2024-01-24"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2024-02-07"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2025-01-22"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2025-02-05"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 womensSectionals:
-# -   frequency: "once"
-#     startDate: "2024-01-17"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2024-01-31"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2025-01-15"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2025-01-29"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 
 # HOWTO: dresses is a list of dress rehearsals
@@ -175,8 +184,8 @@ concerts:
     call: "18:30"
     location: "Bing"
 -   date: "2025-03-08"
-    start: "14:30"
-    call: "13:30"
+    start: "19:30"
+    call: "18:30"
     location: "Bing"
 
 
