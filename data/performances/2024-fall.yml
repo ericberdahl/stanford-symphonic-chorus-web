@@ -6,7 +6,7 @@ quarter: "Fall 2024"
 # HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
 # be detected and used.
-syllabus: # "SSC Syllabus Fall 2024"
+syllabus: "SSC Syllabus Fall 2024"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -112,35 +112,35 @@ tuttiRehearsalNotes:
 tuttiRehearsals:
 -   frequency: "weekly"
     startDate: "2024-09-23"
-    endDate: "2024-11-19"
+    endDate: "2024-11-18"
     startTime: "19:30"
     endTime: "21:00"
     location: "CRH"
 
 
 mensSectionals:
-# -   frequency: "once"
-#     startDate: "2024-01-24"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2024-02-07"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2024-10-09"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2024-10-23"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 womensSectionals:
-# -   frequency: "once"
-#     startDate: "2024-01-17"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2024-01-31"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2024-10-02"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2024-10-16"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 
 # HOWTO: dresses is a list of dress rehearsals
@@ -212,6 +212,10 @@ practiceFiles:
 # Where date is the date of the event, specified in YYYY-MM-DD format.
 # Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
 events:
+-   date: "2024-12-13"
+    start: "19:00"
+    location: "MemChu"
+    title: "Messiah Sing/Play Along"
 
 
 # HOWTO: description contains Markdown that is included on pages which need a synopsis of
