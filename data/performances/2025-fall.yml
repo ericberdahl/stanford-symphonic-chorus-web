@@ -1,0 +1,215 @@
+# HOWTO: Set quarter to a single string that names the quarter and year. Use something like "Winter 1812",
+# "Spring 1812", or "Fall 1812"
+quarter: "Fall 2025"
+
+
+# HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
+# Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
+# be detected and used.
+syllabus: # "SSC Syllabus Fall 2025"
+
+
+# HOWTO: Set repertoire to a list of items that compose the program.
+#
+# A simple piece looks like this:
+# -   composer: "Ludwig von Beethoven"
+#     title: "Magnificat"
+#
+# For more complex piece formulae, look at the reference "HOWTO Piece syntax"
+#
+# Repertoire is separated into main pieces and other pieces. Main and other each contain a list of pieces.
+# Main pieces are included in headlines describing the program. Other pieces are added when dispalying the
+# entire program of a performance.
+repertoire:
+    main:
+    -   composer: "Dan Forrest"
+        title: "Requiem for the Living"
+    other:
+    -   composer: "Richard Strauss"
+        title: "Tod und Verklärung"
+        translation: "Death and Transfiguration"
+
+
+# HOWTO: soloists is a list of individuals and the part in which they solo.
+# An individual soloist looks like this:
+# -   name: "Plácido Domingo"
+#     part: "tenor"
+soloists:
+
+
+# HOWTO: collaborators is a list of groups with whom we collaborate on this program.
+# Each entry in the list should be a single string that matches the key field of a record in
+# data/collaborators.yml
+collaborators:
+-   "PSO"
+
+
+# HOWTO:
+# A typical full poster record looks like this:
+# poster:
+#     basename: "S2018-Poster"
+#     caption: "Haydn: Missa Sancti Bernardi von Offida (Heiligmesse)"
+# Where basename is a root name of the poster in assets/posters directory.
+#       Use something like "S2020-Poster". Posters with extensions '.pdf', '.jpg', and '.png' will
+#       be detected and used.
+# Where caption is a string to be used as hover text for the poster image when displayed on a web page.
+poster:
+
+
+# HOWTO: heraldImage is an image associated with this quarter's program. It has the same schema as
+# a poster (see also)
+#
+# If poster files are not present for a quarter, the heraldImage will be used as a stand-in for
+# presentations where a graphic for the quarter is used. If heraldImage and poster are both absent,
+# the system will use a generic stand-in graphic.
+#
+# The heraldImage will also typically be used on the home page, when talking about a quarter.
+heraldImage:
+
+
+# HOWTO: directors is a list of strings that name the directors of this performance
+directors:
+-   "Stephen M. Sano"
+
+
+# HOWTO: instructors is a list of strings that name the instructors for this quarter
+instructors:
+-   "Stephen M. Sano"
+
+
+# HOWTO: registrationFee is the participation fee for the quarter, typically waived
+# for students and faculty
+registrationFee: "$65"
+
+
+# HOWTO: scorePrice, when provided, is the price at which the score(s) for the quarter are sold.
+scorePrice: 
+
+
+# HOWTO: membershipLimit is the maximum number of members allowed to register for
+# this quarter
+membershipLimit: 220
+
+# HOWTO:
+# * preregister (optional) is a date in "YYYY-MM-DD" format by which the preregistration mail
+#   is expected to be sent out.
+# * registrationLink (optional) is a link (without http:// prefix) of an online form at which
+#   members should preregister
+# * auditionLink (optional) is a link (without http:// prefix) of an online form at which
+#   new members should sign up for auditions
+registrationInfo:
+#    preregister: "2025-03-01"
+
+
+tuttiRehearsalNotes:
+# -   note: "Registration begins at 6:30 PM."
+#     date: "2025-03-31"
+
+tuttiRehearsals:
+# -   frequency: "weekly"
+#     startDate: "2025-03-31"
+#     endDate: "2025-05-12"
+#     startTime: "19:30"
+#     endTime: "21:00"
+#     location: "CRH"
+
+
+mensSectionals:
+# -   frequency: "once"
+#     startDate: "2024-01-24"
+#     startTime: "17:30"
+#     endTime: "18:30"
+#     location: "Braun 103"
+# -   frequency: "once"
+#     startDate: "2024-02-07"
+#     startTime: "17:30"
+#     endTime: "18:30"
+#     location: "Braun 103"
+
+womensSectionals:
+# -   frequency: "once"
+#     startDate: "2024-01-17"
+#     startTime: "17:30"
+#     endTime: "18:30"
+#     location: "Braun 103"
+# -   frequency: "once"
+#     startDate: "2024-01-31"
+#     startTime: "17:30"
+#     endTime: "18:30"
+#     location: "Braun 103"
+
+
+# HOWTO: dresses is a list of dress rehearsals
+# A dress rehearsal entry looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     location: "Bing"
+# Where date is date of the event, specified as YYYY-MM-DD (four digit year, two digit month, two digit day
+# of month).
+# Where start and call are the curtain time and call time for the rehearsal specified as HH:MM in local time
+# (two digit hour, two digit minute of the hour, specified in 24-hour format)
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+dressRehearsals:
+# -   date: "2025-05-14"
+#     start: "19:00"
+#     location: "Bing"
+# -   date: "2025-05-17"
+#     start: "09:30"
+#     location: "Bing"
+
+
+# HOWTO: concerts is a list of concert dates
+# A concert entry looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     call: "HH:MM"
+#     location: "Bing"
+#     ticketLink: "https://url-to-purchase-ticket"
+# Where date is date of the event, specified as YYYY-MM-DD (four digit year, two digit month, two digit day
+# of month).
+# Where start and call are the curtain time and call time for the concert specified as HH:MM in local time
+# (two digit hour, two digit minute of the hour, specified in 24-hour format)
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the concert will be performed.
+# Where ticketLink is an optional field. If present, the field should a string with the URL people can
+# follow to puchase tickets for the event
+concerts:
+-   date: "2025-11-22"
+    start: "19:30"
+    call: "18:30"
+    location: "Bing"
+-   date: "2025-11-23"
+    start: "14:30"
+    call: "13:30"
+    location: "Bing"
+
+
+# HOWTO: practiceFiles is a list of locations where members can find recordings and other supplemental
+# material to assist with practice.
+# - title is a string describing the files to which the individual entry refers.
+# - externalLink (optional) is a link to a file on a different web site from which the specific practice
+#   file can be downloaded
+# - externalFolder (optional) is a link to a directory on a different web site that contains a selection
+#   of practice files which members can download
+practiceFiles:
+
+
+# HOWTO: events is a list of events associated with the quarter but outside of the performance or rehearsal
+# schedule.
+# An individual event looks like this:
+# -   date: "YYYY-MM-DD"
+#     start: "HH:MM"
+#     location: "MemChu"
+#     title: "Messiah Sing/Play Along"
+# Where location is a string that matches the key field of a record in data/locations.yml and specifies the
+# venue in which the event will take place.
+# Where title is a string that labels the event itself.
+# Where date is the date of the event, specified in YYYY-MM-DD format.
+# Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
+events:
+
+
+# HOWTO: description contains Markdown that is included on pages which need a synopsis of
+# the concert. The home page is a typical location where such text is used.
+description: |
