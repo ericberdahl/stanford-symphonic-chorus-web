@@ -1,6 +1,6 @@
 import { STATIC_ASSET_DIR } from './constants';
 
-import imageSize from 'image-size'
+import { imageSize } from 'image-size'
 
 import fs from 'fs';
 import path from 'path';
@@ -68,7 +68,8 @@ export class ImageRoutes extends FileRoutes {
 
         if (this.jpg) {
             const imagePath = path.join(STATIC_ASSET_DIR, this.jpg);
-            ({ width: this.width, height: this.height } = imageSize(imagePath));
+            const imageBuffer = fs.readFileSync(imagePath);
+            ({ width: this.width, height: this.height } = imageSize(imageBuffer));
         }
     
         this.caption = caption;

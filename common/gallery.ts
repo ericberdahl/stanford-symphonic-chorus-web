@@ -1,6 +1,6 @@
 import { GALLERY_ASSET_BASEPATH, GALLERY_URL_BASEPATH } from './constants'
 
-import imageSize from 'image-size'
+import { imageSizeFromFile } from 'image-size'
 
 import fs from 'fs';
 import path from 'path';
@@ -61,7 +61,7 @@ export class GalleryItem {
 
     async getStaticProps() : Promise<GalleryItemStaticProps> {
         const thumbPath = path.join(GALLERY_ASSET_BASEPATH, this.thumb);
-        const thumb_dimensions = imageSize(thumbPath);
+        const thumb_dimensions = await imageSizeFromFile(thumbPath);
 
         return {
             image: this.image,
