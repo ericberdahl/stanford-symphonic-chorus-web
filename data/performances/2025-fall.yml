@@ -98,7 +98,7 @@ membershipLimit: 220
 # * auditionLink (optional) is a link (without http:// prefix) of an online form at which
 #   new members should sign up for auditions
 registrationInfo:
-#    preregister: "2025-03-01"
+    preregister: "2025-09-01"
 
 
 tuttiRehearsalNotes:
