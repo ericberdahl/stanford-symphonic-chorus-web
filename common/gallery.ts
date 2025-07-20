@@ -1,8 +1,9 @@
 import { GALLERY_ASSET_BASEPATH, GALLERY_URL_BASEPATH } from './constants'
 
-import { imageSizeFromFile } from 'image-size'
+import { imageSize } from 'image-size'
 
 import fs from 'fs';
+import fsPromises from 'fs/promises'
 import path from 'path';
 
 export type SerializedGalleryItem = {
@@ -61,7 +62,8 @@ export class GalleryItem {
 
     async getStaticProps() : Promise<GalleryItemStaticProps> {
         const thumbPath = path.join(GALLERY_ASSET_BASEPATH, this.thumb);
-        const thumb_dimensions = await imageSizeFromFile(thumbPath);
+        const thumbBuffer = await fsPromises.readFile(thumbPath);
+        const thumb_dimensions = await imageSize(thumbBuffer);
 
         return {
             image: this.image,
