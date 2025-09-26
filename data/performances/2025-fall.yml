@@ -6,7 +6,7 @@ quarter: "Fall 2025"
 # HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
 # be detected and used.
-syllabus: # "SSC Syllabus Fall 2025"
+syllabus: "SSC Syllabus Fall 2025"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -25,6 +25,8 @@ repertoire:
     -   composer: "Dan Forrest"
         title: "Requiem for the Living"
     other:
+    -   composer: "Jessie Montgomery"
+        title: "Overture"
     -   composer: "Richard Strauss"
         title: "Tod und Verklärung"
         translation: "Death and Transfiguration"
@@ -69,6 +71,7 @@ heraldImage:
 
 # HOWTO: directors is a list of strings that name the directors of this performance
 directors:
+-   "Mitchell Sardou Klein"
 -   "Stephen M. Sano"
 
 
@@ -79,7 +82,7 @@ instructors:
 
 # HOWTO: registrationFee is the participation fee for the quarter, typically waived
 # for students and faculty
-registrationFee: "$65"
+registrationFee: "$90"
 
 
 # HOWTO: scorePrice, when provided, is the price at which the score(s) for the quarter are sold.
@@ -102,41 +105,41 @@ registrationInfo:
 
 
 tuttiRehearsalNotes:
-# -   note: "Registration begins at 6:30 PM."
-#     date: "2025-03-31"
+-   note: "Registration begins at 6:30 PM."
+    date: "2025-09-29"
 
 tuttiRehearsals:
-# -   frequency: "weekly"
-#     startDate: "2025-03-31"
-#     endDate: "2025-05-12"
-#     startTime: "19:30"
-#     endTime: "21:00"
-#     location: "CRH"
+-   frequency: "weekly"
+    startDate: "2025-09-29"
+    endDate: "2025-11-10"
+    startTime: "19:30"
+    endTime: "22:00"
+    location: "CRH"
 
 
 mensSectionals:
-# -   frequency: "once"
-#     startDate: "2024-01-24"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2024-02-07"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2025-10-15"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2025-10-29"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 womensSectionals:
-# -   frequency: "once"
-#     startDate: "2024-01-17"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2024-01-31"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2025-10-08"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2025-10-22"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 
 # HOWTO: dresses is a list of dress rehearsals
@@ -151,12 +154,12 @@ womensSectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 dressRehearsals:
-# -   date: "2025-05-14"
-#     start: "19:00"
-#     location: "Bing"
-# -   date: "2025-05-17"
-#     start: "09:30"
-#     location: "Bing"
+-   date: "2025-11-18"
+    start: "19:00"
+    location: "Bing"
+-   date: "2025-11-20"
+    start: "19:00"
+    location: "Bing"
 
 
 # HOWTO: concerts is a list of concert dates
@@ -208,6 +211,10 @@ practiceFiles:
 # Where date is the date of the event, specified in YYYY-MM-DD format.
 # Where start is the starting time of the event. The time is specified in HH:MM format (24-hour time).
 events:
+-   date: "2025-12-12"
+    start: "20:00"
+    location: "MemChu"
+    title: "Messiah Sing/Play Along"
 
 
 # HOWTO: description contains Markdown that is included on pages which need a synopsis of
