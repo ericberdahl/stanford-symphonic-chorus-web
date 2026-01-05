@@ -6,7 +6,7 @@ quarter: "Winter 2026"
 # HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
 # be detected and used.
-# syllabus: "SSC Syllabus Winter 2026"
+syllabus: "SSC Syllabus Winter 2026"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -23,7 +23,12 @@ quarter: "Winter 2026"
 repertoire:
     main:
     -   composer: "Giuseppe Verdi"
-        title: "Messa da Requiem"
+        title: "Requiem"
+    other:
+    -   composer: "Benjamin Britten"
+        title: "Passacaglia from Peter Grimes"
+    -   composer: "William Grant Still"
+        title: "In memoriam: The Colored Soldiers Who Died for Democracy"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -31,6 +36,14 @@ repertoire:
 # -   name: "Plácido Domingo"
 #     part: "tenor"
 soloists:
+-   name: "Mikayla Sager"
+    part: "soprano"
+-   name: "Malin Fritz Walrod"
+    part: "alto"
+-   name: "Benjamin Liupaogo"
+    part: "tenor"
+-   name: "Ashraf Sewailam"
+    part: "bass"
 
 
 # HOWTO: collaborators is a list of groups with whom we collaborate on this program.
@@ -94,45 +107,45 @@ membershipLimit: 220
 # * auditionLink (optional) is a link (without http:// prefix) of an online form at which
 #   new members should sign up for auditions
 registrationInfo:
-#    preregister: "2024-12-06"
+    preregister: "2025-12-05"
 
 
 tuttiRehearsalNotes:
-# -   note: "Registration begins at 6:30 PM."
-#     date: "2025-01-06"
+-   note: "Registration begins at 6:30 PM."
+    date: "2026-01-05"
 
 tuttiRehearsals:
-# -   frequency: "weekly"
-#     startDate: "2025-01-06"
-#     endDate: "2025-02-24"
-#     startTime: "19:30"
-#     endTime: "22:00"
-#     location: "CRH"
+-   frequency: "weekly"
+    startDate: "2026-01-05"
+    endDate: "2026-02-23"
+    startTime: "19:30"
+    endTime: "22:00"
+    location: "CRH"
 
 
 mensSectionals:
-# -   frequency: "once"
-#     startDate: "2025-01-22"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2025-02-05"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2026-01-21"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2026-02-04"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 womensSectionals:
-# -   frequency: "once"
-#     startDate: "2025-01-15"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2025-01-29"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2026-01-14"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2026-01-28"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 
 # HOWTO: dresses is a list of dress rehearsals
@@ -147,12 +160,12 @@ womensSectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 dressRehearsals:
-# -   date: "2025-03-03"
-#     start: "19:00"
-#     location: "Bing"
-# -   date: "2025-03-06"
-#     start: "19:00"
-#     location: "Bing"
+-   date: "2026-03-02"
+    start: "19:00"
+    location: "Bing"
+-   date: "2026-03-05"
+    start: "19:00"
+    location: "Bing"
 
 
 # HOWTO: concerts is a list of concert dates
