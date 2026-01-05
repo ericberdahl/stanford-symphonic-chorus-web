@@ -32,15 +32,15 @@ function ConcertEvent({ quarter, concert }) {
             <p>
                 Symphonic Chorus Performance: <span className={styles.time}>
                     <CommaSeparatedList>
-                        {repertoire.main.map((p, index) => <PieceCitation key={index} data={p}/>)}
+                        {repertoire.main.map((p, index) => <PieceCitation key={index} data={p} />)}
                     </CommaSeparatedList>
                     {collaborators &&
-                        (<> with <CommaSeparatedList>{collaborators.map((c) => <Collaborator key={c} name={c}/>)}</CommaSeparatedList></>)
+                        (<> with <CommaSeparatedList>{collaborators.map((c) => <Collaborator key={c} name={c} />)}</CommaSeparatedList></>)
                     }
                 </span>
             </p>
             <p>
-                <TimeOfDay iso={concert.start}/> <Location name={concert.location}/>
+                <TimeOfDay iso={concert.start} /> <Location name={concert.location} />
             </p>
             {concert.ticketLink &&
                 <p>
@@ -55,10 +55,10 @@ function FirstRehearsalEvent({ quarter, rehearsal }) {
     return (
         <>
             <p>First rehearsal: <span><CommaSeparatedList>
-                {quarter.repertoire.main.map((p, index) => <PieceCitation key={index} data={p}/>)}
+                {quarter.repertoire.main.map((p, index) => <PieceCitation key={index} data={p} />)}
             </CommaSeparatedList></span></p>
             <p className={styles.time}>
-                <TimeOfDay iso={rehearsal.start}/> <Location name={rehearsal.location}/>
+                <TimeOfDay iso={rehearsal.start} /> <Location name={rehearsal.location} />
                 <SpaceSeparatedPhrase>
                     .
                     {rehearsal.notes.map((n) => n)}
@@ -72,32 +72,43 @@ function OtherEvent({ quarter, data }) {
     return (
         <>
             <p>{data.title}</p>
-            <p><TimeOfDay iso={data.start}/> <Location name={data.location}/></p>
+            <p><TimeOfDay iso={data.start} /> <Location name={data.location} /></p>
         </>
     );
 }
 
-function Introduction({ currentQuarter }) {
+function addConcertsToEventList(eventList, quarter) {
+    quarter.concerts.forEach((c) => {
+        eventList.push({
+            date: c.start,
+            content: (<ConcertEvent quarter={quarter} concert={c} />),
+        });
+    });
+}
+
+function Introduction({ currentQuarter, nextQuarters }) {
     var eventList = [];
-    
-    // add concerts to the event list
-    eventList = eventList.concat(currentQuarter.concerts.map((c) => ({
-        date: c.start,
-        content: (<ConcertEvent quarter={currentQuarter} concert={c}/>),
-    })));
+
+    // add current quarter's concerts to the event list
+    addConcertsToEventList(eventList, currentQuarter);
+
+    // add next quarters' concerts to the event list
+    nextQuarters.forEach((q) => {
+        addConcertsToEventList(eventList, q);
+    });
 
     // add first rehearsal
     if (0 < currentQuarter.tuttiRehearsals.length) {
         eventList.push({
             date: currentQuarter.tuttiRehearsals[0].start,
-            content: (<FirstRehearsalEvent quarter={currentQuarter} rehearsal={currentQuarter.tuttiRehearsals[0]}/>),
+            content: (<FirstRehearsalEvent quarter={currentQuarter} rehearsal={currentQuarter.tuttiRehearsals[0]} />),
         });
     }
 
     // add current events to the list
     eventList = eventList.concat(currentQuarter.events.map((e) => ({
         date: e.start,
-        content: (<OtherEvent quarter={currentQuarter} data={e}/>),
+        content: (<OtherEvent quarter={currentQuarter} data={e} />),
     })));
 
     // sort the event list into increasing date order
@@ -110,12 +121,12 @@ function Introduction({ currentQuarter }) {
                     width={1314}
                     height={852}
                     caption="Memorial Church, 22 February 2010. Photo by R. A. Wilson."
-                    img_width={149}/>
+                    img_width={149} />
                 {eventList.map((e, index) => (
                     <div key={index} className={styles.event}>
                         <h3 className={styles.date}>
-                            <span className={styles.day}><DayOfMonth iso={e.date}/></span> <span className={styles.month}><Month iso={e.date}/><br/>
-                            <Year iso={e.date}/></span>
+                            <span className={styles.day}><DayOfMonth iso={e.date} /></span> <span className={styles.month}><Month iso={e.date} /><br />
+                                <Year iso={e.date} /></span>
                         </h3>
                         <div className={styles.eventList}>
                             {e.content}
@@ -134,7 +145,7 @@ function Sidebar({ quarter }) {
                     width={800}
                     height={533}
                     caption="Alto section in rehearsal, 25 February 2010. Photo by R. A. Wilson."
-                    img_width={149}/>
+                    img_width={149} />
                 <ul>
                     <li><PageLink page="performanceList">SSC Performances</PageLink></li>
                     <li><PageLink page="fylpList">For your listening pleasure</PageLink></li>
@@ -147,7 +158,7 @@ function Sidebar({ quarter }) {
                     width={800}
                     height={533}
                     caption="Rehearsal, 25 February 2010. Photo by R. A. Wilson."
-                    img_width={149}/>
+                    img_width={149} />
                 <ul>
                     <li><a href="//music.stanford.edu/Home/index.html">Music Department</a></li>
                     <li><a href="//music.stanford.edu/Ensembles/index.html">Stanford Ensembles</a></li>
@@ -159,12 +170,12 @@ function Sidebar({ quarter }) {
     );
 }
 
-export default function Home({ currentQuarter }) {
+export default function Home({ currentQuarter, nextQuarters }) {
     return (
         <Layout
             title="Stanford Symphonic Chorus"
-            introduction={<Introduction currentQuarter={currentQuarter}/>}
-            sidebar={<Sidebar quarter={currentQuarter}/>}>
+            introduction={<Introduction currentQuarter={currentQuarter} nextQuarters={nextQuarters} />}
+            sidebar={<Sidebar quarter={currentQuarter} />}>
             <div className={styles.main}>
                 <TitledSegment title="Welcome">
                     <div>
@@ -173,7 +184,7 @@ export default function Home({ currentQuarter }) {
                                 width={700}
                                 height={448}
                                 caption="Performance of Beethoven's Mass in C, 27 February 2010. Photo by R. A. Wilson."
-                                img_width={130}/>
+                                img_width={130} />
                         </div>
                         <p>
                             The Stanford Symphonic Chorus is a group of approximately 180 students, faculty, staff, and members of the community led by Director of Music and Conductor Stephen Sano.
@@ -186,21 +197,21 @@ export default function Home({ currentQuarter }) {
                         <h3><Link href={getHrefForPage("performanceList")}><>{currentQuarter.quarter} Concert</></Link></h3>
                         {currentQuarter.heraldImageRoutes &&
                             <div className={styles.heraldImage}>
-                                <PairedImage routes={currentQuarter.heraldImageRoutes}/>
+                                <PairedImage routes={currentQuarter.heraldImageRoutes} />
                             </div>
                         }
                         <Markdown mdx={currentQuarter.descriptionMDX} />
                         <p>
-                            {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location}/> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <Fragment key={index}>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</Fragment>)}</CommaSeparatedList>.
+                            {currentQuarter.concerts.length == 1 ? "Performance at " : "Performances at "} <Location name={currentQuarter.concerts[0].location} /> on <CommaSeparatedList>{currentQuarter.concerts.map((c, index) => <Fragment key={index}>{DateTime.fromISO(c.start).toFormat('EEEE, MMMM d')}</Fragment>)}</CommaSeparatedList>.
                         </p>
-                        <br/>
+                        <br />
                         <ul className={styles.ticketLinks}>
                             <li><a href="//liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4634&z=182&pt=47,2,4,5,12,16">Tickets for Friday 15 March</a></li>
                             <li><a href="//liveticket.stanford.edu/single/SelectSeatingSYOS.aspx?p=4635&z=182&pt=47,2,4,5,12,16">Tickets for Sunday 17 March</a></li>
                         </ul>
                     </div>
                     <div>
-                        <Covid19MitigationPolicy/>
+                        <Covid19MitigationPolicy />
                     </div>
                 </TitledSegment>
             </div>
@@ -210,9 +221,10 @@ export default function Home({ currentQuarter }) {
 
 export async function getStaticProps({ params }) {
     const model = await Model.getModel();
-    
+
     const props = {
-        currentQuarter: await model.currentQuarter.getStaticProps()
+        currentQuarter: await model.currentQuarter.getStaticProps(),
+        nextQuarters: await Promise.all(model.getPerformancesAfterId(model.currentQuarter.id, 3).map(async (p) => p.getStaticProps()).reverse()),
     }
 
     return {
