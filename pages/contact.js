@@ -1,11 +1,14 @@
 import AboutUs from '../components/aboutUs'
-import { Img } from '../components/htmlToolkit'
 import Layout from '../components/layout'
 import Lightbox from '../components/lightbox'
 import Person from '../components/person'
 import TitledSegment from '../components/titledSegment'
 
+import { useRouter } from 'next/router'
+
 export default function Contact() {
+    const router = useRouter();
+
     const title = "Contact Information";
     const breadcrumbPath = [
         { page: 'home', label: 'Symphonic Chorus Home' },
@@ -41,7 +44,7 @@ export default function Contact() {
             sidebar={sidebar}
             breadcrumbs={breadcrumbPath}>
             <div>
-			    <Img src="/images/SteveSano2014.jpg" width="323" height="201" alt="Sano conducting rehearsal" />
+			    <img src={`${router.basePath}/images/SteveSano2014.jpg`} width={323} height={201} alt="Sano conducting rehearsal" />
             </div>
         </Layout>
     );

@@ -6,12 +6,14 @@ import FileLinks from '../components/fileLinks'
 import Layout from '../components/layout'
 import Location from '../components/location'
 import Markdown from '../components/markdown'
-import PageLink from '../components/pageLink'
+import PageLink, { getHrefForPage } from '../components/pageLink'
 import PairedImage from '../components/pairedImage'
 import PieceCitation from '../components/pieceCitation'
 import TitledSegment from '../components/titledSegment'
 
 import { Model } from '../common/model'
+
+import Link from 'next/link';
 
 import { Fragment } from 'react'
 
@@ -154,10 +156,10 @@ function Performance({ data }) {
                 <ul className={styles.links}>
                     {0 < posterRoutes.length && <li>Poster (<FileLinks files={posterRoutes}/>)</li>}
                     {data.repertoire.full.filter((p) => p.fylp).map((p, index) => (
-                        <li key={index}><PageLink page={p.fylp} collection="fylp" legacyBehavior><a>For Your Listening Pleasure: <PieceCitation data={p}/></a></PageLink></li>
+                        <li key={index}><Link href={getHrefForPage(p.fylp, "fylp")}><>For Your Listening Pleasure: <PieceCitation data={p}/></></Link></li>
                     ))}
                     {data.galleries.map((g) => (
-                        <li key={g.id}><PageLink page={g} collection="gallery" legacyBehavior><a>Photo Gallery: {g.name}</a></PageLink></li>
+                        <li key={g.id}><Link href={getHrefForPage(g, "gallery")}><>Photo Gallery: {g.name}</></Link></li>
                     ))}
                     {data.supplementsMDX.map((s, index) => (
                         <li key={"performanceSupplemeent-" + index}><Markdown mdx={s}/></li>

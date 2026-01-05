@@ -1,13 +1,13 @@
 import Breadcrumbs from './breadcrumbs'
 import ContainerSearch from './containerSearch'
 import Footer from './footer'
-import { Area, Img } from './htmlToolkit'
 import Lightbox from './lightbox'
 import NavTopic from './navTopic'
-import PageLink, { isCurrentPage } from './pageLink'
+import { isCurrentPage, getHrefForPage } from './pageLink'
 import Seal from './seal'
 
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import styles from '../styles/layout.module.scss'
 
@@ -16,35 +16,39 @@ import styles from '../styles/layout.module.scss'
 // TODO: style the content_main
 
 function HomePageLogo() {
+    const router = useRouter();
+
     return (
         <div className={styles.logo}>
-            <Img
-                src="/images/logo_header/banner.gif"
+            <img
+                src={`${router.basePath}/images/logo_header/banner.gif`}
                 alt="Stanford University - Stanford Symphonic Chorus Department of Music"
                 useMap="#HomePageLogoMap"/>
             <map name="HomePageLogoMap">
-                <Area shape="rect" coords="0,0,263,60" href="http://www.stanford.edu" alt="Stanford University"/>
-                <PageLink page="home" passHref legacyBehavior><area shape="rect" coords="275,4,700,57" alt="Stanford Symphonic Chorus Department of Music"/></PageLink>
+                <area shape="rect" coords="0,0,263,60" href="http://www.stanford.edu" alt="Stanford University"/>
+                <area hrefshape="rect" coords="275,4,700,57" href={getHrefForPage('home')} alt="Stanford Symphonic Chorus Department of Music"/>
             </map>
         </div>
     )
 }
 
 function CollageLogo() {
+    const router = useRouter();
+
     return (
         <div className={styles.logo}>
-            <Img
-                src="/images/logo_header/SSCCollage.jpg"
+            <img
+                src={`${router.basePath}/images/logo_header/SSCCollage.jpg`}
                 alt="Stanford Symphonic Chorus"
                 useMap="#CollageLogoMap"/>
             <map name="CollageLogoMap">
-                <Area shape="rect" coords="0,0,107,63" href="/images/logo_header/P1060915.jpg" alt="Chorus in rehearsal"/>
-                <Area shape="rect" coords="108,0,190,63" href="/images/logo_header/Altos.jpg" alt="Altos in rehearsal"/>
-                <Area shape="rect" coords="191,0,297,63" href="/images/logo_header/SoprCenter.jpg" alt="Sopranos in rehearsal"/>
-                <Area shape="rect" coords="298,0,425,63" href="/images/logo_header/P1070103.jpg" alt="Rehearsal in MemChu"/>
-                <Area shape="rect" coords="426,0,532,63" href="/images/logo_header/SteveSano2002.jpg" alt="Steve in rehearsal"/>
-                <Area shape="rect" coords="533,0,667,63" href="/images/logo_header/BeethovenW10.jpg" alt="Performance in MemChu"/>
-                <Area shape="rect" coords="668,0,749,63" href="/images/logo_header/Tenors.jpg" alt="Tenors in rehearsal"/>
+                <area shape="rect" coords="0,0,107,63" href={`${router.basePath}/images/logo_header/P1060915.jpg`} alt="Chorus in rehearsal"/>
+                <area shape="rect" coords="108,0,190,63" href={`${router.basePath}/images/logo_header/Altos.jpg`} alt="Altos in rehearsal"/>
+                <area shape="rect" coords="191,0,297,63" href={`${router.basePath}/images/logo_header/SoprCenter.jpg`} alt="Sopranos in rehearsal"/>
+                <area shape="rect" coords="298,0,425,63" href={`${router.basePath}/images/logo_header/P1070103.jpg`} alt="Rehearsal in MemChu"/>
+                <area shape="rect" coords="426,0,532,63" href={`${router.basePath}/images/logo_header/SteveSano2002.jpg`} alt="Steve in rehearsal"/>
+                <area shape="rect" coords="533,0,667,63" href={`${router.basePath}/images/logo_header/BeethovenW10.jpg`} alt="Performance in MemChu"/>
+                <area shape="rect" coords="668,0,749,63" href={`${router.basePath}/images/logo_header/Tenors.jpg`} alt="Tenors in rehearsal"/>
             </map>
         </div>
     );

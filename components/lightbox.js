@@ -1,38 +1,41 @@
-import { IFrame, Img, Script } from './htmlToolkit'
+import { IFrame } from './htmlToolkit'
 
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import styles from '../styles/lightbox.module.scss'
 
 let lightboxCount = 0;
 
 function ImgLightbox({ label, caption, image, thumb, thumb_width, thumb_height }) {
+    const router = useRouter();
+
     return (
-        <Link href={image} legacyBehavior>
-            <a
-                data-fslightbox={label}
-                data-caption={caption}>
-                <Img
-                    src={thumb}
-                    width={thumb_width}
-                    height={thumb_height}
-                    alt={caption}
-                    loading="lazy"/>
-            </a>
+        <Link href={image} data-fslightbox={label} data-caption={caption}>
+            <img
+                src={`${router.basePath}${thumb}`}
+                width={thumb_width}
+                height={thumb_height}
+                alt={caption}
+                loading="lazy" />
         </Link>
     );
 }
 
 function PdfLightbox({ label, caption, image, thumb, thumb_width, thumb_height, image_width, image_height }) {
-        return (
+    const router = useRouter();
+
+    const pdfFile = image;
+
+    return (
         <>
             <a
                 data-fslightbox={label}
                 data-caption={caption}
                 href={"#" + label}>
-                <Img
-                    src={thumb}
+                <img
+                    src={`${router.basePath}${thumb}`}
                     width={thumb_width}
                     height={thumb_height}
                     alt={caption} />
@@ -40,7 +43,7 @@ function PdfLightbox({ label, caption, image, thumb, thumb_width, thumb_height, 
             <div className={styles.customContent}>
                 <IFrame
                     id={label}
-                    src={image}
+                    src={pdfFile}
                     width={image_width}
                     height={image_height}
                     loading="lazy" />
@@ -62,9 +65,11 @@ export default function Lightbox({ gallery, display, image, img_width, img_heigh
     return (
         <div className={styles.lightbox}>
             <Head>
-                <Script
+                // TODO investigate using next/script tag with beforeInteractive strategy (https://nextjs.org/docs/messages/no-script-tags-in-head-component)
+                <script
                     defer
                     src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js"
+                    key="fslightbox-3.3.1"
                     integrity="sha512-EqNNJuepkw5P9vxCml8eBk7C4Ld+4kAnvzOD/jG21rkxWPILGoQa5EvD62UieiJF0u3xoQrcVnce4i83VnYj/Q=="
                     crossOrigin="anonymous"
                     referrerPolicy="no-referrer" />

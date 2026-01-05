@@ -1,5 +1,6 @@
-import { Img } from '../components/htmlToolkit'
 import Lightbox from '../components/lightbox'
+
+import { useRouter } from 'next/router'
 
 export default function PairedImage({ routes, width }) {
     const image = (routes?.pdf ? routes?.pdf : routes?.jpg);
@@ -7,7 +8,8 @@ export default function PairedImage({ routes, width }) {
     width = (width || 107);
 
     if (!image) {
-        return (<Img src="/images/M@S-roundedges.gif" alt=""/>);
+        const router = useRouter();
+        return (<img src={`${router.basePath}/images/M@S-roundedges.gif`} alt=""/>);
     };
 
     const MAX_DIMENSION = 900;

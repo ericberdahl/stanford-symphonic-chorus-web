@@ -1,11 +1,13 @@
 import ChinaTour from '../components/chinaTour';
 import Layout from '../components/layout';
-import PageLink from '../components/pageLink';
+import PageLink, { getHrefForPage } from '../components/pageLink';
 import PieceCitation from '../components/pieceCitation';
 import TitledSegment from '../components/titledSegment';
 
 import { Model } from '../common/model';
 import { makeSlug } from '../common/slug';
+
+import Link from 'next/link';
 
 import styles from '../styles/fylpIndex.module.scss'
 
@@ -46,7 +48,7 @@ function SubRepertoire({ composer, pieces }) {
             <ol>
                 {pieces.map((p, index) => (
                     <li key={index} className={styles.piece}>
-                        <PageLink page={p.fylp} collection="fylp" legacyBehavior><a><PieceCitation data={p} titleOnly/></a></PageLink>
+                        <Link href={getHrefForPage(p.fylp, "fylp")}><><PieceCitation data={p} titleOnly/></></Link>
                     </li>
                 ))}
             </ol>

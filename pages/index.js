@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import Lightbox from '../components/lightbox'
 import Location from '../components/location'
 import Markdown from '../components/markdown'
-import PageLink from '../components/pageLink'
+import PageLink, { getHrefForPage } from '../components/pageLink'
 import PairedImage from '../components/pairedImage'
 import PieceCitation from '../components/pieceCitation'
 import SpaceSeparatedPhrase from '../components/spaceSeparatedPhrase'
@@ -183,7 +183,7 @@ export default function Home({ currentQuarter }) {
                         </p>
                     </div>
                     <div className={styles.performanceDescription}>
-                        <h3><PageLink page="performanceList" legacyBehavior><a>{currentQuarter.quarter} Concert</a></PageLink></h3>
+                        <h3><Link href={getHrefForPage("performanceList")}><>{currentQuarter.quarter} Concert</></Link></h3>
                         {currentQuarter.heraldImageRoutes &&
                             <div className={styles.heraldImage}>
                                 <PairedImage routes={currentQuarter.heraldImageRoutes}/>
