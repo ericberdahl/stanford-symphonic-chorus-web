@@ -1,0 +1,11 @@
+# Python requirements for SSC scripts
+
+# PDF extraction
+pdfplumber>=0.10.0
+
+# Date parsing
+python-dateutil>=2.8.0
+
+# YAML processing
+pyyaml>=6.0
+
