@@ -36,7 +36,7 @@ function PracticeFileSection({ section }) {
 function Introduction({ navItems }) {
     return (
         <div>
-            <PageNavigation items={navItems}/>
+            <PageNavigation items={navItems} />
         </div>
     );
 }
@@ -44,7 +44,7 @@ function Introduction({ navItems }) {
 function Sidebar() {
     return (
         <div>
-            <AboutUs/>
+            <AboutUs />
         </div>
     );
 }
@@ -64,11 +64,11 @@ function EventList({ events }) {
             <tbody>
                 {events.map((e, index) => (
                     <tr key={index}>
-                        <td><Weekday iso={e.start}/></td>
-                        <td><FullDate iso={e.start}/></td>
-                        <td><Location name={e.location}/></td>
-                        {e.end && <td><TimeOfDay iso={e.start}/> - <TimeOfDay iso={e.end}/></td>}
-                        {!e.end && <td><TimeOfDay iso={e.start}/></td>}
+                        <td><Weekday iso={e.start} /></td>
+                        <td><FullDate iso={e.start} /></td>
+                        <td><Location name={e.location} /></td>
+                        {e.end && <td><TimeOfDay iso={e.start} /> - <TimeOfDay iso={e.end} /></td>}
+                        {!e.end && <td><TimeOfDay iso={e.start} /></td>}
                         <td>
                             {e.description}
                             {e.notes && 0 < e.notes.length &&
@@ -90,37 +90,37 @@ function Rehearsals({ quarter }) {
 
     eventList = eventList.concat(quarter.tuttiRehearsals.map((r) => (
         {
-            start:          r.start,
-            end:            r.end,
-            location:       r.location,
-            description:    'Tutti rehearsal',
-            notes:          r.notes,
+            start: r.start,
+            end: r.end,
+            location: r.location,
+            description: 'Tutti rehearsal',
+            notes: r.notes,
         }
     )));
 
     eventList = eventList.concat(quarter.sectionalsTenorBass.map((r) => (
         {
-            start:          r.start,
-            end:            r.end,
-            location:       r.location,
-            description:    'T/B Sectional (optional, but warmly encouraged)',
-            notes:          r.notes
+            start: r.start,
+            end: r.end,
+            location: r.location,
+            description: 'T/B Sectional (optional, but warmly encouraged)',
+            notes: r.notes
         }
     )));
 
     eventList = eventList.concat(quarter.sectionalsSopranoAlto.map((r) => (
         {
-            start:          r.start,
-            end:            r.end,
-            location:       r.location,
-            description:    'S/A Sectional (optional, but warmly encouraged)',
-            notes:          r.notes
+            start: r.start,
+            end: r.end,
+            location: r.location,
+            description: 'S/A Sectional (optional, but warmly encouraged)',
+            notes: r.notes
         }
     )));
 
     eventList.sort((a, b) => compareISODate(a.start, b.start));
 
-    return (<EventList events={eventList}/>);
+    return (<EventList events={eventList} />);
 }
 
 function DressRehearsals({ quarter }) {
@@ -128,47 +128,47 @@ function DressRehearsals({ quarter }) {
         return (
             <>
                 <span>Dress rehearsal</span>
-                {rehearsal.repertoire && (<RepertoireList repertoire={rehearsal.repertoire.full}/>)}
+                {rehearsal.repertoire && (<RepertoireList repertoire={rehearsal.repertoire.full} />)}
             </>
         )
     }
 
     const eventList = quarter.dressRehearsals.map((dr) => (
         {
-            start:          dr.start,
-            location:       dr.location,
-            description:    (<Description rehearsal={dr}/>),
+            start: dr.start,
+            location: dr.location,
+            description: (<Description rehearsal={dr} />),
         }
     ));
 
-    return (<EventList events={eventList}/>);
+    return (<EventList events={eventList} />);
 }
 
 function Concerts({ quarter }) {
     const Description = ({ concert }) => {
         return (
             <>
-                <span>Concert call for <TimeOfDay iso={concert.start}/> concert</span>
-                {concert.repertoire && (<RepertoireList repertoire={concert.repertoire.full}/>)}
+                <span>Concert call for <TimeOfDay iso={concert.start} /> concert</span>
+                {concert.repertoire && (<RepertoireList repertoire={concert.repertoire.full} />)}
             </>
         )
     }
 
     const eventList = quarter.concerts.map((c) => (
         {
-            start:          c.call,
-            location:       c.location,
-            description:    (<Description concert={c}/>),
+            start: c.call,
+            location: c.location,
+            description: (<Description concert={c} />),
         }
     ));
 
-    return (<EventList events={eventList}/>);
+    return (<EventList events={eventList} />);
 }
 
 function RepertoireList({ repertoire }) {
     return (
         <ul>
-            {repertoire.map((p, index) => (<li key={index}><PieceCitation data={p}/></li>))}
+            {repertoire.map((p, index) => (<li key={index}><PieceCitation data={p} /></li>))}
         </ul>
     )
 }
@@ -180,7 +180,7 @@ function Overview({ quarter, shortForm }) {
         <>
             <tr>
                 <td>Repertoire:</td>
-                <td><RepertoireList repertoire={quarter.repertoire.full}/></td>
+                <td><RepertoireList repertoire={quarter.repertoire.full} /></td>
             </tr>
 
             {0 < quarter.soloists.length &&
@@ -199,7 +199,7 @@ function Overview({ quarter, shortForm }) {
                     <td>In collaboration with:</td>
                     <td>
                         <ul>
-                            {quarter.collaborators.map((c, index) => (<li key={index}><Collaborator name={c}/></li>))}
+                            {quarter.collaborators.map((c, index) => (<li key={index}><Collaborator name={c} /></li>))}
                         </ul>
                     </td>
                 </tr>)
@@ -212,7 +212,7 @@ function Overview({ quarter, shortForm }) {
                         <li>
                             {firstRehearsal && (
                                 <>
-                                    <DayAndDate iso={firstRehearsal.start}/> at <TimeOfDay iso={firstRehearsal.start}/>, <Location name={firstRehearsal.location}/>. {0 < firstRehearsal.notes.length &&
+                                    <DayAndDate iso={firstRehearsal.start} /> at <TimeOfDay iso={firstRehearsal.start} />, <Location name={firstRehearsal.location} />. {0 < firstRehearsal.notes.length &&
                                         <SpaceSeparatedPhrase>
                                             {firstRehearsal.notes.map((n, index) => n)}
                                         </SpaceSeparatedPhrase>
@@ -241,7 +241,7 @@ function Overview({ quarter, shortForm }) {
                     <ul>
                         {quarter.dressRehearsals.map((dr, index) => (
                             <li key={index}>
-                                <DayAndDate iso={dr.start}/>, <TimeOfDay iso={dr.start}/>, <Location name={dr.location}/>
+                                <DayAndDate iso={dr.start} />, <TimeOfDay iso={dr.start} />, <Location name={dr.location} />
                             </li>
                         ))}
                     </ul>
@@ -252,7 +252,7 @@ function Overview({ quarter, shortForm }) {
                 <td>Concerts:</td>
                 <td>
                     <ul>
-                        {quarter.concerts.map((c, index) => (<li key={index}><DayAndDate iso={c.start}/>, <TimeOfDay iso={c.start}/> in <Location name={c.location}/> (<TimeOfDay iso={c.call}/> call)</li>))}
+                        {quarter.concerts.map((c, index) => (<li key={index}><DayAndDate iso={c.start} />, <TimeOfDay iso={c.start} /> in <Location name={c.location} /> (<TimeOfDay iso={c.call} /> call)</li>))}
                     </ul>
                 </td>
             </tr>
@@ -260,8 +260,7 @@ function Overview({ quarter, shortForm }) {
     );
 }
 
-export default function RehearsalSchedule({ currentQuarter, previousQuarters, nextQuarters })
-{
+export default function RehearsalSchedule({ currentQuarter, previousQuarters, nextQuarters }) {
     const title = "Rehearsal and Performance Schedule";
 
     const breadcrumbPath = [
@@ -282,33 +281,33 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
     return (
         <Layout
             title={title}
-            introduction={<Introduction navItems={navItems}/>}
-            sidebar={<Sidebar/>}
+            introduction={<Introduction navItems={navItems} />}
+            sidebar={<Sidebar />}
             breadcrumbs={breadcrumbPath}>
             <div className={styles.rehearsalSchedule}>
                 <h2 id="overview">Overview</h2>
                 <div className={styles.overview}>
                     <table>
                         <tbody>
-                            <Overview quarter={currentQuarter}/>
+                            <Overview quarter={currentQuarter} />
                         </tbody>
                     </table>
                 </div>
 
                 <h2 id='rehearsals'>Rehearsals</h2>
-                <div><Rehearsals quarter={currentQuarter}/></div>
+                <div><Rehearsals quarter={currentQuarter} /></div>
 
                 <h2 id='dress-rehearsals'>Dress Reherasals</h2>
-                <div><DressRehearsals quarter={currentQuarter}/></div>
+                <div><DressRehearsals quarter={currentQuarter} /></div>
 
                 <h2 id='concerts'>Concerts</h2>
-                <div><Concerts quarter={currentQuarter}/></div>
+                <div><Concerts quarter={currentQuarter} /></div>
 
                 {0 < currentQuarter.practiceFiles.length && (
                     <>
                         <div className={styles.practiceFiles}>
                             {currentQuarter.practiceFiles.map((p, index) => (
-                                <PracticeFileSection section={p} key={index}/>
+                                <PracticeFileSection section={p} key={index} />
                             ))}
                         </div>
                     </>
@@ -321,7 +320,7 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
                             {nextQuarters.map((q, index) => (
                                 <tbody key={index}>
                                     <tr><td className={styles.subhead} colSpan="2"><PageLink collection="performances" page={q}>{q.quarter}</PageLink></td></tr>
-                                    <Overview quarter={q} shortForm="true"/>
+                                    <Overview quarter={q} shortForm="true" />
                                 </tbody>
                             ))}
                         </table>
@@ -336,7 +335,7 @@ export default function RehearsalSchedule({ currentQuarter, previousQuarters, ne
                                 {previousQuarters.map((q, index) => (
                                     <tbody key={index}>
                                         <tr><td className={styles.subhead} colSpan="2"><PageLink collection="performances" page={q}>{q.quarter}</PageLink></td></tr>
-                                        <Overview quarter={q} shortForm="true"/>
+                                        <Overview quarter={q} shortForm="true" />
                                     </tbody>
                                 ))}
                             </table>
@@ -352,9 +351,9 @@ export async function getStaticProps({ params }) {
     const model = await Model.getModel();
 
     const props = {
-        currentQuarter:     await model.getPerformanceById(params.id).getStaticProps(),
-        previousQuarters:   await Promise.all(model.getPerformancesAfterId(params.id, -3).map(async (p) => p.getStaticProps())),
-        nextQuarters:       await Promise.all(model.getPerformancesAfterId(params.id, 3).map(async (p) => p.getStaticProps()).reverse()),
+        currentQuarter: await model.getPerformanceById(params.id).getStaticProps(),
+        previousQuarters: await Promise.all(model.getPerformancesAfterId(params.id, -3).map(async (p) => p.getStaticProps())),
+        nextQuarters: await Promise.all(model.getPerformancesAfterId(params.id, 3).map(async (p) => p.getStaticProps()).reverse()),
     }
 
     return {
@@ -366,7 +365,7 @@ export async function getStaticPaths() {
     const model = await Model.getModel();
 
     const result = {
-        paths: model.performances.map((p) => ({ params: { id: p.id }})),
+        paths: model.performances.map((p) => ({ params: { id: p.id } })),
         fallback: false
     };
 
