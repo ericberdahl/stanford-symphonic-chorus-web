@@ -6,7 +6,7 @@ quarter: "Spring 2026"
 # HOWTO: Set syllabus to the root name syllabi documents. These documents will live in the assets folder.
 # Use something like "SSC Syllabus Spring 2020". Syllabi with extensions '.pdf', '.doc', and '.docx' will
 # be detected and used.
-syllabus: # "SSC Syllabus Spring 2026"
+syllabus: "SSC Syllabus Spring 2026"
 
 
 # HOWTO: Set repertoire to a list of items that compose the program.
@@ -18,17 +18,17 @@ syllabus: # "SSC Syllabus Spring 2026"
 # For more complex piece formulae, look at the reference "HOWTO Piece syntax"
 #
 # Repertoire is separated into main pieces and other pieces. Main and other each contain a list of pieces.
-# Main pieces are included in headlines describing the program. Other pieces are added when dispalying the
+# Main pieces are included in headlines describing the program. Other pieces are added when displaying the
 # entire program of a performance.
 repertoire:
     main:
     -   composer: "Franz Schubert"
-        title: "Mass in Ab major"
+        title: "Mass in A♭"
         catalog: "D. 678"
     other:
     -   composer: "Franz Schubert"
         title: "Overture to Rosamunde"
-        catalog: "D. 644"
+        catalog: "D. 797"
 
 
 # HOWTO: soloists is a list of individuals and the part in which they solo.
@@ -36,7 +36,14 @@ repertoire:
 # -   name: "Plácido Domingo"
 #     part: "tenor"
 soloists:
-
+-   name: "Josephine YoonGeong Lee"
+    part: "soprano"
+-   name: "Mindy Ella Chu"
+    part: "alto"
+-   name: "Jack Wilkins"
+    part: "tenor"
+-   name: "Michael Kuo"
+    part: "bass"
 
 # HOWTO: collaborators is a list of groups with whom we collaborate on this program.
 # Each entry in the list should be a single string that matches the key field of a record in
@@ -79,7 +86,7 @@ instructors:
 
 # HOWTO: registrationFee is the participation fee for the quarter, typically waived
 # for students and faculty
-registrationFee: "$65"
+registrationFee: "$90"
 
 
 # HOWTO: scorePrice, when provided, is the price at which the score(s) for the quarter are sold.
@@ -98,45 +105,45 @@ membershipLimit: 220
 # * auditionLink (optional) is a link (without http:// prefix) of an online form at which
 #   new members should sign up for auditions
 registrationInfo:
-#    preregister: "2025-03-01"
+   preregister: "2026-03-06"
 
 
 tuttiRehearsalNotes:
-# -   note: "Registration begins at 6:30 PM."
-#     date: "2025-03-31"
+-   note: "Registration begins at 6:30 PM."
+    date: "2026-03-30"
 
 tuttiRehearsals:
-# -   frequency: "weekly"
-#     startDate: "2025-03-31"
-#     endDate: "2025-05-12"
-#     startTime: "19:30"
-#     endTime: "21:00"
-#     location: "CRH"
+-   frequency: "weekly"
+    startDate: "2026-03-30"
+    endDate: "2026-05-11"
+    startTime: "19:30"
+    endTime: "22:00"
+    location: "CRH"
 
 
 mensSectionals:
-# -   frequency: "once"
-#     startDate: "2024-01-24"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2024-02-07"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2026-04-22"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2026-05-06"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 womensSectionals:
-# -   frequency: "once"
-#     startDate: "2024-01-17"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
-# -   frequency: "once"
-#     startDate: "2024-01-31"
-#     startTime: "17:30"
-#     endTime: "18:30"
-#     location: "Braun 103"
+-   frequency: "once"
+    startDate: "2026-04-15"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
+-   frequency: "once"
+    startDate: "2026-04-29"
+    startTime: "17:30"
+    endTime: "18:30"
+    location: "Braun 103"
 
 
 # HOWTO: dresses is a list of dress rehearsals
@@ -151,12 +158,12 @@ womensSectionals:
 # Where location is a string that matches the key field of a record in data/locations.yml and specifies the
 # venue in which the concert will be performed.
 dressRehearsals:
-# -   date: "2025-05-14"
-#     start: "19:00"
-#     location: "Bing"
-# -   date: "2025-05-17"
-#     start: "09:30"
-#     location: "Bing"
+-   date: "2026-05-13"
+    start: "19:00"
+    location: "Bing"
+-   date: "2026-05-16"
+    start: "10:00"
+    location: "Bing"
 
 
 # HOWTO: concerts is a list of concert dates
@@ -176,8 +183,8 @@ dressRehearsals:
 # follow to puchase tickets for the event
 concerts:
 -   date: "2026-05-17"
-    start: "14:30"
-    call: "13:30"
+    start: "13:30"
+    call: "12:30"
     location: "Bing"
 
 
